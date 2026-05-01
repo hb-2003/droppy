@@ -64,6 +64,13 @@ if ( ! function_exists('byte_format'))
 		$CI =& get_instance();
 		$CI->lang->load('number');
 
+		// PHP 8.1+ deprecates passing null to number_format(). Some callers in
+		// this codebase may pass NULL (e.g. disk stats when unavailable).
+		if ($num === NULL)
+		{
+			$num = 0;
+		}
+
 		if ($num >= 1000000000000)
 		{
 			$num = round($num / 1099511627776, $precision);

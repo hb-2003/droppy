@@ -8,7 +8,7 @@
  */
 class Plugin {
     private $CI;
-    public $_pluginDir, $_plugins, $_pages, $_tabs, $_adminpages, $_crons, $_css;
+    public $_pluginDir, $_plugins, $_pages, $_tabs, $_adminpages, $_crons, $_css, $_adminmailtemplates;
 
     /**
      * Plugin constructor.
@@ -26,6 +26,7 @@ class Plugin {
         $this->_adminpages = array();
         $this->_crons      = array();
         $this->_css        = array();
+        $this->_adminmailtemplates = array();
     }
 
     /**
@@ -42,18 +43,26 @@ class Plugin {
             if(strpos(basename($dir), '.') !== false)
                 continue;
 
-            // Load the plugin config
-            $jsonConfig = file_get_contents($dir . '/config.json');
+            // Load the plugin config — skip the directory if the config
+            // file is missing or invalid so a half-installed plugin can't
+            // take down the whole app.
+            $configPath = $dir . '/config.json';
+            if (!is_file($configPath)) {
+                continue;
+            }
+            $jsonConfig = file_get_contents($configPath);
+            if ($jsonConfig === false || trim($jsonConfig) === '') {
+                continue;
+            }
             $arrayConfig = json_decode($jsonConfig, true);
+            if (!is_array($arrayConfig) || empty($arrayConfig)) {
+                continue;
+            }
 
             // Retrieve the key name of the plugin config array
             $pluginName = key($arrayConfig);
 
-            // Check if the json has content
-            if(!empty($jsonConfig)) {
-                // Convert config json to array
-                $this->_plugins = array_merge($this->_plugins, json_decode($jsonConfig, true));
-            }
+            $this->_plugins = array_merge($this->_plugins, $arrayConfig);
 
             if(isset($arrayConfig[$pluginName]['cron'])) {
                 $this->_crons[] = $arrayConfig[$pluginName]['load'] . '/' . $arrayConfig[$pluginName]['cron'];

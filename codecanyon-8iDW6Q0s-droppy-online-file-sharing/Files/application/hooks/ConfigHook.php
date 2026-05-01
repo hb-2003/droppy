@@ -41,7 +41,9 @@ class ConfigHook {
 
             if(!empty($settings['session_expiration'])) {
                 $this->CI->config->set_item('sess_expiration', $settings['session_expiration']);
-                ini_set('session.gc_maxlifetime', $settings['session_expiration']);
+                if (session_status() !== PHP_SESSION_ACTIVE) {
+                    @ini_set('session.gc_maxlifetime', (string) $settings['session_expiration']);
+                }
             }
 
             // Get active theme
@@ -82,7 +84,7 @@ class ConfigHook {
                 $browser_language = $this->CI->input->server('HTTP_ACCEPT_LANGUAGE');
 
                 // Extract the first language from the browser's list
-                $browser_language = strtok($browser_language, ',');
+                $browser_language = strtok((string) $browser_language, ',');
 
                 $language = $this->CI->language->getByLocale($browser_language);
 
