@@ -32,23 +32,28 @@ if(isset($_POST['action']))
     {
         //Getting variables from the form
         $package = $_POST['package'];
-        $email = $_POST['email'];
-        $password = hash('sha512', $_POST['password']);
+        $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
+        if (!$email) {
+            header('Location: ' . $droppy_settings['site_url'] . '?goto=tab-gopremium&payment=invalid_email');
+            exit;
+        }
+        $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
         $fullname = $_POST['name'];
         $company = $_POST['company'];
         $payment = $premium_settings['payment_gateway'];
         $date = date("Y-m-d H:i:s");
         $time = time();
         $user_ip = ($droppy_settings['disable_ip_logging'] == 'true' ? '' : $_SERVER['REMOTE_ADDR']);
-        $_SESSION["original_url"] = $_POST['rd'];
-        $_SESSION["subscription_id"] = md5(time() . rand());
+        $rd = isset($_POST['rd']) ? $_POST['rd'] : '';
+        $_SESSION["original_url"] = (strpos($rd, $droppy_settings['site_url']) === 0) ? $rd : $droppy_settings['site_url'];
+        $_SESSION["subscription_id"] = bin2hex(random_bytes(16));
 
         // Get package details
         $plan_details = $clsPlans->getByID($package);
 
         // If incorrect plan ID is given
         if(!$plan_details) {
-            header('Location: '.$this->config->item('site_url') . '?goto=tab-gopremium&payment=payment_canceled');
+            header('Location: '.$droppy_settings['site_url'] . '?goto=tab-gopremium&payment=payment_canceled');
             exit;
         }
 
@@ -62,8 +67,8 @@ if(isset($_POST['action']))
             // Search voucher in DB
             $voucher = $clsVoucher->getByCode($_POST['voucher']);
 
-            // Check if exists
-            if (count($voucher) > 0) {
+            // Check if exists (getByCode returns a single row_array, not a list)
+            if (!empty($voucher) && is_array($voucher)) {
                 if($voucher['discount_type'] == 'percentage') {
                     // Calculate the discount price
                     $percentage = ($subscription_price * ($voucher['discount_percentage'] / 100));
@@ -103,13 +108,13 @@ if(isset($_POST['action']))
                 $paymentType = 'Sale';
 
                 // Redirection URL when the payment has been successfully completed
-                $returnURL = $this->config->item('site_url') . 'page/premium?action=payment_review';
+                $returnURL = $droppy_settings['site_url'] . 'page/premium?action=payment_review';
 
                 // When the payment is canceled by the user itself
-                $cancelURL = $this->config->item('site_url') . '?goto=tab-gopremium&payment=paypal_payment_canceled';
+                $cancelURL = $droppy_settings['site_url'] . '?goto=tab-gopremium&payment=paypal_payment_canceled';
 
                 // Redirection URL when the payment has been successfully completed
-                $successUrl = $this->config->item('site_url') . '?goto=tab-gopremium&payment=created';
+                $successUrl = $droppy_settings['site_url'] . '?goto=tab-gopremium&payment=created';
 
                 $_SESSION['success_url'] = $successUrl;
 
@@ -139,17 +144,17 @@ if(isset($_POST['action']))
                     );
 
                     if($premium_settings['enable_vat'] == 'true') {
-                        $extra_data = array('vat_number' => $_POST['vat']);
+                        $extra_data = array('vat_number' => isset($_POST['vat']) ? $_POST['vat'] : '');
                         $subs_data = array_merge($subs_data, $extra_data);
                         unset($extra_data);
                     }
 
                     if($premium_settings['enable_address'] == 'true') {
                         $extra_data = array(
-                            'address_street' => $_POST['address_street'],
-                            'address_zip' => $_POST['address_zip'],
-                            'address_city' => $_POST['address_city'],
-                            'address_country' => $_POST['address_country']
+                            'address_street'  => isset($_POST['address_street'])  ? $_POST['address_street']  : '',
+                            'address_zip'     => isset($_POST['address_zip'])     ? $_POST['address_zip']     : '',
+                            'address_city'    => isset($_POST['address_city'])    ? $_POST['address_city']    : '',
+                            'address_country' => isset($_POST['address_country']) ? $_POST['address_country'] : ''
                         );
                         $subs_data = array_merge($subs_data, $extra_data);
                     }
@@ -167,7 +172,7 @@ if(isset($_POST['action']))
 
                     $clsUser->insert($users_data);
 
-                    $clsPaypal->RedirectToPayPal ( $token );
+                    $clsPaypal->RedirectToPayPal($token);
                 }
                 else
                 {
@@ -188,8 +193,8 @@ if(isset($_POST['action']))
                     'name' => $fullname
                 ]);
                 $checkout = $stripe->checkout->sessions->create([
-                    'success_url' => $this->config->item('site_url') . '?goto=tab-gopremium&payment=created',
-                    'cancel_url' => $this->config->item('site_url') . '?goto=tab-gopremium&payment=payment_canceled',
+                    'success_url' => $droppy_settings['site_url'] . '?goto=tab-gopremium&payment=created',
+                    'cancel_url' => $droppy_settings['site_url'] . '?goto=tab-gopremium&payment=payment_canceled',
                     'payment_method_types' => ['card'],
                     'customer' => $customer['id'],
                     'client_reference_id' => $_SESSION["subscription_id"],
@@ -223,17 +228,17 @@ if(isset($_POST['action']))
                 );
 
                 if($premium_settings['enable_vat'] == 'true') {
-                    $extra_data = array('vat_number' => $_POST['vat']);
+                    $extra_data = array('vat_number' => isset($_POST['vat']) ? $_POST['vat'] : '');
                     $subs_data = array_merge($subs_data, $extra_data);
                     unset($extra_data);
                 }
 
                 if($premium_settings['enable_address'] == 'true') {
                     $extra_data = array(
-                        'address_street' => $_POST['address_street'],
-                        'address_zip' => $_POST['address_zip'],
-                        'address_city' => $_POST['address_city'],
-                        'address_country' => $_POST['address_country']
+                        'address_street'  => isset($_POST['address_street'])  ? $_POST['address_street']  : '',
+                        'address_zip'     => isset($_POST['address_zip'])     ? $_POST['address_zip']     : '',
+                        'address_city'    => isset($_POST['address_city'])    ? $_POST['address_city']    : '',
+                        'address_country' => isset($_POST['address_country']) ? $_POST['address_country'] : ''
                     );
                     $subs_data = array_merge($subs_data, $extra_data);
                 }
@@ -365,17 +370,17 @@ if(isset($_POST['action']))
                 );
 
                 if($premium_settings['enable_vat'] == 'true') {
-                    $extra_data = array('vat_number' => $_POST['vat']);
+                    $extra_data = array('vat_number' => isset($_POST['vat']) ? $_POST['vat'] : '');
                     $subs_data = array_merge($subs_data, $extra_data);
                     unset($extra_data);
                 }
 
                 if($premium_settings['enable_address'] == 'true') {
                     $extra_data = array(
-                        'address_street' => $_POST['address_street'],
-                        'address_zip' => $_POST['address_zip'],
-                        'address_city' => $_POST['address_city'],
-                        'address_country' => $_POST['address_country']
+                        'address_street'  => isset($_POST['address_street'])  ? $_POST['address_street']  : '',
+                        'address_zip'     => isset($_POST['address_zip'])     ? $_POST['address_zip']     : '',
+                        'address_city'    => isset($_POST['address_city'])    ? $_POST['address_city']    : '',
+                        'address_country' => isset($_POST['address_country']) ? $_POST['address_country'] : ''
                     );
                     $subs_data = array_merge($subs_data, $extra_data);
                 }
@@ -413,7 +418,7 @@ if(isset($_POST['action']))
                     $this->email->sendEmail('premium_complete_offline', $tokens, [$sub_info['email']]);
                     //$this->email->sendEmail('premium_new_sub', $tokens, [$sub_info['email']]);
 
-                    header('Location: ' . $this->config->item('site_url') . '?goto=tab-gopremium&payment=created');
+                    header('Location: ' . $droppy_settings['site_url'] . '?goto=tab-gopremium&payment=created');
                 }
             }
         }
@@ -454,24 +459,21 @@ if(isset($_POST['action']))
     }
     if($_POST['action'] == 'login')
     {
-        $email      = $_POST['email'];
-        $password   = hash('sha512', $_POST['password']);
+        $email       = $_POST['email'];
+        $raw_password = $_POST['password'];
 
-        $user = $clsUser->getByEmailPassword($email, $password);
-        if($user !== false)
+        $user = $clsUser->getByEmail($email);
+        if($user !== false && password_verify($raw_password, $user['password']))
         {
-            if($user['password'] == $password) {
-                if($user['status'] == 'ready') {
-                    $_SESSION['droppy_premium']         = $user['id'];
-                    $_SESSION['droppy_premium_email']   = $user['email'];
-                    echo 1;
-                }
-                if($user['status'] == 'suspended_reversal') {
-                    $_SESSION['droppy_premium_suspend'] = $user['id'];
-                    $_SESSION['droppy_premium_email']   = $user['email'];
-
-                    echo 2;
-                }
+            if($user['status'] == 'ready') {
+                $_SESSION['droppy_premium']         = $user['id'];
+                $_SESSION['droppy_premium_email']   = $user['email'];
+                echo 1;
+            }
+            elseif($user['status'] == 'suspended_reversal') {
+                $_SESSION['droppy_premium_suspend'] = $user['id'];
+                $_SESSION['droppy_premium_email']   = $user['email'];
+                echo 2;
             }
             else
             {
@@ -489,11 +491,12 @@ if(isset($_POST['action']))
 
         if($user !== false)
         {
-            $reset_code = hash('sha512', md5(rand() . time() . rand()));
+            $reset_code = bin2hex(random_bytes(32));
 
             $db_data = array(
-                'email' => $_POST['email'],
-                'reset' => $reset_code
+                'email'      => $_POST['email'],
+                'reset'      => $reset_code,
+                'created_at' => time()
             );
 
             $clsForgot->insert($db_data);
@@ -520,7 +523,7 @@ if(isset($_POST['action']))
         if($res !== false)
         {
             $email = $res['email'];
-            $new_pass = hash('sha512', $pass1);
+            $new_pass = password_hash($pass1, PASSWORD_BCRYPT);
 
             $update = array('password' => $new_pass);
             $clsUser->updateByEmail($update, $email);
@@ -536,9 +539,8 @@ if(isset($_POST['action']))
     }
     if($_POST['action'] == 'change_details')
     {
-        $email      = $_POST['email'];
-        $password   = hash('sha512', $_POST['password']);
-        $name       = $_POST['name'];
+        $email   = $_POST['email'];
+        $name    = $_POST['name'];
         $company    = $_POST['company'];
         $sub_id     = $_POST['sub_id'];
 
@@ -555,17 +557,17 @@ if(isset($_POST['action']))
                     );
 
                     if($premium_settings['enable_vat'] == 'true') {
-                        $extra_data = array('vat_number' => $_POST['vat_number']);
+                        $extra_data = array('vat_number' => isset($_POST['vat_number']) ? $_POST['vat_number'] : '');
                         $sub_data = array_merge($sub_data, $extra_data);
                         unset($extra_data);
                     }
 
                     if($premium_settings['enable_address'] == 'true') {
                         $extra_data = array(
-                            'address_street' => $_POST['address_street'],
-                            'address_zip' => $_POST['address_zip'],
-                            'address_city' => $_POST['address_city'],
-                            'address_country' => $_POST['address_country']
+                            'address_street'  => isset($_POST['address_street'])  ? $_POST['address_street']  : '',
+                            'address_zip'     => isset($_POST['address_zip'])     ? $_POST['address_zip']     : '',
+                            'address_city'    => isset($_POST['address_city'])    ? $_POST['address_city']    : '',
+                            'address_country' => isset($_POST['address_country']) ? $_POST['address_country'] : ''
                         );
                         $sub_data = array_merge($sub_data, $extra_data);
                     }
@@ -574,15 +576,13 @@ if(isset($_POST['action']))
 
                     if(empty($_POST['password'])) {
                         $clsUser->updateByEmail(array('email' => $email), $sub_info['email']);
-
-                        echo 1;
+                    } else {
+                        $clsUser->updateByEmail(array(
+                            'email'    => $email,
+                            'password' => password_hash($_POST['password'], PASSWORD_BCRYPT)
+                        ), $sub_info['email']);
                     }
-                    else
-                    {
-                        $clsUser->updateByEmail(array('email' => $email, 'password' => $password), $sub_info['email']);
-
-                        echo 1;
-                    }
+                    echo 1;
                 }
                 else
                 {
@@ -604,10 +604,10 @@ if(isset($_POST['action']))
         $date = date("Y-m-d H:i:s");
         $time = time();
         $user_ip = ($droppy_settings['disable_ip_logging'] == 'true' ? '' : $_SERVER['REMOTE_ADDR']);
-        $_SESSION["original_url"] = $this->config->item('site_url') . '?goto=custom_account';
+        $_SESSION["original_url"] = $droppy_settings['site_url'] . '?goto=custom_account';
 
         $session_id = $_SESSION['droppy_premium'];
-        $_SESSION["subscription_id"] = md5(time() . rand());
+        $_SESSION["subscription_id"] = bin2hex(random_bytes(16));
         $sub_id = $_SESSION["subscription_id"];
 
         // Get package details
@@ -615,7 +615,7 @@ if(isset($_POST['action']))
 
         // If incorrect plan ID is given
         if(!$plan_details) {
-            header('Location: '.$this->config->item('site_url') . '?goto=tab-gopremium&payment=canceled_user');
+            header('Location: '.$droppy_settings['site_url'] . '?goto=tab-gopremium&payment=canceled_user');
             exit;
         }
 
@@ -632,8 +632,8 @@ if(isset($_POST['action']))
             // Search voucher in DB
             $voucher = $clsVoucher->getByCode($_POST['voucher']);
 
-            // Check if exists
-            if (count($voucher) > 0) {
+            // Check if exists (getByCode returns a single row_array, not a list)
+            if (!empty($voucher) && is_array($voucher)) {
                 if($voucher['discount_type'] == 'percentage') {
                     // Calculate the discount price
                     $percentage = ($subscription_price * ($voucher['discount_percentage'] / 100));
@@ -667,13 +667,13 @@ if(isset($_POST['action']))
             $paymentType = 'Sale';
 
             // Redirection URL when the payment has been successfully completed
-            $returnURL = $this->config->item('site_url') . 'page/premium?action=payment_review';
+            $returnURL = $droppy_settings['site_url'] . 'page/premium?action=payment_review';
 
             // When the payment is canceled by the user itself
-            $cancelURL = $this->config->item('site_url') . '?goto=tab-gopremium&payment=canceled_user';
+            $cancelURL = $droppy_settings['site_url'] . '?goto=tab-gopremium&payment=canceled_user';
 
             // Redirection URL when the payment has been successfully completed
-            $successUrl = $this->config->item('site_url') . '?goto=tab-gopremium&payment=created';
+            $successUrl = $droppy_settings['site_url'] . '?goto=tab-gopremium&payment=created';
 
             $_SESSION['success_url'] = $successUrl;
 
@@ -728,8 +728,8 @@ if(isset($_POST['action']))
                 'name' => $fullname
             ]);
             $checkout = $stripe->checkout->sessions->create([
-                'success_url' => $this->config->item('site_url') . '?goto=tab-gopremium&payment=created',
-                'cancel_url' => $this->config->item('site_url') . '?goto=tab-gopremium&payment=canceled_user',
+                'success_url' => $droppy_settings['site_url'] . '?goto=tab-gopremium&payment=created',
+                'cancel_url' => $droppy_settings['site_url'] . '?goto=tab-gopremium&payment=canceled_user',
                 'payment_method_types' => ['card'],
                 'customer' => $customer['id'],
                 'client_reference_id' => $_SESSION["subscription_id"],
@@ -824,7 +824,7 @@ if(isset($_POST['action']))
                 //$this->email->sendEmail('premium_new_sub', $tokens, [$sub_info['email']]);
                 $this->email->sendEmail('premium_complete_offline', $tokens, [$sub_info['email']]);
 
-                header('Location: ' . $this->config->item('site_url') . '?goto=tab-gopremium&payment=created');
+                header('Location: ' . $droppy_settings['site_url'] . '?goto=tab-gopremium&payment=created');
             }
         }
     }
@@ -841,7 +841,7 @@ if(isset($_POST['action']))
                     $clsUser->insert(array(
                         'parent_id' => $_SESSION['droppy_premium'],
                         'email' => $email,
-                        'password' => hash('sha512', $password),
+                        'password' => password_hash($password, PASSWORD_BCRYPT),
                         'ip' => '',
                         'sub_id' => $cur_user_sub,
                         'status' => 'ready'
@@ -880,7 +880,7 @@ if(isset($_POST['action']))
 
             if(empty($premium_settings['stripe_webhook'])) {
                 $webhook = $stripe->webhookEndpoints->create([
-                    'url' => $this->config->item('site_url') . 'page/stripe',
+                    'url' => $droppy_settings['site_url'] . 'page/stripe',
                     'enabled_events' => [
                         'checkout.session.completed',
                         'charge.failed',
@@ -906,7 +906,11 @@ if(isset($_POST['action']))
 
         $clsSettings->update($settings);
 
-        header('Location: '. $_POST['goback']);
+        $goback = $_POST['goback'];
+        if (strpos($goback, $droppy_settings['site_url']) !== 0) {
+            $goback = $droppy_settings['site_url'];
+        }
+        header('Location: ' . $goback);
     }
     if($_POST['action'] == 'delete_user' && $this->session->userdata('admin')) {
         $id = $_POST['id'];
@@ -996,9 +1000,9 @@ if(isset($_POST['action']))
         $fullname       = $_POST['fullname'];
         $company_name   = $_POST['company'];
         $plan_id        = $_POST['plan_id'];
-        $password       = hash('sha512', $_POST['password']);
+        $password       = password_hash($_POST['password'], PASSWORD_BCRYPT);
         $next_date      = strtotime($_POST['expiry']);
-        $sub_id         = uniqid(); //Create unique id
+        $sub_id         = bin2hex(random_bytes(16));
         $date           = time(); //Get the current time
 
         $clsUser->insert(array(
@@ -1030,7 +1034,11 @@ if(isset($_POST['action']))
             'paypal_ordertime' => ''
         ));
 
-        header('Location: '.$_POST['goback'] . '&p=subs');
+        $goback = $_POST['goback'];
+        if (strpos($goback, $droppy_settings['site_url']) !== 0) {
+            $goback = $droppy_settings['site_url'];
+        }
+        header('Location: ' . $goback . '&p=subs');
     }
     if($_POST['action'] == 'add_voucher' && $this->session->userdata('admin')) {
         //Get post data
@@ -1059,7 +1067,9 @@ if(isset($_POST['action']))
             ));
         }
 
-        header('Location: '.$_POST['goback']);
+        $goback = $_POST['goback'];
+        if (strpos($goback, $droppy_settings['site_url']) !== 0) { $goback = $droppy_settings['site_url']; }
+        header('Location: ' . $goback);
     }
     if($_POST['action'] == 'edit_plan' && $this->session->userdata('admin')) {
         $plan_id = $_POST['plan'];
@@ -1067,10 +1077,12 @@ if(isset($_POST['action']))
         if(empty($_POST['plan_expire_time'])) {
             $expire = 0;
         }
-        elseif(count($_POST['plan_expire_time']) > 1) {
+        elseif(is_array($_POST['plan_expire_time']) && count($_POST['plan_expire_time']) > 1) {
             $expire = implode(',', $_POST['plan_expire_time']);
-        } else {
+        } elseif(is_array($_POST['plan_expire_time'])) {
             $expire = $_POST['plan_expire_time'][0];
+        } else {
+            $expire = $_POST['plan_expire_time'];
         }
 
         $update = array(
@@ -1118,16 +1130,20 @@ if(isset($_POST['action']))
 
         $clsPlans->updateByID($update, $plan_id);
 
-        header('Location: '.$_POST['goback']);
+        $goback = $_POST['goback'];
+        if (strpos($goback, $droppy_settings['site_url']) !== 0) { $goback = $droppy_settings['site_url']; }
+        header('Location: ' . $goback);
     }
     if($_POST['action'] == 'add_plan' && $this->session->userdata('admin')) {
         if(empty($_POST['plan_expire_time'])) {
             $expire = 0;
         }
-        elseif(count($_POST['plan_expire_time']) > 1) {
+        elseif(is_array($_POST['plan_expire_time']) && count($_POST['plan_expire_time']) > 1) {
             $expire = implode(',', $_POST['plan_expire_time']);
-        } else {
+        } elseif(is_array($_POST['plan_expire_time'])) {
             $expire = $_POST['plan_expire_time'][0];
+        } else {
+            $expire = $_POST['plan_expire_time'];
         }
 
         $insert = array(
@@ -1161,7 +1177,9 @@ if(isset($_POST['action']))
 
         $clsPlans->insert($insert);
 
-        header('Location: '.$_POST['goback']);
+        $goback = $_POST['goback'];
+        if (strpos($goback, $droppy_settings['site_url']) !== 0) { $goback = $droppy_settings['site_url']; }
+        header('Location: ' . $goback);
     }
 
 
@@ -1172,7 +1190,7 @@ if(isset($_POST['action']))
             die('The file is too large');
         elseif( !in_array(pathinfo(strtolower($_FILES['file']['name']), PATHINFO_EXTENSION), ['png','jpg','jpeg','mp4']))
             die($_FILES['file']['name'].' is not a valid format.');
-        elseif(!empty($_POST['duration']) && !is_int(intval($_POST['duration'])))
+        elseif(!empty($_POST['duration']) && (!ctype_digit((string)$_POST['duration']) || (int)$_POST['duration'] < 0))
             die($_POST['duration'] . ' - Duration value not valid');
 
         $public_path = 'assets/backgrounds/' . $_SESSION['droppy_premium'] . '_' . basename($_FILES['file']['name']);
@@ -1263,7 +1281,7 @@ if(isset($_GET['action']))
         unset($_SESSION['droppy_premium']);
         unset($_SESSION['droppy_premium_email']);
 
-        $this->session->sess_regenerate();
+        session_regenerate_id(true);
 
         header('Location: '.$droppy_settings['site_url'].'?goto=custom_account');
     }
@@ -1288,12 +1306,13 @@ if(isset($_GET['action']))
     if($_GET['action'] == 'delete_background') {
         if(isset($_GET['id']) && $_SESSION['droppy_premium']) {
             $clsBackgrounds = new PremiumBackgrounds();
+            $bg_id = (int) $_GET['id'];
 
-            $data = $clsBackgrounds->getByIDAndUser($_GET['id'], $_SESSION['droppy_premium']);
+            $data = $clsBackgrounds->getByIDAndUser($bg_id, $_SESSION['droppy_premium']);
 
             if($data !== false) {
                 unlink(FCPATH . $data['src']);
-                $clsBackgrounds->deleteByIdAndUser($_GET['id'], $_SESSION['droppy_premium']);
+                $clsBackgrounds->deleteByIdAndUser($bg_id, $_SESSION['droppy_premium']);
 
                 header('Location: ' . $droppy_settings['site_url'] . '?goto=custom_account&tab=backgrounds');
             } else {

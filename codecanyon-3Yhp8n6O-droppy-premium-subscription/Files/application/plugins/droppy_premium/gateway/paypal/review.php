@@ -16,7 +16,7 @@ if ( $token != "" )
 	$resArray = $clsPaypal->GetShippingDetails( $token );
 
 	$ack = strtoupper($resArray["ACK"]);
-	if( $ack == "SUCCESS" || $ack == "SUCESSWITHWARNING") 
+	if( $ack == "SUCCESS" || $ack == "SUCCESSWITHWARNING")
 	{
 		/*
 		' The information that is returned by the GetExpressCheckoutDetails call should be integrated by the partner into his Order Review 

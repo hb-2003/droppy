@@ -2,6 +2,7 @@ CREATE TABLE `droppy_pm_forgot` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(200) NOT NULL,
   `reset` varchar(300) NOT NULL,
+  `created_at` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -40,7 +41,7 @@ UNLOCK TABLES;
 
 CREATE TABLE `droppy_pm_subs` (
   `id` int(100) NOT NULL AUTO_INCREMENT,
-  `sub_id` varchar(100) NOT NULL DEFAULT '',
+  `sub_id` varchar(255) NOT NULL DEFAULT '',
   `sub_plan` INT(11) DEFAULT NULL,
   `sub_price` varchar(11) DEFAULT NULL,
   `email` varchar(100) NOT NULL DEFAULT '',
@@ -73,9 +74,9 @@ CREATE TABLE `droppy_pm_users` (
   `id` int(100) NOT NULL AUTO_INCREMENT,
   `parent_id` int(10) DEFAULT NULL,
   `email` varchar(200) NOT NULL,
-  `password` varchar(200) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `ip` varchar(100) NOT NULL,
-  `sub_id` varchar(200) NOT NULL,
+  `sub_id` varchar(255) NOT NULL,
   `status` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

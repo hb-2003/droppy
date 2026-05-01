@@ -5,9 +5,18 @@ require_once dirname(__FILE__) . '/paypalfunctions.php';
 require_once dirname(__FILE__) . '/../../autoloader.php';
 
 $premiumJsonConfig = file_get_contents(dirname(__FILE__) . '/../../config.json');
-$premium_config = json_decode($premiumJsonConfig, true)['premium'];
+if ($premiumJsonConfig === false) {
+    die('Could not read config.json');
+}
+$_cronDecoded = json_decode($premiumJsonConfig, true);
+if (json_last_error() !== JSON_ERROR_NONE || !isset($_cronDecoded['premium'])) {
+    die('Invalid config.json: ' . json_last_error_msg());
+}
+$premium_config = $_cronDecoded['premium'];
+unset($_cronDecoded);
 
-$this->CI->load->library('email');
+$CI =& get_instance();
+$CI->load->library('email');
 
 $clsSettings = new PremiumSettings();
 $clsSubs     = new PremiumSubs();
@@ -33,8 +42,8 @@ if($subs !== false)
         $last_date = $row['last_date'];
         $paypal_id = $row['paypal_id'];
 
-        // Still no payment after 3 days
-        if (!empty($next_date) && time() + 259200 > $next_date)
+        // Still no payment after 3-day grace period
+        if (!empty($next_date) && time() > $next_date + 259200)
         {
             $clsSubs->updateBySubID(array('status' => 'canceled'), $sub_id);
 
@@ -60,11 +69,11 @@ if($subs !== false)
                     'manage_page' => $droppy_settings['site_url'] . '?goto=custom_account'
                 );
 
-                $this->CI->email->sendEmail('premium_sub_cancel_n', $tokens, [$row['email']]);
+                $CI->email->sendEmail('premium_sub_cancel_n', $tokens, [$row['email']]);
             }
         }
 
-        if ($row['status'] == 'suspended' && $row['next_date'] + $premium_config['cancel_suspend'] > time() || $row['status'] == 'suspended_reversal' && $row['next_date'] + $premium_config['cancel_suspend'] > time())
+        if (($row['status'] == 'suspended' && $row['next_date'] + $premium_config['cancel_suspend'] < time()) || ($row['status'] == 'suspended_reversal' && $row['next_date'] + $premium_config['cancel_suspend'] < time()))
         {
             $clsSubs->updateBySubID(array('status' => 'canceled'), $sub_id);
             $clsPaypal->change_subscription_status($paypal_id, 'Cancel');

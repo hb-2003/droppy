@@ -36,7 +36,13 @@ class PremiumForgot {
         $query = $this->db->get();
 
         if($query->num_rows() > 0) {
-            return $query->row_array();
+            $row = $query->row_array();
+            // Token expires after 24 hours
+            if (isset($row['created_at']) && (time() - (int)$row['created_at']) > 86400) {
+                $this->deleteByResetCode($code);
+                return false;
+            }
+            return $row;
         }
         return false;
     }

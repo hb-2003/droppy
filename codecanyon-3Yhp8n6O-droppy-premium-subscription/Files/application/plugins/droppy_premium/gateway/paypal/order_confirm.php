@@ -1,8 +1,14 @@
 <?php
 
+$CI =& get_instance();
+
 $sub_id = $_SESSION['subscription_id'];
 
 $sub_info = $clsSubs->getBySubID($sub_id);
+if ($sub_info === false) {
+    header('Location: ' . $_SESSION['original_url'] . '&payment=error');
+    exit;
+}
 $plan_details = $clsPlans->getByID($sub_info['sub_plan']);
 
 $PaymentOption = "PayPal";
@@ -153,7 +159,7 @@ if ( $PaymentOption == "PayPal" )
 						);
 					}
 
-                    $this->email->sendEmail('premium_new_sub_email', $tokens, [$info['email']]);
+                    $CI->email->sendEmail('premium_new_sub_email', $tokens, [$info['email']]);
 		        }
 		    }
 		    else
@@ -162,8 +168,7 @@ if ( $PaymentOption == "PayPal" )
 				$ErrorCode = urldecode($resArray2["L_ERRORCODE0"]);
 				$ErrorLongMsg = urldecode($resArray2["L_LONGMESSAGE0"]);
 
-                var_dump($ErrorCode);
-                var_dump($ErrorLongMsg);
+                error_log('PayPal GetRecurringPaymentsProfileDetails error: ' . $ErrorCode . ' - ' . $ErrorLongMsg);
 		    }
 			header('Location: ' . $_SESSION['success_url']);
 		}
@@ -174,7 +179,6 @@ if ( $PaymentOption == "PayPal" )
 		$ErrorCode = urldecode($resArray["L_ERRORCODE0"]);
 		$ErrorLongMsg = urldecode($resArray["L_LONGMESSAGE0"]);
 
-        var_dump($ErrorCode);
-        var_dump($ErrorLongMsg);
+        error_log('PayPal CreateRecurringPaymentsProfile error: ' . $ErrorCode . ' - ' . $ErrorLongMsg);
 	}
 }

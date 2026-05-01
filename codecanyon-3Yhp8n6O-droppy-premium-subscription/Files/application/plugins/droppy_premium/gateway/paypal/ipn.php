@@ -7,7 +7,15 @@ $clsSettings = new PremiumSettings();
 $premium_settings = $clsSettings->getSettings();
 
 $premiumJsonConfig = file_get_contents(dirname(__FILE__) . '/../../config.json');
-$premium_config = json_decode($premiumJsonConfig, true)['premium'];
+if ($premiumJsonConfig === false) {
+    exit;
+}
+$_ipnDecoded = json_decode($premiumJsonConfig, true);
+if (json_last_error() !== JSON_ERROR_NONE || !isset($_ipnDecoded['premium'])) {
+    exit;
+}
+$premium_config = $_ipnDecoded['premium'];
+unset($_ipnDecoded);
 
 $droppy_settings = $clsSettings->getDroppySettings();
 
@@ -63,9 +71,11 @@ if (strcmp ($res, "VERIFIED") == 0) {
     $clsUser = new PremiumUser();
     $clsSubs = new PremiumSubs();
 
+    $CI =& get_instance();
+
     //Getting some information from the IPN post
-    $txn_type = $_POST['txn_type'];
-    $paypal_id = $_POST['recurring_payment_id'];
+    $txn_type  = isset($_POST['txn_type']) ? $_POST['txn_type'] : '';
+    $paypal_id = isset($_POST['recurring_payment_id']) ? $_POST['recurring_payment_id'] : '';
 
     //When payment has been reversed
     if(isset($_POST['payment_status'])) {
@@ -147,9 +157,9 @@ if (strcmp ($res, "VERIFIED") == 0) {
                 $clsSubs->updateBySubID(array('status' => 'canceled_end'), $subid);
 
                 $tokens = array(
-                    'next_date'     => date("Y-m-d", $info['next_date']),
+                    'next_date'     => (!empty($info['next_date']) ? date("Y-m-d", $info['next_date']) : ''),
                     'paypal_id'     => $info['paypal_id'],
-                    'last_date'     => date("Y-m-d", $info['last_date']),
+                    'last_date'     => (!empty($info['last_date']) ? date("Y-m-d", $info['last_date']) : ''),
                     'name'          => $info['name'],
                     'status'        => $info['status'],
                     'company'       => $info['company'],
@@ -157,7 +167,7 @@ if (strcmp ($res, "VERIFIED") == 0) {
                     'manage_page'   => $droppy_settings['site_url'] . '?goto=custom_account'
                 );
 
-                $this->email->sendEmail('premium_sub_cancel_e', $tokens, [$info['email']]);
+                $CI->email->sendEmail('premium_sub_cancel_e', $tokens, [$info['email']]);
             }
         }
     }
@@ -179,7 +189,7 @@ if (strcmp ($res, "VERIFIED") == 0) {
                 'manage_page'   => $droppy_settings['site_url'] . '?goto=custom_account'
             );
 
-            $this->email->sendEmail('premium_payment_failed', $tokens, [$info['email']]);
+            $CI->email->sendEmail('premium_payment_failed', $tokens, [$info['email']]);
         }
     }
 
@@ -200,7 +210,7 @@ if (strcmp ($res, "VERIFIED") == 0) {
                 'manage_page'   => $droppy_settings['site_url'] . '?goto=custom_account'
             );
 
-            $this->email->sendEmail('premium_payment_failed', $tokens, [$info['email']]);
+            $CI->email->sendEmail('premium_payment_failed', $tokens, [$info['email']]);
         }
     }
 
@@ -224,7 +234,7 @@ if (strcmp ($res, "VERIFIED") == 0) {
                 'manage_page'   => $droppy_settings['site_url'] . '?goto=custom_account'
             );
 
-            $this->email->sendEmail('premium_sus', $tokens, [$info['email']]);
+            $CI->email->sendEmail('premium_sus', $tokens, [$info['email']]);
         }
     }
     if($txn_type == 'recurring_payment_suspended') {
@@ -246,7 +256,7 @@ if (strcmp ($res, "VERIFIED") == 0) {
                 'manage_page'   => $droppy_settings['site_url'] . '?goto=custom_account'
             );
 
-            $this->email->sendEmail('premium_sus', $tokens, [$info['email']]);
+            $CI->email->sendEmail('premium_sus', $tokens, [$info['email']]);
         }
     }
 } else if (strcmp ($res, "INVALID") == 0) {

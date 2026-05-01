@@ -139,7 +139,11 @@ class PremiumUser {
     }
 
     function updateByID($data, $id) {
-
+        $this->db->where('id', $id);
+        if($this->db->update($this->_tablename, $data)) {
+            return true;
+        }
+        return false;
     }
 
     function updateBySubID($data, $id) {
@@ -170,9 +174,11 @@ class PremiumUser {
 
         $data = $clsBackgrounds->getByUserID($id);
 
-        foreach ($data as $row) {
-            unlink(FCPATH . $row['src']);
-            $clsBackgrounds->deleteByIdAndUser($row['id'], $id);
+        if ($data !== false) {
+            foreach ($data as $row) {
+                unlink(FCPATH . $row['src']);
+                $clsBackgrounds->deleteByIdAndUser($row['id'], $id);
+            }
         }
 
         $this->db->delete($this->_tablename, array('id' => $id));

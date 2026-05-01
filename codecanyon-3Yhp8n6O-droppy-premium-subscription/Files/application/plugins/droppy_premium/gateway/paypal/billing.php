@@ -23,14 +23,14 @@ if ( $PaymentOption == "PayPal")
         //' entered by the user on the 
         //' Shipping page.
         //'------------------------------------
-        $shipToName = "<<ShiptoName>>";
-        $shipToStreet = "<<ShipToStreet>>";
-        $shipToStreet2 = "<<ShipToStreet2>>"; //Leave it blank if there is no value
-        $shipToCity = "<<ShipToCity>>";
-        $shipToState = "<<ShipToState>>";
-        $shipToCountryCode = "<<ShipToCountryCode>>"; // Please refer to the PayPal country codes in the API documentation
-        $shipToZip = "<<ShipToZip>>";
-        $phoneNum = "<<PhoneNumber>>";
+        $shipToName        = isset($_SESSION['shipToName'])    ? $_SESSION['shipToName']    : '';
+        $shipToStreet      = isset($_SESSION['shipToStreet'])  ? $_SESSION['shipToStreet']  : '';
+        $shipToStreet2     = '';
+        $shipToCity        = isset($_SESSION['shipToCity'])    ? $_SESSION['shipToCity']    : '';
+        $shipToState       = isset($_SESSION['shipToState'])   ? $_SESSION['shipToState']   : '';
+        $shipToCountryCode = isset($_SESSION['shipToCountry']) ? $_SESSION['shipToCountry'] : '';
+        $shipToZip         = isset($_SESSION['shipToZip'])     ? $_SESSION['shipToZip']     : '';
+        $phoneNum          = '';
 
         //'------------------------------------
         //' The currencyCodeType and paymentType 
@@ -61,9 +61,9 @@ if ( $PaymentOption == "PayPal")
         //' The CallMarkExpressCheckout function is defined in the file PayPalFunctions.php,
         //' it is included at the top of this file.
         //'-------------------------------------------------
-        $resArray = CallMarkExpressCheckout ($paymentAmount, $currencyCodeType, $paymentType, $returnURL,
-                                                                                  $cancelURL, $shipToName, $shipToStreet, $shipToCity, $shipToState,
-                                                                                  $shipToCountryCode, $shipToZip, $shipToStreet2, $phoneNum
+        $resArray = $clsPaypal->CallMarkExpressCheckout($paymentAmount, $currencyCodeType, $paymentType, $returnURL,
+                                                        $cancelURL, $shipToName, $shipToStreet, $shipToCity, $shipToState,
+                                                        $shipToCountryCode, $shipToZip, $shipToStreet2, $phoneNum
         );
 
         $ack = strtoupper($resArray["ACK"]);
@@ -71,7 +71,7 @@ if ( $PaymentOption == "PayPal")
         {
                 $token = urldecode($resArray["TOKEN"]);
                 $_SESSION['reshash']=$token;
-                RedirectToPayPal ( $token );
+                $clsPaypal->RedirectToPayPal($token);
         } 
         else  
         {
@@ -92,7 +92,7 @@ else
 {
         if ((( $PaymentOption == "Visa") || ( $PaymentOption == "MasterCard") || ($PaymentOption == "Amex") || ($PaymentOption == "Discover"))
                         && ( $PaymentProcessorSelected == "PayPal Direct Payment"))
-
+        {
         //'------------------------------------
         //' The paymentAmount is the total value of 
         //' the shopping cart, that was set 
@@ -131,9 +131,9 @@ else
         '-------------------------------------------------
         */
         
-        $resArray = DirectPayment ( $paymentType, $paymentAmount, $creditCardType, $creditCardNumber,
-                                                        $expDate, $cvv2, $firstName, $lastName, $street, $city, $state, $zip, 
-                                                        $countryCode, $currencyCode ); 
+        $resArray = $clsPaypal->DirectPayment($paymentType, $paymentAmount, $creditCardType, $creditCardNumber,
+                                              $expDate, $cvv2, $firstName, $lastName, $street, $city, $state, $zip,
+                                              $countryCode, $currencyCode);
 
         $ack = strtoupper($resArray["ACK"]);
         if($ack=="SUCCESS" || $ack=="SUCCESSWITHWARNING")
@@ -157,6 +157,7 @@ else
                 echo "Error Code: " . $ErrorCode;
                 echo "Error Severity Code: " . $ErrorSeverityCode;
         }
+        } // end if PayPal Direct Payment
 }
 ?>
 

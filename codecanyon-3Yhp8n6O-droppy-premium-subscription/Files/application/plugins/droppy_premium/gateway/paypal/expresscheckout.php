@@ -12,9 +12,10 @@ require_once ("paypalfunctions.php");
 //' by the shopping cart page
 //'------------------------------------
 
-//$paymentAmount = $_POST["Payment_Amount"];
-//$paymentAmount = $_SESSION["Payment_Amount"];
-$_SESSION["Payment_Amount"] = 1;
+$paymentAmount = isset($_SESSION["Payment_Amount"]) ? (float) $_SESSION["Payment_Amount"] : 0;
+if ($paymentAmount <= 0) {
+    die('Invalid payment amount.');
+}
 
 //'------------------------------------
 //' The currencyCodeType and paymentType 
@@ -47,12 +48,12 @@ $cancelURL = "";
 //' The CallShortcutExpressCheckout function is defined in the file PayPalFunctions.php,
 //' it is included at the top of this file.
 //'-------------------------------------------------
-$resArray = CallShortcutExpressCheckout ($paymentAmount, $currencyCodeType, $paymentType, $returnURL, $cancelURL);
+$resArray = $clsPaypal->CallShortcutExpressCheckout($paymentAmount, $currencyCodeType, $paymentType, $returnURL, $cancelURL);
 
 $ack = strtoupper($resArray["ACK"]);
 if($ack=="SUCCESS" || $ack=="SUCCESSWITHWARNING")
 {
-	RedirectToPayPal ( $resArray["TOKEN"] );
+	$clsPaypal->RedirectToPayPal($resArray["TOKEN"]);
 } 
 else  
 {
