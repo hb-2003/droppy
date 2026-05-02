@@ -42,6 +42,10 @@ endif;
     var themeColor = "<?php echo (!empty($settings['theme_color']) ? $settings['theme_color'] : '#3e8ed0'); ?>";
     var themeColorSec = "<?php echo (!empty($settings['theme_color_secondary']) ? $settings['theme_color_secondary'] : '#3e8ed0'); ?>";
 
+    // Vegas background slideshow disabled in the Cinematic Studio redesign.
+    // The new theme uses an animated gradient mesh + grain (see slvf.css .background, .slvf-bg-mesh).
+    // Re-enable by uncommenting the block below.
+    /*
     $(document).ready(function() {
         var backgrounds = [
             <?php
@@ -52,10 +56,7 @@ endif;
             }
             ?>
         ];
-
-        // Randomize backgrounds
         backgrounds.shuffle();
-
         $(".background").vegas({
             slides: backgrounds,
             transition: 'fade',
@@ -64,11 +65,13 @@ endif;
             shuffle: true
         });
     });
+    */
 </script>
 
 
 <!-- Loading the javascript -->
 <script src="assets/themes/<?php echo $settings['theme'] ?>/js/script.js?v=<?php echo $settings['version']; ?>"></script>
+<script src="assets/themes/<?php echo $settings['theme'] ?>/js/slvf.js?v=<?php echo $settings['version']; ?>"></script>
 
 <script>Form.pickShareOption('<?php echo $settings['default_sharetype'] ?>');</script>
 <?php

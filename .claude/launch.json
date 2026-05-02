@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "envento-mockup",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "7788", "--directory", "/Users/varachha/Documents/development/Harsh- Dev/droppy"],
+      "port": 7788
+    }
+  ]
+}
