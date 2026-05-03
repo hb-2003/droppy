@@ -198,4 +198,83 @@ class Home extends CI_Controller {
         $this->load->view('themes/' . $this->config->item('theme') . '/_elem/modals', $data);
         $this->load->view('themes/' . $this->config->item('theme') . '/_elem/footer', $data);
     }
+
+    /**
+     * SLVF — Standalone About page.
+     * Pulls editable copy from droppy_pages WHERE type='about_page' so admins
+     * can still update the body via the existing CMS.
+     */
+    public function about()
+    {
+        $this->load->helper('cookie');
+        $this->load->helper('seconds');
+
+        $page_row = $this->pages->getByType('about_page');
+
+        $data = array(
+            'page'          => 'about',
+            'settings'      => $this->config->config,
+            'socials'       => $this->socials->getAll(),
+            'language_list' => $this->language->getAll(),
+            'extra_pages'   => $this->pages->getAll(0, 0, $this->session->userdata('language')),
+            'custom_tabs'   => $this->plugin->_tabs,
+            'custom_css'    => $this->plugin->_css,
+            'session'       => $this->session,
+            'mobile'        => false,
+            'backgrounds'   => $this->backgrounds->getAllOrderID(),
+            'page_title'    => is_array($page_row) && !empty($page_row['title']) ? $page_row['title'] : 'About',
+            'page_content'  => is_array($page_row) && !empty($page_row['content']) ? $page_row['content'] : ''
+        );
+
+        $detect = new Mobile_Detect();
+        if (file_exists(FCPATH . 'application/views/themes/' . $this->config->item('theme') . '/_elem/header-mobile.php') && ($detect->isMobile() || $detect->isTablet() || $detect->isAndroidOS())) {
+            $data['mobile'] = true;
+            $this->load->view('themes/' . $this->config->item('theme') . '/_elem/header-mobile', $data);
+        } else {
+            $this->load->view('themes/' . $this->config->item('theme') . '/_elem/header', $data);
+        }
+        $this->load->view('themes/' . $this->config->item('theme') . '/_elem/socials', $data);
+        $this->load->view('themes/' . $this->config->item('theme') . '/about', $data);
+        $this->load->view('themes/' . $this->config->item('theme') . '/_elem/modals', $data);
+        $this->load->view('themes/' . $this->config->item('theme') . '/_elem/footer', $data);
+    }
+
+    /**
+     * SLVF — Standalone Terms / Legal page.
+     * Pulls editable copy from droppy_pages WHERE type='terms_page'.
+     */
+    public function terms()
+    {
+        $this->load->helper('cookie');
+        $this->load->helper('seconds');
+
+        $page_row = $this->pages->getByType('terms_page');
+
+        $data = array(
+            'page'          => 'terms',
+            'settings'      => $this->config->config,
+            'socials'       => $this->socials->getAll(),
+            'language_list' => $this->language->getAll(),
+            'extra_pages'   => $this->pages->getAll(0, 0, $this->session->userdata('language')),
+            'custom_tabs'   => $this->plugin->_tabs,
+            'custom_css'    => $this->plugin->_css,
+            'session'       => $this->session,
+            'mobile'        => false,
+            'backgrounds'   => $this->backgrounds->getAllOrderID(),
+            'page_title'    => is_array($page_row) && !empty($page_row['title']) ? $page_row['title'] : 'Terms of service',
+            'page_content'  => is_array($page_row) && !empty($page_row['content']) ? $page_row['content'] : ''
+        );
+
+        $detect = new Mobile_Detect();
+        if (file_exists(FCPATH . 'application/views/themes/' . $this->config->item('theme') . '/_elem/header-mobile.php') && ($detect->isMobile() || $detect->isTablet() || $detect->isAndroidOS())) {
+            $data['mobile'] = true;
+            $this->load->view('themes/' . $this->config->item('theme') . '/_elem/header-mobile', $data);
+        } else {
+            $this->load->view('themes/' . $this->config->item('theme') . '/_elem/header', $data);
+        }
+        $this->load->view('themes/' . $this->config->item('theme') . '/_elem/socials', $data);
+        $this->load->view('themes/' . $this->config->item('theme') . '/legal', $data);
+        $this->load->view('themes/' . $this->config->item('theme') . '/_elem/modals', $data);
+        $this->load->view('themes/' . $this->config->item('theme') . '/_elem/footer', $data);
+    }
 }

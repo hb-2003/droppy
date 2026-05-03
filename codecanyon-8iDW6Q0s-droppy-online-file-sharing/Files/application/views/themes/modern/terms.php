@@ -10,7 +10,7 @@
                         style="width:100%;height:250px">
                 </lord-icon>
 
-                <span class="description"><?php echo lang('accept_terms') ?><br><a href="#" id="openTerms"><?php echo lang('view_terms') ?></a></span>
+                <span class="description"><?php echo lang('accept_terms') ?><br><a href="<?php echo base_url('terms'); ?>" target="_blank" rel="noopener noreferrer"><?php echo lang('view_terms') ?></a></span>
             </div>
 
             <div class="button-block">
@@ -19,10 +19,3 @@
         </div>
     </div>
 </div>
-
-<script>
-    $(document.body).on('click', '#openTerms', function(ev) {
-        ev.preventDefault();
-        Tabs.open('tab-terms');
-    });
-</script>

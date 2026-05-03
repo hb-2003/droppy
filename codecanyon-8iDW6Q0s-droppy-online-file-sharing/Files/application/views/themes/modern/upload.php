@@ -65,14 +65,48 @@ $ev_default_share   = isset($settings['default_sharetype']) ? $settings['default
             <div class="upload-form">
                 <div class="select-first-files">
                     <div class="outside-container">
-                        <lord-icon
-                                src="assets/themes/<?php echo $settings['theme'] ?>/mecwbjnp.json"
-                                trigger="click"
-                                colors="primary:<?php echo (!empty($settings['theme_color']) ? $settings['theme_color'] : '#3e8ed0'); ?>,secondary:<?php echo (!empty($settings['theme_color']) ? $settings['theme_color'] : '#3e8ed0'); ?>"
-                                scale="100"
-                                style="width:120px;height:120px;min-width:100%;">
-                        </lord-icon>
-                        <span class="description"><?php echo lang('lets_begin_files') ?></span>
+
+                        <!-- Decorative scaffold corners — pure CSS, ties to the rest of the Cinematic Studio motif -->
+                        <span class="slvf-drop__corner slvf-drop__corner--tl" aria-hidden="true"></span>
+                        <span class="slvf-drop__corner slvf-drop__corner--tr" aria-hidden="true"></span>
+                        <span class="slvf-drop__corner slvf-drop__corner--bl" aria-hidden="true"></span>
+                        <span class="slvf-drop__corner slvf-drop__corner--br" aria-hidden="true"></span>
+
+                        <!-- Custom illustration: three fanned media cards behind a central + (replaces the generic blue-circle Lordicon). -->
+                        <button type="button" class="slvf-drop__illus" id="slvf-drop-pick" aria-label="<?php echo lang('lets_begin_files') ?>">
+                            <span class="slvf-drop__card slvf-drop__card--back" aria-hidden="true">
+                                <span class="slvf-drop__card-line"></span>
+                                <span class="slvf-drop__card-line"></span>
+                            </span>
+                            <span class="slvf-drop__card slvf-drop__card--mid" aria-hidden="true">
+                                <span class="slvf-drop__card-line"></span>
+                                <span class="slvf-drop__card-line"></span>
+                                <span class="slvf-drop__card-line"></span>
+                            </span>
+                            <span class="slvf-drop__card slvf-drop__card--front" aria-hidden="true">
+                                <svg class="slvf-drop__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+                                    <path d="M12 5v14M5 12h14"></path>
+                                </svg>
+                            </span>
+                            <span class="slvf-drop__pulse" aria-hidden="true"></span>
+                        </button>
+
+                        <!-- Headline + sub copy -->
+                        <span class="description">Drop a heavy file <em>here.</em></span>
+                        <span class="slvf-drop__sub">Up to <?php echo isset($settings['max_size']) ? ((int)$settings['max_size'] >= 1024 ? round((int)$settings['max_size']/1024, 1).' GB' : (int)$settings['max_size'].' MB') : '2 GB'; ?> &middot; no account &middot; auto-expires</span>
+
+                        <!-- Filetype hint chips — communicates "tuned for heavy media" -->
+                        <span class="slvf-drop__chips" aria-hidden="true">
+                            <span>MP4</span>
+                            <span>MOV</span>
+                            <span>ZIP</span>
+                            <span>PSD</span>
+                            <span>WAV</span>
+                        </span>
+
+                        <!-- Folder picker — subtle inline text link.
+                             Kept tiny so it doesn't compete with the main "+"
+                             card illustration; folder upload is a niche path. -->
                         <span class="folder-select"><?php echo lang('or_select_folder') ?></span>
                     </div>
                 </div>
@@ -410,7 +444,12 @@ $ev_default_share   = isset($settings['default_sharetype']) ? $settings['default
             <?php
             if(is_array($extra_pages) && !empty($extra_pages)) {
                 foreach ($extra_pages AS $key => $tab) {
-                    echo '<a '.($tab['type'] == 'link' ? 'href="'.(strpos($tab['content'], 'http') === false ? base_url($tab['content']) : $tab['content']).'" target="_blank"' : '') . ' data-target="tab-' . ($tab['type'] == 'terms_page' ? 'terms' : $key) . '">' . htmlspecialchars($tab['title']) . '</a>';
+                    // Same resolver as _elem/header.php — About/Terms → /about /terms
+                    if (function_exists('slvf_extra_page_attrs')) {
+                        echo '<a ' . slvf_extra_page_attrs($tab, $key) . '>' . htmlspecialchars($tab['title']) . '</a>';
+                    } else {
+                        echo '<a '.($tab['type'] == 'link' ? 'href="'.(strpos($tab['content'], 'http') === false ? base_url($tab['content']) : $tab['content']).'" target="_blank"' : '') . ' data-target="tab-' . $key . '">' . htmlspecialchars($tab['title']) . '</a>';
+                    }
                 }
             }
             ?>

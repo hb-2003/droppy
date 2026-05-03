@@ -49,8 +49,18 @@
             $(document).on('click', '[data-target]', function (e) {
                 var target = $(this).data('target');
                 if (!target) return;
+                // Standalone pages (/about, /terms) don't ship the slide-in
+                // window. Falling through silently leaves dead links, so we
+                // bounce the user back to the homepage where the slide-in
+                // lives. Anchor tags with an explicit href are exempt.
+                if (!$('.slvf-tab-window').length) {
+                    if (!$(this).attr('href')) {
+                        e.preventDefault();
+                        window.location.href = '/';
+                    }
+                    return;
+                }
                 if (!$('#' + target).length) return;
-                if (!$('.slvf-tab-window').length) return;
                 e.preventDefault();
                 TabWindow.open(target);
             });
@@ -296,6 +306,21 @@
     };
 
     /* ----------------------------------------------------------------------
+       Drop-zone illustration → triggers the legacy file picker.
+       The legacy script.js binds the picker to `<lord-icon>`; we replaced
+       the lord-icon with our custom button (#slvf-drop-pick), so we need to
+       wire the click ourselves.
+       ---------------------------------------------------------------------- */
+    var DropPick = {
+        init: function () {
+            $(document).on('click', '#slvf-drop-pick', function (e) {
+                e.preventDefault();
+                $('#file-selector').trigger('click');
+            });
+        }
+    };
+
+    /* ----------------------------------------------------------------------
        Background mesh upload-pulse hook
        ---------------------------------------------------------------------- */
     var UploadPulse = {
@@ -307,6 +332,79 @@
                 $('body').toggleClass('is-uploading', $progress.hasClass('active'));
             });
             observer.observe($progress[0], { attributes: true, attributeFilter: ['class'] });
+        }
+    };
+
+    /* ----------------------------------------------------------------------
+       LegalToc — sticky-TOC scroll-spy + smooth-scroll for /terms
+       ---------------------------------------------------------------------- */
+    var LegalToc = {
+        init: function () {
+            var $nav = $('#slvf-legal-toc');
+            if (!$nav.length) return;
+
+            var $links = $nav.find('.slvf-toc__link');
+            var $sections = $('.slvf-legal-section');
+            if (!$sections.length) return;
+
+            // ---- Smooth-scroll on click (account for fixed nav height) ----
+            $links.on('click', function (e) {
+                var href = $(this).attr('href') || '';
+                if (href.indexOf('#') !== 0) return;
+                var $target = $(href);
+                if (!$target.length) return;
+                e.preventDefault();
+
+                var navH = parseInt(getComputedStyle(document.documentElement)
+                                    .getPropertyValue('--slvf-nav-h'), 10) || 72;
+                var top = $target.offset().top - navH - 16;
+
+                $('html, body').stop(true).animate({ scrollTop: top }, 520, 'swing', function () {
+                    if (history.replaceState) history.replaceState(null, '', href);
+                });
+
+                $links.removeClass('is-active');
+                $nav.find('.slvf-toc__link[href="' + href + '"]').addClass('is-active');
+            });
+
+            // ---- Scroll-spy via IntersectionObserver ----
+            if (!('IntersectionObserver' in window)) return;
+
+            var current = null;
+            var setActive = function (id) {
+                if (id === current) return;
+                current = id;
+                $links.removeClass('is-active');
+                $nav.find('.slvf-toc__link[href="#' + id + '"]').addClass('is-active');
+            };
+
+            var visible = {};
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    var id = entry.target.id;
+                    if (!id) return;
+                    if (entry.isIntersecting) {
+                        visible[id] = entry.intersectionRatio;
+                    } else {
+                        delete visible[id];
+                    }
+                });
+
+                // Pick the id that is visible AND highest in document order
+                var ids = Object.keys(visible);
+                if (ids.length) {
+                    var ordered = $sections.toArray()
+                                      .map(function (n) { return n.id; })
+                                      .filter(function (i) { return visible[i] !== undefined; });
+                    if (ordered.length) setActive(ordered[0]);
+                }
+            }, {
+                // Trigger when the section's top crosses ~25% from the viewport top.
+                rootMargin: '-25% 0px -65% 0px',
+                threshold: [0, 0.05, 0.25, 0.5, 1]
+            });
+
+            $sections.each(function () { io.observe(this); });
         }
     };
 
@@ -323,6 +421,8 @@
         SelectedFiles.init();
         Reveal.init();
         UploadPulse.init();
+        LegalToc.init();
+        DropPick.init();
     });
 
 })(jQuery, window);

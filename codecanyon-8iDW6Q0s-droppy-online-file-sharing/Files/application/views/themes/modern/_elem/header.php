@@ -32,8 +32,7 @@
     <!-- Vegas background -->
     <link href="assets/css/vegas.min.css?v=<?php echo $settings['version']; ?>" rel="stylesheet">
 
-    <!-- Preload lottie icons -->
-    <link rel="preload" href="assets/themes/<?php echo $settings['theme'] ?>/mecwbjnp.json" as="fetch">
+    <!-- Preload lottie icons (mecwbjnp = legacy empty-state plus, replaced by .slvf-drop SVG) -->
     <link rel="preload" href="assets/themes/<?php echo $settings['theme'] ?>/lupuorrc.json" as="fetch">
     <link rel="preload" href="assets/themes/<?php echo $settings['theme'] ?>/yyecauzv.json" as="fetch">
 
@@ -141,6 +140,47 @@
 
             <!-- Extra page tabs (Terms, About, etc.) -->
             <?php
+            // ----------------------------------------------------------------
+            // SLVF — Resolve link attrs for an extra_pages row.
+            //
+            // Detection order:
+            //   1. Explicit new types  (about_page / terms_page) → direct href
+            //   2. External link rows                            → href + _blank
+            //   3. Legacy seeded `type='page'` rows whose title  → direct href
+            //      matches the shipped English seeds "About us"
+            //      / "Terms of service" (case-insensitive). This
+            //      keeps the side-panel from opening empty when
+            //      the seed_pages.sql migration has not yet been
+            //      applied.
+            //   4. Anything else                                 → legacy slide-in
+            // ----------------------------------------------------------------
+            if (!function_exists('slvf_extra_page_attrs')) {
+                function slvf_extra_page_attrs($tab, $key) {
+                    if ($tab['type'] === 'about_page') {
+                        return 'href="' . base_url('about') . '"';
+                    }
+                    if ($tab['type'] === 'terms_page') {
+                        return 'href="' . base_url('terms') . '"';
+                    }
+                    if ($tab['type'] === 'link') {
+                        $href = (strpos($tab['content'], 'http') === false ? base_url($tab['content']) : $tab['content']);
+                        return 'href="' . $href . '" target="_blank"';
+                    }
+                    if ($tab['type'] === 'page' && !empty($tab['title'])) {
+                        $title = strtolower(trim($tab['title']));
+                        $title = preg_replace('/\s+/', ' ', $title);
+                        $title = rtrim($title, '.');
+                        if ($title === 'about' || $title === 'about us' || $title === 'about-us') {
+                            return 'href="' . base_url('about') . '"';
+                        }
+                        if ($title === 'terms' || $title === 'terms of service' || $title === 'terms-of-service' || $title === 'terms & conditions' || $title === 'terms and conditions') {
+                            return 'href="' . base_url('terms') . '"';
+                        }
+                    }
+                    return 'data-target="tab-' . $key . '"';
+                }
+            }
+
             if(is_array($custom_tabs) && !empty($custom_tabs)) {
                 foreach ($custom_tabs AS $key => $tab) {
                     if(in_array($key, array('uploads','logout'))) continue;
@@ -149,7 +189,7 @@
             }
             if(is_array($extra_pages) && !empty($extra_pages)) {
                 foreach ($extra_pages AS $key => $tab) {
-                    echo '<a class="slvf-nav__link slvf-nav__link--minor" '.($tab['type'] == 'link' ? 'href="'.(strpos($tab['content'], 'http') === false ? base_url($tab['content']) : $tab['content']).'" target="_blank"' : '') . ' data-target="tab-' . ($tab['type'] == 'terms_page' ? 'terms' : $key) . '">' . $tab['title'] . '</a>';
+                    echo '<a class="slvf-nav__link slvf-nav__link--minor" ' . slvf_extra_page_attrs($tab, $key) . '>' . $tab['title'] . '</a>';
                 }
             }
             ?>
@@ -182,7 +222,7 @@
         }
         if(is_array($extra_pages) && !empty($extra_pages)) {
             foreach ($extra_pages AS $key => $tab) {
-                echo '<a class="slvf-nav__mobile-item" '.($tab['type'] == 'link' ? 'href="'.(strpos($tab['content'], 'http') === false ? base_url($tab['content']) : $tab['content']).'" target="_blank"' : '') . ' data-target="tab-' . ($tab['type'] == 'terms_page' ? 'terms' : $key) . '">' . $tab['title'] . '</a>';
+                echo '<a class="slvf-nav__mobile-item" ' . slvf_extra_page_attrs($tab, $key) . '>' . $tab['title'] . '</a>';
             }
         }
         ?>
@@ -286,7 +326,10 @@
 
 <!-- =============================================
      TAB WINDOW (slide-in panel for terms, language, contact, etc.)
+     SLVF — suppress on standalone pages: /about and /terms render the same
+     content as a full page, so the slide-in is dead UI on those routes.
      ============================================= -->
+<?php if (!in_array(isset($page) ? $page : '', array('about', 'terms'))): ?>
 <div class="slvf-tab-window" id="slvf-tab-window">
     <div class="slvf-tab-window__header">
         <span class="slvf-wordmark slvf-wordmark--inline">
@@ -403,6 +446,19 @@
     <?php
     if(is_array($extra_pages) && !empty($extra_pages)) {
         foreach ($extra_pages AS $key => $tab) {
+            // SLVF — skip rows that the nav already routes to a standalone page.
+            // That covers explicit `about_page` / `terms_page` types AND legacy
+            // `type='page'` rows whose title matches the seeded About row, so
+            // the slide-in never opens with empty content for them.
+            if ($tab['type'] == 'about_page' || $tab['type'] == 'terms_page') continue;
+            if ($tab['type'] == 'page' && !empty($tab['title'])) {
+                $t = strtolower(trim($tab['title']));
+                $t = preg_replace('/\s+/', ' ', $t);
+                $t = rtrim($t, '.');
+                if (in_array($t, array('about', 'about us', 'about-us'))) continue;
+                if (in_array($t, array('terms', 'terms of service', 'terms-of-service', 'terms & conditions', 'terms and conditions'))) continue;
+            }
+
             if ($tab['type'] != 'link') {
                 echo '<div class="slvf-tab" id="tab-' . ($tab['type'] == 'terms_page' ? 'terms' : $key) . '"><div class="slvf-tab__prose">' . $tab['content'] . '</div></div>';
             }
@@ -425,6 +481,7 @@
 
 <!-- Tab window backdrop -->
 <div class="slvf-tab-backdrop" id="slvf-tab-backdrop"></div>
+<?php endif; ?>
 
 
 <!-- =============================================
