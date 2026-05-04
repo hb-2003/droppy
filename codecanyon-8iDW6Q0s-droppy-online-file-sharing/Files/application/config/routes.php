@@ -65,8 +65,9 @@ $route['translate_uri_dashes'] = FALSE;
 $route['handler/getjstranslation'] = 'Handler/GetJsTranslation';
 
 // SLVF — standalone CMS pages (must precede the generic page/(:any) plugin route)
-$route['about'] = 'home/about';
-$route['terms'] = 'home/terms';
+$route['history'] = 'home/history';
+$route['about']   = 'home/about';
+$route['terms']   = 'home/terms';
 
 $route['page/(:any)'] = 'Page/index/$1';
 

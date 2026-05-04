@@ -395,6 +395,124 @@ class Handler extends CI_Controller {
         }
     }
 
+    /**
+     * Phase B — OTP: generate and email a 6-digit one-time code
+     * POST handler/request_otp  { email }
+     */
+    public function request_otp()
+    {
+        header('Content-Type: application/json');
+
+        $email = trim((string) $this->input->post('email', TRUE));
+
+        if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            echo json_encode(['result' => 'invalid_email']);
+            return;
+        }
+
+        // Generate a 6-digit code
+        $code = str_pad((string) mt_rand(0, 999999), 6, '0', STR_PAD_LEFT);
+
+        // Persist — delete any previous unused code for this email first
+        $this->db->where('email', $email)->delete('droppy_otp');
+        $this->db->insert('droppy_otp', [
+            'email'      => $email,
+            'code'       => $code,
+            'created_at' => time(),
+            'used'       => 0,
+        ]);
+
+        // Send email
+        $this->load->library('email');
+        $site    = $this->config->item('site_name') ?: 'Envento';
+        $subject = 'Your ' . $site . ' sign-in code: ' . $code;
+        $body    = '<div style="font-family:sans-serif;max-width:480px;margin:0 auto;padding:32px;">'
+                 . '<h2 style="margin-bottom:8px;">Your sign-in code</h2>'
+                 . '<p style="color:#555;margin-bottom:24px;">Use the code below to sign in to <strong>' . htmlspecialchars($site) . '</strong>. It expires in 5 minutes.</p>'
+                 . '<div style="font-size:36px;font-weight:700;letter-spacing:8px;text-align:center;padding:20px;background:#f4f4f8;border-radius:8px;">' . $code . '</div>'
+                 . '<p style="color:#999;font-size:12px;margin-top:24px;">If you did not request this code, you can safely ignore this email.</p>'
+                 . '</div>';
+
+        // sendEmailClean() has no return value — call send() directly so we can
+        // capture success/failure. We replicate sendEmailClean's setup inline.
+        try {
+            $theme   = $this->config->item('theme');
+            $message = $this->load->view('themes/' . $theme . '/emails/email.php', [
+                'body'     => $body,
+                'logo'     => $this->config->item('site_url') . $this->config->item('logo_path'),
+                'settings' => $this->config->config,
+            ], TRUE);
+
+            $this->email->message($message);
+            $this->email->subject($subject);
+            $this->email->set_alt_message('Please use a HTML supported email client to view this message.');
+            $this->email->from($this->config->item('email_from_email'), $this->config->item('email_from_name'));
+            $this->email->to($email);
+
+            $sent = $this->email->send();
+        } catch (Exception $e) {
+            $sent = false;
+        }
+
+        echo json_encode(['result' => $sent ? 'sent' : 'error']);
+    }
+
+    /**
+     * Phase B — OTP: verify the submitted code
+     * POST handler/verify_otp  { email, code }
+     */
+    public function verify_otp()
+    {
+        header('Content-Type: application/json');
+
+        $email = trim((string) $this->input->post('email', TRUE));
+        $code  = trim((string) $this->input->post('code',  TRUE));
+
+        if (empty($email) || empty($code)) {
+            echo json_encode(['result' => 'invalid']);
+            return;
+        }
+
+        $row = $this->db
+            ->where('email', $email)
+            ->where('code',  $code)
+            ->where('used',  0)
+            ->get('droppy_otp')
+            ->row_array();
+
+        if (empty($row)) {
+            echo json_encode(['result' => 'invalid']);
+            return;
+        }
+
+        // 5-minute expiry
+        if ((time() - (int) $row['created_at']) > 300) {
+            echo json_encode(['result' => 'expired']);
+            return;
+        }
+
+        // Mark used
+        $this->db->where('email', $email)->update('droppy_otp', ['used' => 1]);
+
+        // Store in session
+        $this->load->library('session');
+        $this->session->set_userdata('otp_verified_email', $email);
+
+        echo json_encode(['result' => 'ok', 'email' => $email]);
+    }
+
+    /**
+     * Phase B — OTP: clear the OTP session (sign out)
+     * POST handler/otp_logout
+     */
+    public function otp_logout()
+    {
+        header('Content-Type: application/json');
+        $this->load->library('session');
+        $this->session->unset_userdata('otp_verified_email');
+        echo json_encode(['result' => 'ok']);
+    }
+
     public function contact() {
         $this->load->library('email');
         $this->load->helper('recaptcha');

@@ -8,35 +8,87 @@ $ev_max_files       = isset($settings['max_files']) ? (int) $settings['max_files
 $ev_default_share   = isset($settings['default_sharetype']) ? $settings['default_sharetype'] : 'link';
 ?>
 
-<main class="slvf-shell">
-<section class="slvf-hero">
+<main class="slvf-shell slvf-shell--hero">
+<section class="slvf-hero slvf-hero--split">
 
-    <!-- Decorative scaffold marks -->
-    <span class="slvf-hero__scaffold slvf-hero__scaffold--tl" aria-hidden="true"></span>
-    <span class="slvf-hero__scaffold slvf-hero__scaffold--tr" aria-hidden="true"></span>
+    <!-- ========== 2-column grid ========== -->
+    <div class="slvf-hero__grid">
 
-    <!-- ========== Intro ========== -->
-    <header class="slvf-hero__head">
-        <span class="slvf-hero__eyebrow slvf-reveal" data-d="100"><?php echo lang('hero_eyebrow') ?: 'Built for video creators'; ?></span>
+    <!-- ─── LEFT: copy + trust ─── -->
+    <div class="slvf-hero__col slvf-hero__col--copy">
 
-        <h1 class="slvf-hero__title slvf-reveal" data-d="200">
+        <span class="slvf-hero__eyebrow slvf-reveal" data-d="0"><?php echo lang('hero_eyebrow') ?: 'Built for video creators'; ?></span>
+
+        <h1 class="slvf-hero__title slvf-reveal" data-d="80">
             <span><?php echo lang('hero_title_lead') ?: 'Send heavy files'; ?></span>
             <em><?php echo lang('hero_title_emph') ?: 'instantly.'; ?></em>
         </h1>
 
-        <p class="slvf-hero__sub slvf-reveal" data-d="300">
-            <?php echo lang('hero_sub') ?: 'Drop a folder, generate a link, share it anywhere. No accounts, no compression, no waiting. Up to '.htmlspecialchars($ev_max_size_label).' per transfer.'; ?>
+        <p class="slvf-hero__sub slvf-reveal" data-d="140">
+            <?php echo lang('hero_sub') ?: 'Drop any file, get a shareable link in seconds. No account, no compression, no waiting.'; ?>
         </p>
 
-        <ul class="slvf-hero__chips slvf-reveal" data-d="350">
-            <li><i class="lni lni-checkmark"></i> <?php echo lang('chip_no_account') ?: 'No account needed'; ?></li>
-            <li><i class="lni lni-checkmark"></i> <?php echo lang('chip_resumable') ?: 'Resumable uploads'; ?></li>
-            <li><i class="lni lni-checkmark"></i> <?php echo lang('chip_expires') ?: 'Auto-expires'; ?></li>
+        <!-- Benefit list -->
+        <ul class="slvf-hero__benefits slvf-reveal" data-d="180">
+            <li>
+                <span class="slvf-hero__benefit-icon"><i class="lni lni-checkmark"></i></span>
+                <div>
+                    <strong><?php echo lang('benefit_size_title') ?: 'Up to '.htmlspecialchars($ev_max_size_label); ?></strong>
+                    <span><?php echo lang('benefit_size_sub') ?: 'per transfer, free'; ?></span>
+                </div>
+            </li>
+            <li>
+                <span class="slvf-hero__benefit-icon"><i class="lni lni-user"></i></span>
+                <div>
+                    <strong><?php echo lang('benefit_account_title') ?: 'No sign-up required'; ?></strong>
+                    <span><?php echo lang('benefit_account_sub') ?: 'send as a guest instantly'; ?></span>
+                </div>
+            </li>
+            <li>
+                <span class="slvf-hero__benefit-icon"><i class="lni lni-lock-alt"></i></span>
+                <div>
+                    <strong><?php echo lang('benefit_expire_title') ?: 'Auto-expires'; ?></strong>
+                    <span><?php echo lang('benefit_expire_sub') ?: 'files self-delete after expiry'; ?></span>
+                </div>
+            </li>
+            <li>
+                <span class="slvf-hero__benefit-icon"><i class="lni lni-film-play"></i></span>
+                <div>
+                    <strong><?php echo lang('benefit_video_title') ?: 'Built for video'; ?></strong>
+                    <span><?php echo lang('benefit_video_sub') ?: 'MP4, MOV, MKV and more'; ?></span>
+                </div>
+            </li>
         </ul>
-    </header>
 
-    <!-- ========== Upload card ========== -->
-    <div class="slvf-hero__card slvf-reveal" data-d="450">
+        <!-- Stat bar -->
+        <div class="slvf-hero__stat-bar slvf-reveal" data-d="240">
+            <div class="slvf-hero__stat-item">
+                <strong><?php echo htmlspecialchars($ev_max_size_label); ?></strong>
+                <span><?php echo lang('hero_meta_size') ?: 'max size'; ?></span>
+            </div>
+            <div class="slvf-hero__stat-div" aria-hidden="true"></div>
+            <div class="slvf-hero__stat-item">
+                <strong><?php echo $ev_max_files > 0 ? number_format($ev_max_files) : '∞'; ?></strong>
+                <span><?php echo lang('hero_meta_files') ?: 'files at once'; ?></span>
+            </div>
+            <div class="slvf-hero__stat-div" aria-hidden="true"></div>
+            <div class="slvf-hero__stat-item">
+                <strong><?php echo lang('hero_meta_cost_value') ?: 'Free'; ?></strong>
+                <span><?php echo lang('hero_meta_cost') ?: 'to start'; ?></span>
+            </div>
+        </div>
+
+        <!-- Scroll cue (desktop only) -->
+        <a class="slvf-hero__scroll-hint slvf-reveal" data-d="300" href="#how-it-works">
+            <i class="lni lni-arrow-down"></i>
+            <span><?php echo lang('hero_scroll') ?: 'See how it works'; ?></span>
+        </a>
+
+    </div><!-- /.slvf-hero__col--copy -->
+
+    <!-- ─── RIGHT: upload card ─── -->
+    <div class="slvf-hero__col slvf-hero__col--card">
+    <div class="slvf-hero__card slvf-reveal" data-d="60">
 
 <div class="upload-block">
     <div class="upload-block-inner">
@@ -279,28 +331,45 @@ $ev_default_share   = isset($settings['default_sharetype']) ? $settings['default
             </div>
         </div>
         <div class="upload-block-content" id="upload-finished">
-            <lord-icon
-                    src="assets/themes/<?php echo $settings['theme'] ?>/lupuorrc.json"
-                    trigger="loop"
-                    colors="primary:<?php echo (!empty($settings['theme_color']) ? $settings['theme_color'] : '#121331'); ?>,secondary:<?php echo (!empty($settings['theme_color_secondary']) ? $settings['theme_color_secondary'] : '#3e8ed0'); ?>"
-                    style="width:180px;height:180px">
-            </lord-icon>
 
-            <div class="upload-finished-details">
-                <h1><?php echo lang('success') ?></h1>
+            <!-- Link-share success -->
+            <div class="upload-finished-message slvf-complete" id="link">
+                <div class="slvf-complete__icon">
+                    <i class="lni lni-checkmark-circle"></i>
+                </div>
+                <h2 class="slvf-complete__title"><?php echo lang('success') ?: 'Transfer ready!'; ?></h2>
+                <p class="slvf-complete__sub"><?php echo lang('success_link') ?: 'Your files are ready to share. Copy the link below.'; ?></p>
 
-                <div class="upload-finished-message" id="link">
-                    <p><?php echo lang('success_link') ?></p>
-                    <input type="text" class="input is-normal" value="" readonly="readonly">
+                <div class="slvf-complete__link-row">
+                    <input type="text" class="slvf-complete__link-input" id="slvf-transfer-link" value="" readonly aria-label="Transfer link">
+                    <button class="slvf-btn slvf-btn--primary" id="slvf-copy-btn" type="button">
+                        <i class="lni lni-copy"></i> <?php echo lang('copy_url') ?: 'Copy link'; ?>
+                    </button>
                 </div>
-                <div class="upload-finished-message" id="mail">
-                    <p><?php echo lang('success_email') ?></p>
+
+                <div class="slvf-complete__meta">
+                    <span><i class="lni lni-timer"></i> <?php echo lang('expires_in') ?: 'Auto-expires'; ?></span>
+                    <span><i class="lni lni-eye"></i> <span id="slvf-dl-count">0</span> <?php echo lang('downloads') ?: 'downloads'; ?></span>
                 </div>
+
+                <button class="slvf-btn slvf-btn--ghost slvf-btn--sm" id="slvf-send-another" type="button">
+                    <i class="lni lni-reload"></i> <?php echo lang('upload_more') ?: 'Send another'; ?>
+                </button>
             </div>
 
-            <div class="button-block">
-                <button class="button is-info is-rounded"><?php echo lang('copy_url') ?></button>
+            <!-- Email-share success -->
+            <div class="upload-finished-message slvf-complete" id="mail">
+                <div class="slvf-complete__icon slvf-complete__icon--mail">
+                    <i class="lni lni-envelope"></i>
+                </div>
+                <h2 class="slvf-complete__title"><?php echo lang('success') ?: 'Email sent!'; ?></h2>
+                <p class="slvf-complete__sub"><?php echo lang('success_email') ?: 'Your transfer has been sent to the recipient.'; ?></p>
+
+                <button class="slvf-btn slvf-btn--ghost slvf-btn--sm" id="slvf-send-another" type="button">
+                    <i class="lni lni-reload"></i> <?php echo lang('upload_more') ?: 'Send another'; ?>
+                </button>
             </div>
+
         </div>
     </div>
 
@@ -317,32 +386,9 @@ $ev_default_share   = isset($settings['default_sharetype']) ? $settings['default
 </div>
 
     </div><!-- /.slvf-hero__card -->
+    </div><!-- /.slvf-hero__col--card -->
 
-    <!-- ========== Stat strip below the card ========== -->
-    <div class="slvf-hero__stats slvf-reveal" data-d="600">
-        <div class="slvf-hero__stat">
-            <span class="slvf-hero__stat-key"><?php echo lang('hero_meta_size') ?: 'Per transfer'; ?></span>
-            <strong class="slvf-hero__stat-val"><?php echo htmlspecialchars($ev_max_size_label); ?></strong>
-        </div>
-        <div class="slvf-hero__stat">
-            <span class="slvf-hero__stat-key"><?php echo lang('hero_meta_files') ?: 'Files at once'; ?></span>
-            <strong class="slvf-hero__stat-val"><?php echo $ev_max_files > 0 ? number_format($ev_max_files) : '∞'; ?></strong>
-        </div>
-        <div class="slvf-hero__stat">
-            <span class="slvf-hero__stat-key"><?php echo lang('hero_meta_account') ?: 'Account needed'; ?></span>
-            <strong class="slvf-hero__stat-val"><?php echo lang('hero_meta_account_value') ?: 'None'; ?></strong>
-        </div>
-        <div class="slvf-hero__stat">
-            <span class="slvf-hero__stat-key"><?php echo lang('hero_meta_cost') ?: 'Cost'; ?></span>
-            <strong class="slvf-hero__stat-val"><?php echo lang('hero_meta_cost_value') ?: 'Free'; ?></strong>
-        </div>
-    </div>
-
-    <!-- ========== Scroll cue ========== -->
-    <a class="slvf-scroll-cue slvf-reveal" data-d="800" href="#how-it-works" aria-label="Scroll to learn more">
-        <span><?php echo lang('hero_scroll') ?: 'How it works'; ?></span>
-        <i class="lni lni-arrow-down"></i>
-    </a>
+    </div><!-- /.slvf-hero__grid -->
 
 </section><!-- /.slvf-hero -->
 </main><!-- /.slvf-shell -->

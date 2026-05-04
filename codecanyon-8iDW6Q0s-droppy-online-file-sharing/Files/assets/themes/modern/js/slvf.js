@@ -1,5 +1,5 @@
 /* ============================================================================
-   Share Large Video Files — Cinematic Studio interactions (Phase 1)
+   Share Large Video Files — Cinematic Studio interactions (Phase 1 + Phase B)
    Loads after script.js. Pure ES5+jQuery to match the existing codebase.
    ============================================================================ */
 (function ($, w) {
@@ -140,6 +140,8 @@
                 $('#slvf-otp-step-' + i).toggleClass('slvf-otp-step--hidden', i !== n);
             }
         },
+        _email: null,
+
         sendCode: function () {
             var email = ($('#slvf-otp-email').val() || '').trim();
             if (!OtpModal.validateEmail(email)) {
@@ -147,40 +149,91 @@
                 return;
             }
             $('#slvf-otp-email-error').removeClass('is-shown').text('');
-            $('#slvf-otp-sent-to').text(email);
+            OtpModal._email = email;
 
-            // TODO Phase B: POST to /handler/request_otp here.
-            OtpModal.showStep(2);
-            OtpModal.startTimer(300);
-            setTimeout(function () {
-                $('#slvf-otp-digits .slvf-otp-digit').first().focus();
-            }, 250);
+            var $btn = $('#slvf-otp-send-btn');
+            $btn.prop('disabled', true).find('span').text('Sending…');
+
+            $.ajax({
+                url:      'handler/request_otp',
+                type:     'POST',
+                dataType: 'json',
+                data:     { email: email },
+                success: function (data) {
+                    $btn.prop('disabled', false).find('span').text('Send code');
+                    if (data.result === 'sent') {
+                        $('#slvf-otp-sent-to').text(email);
+                        $('#slvf-otp-digits .slvf-otp-digit').val('').removeClass('is-filled');
+                        $('#slvf-otp-code-error').removeClass('is-shown').text('');
+                        OtpModal.showStep(2);
+                        OtpModal.startTimer(300);
+                        setTimeout(function () {
+                            $('#slvf-otp-digits .slvf-otp-digit').first().focus();
+                        }, 250);
+                    } else {
+                        $('#slvf-otp-email-error').text('Could not send code. Please try again.').addClass('is-shown');
+                    }
+                },
+                error: function () {
+                    $btn.prop('disabled', false).find('span').text('Send code');
+                    $('#slvf-otp-email-error').text('Network error. Please try again.').addClass('is-shown');
+                }
+            });
         },
+
         verify: function () {
             var code = $('#slvf-otp-digits .slvf-otp-digit').map(function () {
                 return $(this).val();
             }).get().join('');
 
-            if (code.length < 6) {
+            if (code.length < 6 || !/^\d{6}$/.test(code)) {
                 $('#slvf-otp-code-error').text('Enter all six digits.').addClass('is-shown');
                 return;
             }
             $('#slvf-otp-code-error').removeClass('is-shown').text('');
 
-            // TODO Phase B: POST to /handler/verify_otp here.
-            OtpModal.showStep(3);
-            OtpModal.stopTimer();
+            var $btn = $('#slvf-otp-verify-btn');
+            $btn.prop('disabled', true).find('span').text('Verifying…');
+
+            $.ajax({
+                url:      'handler/verify_otp',
+                type:     'POST',
+                dataType: 'json',
+                data:     { email: OtpModal._email, code: code },
+                success: function (data) {
+                    $btn.prop('disabled', false).find('span').text('Verify');
+                    if (data.result === 'ok') {
+                        OtpModal.stopTimer();
+                        OtpModal.showStep(3);
+                        // Reload so navbar reflects logged-in state
+                        setTimeout(function () { w.location.reload(); }, 1500);
+                    } else if (data.result === 'expired') {
+                        $('#slvf-otp-code-error').text('Code expired. Request a new one.').addClass('is-shown');
+                    } else {
+                        $('#slvf-otp-code-error').text('Incorrect code. Please try again.').addClass('is-shown');
+                        $('#slvf-otp-digits').addClass('slvf-shake');
+                        setTimeout(function () { $('#slvf-otp-digits').removeClass('slvf-shake'); }, 500);
+                    }
+                },
+                error: function () {
+                    $btn.prop('disabled', false).find('span').text('Verify');
+                    $('#slvf-otp-code-error').text('Network error. Please try again.').addClass('is-shown');
+                }
+            });
         },
+
         resend: function () {
-            // TODO Phase B: POST to /handler/request_otp again.
-            OtpModal.startTimer(300);
-            $('#slvf-otp-digits .slvf-otp-digit').val('').removeClass('is-filled');
-            $('#slvf-otp-digits .slvf-otp-digit').first().focus();
+            OtpModal.stopTimer();
+            if (OtpModal._email) $('#slvf-otp-email').val(OtpModal._email);
+            OtpModal.showStep(1);
         },
+
         logout: function () {
-            // Stub: server endpoint to clear $_SESSION['otp_verified_email']
-            // lands in Phase B. For now reload to safe location.
-            w.location.href = (w.siteUrl || '/') + 'handler/logout_otp';
+            $.ajax({
+                url:  'handler/otp_logout',
+                type: 'POST',
+                complete: function () { w.location.reload(); }
+            });
         },
         validateEmail: function (e) {
             return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
@@ -409,6 +462,132 @@
     };
 
     /* ----------------------------------------------------------------------
+       Toast — lightweight in-page notification
+       ---------------------------------------------------------------------- */
+    var Toast = {
+        _el: null,
+        _tid: null,
+
+        _ensure: function () {
+            if (Toast._el) return;
+            var el = document.createElement('div');
+            el.id = 'slvf-toast';
+            el.className = 'slvf-toast';
+            document.body.appendChild(el);
+            Toast._el = el;
+        },
+
+        show: function (msg, type, ms) {
+            Toast._ensure();
+            if (Toast._tid) clearTimeout(Toast._tid);
+            Toast._el.textContent = msg;
+            Toast._el.className = 'slvf-toast slvf-toast--' + (type || 'info') + ' is-visible';
+            Toast._tid = setTimeout(function () {
+                Toast._el.classList.remove('is-visible');
+            }, ms || 3000);
+        }
+    };
+    w.Toast = Toast;
+
+    /* ----------------------------------------------------------------------
+       CopyLink — clipboard helper + copy button wiring
+       ---------------------------------------------------------------------- */
+    var CopyLink = {
+        copy: function (text) {
+            if (navigator.clipboard && w.isSecureContext) {
+                navigator.clipboard.writeText(text).then(function () {
+                    Toast.show('Link copied!', 'success');
+                }).catch(function () { CopyLink._fallback(text); });
+            } else {
+                CopyLink._fallback(text);
+            }
+        },
+
+        _fallback: function (text) {
+            var ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.cssText = 'position:fixed;opacity:0;top:0;left:0;width:1px;height:1px;';
+            document.body.appendChild(ta);
+            ta.focus();
+            ta.select();
+            try { document.execCommand('copy'); Toast.show('Link copied!', 'success'); }
+            catch (e) { Toast.show('Copy manually: ' + text, 'error', 6000); }
+            document.body.removeChild(ta);
+        },
+
+        init: function () {
+            // New SLVF copy button (#slvf-copy-btn)
+            $(document).on('click', '#slvf-copy-btn', function () {
+                var link = $('#slvf-transfer-link').val()
+                        || $('#upload-finished .upload-finished-message#link input').val();
+                if (!link) return;
+                CopyLink.copy(link);
+                var $b = $(this);
+                var orig = $b.html();
+                $b.html('<i class="lni lni-checkmark"></i> Copied!');
+                setTimeout(function () { $b.html(orig); }, 2500);
+            });
+
+            // Click on link input → select all
+            $(document).on('click', '#slvf-transfer-link', function () { this.select(); });
+
+            // Legacy is-copy button (existing upload-finished markup)
+            $(document).on('click', '#upload-finished .button.is-copy', function () {
+                var link = $('#upload-finished .upload-finished-message#link input').val();
+                if (!link) return;
+                CopyLink.copy(link);
+                var $b = $(this);
+                var orig = $b.text();
+                $b.text('Copied!');
+                setTimeout(function () { $b.text(orig); }, 2500);
+            });
+        }
+    };
+    w.CopyLink = CopyLink;
+
+    /* ----------------------------------------------------------------------
+       SlvfComplete — "Send another" resets the upload card without page reload
+       ---------------------------------------------------------------------- */
+    var SlvfComplete = {
+        init: function () {
+            $(document).on('click', '#slvf-send-another', function () {
+                if (w.Uploader) {
+                    w.Uploader.executed      = false;
+                    w.Uploader.done          = 0;
+                    w.Uploader.uploadID      = null;
+                    w.Uploader.fileView      = false;
+                    w.Uploader.sizeLeft      = w.maxSizeBytes || 0;
+                    w.Uploader.totalselected = 0;
+                    w.Uploader.folders       = [];
+                    if (w.Uploader.circle) {
+                        w.Uploader.circle.set(0);
+                        w.Uploader.circle.setText('');
+                    }
+                }
+                $('#selected-files ul').empty();
+                $('.upload-form .select-first-files').show();
+                $('.upload-form .selected-files').removeClass('active');
+                $('.upload-block-content').removeClass('active');
+                $('#upload').addClass('active');
+                w.onbeforeunload = null;
+            });
+        }
+    };
+
+    /* ----------------------------------------------------------------------
+       Navbar scroll shadow
+       ---------------------------------------------------------------------- */
+    var NavScroll = {
+        init: function () {
+            var $nav = $('#slvf-nav');
+            if (!$nav.length) return;
+            $(w).on('scroll.navscroll', function () {
+                $nav.toggleClass('is-scrolled', $(w).scrollTop() > 8);
+            });
+        }
+    };
+
+    /* ----------------------------------------------------------------------
        Boot
        ---------------------------------------------------------------------- */
     $(function () {
@@ -423,6 +602,10 @@
         UploadPulse.init();
         LegalToc.init();
         DropPick.init();
+        Toast._ensure();
+        CopyLink.init();
+        SlvfComplete.init();
+        NavScroll.init();
     });
 
 })(jQuery, window);

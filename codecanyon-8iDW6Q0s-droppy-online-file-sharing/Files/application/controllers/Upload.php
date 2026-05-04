@@ -177,12 +177,9 @@ class Upload extends CI_Controller
 
                     // Continue with email verification if there aren't any errors with the given info
                     if (!$error) {
+                        // Always require OTP verification for sender's email (every upload)
                         if (
-                            ($this->config->item('email_verify') == 'once' && $this->emailverify->countVerifiedByEmail($post_data['email_from']) > 0)
-                            ||
-                            ($this->config->item('email_verify') == 'always' && isset($post_data['verify_code']) && $this->emailverify->countByEmailAndCode($post_data['email_from'], $post_data['verify_code']) > 0)
-                            ||
-                            ($this->config->item('email_verify') == 'false')
+                            isset($post_data['verify_code']) && $this->emailverify->countByEmailAndCode($post_data['email_from'], $post_data['verify_code']) > 0
                         ) {
                             // Remove the verify code, we don't need it anymore
                             unset($post_data['verify_code']);
@@ -204,14 +201,14 @@ class Upload extends CI_Controller
                                 'code' => $code
                             ));
 
-                            // Load email library
-                            $this->load->library('email');
-
-                            // Prepare sender data array to pass to email
-                            $email_data = array('upload_id' => $post_data['upload_id'], 'code' => $code);
-
-                            // Send email to uploader
-                            $this->email->sendEmail('email_verify', $email_data, array($post_data['email_from']));
+                            // Send OTP email to sender
+                            try {
+                                $this->load->library('email');
+                                $email_data = array('upload_id' => $post_data['upload_id'], 'code' => $code);
+                                $this->email->sendEmail('email_verify', $email_data, array($post_data['email_from']));
+                            } catch (Exception $e) {
+                                // OTP saved in DB even if email fails — user can request resend
+                            }
 
                             $this->logging->log($post_data['upload_id'] . " > Sender email is not verified, requesting verification from user..");
                             $error = 'verify_email';

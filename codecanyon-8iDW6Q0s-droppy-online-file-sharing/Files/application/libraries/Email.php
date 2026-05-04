@@ -2553,7 +2553,7 @@ class Email {
         $this->clear();
 
         // Check if templates is in disabled_email_templates from config (this is comma seperated list)
-        $disabled_templates = explode(',', $this->CI->config->item('disabled_email_templates'));
+        $disabled_templates = explode(',', (string) ($this->CI->config->item('disabled_email_templates') ?? ''));
         if(in_array($template, $disabled_templates)) {
             // Email template is disabled, we still return true so everything still keeps running
             return true;

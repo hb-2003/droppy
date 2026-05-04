@@ -781,9 +781,17 @@ var Uploader = {
                 $('.upload-block-content#upload-finished .button').addClass('is-okay').html(Lang.i.ok);
             }
             if(shareOption === 'link') {
+                var transferLink = siteUrl + Uploader.uploadID;
                 $('.upload-block-content#upload-finished .upload-finished-message#link').addClass('active');
                 $('.upload-block-content#upload-finished .button').addClass('is-copy');
-                $('.upload-block-content#upload-finished input').val(siteUrl + Uploader.uploadID);
+                // Legacy input (kept for backward compat)
+                $('.upload-block-content#upload-finished input[type="text"]:not(#slvf-transfer-link)').val(transferLink);
+                // New SLVF link input
+                $('#slvf-transfer-link').val(transferLink);
+                // Auto-copy to clipboard via slvf.js CopyLink
+                if(typeof CopyLink !== 'undefined') {
+                    setTimeout(function() { CopyLink.copy(transferLink); }, 600);
+                }
             }
             $('#uploadProcess').hide();
             $('#uploadSuccess').show();

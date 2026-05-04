@@ -149,6 +149,30 @@ class Uploads extends CI_Model {
      * @param $status
      * @return array|bool
      */
+    /**
+     * Get uploads sent from a given email address, newest first.
+     * Used by the History page for OTP-verified users.
+     *
+     * @param  string $email
+     * @param  int    $limit
+     * @return array|bool
+     */
+    function getByEmail($email, $limit = 50) {
+        $this->db->select('*');
+        $this->db->from('droppy_uploads');
+        $this->db->where('email_from', $email);
+        $this->db->where('status !=', 'deleted');
+        $this->db->order_by('time', 'DESC');
+        $this->db->limit((int) $limit);
+
+        $query = $this->db->get();
+
+        if ($query->num_rows() > 0) {
+            return $query->result_array();
+        }
+        return [];
+    }
+
     function getByStatus($status) {
         $this->db->select('*');
         $this->db->from('droppy_uploads');

@@ -204,6 +204,58 @@ class Home extends CI_Controller {
      * Pulls editable copy from droppy_pages WHERE type='about_page' so admins
      * can still update the body via the existing CMS.
      */
+    /**
+     * SLVF — Transfer history page.
+     * Shows uploads sent by the OTP-verified email stored in session.
+     * If no session, prompts the user to sign in via OTP modal.
+     */
+    public function history()
+    {
+        $this->load->helper('cookie');
+        $this->load->helper('seconds');
+        $this->load->model('uploads');
+        $this->load->model('files');
+
+        $otp_email = $this->session->userdata('otp_verified_email');
+        $uploads   = [];
+
+        if (!empty($otp_email)) {
+            $raw = $this->uploads->getByEmail($otp_email, 50);
+            if (!empty($raw)) {
+                foreach ($raw as &$row) {
+                    $row['files'] = $this->files->getByUploadID($row['upload_id']);
+                }
+                unset($row);
+                $uploads = $raw;
+            }
+        }
+
+        $data = array(
+            'page'          => 'history',
+            'settings'      => $this->config->config,
+            'socials'       => $this->socials->getAll(),
+            'language_list' => $this->language->getAll(),
+            'extra_pages'   => $this->pages->getAll(0, 0, $this->session->userdata('language')),
+            'custom_tabs'   => $this->plugin->_tabs,
+            'custom_css'    => $this->plugin->_css,
+            'session'       => $this->session,
+            'mobile'        => false,
+            'backgrounds'   => $this->backgrounds->getAllOrderID(),
+            'otp_email'     => $otp_email,
+            'uploads'       => $uploads,
+        );
+
+        $detect = new Mobile_Detect();
+        if (file_exists(FCPATH . 'application/views/themes/' . $this->config->item('theme') . '/_elem/header-mobile.php') && ($detect->isMobile() || $detect->isTablet() || $detect->isAndroidOS())) {
+            $data['mobile'] = true;
+            $this->load->view('themes/' . $this->config->item('theme') . '/_elem/header-mobile', $data);
+        } else {
+            $this->load->view('themes/' . $this->config->item('theme') . '/_elem/header', $data);
+        }
+        $this->load->view('themes/' . $this->config->item('theme') . '/history', $data);
+        $this->load->view('themes/' . $this->config->item('theme') . '/_elem/footer', $data);
+    }
+
     public function about()
     {
         $this->load->helper('cookie');

@@ -41,6 +41,8 @@ endif;
     var siteUrl = "<?php echo $settings['site_url']; ?>";
     var themeColor = "<?php echo (!empty($settings['theme_color']) ? $settings['theme_color'] : '#3e8ed0'); ?>";
     var themeColorSec = "<?php echo (!empty($settings['theme_color_secondary']) ? $settings['theme_color_secondary'] : '#3e8ed0'); ?>";
+    // OTP session — used by ModeToggle to check if user is verified
+    var otpVerifiedEmail = "<?php echo isset($_SESSION['otp_verified_email']) ? htmlspecialchars($_SESSION['otp_verified_email'], ENT_QUOTES) : ''; ?>";
 
     // Vegas background slideshow disabled in the Cinematic Studio redesign.
     // The new theme uses an animated gradient mesh + grain (see slvf.css .background, .slvf-bg-mesh).
