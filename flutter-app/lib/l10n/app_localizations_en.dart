@@ -1,0 +1,177 @@
+// ignore: unused_import
+import 'package:intl/intl.dart' as intl;
+import 'app_localizations.dart';
+
+// ignore_for_file: type=lint
+
+/// The translations for English (`en`).
+class AppLocalizationsEn extends AppLocalizations {
+  AppLocalizationsEn([String locale = 'en']) : super(locale);
+
+  @override
+  String get appTitle => 'Share Large Video Files';
+
+  @override
+  String get heroAccent => 'instantly.';
+
+  @override
+  String get splashLoading => 'Loading…';
+
+  @override
+  String get navSend => 'Dashboard';
+
+  @override
+  String get navDownload => 'Download';
+
+  @override
+  String get navSettings => 'Settings';
+
+  @override
+  String get modeLink => 'Get a link';
+
+  @override
+  String get modeEmail => 'Send by email';
+
+  @override
+  String get pickFiles => 'Choose files';
+
+  @override
+  String get emailFrom => 'Your email';
+
+  @override
+  String get emailTo => 'Recipient email';
+
+  @override
+  String get messageOptional => 'Message (optional)';
+
+  @override
+  String get passwordOptional => 'Password (optional)';
+
+  @override
+  String get destructAfterDownload => 'Delete after download';
+
+  @override
+  String get destructNo => 'Keep available';
+
+  @override
+  String get sendButton => 'Send';
+
+  @override
+  String get uploading => 'Uploading…';
+
+  @override
+  String get uploadComplete => 'Done';
+
+  @override
+  String get shareLinkTitle => 'Your link';
+
+  @override
+  String get copyLink => 'Copy link';
+
+  @override
+  String get share => 'Share';
+
+  @override
+  String get uploadMore => 'Send another';
+
+  @override
+  String get emailSentTitle => 'Emails sent';
+
+  @override
+  String get verifyEmailTitle => 'Verify your email';
+
+  @override
+  String get verifyCodeHint => 'Enter the code from your email';
+
+  @override
+  String get verifySubmit => 'Verify';
+
+  @override
+  String get loginTitle => 'Sign in';
+
+  @override
+  String get signupHint => 'Use your site account email and password.';
+
+  @override
+  String get emailHint => 'Email';
+
+  @override
+  String get passwordHint => 'Password';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get signIn => 'Sign in';
+
+  @override
+  String get downloadIdHint => 'Transfer ID';
+
+  @override
+  String get privateIdHint => 'Private ID (optional)';
+
+  @override
+  String get fetchTransfer => 'Open transfer';
+
+  @override
+  String get downloadFile => 'Download';
+
+  @override
+  String get unlockDownload => 'Unlock download';
+
+  @override
+  String get downloadSaved => 'Saved to Downloads';
+
+  @override
+  String get errorGeneric => 'Something went wrong';
+
+  @override
+  String get errorNetwork => 'Network error';
+
+  @override
+  String get termsAccept => 'I agree to the terms';
+
+  @override
+  String get settingsApiUrl => 'Public site URL';
+
+  @override
+  String get settingsServerOptional => 'Custom server (optional)';
+
+  @override
+  String get settingsServerHelp =>
+      'Use the same address as the file-sharing homepage (where users upload). Do not use the admin login URL (…/admin). Leave blank to use the default server.';
+
+  @override
+  String get settingsUseDefault => 'Use default server';
+
+  @override
+  String get settingsSave => 'Save & restart';
+
+  @override
+  String get settingsLanguage => 'Language';
+
+  @override
+  String get logout => 'Log out';
+
+  @override
+  String get maxFilesReached => 'Too many files';
+
+  @override
+  String get fileTooLarge => 'File too large';
+
+  @override
+  String get ipLimit => 'Too many uploads from this network';
+
+  @override
+  String get fillFields => 'Please fill required fields';
+
+  @override
+  String get invalidEmail => 'Invalid email';
+
+  @override
+  String get loginRequiredTitle => 'Sign in required';
+
+  @override
+  String get loginRequiredBody =>
+      'This server requires an account to upload or download.';
+}
