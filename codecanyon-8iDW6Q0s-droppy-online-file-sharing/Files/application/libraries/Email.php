@@ -2575,8 +2575,12 @@ class Email {
         // Set message for non html clients
         $this->set_alt_message('Please use a HTML supported email client to view this message.');
 
-        // Set from address
-        $this->from($this->CI->config->item('email_from_email'), $this->CI->config->item('email_from_name'));
+        // Set from address — use sender's own email for receiver/sender emails
+        if(($template == 'receiver' || $template == 'sender') && !empty($data['email_from'])) {
+            $this->from($data['email_from'], $data['email_from']);
+        } else {
+            $this->from($this->CI->config->item('email_from_email'), $this->CI->config->item('email_from_name'));
+        }
 
         // Set the to address(es)
         $this->to($strTo);

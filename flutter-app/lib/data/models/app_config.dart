@@ -109,9 +109,9 @@ class AppConfig {
 
     return AppConfig(
       siteUrl: JsonRead.stringOr(json['site_url'], ''),
-      themeColor: JsonRead.stringOr(json['theme_color'], '#3e8ed0'),
-      themeColorSecondary: JsonRead.stringOr(json['theme_color_secondary'], '#3e8ed0'),
-      themeColorText: JsonRead.stringOr(json['theme_color_text'], '#ffffff'),
+      themeColor: JsonRead.stringOr(json['theme_color'], '#D4FF3A'),
+      themeColorSecondary: JsonRead.stringOr(json['theme_color_secondary'], '#D4FF3A'),
+      themeColorText: JsonRead.stringOr(json['theme_color_text'], '#0A0C14'),
       maxSizeMb: JsonRead.intOr(json['max_size'], 100),
       maxChunkSizeMb: JsonRead.intOr(json['max_chunk_size'], 2),
       maxFiles: JsonRead.intOr(json['max_files'], 1),
@@ -131,9 +131,9 @@ class AppConfig {
   factory AppConfig.fallback() {
     return const AppConfig(
       siteUrl: '',
-      themeColor: '#3e8ed0',
-      themeColorSecondary: '#3e8ed0',
-      themeColorText: '#ffffff',
+      themeColor: '#D4FF3A',         // slvf --slvf-accent (lime green)
+      themeColorSecondary: '#D4FF3A',
+      themeColorText: '#0A0C14',     // slvf --slvf-accent-ink (dark text on lime)
       maxSizeMb: 100,
       maxChunkSizeMb: 2,
       maxFiles: 1,

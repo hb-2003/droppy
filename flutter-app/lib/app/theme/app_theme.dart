@@ -2,17 +2,92 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sendlargefiles/data/models/app_config.dart';
 
-/// Colors aligned with [sharelargefilesfree.com](https://sharelargefilesfree.com/) modern theme
-/// (`assets/themes/modern/css/style.css` — Bulma `is-info` / admin defaults).
+/// Colors from the live web "Cinematic Studio" (slvf) dark theme.
+/// Source: `assets/themes/modern/css/slvf.css` — CSS custom properties on `:root`.
 abstract final class DroppyWebColors {
-  /// `.button.is-info { background-color: #3e8ed0 }` on the live site.
+  // ── Ink scale (dark backgrounds) ──────────────────────────────────────────
+  static const ink1000 = Color(0xFF04050A);
+  static const ink950  = Color(0xFF06070C);
+  static const ink900  = Color(0xFF0A0C14); // body background
+  static const ink850  = Color(0xFF0E1119);
+  static const ink800  = Color(0xFF11141E);
+  static const ink700  = Color(0xFF1A1E2C); // card / elevated surface
+  static const ink600  = Color(0xFF262B3D); // hover surface
+
+  // ── Glass borders ─────────────────────────────────────────────────────────
+  static const line        = Color(0x12FFFFFF); // rgba(255,255,255,0.07)
+  static const lineStrong  = Color(0x24FFFFFF); // rgba(255,255,255,0.14)
+  static const lineBright  = Color(0x38FFFFFF); // rgba(255,255,255,0.22)
+
+  // ── Glass fills ───────────────────────────────────────────────────────────
+  static const glass       = Color(0x09FFFFFF); // rgba(255,255,255,0.035)
+  static const glassStrong = Color(0x0FFFFFFF); // rgba(255,255,255,0.06)
+
+  // ── Text ──────────────────────────────────────────────────────────────────
+  static const text     = Color(0xFFF2F1EB); // primary text (off-white)
+  static const textSoft = Color(0xFFC9CAD3); // secondary text
+  static const textDim  = Color(0xFF8A8E9E); // dim/placeholder
+  static const textMute = Color(0xFF5A5E70); // muted/disabled
+
+  // ── Accent (primary) ──────────────────────────────────────────────────────
+  static const accent     = Color(0xFFD4FF3A); // lime green — .slvf-btn--primary bg
+  static const accentHi   = Color(0xFFE4FF6E);
+  static const accentLo   = Color(0xFFB8E000);
+  static const accentInk  = Color(0xFF0A0C14); // dark text ON accent button
+  static const accentGlow = Color(0x52D4FF3A); // rgba(212,255,58,0.32)
+  static const accentSoft = Color(0x1AD4FF3A); // rgba(212,255,58,0.10)
+
+  // ── Semantic ──────────────────────────────────────────────────────────────
+  static const warm    = Color(0xFFF4B860);
+  static const rose    = Color(0xFFF47B7B);
+  static const success = Color(0xFF5BE9B9);
+  static const error   = Color(0xFFFF6B5C);
+  static const info    = Color(0xFF50B4FF);
+
+  // ── Legacy (kept for old Bulma references) ────────────────────────────────
+  /// Old Bulma `is-info` blue — used in style.css only; slvf theme uses accent instead.
   static const bulmaInfo = Color(0xFF3E8ED0);
-  static const textOnLight = Color(0xFF0A0A0A);
-  static const textMuted = Color(0xFF5C5C5C);
-  static const surface = Color(0xFFFFFFFF);
-  static const surfaceDim = Color(0xFFF5F5F5);
-  static const border = Color(0xFFEDEDED);
-  static const error = Color(0xFFFF6B5C);
+}
+
+// ── Border radius scale (from slvf CSS vars) ────────────────────────────────
+abstract final class DroppyRadius {
+  static const sm   = 8.0;   // --slvf-radius-sm
+  static const md   = 14.0;  // --slvf-radius
+  static const lg   = 22.0;  // --slvf-radius-lg
+  static const xl   = 28.0;  // --slvf-radius-xl (upload card)
+  static const pill = 999.0; // --slvf-radius-pill
+}
+
+// ── Shadow scale ─────────────────────────────────────────────────────────────
+abstract final class DroppyShadow {
+  static const sm = BoxShadow(
+    color: Color(0x4D000000), // rgba(0,0,0,0.30)
+    blurRadius: 14,
+    offset: Offset(0, 4),
+  );
+  static const md = BoxShadow(
+    color: Color(0x73000000), // rgba(0,0,0,0.45)
+    blurRadius: 50,
+    offset: Offset(0, 18),
+  );
+  static const lg = BoxShadow(
+    color: Color(0x8C000000), // rgba(0,0,0,0.55)
+    blurRadius: 90,
+    offset: Offset(0, 30),
+  );
+  static const accentGlow = BoxShadow(
+    color: DroppyWebColors.accentGlow,
+    blurRadius: 60,
+    offset: Offset(0, 18),
+  );
+
+  /// Upload card: `box-shadow: 0 18px 50px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.03) inset`
+  static const uploadCard = [md, _insetWhite];
+  static const _insetWhite = BoxShadow(
+    color: Color(0x08FFFFFF),
+    blurRadius: 0,
+    spreadRadius: 1,
+  );
 }
 
 Color _hex(String? hex, Color fallback) {
@@ -29,78 +104,43 @@ Color _hex(String? hex, Color fallback) {
 class AppTheme {
   AppTheme._();
 
-  /// Light theme matching the public Droppy “modern” upload UI: white panels, Bulma info blue, Roboto.
-  /// [AppConfig] supplies `theme_color` / `theme_color_secondary` / `theme_color_text` from the server
-  /// when [handler/app_config](https://sharelargefilesfree.com/handler/app_config) returns JSON.
+  /// Dark theme matching the live Droppy "Cinematic Studio" (slvf) design layer.
+  /// Source: `assets/themes/modern/css/slvf.css`.
   static ThemeData fromConfig(AppConfig? c) {
     final cfg = c ?? AppConfig.fallback();
-    final primary = _hex(cfg.themeColor, DroppyWebColors.bulmaInfo);
-    final secondary = _hex(cfg.themeColorSecondary, DroppyWebColors.bulmaInfo);
-    final onPrimary = _hex(cfg.themeColorText, Colors.white);
 
-    // Fills the full M3 color roles (primary/secondary/tertiary/surface/...) from the seed.
+    // Server can override accent — default to slvf lime #D4FF3A
+    final primary   = _hex(cfg.themeColor, DroppyWebColors.accent);
+    final secondary = _hex(cfg.themeColorSecondary, DroppyWebColors.accent);
+    // Text ON the accent button is always dark ink
+    final onPrimary = _hex(cfg.themeColorText, DroppyWebColors.accentInk);
+
     var scheme = ColorScheme.fromSeed(
       seedColor: primary,
-      brightness: Brightness.light,
+      brightness: Brightness.dark,
     );
     scheme = scheme.copyWith(
-      onPrimary: onPrimary,
+      brightness: Brightness.dark,
       primary: primary,
+      onPrimary: onPrimary,
       secondary: secondary,
       onSecondary: _contrastOn(secondary),
+      surface: DroppyWebColors.ink900,
+      onSurface: DroppyWebColors.text,
+      surfaceContainerHighest: DroppyWebColors.ink700,
+      outline: DroppyWebColors.lineStrong,
+      error: DroppyWebColors.error,
     );
 
-    final baseText = GoogleFonts.robotoTextTheme(ThemeData(brightness: Brightness.light).textTheme);
-    final textTheme = baseText.copyWith(
-      displayLarge: GoogleFonts.roboto(
-        fontSize: 36,
-        fontWeight: FontWeight.w800,
-        color: DroppyWebColors.textOnLight,
-        height: 1.1,
-      ),
-      displayMedium: GoogleFonts.roboto(
-        fontSize: 30,
-        fontWeight: FontWeight.w700,
-        color: DroppyWebColors.textOnLight,
-      ),
-      headlineSmall: GoogleFonts.roboto(
-        fontSize: 20,
-        fontWeight: FontWeight.w600,
-        color: DroppyWebColors.textOnLight,
-      ),
-      titleLarge: GoogleFonts.roboto(
-        fontSize: 20,
-        fontWeight: FontWeight.w600,
-        color: DroppyWebColors.textOnLight,
-      ),
-      bodyLarge: GoogleFonts.roboto(
-        fontSize: 16,
-        fontWeight: FontWeight.w400,
-        color: DroppyWebColors.textOnLight,
-        height: 1.45,
-      ),
-      bodyMedium: GoogleFonts.roboto(
-        fontSize: 14,
-        color: DroppyWebColors.textMuted,
-        height: 1.45,
-      ),
-      bodySmall: GoogleFonts.roboto(
-        fontSize: 12,
-        color: DroppyWebColors.textMuted,
-      ),
-      labelSmall: GoogleFonts.roboto(
-        fontSize: 12,
-        fontWeight: FontWeight.w600,
-        color: DroppyWebColors.textMuted,
-        letterSpacing: 0.2,
-      ),
-    );
+    // Bricolage Grotesque — web --slvf-font-body
+    // Falls back through Inter Tight → system-ui in CSS; Google Fonts has it.
+    final textTheme = _buildTextTheme();
 
     return ThemeData(
       useMaterial3: true,
-      brightness: Brightness.light,
+      brightness: Brightness.dark,
       colorScheme: scheme,
-      scaffoldBackgroundColor: DroppyWebColors.surfaceDim,
+      scaffoldBackgroundColor: DroppyWebColors.ink900,
       textTheme: textTheme,
       primaryTextTheme: textTheme.apply(
         bodyColor: onPrimary,
@@ -110,149 +150,317 @@ class AppTheme {
         elevation: 0,
         scrolledUnderElevation: 0,
         centerTitle: false,
-        backgroundColor: DroppyWebColors.surface,
-        foregroundColor: DroppyWebColors.textOnLight,
+        backgroundColor: DroppyWebColors.ink950,
+        foregroundColor: DroppyWebColors.text,
         surfaceTintColor: Colors.transparent,
-        titleTextStyle: GoogleFonts.roboto(
-          fontSize: 18,
-          fontWeight: FontWeight.w600,
-          color: DroppyWebColors.textOnLight,
+        titleTextStyle: GoogleFonts.bricolageGrotesque(
+          fontSize: 15,
+          fontWeight: FontWeight.w700,
+          color: DroppyWebColors.text,
         ),
-        iconTheme: const IconThemeData(color: DroppyWebColors.textOnLight),
+        iconTheme: const IconThemeData(color: DroppyWebColors.textSoft),
+        shape: const Border(
+          bottom: BorderSide(color: DroppyWebColors.line),
+        ),
       ),
       cardTheme: CardThemeData(
-        color: DroppyWebColors.surface,
+        color: DroppyWebColors.glassStrong,
         elevation: 0,
+        shadowColor: Colors.transparent,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8),
-          side: const BorderSide(color: DroppyWebColors.border),
+          borderRadius: BorderRadius.circular(DroppyRadius.xl),
+          side: const BorderSide(color: DroppyWebColors.lineStrong),
         ),
+        clipBehavior: Clip.antiAlias,
       ),
       dialogTheme: DialogThemeData(
-        backgroundColor: DroppyWebColors.surface,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        backgroundColor: DroppyWebColors.ink800,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(DroppyRadius.lg),
+          side: const BorderSide(color: DroppyWebColors.lineStrong),
+        ),
       ),
       snackBarTheme: SnackBarThemeData(
-        backgroundColor: DroppyWebColors.textOnLight,
-        contentTextStyle: GoogleFonts.roboto(color: DroppyWebColors.surface),
+        backgroundColor: DroppyWebColors.ink700,
+        contentTextStyle: GoogleFonts.bricolageGrotesque(color: DroppyWebColors.text),
         behavior: SnackBarBehavior.floating,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(DroppyRadius.sm),
+        ),
       ),
-      dividerTheme: const DividerThemeData(color: DroppyWebColors.border, thickness: 1),
+      dividerTheme: const DividerThemeData(
+        color: DroppyWebColors.line,
+        thickness: 1,
+      ),
       filledButtonTheme: FilledButtonThemeData(
         style: FilledButton.styleFrom(
           backgroundColor: primary,
           foregroundColor: onPrimary,
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
-          textStyle: GoogleFonts.roboto(fontSize: 15, fontWeight: FontWeight.w600),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(DroppyRadius.pill),
+          ),
+          textStyle: GoogleFonts.bricolageGrotesque(
+            fontSize: 15,
+            fontWeight: FontWeight.w700,
+          ),
+          elevation: 0,
         ),
       ),
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
-          foregroundColor: DroppyWebColors.textOnLight,
-          side: const BorderSide(color: DroppyWebColors.border),
+          foregroundColor: DroppyWebColors.textSoft,
+          side: const BorderSide(color: DroppyWebColors.lineStrong),
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
-          textStyle: GoogleFonts.roboto(fontWeight: FontWeight.w600),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(DroppyRadius.pill),
+          ),
+          textStyle: GoogleFonts.bricolageGrotesque(
+            fontWeight: FontWeight.w600,
+          ),
         ),
       ),
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
           foregroundColor: primary,
-          textStyle: GoogleFonts.roboto(fontWeight: FontWeight.w600),
+          textStyle: GoogleFonts.bricolageGrotesque(fontWeight: FontWeight.w600),
         ),
       ),
       segmentedButtonTheme: SegmentedButtonThemeData(
         style: ButtonStyle(
           backgroundColor: WidgetStateProperty.resolveWith((states) {
-            if (states.contains(WidgetState.selected)) {
-              return primary.withValues(alpha: 0.15);
-            }
-            return DroppyWebColors.surface;
+            if (states.contains(WidgetState.selected)) return primary.withValues(alpha: 0.15);
+            return DroppyWebColors.glass;
           }),
           foregroundColor: WidgetStateProperty.resolveWith((states) {
-            if (states.contains(WidgetState.selected)) {
-              return primary;
-            }
-            return DroppyWebColors.textMuted;
+            if (states.contains(WidgetState.selected)) return primary;
+            return DroppyWebColors.textDim;
           }),
-          side: WidgetStateProperty.all(const BorderSide(color: DroppyWebColors.border)),
+          side: WidgetStateProperty.all(const BorderSide(color: DroppyWebColors.lineStrong)),
           shape: WidgetStateProperty.all(
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(DroppyRadius.pill)),
           ),
         ),
       ),
       switchTheme: SwitchThemeData(
         thumbColor: WidgetStateProperty.resolveWith((states) {
           if (states.contains(WidgetState.selected)) return primary;
-          return Colors.grey;
+          return DroppyWebColors.textMute;
         }),
         trackColor: WidgetStateProperty.resolveWith((states) {
-          if (states.contains(WidgetState.selected)) {
-            return primary.withValues(alpha: 0.35);
-          }
-          return DroppyWebColors.border;
+          if (states.contains(WidgetState.selected)) return primary.withValues(alpha: 0.25);
+          return DroppyWebColors.ink700;
         }),
+        trackOutlineColor: WidgetStateProperty.all(DroppyWebColors.lineStrong),
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        fillColor: DroppyWebColors.surface,
-        hintStyle: GoogleFonts.roboto(color: DroppyWebColors.textMuted),
-        labelStyle: GoogleFonts.roboto(color: DroppyWebColors.textMuted),
+        fillColor: DroppyWebColors.ink800,
+        hintStyle: GoogleFonts.bricolageGrotesque(
+          color: DroppyWebColors.textMute,
+          fontSize: 14,
+        ),
+        labelStyle: GoogleFonts.bricolageGrotesque(
+          color: DroppyWebColors.textDim,
+          fontSize: 14,
+        ),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: const BorderSide(color: DroppyWebColors.border),
+          borderRadius: BorderRadius.circular(DroppyRadius.sm),
+          borderSide: const BorderSide(color: DroppyWebColors.lineStrong),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: const BorderSide(color: DroppyWebColors.border),
+          borderRadius: BorderRadius.circular(DroppyRadius.sm),
+          borderSide: const BorderSide(color: DroppyWebColors.lineStrong),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(color: primary, width: 2),
+          borderRadius: BorderRadius.circular(DroppyRadius.sm),
+          borderSide: const BorderSide(color: DroppyWebColors.accent, width: 1.5),
         ),
         contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
       ),
       floatingActionButtonTheme: FloatingActionButtonThemeData(
         backgroundColor: primary,
         foregroundColor: onPrimary,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(DroppyRadius.pill),
+        ),
       ),
       progressIndicatorTheme: ProgressIndicatorThemeData(
         color: primary,
-        linearTrackColor: DroppyWebColors.border,
+        linearTrackColor: DroppyWebColors.ink700,
+        circularTrackColor: DroppyWebColors.ink700,
       ),
       listTileTheme: ListTileThemeData(
-        textColor: DroppyWebColors.textOnLight,
-        iconColor: DroppyWebColors.textMuted,
-        titleTextStyle: GoogleFonts.roboto(
-          fontSize: 15,
+        textColor: DroppyWebColors.text,
+        iconColor: DroppyWebColors.textDim,
+        tileColor: Colors.transparent,
+        titleTextStyle: GoogleFonts.bricolageGrotesque(
+          fontSize: 14,
           fontWeight: FontWeight.w500,
-          color: DroppyWebColors.textOnLight,
+          color: DroppyWebColors.text,
         ),
-        subtitleTextStyle: GoogleFonts.roboto(
-          fontSize: 13,
-          color: DroppyWebColors.textMuted,
+        subtitleTextStyle: GoogleFonts.bricolageGrotesque(
+          fontSize: 12,
+          color: DroppyWebColors.textDim,
+        ),
+      ),
+      tooltipTheme: TooltipThemeData(
+        decoration: BoxDecoration(
+          color: DroppyWebColors.ink700,
+          borderRadius: BorderRadius.circular(DroppyRadius.sm),
+          border: Border.all(color: DroppyWebColors.lineStrong),
+        ),
+        textStyle: GoogleFonts.bricolageGrotesque(
+          color: DroppyWebColors.text,
+          fontSize: 12,
+        ),
+      ),
+      chipTheme: ChipThemeData(
+        backgroundColor: DroppyWebColors.ink700,
+        side: const BorderSide(color: DroppyWebColors.lineStrong),
+        labelStyle: GoogleFonts.bricolageGrotesque(
+          fontSize: 12,
+          color: DroppyWebColors.textSoft,
+        ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(DroppyRadius.pill),
         ),
       ),
     );
   }
 
-  /// Hero accent — Roboto italic to mirror the web headline rhythm (see live homepage copy).
+  static TextTheme _buildTextTheme() {
+    // Bricolage Grotesque — web `--slvf-font-display` and `--slvf-font-body`
+    return TextTheme(
+      // Display — hero H1 (40px on web, scaled for mobile)
+      displayLarge: GoogleFonts.bricolageGrotesque(
+        fontSize: 40,
+        fontWeight: FontWeight.w800,
+        color: DroppyWebColors.text,
+        height: 1.05,
+        letterSpacing: -1.0,
+      ),
+      displayMedium: GoogleFonts.bricolageGrotesque(
+        fontSize: 30,
+        fontWeight: FontWeight.w700,
+        color: DroppyWebColors.text,
+        height: 1.1,
+        letterSpacing: -0.5,
+      ),
+      displaySmall: GoogleFonts.bricolageGrotesque(
+        fontSize: 26,
+        fontWeight: FontWeight.w700,
+        color: DroppyWebColors.text,
+        height: 1.15,
+        letterSpacing: -0.3,
+      ),
+      // Headline
+      headlineLarge: GoogleFonts.bricolageGrotesque(
+        fontSize: 24,
+        fontWeight: FontWeight.w700,
+        color: DroppyWebColors.text,
+        letterSpacing: -0.3,
+      ),
+      headlineMedium: GoogleFonts.bricolageGrotesque(
+        fontSize: 20,
+        fontWeight: FontWeight.w600,
+        color: DroppyWebColors.text,
+      ),
+      headlineSmall: GoogleFonts.bricolageGrotesque(
+        fontSize: 18,
+        fontWeight: FontWeight.w600,
+        color: DroppyWebColors.text,
+      ),
+      // Title
+      titleLarge: GoogleFonts.bricolageGrotesque(
+        fontSize: 18,
+        fontWeight: FontWeight.w600,
+        color: DroppyWebColors.text,
+      ),
+      titleMedium: GoogleFonts.bricolageGrotesque(
+        fontSize: 16,
+        fontWeight: FontWeight.w600,
+        color: DroppyWebColors.text,
+      ),
+      titleSmall: GoogleFonts.bricolageGrotesque(
+        fontSize: 14,
+        fontWeight: FontWeight.w600,
+        color: DroppyWebColors.textSoft,
+      ),
+      // Body
+      bodyLarge: GoogleFonts.bricolageGrotesque(
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        color: DroppyWebColors.text,
+        height: 1.5,
+      ),
+      bodyMedium: GoogleFonts.bricolageGrotesque(
+        fontSize: 14,
+        fontWeight: FontWeight.w400,
+        color: DroppyWebColors.textSoft,
+        height: 1.5,
+      ),
+      bodySmall: GoogleFonts.bricolageGrotesque(
+        fontSize: 12,
+        fontWeight: FontWeight.w400,
+        color: DroppyWebColors.textDim,
+      ),
+      // Label
+      labelLarge: GoogleFonts.bricolageGrotesque(
+        fontSize: 15,
+        fontWeight: FontWeight.w700,
+        color: DroppyWebColors.text,
+      ),
+      labelMedium: GoogleFonts.bricolageGrotesque(
+        fontSize: 13,
+        fontWeight: FontWeight.w500,
+        color: DroppyWebColors.textSoft,
+      ),
+      labelSmall: GoogleFonts.bricolageGrotesque(
+        fontSize: 11,
+        fontWeight: FontWeight.w600,
+        color: DroppyWebColors.textMute,
+        letterSpacing: 0.8,
+      ),
+    );
+  }
+
+  // ── Static style helpers ──────────────────────────────────────────────────
+
+  /// Hero accent — italic serif for the "instantly." part of the H1.
+  /// Web uses `font-style: italic` on the em tag inside `.slvf-hero__title`.
   static TextStyle heroAccent({
     required Color color,
-    double fontSize = 26,
+    double fontSize = 40,
   }) {
-    return GoogleFonts.roboto(
+    return GoogleFonts.bricolageGrotesque(
       fontSize: fontSize,
       fontStyle: FontStyle.italic,
-      fontWeight: FontWeight.w500,
-      height: 1.2,
+      fontWeight: FontWeight.w700,
+      height: 1.05,
+      letterSpacing: -1.0,
       color: color,
     );
   }
 
+  /// Eyebrow label — small uppercase label above section headings.
+  static TextStyle eyebrow({Color? color}) => GoogleFonts.bricolageGrotesque(
+        fontSize: 11,
+        fontWeight: FontWeight.w700,
+        letterSpacing: 1.5,
+        color: color ?? DroppyWebColors.textMute,
+      );
+
+  /// Meta text — 11–12px dim text for file sizes, stats, timestamps.
+  static TextStyle meta({Color? color}) => GoogleFonts.bricolageGrotesque(
+        fontSize: 12,
+        fontWeight: FontWeight.w400,
+        color: color ?? DroppyWebColors.textDim,
+      );
+
   static Color _contrastOn(Color background) {
-    final luminance = background.computeLuminance();
-    return luminance > 0.5 ? DroppyWebColors.textOnLight : Colors.white;
+    return background.computeLuminance() > 0.4
+        ? DroppyWebColors.accentInk
+        : DroppyWebColors.text;
   }
 }
