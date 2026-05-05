@@ -9,7 +9,9 @@ import 'package:sendlargefiles/data/repositories/config_repository.dart';
 import 'package:sendlargefiles/data/repositories/upload_repository.dart'
     show PickedFileItem, RegisterResult, UploadRepository;
 import 'package:sendlargefiles/widgets/auth_bottom_sheet.dart';
+import 'package:sendlargefiles/data/providers/api_client.dart';
 import 'package:share_plus/share_plus.dart' show ShareParams, SharePlus;
+import 'package:sendlargefiles/modules/shell/app_shell_controller.dart';
 
 class HomeController extends GetxController {
   final ConfigRepository _cfg = Get.find<ConfigRepository>();
@@ -74,9 +76,10 @@ class HomeController extends GetxController {
       r.files,
       () => _uidCounter++,
     );
+    final maxFiles = cfg.maxFiles <= 0 ? 999999 : cfg.maxFiles;
     for (final p in picked) {
       if (total + p.size > cfgMax) continue;
-      if (files.length >= cfg.maxFiles) break;
+      if (files.length >= maxFiles) break;
       total += p.size;
       files.add(p);
     }
@@ -107,7 +110,7 @@ class HomeController extends GetxController {
     try {
       final newId = await _upload.genUploadId();
       if (newId == null || newId.isEmpty) {
-        Get.snackbar('Upload', 'Could not start upload. Check API base URL in Settings.');
+        Get.snackbar('Upload', 'Could not start upload.');
         uploading.value = false;
         return;
       }
@@ -118,9 +121,10 @@ class HomeController extends GetxController {
         uploading.value = false;
         return;
       }
-      if (!reg.isOk) {
+      // Match web behavior: only known error codes block upload.
+      if (_isRegisterError(reg.code)) {
         uploading.value = false;
-        Get.snackbar('Upload', reg.code);
+        Get.snackbar('Upload', _registerErrorMessage(reg.code));
         return;
       }
       await _runFileUploadAndComplete(langPath);
@@ -180,26 +184,36 @@ class HomeController extends GetxController {
   }
 
   Future<void> _runFileUploadAndComplete(String langPath) async {
-    var sentTotal = 0;
     var grand = 0;
     for (final f in files) {
       grand += f.size;
     }
     if (grand == 0) grand = 1;
 
-    for (final f in files) {
+    // Web uses `limitConcurrentUploads = maxConcurrentUploads`.
+    // We mimic this by uploading multiple files in parallel (each file still chunks sequentially).
+    final maxConc = cfg.maxConcurrentUploads <= 0 ? 1 : cfg.maxConcurrentUploads;
+    final perFileSent = <String, int>{};
+    final fileTotal = <String, int>{for (final f in files) f.fileUid: f.size};
+
+    Future<void> runOne(PickedFileItem f) async {
+      perFileSent[f.fileUid] = 0;
       await _upload.uploadFileChunks(
         uploadId: activeUploadId,
         item: f,
         cfg: cfg,
         onProgress: (s, t) {
-          final base = sentTotal + s;
-          progress.value = base / grand;
+          perFileSent[f.fileUid] = s;
+          final sum = perFileSent.values.fold<int>(0, (a, b) => a + b);
+          progress.value = (sum / grand).clamp(0.0, 1.0);
         },
       );
-      sentTotal += f.size;
-      progress.value = sentTotal / grand;
+      perFileSent[f.fileUid] = fileTotal[f.fileUid] ?? f.size;
+      final sum = perFileSent.values.fold<int>(0, (a, b) => a + b);
+      progress.value = (sum / grand).clamp(0.0, 1.0);
     }
+
+    await _runWithConcurrency<PickedFileItem>(files.toList(), maxConc, runOne);
 
     await _upload.complete(
       uploadId: activeUploadId,
@@ -214,11 +228,83 @@ class HomeController extends GetxController {
       emailTo: _parseEmails(emailToCtrl?.text ?? ''),
     );
 
-    final base = cfg.siteUrl.isNotEmpty ? cfg.siteUrl : '';
+    final base = cfg.siteUrl.isNotEmpty ? cfg.siteUrl : resolveBaseUrl();
     if (shareMode.value == 'link') {
       finishedLink.value = '$base$activeUploadId';
     } else {
       mailFinished.value = true;
+    }
+
+    // Once uploaded, clear the selected files (web resets the dropzone).
+    files.clear();
+    files.refresh();
+    progress.value = 0;
+  }
+
+  void resetForNewTransfer() {
+    files.clear();
+    files.refresh();
+    progress.value = 0;
+    uploading.value = false;
+    awaitingVerify.value = false;
+    activeUploadId = '';
+    finishedLink.value = '';
+    mailFinished.value = false;
+    verifyController.clear();
+    messageCtrl?.clear();
+    passwordCtrl?.clear();
+    emailToCtrl?.clear();
+    // Keep email_from (often reused) but you can clear it too if desired.
+  }
+
+  static bool _isRegisterError(String code) {
+    return code == 'fields' || code == 'ip_limit' || code == 'email' || code == 'max_email';
+  }
+
+  String _registerErrorMessage(String code) {
+    // Keep text-only here (no BuildContext). Maps to existing l10n keys where possible.
+    switch (code) {
+      case 'fields':
+        return 'Please fill required fields';
+      case 'ip_limit':
+        return 'Too many uploads from this network';
+      case 'email':
+        return 'Invalid email';
+      case 'max_email':
+        return 'Too many recipients';
+      default:
+        return code;
+    }
+  }
+
+  static Future<void> _runWithConcurrency<T>(
+    List<T> items,
+    int maxConcurrency,
+    Future<void> Function(T item) task,
+  ) async {
+    if (items.isEmpty) return;
+    final conc = maxConcurrency < 1 ? 1 : maxConcurrency;
+    var i = 0;
+    final running = <Future<void>>[];
+
+    Future<void> spawnNext() async {
+      if (i >= items.length) return;
+      final item = items[i++];
+      late final Future<void> future;
+      future = task(item).whenComplete(() {
+        running.remove(future);
+      });
+      running.add(future);
+    }
+
+    while (i < items.length && running.length < conc) {
+      await spawnNext();
+    }
+    while (running.isNotEmpty) {
+      await Future.any(running);
+      while (i < items.length && running.length < conc) {
+        await spawnNext();
+      }
     }
   }
 
@@ -244,7 +330,19 @@ class HomeController extends GetxController {
     await SharePlus.instance.share(ShareParams(text: link));
   }
 
-  void goDownload() => Get.toNamed(AppRoutes.download);
+  void goDownload() {
+    if (Get.isRegistered<AppShellController>()) {
+      Get.find<AppShellController>().setTab(1);
+      return;
+    }
+    Get.toNamed(AppRoutes.download);
+  }
 
-  void goSettings() => Get.toNamed(AppRoutes.settings);
+  void goSettings() {
+    if (Get.isRegistered<AppShellController>()) {
+      Get.find<AppShellController>().setTab(2);
+      return;
+    }
+    Get.toNamed(AppRoutes.settings);
+  }
 }

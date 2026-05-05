@@ -654,7 +654,8 @@ class _ProgressPane extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Obx(() {
-        final pct = (controller.progress.value * 100).toInt();
+        final p = controller.progress.value.clamp(0.0, 1.0);
+        final pct = (p * 100).toInt();
         return Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -666,7 +667,7 @@ class _ProgressPane extends StatelessWidget {
                 children: [
                   SizedBox.expand(
                     child: CircularProgressIndicator(
-                      value: controller.progress.value,
+                      value: p,
                       strokeWidth: 8,
                       backgroundColor: DroppyWebColors.lineStrong,
                       color: scheme.primary,
@@ -793,8 +794,7 @@ class _SuccessPane extends StatelessWidget {
         ],
         OutlinedButton(
           onPressed: () {
-            controller.finishedLink.value = '';
-            controller.mailFinished.value = false;
+            controller.resetForNewTransfer();
           },
           style: OutlinedButton.styleFrom(minimumSize: const Size.fromHeight(46)),
           child: Text(t.uploadMore),

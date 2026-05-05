@@ -334,6 +334,12 @@ abstract class AppLocalizations {
   /// **'Network error'**
   String get errorNetwork;
 
+  /// No description provided for @errorBadResponse.
+  ///
+  /// In en, this message translates to:
+  /// **'Unexpected server response'**
+  String get errorBadResponse;
+
   /// No description provided for @termsAccept.
   ///
   /// In en, this message translates to:
@@ -346,29 +352,29 @@ abstract class AppLocalizations {
   /// **'Public site URL'**
   String get settingsApiUrl;
 
-  /// No description provided for @settingsServerOptional.
+  /// No description provided for @settingsAccount.
   ///
   /// In en, this message translates to:
-  /// **'Custom server (optional)'**
-  String get settingsServerOptional;
+  /// **'Account'**
+  String get settingsAccount;
 
-  /// No description provided for @settingsServerHelp.
+  /// No description provided for @settingsSignedIn.
   ///
   /// In en, this message translates to:
-  /// **'Use the same address as the file-sharing homepage (where users upload). Do not use the admin login URL (…/admin). Leave blank to use the default server.'**
-  String get settingsServerHelp;
+  /// **'You are signed in.'**
+  String get settingsSignedIn;
 
-  /// No description provided for @settingsUseDefault.
+  /// No description provided for @settingsSignedOut.
   ///
   /// In en, this message translates to:
-  /// **'Use default server'**
-  String get settingsUseDefault;
+  /// **'You are not signed in.'**
+  String get settingsSignedOut;
 
-  /// No description provided for @settingsSave.
+  /// No description provided for @settingsOpenWebsite.
   ///
   /// In en, this message translates to:
-  /// **'Save & restart'**
-  String get settingsSave;
+  /// **'Open website'**
+  String get settingsOpenWebsite;
 
   /// No description provided for @settingsLanguage.
   ///
@@ -411,6 +417,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Invalid email'**
   String get invalidEmail;
+
+  /// No description provided for @maxRecipientsReached.
+  ///
+  /// In en, this message translates to:
+  /// **'Too many recipients'**
+  String get maxRecipientsReached;
 
   /// No description provided for @loginRequiredTitle.
   ///

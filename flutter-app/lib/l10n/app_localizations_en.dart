@@ -129,23 +129,25 @@ class AppLocalizationsEn extends AppLocalizations {
   String get errorNetwork => 'Network error';
 
   @override
+  String get errorBadResponse => 'Unexpected server response';
+
+  @override
   String get termsAccept => 'I agree to the terms';
 
   @override
   String get settingsApiUrl => 'Public site URL';
 
   @override
-  String get settingsServerOptional => 'Custom server (optional)';
+  String get settingsAccount => 'Account';
 
   @override
-  String get settingsServerHelp =>
-      'Use the same address as the file-sharing homepage (where users upload). Do not use the admin login URL (…/admin). Leave blank to use the default server.';
+  String get settingsSignedIn => 'You are signed in.';
 
   @override
-  String get settingsUseDefault => 'Use default server';
+  String get settingsSignedOut => 'You are not signed in.';
 
   @override
-  String get settingsSave => 'Save & restart';
+  String get settingsOpenWebsite => 'Open website';
 
   @override
   String get settingsLanguage => 'Language';
@@ -167,6 +169,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get invalidEmail => 'Invalid email';
+
+  @override
+  String get maxRecipientsReached => 'Too many recipients';
 
   @override
   String get loginRequiredTitle => 'Sign in required';

@@ -8,6 +8,8 @@ import 'package:sendlargefiles/modules/login/login_binding.dart';
 import 'package:sendlargefiles/modules/login/login_view.dart';
 import 'package:sendlargefiles/modules/settings/settings_binding.dart';
 import 'package:sendlargefiles/modules/settings/settings_view.dart';
+import 'package:sendlargefiles/modules/shell/app_shell_binding.dart';
+import 'package:sendlargefiles/modules/shell/app_shell_view.dart';
 import 'package:sendlargefiles/modules/splash/splash_binding.dart';
 import 'package:sendlargefiles/modules/splash/splash_view.dart';
 
@@ -24,6 +26,16 @@ class AppPages {
       name: AppRoutes.home,
       page: HomeView.new,
       binding: HomeBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.shell,
+      page: AppShellView.new,
+      bindings: [
+        AppShellBinding(),
+        HomeBinding(),
+        DownloadBinding(),
+        SettingsBinding(),
+      ],
     ),
     GetPage(
       name: AppRoutes.download,

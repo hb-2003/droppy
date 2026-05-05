@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:convert';
 
 import 'package:dio/dio.dart' as d;
 import 'package:get/get.dart';
@@ -19,20 +20,102 @@ class DownloadRepository extends GetxService {
     }
     try {
       final dio = ApiClient.instance.dio;
-      final res = await dio.get<Map<String, dynamic>>(
+      // Some installs respond with JSON but `Content-Type: text/html`.
+      final res = await dio.get<String>(
         'handler/metadata',
         queryParameters: <String, dynamic>{
           'upload_id': uploadId,
           if (privateId.isNotEmpty) 'private_id': privateId,
         },
+        options: d.Options(responseType: d.ResponseType.plain),
       );
-      final data = res.data;
-      if (data is! Map<String, dynamic>) {
+      final raw = (res.data ?? '').trim();
+      Map<String, dynamic>? data;
+      try {
+        final decoded = jsonDecode(raw);
+        if (decoded is Map) {
+          data = decoded.map((k, v) => MapEntry(k.toString(), v));
+        }
+      } catch (_) {}
+      if (data == null) {
+        final lower = raw.toLowerCase();
+        final looksLikeHtml = lower.startsWith('<!doctype') || lower.startsWith('<html');
+        if (looksLikeHtml) {
+          // Common case: site returned the HTML login / error page instead of JSON.
+          if (lower.contains('login') && (lower.contains('e-mail') || lower.contains('email'))) {
+            return TransferMetadata.failure('login_required');
+          }
+          // sharelargefilesfree.com returns HTML for handler/metadata. Match web flow by parsing the
+          // *share page* HTML (`/{upload_id}/{private_id?}`) for hidden inputs and lock state.
+          final parsed = await _fetchAndParseSharePage(uploadId: uploadId, privateId: privateId);
+          return parsed ?? TransferMetadata.failure('html_response');
+        }
         return TransferMetadata.failure('bad_response');
       }
       return TransferMetadata.fromJson(data);
     } catch (e) {
       return TransferMetadata.failure('network_error');
+    }
+  }
+
+  Future<TransferMetadata?> _fetchAndParseSharePage({
+    required String uploadId,
+    required String privateId,
+  }) async {
+    final base = resolveBaseUrl();
+    if (base.isEmpty) return null;
+    final path = privateId.isNotEmpty ? '$uploadId/$privateId' : uploadId;
+
+    try {
+      final dio = ApiClient.instance.dio;
+      final res = await dio.get<String>(
+        path,
+        options: d.Options(responseType: d.ResponseType.plain),
+      );
+      final html = (res.data ?? '').trim();
+      if (html.isEmpty) return null;
+
+      final lower = html.toLowerCase();
+      if (lower.contains('login') && (lower.contains('e-mail') || lower.contains('email'))) {
+        return TransferMetadata.failure('login_required');
+      }
+
+      String? pickValue(String id) {
+        final re = RegExp('id="$id"[^>]*value="([^"]*)"', caseSensitive: false);
+        return re.firstMatch(html)?.group(1);
+      }
+
+      final dlId = pickValue('download_id') ?? uploadId;
+
+      // Detect password gate by form action.
+      final locked = RegExp(r'action=\"handler/password\"', caseSensitive: false).hasMatch(html) ||
+          lower.contains('password-protected') ||
+          lower.contains('fill_password');
+
+      // Best-effort parse count/size from the modern download page.
+      int? count;
+      int? sizeBytes;
+      final countM = RegExp(r'<strong>\s*(\d+)\s*</strong>\s*FILES', caseSensitive: false)
+          .firstMatch(html);
+      if (countM != null) count = int.tryParse(countM.group(1) ?? '');
+
+      // We don't have a reliable raw bytes value in HTML (web formats it), so leave size null.
+
+      return TransferMetadata(
+        ok: true,
+        uploadId: dlId,
+        share: 'link',
+        count: count,
+        size: sizeBytes,
+        time: null,
+        timeExpire: null,
+        destruct: null,
+        hasPassword: locked,
+        passwordUnlocked: !locked,
+        files: const [],
+      );
+    } catch (_) {
+      return null;
     }
   }
 
@@ -79,7 +162,7 @@ class DownloadRepository extends GetxService {
       queryParameters: <String, dynamic>{
         'action': 'download',
         'download_id': uploadId,
-        'private_id': privateId,
+        if (privateId.isNotEmpty) 'private_id': privateId,
         'url': pageUrl,
       },
       options: d.Options(

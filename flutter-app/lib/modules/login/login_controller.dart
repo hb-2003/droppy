@@ -18,7 +18,7 @@ class LoginController extends GetxController {
         password: passCtrl.text,
       );
       if (ok) {
-        Get.offAllNamed(AppRoutes.home);
+        Get.offAllNamed(AppRoutes.shell);
       } else {
         Get.snackbar('Login', 'Failed');
       }

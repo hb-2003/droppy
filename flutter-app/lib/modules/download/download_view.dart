@@ -17,6 +17,7 @@ class DownloadView extends GetView<DownloadController> {
           children: [
             TextField(
               controller: controller.uploadIdCtrl,
+              onChanged: controller.setFromPastedLinkOrId,
               decoration: InputDecoration(labelText: t.downloadIdHint),
             ),
             const SizedBox(height: 12),
@@ -40,7 +41,25 @@ class DownloadView extends GetView<DownloadController> {
               final m = controller.meta.value;
               if (m == null) return const SizedBox.shrink();
               if (!m.ok) {
-                return Text(m.error ?? t.errorGeneric);
+                final e = m.error ?? 'error';
+                if (e == 'login_required') {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(t.loginRequiredTitle,
+                          style: Theme.of(context).textTheme.titleLarge),
+                      const SizedBox(height: 8),
+                      Text(t.loginRequiredBody),
+                    ],
+                  );
+                }
+                if (e == 'html_response' || e == 'bad_response') {
+                  return Text(t.errorBadResponse);
+                }
+                if (e == 'network_error') {
+                  return Text(t.errorNetwork);
+                }
+                return Text(e);
               }
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

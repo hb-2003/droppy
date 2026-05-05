@@ -131,13 +131,14 @@ class AppConfig {
   factory AppConfig.fallback() {
     return const AppConfig(
       siteUrl: '',
-      themeColor: '#D4FF3A',         // slvf --slvf-accent (lime green)
+      // Match live web defaults on sharelargefilesfree.com (inline JS variables).
+      themeColor: '#D4FF3A',
       themeColorSecondary: '#D4FF3A',
-      themeColorText: '#0A0C14',     // slvf --slvf-accent-ink (dark text on lime)
-      maxSizeMb: 100,
-      maxChunkSizeMb: 2,
-      maxFiles: 1,
-      maxConcurrentUploads: 1,
+      themeColorText: '#0A0C14',
+      maxSizeMb: 20480,
+      maxChunkSizeMb: 100,
+      maxFiles: 200,
+      maxConcurrentUploads: 8,
       shareEnabled: true,
       defaultSharetype: 'link',
       blockedTypes: '',

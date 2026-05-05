@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:convert';
 
 import 'package:dio/dio.dart' as d;
 import 'package:file_picker/file_picker.dart';
@@ -38,13 +39,25 @@ class RegisterResult {
 }
 
 class UploadRepository extends GetxService {
-  /// Returns null if the request failed or `upload_id` was missing.
   Future<String?> genUploadId() async {
     if (!ApiClient.instance.hasValidBaseUrl) return null;
     try {
       final dio = ApiClient.instance.dio;
-      final res = await dio.get<Map<String, dynamic>>('upload/genid');
-      final id = JsonRead.string(res.data?['upload_id']);
+      // Live installs sometimes respond with JSON but `Content-Type: text/html`.
+      // So we request plain text and decode JSON ourselves.
+      final res = await dio.get<String>(
+        'upload/genid',
+        options: d.Options(responseType: d.ResponseType.plain),
+      );
+      final raw = (res.data ?? '').trim();
+      Map<String, dynamic>? data;
+      try {
+        final decoded = jsonDecode(raw);
+        if (decoded is Map) {
+          data = decoded.map((k, v) => MapEntry(k.toString(), v));
+        }
+      } catch (_) {}
+      final id = JsonRead.string(data?['upload_id']);
       if (id == null || id.isEmpty) return null;
       return id;
     } catch (_) {
@@ -90,12 +103,24 @@ class UploadRepository extends GetxService {
     }
     try {
       final dio = ApiClient.instance.dio;
-      final res = await dio.post<Map<String, dynamic>>(
+      // Some installs respond with JSON but `Content-Type: text/html`.
+      final res = await dio.post<String>(
         'upload/register',
         data: form,
-        options: d.Options(contentType: 'multipart/form-data'),
+        options: d.Options(
+          contentType: 'multipart/form-data',
+          responseType: d.ResponseType.plain,
+        ),
       );
-      final code = JsonRead.string(res.data?['response']);
+      final raw = (res.data ?? '').trim();
+      Map<String, dynamic>? data;
+      try {
+        final decoded = jsonDecode(raw);
+        if (decoded is Map) {
+          data = decoded.map((k, v) => MapEntry(k.toString(), v));
+        }
+      } catch (_) {}
+      final code = JsonRead.string(data?['response']);
       return RegisterResult(responseCode: code);
     } catch (_) {
       return const RegisterResult(responseCode: null);

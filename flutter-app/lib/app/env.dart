@@ -1,11 +1,8 @@
-/// Compile-time server base URL, e.g.
-/// `flutter run --dart-define=API_BASE_URL=https://files.example.com/`
-/// Use the **public** site origin (upload page), not `/admin`.
+/// Deprecated: previously used for compile-time base URL.
+///
+/// Base URL is now configured via `app/config.dart` (defaults) and Settings (storage).
 class Env {
   Env._();
 
-  static const String apiBaseUrl = String.fromEnvironment(
-    'API_BASE_URL',
-    defaultValue: '',
-  );
+  static const String apiBaseUrl = '';
 }

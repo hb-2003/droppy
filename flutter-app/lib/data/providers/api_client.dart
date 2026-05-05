@@ -3,23 +3,19 @@ import 'package:dio/dio.dart';
 import 'package:dio_cookie_manager/dio_cookie_manager.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:sendlargefiles/app/env.dart';
+import 'package:sendlargefiles/app/config.dart';
+import 'package:flutter/foundation.dart';
 
 const _kBaseUrlKey = 'api_base_url';
 
-/// Public Droppy site used when no env var and nothing saved in storage.
-/// API calls use this origin (e.g. `handler/app_config`, `upload/genid`), not the `/admin` panel URL.
-const String kDefaultPublicApiBase = 'https://sharelargefilesfree.com/';
+const String kDefaultPublicApiBase = AppConfigDefaults.apiBaseUrl;
 
-/// Normalizes [url] to always end with `/`.
 String normalizeBaseUrl(String url) {
   if (url.isEmpty) return url;
   return url.endsWith('/') ? url : '$url/';
 }
 
 String resolveBaseUrl() {
-  final fromEnv = Env.apiBaseUrl.trim();
-  if (fromEnv.isNotEmpty) return normalizeBaseUrl(fromEnv);
   final stored = (GetStorage().read(_kBaseUrlKey) as String?)?.trim() ?? '';
   if (stored.isNotEmpty) return normalizeBaseUrl(stored);
   return kDefaultPublicApiBase;
@@ -79,6 +75,33 @@ class ApiClient {
     if (_jar != null) {
       _dio!.interceptors.add(CookieManager(_jar!));
     }
+
+    // Basic request/response logging for debugging API issues.
+    _dio!.interceptors.add(
+      InterceptorsWrapper(
+        onRequest: (o, h) {
+          debugPrint('[API] → ${o.method} ${o.uri}');
+          if (o.queryParameters.isNotEmpty) {
+            debugPrint('[API]   query=${o.queryParameters}');
+          }
+          h.next(o);
+        },
+        onResponse: (r, h) {
+          debugPrint('[API] ← ${r.statusCode} ${r.requestOptions.method} ${r.requestOptions.uri}');
+          final data = r.data;
+          if (data is String) {
+            debugPrint('[API]   body=${data.length > 300 ? '${data.substring(0, 300)}…' : data}');
+          } else {
+            debugPrint('[API]   body=${data.runtimeType}');
+          }
+          h.next(r);
+        },
+        onError: (e, h) {
+          debugPrint('[API] ✕ ${e.requestOptions.method} ${e.requestOptions.uri} ${e.type} ${e.message}');
+          h.next(e);
+        },
+      ),
+    );
   }
 
   void updateBaseUrl(String url) {

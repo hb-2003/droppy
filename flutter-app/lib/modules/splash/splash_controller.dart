@@ -2,12 +2,8 @@ import 'dart:async';
 
 import 'package:app_links/app_links.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:sendlargefiles/app/routes/app_routes.dart';
 import 'package:sendlargefiles/data/providers/api_client.dart';
-import 'package:sendlargefiles/data/repositories/config_repository.dart';
-
-const _kCachedConfig = 'cached_app_config_json';
 
 class SplashController extends GetxController {
   final RxBool loading = true.obs;
@@ -23,7 +19,7 @@ class SplashController extends GetxController {
       final id = segs[0];
       final pid = segs.length > 1 ? segs[1] : '';
       Get.toNamed(
-        AppRoutes.download,
+        AppRoutes.shell,
         parameters: <String, String>{'id': id, 'pid': pid},
       );
     });
@@ -36,28 +32,13 @@ class SplashController extends GetxController {
   }
 
   Future<void> _bootstrap() async {
-    final cfgRepo = Get.find<ConfigRepository>();
-    final box = GetStorage();
-    final cached = box.read<String>(_kCachedConfig);
-    await cfgRepo.hydrateFromStorage(cached);
-
     try {
       await ApiClient.instance.init();
-      final cfg = await cfgRepo.fetchRemote();
-      final serialized = cfgRepo.serializeCurrent();
-      if (serialized != null) {
-        await box.write(_kCachedConfig, serialized);
-      }
-
-      final lp = cfg.lockPage;
-      if (lp == 'both') {
-        Get.offAllNamed(AppRoutes.login);
-        return;
-      }
-
-      Get.offAllNamed(AppRoutes.home);
+      // No bootstrap call here: sharelargefilesfree.com returns HTML for `handler/app_config`.
+      // Login gating will be enforced by the server when calling upload/download endpoints.
+      Get.offAllNamed(AppRoutes.shell);
     } catch (_) {
-      Get.offAllNamed(AppRoutes.home);
+      Get.offAllNamed(AppRoutes.shell);
     } finally {
       loading.value = false;
     }
