@@ -1,6 +1,7 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:dio/dio.dart' show CancelToken;
 import 'package:sendlargefiles/app/routes/app_routes.dart';
 import 'package:sendlargefiles/controllers/locale_controller.dart';
 import 'package:sendlargefiles/data/models/app_config.dart';
@@ -20,8 +21,11 @@ class HomeController extends GetxController {
   final shareMode = 'link'.obs;
   final destruct = 'no'.obs;
   final files = <PickedFileItem>[].obs;
+  final pickingFiles = false.obs;
   final uploading = false.obs;
   final progress = 0.0.obs;
+  final uploadSentBytes = 0.obs;
+  final uploadTotalBytes = 0.obs;
   final finishedLink = ''.obs;
   final mailFinished = false.obs;
   final awaitingVerify = false.obs;
@@ -32,6 +36,7 @@ class HomeController extends GetxController {
 
   final expireSec = 604800.obs;
   int _uidCounter = 0;
+  CancelToken? _cancelToken;
 
   AppConfig get cfg => _cfg.current;
 
@@ -65,8 +70,11 @@ class HomeController extends GetxController {
   void setShareMode(String m) => shareMode.value = m;
 
   Future<void> pickFiles() async {
-    final r = await FilePicker.platform.pickFiles(allowMultiple: true);
-    if (r == null) return;
+    if (pickingFiles.value) return;
+    pickingFiles.value = true;
+    try {
+      final r = await FilePicker.platform.pickFiles(allowMultiple: true);
+      if (r == null) return;
     final cfgMax = cfg.maxSizeBytes;
     var total = 0;
     for (final f in files) {
@@ -84,6 +92,9 @@ class HomeController extends GetxController {
       files.add(p);
     }
     files.refresh();
+    } finally {
+      pickingFiles.value = false;
+    }
   }
 
   void removeFile(PickedFileItem f) {
@@ -98,14 +109,19 @@ class HomeController extends GetxController {
       if (!ok) return;
     }
 
-    final langPath = _languagePathForUpload();
-    await Get.find<AuthRepository>().syncSessionLanguage(langPath);
-
+    // Flip UI into loading state immediately (even while we sync language / request ids).
     uploading.value = true;
     progress.value = 0;
+    uploadSentBytes.value = 0;
+    uploadTotalBytes.value = files.fold<int>(0, (s, f) => s + f.size);
     finishedLink.value = '';
     mailFinished.value = false;
     awaitingVerify.value = false;
+    _cancelToken?.cancel('superseded');
+    _cancelToken = CancelToken();
+
+    final langPath = _languagePathForUpload();
+    await Get.find<AuthRepository>().syncSessionLanguage(langPath);
 
     try {
       final newId = await _upload.genUploadId();
@@ -128,8 +144,13 @@ class HomeController extends GetxController {
         return;
       }
       await _runFileUploadAndComplete(langPath);
+      _cancelToken = null;
     } catch (e) {
-      Get.snackbar('Error', '$e');
+      if (e is Exception && '$e'.toLowerCase().contains('cancel')) {
+        // User cancelled; no snackbar needed.
+      } else {
+        Get.snackbar('Error', '$e');
+      }
     } finally {
       if (!awaitingVerify.value) {
         uploading.value = false;
@@ -189,6 +210,7 @@ class HomeController extends GetxController {
       grand += f.size;
     }
     if (grand == 0) grand = 1;
+    uploadTotalBytes.value = grand;
 
     // Web uses `limitConcurrentUploads = maxConcurrentUploads`.
     // We mimic this by uploading multiple files in parallel (each file still chunks sequentially).
@@ -202,15 +224,18 @@ class HomeController extends GetxController {
         uploadId: activeUploadId,
         item: f,
         cfg: cfg,
+        cancelToken: _cancelToken,
         onProgress: (s, t) {
           perFileSent[f.fileUid] = s;
           final sum = perFileSent.values.fold<int>(0, (a, b) => a + b);
           progress.value = (sum / grand).clamp(0.0, 1.0);
+          uploadSentBytes.value = sum;
         },
       );
       perFileSent[f.fileUid] = fileTotal[f.fileUid] ?? f.size;
       final sum = perFileSent.values.fold<int>(0, (a, b) => a + b);
       progress.value = (sum / grand).clamp(0.0, 1.0);
+      uploadSentBytes.value = sum;
     }
 
     await _runWithConcurrency<PickedFileItem>(files.toList(), maxConc, runOne);
@@ -239,12 +264,24 @@ class HomeController extends GetxController {
     files.clear();
     files.refresh();
     progress.value = 0;
+    uploadSentBytes.value = 0;
+    uploadTotalBytes.value = 0;
+  }
+
+  void cancelUpload() {
+    final t = _cancelToken;
+    if (t != null && !t.isCancelled) {
+      t.cancel('user_cancelled');
+    }
+    uploading.value = false;
   }
 
   void resetForNewTransfer() {
     files.clear();
     files.refresh();
     progress.value = 0;
+    uploadSentBytes.value = 0;
+    uploadTotalBytes.value = 0;
     uploading.value = false;
     awaitingVerify.value = false;
     activeUploadId = '';

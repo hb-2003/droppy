@@ -15,6 +15,27 @@ class SettingsView extends GetView<SettingsController> {
       body: ListView(
         padding: const EdgeInsets.all(20),
         children: [
+          Text(t.settingsAppearance, style: Theme.of(context).textTheme.titleSmall),
+          const SizedBox(height: 8),
+          Card(
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: DropdownButtonFormField<ThemeMode>(
+                key: ValueKey<ThemeMode>(controller.themeMode),
+                initialValue: controller.themeMode,
+                decoration: InputDecoration(labelText: t.settingsTheme),
+                items: [
+                  DropdownMenuItem(value: ThemeMode.system, child: Text(t.themeSystem)),
+                  DropdownMenuItem(value: ThemeMode.light, child: Text(t.themeLight)),
+                  DropdownMenuItem(value: ThemeMode.dark, child: Text(t.themeDark)),
+                ],
+                onChanged: (m) {
+                  if (m != null) controller.setThemeMode(m);
+                },
+              ),
+            ),
+          ),
+          const SizedBox(height: 24),
           Text(t.settingsAccount, style: Theme.of(context).textTheme.titleSmall),
           const SizedBox(height: 8),
           Obx(() {
@@ -51,6 +72,11 @@ class SettingsView extends GetView<SettingsController> {
                     ),
                     const SizedBox(height: 8),
                     OutlinedButton(
+                      onPressed: controller.openRegister,
+                      child: Text(t.signUp),
+                    ),
+                    const SizedBox(height: 8),
+                    OutlinedButton(
                       onPressed: controller.openWebsite,
                       child: Text(t.settingsOpenWebsite),
                     ),
@@ -59,6 +85,38 @@ class SettingsView extends GetView<SettingsController> {
               ),
             );
           }),
+          const SizedBox(height: 24),
+          Text(t.settingsLinks, style: Theme.of(context).textTheme.titleSmall),
+          const SizedBox(height: 8),
+          Card(
+            child: Column(
+              children: [
+                ListTile(
+                  leading: const Icon(Icons.privacy_tip_outlined),
+                  title: Text(t.privacyPolicy),
+                  onTap: controller.openPrivacy,
+                ),
+                const Divider(height: 1),
+                ListTile(
+                  leading: const Icon(Icons.description_outlined),
+                  title: Text(t.termsOfService),
+                  onTap: controller.openTerms,
+                ),
+                const Divider(height: 1),
+                ListTile(
+                  leading: const Icon(Icons.info_outline_rounded),
+                  title: Text(t.about),
+                  onTap: controller.openAbout,
+                ),
+                const Divider(height: 1),
+                ListTile(
+                  leading: const Icon(Icons.apps_outlined),
+                  title: Text(t.moreApps),
+                  onTap: controller.openMoreApps,
+                ),
+              ],
+            ),
+          ),
           const SizedBox(height: 24),
           Text(t.settingsLanguage),
           const SizedBox(height: 8),

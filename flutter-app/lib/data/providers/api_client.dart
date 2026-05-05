@@ -88,8 +88,17 @@ class ApiClient {
         },
         onResponse: (r, h) {
           debugPrint('[API] ← ${r.statusCode} ${r.requestOptions.method} ${r.requestOptions.uri}');
+          final path = r.requestOptions.path;
+          final ct = (r.headers.value(Headers.contentTypeHeader) ?? '').toLowerCase();
           final data = r.data;
-          if (data is String) {
+
+          final isHtml = ct.contains('text/html') || (data is String && data.trimLeft().startsWith('<'));
+          final skipBody =
+              isHtml || path.startsWith('handler/changelanguage') || path.startsWith('/handler/changelanguage');
+
+          if (skipBody) {
+            debugPrint('[API]   body=<html omitted>');
+          } else if (data is String) {
             debugPrint('[API]   body=${data.length > 300 ? '${data.substring(0, 300)}…' : data}');
           } else {
             debugPrint('[API]   body=${data.runtimeType}');

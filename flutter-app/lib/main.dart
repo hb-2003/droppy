@@ -6,6 +6,7 @@ import 'package:sendlargefiles/app/routes/app_pages.dart';
 import 'package:sendlargefiles/app/routes/app_routes.dart';
 import 'package:sendlargefiles/app/theme/app_theme.dart';
 import 'package:sendlargefiles/controllers/locale_controller.dart';
+import 'package:sendlargefiles/controllers/theme_controller.dart';
 import 'package:sendlargefiles/data/providers/api_client.dart';
 import 'package:sendlargefiles/data/repositories/auth_repository.dart';
 import 'package:sendlargefiles/data/repositories/config_repository.dart';
@@ -18,6 +19,7 @@ Future<void> main() async {
   await GetStorage.init();
   await ApiClient.instance.init();
   Get.put(LocaleController());
+  Get.put(ThemeController());
   Get.put(ConfigRepository());
   Get.put(UploadRepository());
   Get.put(DownloadRepository());
@@ -33,9 +35,12 @@ class SendLargeFilesApp extends StatelessWidget {
     return Obx(() {
       final cfg = Get.find<ConfigRepository>().config.value;
       final loc = Get.find<LocaleController>().locale.value;
+      final mode = Get.find<ThemeController>().themeMode.value;
       return GetMaterialApp(
         title: 'Share Large Video Files',
-        theme: AppTheme.fromConfig(cfg),
+        theme: AppTheme.lightFromConfig(cfg),
+        darkTheme: AppTheme.darkFromConfig(cfg),
+        themeMode: mode,
         locale: loc,
         localizationsDelegates: const [
           AppLocalizations.delegate,

@@ -154,10 +154,19 @@ class _DropZoneEmpty extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 10),
-        TextButton.icon(
-          onPressed: controller.pickFiles,
-          icon: const Icon(Icons.folder_open_rounded, size: 18),
-          label: Text(t.pickFiles),
+        Obx(
+          () => TextButton.icon(
+            key: ValueKey<bool>(controller.pickingFiles.value),
+            onPressed: controller.pickingFiles.value ? null : controller.pickFiles,
+            icon: controller.pickingFiles.value
+                ? const SizedBox(
+                    width: 18,
+                    height: 18,
+                    child: CircularProgressIndicator(strokeWidth: 2),
+                  )
+                : const Icon(Icons.folder_open_rounded, size: 18),
+            label: Text(controller.pickingFiles.value ? 'Loading…' : t.pickFiles),
+          ),
         ),
       ],
     );
@@ -284,13 +293,22 @@ class _DropZoneFilled extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 10),
-        OutlinedButton.icon(
-          onPressed: controller.pickFiles,
-          icon: const Icon(Icons.add_rounded, size: 16),
-          label: const Text('Add more files'),
-          style: OutlinedButton.styleFrom(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-            textStyle: const TextStyle(fontSize: 13),
+        Obx(
+          () => OutlinedButton.icon(
+            key: ValueKey<bool>(controller.pickingFiles.value),
+            onPressed: controller.pickingFiles.value ? null : controller.pickFiles,
+            icon: controller.pickingFiles.value
+                ? const SizedBox(
+                    width: 16,
+                    height: 16,
+                    child: CircularProgressIndicator(strokeWidth: 2),
+                  )
+                : const Icon(Icons.add_rounded, size: 16),
+            label: Text(controller.pickingFiles.value ? 'Adding…' : 'Add more files'),
+            style: OutlinedButton.styleFrom(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+              textStyle: const TextStyle(fontSize: 13),
+            ),
           ),
         ),
       ],
@@ -587,16 +605,27 @@ class _UploadForm extends StatelessWidget {
               padding: const EdgeInsets.all(14),
               child: Obx(
                 () => FilledButton(
-                  onPressed: controller.files.isEmpty
+                  onPressed: controller.files.isEmpty || controller.uploading.value || controller.pickingFiles.value
                       ? null
                       : () => controller.startSend(context),
                   style: FilledButton.styleFrom(minimumSize: const Size.fromHeight(48)),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Icon(Icons.send_rounded, size: 18),
+                      if (controller.uploading.value) ...[
+                        const SizedBox(
+                          width: 18,
+                          height: 18,
+                          child: CircularProgressIndicator(strokeWidth: 2),
+                        ),
+                      ] else ...[
+                        const Icon(Icons.send_rounded, size: 18),
+                      ],
                       const SizedBox(width: 8),
-                      Text(t.sendButton, style: const TextStyle(fontSize: 15)),
+                      Text(
+                        controller.uploading.value ? 'Starting…' : t.sendButton,
+                        style: const TextStyle(fontSize: 15),
+                      ),
                     ],
                   ),
                 ),
@@ -655,7 +684,19 @@ class _ProgressPane extends StatelessWidget {
     return Center(
       child: Obx(() {
         final p = controller.progress.value.clamp(0.0, 1.0);
-        final pct = (p * 100).toInt();
+        final pctLabel = (p * 100).toStringAsFixed(1);
+        final sent = controller.uploadSentBytes.value;
+        final total = controller.uploadTotalBytes.value;
+        final remaining = (total - sent).clamp(0, total);
+        String fmt(int b) {
+          const kb = 1024.0;
+          const mb = kb * 1024.0;
+          const gb = mb * 1024.0;
+          if (b >= gb) return '${(b / gb).toStringAsFixed(2)} GB';
+          if (b >= mb) return '${(b / mb).toStringAsFixed(1)} MB';
+          if (b >= kb) return '${(b / kb).toStringAsFixed(0)} KB';
+          return '$b B';
+        }
         return Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -677,7 +718,7 @@ class _ProgressPane extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Text(
-                        '$pct%',
+                        '$pctLabel%',
                         style: Theme.of(context)
                             .textTheme
                             .displayMedium!
@@ -692,6 +733,18 @@ class _ProgressPane extends StatelessWidget {
             Text(
               'Uploading…',
               style: Theme.of(context).textTheme.titleLarge,
+            ),
+            const SizedBox(height: 8),
+            Text(
+              '${fmt(sent)} / ${fmt(total)}  •  ${fmt(remaining)} left',
+              style: Theme.of(context).textTheme.bodyMedium,
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 16),
+            OutlinedButton.icon(
+              onPressed: controller.cancelUpload,
+              icon: const Icon(Icons.close_rounded, size: 18),
+              label: const Text('Cancel upload'),
             ),
           ],
         );

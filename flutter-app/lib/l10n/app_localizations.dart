@@ -358,6 +358,36 @@ abstract class AppLocalizations {
   /// **'Account'**
   String get settingsAccount;
 
+  /// No description provided for @settingsAppearance.
+  ///
+  /// In en, this message translates to:
+  /// **'Appearance'**
+  String get settingsAppearance;
+
+  /// No description provided for @settingsTheme.
+  ///
+  /// In en, this message translates to:
+  /// **'Theme'**
+  String get settingsTheme;
+
+  /// No description provided for @themeSystem.
+  ///
+  /// In en, this message translates to:
+  /// **'System'**
+  String get themeSystem;
+
+  /// No description provided for @themeLight.
+  ///
+  /// In en, this message translates to:
+  /// **'Light'**
+  String get themeLight;
+
+  /// No description provided for @themeDark.
+  ///
+  /// In en, this message translates to:
+  /// **'Dark'**
+  String get themeDark;
+
   /// No description provided for @settingsSignedIn.
   ///
   /// In en, this message translates to:
@@ -375,6 +405,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Open website'**
   String get settingsOpenWebsite;
+
+  /// No description provided for @signUp.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign up'**
+  String get signUp;
+
+  /// No description provided for @settingsLinks.
+  ///
+  /// In en, this message translates to:
+  /// **'Links'**
+  String get settingsLinks;
+
+  /// No description provided for @privacyPolicy.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy policy'**
+  String get privacyPolicy;
+
+  /// No description provided for @termsOfService.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms of service'**
+  String get termsOfService;
+
+  /// No description provided for @about.
+  ///
+  /// In en, this message translates to:
+  /// **'About'**
+  String get about;
+
+  /// No description provided for @moreApps.
+  ///
+  /// In en, this message translates to:
+  /// **'More apps'**
+  String get moreApps;
 
   /// No description provided for @settingsLanguage.
   ///

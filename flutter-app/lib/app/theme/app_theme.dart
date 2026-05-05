@@ -104,9 +104,81 @@ Color _hex(String? hex, Color fallback) {
 class AppTheme {
   AppTheme._();
 
+  static ThemeData lightFromConfig(AppConfig? c) {
+    final cfg = c ?? AppConfig.fallback();
+
+    final primary = _hex(cfg.themeColor, DroppyWebColors.bulmaInfo);
+    final secondary = _hex(cfg.themeColorSecondary, DroppyWebColors.bulmaInfo);
+    final onPrimary = _hex(cfg.themeColorText, Colors.white);
+
+    var scheme = ColorScheme.fromSeed(seedColor: primary, brightness: Brightness.light);
+    scheme = scheme.copyWith(
+      brightness: Brightness.light,
+      primary: primary,
+      onPrimary: onPrimary,
+      secondary: secondary,
+      onSecondary: _contrastOn(secondary),
+      surface: Colors.white,
+      onSurface: const Color(0xFF0A0A0A),
+      surfaceContainerHighest: const Color(0xFFF5F5F5),
+      outline: const Color(0xFFEDEDED),
+      error: DroppyWebColors.error,
+    );
+
+    final textTheme = GoogleFonts.robotoTextTheme(ThemeData.light().textTheme);
+
+    return ThemeData(
+      useMaterial3: true,
+      brightness: Brightness.light,
+      colorScheme: scheme,
+      scaffoldBackgroundColor: const Color(0xFFF5F5F5),
+      textTheme: textTheme,
+      appBarTheme: AppBarTheme(
+        elevation: 0,
+        scrolledUnderElevation: 0,
+        centerTitle: false,
+        backgroundColor: Colors.white,
+        foregroundColor: const Color(0xFF0A0A0A),
+        surfaceTintColor: Colors.transparent,
+        titleTextStyle: GoogleFonts.roboto(fontSize: 16, fontWeight: FontWeight.w600, color: const Color(0xFF0A0A0A)),
+      ),
+      cardTheme: CardThemeData(
+        color: Colors.white,
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+          side: const BorderSide(color: Color(0xFFEDEDED)),
+        ),
+      ),
+      dividerTheme: const DividerThemeData(color: Color(0xFFEDEDED), thickness: 1),
+      filledButtonTheme: FilledButtonThemeData(
+        style: FilledButton.styleFrom(
+          backgroundColor: primary,
+          foregroundColor: onPrimary,
+          textStyle: GoogleFonts.roboto(fontWeight: FontWeight.w600),
+        ),
+      ),
+      outlinedButtonTheme: OutlinedButtonThemeData(
+        style: OutlinedButton.styleFrom(
+          foregroundColor: const Color(0xFF0A0A0A),
+          side: const BorderSide(color: Color(0xFFEDEDED)),
+          textStyle: GoogleFonts.roboto(fontWeight: FontWeight.w600),
+        ),
+      ),
+      inputDecorationTheme: InputDecorationTheme(
+        filled: true,
+        fillColor: Colors.white,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: const BorderSide(color: Color(0xFFEDEDED)),
+        ),
+      ),
+    );
+  }
+
   /// Dark theme matching the live Droppy "Cinematic Studio" (slvf) design layer.
   /// Source: `assets/themes/modern/css/slvf.css`.
-  static ThemeData fromConfig(AppConfig? c) {
+  static ThemeData darkFromConfig(AppConfig? c) {
     final cfg = c ?? AppConfig.fallback();
 
     // Server can override accent — default to slvf lime #D4FF3A
@@ -132,9 +204,7 @@ class AppTheme {
       error: DroppyWebColors.error,
     );
 
-    // Bricolage Grotesque — web --slvf-font-body
-    // Falls back through Inter Tight → system-ui in CSS; Google Fonts has it.
-    final textTheme = _buildTextTheme();
+    final textTheme = GoogleFonts.robotoTextTheme(ThemeData.dark().textTheme);
 
     return ThemeData(
       useMaterial3: true,
@@ -153,7 +223,7 @@ class AppTheme {
         backgroundColor: DroppyWebColors.ink950,
         foregroundColor: DroppyWebColors.text,
         surfaceTintColor: Colors.transparent,
-        titleTextStyle: GoogleFonts.bricolageGrotesque(
+        titleTextStyle: GoogleFonts.roboto(
           fontSize: 15,
           fontWeight: FontWeight.w700,
           color: DroppyWebColors.text,
@@ -182,7 +252,7 @@ class AppTheme {
       ),
       snackBarTheme: SnackBarThemeData(
         backgroundColor: DroppyWebColors.ink700,
-        contentTextStyle: GoogleFonts.bricolageGrotesque(color: DroppyWebColors.text),
+        contentTextStyle: GoogleFonts.roboto(color: DroppyWebColors.text),
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(DroppyRadius.sm),
@@ -200,7 +270,7 @@ class AppTheme {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(DroppyRadius.pill),
           ),
-          textStyle: GoogleFonts.bricolageGrotesque(
+          textStyle: GoogleFonts.roboto(
             fontSize: 15,
             fontWeight: FontWeight.w700,
           ),
@@ -215,7 +285,7 @@ class AppTheme {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(DroppyRadius.pill),
           ),
-          textStyle: GoogleFonts.bricolageGrotesque(
+          textStyle: GoogleFonts.roboto(
             fontWeight: FontWeight.w600,
           ),
         ),
@@ -223,7 +293,7 @@ class AppTheme {
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
           foregroundColor: primary,
-          textStyle: GoogleFonts.bricolageGrotesque(fontWeight: FontWeight.w600),
+          textStyle: GoogleFonts.roboto(fontWeight: FontWeight.w600),
         ),
       ),
       segmentedButtonTheme: SegmentedButtonThemeData(
@@ -256,11 +326,11 @@ class AppTheme {
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: DroppyWebColors.ink800,
-        hintStyle: GoogleFonts.bricolageGrotesque(
+        hintStyle: GoogleFonts.roboto(
           color: DroppyWebColors.textMute,
           fontSize: 14,
         ),
-        labelStyle: GoogleFonts.bricolageGrotesque(
+        labelStyle: GoogleFonts.roboto(
           color: DroppyWebColors.textDim,
           fontSize: 14,
         ),
@@ -294,12 +364,12 @@ class AppTheme {
         textColor: DroppyWebColors.text,
         iconColor: DroppyWebColors.textDim,
         tileColor: Colors.transparent,
-        titleTextStyle: GoogleFonts.bricolageGrotesque(
+        titleTextStyle: GoogleFonts.roboto(
           fontSize: 14,
           fontWeight: FontWeight.w500,
           color: DroppyWebColors.text,
         ),
-        subtitleTextStyle: GoogleFonts.bricolageGrotesque(
+        subtitleTextStyle: GoogleFonts.roboto(
           fontSize: 12,
           color: DroppyWebColors.textDim,
         ),
@@ -329,101 +399,7 @@ class AppTheme {
     );
   }
 
-  static TextTheme _buildTextTheme() {
-    // Bricolage Grotesque — web `--slvf-font-display` and `--slvf-font-body`
-    return TextTheme(
-      // Display — hero H1 (40px on web, scaled for mobile)
-      displayLarge: GoogleFonts.bricolageGrotesque(
-        fontSize: 40,
-        fontWeight: FontWeight.w800,
-        color: DroppyWebColors.text,
-        height: 1.05,
-        letterSpacing: -1.0,
-      ),
-      displayMedium: GoogleFonts.bricolageGrotesque(
-        fontSize: 30,
-        fontWeight: FontWeight.w700,
-        color: DroppyWebColors.text,
-        height: 1.1,
-        letterSpacing: -0.5,
-      ),
-      displaySmall: GoogleFonts.bricolageGrotesque(
-        fontSize: 26,
-        fontWeight: FontWeight.w700,
-        color: DroppyWebColors.text,
-        height: 1.15,
-        letterSpacing: -0.3,
-      ),
-      // Headline
-      headlineLarge: GoogleFonts.bricolageGrotesque(
-        fontSize: 24,
-        fontWeight: FontWeight.w700,
-        color: DroppyWebColors.text,
-        letterSpacing: -0.3,
-      ),
-      headlineMedium: GoogleFonts.bricolageGrotesque(
-        fontSize: 20,
-        fontWeight: FontWeight.w600,
-        color: DroppyWebColors.text,
-      ),
-      headlineSmall: GoogleFonts.bricolageGrotesque(
-        fontSize: 18,
-        fontWeight: FontWeight.w600,
-        color: DroppyWebColors.text,
-      ),
-      // Title
-      titleLarge: GoogleFonts.bricolageGrotesque(
-        fontSize: 18,
-        fontWeight: FontWeight.w600,
-        color: DroppyWebColors.text,
-      ),
-      titleMedium: GoogleFonts.bricolageGrotesque(
-        fontSize: 16,
-        fontWeight: FontWeight.w600,
-        color: DroppyWebColors.text,
-      ),
-      titleSmall: GoogleFonts.bricolageGrotesque(
-        fontSize: 14,
-        fontWeight: FontWeight.w600,
-        color: DroppyWebColors.textSoft,
-      ),
-      // Body
-      bodyLarge: GoogleFonts.bricolageGrotesque(
-        fontSize: 16,
-        fontWeight: FontWeight.w400,
-        color: DroppyWebColors.text,
-        height: 1.5,
-      ),
-      bodyMedium: GoogleFonts.bricolageGrotesque(
-        fontSize: 14,
-        fontWeight: FontWeight.w400,
-        color: DroppyWebColors.textSoft,
-        height: 1.5,
-      ),
-      bodySmall: GoogleFonts.bricolageGrotesque(
-        fontSize: 12,
-        fontWeight: FontWeight.w400,
-        color: DroppyWebColors.textDim,
-      ),
-      // Label
-      labelLarge: GoogleFonts.bricolageGrotesque(
-        fontSize: 15,
-        fontWeight: FontWeight.w700,
-        color: DroppyWebColors.text,
-      ),
-      labelMedium: GoogleFonts.bricolageGrotesque(
-        fontSize: 13,
-        fontWeight: FontWeight.w500,
-        color: DroppyWebColors.textSoft,
-      ),
-      labelSmall: GoogleFonts.bricolageGrotesque(
-        fontSize: 11,
-        fontWeight: FontWeight.w600,
-        color: DroppyWebColors.textMute,
-        letterSpacing: 0.8,
-      ),
-    );
-  }
+  // (unused) _buildTextTheme removed
 
   // ── Static style helpers ──────────────────────────────────────────────────
 

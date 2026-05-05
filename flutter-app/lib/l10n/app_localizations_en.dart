@@ -141,6 +141,21 @@ class AppLocalizationsEn extends AppLocalizations {
   String get settingsAccount => 'Account';
 
   @override
+  String get settingsAppearance => 'Appearance';
+
+  @override
+  String get settingsTheme => 'Theme';
+
+  @override
+  String get themeSystem => 'System';
+
+  @override
+  String get themeLight => 'Light';
+
+  @override
+  String get themeDark => 'Dark';
+
+  @override
   String get settingsSignedIn => 'You are signed in.';
 
   @override
@@ -148,6 +163,24 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get settingsOpenWebsite => 'Open website';
+
+  @override
+  String get signUp => 'Sign up';
+
+  @override
+  String get settingsLinks => 'Links';
+
+  @override
+  String get privacyPolicy => 'Privacy policy';
+
+  @override
+  String get termsOfService => 'Terms of service';
+
+  @override
+  String get about => 'About';
+
+  @override
+  String get moreApps => 'More apps';
 
   @override
   String get settingsLanguage => 'Language';
