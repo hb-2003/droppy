@@ -6,11 +6,7 @@ import 'package:sendlargefiles/controllers/theme_controller.dart';
 import 'package:sendlargefiles/l10n/app_localizations.dart';
 import 'package:sendlargefiles/modules/settings/settings_controller.dart';
 
-const _bg = Color(0xFF0D0D0D);
-const _cardBg = Color(0xFF161616);
-const _accent = Color(0xFFD4FF3B);
-const _accentDark = Color(0xFF0A0A0A);
-const _accentGlow = Color(0x33D4FF3B);
+
 
 class SettingsView extends GetView<SettingsController> {
   const SettingsView({super.key});
@@ -76,7 +72,8 @@ class SettingsView extends GetView<SettingsController> {
                         child: Obx(() {
                           final theme = Get.find<ThemeController>();
                           return DropdownButtonFormField<ThemeMode>(
-                            value: theme.themeMode.value,
+                            key: ValueKey<ThemeMode>(theme.themeMode.value),
+                            initialValue: theme.themeMode.value,
                             dropdownColor: cardBg,
                             style: TextStyle(color: scheme.onSurface),
                             iconEnabledColor: scheme.onSurface.withValues(alpha: 0.6),
@@ -256,7 +253,8 @@ class SettingsView extends GetView<SettingsController> {
                       Obx(() {
                         final lc = Get.find<LocaleController>().locale.value;
                         return DropdownButtonFormField<String>(
-                          value: lc.languageCode,
+                          key: ValueKey<String>(lc.languageCode),
+                          initialValue: lc.languageCode,
                           dropdownColor: cardBg,
                           style: TextStyle(color: scheme.onSurface),
                           iconEnabledColor: scheme.onSurface.withValues(alpha: 0.6),
@@ -307,168 +305,5 @@ class _NoOverscrollBehavior extends ScrollBehavior {
   @override
   Widget buildOverscrollIndicator(BuildContext context, Widget child, ScrollableDetails details) {
     return child;
-  }
-}
-
-class _AccountSignedOut extends StatelessWidget {
-  const _AccountSignedOut({required this.controller, required this.t});
-  final SettingsController controller;
-  final AppLocalizations t;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: _cardBg,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: Colors.white.withValues(alpha: 0.07)),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          const Text(
-            'Sign in to track your transfers and access your history from any device.',
-            style: TextStyle(color: Colors.white38, fontSize: 13, height: 1.5),
-          ),
-          const SizedBox(height: 14),
-          GestureDetector(
-            onTap: controller.goLogin,
-            child: Container(
-              height: 48,
-              decoration: BoxDecoration(
-                color: _accent,
-                borderRadius: BorderRadius.circular(50),
-                boxShadow: const [BoxShadow(color: _accentGlow, blurRadius: 20, offset: Offset(0, 4))],
-              ),
-              alignment: Alignment.center,
-              child: Text(t.signIn,
-                  style: const TextStyle(color: _accentDark, fontSize: 15, fontWeight: FontWeight.w700)),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _LanguageDropdown extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final lc = Get.find<LocaleController>();
-    return Obx(() {
-      final current = lc.locale.value;
-      return Container(
-        decoration: BoxDecoration(
-          color: _cardBg,
-          borderRadius: BorderRadius.circular(14),
-          border: Border.all(color: Colors.white.withValues(alpha: 0.07)),
-        ),
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-        child: DropdownButtonHideUnderline(
-          child: DropdownButton<String>(
-            value: current.languageCode,
-            dropdownColor: const Color(0xFF1E1E1E),
-            style: const TextStyle(color: Colors.white, fontSize: 14),
-            icon: const Icon(Icons.keyboard_arrow_down_rounded, color: Colors.white38),
-            isExpanded: true,
-            items: AppLocalizations.supportedLocales.map((l) => DropdownMenuItem(
-              value: l.languageCode,
-              child: Text(l.languageCode.toUpperCase(), style: const TextStyle(color: Colors.white)),
-            )).toList(),
-            onChanged: (code) {
-              if (code != null) lc.setLocale(Locale(code));
-            },
-          ),
-        ),
-      );
-    });
-  }
-}
-
-class _ServerUrlField extends StatelessWidget {
-  const _ServerUrlField({required this.controller});
-  final SettingsController controller;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: _cardBg,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: Colors.white.withValues(alpha: 0.07)),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          const Text(
-            'Enter the base URL of your server (e.g. http://10.0.2.2:8000/)',
-            style: TextStyle(color: Colors.white38, fontSize: 12, height: 1.5),
-          ),
-          const SizedBox(height: 10),
-          TextField(
-            controller: controller.serverUrlCtrl,
-            keyboardType: TextInputType.url,
-            autocorrect: false,
-            style: const TextStyle(color: Colors.white, fontSize: 13),
-            decoration: InputDecoration(
-              hintText: 'http://10.0.2.2:8000/',
-              hintStyle: const TextStyle(color: Colors.white24, fontSize: 13),
-              filled: true,
-              fillColor: const Color(0xFF1C1C1C),
-              border: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: BorderSide(color: Colors.white.withValues(alpha: 0.08))),
-              enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: BorderSide(color: Colors.white.withValues(alpha: 0.08))),
-              focusedBorder: const OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10)), borderSide: BorderSide(color: _accent, width: 1.5)),
-              contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
-            ),
-          ),
-          const SizedBox(height: 10),
-          GestureDetector(
-            onTap: controller.saveServerUrl,
-            child: Container(
-              height: 42,
-              decoration: BoxDecoration(
-                color: _accent,
-                borderRadius: BorderRadius.circular(50),
-              ),
-              alignment: Alignment.center,
-              child: const Text('Save', style: TextStyle(color: _accentDark, fontSize: 14, fontWeight: FontWeight.w700)),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _InfoCard extends StatelessWidget {
-  const _InfoCard({required this.icon, required this.label, required this.onTap});
-  final IconData icon;
-  final String label;
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          color: _cardBg,
-          borderRadius: BorderRadius.circular(14),
-          border: Border.all(color: Colors.white.withValues(alpha: 0.07)),
-        ),
-        child: Row(
-          children: [
-            Icon(icon, color: Colors.white54, size: 20),
-            const SizedBox(width: 12),
-            Text(label, style: const TextStyle(color: Colors.white60, fontSize: 14)),
-            const Spacer(),
-            const Icon(Icons.arrow_forward_ios_rounded, color: Colors.white24, size: 14),
-          ],
-        ),
-      ),
-    );
   }
 }

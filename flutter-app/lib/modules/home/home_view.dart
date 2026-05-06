@@ -13,8 +13,6 @@ Color _cardBg(BuildContext c) => Theme.of(c).colorScheme.surfaceContainerHighest
 Color _fieldBg(BuildContext c) => Theme.of(c).colorScheme.surface;
 Color _tabBg(BuildContext c) => Theme.of(c).colorScheme.surfaceContainerHighest;
 Color _accent(BuildContext c) => Theme.of(c).colorScheme.primary;
-Color _accentInk(BuildContext c) => Theme.of(c).colorScheme.onPrimary;
-Color _text(BuildContext c) => Theme.of(c).colorScheme.onSurface;
 Color _textDim(BuildContext c) => Theme.of(c).colorScheme.onSurface.withValues(alpha: 0.55);
 /// Card / section borders — full [outlineVariant] so light mode edges stay visible.
 Color _line(BuildContext c) => Theme.of(c).colorScheme.outlineVariant;
@@ -258,7 +256,6 @@ class _StatsBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
     final cfg = controller.cfg;
     final maxGb = cfg.maxSizeMb >= 1000
         ? '${(cfg.maxSizeMb / 1000).toStringAsFixed(0)} GB'
@@ -326,7 +323,6 @@ class _TabSwitcher extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Obx(() {
-      final scheme = Theme.of(context).colorScheme;
       final mode = controller.shareMode.value;
       return Container(
         height: 46,
@@ -746,7 +742,7 @@ class _ExpiryDropdown extends StatelessWidget {
       if (value != current) controller.expireSec.value = value;
 
       return DropdownButtonFormField<int>(
-        value: value,
+        initialValue: value,
         dropdownColor: _cardBg(context),
         iconEnabledColor: scheme.onSurface.withValues(alpha: 0.6),
         style: TextStyle(color: scheme.onSurface, fontSize: 13),
@@ -790,26 +786,20 @@ class _DarkField extends StatelessWidget {
   const _DarkField({
     required this.ctrl,
     required this.hint,
-    this.keyboardType,
     this.prefixIcon,
     this.obscureText = false,
-    this.maxLines = 1,
   });
   final TextEditingController ctrl;
   final String hint;
-  final TextInputType? keyboardType;
   final IconData? prefixIcon;
   final bool obscureText;
-  final int maxLines;
 
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
     return TextField(
       controller: ctrl,
-      keyboardType: keyboardType,
       obscureText: obscureText,
-      maxLines: maxLines,
       style: TextStyle(color: scheme.onSurface, fontSize: 14),
       decoration: InputDecoration(
         hintText: hint,
@@ -1158,7 +1148,7 @@ class _UploadBar extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
         child: Obx(() {
-          final disabled = controller.files.length == 0 ||
+          final disabled = controller.files.isEmpty ||
               controller.uploading.value ||
               controller.pickingFiles.value;
           return FilledButton(
@@ -1191,7 +1181,7 @@ class _UploadBar extends StatelessWidget {
 }
 
 class _FiletypeChips extends StatelessWidget {
-  const _FiletypeChips({super.key});
+  const _FiletypeChips();
 
   @override
   Widget build(BuildContext context) {
@@ -1214,52 +1204,6 @@ class _FiletypeChips extends StatelessWidget {
           ),
         );
       }).toList(),
-    );
-  }
-}
-
-class _AdvancedOptions extends StatelessWidget {
-  const _AdvancedOptions({required this.controller, required this.t});
-  final HomeController controller;
-  final AppLocalizations t;
-
-  String _fmt(int s) {
-    if (s < 3600) return '${s ~/ 60} min';
-    if (s < 86400) return '${s ~/ 3600} hr';
-    return '${s ~/ 86400} day${s ~/ 86400 == 1 ? '' : 's'}';
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final options = controller.cfg.expireOptionsSec;
-    if (options.isEmpty) return const SizedBox.shrink();
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Text('Expiry', style: AppTheme.meta()),
-        const SizedBox(height: 8),
-        Obx(() {
-          return DropdownButtonHideUnderline(
-            child: DropdownButton<int>(
-              value: controller.expireSec.value,
-              isExpanded: true,
-              dropdownColor: _cardBg(context),
-              style: TextStyle(color: Theme.of(context).colorScheme.onSurface),
-              items: options
-                  .map((s) => DropdownMenuItem<int>(
-                        value: s,
-                        child: Text(_fmt(s), style: AppTheme.meta()),
-                      ))
-                  .toList(),
-              onChanged: (v) {
-                if (v == null) return;
-                controller.expireSec.value = v;
-              },
-            ),
-          );
-        }),
-      ],
     );
   }
 }

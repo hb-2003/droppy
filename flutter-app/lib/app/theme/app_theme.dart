@@ -155,6 +155,20 @@ class AppTheme {
       colorScheme: scheme,
       scaffoldBackgroundColor: bg,
       textTheme: textTheme,
+      listTileTheme: ListTileThemeData(
+        textColor: scheme.onSurface,
+        iconColor: scheme.onSurface.withValues(alpha: 0.6),
+        tileColor: Colors.transparent,
+        titleTextStyle: GoogleFonts.roboto(
+          fontSize: 14,
+          fontWeight: FontWeight.w500,
+          color: scheme.onSurface,
+        ).copyWith(inherit: true),
+        subtitleTextStyle: GoogleFonts.roboto(
+          fontSize: 12,
+          color: scheme.onSurface.withValues(alpha: 0.65),
+        ).copyWith(inherit: true),
+      ),
       appBarTheme: AppBarTheme(
         elevation: 0,
         scrolledUnderElevation: 0,
@@ -402,11 +416,11 @@ class AppTheme {
           fontSize: 14,
           fontWeight: FontWeight.w500,
           color: DroppyWebColors.text,
-        ),
+        ).copyWith(inherit: true),
         subtitleTextStyle: GoogleFonts.roboto(
           fontSize: 12,
           color: DroppyWebColors.textDim,
-        ),
+        ).copyWith(inherit: true),
       ),
       tooltipTheme: TooltipThemeData(
         decoration: BoxDecoration(

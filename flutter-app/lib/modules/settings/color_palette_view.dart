@@ -157,7 +157,7 @@ class ColorPaletteView extends StatelessWidget {
             if (star)
               Padding(
                 padding: const EdgeInsets.only(bottom: 2),
-                child: Icon(Icons.star_rounded, size: 10, color: textColor.withOpacity(0.6)),
+                child: Icon(Icons.star_rounded, size: 10, color: textColor.withValues(alpha: 0.6)),
               ),
             Text(
               name,
