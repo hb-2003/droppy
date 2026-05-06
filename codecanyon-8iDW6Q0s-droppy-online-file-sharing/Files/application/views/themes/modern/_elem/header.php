@@ -39,7 +39,7 @@
     <!-- Video.js -->
     <link href="assets/css/video-js.css" rel="stylesheet">
 
-    <!-- Legacy theme stylesheet (Bulma + Droppy) -->
+    <!-- Legacy theme stylesheet (Bulma + base theme) -->
     <link rel="stylesheet" href="assets/themes/<?php echo $settings['theme'] ?>/css/style.css?v=<?php echo rand() . $settings['version']; ?>">
 
     <!-- Share Large Video Files — Cinematic Studio design layer -->

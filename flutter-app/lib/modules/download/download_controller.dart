@@ -54,7 +54,7 @@ class DownloadController extends GetxController {
     final segs = uri.pathSegments.where((s) => s.isNotEmpty).toList();
     if (segs.isEmpty) return;
 
-    // Droppy share links are typically `/{upload_id}` or `/{upload_id}/{private_id}`.
+    // Share links are typically `/{upload_id}` or `/{upload_id}/{private_id}`.
     final id = segs[0];
     final pid = segs.length > 1 ? segs[1] : '';
 

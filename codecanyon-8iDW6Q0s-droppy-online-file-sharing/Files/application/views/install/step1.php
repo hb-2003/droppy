@@ -5,7 +5,7 @@
 </div>
 <div class="card card-md">
     <div class="card-body text-center py-4 p-sm-5">
-        <h1>Welcome to Droppy!</h1>
+        <h1>Welcome to Share Large Video Files!</h1>
         <p class="text-muted">A couple steps are needed to get you up and running so please follow along</p>
     </div>
     <div class="hr-text hr-text-center hr-text-spaceless">requirement checks</div>
@@ -13,7 +13,7 @@
         <?php if(!$database): ?>
             <h3 class="head text-center">Database credentials incorrect!</h3>
             <p class="narrow text-center">
-                Droppy is unable to connect to your database<br>
+                Setup is unable to connect to your database<br>
                 Please check if the database settings are correctly entered in the <code>application/config/database.php</code> file
                 <br><br>
                 <a href="" class="btn btn-success btn-outline-rounded green">I have added my credentials</a>

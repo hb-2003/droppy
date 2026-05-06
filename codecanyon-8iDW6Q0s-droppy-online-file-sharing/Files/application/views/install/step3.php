@@ -1,6 +1,6 @@
 <?php
 if(isset($error) && $error == 'connection') {
-    echo '<div class="alert alert-danger" role="alert" style="margin-right: auto; margin-left: auto; width: 70%; text-align: center;">Droppy was unable to connect to the database please try again !</div>';
+    echo '<div class="alert alert-danger" role="alert" style="margin-right: auto; margin-left: auto; width: 70%; text-align: center;">Setup was unable to connect to the database please try again !</div>';
 }
 ?>
 
@@ -10,7 +10,7 @@ if(isset($error) && $error == 'connection') {
 <div class="card card-md">
     <div class="card-body text-center py-4 p-sm-5">
         <h1 class="mt-5">Unable to connect</h1>
-        <p class="text-muted">Droppy was unable to connect to your DB, please try again.</p>
+        <p class="text-muted">Setup was unable to connect to your DB, please try again.</p>
     </div>
 </div>
 <div class="row align-items-center mt-3">

@@ -8,7 +8,7 @@ if(!isset($settings['debug_mode']) && !isset($_GET['redirect'])) {
             <?php if(!$htaccess_check_2_3_2) : ?>
                 <div class="alert alert-danger" style="margin: 10px 0 20px 0;">
                     <h4>Important!</h4>
-                    It seems like you're missing the <code>application/.htaccess</code> file, please copy it over from your Droppy ZIP or download it from <a href="https://raw.githubusercontent.com/bcit-ci/CodeIgniter/develop/application/.htaccess" target="_blank">here</a> and place it into the application/ directory.
+                    It seems like you're missing the <code>application/.htaccess</code> file, please copy it from your product package ZIP or download it from <a href="https://raw.githubusercontent.com/bcit-ci/CodeIgniter/develop/application/.htaccess" target="_blank">here</a> and place it into the application/ directory.
                     <br>
                 </div>
             <?php endif; ?>
@@ -27,11 +27,11 @@ if(!isset($settings['debug_mode']) && !isset($_GET['redirect'])) {
                                 <dd class="col-7"><a href="<?php echo $settings['site_url'] ?>"><?php echo $settings['site_url'] ?></a></dd>
                                 <dt class="col-5">Install path</dt>
                                 <dd class="col-7"><?php echo FCPATH ?></dd>
-                                <dt class="col-5">Droppy version</dt>
+                                <dt class="col-5">Application version</dt>
                                 <dd class="col-7"><?php echo $settings['version'] ?></dd>
-                                <dt class="col-5">Droppy mode</dt>
+                                <dt class="col-5">Environment mode</dt>
                                 <dd class="col-7"><?php echo ENVIRONMENT ?></dd>
-                                <dt class="col-5">Droppy debug mode</dt>
+                                <dt class="col-5">Debug mode</dt>
                                 <dd class="col-7"><?php echo $settings['debug_mode'] ?> <a href="system?action=debug" onclick="return confirm('Debugging mode should only be used for testing, it can generate a large log file on your server when you leave it enabled in production. Make sure to disable it when you\'re done with testing.')"><span class="badge bg-blue"><?php echo ($settings['debug_mode'] == 'true' ? 'Disable' : 'Enable') ?></span></a></dd>
                                 <dt class="col-5">Active theme</dt>
                                 <dd class="col-7"><?php echo $settings['theme'] ?></dd>
@@ -88,7 +88,7 @@ if(!isset($settings['debug_mode']) && !isset($_GET['redirect'])) {
                                     if(isset($latest_version) && $latest_version === false):
                                         ?>
                                         <div class="alert alert-danger">
-                                            <p>Droppy was unable to contact the Proxibolt API server, please check back later. If the issue persists then please contact Proxibolt support.</p>
+                                            <p>The update service was unable to contact the Proxibolt API server, please check back later. If the issue persists then please contact Proxibolt support.</p>
                                         </div>
                                     <?php
                                     elseif(isset($latest_version->version) && ($settings['version'] == $latest_version->version || $settings['version'] > $latest_version->version)):
@@ -111,7 +111,7 @@ if(!isset($settings['debug_mode']) && !isset($_GET['redirect'])) {
                                                 echo $pb_message->msg;
                                             }
                                             ?>
-                                            <p>Your version of Droppy is outdated and needs to be updated, please enter your purchase code below and Droppy will do the rest for you.</p>
+                                            <p>Your installed version is outdated and needs to be updated, please enter your purchase code below and the updater will do the rest for you.</p>
                                             <div class="mb-3">
                                                 <input type="text" class="form-control" name="purchase_code" placeholder="Your purchase code" value="<?php echo $settings['purchase_code']; ?>" required>
                                                 <p><i>Don't know where to find your purchase code ? Please give a look to this article: <a href="https://help.market.envato.com/hc/en-us/articles/202822600-Where-Can-I-Find-my-Purchase-Code-">here</a></i></p>
@@ -188,13 +188,13 @@ if(!isset($settings['debug_mode']) && !isset($_GET['redirect'])) {
                     <div class="card">
                         <div class="card-header">
                             <div class="col">
-                                <h4 class="card-title">Recent Droppy logs <?php echo ($settings['debug_mode'] == 'false' ? '<span class="badge bg-red-lt">Disabled</span>' : '') ?></h4>
+                                <h4 class="card-title">Recent application logs <?php echo ($settings['debug_mode'] == 'false' ? '<span class="badge bg-red-lt">Disabled</span>' : '') ?></h4>
                             </div>
                         </div>
                         <div class="card-body">
                             <p>Log items are only added when debugging is enabled</p>
                             <?php if(file_exists(FCPATH . 'droppy.log')): ?>
-                                <a class="btn btn-default" href="<?php echo $settings['site_url'] ?>droppy.log" download>Download droppy.log</a>
+                                <a class="btn btn-default" href="<?php echo $settings['site_url'] ?>droppy.log" download>Download debug log (droppy.log)</a>
                             <?php endif; ?>
                         </div>
                     </div>
@@ -212,10 +212,10 @@ if(!isset($settings['debug_mode']) && !isset($_GET['redirect'])) {
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <h2>Droppy has been updated to V<?php echo $settings['version'] ?>!</h2>
+                    <h2>Application has been updated to V<?php echo $settings['version'] ?>!</h2>
                     <hr>
                     <h2>Another free update!</h2>
-                    <p>Droppy has already received more than 100 free updates throughout the years</p>
+                    <p>This product has received many free updates throughout the years</p>
                     <p>Are you enjoying these free updates? If you do then please leave a review on <a href="https://proxibolt.zendesk.com/hc/en-us/articles/5427494964754" target="_blank">CodeCanyon</a></p>
                     <a href="https://proxibolt.zendesk.com/hc/en-us/articles/5427494964754" target="_blank"><img src="https://src.proxibolt.com/droppy/5stars.png" width="200"></a><br><br>
                     <a href="https://proxibolt.zendesk.com/hc/en-us/articles/5427494964754" target="_blank" class="btn btn-info">Leave review</a>
@@ -301,19 +301,19 @@ V2.5.6
 - Added option to edit languages
 - Added password reset feature to admin panel
 - Added option to set a different admin url path
-- Added ability to login using local Droppy accounts when Active directory is connected
+- Added ability to login using local accounts when Active directory is connected
 - Changed logging level when in development mode
 - Fixed some general issues and improved code quality
 
 V2.5.5
-- Fixed some issues that caused Droppy to stop working in PHP 7, although it's still recommended to use PHP 8.0 or higher
-- Fixed issue that caused the mobile logo to not be shown on the mobile version of Droppy
+- Fixed some issues that caused the application to stop working in PHP 7, although it's still recommended to use PHP 8.0 or higher
+- Fixed issue that caused the mobile logo to not be shown on the mobile version of the site
 - Added extra connection checks to auto-updater
 - General bug fixes and improvements
 - Added extra debugging lines
 
 V2.5.4
-- Added option to set different mobile logo that is shown on the mobile version of Droppy
+- Added option to set different mobile logo that is shown on the mobile version of the site
 - Added missing accept terms option back and moved it to the "General settings" page in the admin panel
 - Added PHP 8 check
 - Added option to set the order of the pages (Menu order)
@@ -332,7 +332,7 @@ V2.5.2
 - Added option to admin panel to set frontend date format
 - Added option to admin panel to set session expiration timeout
                 </pre>
-                    <p>The full changelog can be found <a href="https://proxibolt.zendesk.com/hc/en-us/articles/360025115111-Droppy-changelog" target="_blank">over here</a></p>
+                    <p>The full vendor changelog can be found <a href="https://proxibolt.zendesk.com/hc/en-us/articles/360025115111-Droppy-changelog" target="_blank">over here</a></p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn me-auto" data-bs-dismiss="modal">Close</button>

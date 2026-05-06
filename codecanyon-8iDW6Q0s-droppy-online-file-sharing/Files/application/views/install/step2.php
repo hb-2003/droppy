@@ -5,7 +5,7 @@
     <div class="card card-md">
         <div class="card-body text-center py-4 p-sm-5">
             <h1 class="mt-5">Purchase validation</h1>
-            <p class="text-muted">Let's start by validating your purchase by entering your droppy purchase code below.</p>
+            <p class="text-muted">Let's start by validating your purchase by entering your Envato purchase code below.</p>
         </div>
         <div class="hr-text hr-text-center hr-text-spaceless">your data</div>
         <div class="card-body">

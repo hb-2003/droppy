@@ -95,7 +95,7 @@
                             <input type="hidden" name="save" value="1">
 
                             <h3>Disabled email templates</h3>
-                            <i>Select email templates that you don't want Droppy to send, hold CTRL or ⌘(CMD) to select multiple.</i><br>
+                            <i>Select email templates that you don't want the application to send, hold CTRL or ⌘(CMD) to select multiple.</i><br>
                             <i>Also use CTRL or ⌘(CMD) to deselect an item</i>
                             <br><br>
                             <?php

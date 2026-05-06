@@ -12,14 +12,14 @@
                                 <label class="form-label">Site name</label>
                                 <div class="col-sm-10">
                                     <input type="text" name="site_name" class="form-control" value="<?php echo $settings['site_name']; ?>">
-                                    <i>Your site name, Eg: Droppy</i>
+                                    <i>Your site name, e.g. Share Large Video Files</i>
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Site title</label>
                                 <div class="col-sm-10">
                                     <input type="text" name="site_title" class="form-control" value="<?php echo $settings['site_title']; ?>">
-                                    <i>Your site title, Eg: Droppy - Online file sharing (This will be shown in a browser tab)</i>
+                                    <i>Your site title, e.g. Share Large Video Files (shown in the browser tab)</i>
                                 </div>
                             </div>
                             <div class="mb-3">
@@ -235,7 +235,7 @@
                                 <label class="form-label">Date/Time format (frontend)</label>
                                 <div class="col-sm-10">
                                     <input type="text" name="date_format" class="form-control" value="<?php echo $settings['date_format'] ?>" placeholder="Y-m-d H:i">
-                                    <i>The format of the time shown on the frontend of Droppy (not the admin panel). Please see <a href="https://www.php.net/manual/en/datetime.format.php#refsect1-datetime.format-parameters">this page</a> for all possible formatting options.</i>
+                                    <i>The format of the time shown on the public frontend (not the admin panel). Please see <a href="https://www.php.net/manual/en/datetime.format.php#refsect1-datetime.format-parameters">this page</a> for all possible formatting options.</i>
                                 </div>
                             </div>
 
@@ -251,7 +251,7 @@
                                 <label class="form-label">Proxy IPs</label>
                                 <div class="col-sm-10">
                                     <input type="text" name="proxy_ips" class="form-control" value="<?php echo $settings['proxy_ips'] ?>">
-                                    <i>Is your host behind a (reverse) proxy? Enter the ip of your proxy host here. Droppy is currently detecting your ip as: <b><?php echo $ip_address; ?></b> If this is not your IP then it's probably the IP of your proxy and you should add this value to the input above.</i>
+                                    <i>Is your host behind a (reverse) proxy? Enter the ip of your proxy host here. The application is currently detecting your ip as: <b><?php echo $ip_address; ?></b> If this is not your IP then it's probably the IP of your proxy and you should add this value to the input above.</i>
                                     <i>Just leave empty if everything is working fine. You can also add multiple proxy hosts by separating ip's by comma.</i>
                                 </div>
                             </div>

@@ -83,6 +83,6 @@ if(isset($_GET['goto']))
 
 <?php echo $settings['analytics']; ?>
 
-<!-- Droppy V<?php echo $settings['version'] ?> -->
+<!-- Share Large Video Files · app v<?php echo $settings['version'] ?> -->
 </body>
 </html>

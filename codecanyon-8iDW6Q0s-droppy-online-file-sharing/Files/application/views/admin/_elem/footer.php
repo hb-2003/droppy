@@ -14,7 +14,7 @@
                                 <a href="." class="link-secondary"><?php echo $settings['site_name'] ?></a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="https://proxibolt.zendesk.com/hc/en-us/articles/360025115111-Droppy-V2-changelog" target="_blank" class="link-secondary" rel="noopener">Version <?php echo $settings['version'] ?></a>
+                                <a href="https://proxibolt.zendesk.com/hc/en-us/articles/360025115111-Droppy-V2-changelog" target="_blank" class="link-secondary" rel="noopener">Changelog (v<?php echo $settings['version'] ?>)</a>
                             </li>
                         </ul>
                     </div>

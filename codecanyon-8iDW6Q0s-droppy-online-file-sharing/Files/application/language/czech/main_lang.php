@@ -1,6 +1,6 @@
 <?php
 /**
- * Droppy - Online file sharing
+ * Share Large Video Files
  * Language
  * @lang Czech
  * @author Tomáš Horák & Pavel Rzehák (Město Kostelec nad Orlicí) - v2022-10-18-01 for v2.4.6, https://gitlab.com/kostelecno.cz/droppy-czech

@@ -1,6 +1,6 @@
-# Send Large Video Files (Flutter)
+# Share Large Video Files (Flutter)
 
-Client for [Droppy](https://codecanyon.net/item/droppy-online-file-sharing/) style installs: chunked upload, share link or email, download via transfer ID.
+Client for the PHP file-sharing backend in this repo: chunked upload, share link or email, download via transfer ID.
 
 ## Configure server URL
 
@@ -12,7 +12,7 @@ Client for [Droppy](https://codecanyon.net/item/droppy-online-file-sharing/) sty
 
 2. **Or** open **Settings** in the app and enter the base URL (saved locally). The app restarts and loads `handler/app_config` from that host.
 
-3. **PHP:** ensure `handler/app_config` and `handler/metadata` exist (included in this repo’s Droppy `Handler.php`).
+3. **PHP:** ensure `handler/app_config` and `handler/metadata` exist (included in this repo’s `Handler.php`).
 
 ## Backend JSON
 
@@ -38,4 +38,13 @@ Client for [Droppy](https://codecanyon.net/item/droppy-online-file-sharing/) sty
 flutter analyze
 flutter test
 ```
-cd /Users/harsu/Desktop/Harsh/droppy/codecanyon-8iDW6Q0s-droppy-online-file-sharing/Files" && php -S 127.0.0.1:8000
+
+Local PHP (from repo root):
+
+```bash
+cd "codecanyon-8iDW6Q0s-droppy-online-file-sharing/Files" && php -S 127.0.0.1:8000
+```
+
+## Existing PHP site branding
+
+After pulling these changes, update **`droppy_settings`** on the server so the web UI and emails (`{site_name}`) show **Share Large Video Files**. See [`codecanyon-8iDW6Q0s-droppy-online-file-sharing/Files/rebrand_update_site_branding.sql`](../codecanyon-8iDW6Q0s-droppy-online-file-sharing/Files/rebrand_update_site_branding.sql) or use **Admin → Settings → General** for the same fields.

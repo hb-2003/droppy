@@ -5,7 +5,7 @@
         </button>
         <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
             <a href="<?php echo $settings['site_url'] ?>admin">
-                <img src="../<?php echo $settings['logo_path'] ?>" width="110" height="32" alt="Droppy" class="navbar-brand-image">
+                <img src="../<?php echo $settings['logo_path'] ?>" width="110" height="32" alt="<?php echo htmlspecialchars($settings['site_name']); ?>" class="navbar-brand-image">
             </a>
         </h1>
         <div class="navbar-nav flex-row order-md-last">

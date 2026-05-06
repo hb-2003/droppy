@@ -69,7 +69,7 @@
                                         <option value="false">No</option>
                                     </select>
                                     <i>Will show/hide the "Self-destruct" option in the advanced section of the upload form, the "" will be used.</i><br>
-                                    <i><b>Note!</b> This option is for enabling/disabling "Self-destruct". Self-destruct is a Droppy feature that will destroy files when all recipients have downloaded the file, so a recipient can only download the file once. Uploads are still destroyed when their expiration time is reached.</i>
+                                    <i><b>Note!</b> This option is for enabling/disabling "Self-destruct". Self-destruct is a feature that will destroy files when all recipients have downloaded the file, so a recipient can only download the file once. Uploads are still destroyed when their expiration time is reached.</i>
                                 </div>
                             </div>
                             <script>$('select[name="destruct_enabled"]').val("<?php echo $settings['destruct_enabled'] ?>");</script>
@@ -82,7 +82,7 @@
                                         <option value="no">No</option>
                                     </select>
                                     <i>Will set the default value of the "Enable self destruct" option to Yes or No. If the "Show destruct on download option" option is set to "No" then the above value will be used as default value.</i><br>
-                                    <i><b>Note!</b> This option is for enabling/disabling "Self-destruct". Self-destruct is a Droppy feature that will destroy files when all recipients have downloaded the file, so a recipient can only download the file once. Uploads are still destroyed when their expiration time is reached.</i>
+                                    <i><b>Note!</b> This option is for enabling/disabling "Self-destruct". Self-destruct is a feature that will destroy files when all recipients have downloaded the file, so a recipient can only download the file once. Uploads are still destroyed when their expiration time is reached.</i>
                                 </div>
                             </div>
                             <script>$('select[name="default_destruct"]').val("<?php echo $settings['default_destruct'] ?>");</script>
@@ -238,7 +238,7 @@
                                 <label class="form-label">Max recipients</label>
                                 <div class="col-sm-10">
                                     <input type="number" name="max_recipients" min="0" class="form-control" value="<?php echo $settings['max_recipients']; ?>">
-                                    <i>Set the maximum amount of recipients that are allowed to be sent through Droppy. 0 means disabled.</i>
+                                    <i>Set the maximum amount of recipients that are allowed to be sent through the application. 0 means disabled.</i>
                                 </div>
                             </div>
 
@@ -247,7 +247,7 @@
                                 <div class="col-sm-10">
                                     <textarea class="form-control" name="blocked_emails" style="width: 100%; height: 100px;"><?php echo $settings['blocked_emails']; ?></textarea>
                                     <i>Comma seperated list of email addresses are blocked from sending and receiving. <b>Note</b> This is a global list for both the sender and recipients fields. It's also not an exact match, so when adding test@proxibolt.com to the list, then 123.test@proxibolt.com is also blocked because it matches test@proxibolt.com. This allows you to block domains by only adding e.g. @proxibolt.com to the list.</i>
-                                    <br><i>Sample list could be <code>droppy@proxibolt.com,@test.com,test@gmail.com</code></i>
+                                    <br><i>Sample list could be <code>blocked@example.com,@test.com,test@gmail.com</code></i>
                                 </div>
                             </div>
 
@@ -298,7 +298,7 @@
                                         <option value="1">Enabled</option>
                                         <option value="0">Disabled</option>
                                     </select>
-                                    <i>On some hosts it may happen that the default download method of Droppy is not working, resulting in corrupt downloads or downloads not working at all. Try enabling the alternative downloader here to see if this may solve the issue</i>
+                                    <i>On some hosts it may happen that the default download method is not working, resulting in corrupt downloads or downloads not working at all. Try enabling the alternative downloader here to see if this may solve the issue</i>
                                 </div>
                             </div>
                             <script>$('select[name="use_alt_download"]').val("<?php echo $settings['use_alt_download'] ?>");</script>

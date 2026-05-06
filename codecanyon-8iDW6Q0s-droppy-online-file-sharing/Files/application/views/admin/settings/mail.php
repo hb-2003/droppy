@@ -9,7 +9,7 @@
                         <?php if($settings['email_server'] == 'SMTP' && isset($smtp_connect) && $smtp_connect !== true): ?>
                             <div class="alert alert-danger" style="margin: 10px 0 20px 0;">
                                 <h2>Unable to connect to the SMTP server</h2>
-                                Droppy is unable to connect to your SMTP server using the provided settings. The settings are still saved but will most likely result in failed uploads or no emails being sent. The following error was returned:
+                                The application is unable to connect to your SMTP server using the provided settings. The settings are still saved but will most likely result in failed uploads or no emails being sent. The following error was returned:
                                 <pre>
                                     <?php echo trim($smtp_connect); ?>
                                 </pre>

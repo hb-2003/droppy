@@ -30,7 +30,7 @@
     <link rel="preload" href="assets/themes/<?php echo $settings['theme'] ?>/lupuorrc.json" as="fetch">
     <link rel="preload" href="assets/themes/<?php echo $settings['theme'] ?>/yyecauzv.json" as="fetch">
 
-    <!-- Droppy stylesheet -->
+    <!-- Base theme stylesheet -->
     <link rel="stylesheet" href="assets/themes/<?php echo $settings['theme'] ?>/css/style.css?v=<?php echo rand() . $settings['version']; ?>">
 
     <?php if(!empty($settings['theme_color'])): ?>

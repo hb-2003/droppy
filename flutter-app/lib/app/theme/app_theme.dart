@@ -207,7 +207,7 @@ class AppTheme {
     );
   }
 
-  /// Dark theme matching the live Droppy "Cinematic Studio" (slvf) design layer.
+  /// Dark theme matching the live web "Cinematic Studio" (slvf) design layer.
   /// Source: `assets/themes/modern/css/slvf.css`.
   static ThemeData darkFromConfig(AppConfig? c) {
     final cfg = c ?? AppConfig.fallback();

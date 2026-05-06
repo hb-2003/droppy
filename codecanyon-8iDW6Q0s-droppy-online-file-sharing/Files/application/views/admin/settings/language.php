@@ -56,7 +56,7 @@
                                 <br>
                                 <div style="">
                                     <input type="text" class="form-control input-sm" name="locale" placeholder="Locale">
-                                    <i>The locale of the language, locales are returned by the browser. Droppy will use this to map the browser language to the language file in Droppy. You can find the available locale codes <a href="https://www.ibm.com/docs/en/rational-soft-arch/9.6.1?topic=overview-locales-code-pages-supported" target="_blank">over here</a>. You may also add multiple locales to one language if they are somewhat the same. Like for English you can use <code>en-GB,en-US</code>, this will map both the US en British version of English to one language in Droppy.</i>
+                                    <i>The locale of the language, locales are returned by the browser. The application will use this to map the browser language to the language file. You can find the available locale codes <a href="https://www.ibm.com/docs/en/rational-soft-arch/9.6.1?topic=overview-locales-code-pages-supported" target="_blank">over here</a>. You may also add multiple locales to one language if they are somewhat the same. Like for English you can use <code>en-GB,en-US</code>, this will map both the US en British version of English to one language in this installation.</i>
                                 </div>
                                 <br>
                                 <div style="">
@@ -88,13 +88,13 @@
                                             <div class="form-group">
                                                 <label for="edit_path">Directory Name</label>
                                                 <input type="text" class="form-control" id="edit_path" name="path">
-                                                <i>You should <b>NOT</b> edit this value, it's used by Droppy and stored in the user's session. Changing the folder would break their sessions so make sure you know what you're doing when changing this.</i>
+                                                <i>You should <b>NOT</b> edit this value, it's used by the application and stored in the user's session. Changing the folder would break their sessions so make sure you know what you're doing when changing this.</i>
                                             </div>
                                             <br>
                                             <div class="form-group">
                                                 <label for="edit_locale">Locale</label>
                                                 <input type="text" class="form-control" id="edit_locale" name="locale">
-                                                <i>The locale of the language, locales are returned by the browser. Droppy will use this to map the browser language to the language file in Droppy. You can find the available locale codes <a href="https://www.ibm.com/docs/en/rational-soft-arch/9.6.1?topic=overview-locales-code-pages-supported" target="_blank">over here</a>. You may also add multiple locales to one language if they are somewhat the same. Like for English you can use <code>en-GB,en-US</code>, this will map both the US en British version of English to one language in Droppy.</i>
+                                                <i>The locale of the language, locales are returned by the browser. The application will use this to map the browser language to the language file. You can find the available locale codes <a href="https://www.ibm.com/docs/en/rational-soft-arch/9.6.1?topic=overview-locales-code-pages-supported" target="_blank">over here</a>. You may also add multiple locales to one language if they are somewhat the same. Like for English you can use <code>en-GB,en-US</code>, this will map both the US en British version of English to one language in this installation.</i>
                                             </div>
                                             <br>
                                             <button type="submit" class="btn btn-primary">Save Changes</button>

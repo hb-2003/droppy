@@ -4,7 +4,7 @@
 <div class="card card-md">
     <div class="card-body text-center py-4 p-sm-5">
         <h1>Completed!</h1>
-        <p class="text-muted">The installation of Droppy has successfully finished!</p>
+        <p class="text-muted">The installation has successfully finished!</p>
         <p>Please delete the following file: <br><code>application/controllers/Install.php</code></p>
         <p>Click the button below to go to your admin panel</p>
     </div>

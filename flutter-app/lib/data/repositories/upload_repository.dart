@@ -170,7 +170,7 @@ class UploadRepository extends GetxService {
         MapEntry('email_from', email),
         MapEntry('code', digitsOnly),
       ]);
-      // Droppy often returns JSON with Content-Type: text/html (same as upload/register).
+      // Server often returns JSON with Content-Type: text/html (same as upload/register).
       // Request plain text and decode so verification does not fail on HTML-looking responses.
       final res = await dio.post<String>(
         'upload/verify_email',

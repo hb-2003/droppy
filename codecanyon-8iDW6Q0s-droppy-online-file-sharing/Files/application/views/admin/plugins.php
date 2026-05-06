@@ -112,7 +112,7 @@
                             <div class="col-sm-6 col-lg-3">
                                 <div class="card card-md">
                                     <div class="card-body text-center">
-                                        <div class="text-uppercase font-weight-medium">Droppy S3 add-on</div>
+                                        <div class="text-uppercase font-weight-medium">Amazon S3 add-on</div>
                                         <div class="display-5 my-3">$ 12</div>
                                         <ul class="list-unstyled lh-lg">
                                             <li>
@@ -145,7 +145,7 @@
                             <div class="col-sm-6 col-lg-3">
                                 <div class="card card-md">
                                     <div class="card-body text-center">
-                                        <div class="text-uppercase font-weight-medium">Droppy FTP add-on</div>
+                                        <div class="text-uppercase font-weight-medium">FTP add-on</div>
                                         <div class="display-5 my-3">$ 12</div>
                                         <ul class="list-unstyled lh-lg">
                                             <li>
@@ -174,7 +174,7 @@
                             <div class="col-sm-6 col-lg-3">
                                 <div class="card card-md">
                                     <div class="card-body text-center">
-                                        <div class="text-uppercase font-weight-medium">Droppy Active Directory</div>
+                                        <div class="text-uppercase font-weight-medium">Active Directory</div>
                                         <div class="display-5 my-3">$ 24</div>
                                         <ul class="list-unstyled lh-lg">
                                             <li>

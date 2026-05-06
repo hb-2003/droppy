@@ -178,7 +178,7 @@ LOCK TABLES `droppy_settings` WRITE;
 
 INSERT INTO `droppy_settings` (`id`, `site_name`, `site_title`, `site_desc`, `site_keywords`, `site_url`, `lock_page`, `name_on_file`, `max_size`, `max_chunk_size`, `max_files`, `max_file_reports`, `blocked_types`, `expire`, `upload_dir`, `favicon_path`, `logo_path`, `mobile_logo_path`, `language`, `bg_timer`, `default_destruct`, `default_sharetype`, `default_email_to`, `password_enabled`, `analytics`, `accept_terms`, `email_from_name`, `email_from_email`, `email_to_name`, `email_server`, `smtp_host`, `smtp_auth`, `smtp_secure`, `smtp_port`, `smtp_username`, `smtp_password`, `terms_text`, `about_text`, `ad_1_enabled`, `ad_1_code`, `ad_2_enabled`, `ad_2_code`, `purchase_code`, `version`, `last_update_check`, `encrypt_files`)
 VALUES
-	(1,'Droppy','Droppy - Online file sharing','Online file sharing','','','false','droppy',1024,1,10,2,'',1209600,'uploads/','assets/img/icon.png','assets/img/logo.png','assets/img/logo.png','english',5,'no','mail','','true','','yes','No-Reply Droppy','noreply@yourdomain.com','','LOCAL','','true','tls',587,'','','','','false','','false','','','2.6.9',0,0);
+	(1,'Share Large Video Files','Share Large Video Files','Send large video files and large files securely','','','false','droppy',1024,1,10,2,'',1209600,'uploads/','assets/img/icon.png','assets/img/logo.png','assets/img/logo.png','english',5,'no','mail','','true','','yes','Share Large Video Files','noreply@yourdomain.com','','LOCAL','','true','tls',587,'','','','','false','','false','','','2.6.9',0,0);
 
 /*!40000 ALTER TABLE `droppy_settings` ENABLE KEYS */;
 UNLOCK TABLES;

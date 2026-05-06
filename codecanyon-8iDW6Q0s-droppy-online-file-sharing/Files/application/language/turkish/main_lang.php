@@ -1,6 +1,6 @@
 <?php
 /**
- * Droppy - Online file sharing
+ * Share Large Video Files
  * Language
  * @lang Turkish
  * @author UfukArt
@@ -193,6 +193,6 @@ $lang = array(
     // Added in update 2.6.9
     'ip_limit'                    => "Limitinize ulaştınız, daha sonra tekrar deneyin.",
 
-    // Please help translating Droppy by sending this fully translated file to support@proxibolt.com
+    // Please help translating this product by sending this fully translated file to support@proxibolt.com
     // and we'll make sure to include it in the next update
 );

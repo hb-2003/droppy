@@ -156,7 +156,7 @@
                         <dl class="row">
                             <dt class="col-5">Site URL</dt>
                             <dd class="col-7"><?php echo $settings['site_url'] ?></dd>
-                            <dt class="col-5">Droppy version</dt>
+                            <dt class="col-5">Application version</dt>
                             <dd class="col-7"><?php echo $settings['version'] ?></dd>
                             <dt class="col-5">PHP version</dt>
                             <dd class="col-7"><?php echo phpversion() ?></dd>

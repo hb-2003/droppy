@@ -26,6 +26,8 @@
   "verifyEmailTitle": "Verify your email",
   "verifyCodeHint": "Enter the code from your email",
   "verifySubmit": "Verify",
+  "verifyResendCode": "Resend code",
+  "verifyCodeSent": "A new verification code was sent to your email.",
   "loginTitle": "Sign in",
   "signupHint": "Use your site account email and password.",
   "emailHint": "Email",

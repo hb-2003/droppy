@@ -1,6 +1,6 @@
 <?php
 /**
- * Droppy - Online file sharing
+ * Share Large Video Files
  * Language
  * @lang English
  * @author Daan (Proxibolt)
