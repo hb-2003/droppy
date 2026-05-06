@@ -4,8 +4,17 @@ import 'dart:convert';
 import 'package:dio/dio.dart' as d;
 import 'package:get/get.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:sendlargefiles/data/models/transfer_metadata.dart';
 import 'package:sendlargefiles/data/providers/api_client.dart';
+
+/// Result of a file download — includes the saved file and the real filename
+/// extracted from the server's Content-Disposition header.
+class DownloadResult {
+  const DownloadResult({required this.file, required this.filename});
+  final File file;
+  final String filename;
+}
 
 class DownloadRepository extends GetxService {
   Future<TransferMetadata> fetchMetadata({
@@ -146,16 +155,18 @@ class DownloadRepository extends GetxService {
     }
   }
 
-  /// Downloads file bytes to a local path (single- or multi-file ZIP).
-  Future<File> downloadToFile({
+  /// Downloads file bytes and saves to the device's cache directory.
+  /// Returns a [DownloadResult] with the saved [File] and resolved [filename].
+  ///
+  /// The real filename is extracted from the server's `Content-Disposition`
+  /// header first; [filename] is used as a last-resort fallback.
+  Future<DownloadResult> downloadToFile({
     required String uploadId,
     required String privateId,
     required String pageUrl,
     String filename = 'download.bin',
   }) async {
     final dio = ApiClient.instance.dio;
-    final dir = await getApplicationDocumentsDirectory();
-    final out = File('${dir.path}/$filename');
 
     final res = await dio.get<List<int>>(
       'handler/download',
@@ -171,11 +182,86 @@ class DownloadRepository extends GetxService {
         validateStatus: (s) => s != null && s < 400,
       ),
     );
-    final bytes = res.data;
-    if (bytes == null) {
-      throw StateError('Empty download');
+
+    // ── Extract real filename from Content-Disposition header ─────────────
+    final disposition = res.headers.value('content-disposition') ?? '';
+    final realName = _filenameFromDisposition(disposition);
+    if (realName != null && realName.isNotEmpty) {
+      filename = realName;
     }
+
+    final bytes = res.data;
+    if (bytes == null || bytes.isEmpty) throw StateError('Empty download response');
+
+    // ── Resolve save directory (public Downloads folder) ─────────────────
+    final saveDir = await _resolveDownloadsDir();
+    if (!await saveDir.exists()) await saveDir.create(recursive: true);
+
+    // Avoid overwriting: append (n) if the file already exists.
+    var out = File('${saveDir.path}/$filename');
+    if (await out.exists()) {
+      final dot = filename.lastIndexOf('.');
+      final base = dot >= 0 ? filename.substring(0, dot) : filename;
+      final ext  = dot >= 0 ? filename.substring(dot) : '';
+      var n = 1;
+      while (await out.exists()) {
+        out = File('${saveDir.path}/$base ($n)$ext');
+        n++;
+      }
+      filename = out.path.split('/').last;
+    }
+
     await out.writeAsBytes(bytes, flush: true);
-    return out;
+    return DownloadResult(file: out, filename: filename);
+  }
+
+  /// Returns the best available Downloads directory.
+  ///
+  /// Priority:
+  ///   1. Public `/storage/emulated/0/Download` (visible in Files app)
+  ///      — requests storage permission on Android ≤ 12.
+  ///   2. App-specific external storage (`/sdcard/Android/data/{pkg}/files`)
+  ///      — no permission needed, visible in Files app under "Android/data".
+  ///   3. Internal app documents dir (last resort).
+  static Future<Directory> _resolveDownloadsDir() async {
+    if (Platform.isAndroid) {
+      // Request legacy storage permission (only needed on Android ≤ 12).
+      final status = await Permission.storage.status;
+      if (!status.isGranted) {
+        await Permission.storage.request();
+      }
+
+      // Public Downloads folder — always preferred.
+      final pub = Directory('/storage/emulated/0/Download');
+      if (await pub.exists()) return pub;
+
+      // Fall back to app-specific external storage.
+      final ext = await getExternalStorageDirectory();
+      if (ext != null) return ext;
+    }
+
+    // iOS or last-resort fallback.
+    return getApplicationDocumentsDirectory();
+  }
+
+  /// Parses `filename=` or `filename*=UTF-8''` from a Content-Disposition value.
+  static String? _filenameFromDisposition(String header) {
+    if (header.isEmpty) return null;
+
+    // RFC 5987: filename*=UTF-8''encoded%20name
+    final star = RegExp(r"filename\*\s*=\s*UTF-8''([^;]+)", caseSensitive: false)
+        .firstMatch(header);
+    if (star != null) {
+      return Uri.decodeComponent(star.group(1)?.trim() ?? '');
+    }
+
+    // Standard: filename="foo.mp4" or filename=foo.mp4
+    final plain = RegExp(r'filename\s*=\s*"?([^";]+)"?', caseSensitive: false)
+        .firstMatch(header);
+    if (plain != null) {
+      return plain.group(1)?.trim().replaceAll('"', '');
+    }
+
+    return null;
   }
 }

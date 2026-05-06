@@ -4,6 +4,7 @@ import 'package:sendlargefiles/data/providers/api_client.dart';
 
 class AuthRepository extends GetxService {
   final RxBool loggedIn = false.obs;
+  final RxString sessionEmail = ''.obs;
 
   /// POST handler/request_otp { email }
   /// Returns: 'sent' | 'invalid_email' | 'error'
@@ -38,7 +39,10 @@ class AuthRepository extends GetxService {
         ),
       );
       final result = (resp.data?['result'] as String?) ?? 'error';
-      if (result == 'ok') loggedIn.value = true;
+      if (result == 'ok') {
+        loggedIn.value = true;
+        sessionEmail.value = (resp.data?['email'] as String?)?.trim() ?? email.trim();
+      }
       return result;
     } catch (_) {
       return 'error';
@@ -56,8 +60,10 @@ class AuthRepository extends GetxService {
       final data = resp.data;
       final r = (data?['result'] as String?) ?? 'error';
       loggedIn.value = r == 'ok';
+      sessionEmail.value = loggedIn.value ? ((data?['email'] as String?)?.trim() ?? '') : '';
     } catch (_) {
       loggedIn.value = false;
+      sessionEmail.value = '';
     }
   }
 
@@ -72,6 +78,7 @@ class AuthRepository extends GetxService {
     } catch (_) {}
     await ApiClient.instance.clearCookies();
     loggedIn.value = false;
+    sessionEmail.value = '';
   }
 
   /// Sets PHP session language.

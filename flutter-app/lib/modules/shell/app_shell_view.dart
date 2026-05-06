@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:sendlargefiles/modules/download/receive_view.dart';
 import 'package:sendlargefiles/modules/history/history_view.dart';
 import 'package:sendlargefiles/modules/home/home_view.dart';
 import 'package:sendlargefiles/modules/settings/settings_view.dart';
@@ -11,8 +12,6 @@ class AppShellView extends GetView<AppShellController> {
 
   @override
   Widget build(BuildContext context) {
-    // Deep link support: if opened with /{id}/{pid}, jump to History tab (index 1)
-    // is no longer applicable — Download is a separate route now.
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: Theme.of(context).brightness == Brightness.dark
           ? SystemUiOverlayStyle.light
@@ -23,13 +22,18 @@ class AppShellView extends GetView<AppShellController> {
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           body: IndexedStack(
             index: idx,
-            children: const [
-              HomeView(),
-              HistoryView(),
-              SettingsView(),
+            // Each tab is wrapped in its own KeyedSubtree to ensure Flutter
+            // keeps element trees fully isolated — prevents the
+            // "_elements.contains(element): is not true" assertion that fires
+            // when GlobalKeys or FocusNodes in different tabs collide.
+            children: [
+              KeyedSubtree(key: const ValueKey('tab_home'),     child: const HomeView()),
+              KeyedSubtree(key: const ValueKey('tab_history'),  child: const HistoryView()),
+              KeyedSubtree(key: const ValueKey('tab_receive'),  child: const ReceiveView()),
+              KeyedSubtree(key: const ValueKey('tab_settings'), child: const SettingsView()),
             ],
           ),
-          bottomNavigationBar: _DarkNavBar(
+          bottomNavigationBar: _NavBar(
             currentIndex: idx,
             onTap: controller.setTab,
           ),
@@ -39,8 +43,10 @@ class AppShellView extends GetView<AppShellController> {
   }
 }
 
-class _DarkNavBar extends StatelessWidget {
-  const _DarkNavBar({required this.currentIndex, required this.onTap});
+// ── Bottom Nav Bar ────────────────────────────────────────────────────────────
+
+class _NavBar extends StatelessWidget {
+  const _NavBar({required this.currentIndex, required this.onTap});
   final int currentIndex;
   final void Function(int) onTap;
 
@@ -48,23 +54,53 @@ class _DarkNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
     final navBg = scheme.surface;
-    final border = scheme.outlineVariant.withValues(alpha: 0.35);
+    final border = scheme.outlineVariant.withValues(alpha: 0.45);
     final selected = scheme.primary;
-    final unselected = scheme.onSurface.withValues(alpha: 0.55);
+    final unselected = scheme.onSurface.withValues(alpha: 0.50);
+
     return Container(
       decoration: BoxDecoration(
         color: navBg,
-        border: Border(top: BorderSide(color: border)),
+        border: Border(top: BorderSide(color: border, width: 0.5)),
       ),
       child: SafeArea(
         top: false,
         child: SizedBox(
-          height: 60,
+          height: 62,
           child: Row(
             children: [
-              _NavItem(icon: Icons.upload_rounded, label: 'Upload', selected: currentIndex == 0, selectedColor: selected, unselectedColor: unselected, onTap: () => onTap(0)),
-              _NavItem(icon: Icons.history_rounded, label: 'History', selected: currentIndex == 1, selectedColor: selected, unselectedColor: unselected, onTap: () => onTap(1)),
-              _NavItem(icon: Icons.settings_rounded, label: 'Settings', selected: currentIndex == 2, selectedColor: selected, unselectedColor: unselected, onTap: () => onTap(2)),
+              _NavItem(
+                icon: Icons.home_rounded,
+                label: 'Home',
+                selected: currentIndex == 0,
+                selectedColor: selected,
+                unselectedColor: unselected,
+                onTap: () => onTap(0),
+              ),
+              _NavItem(
+                icon: Icons.history_rounded,
+                label: 'History',
+                selected: currentIndex == 1,
+                selectedColor: selected,
+                unselectedColor: unselected,
+                onTap: () => onTap(1),
+              ),
+              _NavItem(
+                icon: Icons.download_rounded,
+                label: 'Receive',
+                selected: currentIndex == 2,
+                selectedColor: selected,
+                unselectedColor: unselected,
+                onTap: () => onTap(2),
+              ),
+              _NavItem(
+                icon: Icons.settings_rounded,
+                label: 'Settings',
+                selected: currentIndex == 3,
+                selectedColor: selected,
+                unselectedColor: unselected,
+                onTap: () => onTap(3),
+              ),
             ],
           ),
         ),
@@ -98,14 +134,28 @@ class _NavItem extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(icon, color: selected ? selectedColor : unselectedColor, size: 22),
-            const SizedBox(height: 3),
+            AnimatedContainer(
+              duration: const Duration(milliseconds: 200),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+              decoration: BoxDecoration(
+                color: selected
+                    ? selectedColor.withValues(alpha: 0.12)
+                    : Colors.transparent,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Icon(
+                icon,
+                color: selected ? selectedColor : unselectedColor,
+                size: 22,
+              ),
+            ),
+            const SizedBox(height: 2),
             Text(
               label,
               style: TextStyle(
                 color: selected ? selectedColor : unselectedColor,
                 fontSize: 10,
-                fontWeight: selected ? FontWeight.w600 : FontWeight.w400,
+                fontWeight: selected ? FontWeight.w700 : FontWeight.w400,
               ),
             ),
           ],

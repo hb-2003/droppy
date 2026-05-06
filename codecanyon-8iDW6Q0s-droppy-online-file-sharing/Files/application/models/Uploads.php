@@ -270,7 +270,9 @@ class Uploads extends CI_Model {
 
         $insert = array(
             'upload_id'     => $post['upload_id'],
-            'email_from'    => ($post['share'] == 'link' ? '' : $post['email_from']),
+            // Store sender/owner email when provided (used by History and email flows).
+            // For share='link' this is ownership only; no emails are sent unless share='mail'.
+            'email_from'    => (isset($post['email_from']) ? $post['email_from'] : ''),
             'message'       => $post['message'],
             'password'      => $post['password'],
             'secret_code'   => md5(time() . rand() . rand() . rand()),

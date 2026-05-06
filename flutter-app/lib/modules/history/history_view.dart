@@ -42,9 +42,10 @@ class _Header extends StatelessWidget {
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
     return Padding(
-      padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+      padding: const EdgeInsets.fromLTRB(20, 16, 20, 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         children: [
           Row(
             children: [
@@ -54,30 +55,38 @@ class _Header extends StatelessWidget {
               ),
               const SizedBox(width: 8),
               Text(
-                'Share Large\nVideo Files',
+                'Share Large Video Files',
                 style: TextStyle(
                   color: scheme.onSurface,
                   fontSize: 10,
-                  height: 1.35,
+                  height: 1.3,
                   fontWeight: FontWeight.w500,
                 ),
               ),
             ],
           ),
-          const SizedBox(height: 24),
+          const SizedBox(height: 16),
           Text(
             title,
             style: TextStyle(
               color: scheme.onSurface,
-              fontSize: 28,
+              fontSize: 26,
               fontWeight: FontWeight.w800,
-              letterSpacing: -0.6,
+              letterSpacing: -0.5,
               height: 1.05,
             ),
           ),
           if (subtitle != null) ...[
-            const SizedBox(height: 4),
-            Text(subtitle!, style: TextStyle(color: scheme.onSurface.withValues(alpha: 0.55), fontSize: 13)),
+            const SizedBox(height: 3),
+            Text(
+              subtitle!,
+              style: TextStyle(
+                color: scheme.onSurface.withValues(alpha: 0.50),
+                fontSize: 12,
+              ),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
           ],
         ],
       ),
@@ -193,7 +202,7 @@ class _ErrorState extends StatelessWidget {
                 Text('Could not load transfers', style: TextStyle(color: scheme.onSurface.withValues(alpha: 0.65), fontSize: 15)),
                 const SizedBox(height: 20),
                 GestureDetector(
-                  onTap: controller.load,
+                  onTap: controller.forceRefresh,
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                     decoration: BoxDecoration(
@@ -225,7 +234,7 @@ class _HistoryList extends StatelessWidget {
     final theme = Theme.of(context);
     final scheme = theme.colorScheme;
     return RefreshIndicator(
-      onRefresh: controller.load,
+      onRefresh: controller.forceRefresh,
       color: scheme.primary,
       backgroundColor: scheme.surfaceContainerHighest,
       child: ScrollConfiguration(
@@ -233,23 +242,13 @@ class _HistoryList extends StatelessWidget {
         child: CustomScrollView(
           physics: const ClampingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
           slivers: [
-            SliverAppBar(
-              pinned: true,
-              floating: false,
-              snap: false,
-              backgroundColor: theme.scaffoldBackgroundColor,
-              foregroundColor: scheme.onSurface,
-              elevation: 0,
-              scrolledUnderElevation: 0,
-              surfaceTintColor: Colors.transparent,
-              toolbarHeight: 0,
-              expandedHeight: 132,
-              flexibleSpace: SafeArea(
-                bottom: false,
-                child: _Header(
-                  title: 'My Transfers',
-                  subtitle: controller.email.value.isNotEmpty ? controller.email.value : null,
-                ),
+            // Header scrolls with the list — adapts to any device's notch/status-bar.
+            SliverToBoxAdapter(
+              child: _Header(
+                title: 'My Transfers',
+                subtitle: controller.email.value.isNotEmpty
+                    ? controller.email.value
+                    : null,
               ),
             ),
             if (transfers.isEmpty)
@@ -259,12 +258,13 @@ class _HistoryList extends StatelessWidget {
               )
             else
               SliverPadding(
-                padding: EdgeInsets.fromLTRB(16, 0, 16, 24 + bottomPad),
+                padding: EdgeInsets.fromLTRB(16, 4, 16, 24 + bottomPad),
                 sliver: SliverList(
                   delegate: SliverChildBuilderDelegate(
                     (ctx, i) => Padding(
                       padding: const EdgeInsets.only(bottom: 10),
-                      child: _TransferCard(transfer: transfers[i], controller: controller),
+                      child: _TransferCard(
+                          transfer: transfers[i], controller: controller),
                     ),
                     childCount: transfers.length,
                   ),

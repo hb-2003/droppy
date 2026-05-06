@@ -85,8 +85,8 @@ class DownloadView extends GetView<DownloadController> {
                       onPressed: controller.downloading.value
                           ? null
                           : () async {
-                              final f = await controller.saveDownload();
-                              if (f != null && context.mounted) {
+                              final r = await controller.saveDownload();
+                              if (r != null && context.mounted) {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(content: Text(t.downloadSaved)),
                                 );

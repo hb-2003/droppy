@@ -521,6 +521,7 @@ class Handler extends CI_Controller {
     public function history_json()
     {
         header('Content-Type: application/json');
+        $this->load->library('session');
         $this->load->model('uploads');
         $this->load->model('files');
         $this->load->helper('seconds');

@@ -32,10 +32,9 @@ class AppPages {
       name: AppRoutes.shell,
       page: AppShellView.new,
       bindings: [
-        AppShellBinding(),
+        AppShellBinding(), // registers AppShellController + ReceiveController (permanent)
         HomeBinding(),
         HistoryBinding(),
-        DownloadBinding(),
         SettingsBinding(),
       ],
     ),

@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart' as dio;
 import 'package:get/get.dart';
 import 'package:sendlargefiles/data/providers/api_client.dart';
+import 'dart:convert';
 
 class HistoryTransferFile {
   const HistoryTransferFile({
@@ -80,14 +81,41 @@ class HistoryResult {
 }
 
 class HistoryRepository extends GetxService {
+  Map<String, dynamic>? _decodeJson(String raw) {
+    final s = raw.trim();
+    if (s.isEmpty) return null;
+    try {
+      final decoded = jsonDecode(s);
+      if (decoded is Map) {
+        return decoded.map((k, v) => MapEntry(k.toString(), v));
+      }
+    } catch (_) {}
+    // Some hosts wrap JSON in HTML; attempt a slice.
+    final start = s.indexOf('{');
+    final end = s.lastIndexOf('}');
+    if (start >= 0 && end > start) {
+      final sub = s.substring(start, end + 1);
+      try {
+        final decoded = jsonDecode(sub);
+        if (decoded is Map) {
+          return decoded.map((k, v) => MapEntry(k.toString(), v));
+        }
+      } catch (_) {}
+    }
+    return null;
+  }
+
   Future<HistoryResult> fetchHistory() async {
     final client = ApiClient.instance.dio;
     try {
-      final resp = await client.get<Map<String, dynamic>>(
+      final resp = await client.get<String>(
         'handler/history_json',
-        options: dio.Options(validateStatus: (s) => s != null && s < 500),
+        options: dio.Options(
+          validateStatus: (s) => s != null && s < 500,
+          responseType: dio.ResponseType.plain,
+        ),
       );
-      final data = resp.data;
+      final data = _decodeJson((resp.data ?? '').toString());
       if (data == null) return const HistoryResult(result: 'error');
       final r = (data['result'] as String?) ?? 'error';
       if (r != 'ok') return HistoryResult(result: r);

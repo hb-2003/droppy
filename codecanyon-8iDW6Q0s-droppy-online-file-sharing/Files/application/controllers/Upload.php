@@ -232,6 +232,18 @@ class Upload extends CI_Controller
         // Return ok or not ok based on results
         if($error === false)
         {
+            // If the user is OTP-signed-in and this is a link transfer, associate it with their account
+            // so it can appear under History. This does not send emails.
+            if (
+                isset($post_data['share']) && $post_data['share'] == 'link' &&
+                (empty($post_data['email_from']) || !isset($post_data['email_from']))
+            ) {
+                $otp_email = $this->session->userdata('otp_verified_email');
+                if (!empty($otp_email)) {
+                    $post_data['email_from'] = trim($otp_email);
+                }
+            }
+
             $this->uploads->register($post_data);
             echo json_encode(array('response' => 'ok'));
         }

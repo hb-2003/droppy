@@ -48,3 +48,7 @@ cd "codecanyon-8iDW6Q0s-droppy-online-file-sharing/Files" && php -S 127.0.0.1:80
 ## Existing PHP site branding
 
 After pulling these changes, update **`droppy_settings`** on the server so the web UI and emails (`{site_name}`) show **Share Large Video Files**. See [`codecanyon-8iDW6Q0s-droppy-online-file-sharing/Files/rebrand_update_site_branding.sql`](../codecanyon-8iDW6Q0s-droppy-online-file-sharing/Files/rebrand_update_site_branding.sql) or use **Admin → Settings → General** for the same fields.
+
+## My Transfers empty (History)
+
+History uses **`droppy_uploads.email_from`** equal to the signed-in OTP email. Deploy the latest PHP (`Upload.php` / `Uploads.php` / `Handler.php`) to the same base URL the app uses, then send a **new** transfer. Rows created before the fix with empty `email_from` stay hidden until you backfill (see [`codecanyon-8iDW6Q0s-droppy-online-file-sharing/Files/history_backfill_email_from.sql`](../codecanyon-8iDW6Q0s-droppy-online-file-sharing/Files/history_backfill_email_from.sql)).

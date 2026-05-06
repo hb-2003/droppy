@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sendlargefiles/data/providers/api_client.dart';
@@ -108,11 +106,10 @@ class DownloadController extends GetxController {
     await loadMetadata();
   }
 
-  Future<File?> saveDownload() async {
+  Future<DownloadResult?> saveDownload() async {
     final id = uploadIdCtrl.text.trim();
     final pid = privateIdCtrl.text.trim();
     final site = cfg.siteUrl.isNotEmpty ? cfg.siteUrl : resolveBaseUrl();
-    // Same as web: pass raw page url, let the client encode query params once.
     final pageUrl = '$site$id${pid.isNotEmpty ? '/$pid' : ''}';
     downloading.value = true;
     try {

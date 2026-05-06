@@ -123,7 +123,10 @@ class _MainForm extends StatelessWidget {
             ],
           ),
         ),
-        const SizedBox(height: 14),
+        const SizedBox(height: 12),
+        // Stats bar (20 GB / 200 files / Free)
+        _StatsBar(controller: controller),
+        const SizedBox(height: 12),
         Expanded(
           child: ScrollConfiguration(
             behavior: const _NoOverscrollBehavior(),
@@ -132,6 +135,9 @@ class _MainForm extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
+                  // Hero text
+                  _HeroText(),
+                  const SizedBox(height: 16),
                   _TabSwitcher(controller: controller),
                   const SizedBox(height: 14),
                   _DropZone(controller: controller, t: t),
@@ -240,6 +246,73 @@ class _MailShareForm extends StatelessWidget {
           const SizedBox(height: 12),
         ],
       ),
+    );
+  }
+}
+
+// ── Stats bar ─────────────────────────────────────────────────────────────────
+
+class _StatsBar extends StatelessWidget {
+  const _StatsBar({required this.controller});
+  final HomeController controller;
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    final cfg = controller.cfg;
+    final maxGb = cfg.maxSizeMb >= 1000
+        ? '${(cfg.maxSizeMb / 1000).toStringAsFixed(0)} GB'
+        : '${cfg.maxSizeMb} MB';
+    final maxFiles = cfg.maxFiles > 0 ? '${cfg.maxFiles}' : '∞';
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Container(
+        decoration: BoxDecoration(
+          color: _cardBg(context),
+          borderRadius: BorderRadius.circular(14),
+          border: Border.all(color: _line(context)),
+        ),
+        child: IntrinsicHeight(
+          child: Row(
+            children: [
+              _StatCell(value: maxGb, label: 'Max size'),
+              VerticalDivider(width: 1, thickness: 1, color: _line(context)),
+              _StatCell(value: maxFiles, label: 'Max files'),
+              VerticalDivider(width: 1, thickness: 1, color: _line(context)),
+              _StatCell(value: 'Free', label: 'Cost'),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+// ── Hero text ─────────────────────────────────────────────────────────────────
+
+class _HeroText extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Send heavy files',
+          style: TextStyle(
+            color: scheme.onSurface,
+            fontSize: 26,
+            fontWeight: FontWeight.w800,
+            letterSpacing: -0.5,
+            height: 1.1,
+          ),
+        ),
+        Text(
+          'instantly.',
+          style: AppTheme.heroAccent(color: scheme.primary, fontSize: 26),
+        ),
+      ],
     );
   }
 }
@@ -1198,21 +1271,32 @@ class _StatCell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
     return Expanded(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(value, style: AppTheme.meta()),
-          const SizedBox(height: 6),
-          Text(
-            label,
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.45),
-              fontSize: 11,
-              fontWeight: FontWeight.w600,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 12),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              value,
+              style: TextStyle(
+                color: scheme.onSurface,
+                fontSize: 15,
+                fontWeight: FontWeight.w800,
+              ),
             ),
-          ),
-        ],
+            const SizedBox(height: 3),
+            Text(
+              label,
+              style: TextStyle(
+                color: scheme.onSurface.withValues(alpha: 0.45),
+                fontSize: 11,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

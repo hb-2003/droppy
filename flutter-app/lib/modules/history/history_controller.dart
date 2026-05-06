@@ -11,13 +11,27 @@ class HistoryController extends GetxController {
   final needsLogin = false.obs;
   final error = false.obs;
 
+  /// Tracks when data was last successfully fetched to avoid redundant calls.
+  DateTime? _lastLoadedAt;
+
   @override
   void onInit() {
     super.onInit();
     load();
   }
 
-  Future<void> load() async {
+  /// Loads history. Skips if already loading.
+  /// [force] bypasses the cooldown (e.g. pull-to-refresh).
+  Future<void> load({bool force = false}) async {
+    // Prevent concurrent calls.
+    if (loading.value) return;
+
+    // If data was loaded less than 30 s ago and this isn't a forced refresh, skip.
+    if (!force && _lastLoadedAt != null &&
+        DateTime.now().difference(_lastLoadedAt!).inSeconds < 30) {
+      return;
+    }
+
     loading.value = true;
     error.value = false;
     needsLogin.value = false;
@@ -28,6 +42,7 @@ class HistoryController extends GetxController {
       } else if (result.isOk) {
         email.value = result.email ?? '';
         transfers.value = result.transfers;
+        _lastLoadedAt = DateTime.now();
       } else {
         error.value = true;
       }
@@ -35,6 +50,9 @@ class HistoryController extends GetxController {
       loading.value = false;
     }
   }
+
+  /// Called by pull-to-refresh — always re-fetches.
+  Future<void> forceRefresh() => load(force: true);
 
   void goLogin() => Get.toNamed(AppRoutes.login);
 

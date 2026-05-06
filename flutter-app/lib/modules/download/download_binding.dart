@@ -6,6 +6,9 @@ class DownloadBinding extends Bindings {
   @override
   void dependencies() {
     if (!Get.isRegistered<DownloadRepository>()) Get.put(DownloadRepository());
-    Get.lazyPut(DownloadController.new);
+    // fenix: true → controller is auto-recreated if disposed (prevents
+    // "TextEditingController used after dispose" when the /download route
+    // pops but ReceiveView in the IndexedStack still holds the controller).
+    Get.lazyPut(DownloadController.new, fenix: true);
   }
 }

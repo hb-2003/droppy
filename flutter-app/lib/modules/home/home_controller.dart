@@ -12,6 +12,7 @@ import 'package:sendlargefiles/data/repositories/upload_repository.dart'
 import 'package:sendlargefiles/data/providers/api_client.dart';
 import 'package:share_plus/share_plus.dart' show ShareParams, SharePlus;
 import 'package:sendlargefiles/l10n/app_localizations.dart';
+import 'package:sendlargefiles/modules/history/history_controller.dart';
 import 'package:sendlargefiles/modules/shell/app_shell_controller.dart';
 
 class HomeController extends GetxController {
@@ -190,6 +191,12 @@ class HomeController extends GetxController {
   }
 
   Future<RegisterResult> _register({String? verifyCode}) {
+    final fromField = (emailFromCtrl?.text ?? '').trim();
+    final sessionEmail = Get.find<AuthRepository>().sessionEmail.value.trim();
+    // For link-mode uploads, keep ownership by associating the OTP session email
+    // (so History can show transfers created while signed in).
+    final emailFrom = shareMode.value == 'link' && fromField.isEmpty ? sessionEmail : fromField;
+
     return _upload.register(
       uploadId: activeUploadId,
       share: shareMode.value,
@@ -199,7 +206,7 @@ class HomeController extends GetxController {
       expireSec: expireSec.value,
       languagePath: _languagePathForUpload(),
       filePreviews: 'false',
-      emailFrom: (emailFromCtrl?.text ?? '').trim(),
+      emailFrom: emailFrom,
       emailTo: _parseEmails(emailToCtrl?.text ?? ''),
       verifyCode: verifyCode,
     );
@@ -298,6 +305,13 @@ class HomeController extends GetxController {
 
     await _runWithConcurrency<PickedFileItem>(files.toList(), maxConc, runOne);
 
+    final fromFieldComplete = (emailFromCtrl?.text ?? '').trim();
+    final sessionEmailComplete = Get.find<AuthRepository>().sessionEmail.value.trim();
+    final emailFromForComplete = shareMode.value == 'link' &&
+            fromFieldComplete.isEmpty
+        ? sessionEmailComplete
+        : fromFieldComplete;
+
     await _upload.complete(
       uploadId: activeUploadId,
       share: shareMode.value,
@@ -307,9 +321,13 @@ class HomeController extends GetxController {
       expireSec: expireSec.value,
       languagePath: langPath,
       filePreviews: 'false',
-      emailFrom: (emailFromCtrl?.text ?? '').trim(),
+      emailFrom: emailFromForComplete,
       emailTo: _parseEmails(emailToCtrl?.text ?? ''),
     );
+
+    if (Get.isRegistered<HistoryController>()) {
+      await Get.find<HistoryController>().load();
+    }
 
     final base = cfg.siteUrl.isNotEmpty ? cfg.siteUrl : resolveBaseUrl();
     if (shareMode.value == 'link') {
@@ -427,7 +445,7 @@ class HomeController extends GetxController {
 
   void goDownload() {
     if (Get.isRegistered<AppShellController>()) {
-      Get.find<AppShellController>().setTab(1);
+      Get.find<AppShellController>().setTab(2); // Receive tab
       return;
     }
     Get.toNamed(AppRoutes.download);
@@ -435,7 +453,7 @@ class HomeController extends GetxController {
 
   void goSettings() {
     if (Get.isRegistered<AppShellController>()) {
-      Get.find<AppShellController>().setTab(2);
+      Get.find<AppShellController>().setTab(3); // Settings tab
       return;
     }
     Get.toNamed(AppRoutes.settings);
