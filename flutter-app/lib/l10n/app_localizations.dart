@@ -250,6 +250,18 @@ abstract class AppLocalizations {
   /// **'Verify'**
   String get verifySubmit;
 
+  /// No description provided for @verifyResendCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Resend code'**
+  String get verifyResendCode;
+
+  /// No description provided for @verifyCodeSent.
+  ///
+  /// In en, this message translates to:
+  /// **'A new verification code was sent to your email.'**
+  String get verifyCodeSent;
+
   /// No description provided for @loginTitle.
   ///
   /// In en, this message translates to:

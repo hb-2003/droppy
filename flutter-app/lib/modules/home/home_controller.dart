@@ -9,9 +9,9 @@ import 'package:sendlargefiles/data/repositories/auth_repository.dart';
 import 'package:sendlargefiles/data/repositories/config_repository.dart';
 import 'package:sendlargefiles/data/repositories/upload_repository.dart'
     show PickedFileItem, RegisterResult, UploadRepository;
-import 'package:sendlargefiles/widgets/auth_bottom_sheet.dart';
 import 'package:sendlargefiles/data/providers/api_client.dart';
 import 'package:share_plus/share_plus.dart' show ShareParams, SharePlus;
+import 'package:sendlargefiles/l10n/app_localizations.dart';
 import 'package:sendlargefiles/modules/shell/app_shell_controller.dart';
 
 class HomeController extends GetxController {
@@ -29,6 +29,7 @@ class HomeController extends GetxController {
   final finishedLink = ''.obs;
   final mailFinished = false.obs;
   final awaitingVerify = false.obs;
+  final resendVerifyBusy = false.obs;
   final verifyController = TextEditingController();
 
   /// Set after genid / register.
@@ -37,6 +38,11 @@ class HomeController extends GetxController {
   final expireSec = 604800.obs;
   int _uidCounter = 0;
   CancelToken? _cancelToken;
+
+  // Mail-mode form validation (for "Send by email")
+  final GlobalKey<FormState> mailFormKey = GlobalKey<FormState>();
+  final FocusNode emailFromFocus = FocusNode();
+  final FocusNode emailToFocus = FocusNode();
 
   AppConfig get cfg => _cfg.current;
 
@@ -64,6 +70,8 @@ class HomeController extends GetxController {
     emailFromCtrl?.dispose();
     emailToCtrl?.dispose();
     verifyController.dispose();
+    emailFromFocus.dispose();
+    emailToFocus.dispose();
     super.onClose();
   }
 
@@ -104,9 +112,32 @@ class HomeController extends GetxController {
   Future<void> startSend(BuildContext context) async {
     if (files.isEmpty) return;
 
+    if (shareMode.value == 'mail' && !Get.find<AuthRepository>().loggedIn.value) {
+      Get.snackbar(
+        'Sign in required',
+        'Please sign in to send by email.',
+        backgroundColor: const Color(0xFF161616),
+        colorText: const Color(0xFFFFFFFF),
+        duration: const Duration(seconds: 3),
+      );
+      Get.toNamed(AppRoutes.login);
+      return;
+    }
+
+    // Validate email fields in mail mode (show inline "Please fill..." errors)
     if (shareMode.value == 'mail') {
-      final ok = await showAuthForEmailSheet(context);
-      if (!ok) return;
+      final ok = mailFormKey.currentState?.validate() ?? true;
+      if (!ok) {
+        // Focus first missing field for faster fix.
+        final from = (emailFromCtrl?.text ?? '').trim();
+        final to = (emailToCtrl?.text ?? '').trim();
+        if (from.isEmpty) {
+          emailFromFocus.requestFocus();
+        } else if (to.isEmpty) {
+          emailToFocus.requestFocus();
+        }
+        return;
+      }
     }
 
     // Flip UI into loading state immediately (even while we sync language / request ids).
@@ -168,24 +199,51 @@ class HomeController extends GetxController {
       expireSec: expireSec.value,
       languagePath: _languagePathForUpload(),
       filePreviews: 'false',
-      emailFrom: emailFromCtrl?.text ?? '',
+      emailFrom: (emailFromCtrl?.text ?? '').trim(),
       emailTo: _parseEmails(emailToCtrl?.text ?? ''),
       verifyCode: verifyCode,
     );
   }
 
+  /// Re-request sender verification email (same as web: POST register again without code).
+  Future<void> resendUploadVerifyCode(BuildContext context) async {
+    if (activeUploadId.isEmpty || !awaitingVerify.value) return;
+    final t = AppLocalizations.of(context);
+    resendVerifyBusy.value = true;
+    try {
+      final reg = await _register(verifyCode: null);
+      if (reg.verifyEmail) {
+        Get.snackbar('Verify', t?.verifyCodeSent ?? 'A new verification code was sent to your email.');
+      } else if (reg.isOk) {
+        awaitingVerify.value = false;
+        await _runFileUploadAndComplete(_languagePathForUpload());
+      } else if (_isRegisterError(reg.code)) {
+        Get.snackbar('Verify', _registerErrorMessage(reg.code));
+      } else {
+        Get.snackbar('Verify', 'Could not resend code. Try again.');
+      }
+    } catch (e) {
+      Get.snackbar('Error', '$e');
+    } finally {
+      resendVerifyBusy.value = false;
+    }
+  }
+
   Future<void> submitVerifyAndUpload() async {
     if (activeUploadId.isEmpty) return;
-    final code = verifyController.text.trim();
-    if (code.isEmpty) return;
+    final code = verifyController.text.replaceAll(RegExp(r'\D'), '');
+    if (code.length < 4) {
+      Get.snackbar('Verify', 'Enter the 4-digit code from your email.');
+      return;
+    }
     uploading.value = true;
     try {
       final verified = await _upload.verifyEmail(
-        emailFrom: emailFromCtrl?.text ?? '',
+        emailFrom: (emailFromCtrl?.text ?? '').trim(),
         code: code,
       );
       if (!verified) {
-        Get.snackbar('Verify', 'Verification request failed');
+        Get.snackbar('Verify', 'Invalid or expired code. Check the email and try again.');
         uploading.value = false;
         return;
       }
@@ -249,7 +307,7 @@ class HomeController extends GetxController {
       expireSec: expireSec.value,
       languagePath: langPath,
       filePreviews: 'false',
-      emailFrom: emailFromCtrl?.text ?? '',
+      emailFrom: (emailFromCtrl?.text ?? '').trim(),
       emailTo: _parseEmails(emailToCtrl?.text ?? ''),
     );
 

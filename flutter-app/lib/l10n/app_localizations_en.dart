@@ -87,6 +87,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get verifySubmit => 'Verify';
 
   @override
+  String get verifyResendCode => 'Resend code';
+
+  @override
+  String get verifyCodeSent =>
+      'A new verification code was sent to your email.';
+
+  @override
   String get loginTitle => 'Sign in';
 
   @override

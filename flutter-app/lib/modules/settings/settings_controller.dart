@@ -11,15 +11,41 @@ class SettingsController extends GetxController {
   final AuthRepository _auth = Get.find<AuthRepository>();
   final ThemeController _theme = Get.find<ThemeController>();
 
+  late final TextEditingController serverUrlCtrl;
+
   RxBool get loggedIn => _auth.loggedIn;
   ThemeMode get themeMode => _theme.themeMode.value;
 
+  /// Base URL used to open public pages in an external browser.
+  ///
+  /// For this app the "public site" is the same origin as the API base.
   String get publicSiteUrl => resolveBaseUrl();
+
+  @override
+  void onInit() {
+    super.onInit();
+    serverUrlCtrl = TextEditingController(text: resolveBaseUrl());
+  }
+
+  @override
+  void onClose() {
+    serverUrlCtrl.dispose();
+    super.onClose();
+  }
+
+  void saveServerUrl() {
+    final url = serverUrlCtrl.text.trim();
+    if (url.isEmpty) return;
+    ApiClient.instance.updateBaseUrl(url);
+    Get.snackbar('Saved', 'Server URL updated. Restart the app to apply.',
+        backgroundColor: const Color(0xFF161616),
+        colorText: const Color(0xFFFFFFFF));
+  }
 
   void goLogin() => Get.toNamed(AppRoutes.login);
 
   Future<void> openWebsite() async {
-    final uri = Uri.tryParse(publicSiteUrl);
+    final uri = Uri.tryParse(resolveBaseUrl());
     if (uri == null) return;
     await launchUrl(uri, mode: LaunchMode.externalApplication);
   }

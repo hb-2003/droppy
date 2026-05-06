@@ -9,6 +9,34 @@ import 'package:sendlargefiles/data/models/app_config.dart';
 import 'package:sendlargefiles/data/models/json_utils.dart';
 import 'package:sendlargefiles/data/providers/api_client.dart';
 
+/// Parses JSON from API bodies that may be wrapped in HTML or wrong Content-Type.
+Map<String, dynamic>? _decodeResponseJson(String raw) {
+  final s = raw.trim();
+  if (s.isEmpty) return null;
+  for (final candidate in <String>[
+    s,
+    () {
+      final i = s.indexOf('{');
+      final j = s.lastIndexOf('}');
+      if (i < 0 || j <= i) return '';
+      return s.substring(i, j + 1);
+    }(),
+  ]) {
+    if (candidate.isEmpty) continue;
+    try {
+      final decoded = jsonDecode(candidate);
+      if (decoded is Map) {
+        return decoded.map((k, v) => MapEntry(k.toString(), v));
+      }
+    } catch (_) {}
+  }
+  final m = RegExp(r'\{\s*"response"\s*:\s*"([^"]+)"\s*\}').firstMatch(s);
+  if (m != null) {
+    return {'response': m.group(1)};
+  }
+  return null;
+}
+
 class PickedFileItem {
   PickedFileItem({
     required this.path,
@@ -132,19 +160,30 @@ class UploadRepository extends GetxService {
     required String code,
   }) async {
     if (!ApiClient.instance.hasValidBaseUrl) return false;
+    final email = emailFrom.trim();
+    final digitsOnly = code.replaceAll(RegExp(r'\D'), '');
+    if (email.isEmpty || digitsOnly.isEmpty) return false;
     try {
       final dio = ApiClient.instance.dio;
       final vf = d.FormData();
       vf.fields.addAll([
-        MapEntry('email_from', emailFrom),
-        MapEntry('code', code),
+        MapEntry('email_from', email),
+        MapEntry('code', digitsOnly),
       ]);
-      await dio.post<Map<String, dynamic>>(
+      // Droppy often returns JSON with Content-Type: text/html (same as upload/register).
+      // Request plain text and decode so verification does not fail on HTML-looking responses.
+      final res = await dio.post<String>(
         'upload/verify_email',
         data: vf,
-        options: d.Options(contentType: 'multipart/form-data'),
+        options: d.Options(
+          contentType: 'multipart/form-data',
+          responseType: d.ResponseType.plain,
+        ),
       );
-      return true;
+      final raw = (res.data ?? '').toString();
+      final data = _decodeResponseJson(raw);
+      final resp = JsonRead.string(data?['response']);
+      return resp == 'ok';
     } catch (_) {
       return false;
     }
@@ -201,12 +240,14 @@ class UploadRepository extends GetxService {
         ),
       );
 
-      await dio.post<dynamic>(
+      // Server often returns HTML or JSON with text/html; avoid default JSON decode (FormatException).
+      await dio.post<String>(
         'upload',
         data: form,
         cancelToken: cancelToken,
         options: d.Options(
           contentType: 'multipart/form-data',
+          responseType: d.ResponseType.plain,
           headers: <String, dynamic>{'Content-Range': contentRange},
         ),
         onSendProgress: (s, t) => onProgress?.call(uploaded + s.toInt(), size),
@@ -246,10 +287,13 @@ class UploadRepository extends GetxService {
     }
 
     final dio = ApiClient.instance.dio;
-    await dio.post<dynamic>(
+    await dio.post<String>(
       'upload/complete',
       data: form,
-      options: d.Options(contentType: 'multipart/form-data'),
+      options: d.Options(
+        contentType: 'multipart/form-data',
+        responseType: d.ResponseType.plain,
+      ),
     );
   }
 

@@ -1,9 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:sendlargefiles/app/theme/app_theme.dart';
+import 'package:sendlargefiles/data/repositories/auth_repository.dart';
 import 'package:sendlargefiles/l10n/app_localizations.dart';
+import 'package:sendlargefiles/app/theme/app_theme.dart';
 import 'package:sendlargefiles/modules/home/home_controller.dart';
+
+const _accentGlow = Color(0x33D4FF3B);
+
+Color _bg(BuildContext c) => Theme.of(c).scaffoldBackgroundColor;
+Color _cardBg(BuildContext c) => Theme.of(c).colorScheme.surfaceContainerHighest;
+Color _fieldBg(BuildContext c) => Theme.of(c).colorScheme.surface;
+Color _tabBg(BuildContext c) => Theme.of(c).colorScheme.surfaceContainerHighest;
+Color _accent(BuildContext c) => Theme.of(c).colorScheme.primary;
+Color _accentInk(BuildContext c) => Theme.of(c).colorScheme.onPrimary;
+Color _text(BuildContext c) => Theme.of(c).colorScheme.onSurface;
+Color _textDim(BuildContext c) => Theme.of(c).colorScheme.onSurface.withValues(alpha: 0.55);
+/// Card / section borders — full [outlineVariant] so light mode edges stay visible.
+Color _line(BuildContext c) => Theme.of(c).colorScheme.outlineVariant;
 
 class HomeView extends GetView<HomeController> {
   const HomeView({super.key});
@@ -11,108 +25,316 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     final t = AppLocalizations.of(context)!;
+
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: Theme.of(context).brightness == Brightness.dark
+          ? SystemUiOverlayStyle.light
+          : SystemUiOverlayStyle.dark,
+      child: Scaffold(
+        backgroundColor: _bg(context),
+        body: SafeArea(
+          child: Obx(() {
+            if (controller.uploading.value && !controller.awaitingVerify.value) {
+              return _ProgressPane(controller: controller);
+            }
+            if (controller.awaitingVerify.value) {
+              return _VerifyPane(controller: controller, t: t);
+            }
+            if (controller.finishedLink.value.isNotEmpty || controller.mailFinished.value) {
+              return _SuccessPane(controller: controller, t: t);
+            }
+            return _MainForm(controller: controller, t: t);
+          }),
+        ),
+      ),
+    );
+  }
+}
+
+// ── Main form ─────────────────────────────────────────────────────────────────
+
+class _MainForm extends StatelessWidget {
+  const _MainForm({required this.controller, required this.t});
+  final HomeController controller;
+  final AppLocalizations t;
+
+  @override
+  Widget build(BuildContext context) {
+    final bottomPad = MediaQuery.of(context).padding.bottom + 84;
     final scheme = Theme.of(context).colorScheme;
-
-    return Scaffold(
-      appBar: AppBar(
-        title: _AppWordmark(),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.download_rounded),
-            onPressed: controller.goDownload,
-            tooltip: t.navDownload,
+    return Column(
+      children: [
+        // Header row
+        Padding(
+          padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
+          child: Row(
+            children: [
+              Container(
+                width: 7, height: 7,
+                decoration: BoxDecoration(color: scheme.primary, shape: BoxShape.circle),
+              ),
+              const SizedBox(width: 8),
+              Text(
+                'Share Large\nVideo Files',
+                style: TextStyle(color: scheme.onSurface, fontSize: 10, height: 1.35, fontWeight: FontWeight.w500),
+              ),
+              const Spacer(),
+              // Auth-aware login/user button
+              Obx(() {
+                final loggedIn = Get.find<AuthRepository>().loggedIn.value;
+                if (loggedIn) {
+                  return GestureDetector(
+                    onTap: controller.goSettings,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
+                      decoration: BoxDecoration(
+                        color: scheme.primary.withValues(alpha: 0.12),
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(color: scheme.primary.withValues(alpha: 0.35)),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Container(
+                            width: 7, height: 7,
+                            decoration: BoxDecoration(color: scheme.primary, shape: BoxShape.circle),
+                          ),
+                          const SizedBox(width: 6),
+                          Text('Signed in',
+                              style: TextStyle(color: scheme.primary, fontSize: 12, fontWeight: FontWeight.w600)),
+                        ],
+                      ),
+                    ),
+                  );
+                }
+                return GestureDetector(
+                  onTap: () => Get.toNamed('/login'),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 9),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: _line(context)),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Text('Login',
+                        style: TextStyle(color: scheme.onSurface, fontSize: 13, fontWeight: FontWeight.w500)),
+                  ),
+                );
+              }),
+            ],
           ),
-          IconButton(
-            icon: const Icon(Icons.settings_rounded),
-            onPressed: controller.goSettings,
-            tooltip: t.navSettings,
+        ),
+        const SizedBox(height: 14),
+        Expanded(
+          child: ScrollConfiguration(
+            behavior: const _NoOverscrollBehavior(),
+            child: SingleChildScrollView(
+              padding: EdgeInsets.fromLTRB(16, 0, 16, 8 + bottomPad),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  _TabSwitcher(controller: controller),
+                  const SizedBox(height: 14),
+                  _DropZone(controller: controller, t: t),
+                  const SizedBox(height: 12),
+                  // Email fields (mail mode only). Do not read [mailFormKey] inside Obx — GetX treats
+                  // unknown controller getters as Rx and throws "Lookup failed: mailFormKey".
+                  Obx(() {
+                    if (controller.shareMode.value != 'mail') {
+                      return const SizedBox.shrink();
+                    }
+                    return _MailShareForm(controller: controller);
+                  }),
+                  _OptionsPanel(controller: controller, t: t),
+                  const SizedBox(height: 16),
+                ],
+              ),
+            ),
           ),
-          const SizedBox(width: 4),
-        ],
-      ),
-      body: SafeArea(
-        child: Obx(() {
-          if (controller.uploading.value && !controller.awaitingVerify.value) {
-            return _ProgressPane(controller: controller, scheme: scheme);
-          }
-          if (controller.awaitingVerify.value) {
-            return _VerifyPane(controller: controller, t: t);
-          }
-          if (controller.finishedLink.value.isNotEmpty || controller.mailFinished.value) {
-            return _SuccessPane(controller: controller, t: t, scheme: scheme);
-          }
-          return _UploadForm(controller: controller, t: t, scheme: scheme);
-        }),
-      ),
+        ),
+        _UploadBar(controller: controller, t: t),
+      ],
     );
   }
 }
 
-// ─── App Wordmark ─────────────────────────────────────────────────────────────
+/// Mail-mode [Form] lives here so `mailFormKey` is never read inside an [Obx] closure
+/// (GetX would mis-resolve it as a reactive getter).
+class _MailShareForm extends StatelessWidget {
+  const _MailShareForm({required this.controller});
+  final HomeController controller;
 
-class _AppWordmark extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final primary = Theme.of(context).colorScheme.primary;
-    return RichText(
-      text: TextSpan(
+    return Form(
+      key: controller.mailFormKey,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          TextSpan(
-            text: 'Share Large\n',
-            style: Theme.of(context).textTheme.labelLarge!.copyWith(
-                  fontSize: 13,
-                  fontWeight: FontWeight.w800,
-                  color: DroppyWebColors.text,
-                  height: 1.2,
-                ),
+          TextFormField(
+            controller: controller.emailFromCtrl!,
+            focusNode: controller.emailFromFocus,
+            keyboardType: TextInputType.emailAddress,
+            decoration: InputDecoration(
+              hintText: 'Your email',
+              prefixIcon: Icon(
+                Icons.person_outline_rounded,
+                color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.55),
+                size: 18,
+              ),
+            ),
+            validator: (v) {
+              final s = (v ?? '').trim();
+              if (s.isEmpty) return 'Please fill in this field.';
+              if (!s.contains('@')) return 'Enter a valid email.';
+              return null;
+            },
+            textInputAction: TextInputAction.next,
+            onFieldSubmitted: (_) => controller.emailToFocus.requestFocus(),
           ),
-          TextSpan(
-            text: 'Video Files',
-            style: Theme.of(context).textTheme.labelLarge!.copyWith(
-                  fontSize: 13,
-                  fontWeight: FontWeight.w800,
-                  color: primary,
-                  height: 1.2,
-                ),
+          const SizedBox(height: 8),
+          TextFormField(
+            controller: controller.emailToCtrl!,
+            focusNode: controller.emailToFocus,
+            keyboardType: TextInputType.emailAddress,
+            decoration: InputDecoration(
+              hintText: 'Recipient email',
+              prefixIcon: Icon(
+                Icons.group_outlined,
+                color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.55),
+                size: 18,
+              ),
+            ),
+            validator: (v) {
+              final s = (v ?? '').trim();
+              if (s.isEmpty) return 'Please fill in this field.';
+              final first = s.split(RegExp(r'[\s,;]+')).firstWhere(
+                    (x) => x.trim().isNotEmpty,
+                    orElse: () => '',
+                  );
+              if (first.isEmpty || !first.contains('@')) return 'Enter a valid email.';
+              return null;
+            },
+            textInputAction: TextInputAction.next,
+            onFieldSubmitted: (_) => FocusScope.of(context).nextFocus(),
           ),
+          const SizedBox(height: 8),
+          TextFormField(
+            controller: controller.messageCtrl!,
+            keyboardType: TextInputType.text,
+            maxLines: 3,
+            decoration: InputDecoration(
+              hintText: 'Message',
+              prefixIcon: Icon(
+                Icons.chat_bubble_outline_rounded,
+                color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.55),
+                size: 18,
+              ),
+            ),
+            validator: (v) {
+              final s = (v ?? '').trim();
+              if (s.isEmpty) return 'Please fill in this field.';
+              return null;
+            },
+          ),
+          const SizedBox(height: 12),
         ],
       ),
     );
   }
 }
 
-// ─── Filetype Chips ───────────────────────────────────────────────────────────
+// ── Tab switcher ─────────────────────────────────────────────────────────────
 
-class _FiletypeChips extends StatelessWidget {
-  const _FiletypeChips();
-  static const _types = ['MP4', 'MOV', 'ZIP', 'PSD', 'WAV'];
+class _TabSwitcher extends StatelessWidget {
+  const _TabSwitcher({required this.controller});
+  final HomeController controller;
 
   @override
   Widget build(BuildContext context) {
-    return Wrap(
-      spacing: 6,
-      runSpacing: 6,
-      alignment: WrapAlignment.center,
-      children: _types.map((t) {
-        return Container(
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-          decoration: BoxDecoration(
-            color: DroppyWebColors.ink900,
-            borderRadius: BorderRadius.circular(20),
-            border: Border.all(color: DroppyWebColors.lineStrong),
+    return Obx(() {
+      final scheme = Theme.of(context).colorScheme;
+      final mode = controller.shareMode.value;
+      return Container(
+        height: 46,
+        decoration: BoxDecoration(
+          color: _tabBg(context),
+          borderRadius: BorderRadius.circular(50),
+          border: Border.all(color: _line(context), width: 1),
+        ),
+        child: Row(
+          children: [
+            Expanded(
+              flex: 9,
+              child: _TabBtn(
+                label: 'Get a link',
+                selected: mode == 'link',
+                onTap: () => controller.setShareMode('link'),
+              ),
+            ),
+            Expanded(
+              flex: 11,
+              child: _TabBtn(
+                label: 'Send by email',
+                selected: mode == 'mail',
+                onTap: () => controller.setShareMode('mail'),
+              ),
+            ),
+          ],
+        ),
+      );
+    });
+  }
+}
+
+class _TabBtn extends StatelessWidget {
+  const _TabBtn({required this.label, required this.selected, required this.onTap});
+  final String label;
+  final bool selected;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    return GestureDetector(
+      onTap: onTap,
+        child: AnimatedContainer(
+        duration: const Duration(milliseconds: 180),
+        margin: const EdgeInsets.all(4),
+        decoration: BoxDecoration(
+          color: selected ? scheme.primary : Colors.transparent,
+          borderRadius: BorderRadius.circular(50),
+        ),
+        alignment: Alignment.center,
+        child: Text(
+          label,
+          style: TextStyle(
+            color: selected ? scheme.onPrimary : scheme.onSurface.withValues(alpha: 0.6),
+            fontSize: 13,
+            fontWeight: selected ? FontWeight.w700 : FontWeight.w400,
           ),
-          child: Text(
-            t,
-            style: AppTheme.meta(color: DroppyWebColors.textDim)
-                .copyWith(fontSize: 11, fontWeight: FontWeight.w600),
-          ),
-        );
-      }).toList(),
+        ),
+      ),
     );
   }
 }
 
-// ─── Drop Zone — empty ────────────────────────────────────────────────────────
+// ── Drop Zone ────────────────────────────────────────────────────────────────
+
+class _DropZone extends StatelessWidget {
+  const _DropZone({required this.controller, required this.t});
+  final HomeController controller;
+  final AppLocalizations t;
+
+  @override
+  Widget build(BuildContext context) {
+    return Obx(() {
+      final fileCount = controller.files.length;
+      if (fileCount == 0) return _DropZoneEmpty(controller: controller, t: t);
+      return _DropZoneFilled(controller: controller, t: t);
+    });
+  }
+}
 
 class _DropZoneEmpty extends StatelessWidget {
   const _DropZoneEmpty({required this.controller, required this.t});
@@ -132,7 +354,7 @@ class _DropZoneEmpty extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            border: Border.all(color: DroppyWebColors.lineStrong, width: 1.5),
+            border: Border.all(color: _line(context), width: 1.5),
           ),
           child: Column(
             children: [
@@ -149,15 +371,23 @@ class _DropZoneEmpty extends StatelessWidget {
               const SizedBox(height: 4),
               Text('Up to $maxLabel total', style: AppTheme.meta(), textAlign: TextAlign.center),
               const SizedBox(height: 12),
-              const _FiletypeChips(),
+              _FiletypeChips(),
             ],
           ),
         ),
         const SizedBox(height: 10),
         Obx(
           () => TextButton.icon(
-            key: ValueKey<bool>(controller.pickingFiles.value),
             onPressed: controller.pickingFiles.value ? null : controller.pickFiles,
+            style: TextButton.styleFrom(
+              foregroundColor: _accent(context),
+              disabledForegroundColor: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.38),
+              textStyle: const TextStyle(
+                inherit: false,
+                fontSize: 13,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
             icon: controller.pickingFiles.value
                 ? const SizedBox(
                     width: 18,
@@ -176,8 +406,10 @@ class _DropZoneEmpty extends StatelessWidget {
 class _FileIllustration extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final border = DroppyWebColors.lineStrong;
-    final accent = Theme.of(context).colorScheme.primary.withValues(alpha: 0.12);
+    final scheme = Theme.of(context).colorScheme;
+    final rear = scheme.surfaceContainerHigh;
+    final edge = _line(context);
+    final accent = scheme.primary.withValues(alpha: 0.12);
     return SizedBox(
       height: 56,
       width: 80,
@@ -187,16 +419,17 @@ class _FileIllustration extends StatelessWidget {
           Positioned(
             left: 0,
             top: 6,
-            child: Transform.rotate(angle: -0.22, child: _FileCard(color: border)),
+            child: Transform.rotate(angle: -0.22, child: _FileCard(color: rear, border: edge)),
           ),
           Positioned(
             right: 0,
             top: 6,
-            child: Transform.rotate(angle: 0.22, child: _FileCard(color: border)),
+            child: Transform.rotate(angle: 0.22, child: _FileCard(color: rear, border: edge)),
           ),
           _FileCard(
             color: accent,
-            child: const Icon(Icons.add_rounded, size: 20, color: DroppyWebColors.textDim),
+            border: edge,
+            child: Icon(Icons.add_rounded, size: 20, color: scheme.onSurface.withValues(alpha: 0.45)),
           ),
         ],
       ),
@@ -205,26 +438,26 @@ class _FileIllustration extends StatelessWidget {
 }
 
 class _FileCard extends StatelessWidget {
-  const _FileCard({required this.color, this.child});
-  final Color color;
+  const _FileCard({this.color, this.border, this.child});
+  final Color? color;
+  final Color? border;
   final Widget? child;
 
   @override
   Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
     return Container(
-      width: 34,
-      height: 44,
+      width: 36,
+      height: 46,
       decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(5),
-        border: Border.all(color: DroppyWebColors.lineStrong),
+        color: color ?? scheme.surfaceContainerLow,
+        borderRadius: BorderRadius.circular(6),
+        border: Border.all(color: border ?? _line(context), width: 1),
       ),
       child: child != null ? Center(child: child) : null,
     );
   }
 }
-
-// ─── Drop Zone — files selected ───────────────────────────────────────────────
 
 class _DropZoneFilled extends StatelessWidget {
   const _DropZoneFilled({required this.controller, required this.t});
@@ -233,70 +466,90 @@ class _DropZoneFilled extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
     final totalBytes = controller.files.fold<int>(0, (s, f) => s + f.size);
-    final totalMb = (totalBytes / (1024 * 1024)).toStringAsFixed(1);
-    final maxMb = controller.cfg.maxSizeMb.toDouble();
-    final remainMb = (maxMb - totalBytes / (1024 * 1024)).clamp(0.0, maxMb).toStringAsFixed(1);
+    final totalMb = totalBytes / (1024 * 1024);
+    final remainBytes =
+        (controller.cfg.maxSizeBytes - totalBytes).clamp(0, controller.cfg.maxSizeBytes);
+    final remainMb = remainBytes / (1024 * 1024);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Container(
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8),
-            border: Border.all(color: DroppyWebColors.lineStrong),
+            color: _cardBg(context),
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(color: _line(context)),
           ),
           child: Column(
-            children: controller.files.asMap().entries.map((entry) {
-              final i = entry.key;
-              final f = entry.value;
-              final sizeMb = (f.size / (1024 * 1024)).toStringAsFixed(2);
-              return Column(
-                children: [
-                  if (i > 0)
-                    const Divider(height: 1, thickness: 1, color: DroppyWebColors.lineStrong),
-                  ListTile(
-                    dense: true,
-                    leading: const Icon(Icons.insert_drive_file_outlined,
-                        size: 20, color: DroppyWebColors.textDim),
-                    title: Text(
-                      f.name,
-                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontSize: 14),
-                      overflow: TextOverflow.ellipsis,
+            children: [
+              ...controller.files.asMap().entries.map((entry) {
+                final i = entry.key;
+                final f = entry.value;
+                final sizeMb = (f.size / (1024 * 1024)).toStringAsFixed(1);
+                return Column(
+                  children: [
+                    if (i > 0) Divider(height: 1, color: _line(context).withValues(alpha: 0.55)),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(14, 10, 8, 10),
+                      child: Row(
+                        children: [
+                          Icon(Icons.insert_drive_file_outlined, color: scheme.onSurface.withValues(alpha: 0.45), size: 18),
+                          const SizedBox(width: 10),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(f.name, style: TextStyle(color: scheme.onSurface, fontSize: 13, fontWeight: FontWeight.w500), overflow: TextOverflow.ellipsis),
+                                Text('$sizeMb MB', style: TextStyle(color: scheme.onSurface.withValues(alpha: 0.45), fontSize: 11)),
+                              ],
+                            ),
+                          ),
+                          IconButton(
+                            icon: Icon(Icons.close_rounded, size: 16, color: scheme.onSurface.withValues(alpha: 0.45)),
+                            onPressed: () => controller.removeFile(f),
+                            visualDensity: VisualDensity.compact,
+                          ),
+                        ],
+                      ),
                     ),
-                    subtitle: Text('$sizeMb MB', style: AppTheme.meta()),
-                    trailing: IconButton(
-                      icon: const Icon(Icons.close_rounded, size: 18),
-                      color: DroppyWebColors.textDim,
-                      onPressed: () => controller.removeFile(f),
-                    ),
-                    contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 2),
-                  ),
-                ],
-              );
-            }).toList(),
+                  ],
+                );
+              }),
+            ],
           ),
         ),
         const SizedBox(height: 8),
         Row(
           children: [
-            Text('$totalMb MB', style: AppTheme.meta()),
+            Text('${totalMb.toStringAsFixed(1)} MB', style: AppTheme.meta()),
             const SizedBox(width: 6),
-            Container(width: 1, height: 10, color: DroppyWebColors.lineStrong),
+            Container(width: 1, height: 10, color: _line(context)),
             const SizedBox(width: 6),
             Text('${controller.files.length} file${controller.files.length == 1 ? '' : 's'}',
                 style: AppTheme.meta()),
             const SizedBox(width: 6),
-            Container(width: 1, height: 10, color: DroppyWebColors.lineStrong),
+            Container(width: 1, height: 10, color: _line(context)),
             const SizedBox(width: 6),
-            Text('$remainMb MB left', style: AppTheme.meta()),
+            Text('${remainMb.toStringAsFixed(1)} MB left', style: AppTheme.meta()),
           ],
         ),
         const SizedBox(height: 10),
         Obx(
           () => OutlinedButton.icon(
-            key: ValueKey<bool>(controller.pickingFiles.value),
             onPressed: controller.pickingFiles.value ? null : controller.pickFiles,
+            style: OutlinedButton.styleFrom(
+              foregroundColor: scheme.onSurface.withValues(alpha: 0.75),
+              disabledForegroundColor: scheme.onSurface.withValues(alpha: 0.38),
+              side: BorderSide(color: _line(context)),
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+              textStyle: const TextStyle(
+                inherit: false,
+                fontSize: 13,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
             icon: controller.pickingFiles.value
                 ? const SizedBox(
                     width: 16,
@@ -305,10 +558,6 @@ class _DropZoneFilled extends StatelessWidget {
                   )
                 : const Icon(Icons.add_rounded, size: 16),
             label: Text(controller.pickingFiles.value ? 'Adding…' : 'Add more files'),
-            style: OutlinedButton.styleFrom(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-              textStyle: const TextStyle(fontSize: 13),
-            ),
           ),
         ),
       ],
@@ -316,120 +565,82 @@ class _DropZoneFilled extends StatelessWidget {
   }
 }
 
-// ─── Advanced Options (collapsible) ──────────────────────────────────────────
+// ── Options panel ─────────────────────────────────────────────────────────────
 
-class _AdvancedOptions extends StatefulWidget {
-  const _AdvancedOptions({required this.controller, required this.t});
+class _OptionsPanel extends StatefulWidget {
+  const _OptionsPanel({required this.controller, required this.t});
   final HomeController controller;
   final AppLocalizations t;
 
   @override
-  State<_AdvancedOptions> createState() => _AdvancedOptionsState();
+  State<_OptionsPanel> createState() => _OptionsPanelState();
 }
 
-class _AdvancedOptionsState extends State<_AdvancedOptions> {
+class _OptionsPanelState extends State<_OptionsPanel> {
   bool _expanded = false;
 
   @override
   Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
     return Container(
       decoration: BoxDecoration(
-        color: DroppyWebColors.ink800,
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: DroppyWebColors.lineStrong),
+        color: _cardBg(context),
+        borderRadius: BorderRadius.circular(14),
+        border: Border.all(color: _line(context)),
       ),
       child: Column(
         children: [
-          // Toggle header
-          InkWell(
+          GestureDetector(
             onTap: () => setState(() => _expanded = !_expanded),
-            borderRadius: BorderRadius.circular(10),
+            behavior: HitTestBehavior.opaque,
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
               child: Row(
                 children: [
-                  const Icon(Icons.tune_rounded, size: 16, color: DroppyWebColors.textDim),
+                  Icon(Icons.tune_rounded, color: scheme.onSurface.withValues(alpha: 0.55), size: 16),
                   const SizedBox(width: 8),
-                  Text('Options', style: AppTheme.eyebrow()),
+                  Text('Options', style: TextStyle(color: scheme.onSurface.withValues(alpha: 0.65), fontSize: 13, fontWeight: FontWeight.w500)),
                   const Spacer(),
                   Icon(
                     _expanded ? Icons.keyboard_arrow_up_rounded : Icons.keyboard_arrow_down_rounded,
-                    size: 18,
-                    color: DroppyWebColors.textDim,
+                    color: scheme.onSurface.withValues(alpha: 0.55), size: 18,
                   ),
                 ],
               ),
             ),
           ),
-
-          // Expandable content
           if (_expanded) ...[
-            const Divider(height: 1, thickness: 1, color: DroppyWebColors.lineStrong),
+            Divider(height: 1, color: _line(context).withValues(alpha: 0.55)),
             Padding(
-              padding: const EdgeInsets.all(14),
+              padding: const EdgeInsets.all(16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  TextField(
-                    controller: widget.controller.messageCtrl,
-                    decoration: InputDecoration(
-                      labelText: widget.t.messageOptional,
-                      filled: true,
-                      fillColor: DroppyWebColors.ink900,
-                    ),
-                    maxLines: 2,
-                  ),
-                  const SizedBox(height: 10),
-                  TextField(
-                    controller: widget.controller.passwordCtrl,
-                    decoration: InputDecoration(
-                      labelText: widget.t.passwordOptional,
-                      prefixIcon: const Icon(Icons.lock_outline_rounded, size: 18),
-                      filled: true,
-                      fillColor: DroppyWebColors.ink900,
-                    ),
+                  _DarkField(
+                    ctrl: widget.controller.passwordCtrl!,
+                    hint: widget.t.passwordOptional,
+                    prefixIcon: Icons.lock_outline_rounded,
                     obscureText: true,
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 14),
                   Row(
                     children: [
                       Expanded(
                         child: Text(
-                          widget.t.destructAfterDownload,
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyMedium!
-                              .copyWith(color: DroppyWebColors.text, fontSize: 13),
+                          'Self-destruct after download',
+                          style: TextStyle(color: scheme.onSurface.withValues(alpha: 0.65), fontSize: 13),
                         ),
                       ),
-                      Obx(
-                        () => Switch(
-                          value: widget.controller.destruct.value == 'yes',
-                          onChanged: (v) =>
-                              widget.controller.destruct.value = v ? 'yes' : 'no',
-                        ),
-                      ),
+                      Obx(() => Switch(
+                        value: widget.controller.destruct.value == 'yes',
+                        onChanged: (v) => widget.controller.destruct.value = v ? 'yes' : 'no',
+                        activeThumbColor: _accent(context),
+                        inactiveTrackColor: scheme.outlineVariant.withValues(alpha: 0.35),
+                      )),
                     ],
                   ),
                   const SizedBox(height: 10),
-                  Obx(
-                    () => DropdownButtonFormField<int>(
-                      key: ValueKey<int>(widget.controller.expireSec.value),
-                      initialValue: widget.controller.expireSec.value,
-                      decoration: InputDecoration(
-                        labelText: 'Expires after',
-                        filled: true,
-                        fillColor: DroppyWebColors.ink900,
-                        prefixIcon: const Icon(Icons.timer_outlined, size: 18),
-                      ),
-                      items: widget.controller.cfg.expireOptionsSec.map((s) {
-                        return DropdownMenuItem(value: s, child: Text(_fmt(s)));
-                      }).toList(),
-                      onChanged: (v) {
-                        if (v != null) widget.controller.expireSec.value = v;
-                      },
-                    ),
-                  ),
+                  _ExpiryDropdown(controller: widget.controller),
                 ],
               ),
             ),
@@ -438,249 +649,119 @@ class _AdvancedOptionsState extends State<_AdvancedOptions> {
       ),
     );
   }
+}
+
+class _ExpiryDropdown extends StatelessWidget {
+  const _ExpiryDropdown({required this.controller});
+  final HomeController controller;
 
   String _fmt(int s) {
     if (s < 3600) return '${s ~/ 60} min';
     if (s < 86400) return '${s ~/ 3600} hr';
     return '${s ~/ 86400} day${s ~/ 86400 == 1 ? '' : 's'}';
   }
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    final options = controller.cfg.expireOptionsSec;
+    if (options.isEmpty) return const SizedBox.shrink();
+
+    return Obx(() {
+      final current = controller.expireSec.value;
+      final value = options.contains(current) ? current : options.first;
+      if (value != current) controller.expireSec.value = value;
+
+      return DropdownButtonFormField<int>(
+        value: value,
+        dropdownColor: _cardBg(context),
+        iconEnabledColor: scheme.onSurface.withValues(alpha: 0.6),
+        style: TextStyle(color: scheme.onSurface, fontSize: 13),
+        decoration: InputDecoration(
+          labelText: 'Expiry',
+          labelStyle: TextStyle(color: scheme.onSurface.withValues(alpha: 0.65)),
+          filled: true,
+          fillColor: _fieldBg(context),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: BorderSide(color: _line(context)),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: BorderSide(color: _line(context)),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: BorderSide(color: scheme.primary, width: 1.5),
+          ),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+        ),
+        items: options
+            .map((s) => DropdownMenuItem<int>(
+                  value: s,
+                  child: Text(_fmt(s)),
+                ))
+            .toList(),
+        onChanged: (v) {
+          if (v == null) return;
+          controller.expireSec.value = v;
+        },
+      );
+    });
+  }
 }
 
-// ─── Upload Form ──────────────────────────────────────────────────────────────
+// ── Shared dark field ─────────────────────────────────────────────────────────
 
-class _UploadForm extends StatelessWidget {
-  const _UploadForm({
-    required this.controller,
-    required this.t,
-    required this.scheme,
+class _DarkField extends StatelessWidget {
+  const _DarkField({
+    required this.ctrl,
+    required this.hint,
+    this.keyboardType,
+    this.prefixIcon,
+    this.obscureText = false,
+    this.maxLines = 1,
   });
-
-  final HomeController controller;
-  final AppLocalizations t;
-  final ColorScheme scheme;
-
-  @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      physics: const ClampingScrollPhysics(),
-      padding: const EdgeInsets.fromLTRB(16, 16, 16, 32),
-      child: Container(
-        decoration: BoxDecoration(
-          color: DroppyWebColors.ink900,
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: DroppyWebColors.lineStrong),
-          boxShadow: DroppyShadow.uploadCard,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            // ── Stats bar (top of card) ──
-            Container(
-              decoration: const BoxDecoration(
-                color: DroppyWebColors.ink800,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(10),
-                  topRight: Radius.circular(10),
-                ),
-                border: Border(bottom: BorderSide(color: DroppyWebColors.lineStrong)),
-              ),
-              child: IntrinsicHeight(
-                child: Row(
-                  children: [
-                    _StatCell(label: 'Max size', value: _maxSize()),
-                    const VerticalDivider(width: 1, thickness: 1, color: DroppyWebColors.lineStrong),
-                    _StatCell(label: 'Max files', value: '${controller.cfg.maxFiles}'),
-                    const VerticalDivider(width: 1, thickness: 1, color: DroppyWebColors.lineStrong),
-                    const _StatCell(label: 'Cost', value: 'Free'),
-                  ],
-                ),
-              ),
-            ),
-
-            // ── Card body ──
-            Padding(
-              padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  // Heading
-                  RichText(
-                    text: TextSpan(
-                      children: [
-                        TextSpan(
-                          text: 'Send heavy files\n',
-                          style: Theme.of(context)
-                              .textTheme
-                              .displayLarge!
-                              .copyWith(fontSize: 26),
-                        ),
-                        TextSpan(
-                          text: 'instantly.',
-                          style: AppTheme.heroAccent(color: scheme.primary, fontSize: 26),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 16),
-
-                  // Mode toggle
-                  Obx(
-                    () => SegmentedButton<String>(
-                      segments: [
-                        ButtonSegment(
-                          value: 'link',
-                          icon: const Icon(Icons.link_rounded, size: 16),
-                          label: Text(t.modeLink),
-                        ),
-                        ButtonSegment(
-                          value: 'mail',
-                          icon: const Icon(Icons.mail_outline_rounded, size: 16),
-                          label: Text(t.modeEmail),
-                        ),
-                      ],
-                      selected: {controller.shareMode.value},
-                      onSelectionChanged: (s) => controller.setShareMode(s.first),
-                    ),
-                  ),
-                  const SizedBox(height: 16),
-
-                  // Email fields (mail mode only)
-                  Obx(() {
-                    if (!controller.cfg.shareEnabled || controller.shareMode.value != 'mail') {
-                      return const SizedBox.shrink();
-                    }
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        TextField(
-                          controller: controller.emailFromCtrl,
-                          decoration: InputDecoration(
-                            labelText: t.emailFrom,
-                            prefixIcon:
-                                const Icon(Icons.person_outline_rounded, size: 18),
-                          ),
-                          keyboardType: TextInputType.emailAddress,
-                        ),
-                        const SizedBox(height: 10),
-                        TextField(
-                          controller: controller.emailToCtrl,
-                          decoration: InputDecoration(
-                            labelText: t.emailTo,
-                            hintText: 'a@b.com, c@d.com',
-                            prefixIcon: const Icon(Icons.group_outlined, size: 18),
-                          ),
-                          keyboardType: TextInputType.emailAddress,
-                          maxLines: 2,
-                        ),
-                        const SizedBox(height: 16),
-                      ],
-                    );
-                  }),
-
-                  // Drop zone
-                  Obx(() {
-                    if (controller.files.isEmpty) {
-                      return _DropZoneEmpty(controller: controller, t: t);
-                    }
-                    return _DropZoneFilled(controller: controller, t: t);
-                  }),
-                  const SizedBox(height: 16),
-
-                  // Advanced options (collapsible)
-                  _AdvancedOptions(controller: controller, t: t),
-                  const SizedBox(height: 16),
-                ],
-              ),
-            ),
-
-            // ── Send button block ──
-            Container(
-              decoration: const BoxDecoration(
-                border: Border(top: BorderSide(color: DroppyWebColors.lineStrong)),
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(10),
-                  bottomRight: Radius.circular(10),
-                ),
-              ),
-              padding: const EdgeInsets.all(14),
-              child: Obx(
-                () => FilledButton(
-                  onPressed: controller.files.isEmpty || controller.uploading.value || controller.pickingFiles.value
-                      ? null
-                      : () => controller.startSend(context),
-                  style: FilledButton.styleFrom(minimumSize: const Size.fromHeight(48)),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      if (controller.uploading.value) ...[
-                        const SizedBox(
-                          width: 18,
-                          height: 18,
-                          child: CircularProgressIndicator(strokeWidth: 2),
-                        ),
-                      ] else ...[
-                        const Icon(Icons.send_rounded, size: 18),
-                      ],
-                      const SizedBox(width: 8),
-                      Text(
-                        controller.uploading.value ? 'Starting…' : t.sendButton,
-                        style: const TextStyle(fontSize: 15),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  String _maxSize() {
-    final mb = controller.cfg.maxSizeMb;
-    return mb >= 1000 ? '${(mb / 1000).toStringAsFixed(0)} GB' : '$mb MB';
-  }
-}
-
-class _StatCell extends StatelessWidget {
-  const _StatCell({required this.label, required this.value});
-  final String label;
-  final String value;
+  final TextEditingController ctrl;
+  final String hint;
+  final TextInputType? keyboardType;
+  final IconData? prefixIcon;
+  final bool obscureText;
+  final int maxLines;
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10),
-        child: Column(
-          children: [
-            Text(
-              value,
-              style: Theme.of(context).textTheme.labelLarge!.copyWith(
-                    fontSize: 13,
-                    fontWeight: FontWeight.w700,
-                    color: DroppyWebColors.text,
-                  ),
-            ),
-            const SizedBox(height: 2),
-            Text(label, style: AppTheme.meta()),
-          ],
-        ),
+    final scheme = Theme.of(context).colorScheme;
+    return TextField(
+      controller: ctrl,
+      keyboardType: keyboardType,
+      obscureText: obscureText,
+      maxLines: maxLines,
+      style: TextStyle(color: scheme.onSurface, fontSize: 14),
+      decoration: InputDecoration(
+        hintText: hint,
+        hintStyle: TextStyle(color: scheme.onSurface.withValues(alpha: 0.35), fontSize: 14),
+        filled: true,
+        fillColor: _fieldBg(context),
+        prefixIcon: prefixIcon != null ? Icon(prefixIcon, color: scheme.onSurface.withValues(alpha: 0.55), size: 18) : null,
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide(color: _line(context))),
+        enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide(color: _line(context))),
+        focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide(color: scheme.primary, width: 1.5)),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
       ),
     );
   }
 }
 
-// ─── Progress Pane ────────────────────────────────────────────────────────────
+// ── Progress pane ─────────────────────────────────────────────────────────────
 
 class _ProgressPane extends StatelessWidget {
-  const _ProgressPane({required this.controller, required this.scheme});
+  const _ProgressPane({required this.controller});
   final HomeController controller;
-  final ColorScheme scheme;
 
   @override
   Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
     return Center(
       child: Obx(() {
         final p = controller.progress.value.clamp(0.0, 1.0);
@@ -710,7 +791,7 @@ class _ProgressPane extends StatelessWidget {
                     child: CircularProgressIndicator(
                       value: p,
                       strokeWidth: 8,
-                      backgroundColor: DroppyWebColors.lineStrong,
+                      backgroundColor: scheme.surfaceContainerHigh,
                       color: scheme.primary,
                     ),
                   ),
@@ -753,111 +834,112 @@ class _ProgressPane extends StatelessWidget {
   }
 }
 
-// ─── Success Pane ─────────────────────────────────────────────────────────────
+// ── Success pane ──────────────────────────────────────────────────────────────
 
 class _SuccessPane extends StatelessWidget {
-  const _SuccessPane({
-    required this.controller,
-    required this.t,
-    required this.scheme,
-  });
+  const _SuccessPane({required this.controller, required this.t});
   final HomeController controller;
   final AppLocalizations t;
-  final ColorScheme scheme;
 
   @override
   Widget build(BuildContext context) {
-    final isLink = controller.finishedLink.value.isNotEmpty;
-
+    final scheme = Theme.of(context).colorScheme;
+    final bottomPad = MediaQuery.of(context).padding.bottom + 84;
     return ListView(
-      padding: const EdgeInsets.fromLTRB(20, 32, 20, 32),
+      padding: EdgeInsets.fromLTRB(24, 40, 24, 32 + bottomPad),
       children: [
-        Icon(
-          isLink ? Icons.check_circle_rounded : Icons.mail_outline_rounded,
-          size: 64,
-          color: scheme.primary,
+        Center(
+          child: Container(
+            width: 80, height: 80,
+            decoration: BoxDecoration(
+              color: _accent(context).withValues(alpha: 0.12),
+              shape: BoxShape.circle,
+              border: Border.all(color: _accent(context).withValues(alpha: 0.4), width: 1.5),
+              boxShadow: const [BoxShadow(color: _accentGlow, blurRadius: 40, spreadRadius: 0)],
+            ),
+            child: Icon(Icons.check_rounded, color: _accent(context), size: 38),
+          ),
         ),
-        const SizedBox(height: 16),
+        const SizedBox(height: 24),
         Text(
-          isLink ? 'Transfer ready!' : 'Email sent!',
-          style: Theme.of(context)
-              .textTheme
-              .displaySmall!
-              .copyWith(color: DroppyWebColors.text),
+          controller.finishedLink.value.isNotEmpty ? 'Transfer ready!' : 'Email sent!',
+          style: TextStyle(color: scheme.onSurface, fontSize: 26, fontWeight: FontWeight.w800, letterSpacing: -0.5),
           textAlign: TextAlign.center,
         ),
         const SizedBox(height: 8),
         Text(
-          isLink
+          controller.finishedLink.value.isNotEmpty
               ? 'Share this link with your recipient.'
               : "We've notified your recipient(s).",
-          style: Theme.of(context).textTheme.bodyMedium,
+          style: TextStyle(color: scheme.onSurface.withValues(alpha: 0.55), fontSize: 14),
           textAlign: TextAlign.center,
         ),
-        const SizedBox(height: 28),
-        if (isLink) ...[
+        const SizedBox(height: 32),
+        if (controller.finishedLink.value.isNotEmpty) ...[
           Container(
+            padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: DroppyWebColors.ink800,
-              borderRadius: BorderRadius.circular(8),
-              border: Border.all(color: DroppyWebColors.lineStrong),
+              color: _cardBg(context),
+              borderRadius: BorderRadius.circular(14),
+              border: Border.all(color: _line(context)),
             ),
-            child: Row(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
-                    child: SelectableText(
-                      controller.finishedLink.value,
-                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 13,
-                            color: DroppyWebColors.text,
-                          ),
-                    ),
+                Text(
+                  'SHARE LINK',
+                  style: TextStyle(
+                    color: scheme.onSurface.withValues(alpha: 0.45),
+                    fontSize: 11,
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: 1.2,
                   ),
                 ),
-                Container(
-                  decoration: const BoxDecoration(
-                    border: Border(left: BorderSide(color: DroppyWebColors.lineStrong)),
-                  ),
-                  child: IconButton(
-                    icon: const Icon(Icons.copy_rounded, size: 20),
-                    tooltip: t.copyLink,
-                    onPressed: () {
-                      Clipboard.setData(
-                          ClipboardData(text: controller.finishedLink.value));
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text(t.copyLink)),
-                      );
-                    },
-                  ),
+                const SizedBox(height: 8),
+                Row(
+                  children: [
+                    Expanded(
+                      child: SelectableText(
+                        controller.finishedLink.value,
+                        style: TextStyle(color: _accent(context), fontSize: 13, fontWeight: FontWeight.w600),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Clipboard.setData(ClipboardData(text: controller.finishedLink.value));
+                        Get.snackbar('Copied', 'Link copied to clipboard',
+                            backgroundColor: _cardBg(context),
+                            colorText: scheme.onSurface);
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: scheme.surfaceContainerLow,
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(color: _line(context)),
+                        ),
+                        child: Icon(Icons.copy_rounded, color: scheme.onSurface.withValues(alpha: 0.55), size: 16),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
           ),
           const SizedBox(height: 12),
-          FilledButton.icon(
-            onPressed: controller.shareResult,
-            icon: const Icon(Icons.share_rounded, size: 18),
-            label: Text(t.share),
-            style: FilledButton.styleFrom(minimumSize: const Size.fromHeight(48)),
-          ),
-          const SizedBox(height: 16),
+          _AccentButton(label: t.share, icon: Icons.share_rounded, onTap: controller.shareResult),
+          const SizedBox(height: 10),
         ],
-        OutlinedButton(
-          onPressed: () {
-            controller.resetForNewTransfer();
-          },
-          style: OutlinedButton.styleFrom(minimumSize: const Size.fromHeight(46)),
-          child: Text(t.uploadMore),
+        _OutlineButton(
+          label: t.uploadMore,
+          onTap: controller.resetForNewTransfer,
         ),
       ],
     );
   }
 }
 
-// ─── Verify Pane ──────────────────────────────────────────────────────────────
+// ── Verify pane ───────────────────────────────────────────────────────────────
 
 class _VerifyPane extends StatelessWidget {
   const _VerifyPane({required this.controller, required this.t});
@@ -867,44 +949,281 @@ class _VerifyPane extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
+    final bottomPad = MediaQuery.of(context).padding.bottom + 84;
     return ListView(
-      padding: const EdgeInsets.fromLTRB(20, 32, 20, 32),
+      padding: EdgeInsets.fromLTRB(24, 40, 24, 32 + bottomPad),
       children: [
-        Icon(Icons.mark_email_unread_outlined, size: 56, color: scheme.primary),
-        const SizedBox(height: 20),
-        Text(
-          t.verifyEmailTitle,
-          style: Theme.of(context).textTheme.displaySmall,
-          textAlign: TextAlign.center,
+        Center(
+          child: Icon(Icons.mark_email_unread_outlined, color: _accent(context), size: 56),
         ),
+        const SizedBox(height: 20),
+        Text(t.verifyEmailTitle,
+            style: TextStyle(color: scheme.onSurface, fontSize: 22, fontWeight: FontWeight.w700),
+            textAlign: TextAlign.center),
         const SizedBox(height: 8),
         Text(
-          t.verifyCodeHint,
-          style: Theme.of(context).textTheme.bodyMedium,
+          'Enter the 4-digit code sent to your sender email.',
+          style: TextStyle(color: scheme.onSurface.withValues(alpha: 0.55), fontSize: 14),
           textAlign: TextAlign.center,
         ),
         const SizedBox(height: 28),
         TextField(
           controller: controller.verifyController,
-          decoration: const InputDecoration(
-            labelText: 'Enter 6-digit code',
-            prefixIcon: Icon(Icons.pin_outlined, size: 20),
-          ),
           keyboardType: TextInputType.number,
-          maxLength: 6,
-          style: const TextStyle(fontSize: 22, letterSpacing: 8),
+          maxLength: 4,
           textAlign: TextAlign.center,
+          style: TextStyle(color: scheme.onSurface, fontSize: 28, letterSpacing: 8, fontWeight: FontWeight.w600),
+          decoration: InputDecoration(
+            hintText: '0000',
+            hintStyle: TextStyle(color: scheme.onSurface.withValues(alpha: 0.28), letterSpacing: 4, fontSize: 24),
+            counterText: '',
+            filled: true,
+            fillColor: _fieldBg(context),
+            border: OutlineInputBorder(borderRadius: BorderRadius.circular(14), borderSide: BorderSide(color: _line(context))),
+            enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(14), borderSide: BorderSide(color: _line(context))),
+            focusedBorder: OutlineInputBorder(borderRadius: const BorderRadius.all(Radius.circular(14)), borderSide: BorderSide(color: _accent(context), width: 1.5)),
+          ),
         ),
         const SizedBox(height: 20),
-        Obx(
-          () => FilledButton(
-            onPressed:
-                controller.uploading.value ? null : controller.submitVerifyAndUpload,
-            style: FilledButton.styleFrom(minimumSize: const Size.fromHeight(50)),
-            child: Text(t.verifySubmit),
-          ),
+        Obx(() => _AccentButton(
+          label: t.verifySubmit,
+          onTap: controller.uploading.value ? null : controller.submitVerifyAndUpload,
+        )),
+        const SizedBox(height: 12),
+        Center(
+          child: Obx(() {
+            final busy = controller.uploading.value || controller.resendVerifyBusy.value;
+            return TextButton(
+              onPressed: busy ? null : () => controller.resendUploadVerifyCode(context),
+              child: Text(t.verifyResendCode),
+            );
+          }),
         ),
       ],
     );
+  }
+}
+
+// ── Shared buttons ────────────────────────────────────────────────────────────
+
+class _AccentButton extends StatelessWidget {
+  const _AccentButton({required this.label, this.icon, this.onTap});
+  final String label;
+  final IconData? icon;
+  final VoidCallback? onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    final enabled = onTap != null;
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        height: 54,
+        decoration: BoxDecoration(
+          color: enabled ? scheme.primary : scheme.onSurface.withValues(alpha: 0.10),
+          borderRadius: BorderRadius.circular(50),
+          boxShadow: enabled ? const [BoxShadow(color: _accentGlow, blurRadius: 20, offset: Offset(0, 4))] : null,
+        ),
+        alignment: Alignment.center,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            if (icon != null) ...[
+              Icon(icon, color: enabled ? scheme.onPrimary : scheme.onSurface.withValues(alpha: 0.45), size: 18),
+              const SizedBox(width: 8),
+            ],
+            Text(
+              label,
+              style: TextStyle(
+                color: enabled ? scheme.onPrimary : scheme.onSurface.withValues(alpha: 0.45),
+                fontWeight: FontWeight.w700,
+                fontSize: 16,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _OutlineButton extends StatelessWidget {
+  const _OutlineButton({required this.label, required this.onTap});
+  final String label;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        height: 50,
+        decoration: BoxDecoration(
+          border: Border.all(color: _line(context)),
+          borderRadius: BorderRadius.circular(50),
+        ),
+        alignment: Alignment.center,
+        child: Text(label, style: TextStyle(color: scheme.onSurface.withValues(alpha: 0.72), fontWeight: FontWeight.w500)),
+      ),
+    );
+  }
+}
+
+// ── Missing UI helpers (were referenced but not implemented) ───────────────
+
+class _UploadBar extends StatelessWidget {
+  const _UploadBar({required this.controller, required this.t});
+  final HomeController controller;
+  final AppLocalizations t;
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      top: false,
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+        child: Obx(() {
+          final disabled = controller.files.length == 0 ||
+              controller.uploading.value ||
+              controller.pickingFiles.value;
+          return FilledButton(
+            onPressed: disabled ? null : () => controller.startSend(context),
+            style: FilledButton.styleFrom(minimumSize: const Size.fromHeight(52)),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                if (controller.pickingFiles.value) ...[
+                  const SizedBox(
+                    width: 18,
+                    height: 18,
+                    child: CircularProgressIndicator(strokeWidth: 2),
+                  ),
+                ] else ...[
+                  const Icon(Icons.send_rounded, size: 18),
+                ],
+                const SizedBox(width: 8),
+                Text(
+                  controller.uploading.value ? 'Starting…' : t.sendButton,
+                  style: const TextStyle(fontSize: 15),
+                ),
+              ],
+            ),
+          );
+        }),
+      ),
+    );
+  }
+}
+
+class _FiletypeChips extends StatelessWidget {
+  const _FiletypeChips({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final labels = ['MP4', 'MOV', 'ZIP', 'PSD', 'WAV'];
+    return Wrap(
+      spacing: 8,
+      runSpacing: 8,
+      alignment: WrapAlignment.center,
+      children: labels.map((label) {
+        return Container(
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
+          decoration: BoxDecoration(
+            color: Colors.transparent,
+            borderRadius: BorderRadius.circular(999),
+            border: Border.all(color: _line(context), width: 1),
+          ),
+          child: Text(
+            label,
+            style: AppTheme.meta(color: _textDim(context)),
+          ),
+        );
+      }).toList(),
+    );
+  }
+}
+
+class _AdvancedOptions extends StatelessWidget {
+  const _AdvancedOptions({required this.controller, required this.t});
+  final HomeController controller;
+  final AppLocalizations t;
+
+  String _fmt(int s) {
+    if (s < 3600) return '${s ~/ 60} min';
+    if (s < 86400) return '${s ~/ 3600} hr';
+    return '${s ~/ 86400} day${s ~/ 86400 == 1 ? '' : 's'}';
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final options = controller.cfg.expireOptionsSec;
+    if (options.isEmpty) return const SizedBox.shrink();
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text('Expiry', style: AppTheme.meta()),
+        const SizedBox(height: 8),
+        Obx(() {
+          return DropdownButtonHideUnderline(
+            child: DropdownButton<int>(
+              value: controller.expireSec.value,
+              isExpanded: true,
+              dropdownColor: _cardBg(context),
+              style: TextStyle(color: Theme.of(context).colorScheme.onSurface),
+              items: options
+                  .map((s) => DropdownMenuItem<int>(
+                        value: s,
+                        child: Text(_fmt(s), style: AppTheme.meta()),
+                      ))
+                  .toList(),
+              onChanged: (v) {
+                if (v == null) return;
+                controller.expireSec.value = v;
+              },
+            ),
+          );
+        }),
+      ],
+    );
+  }
+}
+
+class _StatCell extends StatelessWidget {
+  const _StatCell({required this.label, required this.value});
+  final String label;
+  final String value;
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(value, style: AppTheme.meta()),
+          const SizedBox(height: 6),
+          Text(
+            label,
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.45),
+              fontSize: 11,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// Prevents glow/stretch overscroll so the top doesn't "pull down" into empty space.
+class _NoOverscrollBehavior extends ScrollBehavior {
+  const _NoOverscrollBehavior();
+
+  @override
+  Widget buildOverscrollIndicator(BuildContext context, Widget child, ScrollableDetails details) {
+    return child;
   }
 }

@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:sendlargefiles/app/routes/app_routes.dart';
 import 'package:sendlargefiles/modules/download/download_binding.dart';
 import 'package:sendlargefiles/modules/download/download_view.dart';
+import 'package:sendlargefiles/modules/history/history_binding.dart';
 import 'package:sendlargefiles/modules/home/home_binding.dart';
 import 'package:sendlargefiles/modules/home/home_view.dart';
 import 'package:sendlargefiles/modules/login/login_binding.dart';
@@ -33,6 +34,7 @@ class AppPages {
       bindings: [
         AppShellBinding(),
         HomeBinding(),
+        HistoryBinding(),
         DownloadBinding(),
         SettingsBinding(),
       ],

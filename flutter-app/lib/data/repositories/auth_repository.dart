@@ -5,37 +5,76 @@ import 'package:sendlargefiles/data/providers/api_client.dart';
 class AuthRepository extends GetxService {
   final RxBool loggedIn = false.obs;
 
-  /// POST site login form (`/login`).
-  Future<bool> login({required String email, required String password}) async {
+  /// POST handler/request_otp { email }
+  /// Returns: 'sent' | 'invalid_email' | 'error'
+  Future<String> requestOtp(String email) async {
     final client = ApiClient.instance.dio;
-    final fd = dio.FormData.fromMap(<String, dynamic>{
-      'email': email,
-      'password': password,
-    });
     try {
-      await client.post<dynamic>(
-        'login',
-        data: fd,
+      final resp = await client.post<Map<String, dynamic>>(
+        'handler/request_otp',
+        data: dio.FormData.fromMap({'email': email}),
         options: dio.Options(
-          followRedirects: true,
-          maxRedirects: 8,
           validateStatus: (s) => s != null && s < 500,
           contentType: dio.Headers.multipartFormDataContentType,
         ),
       );
-      loggedIn.value = true;
-      return true;
+      return (resp.data?['result'] as String?) ?? 'error';
     } catch (_) {
-      return false;
+      return 'error';
     }
   }
 
+  /// POST handler/verify_otp { email, code }
+  /// Returns: 'ok' | 'invalid' | 'expired' | 'error'
+  Future<String> verifyOtp(String email, String code) async {
+    final client = ApiClient.instance.dio;
+    try {
+      final resp = await client.post<Map<String, dynamic>>(
+        'handler/verify_otp',
+        data: dio.FormData.fromMap({'email': email, 'code': code}),
+        options: dio.Options(
+          validateStatus: (s) => s != null && s < 500,
+          contentType: dio.Headers.multipartFormDataContentType,
+        ),
+      );
+      final result = (resp.data?['result'] as String?) ?? 'error';
+      if (result == 'ok') loggedIn.value = true;
+      return result;
+    } catch (_) {
+      return 'error';
+    }
+  }
+
+  /// GET handler/history_json — aligns [loggedIn] with the PHP session cookie.
+  Future<void> refreshAuthFromServer() async {
+    final client = ApiClient.instance.dio;
+    try {
+      final resp = await client.get<Map<String, dynamic>>(
+        'handler/history_json',
+        options: dio.Options(validateStatus: (s) => s != null && s < 500),
+      );
+      final data = resp.data;
+      final r = (data?['result'] as String?) ?? 'error';
+      loggedIn.value = r == 'ok';
+    } catch (_) {
+      loggedIn.value = false;
+    }
+  }
+
+  /// POST handler/otp_logout
   Future<void> logout() async {
+    final client = ApiClient.instance.dio;
+    try {
+      await client.post<dynamic>(
+        'handler/otp_logout',
+        options: dio.Options(validateStatus: (s) => s != null && s < 500),
+      );
+    } catch (_) {}
     await ApiClient.instance.clearCookies();
     loggedIn.value = false;
   }
 
-  /// Sets PHP session language (same as web header picker).
+  /// Sets PHP session language.
   Future<void> syncSessionLanguage(String pathSegment) async {
     final client = ApiClient.instance.dio;
     try {

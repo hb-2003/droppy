@@ -104,24 +104,46 @@ Color _hex(String? hex, Color fallback) {
 class AppTheme {
   AppTheme._();
 
+  static const _kNoAnim = Duration.zero;
+  static Color _toneDownForLight(Color c) {
+    // If the chosen brand color is extremely bright (eg. lime),
+    // it becomes hard to read on light surfaces. Darken it slightly.
+    if (c.computeLuminance() < 0.75) return c;
+    return Color.alphaBlend(const Color(0x33000000), c); // ~20% black blend
+  }
+
   static ThemeData lightFromConfig(AppConfig? c) {
     final cfg = c ?? AppConfig.fallback();
 
-    final primary = _hex(cfg.themeColor, DroppyWebColors.bulmaInfo);
-    final secondary = _hex(cfg.themeColorSecondary, DroppyWebColors.bulmaInfo);
-    final onPrimary = _hex(cfg.themeColorText, Colors.white);
+    final primaryRaw = _hex(cfg.themeColor, DroppyWebColors.bulmaInfo);
+    final secondaryRaw = _hex(cfg.themeColorSecondary, DroppyWebColors.bulmaInfo);
+    final primary = _toneDownForLight(primaryRaw);
+    final secondary = _toneDownForLight(secondaryRaw);
+    // Prefer computed contrast; server-provided text colors are often tuned for dark themes.
+    final onPrimary = _contrastOn(primary);
 
     var scheme = ColorScheme.fromSeed(seedColor: primary, brightness: Brightness.light);
+    // Light theme: ensure clear elevation/section contrast.
+    // Many screens use `surfaceContainerHighest` as "card background" and
+    // `outlineVariant` for borders, so we make those intentionally visible.
+    const bg = Color(0xFFF2F4F7);
+    const card = Color(0xFFFFFFFF);
+    const cardAlt = Color(0xFFF7F8FA);
+    const line = Color(0xFFD7DCE3);
     scheme = scheme.copyWith(
       brightness: Brightness.light,
       primary: primary,
       onPrimary: onPrimary,
       secondary: secondary,
       onSecondary: _contrastOn(secondary),
-      surface: Colors.white,
+      surface: card,
       onSurface: const Color(0xFF0A0A0A),
-      surfaceContainerHighest: const Color(0xFFF5F5F5),
-      outline: const Color(0xFFEDEDED),
+      surfaceContainerHighest: card,
+      surfaceContainerHigh: cardAlt,
+      surfaceContainer: cardAlt,
+      surfaceContainerLow: const Color(0xFFFBFCFD),
+      outline: line,
+      outlineVariant: line,
       error: DroppyWebColors.error,
     );
 
@@ -131,46 +153,55 @@ class AppTheme {
       useMaterial3: true,
       brightness: Brightness.light,
       colorScheme: scheme,
-      scaffoldBackgroundColor: const Color(0xFFF5F5F5),
+      scaffoldBackgroundColor: bg,
       textTheme: textTheme,
       appBarTheme: AppBarTheme(
         elevation: 0,
         scrolledUnderElevation: 0,
         centerTitle: false,
-        backgroundColor: Colors.white,
+        backgroundColor: bg,
         foregroundColor: const Color(0xFF0A0A0A),
         surfaceTintColor: Colors.transparent,
         titleTextStyle: GoogleFonts.roboto(fontSize: 16, fontWeight: FontWeight.w600, color: const Color(0xFF0A0A0A)),
       ),
       cardTheme: CardThemeData(
-        color: Colors.white,
+        color: scheme.surfaceContainerHighest,
         elevation: 0,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
-          side: const BorderSide(color: Color(0xFFEDEDED)),
+          side: BorderSide(color: scheme.outlineVariant),
         ),
       ),
-      dividerTheme: const DividerThemeData(color: Color(0xFFEDEDED), thickness: 1),
+      dividerTheme: DividerThemeData(color: scheme.outlineVariant, thickness: 1),
       filledButtonTheme: FilledButtonThemeData(
         style: FilledButton.styleFrom(
           backgroundColor: primary,
           foregroundColor: onPrimary,
           textStyle: GoogleFonts.roboto(fontWeight: FontWeight.w600),
+          animationDuration: _kNoAnim,
         ),
       ),
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
           foregroundColor: const Color(0xFF0A0A0A),
-          side: const BorderSide(color: Color(0xFFEDEDED)),
+          side: BorderSide(color: scheme.outlineVariant),
           textStyle: GoogleFonts.roboto(fontWeight: FontWeight.w600),
+          animationDuration: _kNoAnim,
+        ),
+      ),
+      textButtonTheme: TextButtonThemeData(
+        style: TextButton.styleFrom(
+          foregroundColor: primary,
+          textStyle: GoogleFonts.roboto(fontWeight: FontWeight.w600),
+          animationDuration: _kNoAnim,
         ),
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        fillColor: Colors.white,
+        fillColor: scheme.surfaceContainerHighest,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: Color(0xFFEDEDED)),
+          borderSide: BorderSide(color: scheme.outlineVariant),
         ),
       ),
     );
@@ -275,6 +306,7 @@ class AppTheme {
             fontWeight: FontWeight.w700,
           ),
           elevation: 0,
+          animationDuration: _kNoAnim,
         ),
       ),
       outlinedButtonTheme: OutlinedButtonThemeData(
@@ -288,12 +320,14 @@ class AppTheme {
           textStyle: GoogleFonts.roboto(
             fontWeight: FontWeight.w600,
           ),
+          animationDuration: _kNoAnim,
         ),
       ),
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
           foregroundColor: primary,
           textStyle: GoogleFonts.roboto(fontWeight: FontWeight.w600),
+          animationDuration: _kNoAnim,
         ),
       ),
       segmentedButtonTheme: SegmentedButtonThemeData(

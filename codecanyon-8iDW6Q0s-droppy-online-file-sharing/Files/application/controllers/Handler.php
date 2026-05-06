@@ -513,6 +513,55 @@ class Handler extends CI_Controller {
         echo json_encode(['result' => 'ok']);
     }
 
+    /**
+     * GET handler/history_json
+     * Returns the OTP-authenticated user's transfer history as JSON.
+     * Requires an active OTP session (same session cookie used by the web).
+     */
+    public function history_json()
+    {
+        header('Content-Type: application/json');
+        $this->load->model('uploads');
+        $this->load->model('files');
+        $this->load->helper('seconds');
+
+        $otp_email = $this->session->userdata('otp_verified_email');
+        if (empty($otp_email)) {
+            echo json_encode(['result' => 'unauthenticated']);
+            return;
+        }
+
+        $raw = $this->uploads->getByEmail($otp_email, 50);
+        $transfers = [];
+        if (!empty($raw)) {
+            foreach ($raw as $row) {
+                $files = $this->files->getByUploadID($row['upload_id']);
+                $file_list = [];
+                if (!empty($files)) {
+                    foreach ($files as $f) {
+                        $file_list[] = [
+                            'name'         => $f['name'] ?? '',
+                            'size'         => (int)($f['size'] ?? 0),
+                            'content_type' => $f['content_type'] ?? '',
+                        ];
+                    }
+                }
+                $transfers[] = [
+                    'upload_id'   => $row['upload_id'] ?? '',
+                    'share'       => $row['share'] ?? 'link',
+                    'count'       => (int)($row['count'] ?? 0),
+                    'size'        => (int)($row['size'] ?? 0),
+                    'time'        => (int)($row['time'] ?? 0),
+                    'time_expire' => (int)($row['time_expire'] ?? 0),
+                    'destruct'    => $row['destruct'] ?? 'no',
+                    'files'       => $file_list,
+                ];
+            }
+        }
+
+        echo json_encode(['result' => 'ok', 'email' => $otp_email, 'transfers' => $transfers]);
+    }
+
     public function contact() {
         $this->load->library('email');
         $this->load->helper('recaptcha');

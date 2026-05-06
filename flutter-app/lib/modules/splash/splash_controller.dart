@@ -1,9 +1,11 @@
 import 'dart:async';
 
 import 'package:app_links/app_links.dart';
+import 'package:dio/dio.dart' as import_dio;
 import 'package:get/get.dart';
 import 'package:sendlargefiles/app/routes/app_routes.dart';
 import 'package:sendlargefiles/data/providers/api_client.dart';
+import 'package:sendlargefiles/data/repositories/auth_repository.dart';
 
 class SplashController extends GetxController {
   final RxBool loading = true.obs;
@@ -34,8 +36,9 @@ class SplashController extends GetxController {
   Future<void> _bootstrap() async {
     try {
       await ApiClient.instance.init();
-      // No bootstrap call here: sharelargefilesfree.com returns HTML for `handler/app_config`.
-      // Login gating will be enforced by the server when calling upload/download endpoints.
+      // Accept terms so the server sets the required cookie before any API call.
+      await _acceptTerms();
+      await Get.find<AuthRepository>().refreshAuthFromServer();
       Get.offAllNamed(AppRoutes.shell);
     } catch (_) {
       Get.offAllNamed(AppRoutes.shell);
@@ -43,4 +46,20 @@ class SplashController extends GetxController {
       loading.value = false;
     }
   }
+
+  Future<void> _acceptTerms() async {
+    try {
+      final base = ApiClient.instance.dio.options.baseUrl;
+      await ApiClient.instance.dio.get<dynamic>(
+        'handler/acceptterms',
+        queryParameters: {'url': base},
+        options: _noFollow,
+      );
+    } catch (_) {}
+  }
+
+  static final _noFollow = import_dio.Options(
+    followRedirects: false,
+    validateStatus: (s) => s != null && s < 600,
+  );
 }
