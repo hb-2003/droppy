@@ -79,7 +79,7 @@ $ev_max_size_label = $ev_max_size_mb >= 1024
         <div class="slvf-values">
             <article class="slvf-value slvf-value--wide slvf-rise">
                 <span class="slvf-feature__tag"><i class="lni lni-video"></i> Video first</span>
-                <div class="slvf-feature__icon"><i class="lni lni-film-play"></i></div>
+                <div class="slvf-feature__icon"><i class="lni lni-video"></i></div>
                 <h3 class="slvf-feature__title">Tuned for the heavy stuff.</h3>
                 <p class="slvf-feature__desc">Most file-share tools were built for documents. We built ours for masters and rushes. Chunked uploads, parallel streams, no codec re-encoding, and previews that handle 4K on the download page.</p>
             </article>

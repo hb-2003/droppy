@@ -2,6 +2,8 @@
 # ─────────────────────────────────────────────
 # deploy.sh — push local Droppy to live server
 # Run: ./deploy.sh  (from inside the Files/ folder)
+# NOTE: Nginx config is managed directly on the server.
+#       This script NEVER touches /etc/nginx/
 # ─────────────────────────────────────────────
 
 SERVER="root@31.220.45.93"
@@ -14,7 +16,7 @@ RSYNC_SSH="ssh -o StrictHostKeyChecking=no -i $SSH_KEY"
 
 echo ""
 echo "========================================"
-echo "  🚀 Deploying Droppy → 31.220.45.93"
+echo "  🚀 Deploying Droppy → sharelargefilesfree.com"
 echo "========================================"
 
 # ── STEP 1: Sync files ───────────────────────
@@ -54,8 +56,8 @@ sed -i "s/'username' => '.*', \/\/ The username/'username' => 'droppy', \/\/ The
 sed -i "s/'password' => '.*', \/\/ The password/'password' => 'vrlbWkXWH4yN7VeoXeh2vSOc', \/\/ The password/" $REMOTE/application/config/database.php
 sed -i "s/'database' => '.*', \/\/ The database name/'database' => 'droppy', \/\/ The database name/" $REMOTE/application/config/database.php
 
-# Fix config.php — live base_url
-sed -i "s|'base_url' => '.*'|'base_url' => 'http://31.220.45.93/'|" $REMOTE/application/config/config.php
+# Fix config.php — set base_url (Nginx overrides this per-vhost via DROPPY_SITE_URL)
+sed -i "s|'base_url' => '.*'|'base_url' => 'https://sharelargefilesfree.com/'|" $REMOTE/application/config/config.php
 
 # Fix permissions
 chown -R www-data:www-data $REMOTE
@@ -79,6 +81,7 @@ $SSH "$SERVER" "systemctl restart php8.3-fpm && systemctl reload nginx && echo '
 echo ""
 echo "========================================"
 echo "  ✅ Deploy complete!"
-echo "  🌐 http://31.220.45.93"
+echo "  🌐 https://sharelargefilesfree.com"
+echo "  🌐 http://31.220.45.93  (still works)"
 echo "========================================"
 echo ""

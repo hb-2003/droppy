@@ -8,7 +8,7 @@
  */
 class Plugin {
     private $CI;
-    public $_pluginDir, $_plugins, $_pages, $_tabs, $_adminpages, $_crons, $_css;
+    public $_pluginDir, $_plugins, $_pages, $_tabs, $_adminpages, $_crons, $_css, $_adminmailtemplates;
 
     /**
      * Plugin constructor.
@@ -20,12 +20,13 @@ class Plugin {
 
         $this->_pluginDir = APPPATH . 'plugins/';
 
-        $this->_plugins    = array();
-        $this->_pages      = array();
-        $this->_tabs       = array();
-        $this->_adminpages = array();
-        $this->_crons      = array();
-        $this->_css        = array();
+        $this->_plugins            = array();
+        $this->_pages              = array();
+        $this->_tabs               = array();
+        $this->_adminpages         = array();
+        $this->_crons              = array();
+        $this->_css                = array();
+        $this->_adminmailtemplates = array();
     }
 
     /**

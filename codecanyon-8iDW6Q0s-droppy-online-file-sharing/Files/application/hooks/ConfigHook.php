@@ -31,8 +31,14 @@ class ConfigHook {
                 $this->CI->config->set_item($key, $value);
             }
 
-            // Set the site URl from the database as CodeIgniter base URL
-            $this->CI->config->set_item('base_url', $this->CI->config->item('site_url'));
+            // Set the site URL — allow Nginx to override per-vhost (IP vs domain)
+            $nginx_url = getenv('DROPPY_SITE_URL');
+            if (!empty($nginx_url)) {
+                $this->CI->config->set_item('base_url', $nginx_url);
+                $this->CI->config->set_item('site_url', $nginx_url);
+            } else {
+                $this->CI->config->set_item('base_url', $this->CI->config->item('site_url'));
+            }
 
             // Set the server time
             if(!empty($settings['timezone'])) {

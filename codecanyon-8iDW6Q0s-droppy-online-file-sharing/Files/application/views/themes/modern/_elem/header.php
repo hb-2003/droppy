@@ -98,6 +98,18 @@
 
         <!-- Desktop right actions -->
         <div class="slvf-nav__actions">
+            <?php if(is_array($extra_pages) && !empty($extra_pages)): ?>
+                <?php foreach($extra_pages as $tab): ?>
+                    <?php if($tab['type'] === 'about_page'): ?>
+                        <a class="slvf-nav__link" href="<?php echo base_url('about'); ?>"><span><?php echo htmlspecialchars($tab['title']); ?></span></a>
+                    <?php elseif($tab['type'] === 'terms_page'): ?>
+                        <a class="slvf-nav__link" href="<?php echo base_url('terms'); ?>"><span><?php echo htmlspecialchars($tab['title']); ?></span></a>
+                    <?php elseif($tab['type'] === 'link'): ?>
+                        <?php $href = strpos($tab['content'], 'http') === false ? base_url($tab['content']) : $tab['content']; ?>
+                        <a class="slvf-nav__link" href="<?php echo $href; ?>" target="_blank"><span><?php echo htmlspecialchars($tab['title']); ?></span></a>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            <?php endif; ?>
             <?php if(isset($_SESSION['otp_verified_email']) || (isset($session) && $session->has_userdata('user') && $session->userdata('user') == true)): ?>
                 <!-- Logged-in: History + Account dropdown -->
                 <a class="slvf-nav__link" href="<?php echo base_url('history') ?>">
@@ -147,16 +159,55 @@
 
     <!-- Mobile menu -->
     <div class="slvf-nav__mobile-menu" id="slvf-mobile-menu">
+
         <?php if(isset($_SESSION['otp_verified_email'])): ?>
-        <a class="slvf-nav__mobile-item" href="<?php echo base_url('history') ?>">History</a>
-        <a class="slvf-nav__mobile-item" href="#" onclick="OtpModal.logout(); return false;">Sign out</a>
+        <a class="slvf-nav__mobile-item" href="<?php echo base_url('history') ?>">
+            <i class="lni lni-timer"></i> History
+        </a>
+        <a class="slvf-nav__mobile-item" href="#" onclick="OtpModal.logout(); return false;">
+            <i class="lni lni-exit"></i> Sign out
+        </a>
         <?php elseif($session->has_userdata('user') && $session->userdata('user') == true): ?>
-        <a class="slvf-nav__mobile-item" href="<?php echo base_url('login/logout') ?>"><?php echo lang('logout'); ?></a>
+        <a class="slvf-nav__mobile-item" href="<?php echo base_url('login/logout') ?>">
+            <i class="lni lni-exit"></i> <?php echo lang('logout'); ?>
+        </a>
         <?php elseif(isset($_SESSION['droppy_premium'])): ?>
-        <a class="slvf-nav__mobile-item" href="<?php echo base_url('page/premium?action=logout') ?>"><?php echo lang('logout'); ?></a>
+        <a class="slvf-nav__mobile-item" href="<?php echo base_url('page/premium?action=logout') ?>">
+            <i class="lni lni-exit"></i> <?php echo lang('logout'); ?>
+        </a>
         <?php else: ?>
-        <a class="slvf-nav__mobile-item" href="#" onclick="OtpModal.open(); return false;">Sign in</a>
+        <a class="slvf-nav__mobile-item" href="#" onclick="OtpModal.open(); return false;">
+            <i class="lni lni-user"></i> Sign in
+        </a>
         <?php endif; ?>
+
+        <?php if(is_array($extra_pages) && !empty($extra_pages)): ?>
+            <div class="slvf-nav__mobile-divider"></div>
+            <?php foreach($extra_pages as $tab): ?>
+                <?php if($tab['type'] === 'about_page'): ?>
+                <a class="slvf-nav__mobile-item" href="<?php echo base_url('about'); ?>">
+                    <i class="lni lni-information"></i> <?php echo htmlspecialchars($tab['title']); ?>
+                </a>
+                <?php elseif($tab['type'] === 'terms_page'): ?>
+                <a class="slvf-nav__mobile-item" href="<?php echo base_url('terms'); ?>">
+                    <i class="lni lni-shield"></i> <?php echo htmlspecialchars($tab['title']); ?>
+                </a>
+                <?php elseif($tab['type'] === 'link'): ?>
+                <?php $href = strpos($tab['content'], 'http') === false ? base_url($tab['content']) : $tab['content']; ?>
+                <a class="slvf-nav__mobile-item" href="<?php echo $href; ?>" target="_blank">
+                    <i class="lni lni-link"></i> <?php echo htmlspecialchars($tab['title']); ?>
+                </a>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        <?php endif; ?>
+
+        <?php if($settings['contact_enabled'] == 'true'): ?>
+        <div class="slvf-nav__mobile-divider"></div>
+        <a class="slvf-nav__mobile-item" data-target="tab-contact" href="#">
+            <i class="lni lni-envelope"></i> <?php echo lang('contact'); ?>
+        </a>
+        <?php endif; ?>
+
     </div>
 </nav>
 <!-- END NAVBAR -->

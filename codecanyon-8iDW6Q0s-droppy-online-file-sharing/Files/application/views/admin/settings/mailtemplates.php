@@ -99,7 +99,7 @@
                             <i>Also use CTRL or ⌘(CMD) to deselect an item</i>
                             <br><br>
                             <?php
-                            $disabledTemplates = explode(',', $settings['disabled_email_templates']);
+                            $disabledTemplates = explode(',', $settings['disabled_email_templates'] ?? '');
                             ?>
                             <div class="mb-3">
                                 <label class="form-label">Email templates</label>

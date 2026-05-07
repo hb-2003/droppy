@@ -12,14 +12,12 @@
                                 <label class="form-label">Site name</label>
                                 <div class="col-sm-10">
                                     <input type="text" name="site_name" class="form-control" value="<?php echo $settings['site_name']; ?>">
-                                    <i>Your site name, e.g. Share Large Video Files</i>
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Site title</label>
                                 <div class="col-sm-10">
                                     <input type="text" name="site_title" class="form-control" value="<?php echo $settings['site_title']; ?>">
-                                    <i>Your site title, e.g. Share Large Video Files (shown in the browser tab)</i>
                                 </div>
                             </div>
                             <div class="mb-3">

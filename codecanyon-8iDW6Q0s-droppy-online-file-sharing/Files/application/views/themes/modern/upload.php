@@ -52,7 +52,7 @@ $ev_default_share   = isset($settings['default_sharetype']) ? $settings['default
                 </div>
             </li>
             <li>
-                <span class="slvf-hero__benefit-icon"><i class="lni lni-film-play"></i></span>
+                <span class="slvf-hero__benefit-icon"><i class="lni lni-video"></i></span>
                 <div>
                     <strong><?php echo lang('benefit_video_title') ?: 'Built for video'; ?></strong>
                     <span><?php echo lang('benefit_video_sub') ?: 'MP4, MOV, MKV and more'; ?></span>
@@ -442,7 +442,7 @@ $ev_default_share   = isset($settings['default_sharetype']) ? $settings['default
         <article class="slvf-feature slvf-feature--wide slvf-rise">
             <div>
                 <span class="slvf-feature__tag"><i class="lni lni-video"></i> <?php echo lang('feature_video_tag') ?: 'Tuned for video'; ?></span>
-                <div class="slvf-feature__icon"><i class="lni lni-film-play"></i></div>
+                <div class="slvf-feature__icon"><i class="lni lni-video"></i></div>
                 <h3 class="slvf-feature__title"><?php echo lang('feature_video_title') ?: 'Heavy footage moves at full speed.'; ?></h3>
                 <p class="slvf-feature__desc"><?php echo lang('feature_video_desc') ?: 'Chunked uploads, parallel streams and resumable transfers mean a dropped Wi-Fi doesn\'t cost you the upload.'; ?></p>
             </div>
@@ -490,11 +490,15 @@ $ev_default_share   = isset($settings['default_sharetype']) ? $settings['default
             <?php
             if(is_array($extra_pages) && !empty($extra_pages)) {
                 foreach ($extra_pages AS $key => $tab) {
-                    // Same resolver as _elem/header.php — About/Terms → /about /terms
-                    if (function_exists('slvf_extra_page_attrs')) {
-                        echo '<a ' . slvf_extra_page_attrs($tab, $key) . '>' . htmlspecialchars($tab['title']) . '</a>';
+                    if ($tab['type'] === 'about_page') {
+                        echo '<a href="' . base_url('about') . '">' . htmlspecialchars($tab['title']) . '</a>';
+                    } elseif ($tab['type'] === 'terms_page') {
+                        echo '<a href="' . base_url('terms') . '">' . htmlspecialchars($tab['title']) . '</a>';
+                    } elseif ($tab['type'] === 'link') {
+                        $href = strpos($tab['content'], 'http') === false ? base_url($tab['content']) : $tab['content'];
+                        echo '<a href="' . $href . '" target="_blank">' . htmlspecialchars($tab['title']) . '</a>';
                     } else {
-                        echo '<a '.($tab['type'] == 'link' ? 'href="'.(strpos($tab['content'], 'http') === false ? base_url($tab['content']) : $tab['content']).'" target="_blank"' : '') . ' data-target="tab-' . $key . '">' . htmlspecialchars($tab['title']) . '</a>';
+                        echo '<a href="' . base_url('page/' . urlencode($tab['title'])) . '">' . htmlspecialchars($tab['title']) . '</a>';
                     }
                 }
             }

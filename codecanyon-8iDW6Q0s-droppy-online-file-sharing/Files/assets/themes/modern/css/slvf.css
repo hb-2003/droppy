@@ -419,6 +419,12 @@ body.is-uploading .slvf-bg-mesh {
     cursor: pointer;
 }
 .slvf-nav__mobile-item:last-child { border-bottom: 0; }
+.slvf-nav__mobile-item i { margin-right: 10px; opacity: 0.6; font-size: 15px; }
+.slvf-nav__mobile-divider {
+    height: 1px;
+    background: var(--slvf-line);
+    margin: 8px 0;
+}
 
 /* ---------------------------------------------------------------------------
    5. SHELL / HERO  — centered single-column with prominent card below
