@@ -66,13 +66,6 @@ class HomeController extends GetxController {
 
   @override
   void onClose() {
-    messageCtrl?.dispose();
-    passwordCtrl?.dispose();
-    emailFromCtrl?.dispose();
-    emailToCtrl?.dispose();
-    verifyController.dispose();
-    emailFromFocus.dispose();
-    emailToFocus.dispose();
     super.onClose();
   }
 

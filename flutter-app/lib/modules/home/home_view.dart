@@ -77,34 +77,10 @@ class _MainForm extends StatelessWidget {
                 style: TextStyle(color: scheme.onSurface, fontSize: 10, height: 1.35, fontWeight: FontWeight.w500),
               ),
               const Spacer(),
-              // Auth-aware login/user button
+              // Login button (only when logged out)
               Obx(() {
                 final loggedIn = Get.find<AuthRepository>().loggedIn.value;
-                if (loggedIn) {
-                  return GestureDetector(
-                    onTap: controller.goSettings,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
-                      decoration: BoxDecoration(
-                        color: scheme.primary.withValues(alpha: 0.12),
-                        borderRadius: BorderRadius.circular(20),
-                        border: Border.all(color: scheme.primary.withValues(alpha: 0.35)),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Container(
-                            width: 7, height: 7,
-                            decoration: BoxDecoration(color: scheme.primary, shape: BoxShape.circle),
-                          ),
-                          const SizedBox(width: 6),
-                          Text('Signed in',
-                              style: TextStyle(color: scheme.primary, fontSize: 12, fontWeight: FontWeight.w600)),
-                        ],
-                      ),
-                    ),
-                  );
-                }
+                if (loggedIn) return const SizedBox.shrink();
                 return GestureDetector(
                   onTap: () => Get.toNamed('/login'),
                   child: Container(

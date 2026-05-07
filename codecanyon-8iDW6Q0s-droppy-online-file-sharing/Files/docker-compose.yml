@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: droppy_app
+    restart: always
+    ports:
+      - "80:80"
+    env_file:
+      - .env
+    volumes:
+      - ./uploads:/var/www/droppy/uploads
+      - ./application/logs:/var/www/droppy/application/logs
+      - ./application/cache:/var/www/droppy/application/cache
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: mariadb:10.11
+    container_name: droppy_db
+    restart: always
+    env_file:
+      - .env
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./application/install/droppy.sql:/docker-entrypoint-initdb.d/01_droppy.sql
+      - ./application/install/seed_pages.sql:/docker-entrypoint-initdb.d/02_seed_pages.sql
+      - ./application/install/updatev2.sql:/docker-entrypoint-initdb.d/03_updatev2.sql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  db_data:
