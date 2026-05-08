@@ -91,7 +91,7 @@ class _EmailScreen extends StatelessWidget {
                             style: TextStyle(color: accent, fontSize: 18, fontWeight: FontWeight.w600, letterSpacing: -0.3)),
                         const SizedBox(height: 12),
                         Text(
-                          "Enter your email and we'll send you a one-time code — no password needed.",
+                          "Enter your email and password to sign in.",
                           style: TextStyle(color: _dim2(context), fontSize: 14, height: 1.6),
                         ),
                         const SizedBox(height: 36),
@@ -102,14 +102,24 @@ class _EmailScreen extends StatelessWidget {
                           hint: 'you@example.com',
                           keyboardType: TextInputType.emailAddress,
                           autofocus: true,
-                          onSubmitted: (_) => controller.sendCode(),
+                          onSubmitted: (_) => controller.loginPassword(),
+                        ),
+                        const SizedBox(height: 16),
+                        _Label('PASSWORD'),
+                        const SizedBox(height: 8),
+                        _Field(
+                          ctrl: controller.passwordCtrl,
+                          hint: 'Password',
+                          keyboardType: TextInputType.visiblePassword,
+                          obscureText: true,
+                          onSubmitted: (_) => controller.loginPassword(),
                         ),
                         const SizedBox(height: 20),
                         Obx(() => _PrimaryButton(
-                          label: 'Send code',
+                          label: 'Sign in',
                           icon: Icons.arrow_forward_rounded,
                           loading: controller.loading.value,
-                          onTap: controller.loading.value ? null : controller.sendCode,
+                          onTap: controller.loading.value ? null : controller.loginPassword,
                         )),
                         const SizedBox(height: 32),
                         // Divider
@@ -382,6 +392,7 @@ class _Field extends StatelessWidget {
     required this.ctrl,
     required this.hint,
     this.keyboardType,
+    this.obscureText = false,
     this.textAlign = TextAlign.start,
     this.fontSize = 15.0,
     this.letterSpacing = 0.0,
@@ -392,6 +403,7 @@ class _Field extends StatelessWidget {
   final TextEditingController ctrl;
   final String hint;
   final TextInputType? keyboardType;
+  final bool obscureText;
   final TextAlign textAlign;
   final double fontSize;
   final double letterSpacing;
@@ -407,6 +419,7 @@ class _Field extends StatelessWidget {
     return TextField(
       controller: ctrl,
       keyboardType: keyboardType,
+      obscureText: obscureText,
       textAlign: textAlign,
       maxLength: maxLength,
       autofocus: autofocus,

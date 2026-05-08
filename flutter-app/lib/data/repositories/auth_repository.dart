@@ -6,6 +6,30 @@ class AuthRepository extends GetxService {
   final RxBool loggedIn = false.obs;
   final RxString sessionEmail = ''.obs;
 
+  /// POST handler/login_password { email, password }
+  /// Returns: 'ok' | 'invalid_email' | 'invalid_credentials' | 'error'
+  Future<String> loginWithPassword(String email, String password) async {
+    final client = ApiClient.instance.dio;
+    try {
+      final resp = await client.post<Map<String, dynamic>>(
+        'handler/login_password',
+        data: dio.FormData.fromMap({'email': email, 'password': password}),
+        options: dio.Options(
+          validateStatus: (s) => s != null && s < 500,
+          contentType: dio.Headers.multipartFormDataContentType,
+        ),
+      );
+      final result = (resp.data?['result'] as String?) ?? 'error';
+      if (result == 'ok') {
+        loggedIn.value = true;
+        sessionEmail.value = (resp.data?['email'] as String?)?.trim() ?? email.trim();
+      }
+      return result;
+    } catch (_) {
+      return 'error';
+    }
+  }
+
   /// POST handler/request_otp { email }
   /// Returns: 'sent' | 'invalid_email' | 'error'
   Future<String> requestOtp(String email) async {
@@ -79,20 +103,5 @@ class AuthRepository extends GetxService {
     await ApiClient.instance.clearCookies();
     loggedIn.value = false;
     sessionEmail.value = '';
-  }
-
-  /// Sets PHP session language.
-  Future<void> syncSessionLanguage(String pathSegment) async {
-    final client = ApiClient.instance.dio;
-    try {
-      await client.get(
-        'handler/changelanguage/$pathSegment',
-        options: dio.Options(
-          followRedirects: true,
-          maxRedirects: 5,
-          validateStatus: (s) => s != null && s < 500,
-        ),
-      );
-    } catch (_) {}
   }
 }

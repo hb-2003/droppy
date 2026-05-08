@@ -16,9 +16,11 @@ dependencies:
   cupertino_icons: ^1.0.8
   get: ^4.7.3
   dio: ^5.9.0
+  pretty_dio_logger: ^1.4.0
   cookie_jar: ^4.0.8
   dio_cookie_manager: ^3.3.0
   path_provider: ^2.1.5
+  external_path: ^2.0.1
   get_storage: ^2.1.1
   file_picker: ^10.3.8
   share_plus: ^12.0.1

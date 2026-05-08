@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sendlargefiles/l10n/app_localizations.dart';
 import 'package:sendlargefiles/modules/download/download_controller.dart';
+import 'package:sendlargefiles/widgets/app_snackbar.dart';
 
 class DownloadView extends GetView<DownloadController> {
   const DownloadView({super.key});
@@ -87,9 +88,7 @@ class DownloadView extends GetView<DownloadController> {
                           : () async {
                               final r = await controller.saveDownload();
                               if (r != null && context.mounted) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(content: Text(t.downloadSaved)),
-                                );
+                                AppSnack.success('Saved', t.downloadSaved);
                               }
                             },
                       child: Text(t.downloadFile),

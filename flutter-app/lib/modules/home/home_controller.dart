@@ -14,6 +14,7 @@ import 'package:share_plus/share_plus.dart' show ShareParams, SharePlus;
 import 'package:sendlargefiles/l10n/app_localizations.dart';
 import 'package:sendlargefiles/modules/history/history_controller.dart';
 import 'package:sendlargefiles/modules/shell/app_shell_controller.dart';
+import 'package:sendlargefiles/widgets/app_snackbar.dart';
 
 class HomeController extends GetxController {
   final ConfigRepository _cfg = Get.find<ConfigRepository>();
@@ -107,13 +108,7 @@ class HomeController extends GetxController {
     if (files.isEmpty) return;
 
     if (shareMode.value == 'mail' && !Get.find<AuthRepository>().loggedIn.value) {
-      Get.snackbar(
-        'Sign in required',
-        'Please sign in to send by email.',
-        backgroundColor: const Color(0xFF161616),
-        colorText: const Color(0xFFFFFFFF),
-        duration: const Duration(seconds: 3),
-      );
+      AppSnack.error('Sign in required', 'Please sign in to send by email.');
       Get.toNamed(AppRoutes.login);
       return;
     }
@@ -146,12 +141,11 @@ class HomeController extends GetxController {
     _cancelToken = CancelToken();
 
     final langPath = _languagePathForUpload();
-    await Get.find<AuthRepository>().syncSessionLanguage(langPath);
 
     try {
       final newId = await _upload.genUploadId();
       if (newId == null || newId.isEmpty) {
-        Get.snackbar('Upload', 'Could not start upload.');
+        AppSnack.error('Upload', 'Could not start upload.');
         uploading.value = false;
         return;
       }
@@ -165,7 +159,7 @@ class HomeController extends GetxController {
       // Match web behavior: only known error codes block upload.
       if (_isRegisterError(reg.code)) {
         uploading.value = false;
-        Get.snackbar('Upload', _registerErrorMessage(reg.code));
+        AppSnack.error('Upload', _registerErrorMessage(reg.code));
         return;
       }
       await _runFileUploadAndComplete(langPath);
@@ -174,7 +168,7 @@ class HomeController extends GetxController {
       if (e is Exception && '$e'.toLowerCase().contains('cancel')) {
         // User cancelled; no snackbar needed.
       } else {
-        Get.snackbar('Error', '$e');
+        AppSnack.error('Error', '$e');
       }
     } finally {
       if (!awaitingVerify.value) {
@@ -213,17 +207,17 @@ class HomeController extends GetxController {
     try {
       final reg = await _register(verifyCode: null);
       if (reg.verifyEmail) {
-        Get.snackbar('Verify', t?.verifyCodeSent ?? 'A new verification code was sent to your email.');
+        AppSnack.info('Verify', t?.verifyCodeSent ?? 'A new verification code was sent to your email.');
       } else if (reg.isOk) {
         awaitingVerify.value = false;
         await _runFileUploadAndComplete(_languagePathForUpload());
       } else if (_isRegisterError(reg.code)) {
-        Get.snackbar('Verify', _registerErrorMessage(reg.code));
+        AppSnack.error('Verify', _registerErrorMessage(reg.code));
       } else {
-        Get.snackbar('Verify', 'Could not resend code. Try again.');
+        AppSnack.error('Verify', 'Could not resend code. Try again.');
       }
     } catch (e) {
-      Get.snackbar('Error', '$e');
+      AppSnack.error('Error', '$e');
     } finally {
       resendVerifyBusy.value = false;
     }
@@ -233,7 +227,7 @@ class HomeController extends GetxController {
     if (activeUploadId.isEmpty) return;
     final code = verifyController.text.replaceAll(RegExp(r'\D'), '');
     if (code.length < 4) {
-      Get.snackbar('Verify', 'Enter the 4-digit code from your email.');
+      AppSnack.error('Verify', 'Enter the 4-digit code from your email.');
       return;
     }
     uploading.value = true;
@@ -243,20 +237,20 @@ class HomeController extends GetxController {
         code: code,
       );
       if (!verified) {
-        Get.snackbar('Verify', 'Invalid or expired code. Check the email and try again.');
+        AppSnack.error('Verify', 'Invalid or expired code. Check the email and try again.');
         uploading.value = false;
         return;
       }
       final reg = await _register(verifyCode: code);
       if (!reg.isOk) {
-        Get.snackbar('Verify', reg.code);
+        AppSnack.error('Verify', reg.code);
         uploading.value = false;
         return;
       }
       awaitingVerify.value = false;
       await _runFileUploadAndComplete(_languagePathForUpload());
     } catch (e) {
-      Get.snackbar('Error', '$e');
+      AppSnack.error('Error', '$e');
     } finally {
       uploading.value = false;
     }

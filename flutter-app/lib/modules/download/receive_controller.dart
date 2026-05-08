@@ -5,6 +5,7 @@ import 'package:sendlargefiles/data/models/app_config.dart';
 import 'package:sendlargefiles/data/models/transfer_metadata.dart';
 import 'package:sendlargefiles/data/repositories/config_repository.dart';
 import 'package:sendlargefiles/data/repositories/download_repository.dart';
+import 'package:sendlargefiles/widgets/app_snackbar.dart';
 
 /// Dedicated controller for the Receive tab in the shell IndexedStack.
 /// Registered as [permanent: true] so its TextEditingControllers are
@@ -138,120 +139,10 @@ class ReceiveController extends GetxController {
   // ── Toast helpers ─────────────────────────────────────────────────────────
 
   void _showSuccessToast(String filename) {
-    Get.showSnackbar(
-      GetSnackBar(
-        duration: const Duration(seconds: 4),
-        snackPosition: SnackPosition.BOTTOM,
-        margin: const EdgeInsets.fromLTRB(16, 0, 16, 32),
-        borderRadius: 20,
-        backgroundColor: const Color(0xFF141414),
-        padding: EdgeInsets.zero,
-        messageText: _ToastContent(
-          icon: Icons.download_done_rounded,
-          iconColor: const Color(0xFFD4FF3B),
-          iconBg: const Color(0x22D4FF3B),
-          title: 'Download complete',
-          subtitle: '"$filename" saved to Downloads',
-          borderColor: const Color(0x33D4FF3B),
-        ),
-      ),
-    );
+    AppSnack.success('Download complete', '"$filename" saved to Downloads');
   }
 
   void _showErrorToast(String message) {
-    Get.showSnackbar(
-      GetSnackBar(
-        duration: const Duration(seconds: 5),
-        snackPosition: SnackPosition.BOTTOM,
-        margin: const EdgeInsets.fromLTRB(16, 0, 16, 32),
-        borderRadius: 20,
-        backgroundColor: const Color(0xFF141414),
-        padding: EdgeInsets.zero,
-        messageText: _ToastContent(
-          icon: Icons.error_outline_rounded,
-          iconColor: const Color(0xFFFF6B6B),
-          iconBg: const Color(0x22FF6B6B),
-          title: 'Download failed',
-          subtitle: message,
-          borderColor: const Color(0x33FF6B6B),
-        ),
-      ),
-    );
-  }
-}
-
-// ── Toast widget ──────────────────────────────────────────────────────────────
-
-class _ToastContent extends StatelessWidget {
-  const _ToastContent({
-    required this.icon,
-    required this.iconColor,
-    required this.iconBg,
-    required this.title,
-    required this.subtitle,
-    required this.borderColor,
-  });
-
-  final IconData icon;
-  final Color iconColor;
-  final Color iconBg;
-  final String title;
-  final String subtitle;
-  final Color borderColor;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: const Color(0xFF141414),
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: borderColor, width: 1),
-      ),
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
-      child: Row(
-        children: [
-          // Icon bubble
-          Container(
-            width: 46,
-            height: 46,
-            decoration: BoxDecoration(
-              color: iconBg,
-              borderRadius: BorderRadius.circular(13),
-            ),
-            child: Icon(icon, color: iconColor, size: 22),
-          ),
-          const SizedBox(width: 14),
-          // Text
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  title,
-                  style: const TextStyle(
-                    color: Color(0xFFFFFFFF),
-                    fontSize: 14,
-                    fontWeight: FontWeight.w700,
-                    height: 1.2,
-                  ),
-                ),
-                const SizedBox(height: 3),
-                Text(
-                  subtitle,
-                  style: const TextStyle(
-                    color: Color(0x99FFFFFF),
-                    fontSize: 12,
-                    height: 1.4,
-                  ),
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
+    AppSnack.error('Download failed', message);
   }
 }

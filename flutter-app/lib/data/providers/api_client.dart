@@ -1,10 +1,12 @@
 import 'package:cookie_jar/cookie_jar.dart';
 import 'package:dio/dio.dart';
 import 'package:dio_cookie_manager/dio_cookie_manager.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sendlargefiles/app/config.dart';
 import 'package:flutter/foundation.dart';
+import 'package:sendlargefiles/widgets/app_snackbar.dart';
 
 const _kBaseUrlKey = 'api_base_url';
 
@@ -76,37 +78,28 @@ class ApiClient {
       _dio!.interceptors.add(CookieManager(_jar!));
     }
 
-    // Basic request/response logging for debugging API issues.
+    // Pretty request/response logging (debug builds only).
+    if (kDebugMode) {
+      _dio!.interceptors.add(
+        PrettyDioLogger(
+          requestHeader: true,
+          requestBody: true,
+          responseBody: true,
+          responseHeader: false,
+          compact: true,
+          maxWidth: 120,
+        ),
+      );
+    }
+
+    // Global network error toast.
     _dio!.interceptors.add(
       InterceptorsWrapper(
-        onRequest: (o, h) {
-          debugPrint('[API] → ${o.method} ${o.uri}');
-          if (o.queryParameters.isNotEmpty) {
-            debugPrint('[API]   query=${o.queryParameters}');
-          }
-          h.next(o);
-        },
-        onResponse: (r, h) {
-          debugPrint('[API] ← ${r.statusCode} ${r.requestOptions.method} ${r.requestOptions.uri}');
-          final path = r.requestOptions.path;
-          final ct = (r.headers.value(Headers.contentTypeHeader) ?? '').toLowerCase();
-          final data = r.data;
-
-          final isHtml = ct.contains('text/html') || (data is String && data.trimLeft().startsWith('<'));
-          final skipBody =
-              isHtml || path.startsWith('handler/changelanguage') || path.startsWith('/handler/changelanguage');
-
-          if (skipBody) {
-            debugPrint('[API]   body=<html omitted>');
-          } else if (data is String) {
-            debugPrint('[API]   body=${data.length > 300 ? '${data.substring(0, 300)}…' : data}');
-          } else {
-            debugPrint('[API]   body=${data.runtimeType}');
-          }
-          h.next(r);
-        },
         onError: (e, h) {
-          debugPrint('[API] ✕ ${e.requestOptions.method} ${e.requestOptions.uri} ${e.type} ${e.message}');
+          // Avoid spamming: only show when no response was received (timeouts, DNS, offline).
+          if (e.response == null) {
+            AppSnack.error('Network', 'Connection problem. Please try again.');
+          }
           h.next(e);
         },
       ),

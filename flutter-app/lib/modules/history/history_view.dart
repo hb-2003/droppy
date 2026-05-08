@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:sendlargefiles/data/providers/api_client.dart';
+import 'package:sendlargefiles/data/repositories/download_repository.dart';
 import 'package:sendlargefiles/data/repositories/history_repository.dart';
 import 'package:sendlargefiles/modules/history/history_controller.dart';
+import 'package:sendlargefiles/widgets/app_snackbar.dart';
 
 const _accentGlow = Color(0x33D4FF3B);
 
@@ -324,20 +327,35 @@ class _TransferCard extends StatelessWidget {
     final dim = scheme.onSurface.withValues(alpha: 0.55);
     final dim2 = scheme.onSurface.withValues(alpha: 0.45);
 
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: cardBg,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(
-          color: expired
-              ? line.withValues(alpha: 0.45)
-              : line,
+    Future<void> openDetails() async {
+      await showModalBottomSheet<void>(
+        context: context,
+        isScrollControlled: true,
+        backgroundColor: Colors.transparent,
+        builder: (_) => _TransferDetailsSheet(
+          controller: controller,
+          transfer: transfer,
         ),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+      );
+    }
+
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: openDetails,
+        borderRadius: BorderRadius.circular(16),
+        child: Container(
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: cardBg,
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(
+              color: expired ? line.withValues(alpha: 0.45) : line,
+            ),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
           Row(
             children: [
               // Icon
@@ -408,7 +426,202 @@ class _TransferCard extends StatelessWidget {
                 ),
               ),
           ],
-        ],
+          ],
+        ),
+      ),
+    ));
+  }
+}
+
+class _TransferDetailsSheet extends StatelessWidget {
+  const _TransferDetailsSheet({required this.controller, required this.transfer});
+  final HistoryController controller;
+  final HistoryTransfer transfer;
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    final base = resolveBaseUrl();
+    final link = base.isEmpty ? transfer.uploadId : '$base${transfer.uploadId}';
+    final expired = transfer.isExpired;
+
+    String fallbackName() {
+      if (transfer.count > 1) return '${transfer.uploadId}.zip';
+      if (transfer.files.isNotEmpty) return transfer.files.first.name;
+      return '${transfer.uploadId}.bin';
+    }
+
+    return SafeArea(
+      top: false,
+      child: Container(
+        margin: const EdgeInsets.fromLTRB(12, 0, 12, 12),
+        padding: const EdgeInsets.fromLTRB(16, 12, 16, 16),
+        decoration: BoxDecoration(
+          color: scheme.surface,
+          borderRadius: BorderRadius.circular(18),
+          border: Border.all(color: scheme.outlineVariant.withValues(alpha: 0.55)),
+        ),
+        child: StatefulBuilder(
+          builder: (ctx, setState) {
+            var downloading = false;
+
+            Future<void> copyLink() async {
+              await Clipboard.setData(ClipboardData(text: link));
+              AppSnack.success('Copied', 'Link copied to clipboard');
+            }
+
+            Future<void> download() async {
+              if (expired) {
+                AppSnack.error('Expired', 'This transfer is expired.');
+                return;
+              }
+              setState(() => downloading = true);
+              try {
+                final repo = Get.find<DownloadRepository>();
+                final site = base.isNotEmpty ? base : resolveBaseUrl();
+                final pageUrl = site.isNotEmpty ? '$site${transfer.uploadId}' : link;
+                final r = await repo.downloadToFile(
+                  uploadId: transfer.uploadId,
+                  privateId: '',
+                  pageUrl: pageUrl,
+                  filename: fallbackName(),
+                );
+                AppSnack.success('Download complete', '"${r.filename}" saved to Downloads');
+              } catch (e) {
+                AppSnack.error('Download failed', '$e');
+              } finally {
+                setState(() => downloading = false);
+              }
+            }
+
+            return Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Center(
+                  child: Container(
+                    width: 44,
+                    height: 5,
+                    margin: const EdgeInsets.only(bottom: 12),
+                    decoration: BoxDecoration(
+                      color: scheme.onSurface.withValues(alpha: 0.15),
+                      borderRadius: BorderRadius.circular(999),
+                    ),
+                  ),
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        'Transfer details',
+                        style: TextStyle(
+                          color: scheme.onSurface,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: () => Navigator.of(context).pop(),
+                      icon: Icon(Icons.close_rounded, color: scheme.onSurface.withValues(alpha: 0.65)),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 6),
+                Text(
+                  '${transfer.count} file${transfer.count == 1 ? '' : 's'} · ${controller.formatSize(transfer.size)}',
+                  style: TextStyle(color: scheme.onSurface.withValues(alpha: 0.6), fontSize: 12),
+                ),
+                const SizedBox(height: 12),
+                Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: scheme.surfaceContainerHighest,
+                    borderRadius: BorderRadius.circular(14),
+                    border: Border.all(color: scheme.outlineVariant.withValues(alpha: 0.55)),
+                  ),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: SelectableText(
+                          link,
+                          style: TextStyle(
+                            color: scheme.primary,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 10),
+                      IconButton(
+                        onPressed: copyLink,
+                        icon: Icon(Icons.copy_rounded, color: scheme.onSurface.withValues(alpha: 0.65)),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 12),
+                if (transfer.files.isNotEmpty) ...[
+                  Text(
+                    'Files',
+                    style: TextStyle(
+                      color: scheme.onSurface.withValues(alpha: 0.6),
+                      fontSize: 12,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  ConstrainedBox(
+                    constraints: const BoxConstraints(maxHeight: 240),
+                    child: ListView.separated(
+                      shrinkWrap: true,
+                      itemCount: transfer.files.length,
+                      separatorBuilder: (_, __) => Divider(height: 1, color: scheme.outlineVariant.withValues(alpha: 0.4)),
+                      itemBuilder: (_, i) {
+                        final f = transfer.files[i];
+                        final icon = _FileRow.iconFor(f);
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10),
+                          child: Row(
+                            children: [
+                              Icon(icon, size: 16, color: scheme.onSurface.withValues(alpha: 0.55)),
+                              const SizedBox(width: 10),
+                              Expanded(
+                                child: Text(
+                                  f.name,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(color: scheme.onSurface.withValues(alpha: 0.85), fontSize: 12),
+                                ),
+                              ),
+                              const SizedBox(width: 10),
+                              Text(
+                                controller.formatSize(f.size),
+                                style: TextStyle(color: scheme.onSurface.withValues(alpha: 0.55), fontSize: 11),
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                ],
+                FilledButton.icon(
+                  onPressed: downloading ? null : download,
+                  icon: downloading
+                      ? SizedBox(
+                          width: 16,
+                          height: 16,
+                          child: CircularProgressIndicator(strokeWidth: 2, color: scheme.onPrimary),
+                        )
+                      : const Icon(Icons.download_rounded, size: 18),
+                  label: Text(downloading ? 'Downloading…' : (expired ? 'Expired' : 'Download')),
+                ),
+              ],
+            );
+          },
+        ),
       ),
     );
   }
@@ -419,13 +632,35 @@ class _FileRow extends StatelessWidget {
   final HistoryTransferFile file;
   final bool expired;
 
-  IconData _icon() {
+  static String _extOf(String name) {
+    final i = name.lastIndexOf('.');
+    if (i < 0 || i == name.length - 1) return '';
+    return name.substring(i + 1).toLowerCase();
+  }
+
+  static IconData iconFor(HistoryTransferFile file) {
     final ct = file.contentType.toLowerCase();
     if (ct.contains('video')) return Icons.video_file_outlined;
     if (ct.contains('image')) return Icons.image_outlined;
     if (ct.contains('audio')) return Icons.audio_file_outlined;
     if (ct.contains('pdf')) return Icons.picture_as_pdf_outlined;
     if (ct.contains('zip') || ct.contains('archive')) return Icons.folder_zip_outlined;
+
+    // Fallback: infer by extension when server doesn't provide content_type.
+    final ext = _extOf(file.name);
+    if (['mp4', 'mov', 'mkv', 'avi', 'webm', 'm4v'].contains(ext)) {
+      return Icons.video_file_outlined;
+    }
+    if (['jpg', 'jpeg', 'png', 'gif', 'webp', 'heic'].contains(ext)) {
+      return Icons.image_outlined;
+    }
+    if (['mp3', 'wav', 'aac', 'm4a', 'flac', 'ogg'].contains(ext)) {
+      return Icons.audio_file_outlined;
+    }
+    if (ext == 'pdf') return Icons.picture_as_pdf_outlined;
+    if (['zip', 'rar', '7z', 'tar', 'gz'].contains(ext)) return Icons.folder_zip_outlined;
+    if (['txt', 'md', 'rtf'].contains(ext)) return Icons.description_outlined;
+
     return Icons.insert_drive_file_outlined;
   }
 
@@ -439,7 +674,7 @@ class _FileRow extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 6),
       child: Row(
         children: [
-          Icon(_icon(), color: expired ? dim : dim2, size: 14),
+          Icon(iconFor(file), color: expired ? dim : dim2, size: 14),
           const SizedBox(width: 8),
           Expanded(
             child: Text(

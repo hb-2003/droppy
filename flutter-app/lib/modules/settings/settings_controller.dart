@@ -5,6 +5,7 @@ import 'package:sendlargefiles/controllers/locale_controller.dart';
 import 'package:sendlargefiles/controllers/theme_controller.dart';
 import 'package:sendlargefiles/data/providers/api_client.dart';
 import 'package:sendlargefiles/data/repositories/auth_repository.dart';
+import 'package:sendlargefiles/widgets/app_snackbar.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SettingsController extends GetxController {
@@ -37,9 +38,7 @@ class SettingsController extends GetxController {
     final url = serverUrlCtrl.text.trim();
     if (url.isEmpty) return;
     ApiClient.instance.updateBaseUrl(url);
-    Get.snackbar('Saved', 'Server URL updated. Restart the app to apply.',
-        backgroundColor: const Color(0xFF161616),
-        colorText: const Color(0xFFFFFFFF));
+    AppSnack.success('Saved', 'Server URL updated. Restart the app to apply.');
   }
 
   void goLogin() => Get.toNamed(AppRoutes.login);

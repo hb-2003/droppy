@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:convert';
 
 import 'package:dio/dio.dart' as d;
+import 'package:external_path/external_path.dart';
 import 'package:get/get.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -17,6 +18,10 @@ class DownloadResult {
 }
 
 class DownloadRepository extends GetxService {
+  // Subfolder under the OS Downloads directory.
+  // Keep it filesystem-safe (no slashes).
+  static const String _downloadsSubdirName = 'Share Large Video Files';
+
   Future<TransferMetadata> fetchMetadata({
     required String uploadId,
     String privateId = '',
@@ -225,23 +230,45 @@ class DownloadRepository extends GetxService {
   ///   3. Internal app documents dir (last resort).
   static Future<Directory> _resolveDownloadsDir() async {
     if (Platform.isAndroid) {
-      // Request legacy storage permission (only needed on Android ≤ 12).
+      // NOTE:
+      // - path_provider's "downloads" directory is often app-scoped and not visible in the
+      //   user's Downloads app.
+      // - ExternalPath resolves the *public* Downloads folder (visible in Files app).
+
+      // Request legacy storage permission (Android 12 and below). On newer Android versions,
+      // this may be denied but writing may still work due to legacyExternalStorage settings
+      // or OEM behavior.
+      // Try MANAGE_EXTERNAL_STORAGE first (Android 11+), then legacy storage permission.
+      try {
+        final m = await Permission.manageExternalStorage.status;
+        if (!m.isGranted) {
+          await Permission.manageExternalStorage.request();
+        }
+      } catch (_) {}
       final status = await Permission.storage.status;
       if (!status.isGranted) {
         await Permission.storage.request();
       }
 
-      // Public Downloads folder — always preferred.
-      final pub = Directory('/storage/emulated/0/Download');
-      if (await pub.exists()) return pub;
+      try {
+        final pub = await ExternalPath.getExternalStoragePublicDirectory(
+          ExternalPath.DIRECTORY_DOWNLOAD,
+        );
+        if (pub.isNotEmpty) {
+          return Directory('$pub/$_downloadsSubdirName');
+        }
+      } catch (_) {}
 
       // Fall back to app-specific external storage.
       final ext = await getExternalStorageDirectory();
-      if (ext != null) return ext;
+      if (ext != null) {
+        return Directory('${ext.path}/$_downloadsSubdirName');
+      }
     }
 
     // iOS or last-resort fallback.
-    return getApplicationDocumentsDirectory();
+    final docs = await getApplicationDocumentsDirectory();
+    return Directory('${docs.path}/$_downloadsSubdirName');
   }
 
   /// Parses `filename=` or `filename*=UTF-8''` from a Content-Disposition value.

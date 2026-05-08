@@ -73,9 +73,18 @@ class HistoryController extends GetxController {
     final dt = DateTime.fromMillisecondsSinceEpoch(timestamp * 1000);
     final now = DateTime.now();
     final diff = now.difference(dt);
-    if (diff.inDays == 0) return 'Today';
-    if (diff.inDays == 1) return 'Yesterday';
-    if (diff.inDays < 7) return '${diff.inDays}d ago';
-    return '${dt.day}/${dt.month}/${dt.year}';
+    String timeOfDay() {
+      // 12-hour format without importing intl.
+      final h = dt.hour;
+      final m = dt.minute.toString().padLeft(2, '0');
+      final ap = h >= 12 ? 'PM' : 'AM';
+      final hh = (h % 12 == 0) ? 12 : (h % 12);
+      return '$hh:$m $ap';
+    }
+
+    if (diff.inDays == 0) return 'Today · ${timeOfDay()}';
+    if (diff.inDays == 1) return 'Yesterday · ${timeOfDay()}';
+    if (diff.inDays < 7) return '${diff.inDays}d ago · ${timeOfDay()}';
+    return '${dt.day}/${dt.month}/${dt.year} · ${timeOfDay()}';
   }
 }

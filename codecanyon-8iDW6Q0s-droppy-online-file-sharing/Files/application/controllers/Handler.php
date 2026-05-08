@@ -17,6 +17,33 @@ class Handler extends CI_Controller {
     }
 
     /**
+     * Health check endpoint (JSON).
+     * GET handler/health
+     */
+    public function health()
+    {
+        header('Content-Type: application/json');
+        header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
+
+        $db_ok = null;
+        try {
+            $this->load->database();
+            $row = $this->db->query('SELECT 1 AS ok')->row_array();
+            $db_ok = isset($row['ok']) && (int) $row['ok'] === 1;
+        } catch (Exception $e) {
+            $db_ok = false;
+        }
+
+        echo json_encode([
+            'ok'   => true,
+            'app'  => 'droppy',
+            'time' => time(),
+            'php'  => PHP_VERSION,
+            'db'   => $db_ok,
+        ]);
+    }
+
+    /**
      * Return translation items in json
      */
     public function getJsTranslation()
@@ -499,6 +526,53 @@ class Handler extends CI_Controller {
         $this->session->set_userdata('otp_verified_email', $email);
 
         echo json_encode(['result' => 'ok', 'email' => $email]);
+    }
+
+    /**
+     * Phase B — Password login: verify email + password against droppy_users.
+     * POST handler/login_password  { email, password }
+     *
+     * Returns:
+     *  - { result: ok, email }
+     *  - { result: invalid_email }
+     *  - { result: invalid_credentials }
+     *  - { result: error }
+     *
+     * Notes:
+     * - We reuse the same session key `otp_verified_email` so existing Flutter
+     *   flows (history_json, upload ownership) work without changes server-side.
+     */
+    public function login_password()
+    {
+        header('Content-Type: application/json');
+
+        $email = trim((string) $this->input->post('email', TRUE));
+        $pass  = (string) $this->input->post('password', TRUE);
+
+        if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            echo json_encode(['result' => 'invalid_email']);
+            return;
+        }
+        if ($pass === '') {
+            echo json_encode(['result' => 'invalid_credentials']);
+            return;
+        }
+
+        try {
+            $this->load->model('users');
+            $row = $this->users->getByEmail($email);
+            if (empty($row) || empty($row['password']) || !password_verify($pass, $row['password'])) {
+                echo json_encode(['result' => 'invalid_credentials']);
+                return;
+            }
+
+            $this->load->library('session');
+            $this->session->set_userdata('otp_verified_email', $email);
+
+            echo json_encode(['result' => 'ok', 'email' => $email]);
+        } catch (Exception $e) {
+            echo json_encode(['result' => 'error']);
+        }
     }
 
     /**

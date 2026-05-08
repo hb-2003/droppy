@@ -5,6 +5,7 @@ import 'package:sendlargefiles/data/repositories/auth_repository.dart';
 import 'package:sendlargefiles/l10n/app_localizations.dart';
 import 'package:sendlargefiles/app/theme/app_theme.dart';
 import 'package:sendlargefiles/modules/home/home_controller.dart';
+import 'package:sendlargefiles/widgets/app_snackbar.dart';
 
 const _accentGlow = Color(0x33D4FF3B);
 
@@ -928,9 +929,7 @@ class _SuccessPane extends StatelessWidget {
                     GestureDetector(
                       onTap: () {
                         Clipboard.setData(ClipboardData(text: controller.finishedLink.value));
-                        Get.snackbar('Copied', 'Link copied to clipboard',
-                            backgroundColor: _cardBg(context),
-                            colorText: scheme.onSurface);
+                        AppSnack.success('Copied', 'Link copied to clipboard');
                       },
                       child: Container(
                         padding: const EdgeInsets.all(8),
