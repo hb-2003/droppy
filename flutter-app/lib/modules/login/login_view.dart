@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:sendlargefiles/app/routes/app_routes.dart';
 import 'package:sendlargefiles/modules/login/login_controller.dart';
+import 'package:sendlargefiles/widgets/auth_top_bar.dart';
 
 // ── Theme helpers (computed at build time so they work in both light & dark) ───
 Color _bg(BuildContext ctx) => Theme.of(ctx).scaffoldBackgroundColor;
@@ -64,8 +66,8 @@ class _EmailScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
-                  child: _BackButton(onTap: () => Get.back()),
+                  padding: EdgeInsets.zero,
+                  child: const AuthTopBar(),
                 ),
                 Expanded(
                   child: SingleChildScrollView(
@@ -121,53 +123,14 @@ class _EmailScreen extends StatelessWidget {
                           loading: controller.loading.value,
                           onTap: controller.loading.value ? null : controller.loginPassword,
                         )),
-                        const SizedBox(height: 32),
-                        // Divider
-                        Row(
-                          children: [
-                            Expanded(child: Divider(color: _line(context))),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 16),
-                              child: Text('HOW IT WORKS',
-                                  style: TextStyle(color: _dim2(context), fontSize: 11, fontWeight: FontWeight.w600, letterSpacing: 1.2)),
+                        const SizedBox(height: 12),
+                        Center(
+                          child: TextButton(
+                            onPressed: () => Get.toNamed(AppRoutes.signup),
+                            child: Text(
+                              'Create account',
+                              style: TextStyle(color: accent, fontWeight: FontWeight.w700),
                             ),
-                            Expanded(child: Divider(color: _line(context))),
-                          ],
-                        ),
-                        const SizedBox(height: 20),
-                        // Steps
-                        _StepRow(number: '1', text: 'Enter your email address above'),
-                        const SizedBox(height: 12),
-                        _StepRow(number: '2', text: 'We send a 6-digit code to your inbox'),
-                        const SizedBox(height: 12),
-                        _StepRow(number: '3', text: 'Enter the code to sign in instantly'),
-                        const SizedBox(height: 20),
-                        // Security hint
-                        Container(
-                          padding: const EdgeInsets.all(16),
-                          decoration: BoxDecoration(
-                            color: _cardBg(context),
-                            borderRadius: BorderRadius.circular(14),
-                            border: Border.all(color: _line(context)),
-                          ),
-                          child: Row(
-                            children: [
-                              Container(
-                                width: 36, height: 36,
-                                decoration: BoxDecoration(
-                                  color: accent.withValues(alpha: 0.10),
-                                  borderRadius: BorderRadius.circular(9),
-                                ),
-                                child: Icon(Icons.security_rounded, color: accent, size: 18),
-                              ),
-                              const SizedBox(width: 12),
-                              Expanded(
-                                child: Text(
-                                  'Your code expires in 5 minutes and can only be used once.',
-                                  style: TextStyle(color: _dim2(context), fontSize: 12, height: 1.5),
-                                ),
-                              ),
-                            ],
                           ),
                         ),
                       ],
@@ -216,8 +179,8 @@ class _OtpScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
-                  child: _BackButton(onTap: controller.goBack),
+                  padding: EdgeInsets.zero,
+                  child: AuthTopBar(onBack: controller.goBack),
                 ),
                 Expanded(
                   child: SingleChildScrollView(
@@ -326,27 +289,6 @@ class _OtpScreen extends StatelessWidget {
 
 // ── Shared widgets ────────────────────────────────────────────────────────────
 
-class _BackButton extends StatelessWidget {
-  const _BackButton({required this.onTap});
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        width: 40, height: 40,
-        decoration: BoxDecoration(
-          color: _cardBg(context),
-          shape: BoxShape.circle,
-          border: Border.all(color: _line(context)),
-        ),
-        child: Icon(Icons.arrow_back_ios_new_rounded, color: _onSurface(context), size: 16),
-      ),
-    );
-  }
-}
-
 class _Label extends StatelessWidget {
   const _Label(this.text);
   final String text;
@@ -356,33 +298,6 @@ class _Label extends StatelessWidget {
     return Text(
       text,
       style: TextStyle(color: _dim2(context), fontSize: 11, fontWeight: FontWeight.w600, letterSpacing: 1.5),
-    );
-  }
-}
-
-class _StepRow extends StatelessWidget {
-  const _StepRow({required this.number, required this.text});
-  final String number;
-  final String text;
-
-  @override
-  Widget build(BuildContext context) {
-    final accent = _accent(context);
-    return Row(
-      children: [
-        Container(
-          width: 24, height: 24,
-          decoration: BoxDecoration(
-            color: accent.withValues(alpha: 0.10),
-            shape: BoxShape.circle,
-            border: Border.all(color: accent.withValues(alpha: 0.25)),
-          ),
-          alignment: Alignment.center,
-          child: Text(number, style: TextStyle(color: accent, fontSize: 11, fontWeight: FontWeight.w700)),
-        ),
-        const SizedBox(width: 12),
-        Text(text, style: TextStyle(color: _dim(context), fontSize: 13)),
-      ],
     );
   }
 }

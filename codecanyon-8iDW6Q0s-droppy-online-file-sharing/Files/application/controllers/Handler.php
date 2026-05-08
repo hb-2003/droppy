@@ -576,6 +576,75 @@ class Handler extends CI_Controller {
     }
 
     /**
+     * Phase B — Password signup: create a new droppy_users row.
+     * POST handler/signup_password  { email, password }
+     *
+     * Returns:
+     *  - { result: ok, email }
+     *  - { result: invalid_email }
+     *  - { result: weak_password }
+     *  - { result: exists }
+     *  - { result: error }
+     *
+     * Behavior:
+     * - Stores password_hash(PASSWORD_DEFAULT).
+     * - Stores client IP (best-effort).
+     * - Logs the user in by setting session `otp_verified_email` (so Flutter history works).
+     */
+    public function signup_password()
+    {
+        header('Content-Type: application/json');
+
+        $email = trim((string) $this->input->post('email', TRUE));
+        $pass  = (string) $this->input->post('password', TRUE);
+
+        if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            echo json_encode(['result' => 'invalid_email']);
+            return;
+        }
+        // Basic password policy: 8+ chars
+        if (strlen($pass) < 8) {
+            echo json_encode(['result' => 'weak_password']);
+            return;
+        }
+
+        try {
+            $this->load->model('users');
+            $existing = $this->users->getByEmail($email);
+            if (!empty($existing)) {
+                echo json_encode(['result' => 'exists']);
+                return;
+            }
+
+            $hash = password_hash($pass, PASSWORD_DEFAULT);
+            if (empty($hash)) {
+                echo json_encode(['result' => 'error']);
+                return;
+            }
+
+            $ip = '';
+            try { $ip = (string) $this->input->ip_address(); } catch (Exception $e) {}
+
+            $ok = $this->users->add([
+                'email'    => $email,
+                'password' => $hash,
+                'ip'       => $ip,
+            ]);
+            if (!$ok) {
+                echo json_encode(['result' => 'error']);
+                return;
+            }
+
+            $this->load->library('session');
+            $this->session->set_userdata('otp_verified_email', $email);
+
+            echo json_encode(['result' => 'ok', 'email' => $email]);
+        } catch (Exception $e) {
+            echo json_encode(['result' => 'error']);
+        }
+    }
+
+    /**
      * Phase B — OTP: clear the OTP session (sign out)
      * POST handler/otp_logout
      */

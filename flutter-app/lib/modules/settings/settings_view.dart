@@ -5,6 +5,7 @@ import 'package:sendlargefiles/controllers/locale_controller.dart';
 import 'package:sendlargefiles/controllers/theme_controller.dart';
 import 'package:sendlargefiles/l10n/app_localizations.dart';
 import 'package:sendlargefiles/modules/settings/settings_controller.dart';
+import 'package:sendlargefiles/widgets/app_top_bar.dart';
 
 
 
@@ -38,29 +39,26 @@ class SettingsView extends GetView<SettingsController> {
         backgroundColor: bg,
         body: Builder(builder: (context) {
           final bottomPad = MediaQuery.of(context).padding.bottom + 84;
-          return ScrollConfiguration(
-            behavior: const _NoOverscrollBehavior(),
-            child: CustomScrollView(
-              // Clamping keeps Android scroll feel.
-              physics: const ClampingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-              slivers: [
-                SliverAppBar(
-                  pinned: true,
-                  floating: false,
-                  snap: false,
-                  backgroundColor: bg,
-                  foregroundColor: scheme.onSurface,
-                  elevation: 0,
-                  scrolledUnderElevation: 0,
-                  surfaceTintColor: Colors.transparent,
-                  title: Text(t.navSettings),
-                ),
-                SliverPadding(
-                  padding: EdgeInsets.fromLTRB(20, 16, 20, 20 + bottomPad),
-                  sliver: SliverList(
-                    delegate: SliverChildListDelegate(
-                      [
-                      Text(t.settingsAppearance, style: labelStyle),
+          return SafeArea(
+            bottom: false,
+            child: ScrollConfiguration(
+              behavior: const _NoOverscrollBehavior(),
+              child: CustomScrollView(
+                // Clamping keeps Android scroll feel.
+                physics: const ClampingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                slivers: [
+                  SliverToBoxAdapter(
+                    child: AppTopBar(
+                      title: t.navSettings,
+                      subtitle: 'App preferences and account.',
+                    ),
+                  ),
+                  SliverPadding(
+                    padding: EdgeInsets.fromLTRB(20, 0, 20, 20 + bottomPad),
+                    sliver: SliverList(
+                      delegate: SliverChildListDelegate(
+                        [
+                        Text(t.settingsAppearance, style: labelStyle),
                       const SizedBox(height: 8),
                       Container(
                         decoration: BoxDecoration(
@@ -196,15 +194,9 @@ class SettingsView extends GetView<SettingsController> {
                               ),
                               const SizedBox(height: 8),
                               OutlinedButton(
-                                onPressed: controller.openRegister,
+                                onPressed: controller.goSignup,
                                 style: OutlinedButton.styleFrom(foregroundColor: scheme.onSurface.withValues(alpha: 0.8)),
                                 child: Text(t.signUp),
-                              ),
-                              const SizedBox(height: 8),
-                              OutlinedButton(
-                                onPressed: controller.openWebsite,
-                                style: OutlinedButton.styleFrom(foregroundColor: scheme.onSurface.withValues(alpha: 0.8)),
-                                child: Text(t.settingsOpenWebsite),
                               ),
                             ],
                           ),
@@ -285,11 +277,12 @@ class SettingsView extends GetView<SettingsController> {
                           },
                         );
                       }),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           );
         }),

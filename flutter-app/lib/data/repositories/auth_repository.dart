@@ -30,6 +30,28 @@ class AuthRepository extends GetxService {
     }
   }
 
+  Future<String> signupWithPassword(String email, String password) async {
+    final client = ApiClient.instance.dio;
+    try {
+      final resp = await client.post<Map<String, dynamic>>(
+        'handler/signup_password',
+        data: dio.FormData.fromMap({'email': email, 'password': password}),
+        options: dio.Options(
+          validateStatus: (s) => s != null && s < 500,
+          contentType: dio.Headers.multipartFormDataContentType,
+        ),
+      );
+      final result = (resp.data?['result'] as String?) ?? 'error';
+      if (result == 'ok') {
+        loggedIn.value = true;
+        sessionEmail.value = (resp.data?['email'] as String?)?.trim() ?? email.trim();
+      }
+      return result;
+    } catch (_) {
+      return 'error';
+    }
+  }
+
   /// POST handler/request_otp { email }
   /// Returns: 'sent' | 'invalid_email' | 'error'
   Future<String> requestOtp(String email) async {

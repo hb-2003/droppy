@@ -6,6 +6,7 @@ import 'package:sendlargefiles/l10n/app_localizations.dart';
 import 'package:sendlargefiles/app/theme/app_theme.dart';
 import 'package:sendlargefiles/modules/home/home_controller.dart';
 import 'package:sendlargefiles/widgets/app_snackbar.dart';
+import 'package:sendlargefiles/widgets/app_top_bar.dart';
 
 const _accentGlow = Color(0x33D4FF3B);
 
@@ -63,42 +64,21 @@ class _MainForm extends StatelessWidget {
     final scheme = Theme.of(context).colorScheme;
     return Column(
       children: [
-        // Header row
-        Padding(
-          padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
-          child: Row(
-            children: [
-              Container(
-                width: 7, height: 7,
-                decoration: BoxDecoration(color: scheme.primary, shape: BoxShape.circle),
+        AppTopBar(
+          title: 'Home',
+          subtitle: 'Send large files securely.',
+          trailing: Obx(() {
+            final loggedIn = Get.find<AuthRepository>().loggedIn.value;
+            if (loggedIn) return const SizedBox.shrink();
+            return TextButton(
+              onPressed: () => Get.toNamed('/login'),
+              child: Text(
+                'Login',
+                style: TextStyle(color: scheme.onSurface.withValues(alpha: 0.7), fontWeight: FontWeight.w800),
               ),
-              const SizedBox(width: 8),
-              Text(
-                'Share Large\nVideo Files',
-                style: TextStyle(color: scheme.onSurface, fontSize: 10, height: 1.35, fontWeight: FontWeight.w500),
-              ),
-              const Spacer(),
-              // Login button (only when logged out)
-              Obx(() {
-                final loggedIn = Get.find<AuthRepository>().loggedIn.value;
-                if (loggedIn) return const SizedBox.shrink();
-                return GestureDetector(
-                  onTap: () => Get.toNamed('/login'),
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 9),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: _line(context)),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Text('Login',
-                        style: TextStyle(color: scheme.onSurface, fontSize: 13, fontWeight: FontWeight.w500)),
-                  ),
-                );
-              }),
-            ],
-          ),
+            );
+          }),
         ),
-        const SizedBox(height: 12),
         Expanded(
           child: ScrollConfiguration(
             behavior: const _NoOverscrollBehavior(),
@@ -348,9 +328,7 @@ class _DropZoneEmpty extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final maxLabel = controller.cfg.maxSizeMb >= 1000
-        ? '${(controller.cfg.maxSizeMb / 1000).toStringAsFixed(0)} GB'
-        : '${controller.cfg.maxSizeMb} MB';
+    final maxLabel = controller.effectiveMaxLabel;
 
     return Obx(() {
       final busy = controller.pickingFiles.value;
@@ -485,8 +463,9 @@ class _DropZoneFilled extends StatelessWidget {
     final scheme = Theme.of(context).colorScheme;
     final totalBytes = controller.files.fold<int>(0, (s, f) => s + f.size);
     final totalMb = totalBytes / (1024 * 1024);
+    final maxBytes = controller.effectiveMaxBytes;
     final remainBytes =
-        (controller.cfg.maxSizeBytes - totalBytes).clamp(0, controller.cfg.maxSizeBytes);
+        (maxBytes - totalBytes).clamp(0, maxBytes);
     final remainMb = remainBytes / (1024 * 1024);
 
     return Column(

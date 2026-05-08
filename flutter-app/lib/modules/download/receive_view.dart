@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:sendlargefiles/modules/download/receive_controller.dart';
+import 'package:sendlargefiles/widgets/app_top_bar.dart';
 
 // ── Theme helpers ─────────────────────────────────────────────────────────────
 Color _bg(BuildContext c) => Theme.of(c).scaffoldBackgroundColor;
@@ -29,7 +30,10 @@ class ReceiveView extends GetView<ReceiveController> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              _Header(),
+              const AppTopBar(
+                title: 'Receive Files',
+                subtitle: 'Paste a transfer link to download files.',
+              ),
               Expanded(
                 child: ScrollConfiguration(
                   behavior: const _NoOverscrollBehavior(),
@@ -61,58 +65,6 @@ class ReceiveView extends GetView<ReceiveController> {
     );
   }
 }
-
-// ── Header ────────────────────────────────────────────────────────────────────
-
-class _Header extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(20, 20, 20, 16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              Container(
-                width: 7, height: 7,
-                decoration: BoxDecoration(color: scheme.primary, shape: BoxShape.circle),
-              ),
-              const SizedBox(width: 8),
-              Text(
-                'Share Large\nVideo Files',
-                style: TextStyle(
-                  color: scheme.onSurface,
-                  fontSize: 10,
-                  height: 1.35,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 20),
-          Text(
-            'Receive Files',
-            style: TextStyle(
-              color: scheme.onSurface,
-              fontSize: 28,
-              fontWeight: FontWeight.w800,
-              letterSpacing: -0.6,
-              height: 1.05,
-            ),
-          ),
-          const SizedBox(height: 4),
-          Text(
-            'Paste a transfer link to download files.',
-            style: TextStyle(color: _dim(context), fontSize: 13),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
 // ── Link Input Card ───────────────────────────────────────────────────────────
 
 class _LinkInputCard extends StatelessWidget {

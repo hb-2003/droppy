@@ -52,3 +52,73 @@ After pulling these changes, update **`droppy_settings`** on the server so the w
 ## My Transfers empty (History)
 
 History uses **`droppy_uploads.email_from`** equal to the signed-in OTP email. Deploy the latest PHP (`Upload.php` / `Uploads.php` / `Handler.php`) to the same base URL the app uses, then send a **new** transfer. Rows created before the fix with empty `email_from` stay hidden until you backfill (see [`codecanyon-8iDW6Q0s-droppy-online-file-sharing/Files/history_backfill_email_from.sql`](../codecanyon-8iDW6Q0s-droppy-online-file-sharing/Files/history_backfill_email_from.sql)).
+
+
+
+cd "/Users/harsu/Desktop/Harsh/droppy/codecanyon-8iDW6Q0s-droppy-online-file-sharing/Files" && \
+chmod +x deploy.sh && \
+brew install expect && \
+PASS="GqspM8KNth3E9" \
+DB_PASSWORD="vrlbWkXWH4yN7VeoXeh2vSOc" \
+APP_URL="https://sharelargefilesfree.com" \
+SERVER="31.220.45.93" \
+SSH_PORT="22" \
+DB_HOST="127.0.0.1" \
+DB_USERNAME="droppy" \
+DB_DATABASE="droppy" \
+./deploy.sh
+
+
+IP: 31.220.45.93
+port: 22
+rootpass: GqspM8KNth3E9
+db: droppy
+dbuser: droppy
+dbpassword: vrlbWkXWH4yN7VeoXeh2vSOc
+droppy location: /var/www/droppy/
+
+
+cd "/Users/harsu/Desktop/Harsh/droppy/codecanyon-8iDW6Q0s-droppy-online-file-sharing/Files" && \
+chmod +x deploy.sh && \
+PASS="GqspM8KNth3E9" \
+DB_PASSWORD="vrlbWkXWH4yN7VeoXeh2vSOc" \
+APP_URL="https://sharelargefilesfree.com" \
+SERVER="31.220.45.93" \
+SSH_PORT="22" \
+DB_HOST="127.0.0.1" \
+DB_USERNAME="droppy" \
+DB_DATABASE="droppy" \
+./deploy.sh
+
+
+
+DB_HOST="127.0.0.1" DB_DATABASE="droppy" DB_USERNAME="droppy" DB_PASSWORD="vrlbWkXWH4yN7VeoXeh2vSOc" php -r '
+$host=getenv("DB_HOST")?: "127.0.0.1";
+$db=getenv("DB_DATABASE")?: "droppy";
+$user=getenv("DB_USERNAME")?: "droppy";
+$pass=getenv("DB_PASSWORD")?: "";
+if($pass===""){fwrite(STDERR,"DB_PASSWORD missing\n"); exit(1);}
+
+$port=null;
+if(strpos($host,":")!==false){[$h,$p]=explode(":",$host,2); $host=$h; if(ctype_digit($p)) $port=(int)$p;}
+$dsn="mysql:host=$host;dbname=$db;charset=utf8mb4".($port?";port=$port":"");
+
+$pdo=new PDO($dsn,$user,$pass,[PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION]);
+
+$users=[
+ ["test1@example.com","Test@12345","127.0.0.1"],
+ ["test2@example.com","Test@12345","127.0.0.1"],
+ ["test3@example.com","Test@12345","127.0.0.1"],
+];
+
+$check=$pdo->prepare("SELECT id FROM droppy_users WHERE email=? LIMIT 1");
+$ins=$pdo->prepare("INSERT INTO droppy_users (email,password,ip) VALUES (?,?,?)");
+
+foreach($users as [$email,$plain,$ip]){
+  $check->execute([$email]);
+  if($check->fetch()){echo "SKIP $email\n"; continue;}
+  $hash=password_hash($plain,PASSWORD_DEFAULT);
+  $ins->execute([$email,$hash,$ip]);
+  echo "CREATED $email password=$plain\n";
+}
+'

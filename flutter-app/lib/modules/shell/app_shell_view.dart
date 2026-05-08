@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:sendlargefiles/modules/download/receive_view.dart';
 import 'package:sendlargefiles/modules/history/history_view.dart';
 import 'package:sendlargefiles/modules/home/home_view.dart';
+import 'package:sendlargefiles/modules/plans/plans_view.dart';
 import 'package:sendlargefiles/modules/settings/settings_view.dart';
 import 'package:sendlargefiles/modules/shell/app_shell_controller.dart';
 
@@ -30,6 +31,7 @@ class AppShellView extends GetView<AppShellController> {
               KeyedSubtree(key: const ValueKey('tab_home'),     child: const HomeView()),
               KeyedSubtree(key: const ValueKey('tab_history'),  child: const HistoryView()),
               KeyedSubtree(key: const ValueKey('tab_receive'),  child: const ReceiveView()),
+              KeyedSubtree(key: const ValueKey('tab_plans'),    child: const PlansView()),
               KeyedSubtree(key: const ValueKey('tab_settings'), child: const SettingsView()),
             ],
           ),
@@ -94,12 +96,20 @@ class _NavBar extends StatelessWidget {
                 onTap: () => onTap(2),
               ),
               _NavItem(
-                icon: Icons.settings_rounded,
-                label: 'Settings',
+                icon: Icons.workspace_premium_rounded,
+                label: 'Plans',
                 selected: currentIndex == 3,
                 selectedColor: selected,
                 unselectedColor: unselected,
                 onTap: () => onTap(3),
+              ),
+              _NavItem(
+                icon: Icons.settings_rounded,
+                label: 'Settings',
+                selected: currentIndex == 4,
+                selectedColor: selected,
+                unselectedColor: unselected,
+                onTap: () => onTap(4),
               ),
             ],
           ),

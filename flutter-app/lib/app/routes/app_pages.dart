@@ -7,6 +7,9 @@ import 'package:sendlargefiles/modules/home/home_binding.dart';
 import 'package:sendlargefiles/modules/home/home_view.dart';
 import 'package:sendlargefiles/modules/login/login_binding.dart';
 import 'package:sendlargefiles/modules/login/login_view.dart';
+import 'package:sendlargefiles/modules/plans/plans_binding.dart';
+import 'package:sendlargefiles/modules/signup/signup_binding.dart';
+import 'package:sendlargefiles/modules/signup/signup_view.dart';
 import 'package:sendlargefiles/modules/settings/settings_binding.dart';
 import 'package:sendlargefiles/modules/settings/settings_view.dart';
 import 'package:sendlargefiles/modules/shell/app_shell_binding.dart';
@@ -35,6 +38,7 @@ class AppPages {
         AppShellBinding(), // registers AppShellController + ReceiveController (permanent)
         HomeBinding(),
         HistoryBinding(),
+        PlansBinding(),
         SettingsBinding(),
       ],
     ),
@@ -47,6 +51,11 @@ class AppPages {
       name: AppRoutes.login,
       page: LoginView.new,
       binding: LoginBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.signup,
+      page: SignupView.new,
+      binding: SignupBinding(),
     ),
     GetPage(
       name: AppRoutes.settings,

@@ -3,6 +3,7 @@ abstract class AppRoutes {
   static const home = '/home'; // legacy (dashboard-only)
   static const download = '/download';
   static const login = '/login';
+  static const signup = '/signup';
   static const settings = '/settings';
   static const shell = '/app';
 }

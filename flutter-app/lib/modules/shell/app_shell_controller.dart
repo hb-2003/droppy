@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:sendlargefiles/modules/history/history_controller.dart';
 
 class AppShellController extends GetxController {
-  /// 0 = Home, 1 = History, 2 = Receive, 3 = Settings
+  /// 0 = Home, 1 = History, 2 = Receive, 3 = Plans, 4 = Settings
   final tabIndex = 0.obs;
 
   Timer? _historyDebounce;

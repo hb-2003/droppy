@@ -48,6 +48,25 @@ class HomeController extends GetxController {
 
   AppConfig get cfg => _cfg.current;
 
+  static const int _freeMaxBytes = 5 * 1024 * 1024 * 1024; // 5 GB
+
+  int get _effectiveMaxBytes {
+    final cfgMax = cfg.maxSizeBytes;
+    if (cfgMax <= 0) return _freeMaxBytes;
+    return cfgMax < _freeMaxBytes ? cfgMax : _freeMaxBytes;
+  }
+
+  int get effectiveMaxBytes => _effectiveMaxBytes;
+
+  String get effectiveMaxLabel {
+    final mb = _effectiveMaxBytes / (1024 * 1024);
+    if (mb >= 1000) {
+      final gb = mb / 1000;
+      return '${gb.toStringAsFixed(0)} GB';
+    }
+    return '${mb.toStringAsFixed(0)} MB';
+  }
+
   TextEditingController? messageCtrl;
   TextEditingController? passwordCtrl;
   TextEditingController? emailFromCtrl;
@@ -78,7 +97,7 @@ class HomeController extends GetxController {
     try {
       final r = await FilePicker.platform.pickFiles(allowMultiple: true);
       if (r == null) return;
-    final cfgMax = cfg.maxSizeBytes;
+    final cfgMax = _effectiveMaxBytes;
     var total = 0;
     for (final f in files) {
       total += f.size;
@@ -106,6 +125,16 @@ class HomeController extends GetxController {
 
   Future<void> startSend(BuildContext context) async {
     if (files.isEmpty) return;
+
+    final totalBytesNow = files.fold<int>(0, (s, f) => s + f.size);
+    final cfgMax = _effectiveMaxBytes;
+    if (totalBytesNow > cfgMax) {
+      AppSnack.error(
+        'Limit reached',
+        'Free plan allows up to 5GB per transfer. Please remove some files or upgrade.',
+      );
+      return;
+    }
 
     if (shareMode.value == 'mail' && !Get.find<AuthRepository>().loggedIn.value) {
       AppSnack.error('Sign in required', 'Please sign in to send by email.');

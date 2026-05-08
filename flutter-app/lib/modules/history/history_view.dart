@@ -6,6 +6,7 @@ import 'package:sendlargefiles/data/repositories/download_repository.dart';
 import 'package:sendlargefiles/data/repositories/history_repository.dart';
 import 'package:sendlargefiles/modules/history/history_controller.dart';
 import 'package:sendlargefiles/widgets/app_snackbar.dart';
+import 'package:sendlargefiles/widgets/app_top_bar.dart';
 
 const _accentGlow = Color(0x33D4FF3B);
 
@@ -34,69 +35,6 @@ class HistoryView extends GetView<HistoryController> {
   }
 }
 
-// ── Header ────────────────────────────────────────────────────────────────────
-
-class _Header extends StatelessWidget {
-  const _Header({required this.title, this.subtitle});
-  final String title;
-  final String? subtitle;
-
-  @override
-  Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(20, 16, 20, 16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Row(
-            children: [
-              Container(
-                width: 7, height: 7,
-                decoration: BoxDecoration(color: scheme.primary, shape: BoxShape.circle),
-              ),
-              const SizedBox(width: 8),
-              Text(
-                'Share Large Video Files',
-                style: TextStyle(
-                  color: scheme.onSurface,
-                  fontSize: 10,
-                  height: 1.3,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 16),
-          Text(
-            title,
-            style: TextStyle(
-              color: scheme.onSurface,
-              fontSize: 26,
-              fontWeight: FontWeight.w800,
-              letterSpacing: -0.5,
-              height: 1.05,
-            ),
-          ),
-          if (subtitle != null) ...[
-            const SizedBox(height: 3),
-            Text(
-              subtitle!,
-              style: TextStyle(
-                color: scheme.onSurface.withValues(alpha: 0.50),
-                fontSize: 12,
-              ),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-            ),
-          ],
-        ],
-      ),
-    );
-  }
-}
-
 // ── Loading ───────────────────────────────────────────────────────────────────
 
 class _LoadingState extends StatelessWidget {
@@ -105,7 +43,7 @@ class _LoadingState extends StatelessWidget {
     final scheme = Theme.of(context).colorScheme;
     return Column(
       children: [
-        const _Header(title: 'My Transfers'),
+        const AppTopBar(title: 'My Transfers'),
         Expanded(
           child: Center(
             child: CircularProgressIndicator(color: scheme.primary, strokeWidth: 2),
@@ -127,7 +65,7 @@ class _LoginGate extends StatelessWidget {
     final scheme = Theme.of(context).colorScheme;
     return Column(
       children: [
-        const _Header(title: 'My Transfers'),
+        const AppTopBar(title: 'My Transfers'),
         Expanded(
           child: Center(
             child: Padding(
@@ -194,7 +132,7 @@ class _ErrorState extends StatelessWidget {
     final scheme = Theme.of(context).colorScheme;
     return Column(
       children: [
-        const _Header(title: 'My Transfers'),
+        const AppTopBar(title: 'My Transfers'),
         Expanded(
           child: Center(
             child: Column(
@@ -247,11 +185,9 @@ class _HistoryList extends StatelessWidget {
           slivers: [
             // Header scrolls with the list — adapts to any device's notch/status-bar.
             SliverToBoxAdapter(
-              child: _Header(
+              child: AppTopBar(
                 title: 'My Transfers',
-                subtitle: controller.email.value.isNotEmpty
-                    ? controller.email.value
-                    : null,
+                subtitle: controller.email.value.isNotEmpty ? controller.email.value : null,
               ),
             ),
             if (transfers.isEmpty)

@@ -42,16 +42,10 @@ class SettingsController extends GetxController {
   }
 
   void goLogin() => Get.toNamed(AppRoutes.login);
-
-  Future<void> openWebsite() async {
-    final uri = Uri.tryParse(resolveBaseUrl());
-    if (uri == null) return;
-    await launchUrl(uri, mode: LaunchMode.externalApplication);
-  }
+  void goSignup() => Get.toNamed(AppRoutes.signup);
 
   void setThemeMode(ThemeMode mode) => _theme.setThemeMode(mode);
 
-  Future<void> openRegister() => _openPath('register');
   Future<void> openTerms() => _openPath('terms');
   Future<void> openPrivacy() => _openPath('privacy');
   Future<void> openAbout() => _openPath('about');
