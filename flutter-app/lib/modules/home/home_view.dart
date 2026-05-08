@@ -98,9 +98,6 @@ class _MainForm extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 12),
-        // Stats bar (20 GB / 200 files / Free)
-        _StatsBar(controller: controller),
-        const SizedBox(height: 12),
         Expanded(
           child: ScrollConfiguration(
             behavior: const _NoOverscrollBehavior(),
@@ -219,44 +216,6 @@ class _MailShareForm extends StatelessWidget {
           ),
           const SizedBox(height: 12),
         ],
-      ),
-    );
-  }
-}
-
-// ── Stats bar ─────────────────────────────────────────────────────────────────
-
-class _StatsBar extends StatelessWidget {
-  const _StatsBar({required this.controller});
-  final HomeController controller;
-
-  @override
-  Widget build(BuildContext context) {
-    final cfg = controller.cfg;
-    final maxGb = cfg.maxSizeMb >= 1000
-        ? '${(cfg.maxSizeMb / 1000).toStringAsFixed(0)} GB'
-        : '${cfg.maxSizeMb} MB';
-    final maxFiles = cfg.maxFiles > 0 ? '${cfg.maxFiles}' : '∞';
-
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: Container(
-        decoration: BoxDecoration(
-          color: _cardBg(context),
-          borderRadius: BorderRadius.circular(14),
-          border: Border.all(color: _line(context)),
-        ),
-        child: IntrinsicHeight(
-          child: Row(
-            children: [
-              _StatCell(value: maxGb, label: 'Max size'),
-              VerticalDivider(width: 1, thickness: 1, color: _line(context)),
-              _StatCell(value: maxFiles, label: 'Max files'),
-              VerticalDivider(width: 1, thickness: 1, color: _line(context)),
-              _StatCell(value: 'Free', label: 'Cost'),
-            ],
-          ),
-        ),
       ),
     );
   }
@@ -392,59 +351,70 @@ class _DropZoneEmpty extends StatelessWidget {
         ? '${(controller.cfg.maxSizeMb / 1000).toStringAsFixed(0)} GB'
         : '${controller.cfg.maxSizeMb} MB';
 
-    return Column(
-      children: [
-        Container(
-          width: double.infinity,
-          padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            border: Border.all(color: _line(context), width: 1.5),
-          ),
-          child: Column(
-            children: [
-              _FileIllustration(),
-              const SizedBox(height: 12),
-              Text(
-                'Drop a heavy file here.',
-                style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 16,
-                    ),
-                textAlign: TextAlign.center,
+    return Obx(() {
+      final busy = controller.pickingFiles.value;
+      Future<void> onPick() async {
+        if (busy) return;
+        await controller.pickFiles();
+      }
+
+      return Column(
+        children: [
+          GestureDetector(
+            onTap: busy ? null : onPick,
+            behavior: HitTestBehavior.opaque,
+            child: Container(
+              width: double.infinity,
+              padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(color: _line(context), width: 1.5),
               ),
-              const SizedBox(height: 4),
-              Text('Up to $maxLabel total', style: AppTheme.meta(), textAlign: TextAlign.center),
-              const SizedBox(height: 12),
-              _FiletypeChips(),
-            ],
-          ),
-        ),
-        const SizedBox(height: 10),
-        Obx(
-          () => TextButton.icon(
-            onPressed: controller.pickingFiles.value ? null : controller.pickFiles,
-            style: TextButton.styleFrom(
-              foregroundColor: _accent(context),
-              disabledForegroundColor: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.38),
-              textStyle: const TextStyle(
-                inherit: false,
-                fontSize: 13,
-                fontWeight: FontWeight.w600,
+              child: Column(
+                children: [
+                  _FileIllustration(),
+                  const SizedBox(height: 12),
+                  Text(
+                    'Drop a heavy file here.',
+                    style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 16,
+                        ),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 4),
+                  Text('Up to $maxLabel total', style: AppTheme.meta(), textAlign: TextAlign.center),
+                  const SizedBox(height: 12),
+                  _FiletypeChips(),
+                  const SizedBox(height: 14),
+                  TextButton.icon(
+                    onPressed: busy ? null : onPick,
+                    style: TextButton.styleFrom(
+                      foregroundColor: _accent(context),
+                      disabledForegroundColor:
+                          Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.38),
+                      textStyle: const TextStyle(
+                        inherit: false,
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    icon: busy
+                        ? const SizedBox(
+                            width: 18,
+                            height: 18,
+                            child: CircularProgressIndicator(strokeWidth: 2),
+                          )
+                        : const Icon(Icons.folder_open_rounded, size: 18),
+                    label: Text(busy ? 'Loading…' : t.pickFiles),
+                  ),
+                ],
               ),
             ),
-            icon: controller.pickingFiles.value
-                ? const SizedBox(
-                    width: 18,
-                    height: 18,
-                    child: CircularProgressIndicator(strokeWidth: 2),
-                  )
-                : const Icon(Icons.folder_open_rounded, size: 18),
-            label: Text(controller.pickingFiles.value ? 'Loading…' : t.pickFiles),
           ),
-        ),
-      ],
-    );
+        ],
+      );
+    });
   }
 }
 
@@ -521,15 +491,25 @@ class _DropZoneFilled extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Container(
-          decoration: BoxDecoration(
-            color: _cardBg(context),
-            borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: _line(context)),
-          ),
-          child: Column(
-            children: [
-              ...controller.files.asMap().entries.map((entry) {
+        Obx(() {
+          final busy = controller.pickingFiles.value;
+          Future<void> onPick() async {
+            if (busy) return;
+            await controller.pickFiles();
+          }
+
+          return GestureDetector(
+            onTap: busy ? null : onPick,
+            behavior: HitTestBehavior.translucent,
+            child: Container(
+              decoration: BoxDecoration(
+                color: _cardBg(context),
+                borderRadius: BorderRadius.circular(16),
+                border: Border.all(color: _line(context)),
+              ),
+              child: Column(
+                children: [
+                  ...controller.files.asMap().entries.map((entry) {
                 final i = entry.key;
                 final f = entry.value;
                 final sizeMb = (f.size / (1024 * 1024)).toStringAsFixed(1);
@@ -562,9 +542,11 @@ class _DropZoneFilled extends StatelessWidget {
                   ],
                 );
               }),
-            ],
-          ),
-        ),
+                ],
+              ),
+            ),
+          );
+        }),
         const SizedBox(height: 8),
         Row(
           children: [
@@ -1180,44 +1162,6 @@ class _FiletypeChips extends StatelessWidget {
           ),
         );
       }).toList(),
-    );
-  }
-}
-
-class _StatCell extends StatelessWidget {
-  const _StatCell({required this.label, required this.value});
-  final String label;
-  final String value;
-
-  @override
-  Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-    return Expanded(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 12),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              value,
-              style: TextStyle(
-                color: scheme.onSurface,
-                fontSize: 15,
-                fontWeight: FontWeight.w800,
-              ),
-            ),
-            const SizedBox(height: 3),
-            Text(
-              label,
-              style: TextStyle(
-                color: scheme.onSurface.withValues(alpha: 0.45),
-                fontSize: 11,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ],
-        ),
-      ),
     );
   }
 }

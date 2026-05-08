@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'dart:convert';
-import 'dart:typed_data';
 import 'package:dio/dio.dart' as d;
 import 'package:file_picker/file_picker.dart';
 import 'package:get/get.dart';
@@ -209,24 +208,7 @@ class UploadRepository extends GetxService {
     while (uploaded < size) {
       final end = (uploaded + chunk > size) ? size : uploaded + chunk;
       final contentRange = 'bytes $uploaded-${end - 1}/$size';
-      // Building a full 100MB slice can take time and makes progress look jumpy.
-      // Read incrementally and emit progress while reading.
-      final builder = BytesBuilder(copy: false);
-      var read = 0;
-      await for (final part in file.openRead(uploaded, end)) {
-        if (cancelToken?.isCancelled == true) {
-          throw d.DioException(
-            requestOptions: d.RequestOptions(path: 'upload'),
-            type: d.DioExceptionType.cancel,
-            error: 'cancelled',
-          );
-        }
-        builder.add(part);
-        read += part.length;
-        // Report "processed" bytes so UI updates smoothly.
-        onProgress?.call(uploaded + read, size);
-      }
-      final slice = builder.takeBytes();
+      final len = end - uploaded;
       final form = d.FormData();
       form.fields.addAll([
         MapEntry('upload_id', uploadId),
@@ -236,7 +218,11 @@ class UploadRepository extends GetxService {
       form.files.add(
         MapEntry(
           'files[]',
-          d.MultipartFile.fromBytes(slice, filename: item.name),
+          d.MultipartFile.fromStream(
+            () => file.openRead(uploaded, end),
+            len,
+            filename: item.name,
+          ),
         ),
       );
 
@@ -250,7 +236,10 @@ class UploadRepository extends GetxService {
           responseType: d.ResponseType.plain,
           headers: <String, dynamic>{'Content-Range': contentRange},
         ),
-        onSendProgress: (s, t) => onProgress?.call(uploaded + s.toInt(), size),
+        onSendProgress: (s, t) {
+          // `s` is bytes sent for this chunk; add base offset for overall progress.
+          onProgress?.call(uploaded + s, size);
+        },
       );
 
       uploaded = end;
