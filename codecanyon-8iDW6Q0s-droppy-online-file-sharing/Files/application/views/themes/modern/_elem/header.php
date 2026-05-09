@@ -143,11 +143,15 @@
                     </div>
                 </div>
             <?php else: ?>
-                <!-- Guest: Login button -->
-                <button class="slvf-btn slvf-btn--ghost slvf-btn--sm" id="slvf-login-btn" onclick="OtpModal.open()">
+                <!-- Guest: Login + Register buttons -->
+                <a class="slvf-btn slvf-btn--ghost slvf-btn--sm" href="<?php echo base_url('register'); ?>">
                     <i class="lni lni-user"></i>
+                    <span>Register</span>
+                </a>
+                <a class="slvf-btn slvf-btn--primary slvf-btn--sm" href="<?php echo base_url('login'); ?>">
                     <span><?php echo lang('login') ?: 'Sign in'; ?></span>
-                </button>
+                    <i class="lni lni-arrow-right"></i>
+                </a>
             <?php endif; ?>
 
             <!-- Mobile hamburger -->
@@ -157,32 +161,46 @@
         </div>
     </div>
 
-    <!-- Mobile menu -->
-    <div class="slvf-nav__mobile-menu" id="slvf-mobile-menu">
+</nav>
+<!-- END NAVBAR -->
 
-        <?php if(isset($_SESSION['otp_verified_email'])): ?>
-        <a class="slvf-nav__mobile-item" href="<?php echo base_url('history') ?>">
-            <i class="lni lni-timer"></i> History
-        </a>
-        <a class="slvf-nav__mobile-item" href="#" onclick="OtpModal.logout(); return false;">
-            <i class="lni lni-exit"></i> Sign out
-        </a>
-        <?php elseif($session->has_userdata('user') && $session->userdata('user') == true): ?>
-        <a class="slvf-nav__mobile-item" href="<?php echo base_url('login/logout') ?>">
-            <i class="lni lni-exit"></i> <?php echo lang('logout'); ?>
-        </a>
-        <?php elseif(isset($_SESSION['droppy_premium'])): ?>
-        <a class="slvf-nav__mobile-item" href="<?php echo base_url('page/premium?action=logout') ?>">
-            <i class="lni lni-exit"></i> <?php echo lang('logout'); ?>
-        </a>
-        <?php else: ?>
-        <a class="slvf-nav__mobile-item" href="#" onclick="OtpModal.open(); return false;">
-            <i class="lni lni-user"></i> Sign in
-        </a>
+<!-- Mobile backdrop + drawer sit OUTSIDE <nav> so backdrop-filter on nav
+     does not trap them in a new containing block (position:fixed would be
+     relative to the nav instead of the viewport). -->
+<div class="slvf-nav__mobile-backdrop" id="slvf-mobile-backdrop"></div>
+
+<div class="slvf-nav__mobile-menu" id="slvf-mobile-menu">
+
+    <!-- Drawer header -->
+    <div class="slvf-nav__mobile-header">
+        <div class="slvf-nav__mobile-brand">Menu <span>/</span> Navigation</div>
+        <button class="slvf-nav__mobile-close" id="slvf-mobile-close" aria-label="Close menu">
+            <i class="lni lni-close"></i>
+        </button>
+    </div>
+
+    <!-- Drawer body -->
+    <div class="slvf-nav__mobile-body">
+
+        <!-- Guest: auth CTAs at top -->
+        <?php if(!(isset($_SESSION['otp_verified_email']) || ($session->has_userdata('user') && $session->userdata('user') == true))): ?>
+            <a class="slvf-nav__mobile-cta slvf-nav__mobile-cta--primary" href="<?php echo base_url('login'); ?>">
+                <i class="lni lni-enter"></i> Sign in
+            </a>
+            <a class="slvf-nav__mobile-cta slvf-nav__mobile-cta--ghost" href="<?php echo base_url('register'); ?>">
+                <i class="lni lni-user"></i> Create account
+            </a>
+        <?php endif; ?>
+
+        <!-- Logged-in: History at top -->
+        <?php if(isset($_SESSION['otp_verified_email']) || ($session->has_userdata('user') && $session->userdata('user') == true)): ?>
+            <a class="slvf-nav__mobile-item" href="<?php echo base_url('history') ?>">
+                <i class="lni lni-timer"></i> <?php echo lang('history') ?: 'History'; ?>
+            </a>
         <?php endif; ?>
 
         <?php if(is_array($extra_pages) && !empty($extra_pages)): ?>
-            <div class="slvf-nav__mobile-divider"></div>
+            <div class="slvf-nav__mobile-section">Pages</div>
             <?php foreach($extra_pages as $tab): ?>
                 <?php if($tab['type'] === 'about_page'): ?>
                 <a class="slvf-nav__mobile-item" href="<?php echo base_url('about'); ?>">
@@ -202,14 +220,39 @@
         <?php endif; ?>
 
         <?php if($settings['contact_enabled'] == 'true'): ?>
-        <div class="slvf-nav__mobile-divider"></div>
-        <a class="slvf-nav__mobile-item" data-target="tab-contact" href="#">
-            <i class="lni lni-envelope"></i> <?php echo lang('contact'); ?>
-        </a>
+            <div class="slvf-nav__mobile-section">Support</div>
+            <a class="slvf-nav__mobile-item" data-target="tab-contact" href="#">
+                <i class="lni lni-envelope"></i> <?php echo lang('contact'); ?>
+            </a>
         <?php endif; ?>
 
     </div>
-</nav>
+
+    <!-- Logged-in: Logout pinned at bottom -->
+    <?php if(isset($_SESSION['otp_verified_email']) || ($session->has_userdata('user') && $session->userdata('user') == true)): ?>
+    <div class="slvf-nav__mobile-auth">
+        <?php if($session->has_userdata('user') && $session->userdata('user') == true): ?>
+        <a class="slvf-nav__mobile-cta slvf-nav__mobile-cta--danger" href="<?php echo base_url('login/logout') ?>">
+            <i class="lni lni-exit"></i> <?php echo lang('logout'); ?>
+        </a>
+        <?php elseif(isset($_SESSION['droppy_premium'])): ?>
+        <a class="slvf-nav__mobile-cta slvf-nav__mobile-cta--danger" href="<?php echo base_url('page/premium?action=logout') ?>">
+            <i class="lni lni-exit"></i> <?php echo lang('logout'); ?>
+        </a>
+        <?php else: ?>
+        <a class="slvf-nav__mobile-cta slvf-nav__mobile-cta--danger" href="#" onclick="OtpModal.logout(); return false;">
+            <i class="lni lni-exit"></i> Sign out
+        </a>
+        <?php endif; ?>
+    </div>
+    <?php endif; ?>
+
+    <!-- Drawer footer -->
+    <div class="slvf-nav__mobile-footer">
+        &copy; <?php echo date('Y'); ?> <?php echo htmlspecialchars($settings['site_name']); ?>
+    </div>
+
+</div>
 <!-- END NAVBAR -->
 
 

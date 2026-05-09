@@ -62,6 +62,7 @@ class _MainForm extends StatelessWidget {
   Widget build(BuildContext context) {
     final bottomPad = MediaQuery.of(context).padding.bottom + 84;
     final scheme = Theme.of(context).colorScheme;
+    final compact = MediaQuery.sizeOf(context).width < 900;
     return Column(
       children: [
         AppTopBar(
@@ -87,9 +88,10 @@ class _MainForm extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  // Hero text
-                  _HeroText(),
-                  const SizedBox(height: 16),
+                  if (!compact) ...[
+                    _HeroText(),
+                    const SizedBox(height: 16),
+                  ],
                   _TabSwitcher(controller: controller),
                   const SizedBox(height: 14),
                   _DropZone(controller: controller, t: t),
@@ -103,6 +105,10 @@ class _MainForm extends StatelessWidget {
                     return _MailShareForm(controller: controller);
                   }),
                   _OptionsPanel(controller: controller, t: t),
+                  if (compact) ...[
+                    const SizedBox(height: 16),
+                    _HeroText(),
+                  ],
                   const SizedBox(height: 16),
                 ],
               ),

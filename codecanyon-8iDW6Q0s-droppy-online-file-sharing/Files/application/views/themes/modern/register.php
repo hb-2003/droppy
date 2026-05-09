@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title><?php echo $settings['site_name']; ?> | Sign in</title>
+    <title><?php echo $settings['site_name']; ?> | Create account</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="<?php echo $settings['site_url'] . $settings['favicon_path']; ?>" rel="shortcut icon" type="image/png">
     <base href="<?php echo $settings['site_url'] ?>">
@@ -11,7 +11,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&display=swap" rel="stylesheet">
     <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
     <style>
-        /* ── Tokens (hardcoded so page works even if slvf.css is cached) ── */
         :root {
             --a-bg:      #0A0C14;
             --a-card:    rgba(255,255,255,0.05);
@@ -25,7 +24,6 @@
             --a-asoft:   rgba(212,255,58,0.10);
             --a-aborder: rgba(212,255,58,0.20);
             --a-rose:    #F47B7B;
-            --a-success: #5BE9B9;
             --a-r8:      8px;
             --a-r14:     14px;
             --a-r22:     22px;
@@ -35,7 +33,6 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html, body { min-height: 100vh; }
 
-        /* ── Background: gradient base directly on body so it's always visible ── */
         body {
             background:
                 radial-gradient(circle at 15% 12%, rgba(212,255,58,0.13), transparent 38%),
@@ -54,7 +51,6 @@
             overflow-x: hidden;
         }
 
-        /* Animated blurred mesh layer — sits above body bg, below content */
         body::after {
             content: "";
             position: fixed; inset: -10%;
@@ -72,7 +68,6 @@
             100% { transform: translate(4%,-3%) scale(1.04); }
         }
 
-        /* Grain overlay */
         body::before {
             content: "";
             position: fixed; inset: 0;
@@ -85,7 +80,6 @@
 
         .auth-wrap { width: 100%; max-width: 440px; position: relative; z-index: 1; }
 
-        /* Wordmark */
         .auth-wordmark {
             display: flex; align-items: center; gap: 10px;
             text-decoration: none;
@@ -108,7 +102,6 @@
         .auth-wordmark__text span { display: block; }
         .auth-wordmark__text span.acc { color: var(--a-accent); font-size: 13px; }
 
-        /* Card */
         .auth-card {
             background: var(--a-card);
             border: 1px solid var(--a-border);
@@ -118,7 +111,6 @@
             -webkit-backdrop-filter: blur(20px);
         }
 
-        /* Icon */
         .auth-icon {
             width: 56px; height: 56px;
             background: var(--a-asoft);
@@ -129,7 +121,6 @@
         }
         .auth-icon i { font-size: 22px; color: var(--a-accent); }
 
-        /* Headings */
         .auth-title {
             font-size: 28px; font-weight: 700;
             color: var(--a-text);
@@ -143,7 +134,6 @@
             text-align: center; margin-bottom: 32px;
         }
 
-        /* Alerts */
         .auth-alert {
             background: rgba(244,123,123,0.10);
             border: 1px solid rgba(244,123,123,0.25);
@@ -153,17 +143,7 @@
             margin-bottom: 20px;
             display: flex; align-items: center; gap: 8px;
         }
-        .auth-success {
-            background: rgba(91,233,185,0.08);
-            border: 1px solid rgba(91,233,185,0.22);
-            color: var(--a-success);
-            border-radius: var(--a-r8);
-            padding: 10px 14px; font-size: 13px;
-            margin-bottom: 20px;
-            display: flex; align-items: center; gap: 8px;
-        }
 
-        /* Fields */
         .auth-field { margin-bottom: 18px; }
         .auth-label {
             display: block;
@@ -191,8 +171,10 @@
             background: rgba(212,255,58,0.04);
             box-shadow: 0 0 0 3px rgba(212,255,58,0.10);
         }
+        .auth-hint {
+            font-size: 11px; color: var(--a-dim); margin-top: 5px;
+        }
 
-        /* Button */
         .auth-btn {
             width: 100%; padding: 14px 20px;
             background: var(--a-accent);
@@ -213,7 +195,6 @@
         }
         .auth-btn:active { transform: translateY(0); }
 
-        /* Footer */
         .auth-footer {
             text-align: center; margin-top: 24px;
             font-size: 13px; color: var(--a-muted);
@@ -248,38 +229,40 @@
         </a>
 
         <div class="auth-card">
-            <div class="auth-icon"><i class="lni lni-lock-alt"></i></div>
-            <div class="auth-title">Sign in</div>
+            <div class="auth-icon"><i class="lni lni-user"></i></div>
+            <div class="auth-title">Create account</div>
             <div class="auth-subtitle"><?php echo htmlspecialchars($settings['site_name']); ?></div>
 
-            <?php if(isset($result) && !$result): ?>
-                <div class="auth-alert"><i class="lni lni-warning"></i> Invalid email or password.</div>
-            <?php endif; ?>
-
-            <?php if(!empty($registered)): ?>
-                <div class="auth-success"><i class="lni lni-checkmark-circle"></i> Account created — you can now sign in.</div>
+            <?php if(!empty($error)): ?>
+                <div class="auth-alert"><i class="lni lni-warning"></i> <?php echo htmlspecialchars($error); ?></div>
             <?php endif; ?>
 
             <form method="post" autocomplete="on">
                 <div class="auth-field">
                     <label class="auth-label">Email address</label>
-                    <input class="auth-input" type="email" name="email" placeholder="you@example.com"
-                        autocomplete="email" required
+                    <input class="auth-input" type="email" name="email"
+                        placeholder="you@example.com" autocomplete="email" required
                         value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>">
                 </div>
                 <div class="auth-field">
                     <label class="auth-label">Password</label>
                     <input class="auth-input" type="password" name="password"
-                        placeholder="Your password" autocomplete="current-password" required>
+                        placeholder="Min. 8 characters" autocomplete="new-password" required minlength="8">
+                    <div class="auth-hint">Must be at least 8 characters</div>
+                </div>
+                <div class="auth-field">
+                    <label class="auth-label">Confirm password</label>
+                    <input class="auth-input" type="password" name="confirm_password"
+                        placeholder="Repeat your password" autocomplete="new-password" required>
                 </div>
                 <?php if(!empty($settings['recaptcha_key'])): ?>
                     <div class="g-recaptcha" data-sitekey="<?php echo $settings['recaptcha_key']; ?>" style="margin-bottom:16px;"></div>
                 <?php endif; ?>
-                <button class="auth-btn" type="submit">Sign in <i class="lni lni-arrow-right"></i></button>
+                <button class="auth-btn" type="submit">Create account <i class="lni lni-arrow-right"></i></button>
             </form>
 
             <div class="auth-footer">
-                Don't have an account? <a href="<?php echo base_url('register'); ?>">Create account</a>
+                Already have an account? <a href="<?php echo base_url('login'); ?>">Sign in</a>
             </div>
         </div>
     </div>

@@ -216,8 +216,12 @@ class Home extends CI_Controller {
         $this->load->model('uploads');
         $this->load->model('files');
 
+        // Support both OTP login and email+password login
         $otp_email = $this->session->userdata('otp_verified_email');
-        $uploads   = [];
+        if (empty($otp_email) && $this->session->userdata('user') == true) {
+            $otp_email = $this->session->userdata('user_email');
+        }
+        $uploads = [];
 
         if (!empty($otp_email)) {
             $raw = $this->uploads->getByEmail($otp_email, 50);

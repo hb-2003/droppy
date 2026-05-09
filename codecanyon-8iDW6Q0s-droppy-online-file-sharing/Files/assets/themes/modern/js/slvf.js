@@ -27,14 +27,30 @@
        Mobile hamburger
        ---------------------------------------------------------------------- */
     var SlvfNav = {
+        open: function () {
+            $('#slvf-hamburger').addClass('is-open');
+            $('#slvf-mobile-menu').addClass('is-open');
+            $('#slvf-mobile-backdrop').addClass('is-open');
+            $('body').css('overflow', 'hidden');
+        },
+        close: function () {
+            $('#slvf-hamburger').removeClass('is-open');
+            $('#slvf-mobile-menu').removeClass('is-open');
+            $('#slvf-mobile-backdrop').removeClass('is-open');
+            $('body').css('overflow', '');
+        },
         init: function () {
             $(document).on('click', '#slvf-hamburger', function () {
-                $(this).toggleClass('is-open');
-                $('#slvf-mobile-menu').toggleClass('is-open');
+                if ($(this).hasClass('is-open')) { SlvfNav.close(); } else { SlvfNav.open(); }
+            });
+            $(document).on('click', '#slvf-mobile-close, #slvf-mobile-backdrop', function () {
+                SlvfNav.close();
             });
             $(document).on('click', '#slvf-mobile-menu a', function () {
-                $('#slvf-hamburger').removeClass('is-open');
-                $('#slvf-mobile-menu').removeClass('is-open');
+                SlvfNav.close();
+            });
+            $(document).on('keydown', function (e) {
+                if (e.key === 'Escape') SlvfNav.close();
             });
         }
     };

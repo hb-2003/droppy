@@ -35,10 +35,10 @@ $theme_url = $site_url . '/assets/themes/' . $settings['theme'];
                     </svg>
                 </div>
                 <h2 class="slvf-history__empty-title">Sign in to see your transfers</h2>
-                <p class="slvf-history__empty-sub">We use your email to link transfers to your account — no password needed.</p>
-                <button class="slvf-btn slvf-btn--primary slvf-history__signin-btn" id="slvf-history-signin">
-                    Sign in with email
-                </button>
+                <p class="slvf-history__empty-sub">Sign in with your account to view transfers linked to your email.</p>
+                <a class="slvf-btn slvf-btn--primary slvf-history__signin-btn" href="<?php echo base_url('login'); ?>">
+                    Sign in
+                </a>
             </div>
 
             <?php elseif (empty($uploads)): ?>

@@ -39,6 +39,10 @@ class Login extends CI_Controller {
             $data['result'] = false;
         }
 
+        if(isset($_GET['registered']) && $_GET['registered'] == '1') {
+            $data['registered'] = true;
+        }
+
         // Check if auth plugin is installed and if the login page is an external login page such as Azure AD
         $this->load->library('plugin');
         if ($this->plugin->pluginLoaded('auth') && isset($this->plugin->_plugins['auth']['external_login']))
@@ -79,6 +83,50 @@ class Login extends CI_Controller {
         $this->load->view('themes/' . $this->config->item('theme') . '/login', $data);
 
         $this->load->view('themes/' . $this->config->item('theme') . '/_elem/footer', $data);
+    }
+
+    public function register()
+    {
+        $data = array(
+            'settings' => $this->config->config,
+            'noad'     => true,
+            'mobile'   => false
+        );
+
+        if (!empty($this->input->post())) {
+            $email    = trim($this->input->post('email', TRUE));
+            $password = $this->input->post('password', TRUE);
+            $confirm  = $this->input->post('confirm_password', TRUE);
+
+            if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $data['error'] = 'Please enter a valid email address.';
+            } elseif (strlen($password) < 8) {
+                $data['error'] = 'Password must be at least 8 characters.';
+            } elseif ($password !== $confirm) {
+                $data['error'] = 'Passwords do not match.';
+            } elseif ($this->users->getByEmail($email) !== false) {
+                $data['error'] = 'An account with this email already exists.';
+            } else {
+                $hash = password_hash($password, PASSWORD_DEFAULT);
+                $ip   = '';
+                try { $ip = (string) $this->input->ip_address(); } catch (Exception $e) {}
+
+                $ok = $this->users->add([
+                    'email'    => $email,
+                    'password' => $hash,
+                    'ip'       => $ip,
+                ]);
+
+                if ($ok) {
+                    redirect(base_url('login') . '?registered=1');
+                    return;
+                } else {
+                    $data['error'] = 'Something went wrong. Please try again.';
+                }
+            }
+        }
+
+        $this->load->view('themes/' . $this->config->item('theme') . '/register', $data);
     }
 
     public function logout() {
