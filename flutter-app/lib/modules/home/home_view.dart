@@ -87,10 +87,9 @@ class _MainForm extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  if (!compact) ...[
-                    _HeroText(),
-                    const SizedBox(height: 16),
-                  ],
+                  // Hero text
+                  _HeroText(),
+                  const SizedBox(height: 16),
                   _TabSwitcher(controller: controller),
                   const SizedBox(height: 14),
                   _DropZone(controller: controller, t: t),
@@ -104,10 +103,6 @@ class _MainForm extends StatelessWidget {
                     return _MailShareForm(controller: controller);
                   }),
                   _OptionsPanel(controller: controller, t: t),
-                  if (compact) ...[
-                    const SizedBox(height: 16),
-                    _HeroText(),
-                  ],
                   const SizedBox(height: 16),
                 ],
               ),
