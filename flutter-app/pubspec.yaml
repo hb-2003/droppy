@@ -33,6 +33,7 @@ dependencies:
   in_app_purchase: ^3.2.3
   qr_flutter: ^4.1.0
   translator: ^1.0.4+1
+  mobile_scanner: ^7.2.0
 
 dev_dependencies:
   flutter_test:

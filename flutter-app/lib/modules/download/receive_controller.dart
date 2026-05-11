@@ -44,31 +44,58 @@ class ReceiveController extends GetxController {
 
   /// Accepts a raw transfer id OR a full share URL.
   void setFromPastedLinkOrId(String raw) {
+    if (!applyTransferReference(raw)) return;
+    Future.microtask(loadMetadata);
+  }
+
+  /// Parses a scanned QR value and loads transfer details.
+  Future<void> receiveFromScannedValue(String raw) async {
+    if (!applyTransferReference(raw)) {
+      AppSnack.error(appL10n().snackError, appL10n().receiveScanQrInvalid);
+      return;
+    }
+
+    await loadMetadata();
+  }
+
+  /// Fills transfer fields from a share URL or raw transfer id.
+  bool applyTransferReference(String raw) {
     final v = raw.trim();
-    if (v.isEmpty) return;
+    if (v.isEmpty) return false;
 
     final looksLikeUrl = v.contains('://') || v.contains('/') || v.contains('?');
-    if (!looksLikeUrl) return;
+    if (looksLikeUrl) {
+      final normalized = v.contains('://') ? v : 'https://$v';
+      final uri = Uri.tryParse(normalized);
+      if (uri == null) return false;
 
-    final uri = Uri.tryParse(v);
-    if (uri == null) return;
+      final segs = uri.pathSegments.where((s) => s.isNotEmpty).toList();
+      if (segs.isEmpty) return false;
 
-    final segs = uri.pathSegments.where((s) => s.isNotEmpty).toList();
-    if (segs.isEmpty) return;
+      final id = segs[0];
+      final pid = segs.length > 1 ? segs[1] : '';
 
-    final id  = segs[0];
-    final pid = segs.length > 1 ? segs[1] : '';
-
-    if (uploadIdCtrl.text.trim() != id) {
-      uploadIdCtrl.text = id;
-      uploadIdCtrl.selection = TextSelection.collapsed(offset: id.length);
+      if (uploadIdCtrl.text.trim() != id) {
+        uploadIdCtrl.text = id;
+        uploadIdCtrl.selection = TextSelection.collapsed(offset: id.length);
+      }
+      if (pid.isNotEmpty && privateIdCtrl.text.trim() != pid) {
+        privateIdCtrl.text = pid;
+        privateIdCtrl.selection = TextSelection.collapsed(offset: pid.length);
+      } else if (pid.isEmpty && privateIdCtrl.text.isNotEmpty) {
+        privateIdCtrl.clear();
+      }
+      return true;
     }
-    if (pid.isNotEmpty && privateIdCtrl.text.trim() != pid) {
-      privateIdCtrl.text = pid;
-      privateIdCtrl.selection = TextSelection.collapsed(offset: pid.length);
-    }
 
-    Future.microtask(loadMetadata);
+    if (uploadIdCtrl.text.trim() != v) {
+      uploadIdCtrl.text = v;
+      uploadIdCtrl.selection = TextSelection.collapsed(offset: v.length);
+    }
+    if (privateIdCtrl.text.isNotEmpty) {
+      privateIdCtrl.clear();
+    }
+    return true;
   }
 
   Future<void> loadMetadata() async {

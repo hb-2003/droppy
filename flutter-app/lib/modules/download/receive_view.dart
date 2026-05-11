@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:sendlargefiles/l10n/app_localizations.dart';
 import 'package:sendlargefiles/modules/download/receive_controller.dart';
+import 'package:sendlargefiles/widgets/app_snackbar.dart';
 import 'package:sendlargefiles/widgets/app_top_bar.dart';
+import 'package:sendlargefiles/widgets/transfer_qr_scanner_page.dart';
 
 // ── Theme helpers ─────────────────────────────────────────────────────────────
 Color _bg(BuildContext c) => Theme.of(c).scaffoldBackgroundColor;
@@ -150,6 +153,23 @@ class _LinkInputCard extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 12),
+          OutlinedButton.icon(
+            onPressed: controller.loading.value || controller.downloading.value
+                ? null
+                : () => _openQrScanner(context),
+            style: OutlinedButton.styleFrom(
+              foregroundColor: _accent(context),
+              side: BorderSide(color: _line(context)),
+              padding: const EdgeInsets.symmetric(vertical: 14),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+            ),
+            icon: const Icon(Icons.qr_code_scanner_rounded, size: 20),
+            label: Text(
+              t.receiveScanQr,
+              style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
+            ),
+          ),
+          const SizedBox(height: 12),
           // Find button
           Obx(() => GestureDetector(
             onTap: controller.loading.value ? null : controller.loadMetadata,
@@ -187,6 +207,22 @@ class _LinkInputCard extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Future<void> _openQrScanner(BuildContext context) async {
+    final t = AppLocalizations.of(context)!;
+    final status = await Permission.camera.request();
+    if (!status.isGranted) {
+      AppSnack.error(t.snackError, t.receiveScanQrCameraDenied);
+      return;
+    }
+    if (!context.mounted) return;
+
+    final scanned = await Navigator.of(context).push<String>(
+      MaterialPageRoute(builder: (_) => const TransferQrScannerPage()),
+    );
+    if (scanned == null || scanned.trim().isEmpty) return;
+    await controller.receiveFromScannedValue(scanned);
   }
 }
 

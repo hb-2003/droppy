@@ -376,6 +376,23 @@ class AppLocalizationsEn extends AppLocalizations {
   String get findTransfer => 'Find Transfer';
 
   @override
+  String get receiveScanQr => 'Scan QR';
+
+  @override
+  String get receiveScanQrTitle => 'Scan transfer QR';
+
+  @override
+  String get receiveScanQrHint => 'Align the QR code inside the frame.';
+
+  @override
+  String get receiveScanQrInvalid =>
+      'This QR code is not a valid transfer link.';
+
+  @override
+  String get receiveScanQrCameraDenied =>
+      'Camera access is required to scan QR codes.';
+
+  @override
   String get receiveStepGetLink => 'Get the link';
 
   @override

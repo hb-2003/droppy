@@ -8,6 +8,8 @@
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Select photos and videos to upload.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Scan transfer QR codes to download shared files.</string>
 	<key>CFBundleDisplayName</key>
 	<string>Share Large Video Files</string>
 	<key>CFBundleExecutable</key>

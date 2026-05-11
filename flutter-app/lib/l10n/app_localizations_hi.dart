@@ -376,6 +376,22 @@ class AppLocalizationsHi extends AppLocalizations {
   String get findTransfer => 'ट्रांसफ़र खोजें';
 
   @override
+  String get receiveScanQr => 'QR स्कैन करें';
+
+  @override
+  String get receiveScanQrTitle => 'ट्रांसफ़र QR स्कैन करें';
+
+  @override
+  String get receiveScanQrHint => 'QR को फ़्रेम के अंदर संरेखित करें।';
+
+  @override
+  String get receiveScanQrInvalid => 'यह QR कोड मान्य ट्रांसफ़र लिंक नहीं है।';
+
+  @override
+  String get receiveScanQrCameraDenied =>
+      'QR कोड स्कैन करने के लिए कैमरा अनुमति आवश्यक है।';
+
+  @override
   String get receiveStepGetLink => 'लिंक प्राप्त करें';
 
   @override

@@ -800,6 +800,36 @@ abstract class AppLocalizations {
   /// **'Find Transfer'**
   String get findTransfer;
 
+  /// No description provided for @receiveScanQr.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan QR'**
+  String get receiveScanQr;
+
+  /// No description provided for @receiveScanQrTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan transfer QR'**
+  String get receiveScanQrTitle;
+
+  /// No description provided for @receiveScanQrHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Align the QR code inside the frame.'**
+  String get receiveScanQrHint;
+
+  /// No description provided for @receiveScanQrInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'This QR code is not a valid transfer link.'**
+  String get receiveScanQrInvalid;
+
+  /// No description provided for @receiveScanQrCameraDenied.
+  ///
+  /// In en, this message translates to:
+  /// **'Camera access is required to scan QR codes.'**
+  String get receiveScanQrCameraDenied;
+
   /// No description provided for @receiveStepGetLink.
   ///
   /// In en, this message translates to:
