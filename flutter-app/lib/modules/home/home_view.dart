@@ -62,7 +62,6 @@ class _MainForm extends StatelessWidget {
   Widget build(BuildContext context) {
     final bottomPad = MediaQuery.of(context).padding.bottom + 84;
     final scheme = Theme.of(context).colorScheme;
-    final compact = MediaQuery.sizeOf(context).width < 900;
     return Column(
       children: [
         AppTopBar(
