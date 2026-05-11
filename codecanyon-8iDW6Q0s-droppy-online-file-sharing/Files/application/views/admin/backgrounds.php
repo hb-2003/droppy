@@ -20,7 +20,7 @@
                             </thead>
                             <tbody>
                                 <?php
-                                foreach($backgrounds as $bg) {
+                                foreach($backgrounds ?: [] as $bg) {
                                     echo '<tr>';
                                     echo '<td>' . $bg->id . '</td>';
                                     if(pathinfo($bg->src)['extension'] == 'mp4') {

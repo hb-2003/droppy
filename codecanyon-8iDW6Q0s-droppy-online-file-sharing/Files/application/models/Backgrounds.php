@@ -27,7 +27,7 @@ class Backgrounds extends CI_Model {
         if($query->num_rows() > 0) {
             return $query->result();
         }
-        return false;
+        return [];
     }
 
     function getAllOrderID($start = 0, $limit = 0) {
@@ -43,7 +43,7 @@ class Backgrounds extends CI_Model {
         if($query->num_rows() > 0) {
             return $query->result();
         }
-        return false;
+        return [];
     }
 
     /**
