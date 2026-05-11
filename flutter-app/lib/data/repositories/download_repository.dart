@@ -55,14 +55,14 @@ class DownloadRepository extends GetxService {
         final lower = raw.toLowerCase();
         final looksLikeHtml = lower.startsWith('<!doctype') || lower.startsWith('<html');
         if (looksLikeHtml) {
-          // Common case: site returned the HTML login / error page instead of JSON.
-          if (lower.contains('login') && (lower.contains('e-mail') || lower.contains('email'))) {
+          // Some installs return HTML for handler/metadata. Parse the share page instead of
+          // treating incidental login UI copy as a hard login gate.
+          final parsed = await _fetchAndParseSharePage(uploadId: uploadId, privateId: privateId);
+          if (parsed != null) return parsed;
+          if (_isLoginGateHtml(raw)) {
             return TransferMetadata.failure('login_required');
           }
-          // sharelargefilesfree.com returns HTML for handler/metadata. Match web flow by parsing the
-          // *share page* HTML (`/{upload_id}/{private_id?}`) for hidden inputs and lock state.
-          final parsed = await _fetchAndParseSharePage(uploadId: uploadId, privateId: privateId);
-          return parsed ?? TransferMetadata.failure('html_response');
+          return TransferMetadata.failure('html_response');
         }
         return TransferMetadata.failure('bad_response');
       }
@@ -90,9 +90,6 @@ class DownloadRepository extends GetxService {
       if (html.isEmpty) return null;
 
       final lower = html.toLowerCase();
-      if (lower.contains('login') && (lower.contains('e-mail') || lower.contains('email'))) {
-        return TransferMetadata.failure('login_required');
-      }
 
       String? pickValue(String id) {
         final re = RegExp('id="$id"[^>]*value="([^"]*)"', caseSensitive: false);
@@ -131,6 +128,19 @@ class DownloadRepository extends GetxService {
     } catch (_) {
       return null;
     }
+  }
+
+  bool _isLoginGateHtml(String html) {
+    final lower = html.toLowerCase();
+    final hasDownloadMarkers = lower.contains('id="download_id"') ||
+        lower.contains("id='download_id'") ||
+        lower.contains('handler/password') ||
+        lower.contains('password-protected') ||
+        lower.contains('fill_password');
+    if (hasDownloadMarkers) return false;
+    return lower.contains('sign in to') ||
+        lower.contains('send code') ||
+        lower.contains('check your email');
   }
 
   /// Unlock password-protected transfer (sets PHP session).

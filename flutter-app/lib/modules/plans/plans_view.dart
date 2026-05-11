@@ -18,17 +18,11 @@ class PlansView extends GetView<PlansController> {
       backgroundColor: bg,
       body: SafeArea(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             AppTopBar(
               title: 'Plans',
               subtitle: 'Upgrade to remove ads and send bigger files.',
-              trailing: TextButton(
-                onPressed: () {},
-                child: Text(
-                  'Skip',
-                  style: TextStyle(color: scheme.onSurface.withValues(alpha: 0.55), fontWeight: FontWeight.w700),
-                ),
-              ),
             ),
             Expanded(
               child: Obx(() {

@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:sendlargefiles/data/repositories/auth_repository.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 import 'package:sendlargefiles/l10n/app_localizations.dart';
 import 'package:sendlargefiles/app/theme/app_theme.dart';
 import 'package:sendlargefiles/modules/home/home_controller.dart';
 import 'package:sendlargefiles/widgets/app_snackbar.dart';
-import 'package:sendlargefiles/widgets/app_top_bar.dart';
-
 const _accentGlow = Color(0x33D4FF3B);
 
 Color _bg(BuildContext c) => Theme.of(c).scaffoldBackgroundColor;
@@ -61,24 +59,8 @@ class _MainForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bottomPad = MediaQuery.of(context).padding.bottom + 84;
-    final scheme = Theme.of(context).colorScheme;
     return Column(
       children: [
-        AppTopBar(
-          title: 'Home',
-          subtitle: 'Send large files securely.',
-          trailing: Obx(() {
-            final loggedIn = Get.find<AuthRepository>().loggedIn.value;
-            if (loggedIn) return const SizedBox.shrink();
-            return TextButton(
-              onPressed: () => Get.toNamed('/login'),
-              child: Text(
-                'Login',
-                style: TextStyle(color: scheme.onSurface.withValues(alpha: 0.7), fontWeight: FontWeight.w800),
-              ),
-            );
-          }),
-        ),
         Expanded(
           child: ScrollConfiguration(
             behavior: const _NoOverscrollBehavior(),
@@ -489,6 +471,19 @@ class _DropZoneFilled extends StatelessWidget {
               ),
               child: Column(
                 children: [
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: TextButton(
+                      onPressed: controller.removeAllFiles,
+                      style: TextButton.styleFrom(
+                        foregroundColor: scheme.error,
+                        padding: const EdgeInsets.fromLTRB(8, 4, 8, 0),
+                        minimumSize: Size.zero,
+                        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                      ),
+                      child: const Text('Remove all', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700)),
+                    ),
+                  ),
                   ...controller.files.asMap().entries.map((entry) {
                 final i = entry.key;
                 final f = entry.value;
@@ -584,7 +579,7 @@ class _OptionsPanel extends StatefulWidget {
 }
 
 class _OptionsPanelState extends State<_OptionsPanel> {
-  bool _expanded = false;
+  bool _expanded = true;
 
   @override
   Widget build(BuildContext context) {
@@ -662,16 +657,10 @@ class _ExpiryDropdown extends StatelessWidget {
   const _ExpiryDropdown({required this.controller});
   final HomeController controller;
 
-  String _fmt(int s) {
-    if (s < 3600) return '${s ~/ 60} min';
-    if (s < 86400) return '${s ~/ 3600} hr';
-    return '${s ~/ 86400} day${s ~/ 86400 == 1 ? '' : 's'}';
-  }
-
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
-    final options = controller.cfg.expireOptionsSec;
+    final options = controller.expiryOptionsSec;
     if (options.isEmpty) return const SizedBox.shrink();
 
     return Obx(() {
@@ -706,7 +695,7 @@ class _ExpiryDropdown extends StatelessWidget {
         items: options
             .map((s) => DropdownMenuItem<int>(
                   value: s,
-                  child: Text(_fmt(s)),
+                  child: Text(HomeController.expiryLabel(s)),
                 ))
             .toList(),
         onChanged: (v) {
@@ -875,8 +864,37 @@ class _SuccessPane extends StatelessWidget {
           style: TextStyle(color: scheme.onSurface.withValues(alpha: 0.55), fontSize: 14),
           textAlign: TextAlign.center,
         ),
-        const SizedBox(height: 32),
+        const SizedBox(height: 28),
         if (controller.finishedLink.value.isNotEmpty) ...[
+          Center(
+            child: Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(16),
+                border: Border.all(color: _line(context)),
+              ),
+              child: QrImageView(
+                data: controller.finishedLink.value,
+                size: 196,
+                backgroundColor: Colors.white,
+                eyeStyle: const QrEyeStyle(
+                  eyeShape: QrEyeShape.square,
+                  color: Color(0xFF0A0C14),
+                ),
+                dataModuleStyle: const QrDataModuleStyle(
+                  color: Color(0xFF0A0C14),
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(height: 10),
+          Text(
+            'Scan to open the transfer link.',
+            style: TextStyle(color: scheme.onSurface.withValues(alpha: 0.55), fontSize: 13),
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: 20),
           Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(

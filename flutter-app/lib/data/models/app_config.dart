@@ -147,7 +147,7 @@ class AppConfig {
       defaultLanguagePath: 'english',
       languages: [],
       recaptchaSiteKey: '',
-      expireOptionsSec: <int>[],
+      expireOptionsSec: <int>[3600, 86400, 259200, 604800],
     );
   }
 }

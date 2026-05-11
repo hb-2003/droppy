@@ -48,6 +48,36 @@ class HomeController extends GetxController {
 
   AppConfig get cfg => _cfg.current;
 
+  static const standardExpiryOptionsSec = <int>[3600, 86400, 259200, 604800];
+
+  List<int> get expiryOptionsSec {
+    final fromServer = cfg.expireOptionsSec;
+    if (fromServer.isEmpty) return standardExpiryOptionsSec;
+    final matched = standardExpiryOptionsSec.where(fromServer.contains).toList();
+    return matched.isNotEmpty ? matched : standardExpiryOptionsSec;
+  }
+
+  static String expiryLabel(int seconds) {
+    switch (seconds) {
+      case 3600:
+        return '1 hour';
+      case 86400:
+        return '24 hour';
+      case 259200:
+        return '3 days';
+      case 604800:
+        return '7 days';
+      default:
+        if (seconds <= 0) return 'Do not expire';
+        if (seconds < 86400) {
+          final hours = seconds ~/ 3600;
+          return '$hours ${hours == 1 ? 'hour' : 'hours'}';
+        }
+        final days = seconds ~/ 86400;
+        return '$days ${days == 1 ? 'day' : 'days'}';
+    }
+  }
+
   static const int _freeMaxBytes = 5 * 1024 * 1024 * 1024; // 5 GB
 
   int get _effectiveMaxBytes {
@@ -79,8 +109,9 @@ class HomeController extends GetxController {
     passwordCtrl = TextEditingController();
     emailFromCtrl = TextEditingController();
     emailToCtrl = TextEditingController();
-    if (cfg.expireOptionsSec.isNotEmpty) {
-      expireSec.value = cfg.expireOptionsSec.first;
+    final options = expiryOptionsSec;
+    if (!options.contains(expireSec.value)) {
+      expireSec.value = options.last;
     }
   }
 
@@ -121,6 +152,12 @@ class HomeController extends GetxController {
 
   void removeFile(PickedFileItem f) {
     files.remove(f);
+  }
+
+  void removeAllFiles() {
+    if (files.isEmpty) return;
+    files.clear();
+    files.refresh();
   }
 
   Future<void> startSend(BuildContext context) async {
