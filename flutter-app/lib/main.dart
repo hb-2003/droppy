@@ -11,6 +11,7 @@ import 'package:sendlargefiles/data/providers/api_client.dart';
 import 'package:sendlargefiles/data/repositories/auth_repository.dart';
 import 'package:sendlargefiles/data/repositories/config_repository.dart';
 import 'package:sendlargefiles/data/repositories/download_repository.dart';
+import 'package:sendlargefiles/data/repositories/history_repository.dart';
 import 'package:sendlargefiles/data/repositories/upload_repository.dart';
 import 'package:sendlargefiles/l10n/app_localizations.dart';
 
@@ -23,6 +24,7 @@ Future<void> main() async {
   Get.put(ConfigRepository());
   Get.put(UploadRepository());
   Get.put(DownloadRepository());
+  Get.put(HistoryRepository(), permanent: true);
   Get.put(AuthRepository());
   runApp(const SendLargeFilesApp());
 }

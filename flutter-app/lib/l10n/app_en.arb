@@ -9,6 +9,7 @@
   "modeLink": "Get a link",
   "modeEmail": "Send by email",
   "pickFiles": "Choose files",
+  "pickFolder": "Choose folder",
   "emailFrom": "Your email",
   "emailTo": "Recipient email",
   "messageOptional": "Message (optional)",

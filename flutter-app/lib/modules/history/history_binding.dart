@@ -5,7 +5,9 @@ import 'package:sendlargefiles/modules/history/history_controller.dart';
 class HistoryBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<HistoryRepository>(HistoryRepository.new);
+    if (!Get.isRegistered<HistoryRepository>()) {
+      Get.put(HistoryRepository(), permanent: true);
+    }
     Get.lazyPut<HistoryController>(HistoryController.new);
   }
 }

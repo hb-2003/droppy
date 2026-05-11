@@ -36,6 +36,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get pickFiles => 'Choose files';
 
   @override
+  String get pickFolder => 'Choose folder';
+
+  @override
   String get emailFrom => 'Your email';
 
   @override

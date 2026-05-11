@@ -148,6 +148,12 @@ abstract class AppLocalizations {
   /// **'Choose files'**
   String get pickFiles;
 
+  /// No description provided for @pickFolder.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose folder'**
+  String get pickFolder;
+
   /// No description provided for @emailFrom.
   ///
   /// In en, this message translates to:

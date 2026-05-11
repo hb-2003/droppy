@@ -18,7 +18,7 @@ class AppShellController extends GetxController {
       _historyDebounce?.cancel();
       _historyDebounce = Timer(const Duration(milliseconds: 50), () {
         if (Get.isRegistered<HistoryController>()) {
-          Get.find<HistoryController>().load();
+          Get.find<HistoryController>().load(force: true, migrateLocal: true);
         }
       });
     }

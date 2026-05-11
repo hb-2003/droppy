@@ -7,6 +7,7 @@ import 'package:sendlargefiles/controllers/locale_controller.dart';
 import 'package:sendlargefiles/data/models/app_config.dart';
 import 'package:sendlargefiles/data/repositories/auth_repository.dart';
 import 'package:sendlargefiles/data/repositories/config_repository.dart';
+import 'package:sendlargefiles/data/repositories/history_repository.dart';
 import 'package:sendlargefiles/data/repositories/upload_repository.dart'
     show PickedFileItem, RegisterResult, UploadRepository;
 import 'package:sendlargefiles/data/providers/api_client.dart';
@@ -128,25 +129,68 @@ class HomeController extends GetxController {
     try {
       final r = await FilePicker.platform.pickFiles(allowMultiple: true);
       if (r == null) return;
-    final cfgMax = _effectiveMaxBytes;
-    var total = 0;
-    for (final f in files) {
-      total += f.size;
-    }
-    final picked = UploadRepository.fromPickerResult(
-      r.files,
-      () => _uidCounter++,
-    );
-    final maxFiles = cfg.maxFiles <= 0 ? 999999 : cfg.maxFiles;
-    for (final p in picked) {
-      if (total + p.size > cfgMax) continue;
-      if (files.length >= maxFiles) break;
-      total += p.size;
-      files.add(p);
-    }
-    files.refresh();
+      _addPickedItems(
+        UploadRepository.fromPickerResult(r.files, () => _uidCounter++),
+      );
     } finally {
       pickingFiles.value = false;
+    }
+  }
+
+  Future<void> pickFolder() async {
+    if (pickingFiles.value) return;
+    pickingFiles.value = true;
+    try {
+      final dirPath = await FilePicker.platform.getDirectoryPath();
+      if (dirPath == null) return;
+      final picked = await UploadRepository.fromDirectory(
+        dirPath,
+        () => _uidCounter++,
+      );
+      if (picked.isEmpty) {
+        AppSnack.error('Empty folder', 'No files found in the selected folder.');
+        return;
+      }
+      _addPickedItems(picked);
+    } on UnimplementedError {
+      AppSnack.error(
+        'Not supported',
+        'Folder upload is not available on this platform.',
+      );
+    } catch (_) {
+      AppSnack.error('Error', 'Could not read the selected folder.');
+    } finally {
+      pickingFiles.value = false;
+    }
+  }
+
+  void _addPickedItems(List<PickedFileItem> picked) {
+    if (picked.isEmpty) return;
+    final cfgMax = _effectiveMaxBytes;
+    var total = files.fold<int>(0, (sum, f) => sum + f.size);
+    final maxFiles = cfg.maxFiles <= 0 ? 999999 : cfg.maxFiles;
+    var skipped = 0;
+
+    for (final item in picked) {
+      if (files.any((f) => f.path == item.path)) continue;
+      if (total + item.size > cfgMax) {
+        skipped++;
+        continue;
+      }
+      if (files.length >= maxFiles) {
+        skipped++;
+        break;
+      }
+      total += item.size;
+      files.add(item);
+    }
+    files.refresh();
+
+    if (skipped > 0) {
+      AppSnack.error(
+        'Limit reached',
+        'Some files were not added because of size or file count limits.',
+      );
     }
   }
 
@@ -378,8 +422,30 @@ class HomeController extends GetxController {
       emailTo: _parseEmails(emailToCtrl?.text ?? ''),
     );
 
+    final nowSec = DateTime.now().millisecondsSinceEpoch ~/ 1000;
+    final expire = expireSec.value;
+    await Get.find<HistoryRepository>().saveLocalTransfer(
+      HistoryTransfer(
+        uploadId: activeUploadId,
+        share: shareMode.value,
+        count: files.length,
+        size: files.fold<int>(0, (sum, f) => sum + f.size),
+        time: nowSec,
+        timeExpire: expire <= 0 ? 0 : nowSec + expire,
+        destruct: destruct.value,
+        files: files
+            .map(
+              (f) => HistoryTransferFile(
+                name: f.name,
+                size: f.size,
+              ),
+            )
+            .toList(),
+      ),
+    );
+
     if (Get.isRegistered<HistoryController>()) {
-      await Get.find<HistoryController>().load();
+      await Get.find<HistoryController>().load(force: true);
     }
 
     final base = cfg.siteUrl.isNotEmpty ? cfg.siteUrl : resolveBaseUrl();

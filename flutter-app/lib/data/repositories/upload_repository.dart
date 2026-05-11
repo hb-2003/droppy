@@ -50,6 +50,11 @@ class PickedFileItem {
   final int size;
   final String fileUid;
   final String originalPath;
+
+  String get displayName {
+    if (originalPath.isEmpty) return name;
+    return '$originalPath$name'.replaceAll(r'\', '/');
+  }
 }
 
 class RegisterResult {
@@ -304,6 +309,38 @@ class UploadRepository extends GetxService {
       );
     }
     return out;
+  }
+
+  static Future<List<PickedFileItem>> fromDirectory(
+    String directoryPath,
+    int Function() uidGen,
+  ) async {
+    final root = Directory(p.normalize(p.absolute(directoryPath)));
+    if (!await root.exists()) return const [];
+
+    final out = <PickedFileItem>[];
+    await for (final entity in root.list(recursive: true, followLinks: false)) {
+      if (entity is! File) continue;
+      final stat = await entity.stat();
+      out.add(
+        PickedFileItem(
+          path: entity.path,
+          name: p.basename(entity.path),
+          size: stat.size,
+          fileUid: _randomUid(uidGen),
+          originalPath: originalDirPath(root.path, entity.path),
+        ),
+      );
+    }
+    out.sort((a, b) => a.displayName.compareTo(b.displayName));
+    return out;
+  }
+
+  static String originalDirPath(String rootPath, String filePath) {
+    final rel = p.relative(filePath, from: rootPath);
+    final dir = p.dirname(rel);
+    if (dir == '.') return '';
+    return '${dir.replaceAll(p.separator, '/')}/';
   }
 
   static String _randomUid(int Function() gen) =>

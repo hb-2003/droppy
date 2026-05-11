@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart' as dio;
 import 'package:get/get.dart';
 import 'package:sendlargefiles/data/providers/api_client.dart';
-
 class AuthRepository extends GetxService {
   final RxBool loggedIn = false.obs;
   final RxString sessionEmail = ''.obs;

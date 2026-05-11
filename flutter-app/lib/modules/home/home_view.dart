@@ -348,26 +348,47 @@ class _DropZoneEmpty extends StatelessWidget {
                   const SizedBox(height: 12),
                   _FiletypeChips(),
                   const SizedBox(height: 14),
-                  TextButton.icon(
-                    onPressed: busy ? null : onPick,
-                    style: TextButton.styleFrom(
-                      foregroundColor: _accent(context),
-                      disabledForegroundColor:
-                          Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.38),
-                      textStyle: const TextStyle(
-                        inherit: false,
-                        fontSize: 13,
-                        fontWeight: FontWeight.w600,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      TextButton.icon(
+                        onPressed: busy ? null : onPick,
+                        style: TextButton.styleFrom(
+                          foregroundColor: _accent(context),
+                          disabledForegroundColor:
+                              Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.38),
+                          textStyle: const TextStyle(
+                            inherit: false,
+                            fontSize: 13,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        icon: busy
+                            ? const SizedBox(
+                                width: 18,
+                                height: 18,
+                                child: CircularProgressIndicator(strokeWidth: 2),
+                              )
+                            : const Icon(Icons.insert_drive_file_outlined, size: 18),
+                        label: Text(busy ? 'Loading…' : t.pickFiles),
                       ),
-                    ),
-                    icon: busy
-                        ? const SizedBox(
-                            width: 18,
-                            height: 18,
-                            child: CircularProgressIndicator(strokeWidth: 2),
-                          )
-                        : const Icon(Icons.folder_open_rounded, size: 18),
-                    label: Text(busy ? 'Loading…' : t.pickFiles),
+                      const SizedBox(width: 8),
+                      TextButton.icon(
+                        onPressed: busy ? null : controller.pickFolder,
+                        style: TextButton.styleFrom(
+                          foregroundColor: _accent(context),
+                          disabledForegroundColor:
+                              Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.38),
+                          textStyle: const TextStyle(
+                            inherit: false,
+                            fontSize: 13,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        icon: const Icon(Icons.folder_open_rounded, size: 18),
+                        label: Text(t.pickFolder),
+                      ),
+                    ],
                   ),
                 ],
               ),
@@ -501,7 +522,7 @@ class _DropZoneFilled extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(f.name, style: TextStyle(color: scheme.onSurface, fontSize: 13, fontWeight: FontWeight.w500), overflow: TextOverflow.ellipsis),
+                                Text(f.displayName, style: TextStyle(color: scheme.onSurface, fontSize: 13, fontWeight: FontWeight.w500), overflow: TextOverflow.ellipsis),
                                 Text('$sizeMb MB', style: TextStyle(color: scheme.onSurface.withValues(alpha: 0.45), fontSize: 11)),
                               ],
                             ),
@@ -539,28 +560,56 @@ class _DropZoneFilled extends StatelessWidget {
         ),
         const SizedBox(height: 10),
         Obx(
-          () => OutlinedButton.icon(
-            onPressed: controller.pickingFiles.value ? null : controller.pickFiles,
-            style: OutlinedButton.styleFrom(
-              foregroundColor: scheme.onSurface.withValues(alpha: 0.75),
-              disabledForegroundColor: scheme.onSurface.withValues(alpha: 0.38),
-              side: BorderSide(color: _line(context)),
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-              textStyle: const TextStyle(
-                inherit: false,
-                fontSize: 13,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-            icon: controller.pickingFiles.value
-                ? const SizedBox(
-                    width: 16,
-                    height: 16,
-                    child: CircularProgressIndicator(strokeWidth: 2),
-                  )
-                : const Icon(Icons.add_rounded, size: 16),
-            label: Text(controller.pickingFiles.value ? 'Adding…' : 'Add more files'),
-          ),
+          () {
+            final busy = controller.pickingFiles.value;
+            return Row(
+              children: [
+                Expanded(
+                  child: OutlinedButton.icon(
+                    onPressed: busy ? null : controller.pickFiles,
+                    style: OutlinedButton.styleFrom(
+                      foregroundColor: scheme.onSurface.withValues(alpha: 0.75),
+                      disabledForegroundColor: scheme.onSurface.withValues(alpha: 0.38),
+                      side: BorderSide(color: _line(context)),
+                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                      textStyle: const TextStyle(
+                        inherit: false,
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    icon: busy
+                        ? const SizedBox(
+                            width: 16,
+                            height: 16,
+                            child: CircularProgressIndicator(strokeWidth: 2),
+                          )
+                        : const Icon(Icons.add_rounded, size: 16),
+                    label: Text(busy ? 'Adding…' : 'Add files'),
+                  ),
+                ),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: OutlinedButton.icon(
+                    onPressed: busy ? null : controller.pickFolder,
+                    style: OutlinedButton.styleFrom(
+                      foregroundColor: scheme.onSurface.withValues(alpha: 0.75),
+                      disabledForegroundColor: scheme.onSurface.withValues(alpha: 0.38),
+                      side: BorderSide(color: _line(context)),
+                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                      textStyle: const TextStyle(
+                        inherit: false,
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    icon: const Icon(Icons.folder_open_rounded, size: 16),
+                    label: Text(t.pickFolder),
+                  ),
+                ),
+              ],
+            );
+          },
         ),
       ],
     );

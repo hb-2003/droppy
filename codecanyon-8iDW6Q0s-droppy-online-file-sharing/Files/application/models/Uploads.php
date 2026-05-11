@@ -173,6 +173,57 @@ class Uploads extends CI_Model {
         return [];
     }
 
+    /**
+     * Attach anonymous uploads to a signed-in user by upload_id.
+     *
+     * @param  string $email
+     * @param  array  $upload_ids
+     * @return array  upload_ids successfully linked to $email
+     */
+    function claimEmailForUploadIds($email, array $upload_ids) {
+        $email = trim((string) $email);
+        if ($email === '' || empty($upload_ids)) {
+            return [];
+        }
+
+        $upload_ids = array_values(array_unique(array_filter(array_map(function ($id) {
+            return trim((string) $id);
+        }, $upload_ids))));
+
+        $claimed = [];
+        foreach ($upload_ids as $upload_id) {
+            if ($upload_id === '') {
+                continue;
+            }
+
+            $this->db->select('email_from');
+            $this->db->from('droppy_uploads');
+            $this->db->where('upload_id', $upload_id);
+            $this->db->where('status !=', 'deleted');
+            $query = $this->db->get();
+            if ($query->num_rows() === 0) {
+                continue;
+            }
+
+            $row = $query->row_array();
+            $owner = trim((string) ($row['email_from'] ?? ''));
+            if ($owner === $email) {
+                $claimed[] = $upload_id;
+                continue;
+            }
+            if ($owner !== '') {
+                continue;
+            }
+
+            $this->db->where('upload_id', $upload_id);
+            if ($this->db->update('droppy_uploads', ['email_from' => $email]) && $this->db->affected_rows() > 0) {
+                $claimed[] = $upload_id;
+            }
+        }
+
+        return $claimed;
+    }
+
     function getByStatus($status) {
         $this->db->select('*');
         $this->db->from('droppy_uploads');

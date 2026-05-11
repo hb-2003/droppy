@@ -24,7 +24,12 @@ class HistoryView extends GetView<HistoryController> {
         backgroundColor: theme.scaffoldBackgroundColor,
         body: SafeArea(
           child: Obx(() {
-            if (controller.loading.value) return _LoadingState();
+            if (controller.loading.value && controller.transfers.isEmpty) {
+              return _LoadingState();
+            }
+            if (controller.transfers.isNotEmpty) {
+              return _HistoryList(controller: controller);
+            }
             if (controller.needsLogin.value) return _LoginGate(controller: controller);
             if (controller.error.value) return _ErrorState(controller: controller);
             return _HistoryList(controller: controller);
@@ -261,8 +266,6 @@ class _TransferCard extends StatelessWidget {
     final cardBg = scheme.surfaceContainerHighest;
     final line = scheme.outlineVariant.withValues(alpha: 0.45);
     final dim = scheme.onSurface.withValues(alpha: 0.55);
-    final dim2 = scheme.onSurface.withValues(alpha: 0.45);
-
     Future<void> openDetails() async {
       await showModalBottomSheet<void>(
         context: context,
@@ -350,18 +353,6 @@ class _TransferCard extends StatelessWidget {
                 ),
             ],
           ),
-          if (transfer.files.isNotEmpty) ...[
-            const SizedBox(height: 12),
-            ...transfer.files.take(3).map((f) => _FileRow(file: f, expired: expired)),
-            if (transfer.files.length > 3)
-              Padding(
-                padding: const EdgeInsets.only(top: 4),
-                child: Text(
-                  '+${transfer.files.length - 3} more',
-                  style: TextStyle(color: dim2, fontSize: 11),
-                ),
-              ),
-          ],
           ],
         ),
       ),
@@ -563,10 +554,8 @@ class _TransferDetailsSheet extends StatelessWidget {
   }
 }
 
-class _FileRow extends StatelessWidget {
-  const _FileRow({required this.file, required this.expired});
-  final HistoryTransferFile file;
-  final bool expired;
+class _FileRow {
+  _FileRow._();
 
   static String _extOf(String name) {
     final i = name.lastIndexOf('.');
@@ -598,30 +587,5 @@ class _FileRow extends StatelessWidget {
     if (['txt', 'md', 'rtf'].contains(ext)) return Icons.description_outlined;
 
     return Icons.insert_drive_file_outlined;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-    final dim = scheme.onSurface.withValues(alpha: 0.35);
-    final dim2 = scheme.onSurface.withValues(alpha: 0.55);
-    final dim3 = scheme.onSurface.withValues(alpha: 0.45);
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 6),
-      child: Row(
-        children: [
-          Icon(iconFor(file), color: expired ? dim : dim2, size: 14),
-          const SizedBox(width: 8),
-          Expanded(
-            child: Text(
-              file.name,
-              style: TextStyle(color: expired ? dim : dim3, fontSize: 12),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-            ),
-          ),
-        ],
-      ),
-    );
   }
 }

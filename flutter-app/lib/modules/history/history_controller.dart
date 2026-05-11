@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:sendlargefiles/app/routes/app_routes.dart';
+import 'package:sendlargefiles/data/repositories/auth_repository.dart';
 import 'package:sendlargefiles/data/repositories/history_repository.dart';
 
 class HistoryController extends GetxController {
@@ -22,7 +23,8 @@ class HistoryController extends GetxController {
 
   /// Loads history. Skips if already loading.
   /// [force] bypasses the cooldown (e.g. pull-to-refresh).
-  Future<void> load({bool force = false}) async {
+  /// [migrateLocal] pushes guest transfers to the server when signed in.
+  Future<void> load({bool force = false, bool migrateLocal = false}) async {
     // Prevent concurrent calls.
     if (loading.value) return;
 
@@ -36,15 +38,29 @@ class HistoryController extends GetxController {
     error.value = false;
     needsLogin.value = false;
     try {
-      final result = await _repo.fetchHistory();
-      if (result.needsLogin) {
-        needsLogin.value = true;
-      } else if (result.isOk) {
-        email.value = result.email ?? '';
-        transfers.value = result.transfers;
+      var local = _repo.readLocalTransfers();
+      transfers.assignAll(local);
+
+      final auth = Get.find<AuthRepository>();
+      if (migrateLocal && auth.loggedIn.value && local.isNotEmpty) {
+        await _repo.syncLocalTransfersToServer();
+        local = _repo.readLocalTransfers();
+        transfers.assignAll(local);
+      }
+
+      if (!auth.loggedIn.value) {
         _lastLoadedAt = DateTime.now();
-      } else {
+        return;
+      }
+
+      final result = await _repo.fetchHistory();
+      if (result.isOk) {
+        email.value = result.email ?? '';
+        transfers.value = _repo.mergeTransfers(local, result.transfers);
+        _lastLoadedAt = DateTime.now();
+      } else if (local.isEmpty) {
         error.value = true;
+        needsLogin.value = result.needsLogin;
       }
     } finally {
       loading.value = false;
@@ -52,7 +68,7 @@ class HistoryController extends GetxController {
   }
 
   /// Called by pull-to-refresh — always re-fetches.
-  Future<void> forceRefresh() => load(force: true);
+  Future<void> forceRefresh() => load(force: true, migrateLocal: true);
 
   void goLogin() => Get.toNamed(AppRoutes.login);
 

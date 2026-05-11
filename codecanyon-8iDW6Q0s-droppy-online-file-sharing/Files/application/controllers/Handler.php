@@ -657,6 +657,36 @@ class Handler extends CI_Controller {
     }
 
     /**
+     * POST handler/sync_local_history { upload_ids: JSON array of upload_id strings }
+     * Links guest uploads to the signed-in account (sets droppy_uploads.email_from).
+     */
+    public function sync_local_history()
+    {
+        header('Content-Type: application/json');
+        $this->load->library('session');
+        $this->load->model('uploads');
+
+        $otp_email = $this->session->userdata('otp_verified_email');
+        if (empty($otp_email)) {
+            echo json_encode(['result' => 'unauthenticated']);
+            return;
+        }
+
+        $raw = $this->input->post('upload_ids', TRUE);
+        $ids = json_decode($raw, true);
+        if (!is_array($ids)) {
+            $ids = [];
+        }
+
+        $claimed = $this->uploads->claimEmailForUploadIds($otp_email, $ids);
+        echo json_encode([
+            'result'     => 'ok',
+            'synced'     => count($claimed),
+            'upload_ids' => $claimed,
+        ]);
+    }
+
+    /**
      * GET handler/history_json
      * Returns the OTP-authenticated user's transfer history as JSON.
      * Requires an active OTP session (same session cookie used by the web).
