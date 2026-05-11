@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:get/get.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
+import 'package:sendlargefiles/localization/app_locale.dart';
 import 'package:sendlargefiles/widgets/app_snackbar.dart';
 
 class PlansController extends GetxController {
@@ -42,26 +43,38 @@ class PlansController extends GetxController {
       products.assignAll({for (final p in res.productDetails) p.id: p});
 
       if (res.error != null) {
-        AppSnack.error('Store error', res.error!.message);
+        await AppSnack.showDynamic(
+          appL10n().snackStoreError,
+          res.error!.message,
+          type: AppSnackType.error,
+        );
       }
       if (res.notFoundIDs.isNotEmpty) {
-        AppSnack.info('Missing products', res.notFoundIDs.join(', '));
+        await AppSnack.showDynamic(
+          appL10n().snackMissingProducts,
+          res.notFoundIDs.join(', '),
+        );
       }
     } catch (e) {
-      AppSnack.error('Store error', e.toString());
+      await AppSnack.showDynamic(
+        appL10n().snackStoreError,
+        e.toString(),
+        type: AppSnackType.error,
+      );
     } finally {
       loading.value = false;
     }
   }
 
   Future<void> buy(String productId) async {
+    final t = appL10n();
     if (!available.value) {
-      AppSnack.error('Store unavailable', 'In-app purchases are not available on this device.');
+      AppSnack.error(t.snackStoreUnavailable, t.snackStoreUnavailableBody);
       return;
     }
     final p = products[productId];
     if (p == null) {
-      AppSnack.error('Not found', 'Product is not loaded yet.');
+      AppSnack.error(t.snackError, t.snackProductNotLoaded);
       return;
     }
     final param = PurchaseParam(productDetails: p);
@@ -69,36 +82,42 @@ class PlansController extends GetxController {
   }
 
   Future<void> restore() async {
+    final t = appL10n();
     try {
       await _iap.restorePurchases();
-      AppSnack.success('Restore started', 'We are checking your purchases.');
+      AppSnack.success(t.snackRestoreStarted, t.snackRestoreStartedBody);
     } catch (e) {
-      AppSnack.error('Restore failed', e.toString());
+      await AppSnack.showDynamic(
+        t.snackRestoreFailed,
+        e.toString(),
+        type: AppSnackType.error,
+      );
     }
   }
 
   void _onPurchaseUpdate(List<PurchaseDetails> list) {
+    final t = appL10n();
     for (final p in list) {
       switch (p.status) {
         case PurchaseStatus.pending:
-          AppSnack.info('Processing', 'Please wait…');
+          AppSnack.info(t.snackProcessing, t.snackPleaseWait);
           break;
         case PurchaseStatus.purchased:
         case PurchaseStatus.restored:
-          AppSnack.success('Success', 'Purchase completed.');
+          AppSnack.success(t.snackSuccess, t.snackPurchaseCompleted);
           if (p.pendingCompletePurchase) {
             InAppPurchase.instance.completePurchase(p);
           }
           break;
         case PurchaseStatus.error:
-          final msg = p.error?.message ?? 'Purchase failed.';
-          AppSnack.error('Purchase error', msg);
+          final msg = p.error?.message ?? t.snackPurchaseFailed;
+          AppSnack.showDynamic(t.snackPurchaseError, msg, type: AppSnackType.error);
           if (p.pendingCompletePurchase) {
             InAppPurchase.instance.completePurchase(p);
           }
           break;
         case PurchaseStatus.canceled:
-          AppSnack.info('Canceled', 'Purchase canceled.');
+          AppSnack.info(t.snackCanceled, t.snackPurchaseCanceled);
           break;
       }
     }
@@ -110,4 +129,3 @@ class PlansController extends GetxController {
     super.onClose();
   }
 }
-

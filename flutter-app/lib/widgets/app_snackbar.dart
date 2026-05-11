@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sendlargefiles/localization/app_locale.dart';
+import 'package:sendlargefiles/localization/translation_service.dart';
 
 enum AppSnackType { info, success, warning, error }
 
@@ -85,5 +87,22 @@ class AppSnack {
 
   static void info(String title, String message, {Duration duration = const Duration(seconds: 3)}) =>
       show(title, message, type: AppSnackType.info, duration: duration);
+
+  /// For API / store messages that are not in ARB files.
+  static Future<void> showDynamic(
+    String title,
+    String message, {
+    AppSnackType type = AppSnackType.info,
+    Duration duration = const Duration(seconds: 3),
+  }) async {
+    if (appIsEnglish() || !Get.isRegistered<TranslationService>()) {
+      show(title, message, type: type, duration: duration);
+      return;
+    }
+    final svc = Get.find<TranslationService>();
+    final translatedTitle = await svc.translate(title);
+    final translatedMessage = await svc.translate(message);
+    show(translatedTitle, translatedMessage, type: type, duration: duration);
+  }
 }
 

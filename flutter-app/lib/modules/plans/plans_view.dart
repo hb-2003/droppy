@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
+import 'package:sendlargefiles/l10n/app_localizations.dart';
 import 'package:sendlargefiles/modules/plans/plans_controller.dart';
 import 'package:sendlargefiles/widgets/app_top_bar.dart';
 
@@ -9,6 +10,7 @@ class PlansView extends GetView<PlansController> {
 
   @override
   Widget build(BuildContext context) {
+    final t = AppLocalizations.of(context)!;
     final scheme = Theme.of(context).colorScheme;
     final bg = Theme.of(context).scaffoldBackgroundColor;
     final card = scheme.surfaceContainerHighest;
@@ -21,8 +23,8 @@ class PlansView extends GetView<PlansController> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             AppTopBar(
-              title: 'Plans',
-              subtitle: 'Upgrade to remove ads and send bigger files.',
+              title: t.plansTitle,
+              subtitle: t.plansSubtitle,
             ),
             Expanded(
               child: Obx(() {
@@ -31,8 +33,8 @@ class PlansView extends GetView<PlansController> {
                 }
                 if (!controller.available.value) {
                   return _EmptyState(
-                    title: 'Store unavailable',
-                    message: 'In-app purchases are not available right now.',
+                    title: t.storeUnavailable,
+                    message: t.storeUnavailableBody,
                     onRetry: controller.initStore,
                   );
                 }
@@ -62,7 +64,7 @@ class PlansView extends GetView<PlansController> {
                           const SizedBox(width: 12),
                           Expanded(
                             child: Text(
-                              'Currently you are using our free version with ads',
+                              t.freeVersionAds,
                               style: TextStyle(
                                 color: scheme.onSurface.withValues(alpha: 0.72),
                                 fontSize: 13,
@@ -76,8 +78,8 @@ class PlansView extends GetView<PlansController> {
                     ),
                     const SizedBox(height: 14),
                     _PlanCard(
-                      title: 'Ads Plan',
-                      bullets: const ['Access to ads free app', 'Remove all ads'],
+                      title: t.planAdsTitle,
+                      bullets: [t.planAdsBullet1, t.planAdsBullet2],
                       monthlyId: 'com_sharelargefilesfree_subs_ads_monthly',
                       yearlyId: 'com_sharelargefilesfree_subs_ads_yearly',
                       onBuy: controller.buy,
@@ -85,8 +87,8 @@ class PlansView extends GetView<PlansController> {
                     ),
                     const SizedBox(height: 14),
                     _PlanCard(
-                      title: 'Pro Plan',
-                      bullets: const ['Send files up to 20GB', 'Fast Upload'],
+                      title: t.planProTitle,
+                      bullets: [t.planProBullet1, t.planProBullet2],
                       monthlyId: 'com_sharelargefilesfree_subs_pro_monthly',
                       yearlyId: 'com_sharelargefilesfree_subs_pro_yearly',
                       onBuy: controller.buy,
@@ -94,8 +96,8 @@ class PlansView extends GetView<PlansController> {
                     ),
                     const SizedBox(height: 14),
                     _PlanCard(
-                      title: 'Premium Plan',
-                      bullets: const ['Send files up to 100GB', 'Super fast upload'],
+                      title: t.planPremiumTitle,
+                      bullets: [t.planPremiumBullet1, t.planPremiumBullet2],
                       monthlyId: 'com_sharelargefilesfree_subs_premium_monthly',
                       yearlyId: 'com_sharelargefilesfree_subs_premium_yearly',
                       onBuy: controller.buy,
@@ -114,15 +116,14 @@ class PlansView extends GetView<PlansController> {
                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
                               padding: const EdgeInsets.symmetric(vertical: 14),
                             ),
-                            child: const Text('Restore purchases', style: TextStyle(fontWeight: FontWeight.w700)),
+                            child: Text(t.restorePurchases, style: const TextStyle(fontWeight: FontWeight.w700)),
                           ),
                         ),
                       ],
                     ),
                     const SizedBox(height: 12),
                     Text(
-                      'No trial period — subscription is required to use the additional app functionality. '
-                      'You will be charged immediately. You can cancel anytime.',
+                      t.planSubscriptionDisclaimer,
                       style: TextStyle(color: scheme.onSurface.withValues(alpha: 0.50), fontSize: 11.5, height: 1.4),
                       textAlign: TextAlign.center,
                     ),
@@ -158,6 +159,7 @@ class _PlanCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = AppLocalizations.of(context)!;
     final scheme = Theme.of(context).colorScheme;
     final line = scheme.outlineVariant.withValues(alpha: 0.55);
     final card = scheme.surfaceContainerHighest;
@@ -224,14 +226,14 @@ class _PlanCard extends StatelessWidget {
             children: [
               _PriceChip(
                 labelTop: monthPrice ?? '—',
-                labelBottom: '/ month',
+                labelBottom: t.perMonth,
                 color: primary,
                 onTap: () => onBuy(monthlyId),
               ),
               const SizedBox(height: 10),
               _MiniPrice(
                 title: yearPrice ?? '—',
-                subtitle: '/ year',
+                subtitle: t.perYear,
                 tertiary: effectiveMonthly,
                 onTap: () => onBuy(yearlyId),
               ),
@@ -332,6 +334,7 @@ class _EmptyState extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = AppLocalizations.of(context)!;
     final scheme = Theme.of(context).colorScheme;
     return Center(
       child: Padding(
@@ -347,7 +350,7 @@ class _EmptyState extends StatelessWidget {
             const SizedBox(height: 14),
             FilledButton(
               onPressed: onRetry,
-              child: const Text('Retry'),
+              child: Text(t.retry),
             ),
           ],
         ),

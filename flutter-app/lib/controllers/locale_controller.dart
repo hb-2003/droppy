@@ -20,6 +20,7 @@ class LocaleController extends GetxController {
   }
 
   void setLocale(Locale l) {
+    if (locale.value == l) return;
     locale.value = l;
     GetStorage().write(_kLocaleCode, l.languageCode);
     if (l.countryCode != null && l.countryCode!.isNotEmpty) {
@@ -27,6 +28,7 @@ class LocaleController extends GetxController {
     } else {
       GetStorage().remove(_kLocaleCountry);
     }
+    Get.updateLocale(l);
     update();
   }
 }

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:sendlargefiles/app/routes/app_routes.dart';
+import 'package:sendlargefiles/l10n/app_localizations.dart';
+import 'package:sendlargefiles/localization/locale_rebuild.dart';
 import 'package:sendlargefiles/modules/login/login_controller.dart';
 import 'package:sendlargefiles/widgets/auth_top_bar.dart';
 
@@ -23,11 +25,13 @@ class LoginView extends GetView<LoginController> {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: isDark ? SystemUiOverlayStyle.light : SystemUiOverlayStyle.dark,
-      child: Obx(() => controller.step.value == 0
-          ? _EmailScreen(controller: controller)
-          : _OtpScreen(controller: controller)),
+    return LocaleRebuild(
+      child: AnnotatedRegion<SystemUiOverlayStyle>(
+        value: isDark ? SystemUiOverlayStyle.light : SystemUiOverlayStyle.dark,
+        child: Obx(() => controller.step.value == 0
+            ? _EmailScreen(controller: controller)
+            : _OtpScreen(controller: controller)),
+      ),
     );
   }
 }
@@ -40,6 +44,7 @@ class _EmailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = AppLocalizations.of(context)!;
     final accent = _accent(context);
     return Scaffold(
       backgroundColor: _bg(context),
@@ -86,39 +91,39 @@ class _EmailScreen extends StatelessWidget {
                           child: Icon(Icons.lock_outline_rounded, color: _dim(context), size: 28),
                         ),
                         const SizedBox(height: 28),
-                        Text('Sign in',
+                        Text(t.signIn,
                             style: TextStyle(color: _onSurface(context), fontSize: 32, fontWeight: FontWeight.w800, letterSpacing: -0.8, height: 1.05)),
                         const SizedBox(height: 6),
-                        Text('Share Large Video Files',
+                        Text(t.appTitle,
                             style: TextStyle(color: accent, fontSize: 18, fontWeight: FontWeight.w600, letterSpacing: -0.3)),
                         const SizedBox(height: 12),
                         Text(
-                          "Enter your email and password to sign in.",
+                          t.loginEmailPasswordPrompt,
                           style: TextStyle(color: _dim2(context), fontSize: 14, height: 1.6),
                         ),
                         const SizedBox(height: 36),
-                        _Label('EMAIL ADDRESS'),
+                        _Label(t.emailAddressLabel),
                         const SizedBox(height: 8),
                         _Field(
                           ctrl: controller.emailCtrl,
-                          hint: 'you@example.com',
+                          hint: t.emailExampleHint,
                           keyboardType: TextInputType.emailAddress,
                           autofocus: true,
                           onSubmitted: (_) => controller.loginPassword(),
                         ),
                         const SizedBox(height: 16),
-                        _Label('PASSWORD'),
+                        _Label(t.passwordLabelCaps),
                         const SizedBox(height: 8),
                         _Field(
                           ctrl: controller.passwordCtrl,
-                          hint: 'Password',
+                          hint: t.passwordHint,
                           keyboardType: TextInputType.visiblePassword,
                           obscureText: true,
                           onSubmitted: (_) => controller.loginPassword(),
                         ),
                         const SizedBox(height: 20),
                         Obx(() => _PrimaryButton(
-                          label: 'Sign in',
+                          label: t.signIn,
                           icon: Icons.arrow_forward_rounded,
                           loading: controller.loading.value,
                           onTap: controller.loading.value ? null : controller.loginPassword,
@@ -128,7 +133,7 @@ class _EmailScreen extends StatelessWidget {
                           child: TextButton(
                             onPressed: () => Get.toNamed(AppRoutes.signup),
                             child: Text(
-                              'Create account',
+                              t.createAccountTitle,
                               style: TextStyle(color: accent, fontWeight: FontWeight.w700),
                             ),
                           ),
@@ -154,6 +159,7 @@ class _OtpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = AppLocalizations.of(context)!;
     final accent = _accent(context);
     final accentGlow = _accentGlow(context);
     return Scaffold(
@@ -203,20 +209,20 @@ class _OtpScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 28),
                         Text(
-                          'Check your\nemail',
+                          t.checkEmailTitle,
                           style: TextStyle(color: _onSurface(context), fontSize: 32, fontWeight: FontWeight.w800, letterSpacing: -0.8, height: 1.1),
                         ),
                         const SizedBox(height: 10),
                         Text(
-                          'We sent a 6-digit code to\n${controller.email}',
+                          t.otpSentTo(controller.email),
                           style: TextStyle(color: _dim2(context), fontSize: 14, height: 1.6),
                         ),
                         const SizedBox(height: 36),
-                        _Label('6-DIGIT CODE'),
+                        _Label(t.otpDigitLabel),
                         const SizedBox(height: 8),
                         _Field(
                           ctrl: controller.codeCtrl,
-                          hint: '000000',
+                          hint: t.otpSixDigitHint,
                           keyboardType: TextInputType.number,
                           textAlign: TextAlign.center,
                           fontSize: 28,
@@ -227,7 +233,7 @@ class _OtpScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 20),
                         Obx(() => _PrimaryButton(
-                          label: 'Verify & Sign in',
+                          label: t.verifyAndSignIn,
                           icon: Icons.verified_outlined,
                           loading: controller.loading.value,
                           onTap: controller.loading.value ? null : controller.verifyCode,
@@ -237,10 +243,10 @@ class _OtpScreen extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text("Didn't receive it? ", style: TextStyle(color: _dim2(context), fontSize: 13)),
+                            Text('${t.didntReceiveCode} ', style: TextStyle(color: _dim2(context), fontSize: 13)),
                             GestureDetector(
                               onTap: controller.goBack,
-                              child: Text('Try again',
+                              child: Text(t.tryAgain,
                                   style: TextStyle(color: accent, fontSize: 13, fontWeight: FontWeight.w600)),
                             ),
                           ],
@@ -267,7 +273,7 @@ class _OtpScreen extends StatelessWidget {
                               const SizedBox(width: 12),
                               Expanded(
                                 child: Text(
-                                  "Code expires in 5 minutes. Check your spam folder if you don't see it.",
+                                  t.otpExpiresHint,
                                   style: TextStyle(color: _dim2(context), fontSize: 12, height: 1.5),
                                 ),
                               ),

@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:sendlargefiles/app/routes/app_routes.dart';
 import 'package:sendlargefiles/data/repositories/auth_repository.dart';
 import 'package:sendlargefiles/data/repositories/history_repository.dart';
+import 'package:sendlargefiles/localization/app_locale.dart';
 
 class HistoryController extends GetxController {
   final HistoryRepository _repo = Get.find<HistoryRepository>();
@@ -98,9 +99,11 @@ class HistoryController extends GetxController {
       return '$hh:$m $ap';
     }
 
-    if (diff.inDays == 0) return 'Today · ${timeOfDay()}';
-    if (diff.inDays == 1) return 'Yesterday · ${timeOfDay()}';
-    if (diff.inDays < 7) return '${diff.inDays}d ago · ${timeOfDay()}';
-    return '${dt.day}/${dt.month}/${dt.year} · ${timeOfDay()}';
+    final t = appL10n();
+    final time = timeOfDay();
+    if (diff.inDays == 0) return t.todayAt(time);
+    if (diff.inDays == 1) return t.yesterdayAt(time);
+    if (diff.inDays < 7) return t.daysAgoAt(diff.inDays, time);
+    return t.dateAt('${dt.day}/${dt.month}/${dt.year}', time);
   }
 }

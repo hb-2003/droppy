@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sendlargefiles/app/routes/app_routes.dart';
 import 'package:sendlargefiles/data/repositories/auth_repository.dart';
+import 'package:sendlargefiles/localization/app_locale.dart';
 import 'package:sendlargefiles/widgets/app_snackbar.dart';
 
 class SignupController extends GetxController {
@@ -17,16 +18,17 @@ class SignupController extends GetxController {
   String get password => passwordCtrl.text;
 
   Future<void> signup() async {
+    final t = appL10n();
     if (email.isEmpty) {
-      AppSnack.error('Error', 'Please enter your email');
+      AppSnack.error(t.snackError, t.snackEnterEmail);
       return;
     }
     if (password.trim().length < 8) {
-      AppSnack.error('Error', 'Password must be at least 8 characters');
+      AppSnack.error(t.snackError, t.snackPasswordMin8);
       return;
     }
     if (passwordCtrl.text != confirmCtrl.text) {
-      AppSnack.error('Error', 'Passwords do not match');
+      AppSnack.error(t.snackError, t.snackPasswordMismatch);
       return;
     }
 
@@ -34,17 +36,17 @@ class SignupController extends GetxController {
     try {
       final r = await auth.signupWithPassword(email, password);
       if (r == 'ok') {
-        AppSnack.success('Welcome', 'Account created');
+        AppSnack.success(t.snackWelcome, t.snackAccountCreated);
         Get.offAllNamed(AppRoutes.shell);
       } else if (r == 'exists') {
-        AppSnack.error('Error', 'Account already exists. Please sign in.');
+        AppSnack.error(t.snackError, t.snackAccountExists);
         Get.offNamed(AppRoutes.login);
       } else if (r == 'invalid_email') {
-        AppSnack.error('Error', 'Invalid email address');
+        AppSnack.error(t.snackError, t.snackInvalidEmail);
       } else if (r == 'weak_password') {
-        AppSnack.error('Error', 'Password must be at least 8 characters');
+        AppSnack.error(t.snackError, t.snackPasswordMin8);
       } else {
-        AppSnack.error('Error', 'Could not create account. Try again.');
+        AppSnack.error(t.snackError, t.snackSignupFailed);
       }
     } finally {
       loading.value = false;
@@ -61,4 +63,3 @@ class SignupController extends GetxController {
     super.onClose();
   }
 }
-

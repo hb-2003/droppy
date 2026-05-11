@@ -50,7 +50,7 @@ class SettingsView extends GetView<SettingsController> {
                   SliverToBoxAdapter(
                     child: AppTopBar(
                       title: t.navSettings,
-                      subtitle: 'App preferences and account.',
+                      subtitle: t.settingsSubtitle,
                     ),
                   ),
                   SliverPadding(
@@ -129,7 +129,7 @@ class SettingsView extends GetView<SettingsController> {
                                     ),
                                     const SizedBox(width: 8),
                                     Text(
-                                      'Share Large\nVideo Files',
+                                      t.settingsAppBrand,
                                       style: TextStyle(
                                         color: scheme.onSurface,
                                         fontSize: 10,
@@ -266,12 +266,16 @@ class SettingsView extends GetView<SettingsController> {
                               borderSide: BorderSide(color: scheme.primary, width: 1.5),
                             ),
                           ),
-                          items: AppLocalizations.supportedLocales
-                              .map((l) => DropdownMenuItem(
-                                    value: l.languageCode,
-                                    child: Text(l.languageCode.toUpperCase()),
-                                  ))
-                              .toList(),
+                          items: [
+                            DropdownMenuItem(
+                              value: 'en',
+                              child: Text(t.languageEnglish),
+                            ),
+                            DropdownMenuItem(
+                              value: 'hi',
+                              child: Text(t.languageHindi),
+                            ),
+                          ],
                           onChanged: (code) {
                             if (code != null) controller.setLocale(Locale(code));
                           },

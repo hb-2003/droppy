@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sendlargefiles/l10n/app_localizations.dart';
+import 'package:sendlargefiles/localization/locale_rebuild.dart';
 import 'package:sendlargefiles/modules/download/download_controller.dart';
 import 'package:sendlargefiles/widgets/app_snackbar.dart';
 
@@ -10,7 +11,8 @@ class DownloadView extends GetView<DownloadController> {
   @override
   Widget build(BuildContext context) {
     final t = AppLocalizations.of(context)!;
-    return Scaffold(
+    return LocaleRebuild(
+      child: Scaffold(
       appBar: AppBar(title: Text(t.navDownload)),
       body: Padding(
         padding: const EdgeInsets.all(20),
@@ -60,14 +62,17 @@ class DownloadView extends GetView<DownloadController> {
                 if (e == 'network_error') {
                   return Text(t.errorNetwork);
                 }
-                return Text(e);
+                return Text(t.transferLoadFailed(e));
               }
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('ID: ${m.uploadId ?? "—"}'),
+                  Text(t.transferIdLabel(m.uploadId ?? '—')),
                   Text(
-                    'Files: ${m.count ?? "—"} · ${m.size ?? "—"} bytes',
+                    t.downloadMetaSummary(
+                      '${m.count ?? '—'}',
+                      '${m.size ?? '—'}',
+                    ),
                   ),
                   if (m.hasPassword && !m.passwordUnlocked) ...[
                     const SizedBox(height: 12),
@@ -88,7 +93,7 @@ class DownloadView extends GetView<DownloadController> {
                           : () async {
                               final r = await controller.saveDownload();
                               if (r != null && context.mounted) {
-                                AppSnack.success('Saved', t.downloadSaved);
+                                AppSnack.success(t.snackSaved, t.downloadSaved);
                               }
                             },
                       child: Text(t.downloadFile),
@@ -99,6 +104,7 @@ class DownloadView extends GetView<DownloadController> {
             }),
           ],
         ),
+      ),
       ),
     );
   }

@@ -6,6 +6,8 @@ import 'package:sendlargefiles/modules/history/history_view.dart';
 import 'package:sendlargefiles/modules/home/home_view.dart';
 import 'package:sendlargefiles/modules/plans/plans_view.dart';
 import 'package:sendlargefiles/modules/settings/settings_view.dart';
+import 'package:sendlargefiles/l10n/app_localizations.dart';
+import 'package:sendlargefiles/controllers/locale_controller.dart';
 import 'package:sendlargefiles/modules/shell/app_shell_controller.dart';
 
 class AppShellView extends GetView<AppShellController> {
@@ -19,6 +21,7 @@ class AppShellView extends GetView<AppShellController> {
           : SystemUiOverlayStyle.dark,
       child: Obx(() {
         final idx = controller.tabIndex.value;
+        final localeKey = Get.find<LocaleController>().locale.value.toString();
         return Scaffold(
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           body: IndexedStack(
@@ -28,11 +31,11 @@ class AppShellView extends GetView<AppShellController> {
             // "_elements.contains(element): is not true" assertion that fires
             // when GlobalKeys or FocusNodes in different tabs collide.
             children: [
-              KeyedSubtree(key: const ValueKey('tab_home'),     child: const HomeView()),
-              KeyedSubtree(key: const ValueKey('tab_history'),  child: const HistoryView()),
-              KeyedSubtree(key: const ValueKey('tab_receive'),  child: const ReceiveView()),
-              KeyedSubtree(key: const ValueKey('tab_plans'),    child: const PlansView()),
-              KeyedSubtree(key: const ValueKey('tab_settings'), child: const SettingsView()),
+              KeyedSubtree(key: ValueKey('tab_home-$localeKey'), child: const HomeView()),
+              KeyedSubtree(key: ValueKey('tab_history-$localeKey'), child: const HistoryView()),
+              KeyedSubtree(key: ValueKey('tab_receive-$localeKey'), child: const ReceiveView()),
+              KeyedSubtree(key: ValueKey('tab_plans-$localeKey'), child: const PlansView()),
+              KeyedSubtree(key: ValueKey('tab_settings-$localeKey'), child: const SettingsView()),
             ],
           ),
           bottomNavigationBar: _NavBar(
@@ -54,6 +57,7 @@ class _NavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = AppLocalizations.of(context)!;
     final scheme = Theme.of(context).colorScheme;
     final navBg = scheme.surface;
     final border = scheme.outlineVariant.withValues(alpha: 0.45);
@@ -73,7 +77,7 @@ class _NavBar extends StatelessWidget {
             children: [
               _NavItem(
                 icon: Icons.home_rounded,
-                label: 'Home',
+                label: t.navHome,
                 selected: currentIndex == 0,
                 selectedColor: selected,
                 unselectedColor: unselected,
@@ -81,7 +85,7 @@ class _NavBar extends StatelessWidget {
               ),
               _NavItem(
                 icon: Icons.history_rounded,
-                label: 'History',
+                label: t.navHistory,
                 selected: currentIndex == 1,
                 selectedColor: selected,
                 unselectedColor: unselected,
@@ -89,7 +93,7 @@ class _NavBar extends StatelessWidget {
               ),
               _NavItem(
                 icon: Icons.download_rounded,
-                label: 'Receive',
+                label: t.navReceive,
                 selected: currentIndex == 2,
                 selectedColor: selected,
                 unselectedColor: unselected,
@@ -97,7 +101,7 @@ class _NavBar extends StatelessWidget {
               ),
               _NavItem(
                 icon: Icons.workspace_premium_rounded,
-                label: 'Plans',
+                label: t.navPlans,
                 selected: currentIndex == 3,
                 selectedColor: selected,
                 unselectedColor: unselected,
@@ -105,7 +109,7 @@ class _NavBar extends StatelessWidget {
               ),
               _NavItem(
                 icon: Icons.settings_rounded,
-                label: 'Settings',
+                label: t.navSettings,
                 selected: currentIndex == 4,
                 selectedColor: selected,
                 unselectedColor: unselected,

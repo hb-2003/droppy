@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sendlargefiles/app/theme/app_theme.dart';
+import 'package:sendlargefiles/l10n/app_localizations.dart';
 
 // ── Color Palette Preview ─────────────────────────────────────────────────────
 // Shows every design token in DroppyWebColors so you can review the scheme
@@ -11,20 +12,21 @@ class ColorPaletteView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = AppLocalizations.of(context)!;
     final scheme = Theme.of(context).colorScheme;
     return Scaffold(
       backgroundColor: DroppyWebColors.ink900,
       appBar: AppBar(
         backgroundColor: DroppyWebColors.ink950,
         foregroundColor: DroppyWebColors.text,
-        title: const Text('Color Palette', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16)),
+        title: Text(t.colorPaletteTitle, style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 16)),
         elevation: 0,
         scrolledUnderElevation: 0,
       ),
       body: ListView(
         padding: const EdgeInsets.fromLTRB(16, 20, 16, 40),
         children: [
-          _section('Backgrounds (ink scale)'),
+          _section(t.colorPaletteSectionBackgrounds),
           _row([
             _swatch(DroppyWebColors.ink1000, 'ink1000', '#04050A'),
             _swatch(DroppyWebColors.ink950,  'ink950',  '#06070C'),
@@ -43,7 +45,7 @@ class ColorPaletteView extends StatelessWidget {
             _swatchEmpty(),
           ]),
 
-          _section('Accent / Primary'),
+          _section(t.colorPaletteSectionAccent),
           _row([
             _swatch(DroppyWebColors.accent,    'accent ★',  '#D4FF3A', star: true, dark: true),
             _swatch(DroppyWebColors.accentHi,  'accentHi',  '#E4FF6E', dark: true),
@@ -56,7 +58,7 @@ class ColorPaletteView extends StatelessWidget {
             _swatch(DroppyWebColors.accentSoft, 'accentSoft', 'rgba 10%'),
           ]),
 
-          _section('Text'),
+          _section(t.colorPaletteSectionText),
           _row([
             _swatch(DroppyWebColors.text,     'text ★',    '#F2F1EB', star: true),
             _swatch(DroppyWebColors.textSoft, 'textSoft',  '#C9CAD3'),
@@ -69,7 +71,7 @@ class ColorPaletteView extends StatelessWidget {
             _swatchEmpty(),
           ]),
 
-          _section('Borders & Glass'),
+          _section(t.colorPaletteSectionBorders),
           _row([
             _swatch(DroppyWebColors.line,       'line',       'rgba 7%'),
             _swatch(DroppyWebColors.lineStrong, 'lineStrong', 'rgba 14%'),
@@ -82,7 +84,7 @@ class ColorPaletteView extends StatelessWidget {
             _swatchEmpty(),
           ]),
 
-          _section('Semantic'),
+          _section(t.colorPaletteSectionSemantic),
           _row([
             _swatch(DroppyWebColors.success, 'success', '#5BE9B9', dark: true),
             _swatch(DroppyWebColors.error,   'error',   '#FF6B5C'),
@@ -95,7 +97,7 @@ class ColorPaletteView extends StatelessWidget {
             _swatchEmpty(),
           ]),
 
-          _section('Live Theme (current)'),
+          _section(t.colorPaletteSectionLive),
           _row([
             _swatch(scheme.primary,   'primary',   '(theme)'),
             _swatch(scheme.onPrimary, 'onPrimary', '(theme)'),
@@ -186,6 +188,7 @@ class ColorPaletteView extends StatelessWidget {
 class _Legend extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final t = AppLocalizations.of(context)!;
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
@@ -193,16 +196,16 @@ class _Legend extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
         border: Border.all(color: DroppyWebColors.lineStrong),
       ),
-      child: const Column(
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(children: [
-            Icon(Icons.star_rounded, size: 12, color: DroppyWebColors.accent),
-            SizedBox(width: 6),
-            Text('★ = actively used in screens', style: TextStyle(color: DroppyWebColors.textDim, fontSize: 11)),
+            const Icon(Icons.star_rounded, size: 12, color: DroppyWebColors.accent),
+            const SizedBox(width: 6),
+            Text(t.colorPaletteActiveHint, style: const TextStyle(color: DroppyWebColors.textDim, fontSize: 11)),
           ]),
-          SizedBox(height: 6),
-          Text('Long-press any swatch to copy its hex value.', style: TextStyle(color: DroppyWebColors.textMute, fontSize: 11)),
+          const SizedBox(height: 6),
+          Text(t.colorPaletteCopyHint, style: const TextStyle(color: DroppyWebColors.textMute, fontSize: 11)),
         ],
       ),
     );

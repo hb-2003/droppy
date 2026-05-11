@@ -105,6 +105,7 @@ class _MailShareForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = AppLocalizations.of(context)!;
     return Form(
       key: controller.mailFormKey,
       autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -116,7 +117,7 @@ class _MailShareForm extends StatelessWidget {
             focusNode: controller.emailFromFocus,
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
-              hintText: 'Your email',
+              hintText: t.emailFrom,
               prefixIcon: Icon(
                 Icons.person_outline_rounded,
                 color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.55),
@@ -125,8 +126,8 @@ class _MailShareForm extends StatelessWidget {
             ),
             validator: (v) {
               final s = (v ?? '').trim();
-              if (s.isEmpty) return 'Please fill in this field.';
-              if (!s.contains('@')) return 'Enter a valid email.';
+              if (s.isEmpty) return t.fillField;
+              if (!s.contains('@')) return t.enterValidEmail;
               return null;
             },
             textInputAction: TextInputAction.next,
@@ -138,7 +139,7 @@ class _MailShareForm extends StatelessWidget {
             focusNode: controller.emailToFocus,
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
-              hintText: 'Recipient email',
+              hintText: t.recipientEmail,
               prefixIcon: Icon(
                 Icons.group_outlined,
                 color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.55),
@@ -147,12 +148,12 @@ class _MailShareForm extends StatelessWidget {
             ),
             validator: (v) {
               final s = (v ?? '').trim();
-              if (s.isEmpty) return 'Please fill in this field.';
+              if (s.isEmpty) return t.fillField;
               final first = s.split(RegExp(r'[\s,;]+')).firstWhere(
                     (x) => x.trim().isNotEmpty,
                     orElse: () => '',
                   );
-              if (first.isEmpty || !first.contains('@')) return 'Enter a valid email.';
+              if (first.isEmpty || !first.contains('@')) return t.enterValidEmail;
               return null;
             },
             textInputAction: TextInputAction.next,
@@ -164,7 +165,7 @@ class _MailShareForm extends StatelessWidget {
             keyboardType: TextInputType.text,
             maxLines: 3,
             decoration: InputDecoration(
-              hintText: 'Message',
+              hintText: t.message,
               prefixIcon: Icon(
                 Icons.chat_bubble_outline_rounded,
                 color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.55),
@@ -173,7 +174,7 @@ class _MailShareForm extends StatelessWidget {
             ),
             validator: (v) {
               final s = (v ?? '').trim();
-              if (s.isEmpty) return 'Please fill in this field.';
+              if (s.isEmpty) return t.fillField;
               return null;
             },
           ),
@@ -189,12 +190,13 @@ class _MailShareForm extends StatelessWidget {
 class _HeroText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final t = AppLocalizations.of(context)!;
     final scheme = Theme.of(context).colorScheme;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Send heavy files',
+          t.heroTitle,
           style: TextStyle(
             color: scheme.onSurface,
             fontSize: 26,
@@ -204,7 +206,7 @@ class _HeroText extends StatelessWidget {
           ),
         ),
         Text(
-          'instantly.',
+          t.heroAccent,
           style: AppTheme.heroAccent(color: scheme.primary, fontSize: 26),
         ),
       ],
@@ -220,6 +222,7 @@ class _TabSwitcher extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = AppLocalizations.of(context)!;
     return Obx(() {
       final mode = controller.shareMode.value;
       return Container(
@@ -234,7 +237,7 @@ class _TabSwitcher extends StatelessWidget {
             Expanded(
               flex: 9,
               child: _TabBtn(
-                label: 'Get a link',
+                label: t.modeLink,
                 selected: mode == 'link',
                 onTap: () => controller.setShareMode('link'),
               ),
@@ -242,7 +245,7 @@ class _TabSwitcher extends StatelessWidget {
             Expanded(
               flex: 11,
               child: _TabBtn(
-                label: 'Send by email',
+                label: t.modeEmail,
                 selected: mode == 'mail',
                 onTap: () => controller.setShareMode('mail'),
               ),
@@ -336,7 +339,7 @@ class _DropZoneEmpty extends StatelessWidget {
                   _FileIllustration(),
                   const SizedBox(height: 12),
                   Text(
-                    'Drop a heavy file here.',
+                    t.dropHeavyFile,
                     style: Theme.of(context).textTheme.titleLarge!.copyWith(
                           fontWeight: FontWeight.w700,
                           fontSize: 16,
@@ -344,7 +347,7 @@ class _DropZoneEmpty extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 4),
-                  Text('Up to $maxLabel total', style: AppTheme.meta(), textAlign: TextAlign.center),
+                  Text(t.upToTotal(maxLabel), style: AppTheme.meta(), textAlign: TextAlign.center),
                   const SizedBox(height: 12),
                   _FiletypeChips(),
                   const SizedBox(height: 14),
@@ -370,7 +373,7 @@ class _DropZoneEmpty extends StatelessWidget {
                                 child: CircularProgressIndicator(strokeWidth: 2),
                               )
                             : const Icon(Icons.insert_drive_file_outlined, size: 18),
-                        label: Text(busy ? 'Loading…' : t.pickFiles),
+                        label: Text(busy ? t.loadingShort : t.pickFiles),
                       ),
                       const SizedBox(width: 8),
                       TextButton.icon(
@@ -502,7 +505,7 @@ class _DropZoneFilled extends StatelessWidget {
                         minimumSize: Size.zero,
                         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                       ),
-                      child: const Text('Remove all', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700)),
+                      child: Text(t.removeAll, style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w700)),
                     ),
                   ),
                   ...controller.files.asMap().entries.map((entry) {
@@ -523,7 +526,7 @@ class _DropZoneFilled extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(f.displayName, style: TextStyle(color: scheme.onSurface, fontSize: 13, fontWeight: FontWeight.w500), overflow: TextOverflow.ellipsis),
-                                Text('$sizeMb MB', style: TextStyle(color: scheme.onSurface.withValues(alpha: 0.45), fontSize: 11)),
+                                Text(t.mbAmount(sizeMb), style: TextStyle(color: scheme.onSurface.withValues(alpha: 0.45), fontSize: 11)),
                               ],
                             ),
                           ),
@@ -546,16 +549,15 @@ class _DropZoneFilled extends StatelessWidget {
         const SizedBox(height: 8),
         Row(
           children: [
-            Text('${totalMb.toStringAsFixed(1)} MB', style: AppTheme.meta()),
+            Text(t.mbAmount(totalMb.toStringAsFixed(1)), style: AppTheme.meta()),
             const SizedBox(width: 6),
             Container(width: 1, height: 10, color: _line(context)),
             const SizedBox(width: 6),
-            Text('${controller.files.length} file${controller.files.length == 1 ? '' : 's'}',
-                style: AppTheme.meta()),
+            Text(t.filesCount(controller.files.length), style: AppTheme.meta()),
             const SizedBox(width: 6),
             Container(width: 1, height: 10, color: _line(context)),
             const SizedBox(width: 6),
-            Text('${remainMb.toStringAsFixed(1)} MB left', style: AppTheme.meta()),
+            Text(t.mbLeft(remainMb.toStringAsFixed(1)), style: AppTheme.meta()),
           ],
         ),
         const SizedBox(height: 10),
@@ -585,7 +587,7 @@ class _DropZoneFilled extends StatelessWidget {
                             child: CircularProgressIndicator(strokeWidth: 2),
                           )
                         : const Icon(Icons.add_rounded, size: 16),
-                    label: Text(busy ? 'Adding…' : 'Add files'),
+                    label: Text(busy ? t.adding : t.addFiles),
                   ),
                 ),
                 const SizedBox(width: 8),
@@ -650,7 +652,7 @@ class _OptionsPanelState extends State<_OptionsPanel> {
                 children: [
                   Icon(Icons.tune_rounded, color: scheme.onSurface.withValues(alpha: 0.55), size: 16),
                   const SizedBox(width: 8),
-                  Text('Options', style: TextStyle(color: scheme.onSurface.withValues(alpha: 0.65), fontSize: 13, fontWeight: FontWeight.w500)),
+                  Text(widget.t.options, style: TextStyle(color: scheme.onSurface.withValues(alpha: 0.65), fontSize: 13, fontWeight: FontWeight.w500)),
                   const Spacer(),
                   Icon(
                     _expanded ? Icons.keyboard_arrow_up_rounded : Icons.keyboard_arrow_down_rounded,
@@ -678,7 +680,7 @@ class _OptionsPanelState extends State<_OptionsPanel> {
                     children: [
                       Expanded(
                         child: Text(
-                          'Self-destruct after download',
+                          widget.t.selfDestruct,
                           style: TextStyle(color: scheme.onSurface.withValues(alpha: 0.65), fontSize: 13),
                         ),
                       ),
@@ -708,6 +710,7 @@ class _ExpiryDropdown extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = AppLocalizations.of(context)!;
     final scheme = Theme.of(context).colorScheme;
     final options = controller.expiryOptionsSec;
     if (options.isEmpty) return const SizedBox.shrink();
@@ -723,7 +726,7 @@ class _ExpiryDropdown extends StatelessWidget {
         iconEnabledColor: scheme.onSurface.withValues(alpha: 0.6),
         style: TextStyle(color: scheme.onSurface, fontSize: 13),
         decoration: InputDecoration(
-          labelText: 'Expiry',
+          labelText: t.expiry,
           labelStyle: TextStyle(color: scheme.onSurface.withValues(alpha: 0.65)),
           filled: true,
           fillColor: _fieldBg(context),
@@ -800,6 +803,7 @@ class _ProgressPane extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = AppLocalizations.of(context)!;
     final scheme = Theme.of(context).colorScheme;
     return Center(
       child: Obx(() {
@@ -851,12 +855,12 @@ class _ProgressPane extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             Text(
-              'Uploading…',
+              t.uploading,
               style: Theme.of(context).textTheme.titleLarge,
             ),
             const SizedBox(height: 8),
             Text(
-              '${fmt(sent)} / ${fmt(total)}  •  ${fmt(remaining)} left',
+              t.uploadProgressSummary(fmt(sent), fmt(total), fmt(remaining)),
               style: Theme.of(context).textTheme.bodyMedium,
               textAlign: TextAlign.center,
             ),
@@ -864,7 +868,7 @@ class _ProgressPane extends StatelessWidget {
             OutlinedButton.icon(
               onPressed: controller.cancelUpload,
               icon: const Icon(Icons.close_rounded, size: 18),
-              label: const Text('Cancel upload'),
+              label: Text(t.cancelUpload),
             ),
           ],
         );
@@ -901,15 +905,15 @@ class _SuccessPane extends StatelessWidget {
         ),
         const SizedBox(height: 24),
         Text(
-          controller.finishedLink.value.isNotEmpty ? 'Transfer ready!' : 'Email sent!',
+          controller.finishedLink.value.isNotEmpty ? t.transferReady : t.emailSentReady,
           style: TextStyle(color: scheme.onSurface, fontSize: 26, fontWeight: FontWeight.w800, letterSpacing: -0.5),
           textAlign: TextAlign.center,
         ),
         const SizedBox(height: 8),
         Text(
           controller.finishedLink.value.isNotEmpty
-              ? 'Share this link with your recipient.'
-              : "We've notified your recipient(s).",
+              ? t.shareRecipientHint
+              : t.emailSentBody,
           style: TextStyle(color: scheme.onSurface.withValues(alpha: 0.55), fontSize: 14),
           textAlign: TextAlign.center,
         ),
@@ -939,7 +943,7 @@ class _SuccessPane extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           Text(
-            'Scan to open the transfer link.',
+            t.scanQr,
             style: TextStyle(color: scheme.onSurface.withValues(alpha: 0.55), fontSize: 13),
             textAlign: TextAlign.center,
           ),
@@ -955,7 +959,7 @@ class _SuccessPane extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'SHARE LINK',
+                  t.shareLinkButton,
                   style: TextStyle(
                     color: scheme.onSurface.withValues(alpha: 0.45),
                     fontSize: 11,
@@ -975,7 +979,7 @@ class _SuccessPane extends StatelessWidget {
                     GestureDetector(
                       onTap: () {
                         Clipboard.setData(ClipboardData(text: controller.finishedLink.value));
-                        AppSnack.success('Copied', 'Link copied to clipboard');
+                        AppSnack.success(t.snackCopied, t.snackCopiedBody);
                       },
                       child: Container(
                         padding: const EdgeInsets.all(8),
@@ -1028,7 +1032,7 @@ class _VerifyPane extends StatelessWidget {
             textAlign: TextAlign.center),
         const SizedBox(height: 8),
         Text(
-          'Enter the 4-digit code sent to your sender email.',
+          t.verifyFourDigit,
           style: TextStyle(color: scheme.onSurface.withValues(alpha: 0.55), fontSize: 14),
           textAlign: TextAlign.center,
         ),
@@ -1040,7 +1044,7 @@ class _VerifyPane extends StatelessWidget {
           textAlign: TextAlign.center,
           style: TextStyle(color: scheme.onSurface, fontSize: 28, letterSpacing: 8, fontWeight: FontWeight.w600),
           decoration: InputDecoration(
-            hintText: '0000',
+            hintText: t.verifyFourDigitHint,
             hintStyle: TextStyle(color: scheme.onSurface.withValues(alpha: 0.28), letterSpacing: 4, fontSize: 24),
             counterText: '',
             filled: true,

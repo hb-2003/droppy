@@ -4,8 +4,10 @@ import 'package:get/get.dart';
 import 'package:sendlargefiles/data/providers/api_client.dart';
 import 'package:sendlargefiles/data/repositories/download_repository.dart';
 import 'package:sendlargefiles/data/repositories/history_repository.dart';
+import 'package:sendlargefiles/localization/app_locale.dart';
 import 'package:sendlargefiles/modules/history/history_controller.dart';
 import 'package:sendlargefiles/widgets/app_snackbar.dart';
+import 'package:sendlargefiles/l10n/app_localizations.dart';
 import 'package:sendlargefiles/widgets/app_top_bar.dart';
 
 const _accentGlow = Color(0x33D4FF3B);
@@ -48,7 +50,7 @@ class _LoadingState extends StatelessWidget {
     final scheme = Theme.of(context).colorScheme;
     return Column(
       children: [
-        const AppTopBar(title: 'My Transfers'),
+        AppTopBar(title: AppLocalizations.of(context)!.historyTitle),
         Expanded(
           child: Center(
             child: CircularProgressIndicator(color: scheme.primary, strokeWidth: 2),
@@ -68,9 +70,10 @@ class _LoginGate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
+    final t = AppLocalizations.of(context)!;
     return Column(
       children: [
-        const AppTopBar(title: 'My Transfers'),
+        AppTopBar(title: t.historyTitle),
         Expanded(
           child: Center(
             child: Padding(
@@ -89,13 +92,13 @@ class _LoginGate extends StatelessWidget {
                   ),
                   const SizedBox(height: 24),
                   Text(
-                    'Sign in to see your transfers',
+                    t.signInToSeeTransfers,
                     style: TextStyle(color: scheme.onSurface, fontSize: 20, fontWeight: FontWeight.w700, letterSpacing: -0.3),
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 10),
                   Text(
-                    'We use your email to link transfers to your account — no password needed.',
+                    t.signInTransfersBody,
                     style: TextStyle(color: scheme.onSurface.withValues(alpha: 0.55), fontSize: 14, height: 1.6),
                     textAlign: TextAlign.center,
                   ),
@@ -111,7 +114,7 @@ class _LoginGate extends StatelessWidget {
                       ),
                       alignment: Alignment.center,
                       child: Text(
-                        'Sign In',
+                        t.signIn,
                         style: TextStyle(color: scheme.onPrimary, fontSize: 16, fontWeight: FontWeight.w700),
                       ),
                     ),
@@ -135,9 +138,10 @@ class _ErrorState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
+    final t = AppLocalizations.of(context)!;
     return Column(
       children: [
-        const AppTopBar(title: 'My Transfers'),
+        AppTopBar(title: t.historyTitle),
         Expanded(
           child: Center(
             child: Column(
@@ -145,7 +149,7 @@ class _ErrorState extends StatelessWidget {
               children: [
                 Icon(Icons.wifi_off_rounded, color: scheme.onSurface.withValues(alpha: 0.25), size: 48),
                 const SizedBox(height: 16),
-                Text('Could not load transfers', style: TextStyle(color: scheme.onSurface.withValues(alpha: 0.65), fontSize: 15)),
+                Text(t.couldNotLoadTransfers, style: TextStyle(color: scheme.onSurface.withValues(alpha: 0.65), fontSize: 15)),
                 const SizedBox(height: 20),
                 GestureDetector(
                   onTap: controller.forceRefresh,
@@ -155,7 +159,7 @@ class _ErrorState extends StatelessWidget {
                       border: Border.all(color: scheme.outlineVariant.withValues(alpha: 0.5)),
                       borderRadius: BorderRadius.circular(50),
                     ),
-                    child: Text('Retry', style: TextStyle(color: scheme.onSurface.withValues(alpha: 0.7))),
+                    child: Text(t.retry, style: TextStyle(color: scheme.onSurface.withValues(alpha: 0.7))),
                   ),
                 ),
               ],
@@ -179,6 +183,7 @@ class _HistoryList extends StatelessWidget {
     final bottomPad = MediaQuery.of(context).padding.bottom + 84;
     final theme = Theme.of(context);
     final scheme = theme.colorScheme;
+    final t = AppLocalizations.of(context)!;
     return RefreshIndicator(
       onRefresh: controller.forceRefresh,
       color: scheme.primary,
@@ -191,7 +196,7 @@ class _HistoryList extends StatelessWidget {
             // Header scrolls with the list — adapts to any device's notch/status-bar.
             SliverToBoxAdapter(
               child: AppTopBar(
-                title: 'My Transfers',
+                title: t.historyTitle,
                 subtitle: controller.email.value.isNotEmpty ? controller.email.value : null,
               ),
             ),
@@ -227,15 +232,16 @@ class _EmptyState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
+    final t = AppLocalizations.of(context)!;
     return Center(
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           Icon(Icons.inbox_rounded, color: scheme.onSurface.withValues(alpha: 0.15), size: 64),
           const SizedBox(height: 16),
-          Text('No transfers yet', style: TextStyle(color: scheme.onSurface.withValues(alpha: 0.6), fontSize: 16, fontWeight: FontWeight.w500)),
+          Text(t.noTransfersYet, style: TextStyle(color: scheme.onSurface.withValues(alpha: 0.6), fontSize: 16, fontWeight: FontWeight.w500)),
           const SizedBox(height: 6),
-          Text('Once you send a file, it will appear here.', style: TextStyle(color: scheme.onSurface.withValues(alpha: 0.45), fontSize: 13)),
+          Text(t.noTransfersBody, style: TextStyle(color: scheme.onSurface.withValues(alpha: 0.45), fontSize: 13)),
         ],
       ),
     );
@@ -263,6 +269,7 @@ class _TransferCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final expired = transfer.isExpired;
     final scheme = Theme.of(context).colorScheme;
+    final t = AppLocalizations.of(context)!;
     final cardBg = scheme.surfaceContainerHighest;
     final line = scheme.outlineVariant.withValues(alpha: 0.45);
     final dim = scheme.onSurface.withValues(alpha: 0.55);
@@ -318,7 +325,7 @@ class _TransferCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '${transfer.count} file${transfer.count == 1 ? '' : 's'} · ${controller.formatSize(transfer.size)}',
+                      t.historyFilesSize(transfer.count, controller.formatSize(transfer.size)),
                       style: TextStyle(
                         color: expired ? dim : scheme.onSurface,
                         fontSize: 14,
@@ -340,7 +347,7 @@ class _TransferCard extends StatelessWidget {
                     color: scheme.onSurface.withValues(alpha: 0.06),
                     borderRadius: BorderRadius.circular(6),
                   ),
-                  child: Text('Expired', style: TextStyle(color: dim, fontSize: 11, fontWeight: FontWeight.w500)),
+                  child: Text(t.expired, style: TextStyle(color: dim, fontSize: 11, fontWeight: FontWeight.w500)),
                 )
               else
                 Container(
@@ -349,7 +356,7 @@ class _TransferCard extends StatelessWidget {
                     color: scheme.primary.withValues(alpha: 0.12),
                     borderRadius: BorderRadius.circular(6),
                   ),
-                  child: Text('Active', style: TextStyle(color: scheme.primary, fontSize: 11, fontWeight: FontWeight.w600)),
+                  child: Text(t.active, style: TextStyle(color: scheme.primary, fontSize: 11, fontWeight: FontWeight.w600)),
                 ),
             ],
           ),
@@ -368,6 +375,7 @@ class _TransferDetailsSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
+    final t = AppLocalizations.of(context)!;
     final base = resolveBaseUrl();
     final link = base.isEmpty ? transfer.uploadId : '$base${transfer.uploadId}';
     final expired = transfer.isExpired;
@@ -394,12 +402,12 @@ class _TransferDetailsSheet extends StatelessWidget {
 
             Future<void> copyLink() async {
               await Clipboard.setData(ClipboardData(text: link));
-              AppSnack.success('Copied', 'Link copied to clipboard');
+              AppSnack.success(appL10n().snackCopied, appL10n().snackCopiedBody);
             }
 
             Future<void> download() async {
               if (expired) {
-                AppSnack.error('Expired', 'This transfer is expired.');
+                AppSnack.error(appL10n().expired, appL10n().transferExpired);
                 return;
               }
               setState(() => downloading = true);
@@ -413,9 +421,10 @@ class _TransferDetailsSheet extends StatelessWidget {
                   pageUrl: pageUrl,
                   filename: fallbackName(),
                 );
-                AppSnack.success('Download complete', '"${r.filename}" saved to Downloads');
+                final l = appL10n();
+                AppSnack.success(l.snackDownloadComplete, l.snackDownloadSaved(r.filename));
               } catch (e) {
-                AppSnack.error('Download failed', '$e');
+                AppSnack.showDynamic(appL10n().snackDownloadFailed, '$e', type: AppSnackType.error);
               } finally {
                 setState(() => downloading = false);
               }
@@ -440,7 +449,7 @@ class _TransferDetailsSheet extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Text(
-                        'Transfer details',
+                        t.transferDetails,
                         style: TextStyle(
                           color: scheme.onSurface,
                           fontSize: 16,
@@ -456,7 +465,7 @@ class _TransferDetailsSheet extends StatelessWidget {
                 ),
                 const SizedBox(height: 6),
                 Text(
-                  '${transfer.count} file${transfer.count == 1 ? '' : 's'} · ${controller.formatSize(transfer.size)}',
+                  t.historyFilesSize(transfer.count, controller.formatSize(transfer.size)),
                   style: TextStyle(color: scheme.onSurface.withValues(alpha: 0.6), fontSize: 12),
                 ),
                 const SizedBox(height: 12),
@@ -490,7 +499,7 @@ class _TransferDetailsSheet extends StatelessWidget {
                 const SizedBox(height: 12),
                 if (transfer.files.isNotEmpty) ...[
                   Text(
-                    'Files',
+                    t.filesSection,
                     style: TextStyle(
                       color: scheme.onSurface.withValues(alpha: 0.6),
                       fontSize: 12,
@@ -543,7 +552,7 @@ class _TransferDetailsSheet extends StatelessWidget {
                           child: CircularProgressIndicator(strokeWidth: 2, color: scheme.onPrimary),
                         )
                       : const Icon(Icons.download_rounded, size: 18),
-                  label: Text(downloading ? 'Downloading…' : (expired ? 'Expired' : 'Download')),
+                  label: Text(downloading ? t.downloading : (expired ? t.expired : t.downloadFile)),
                 ),
               ],
             );

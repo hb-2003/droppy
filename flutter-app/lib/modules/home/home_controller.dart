@@ -12,6 +12,7 @@ import 'package:sendlargefiles/data/repositories/upload_repository.dart'
     show PickedFileItem, RegisterResult, UploadRepository;
 import 'package:sendlargefiles/data/providers/api_client.dart';
 import 'package:share_plus/share_plus.dart' show ShareParams, SharePlus;
+import 'package:sendlargefiles/localization/app_locale.dart';
 import 'package:sendlargefiles/l10n/app_localizations.dart';
 import 'package:sendlargefiles/modules/history/history_controller.dart';
 import 'package:sendlargefiles/modules/shell/app_shell_controller.dart';
@@ -59,23 +60,24 @@ class HomeController extends GetxController {
   }
 
   static String expiryLabel(int seconds) {
+    final t = appL10n();
     switch (seconds) {
       case 3600:
-        return '1 hour';
+        return '1 ${t.hourSingular}';
       case 86400:
-        return '24 hour';
+        return '24 ${t.hourSingular}';
       case 259200:
-        return '3 days';
+        return '3 ${t.dayPlural}';
       case 604800:
-        return '7 days';
+        return '7 ${t.dayPlural}';
       default:
-        if (seconds <= 0) return 'Do not expire';
+        if (seconds <= 0) return t.doNotExpire;
         if (seconds < 86400) {
           final hours = seconds ~/ 3600;
-          return '$hours ${hours == 1 ? 'hour' : 'hours'}';
+          return '$hours ${hours == 1 ? t.hourSingular : t.hourPlural}';
         }
         final days = seconds ~/ 86400;
-        return '$days ${days == 1 ? 'day' : 'days'}';
+        return '$days ${days == 1 ? t.daySingular : t.dayPlural}';
     }
   }
 
@@ -148,17 +150,17 @@ class HomeController extends GetxController {
         () => _uidCounter++,
       );
       if (picked.isEmpty) {
-        AppSnack.error('Empty folder', 'No files found in the selected folder.');
+        final t = appL10n();
+        AppSnack.error(t.snackEmptyFolder, t.snackEmptyFolderBody);
         return;
       }
       _addPickedItems(picked);
     } on UnimplementedError {
-      AppSnack.error(
-        'Not supported',
-        'Folder upload is not available on this platform.',
-      );
+      final t = appL10n();
+      AppSnack.error(t.snackFolderUnsupported, t.snackFolderUnsupportedBody);
     } catch (_) {
-      AppSnack.error('Error', 'Could not read the selected folder.');
+      final t = appL10n();
+      AppSnack.error(t.snackError, t.snackFolderReadError);
     } finally {
       pickingFiles.value = false;
     }
@@ -187,10 +189,8 @@ class HomeController extends GetxController {
     files.refresh();
 
     if (skipped > 0) {
-      AppSnack.error(
-        'Limit reached',
-        'Some files were not added because of size or file count limits.',
-      );
+      final t = appL10n();
+      AppSnack.error(t.snackLimitReached, t.snackLimitFilesBody);
     }
   }
 
@@ -210,15 +210,14 @@ class HomeController extends GetxController {
     final totalBytesNow = files.fold<int>(0, (s, f) => s + f.size);
     final cfgMax = _effectiveMaxBytes;
     if (totalBytesNow > cfgMax) {
-      AppSnack.error(
-        'Limit reached',
-        'Free plan allows up to 5GB per transfer. Please remove some files or upgrade.',
-      );
+      final t = appL10n();
+      AppSnack.error(t.snackLimitReached, t.snackFreePlanLimit);
       return;
     }
 
     if (shareMode.value == 'mail' && !Get.find<AuthRepository>().loggedIn.value) {
-      AppSnack.error('Sign in required', 'Please sign in to send by email.');
+      final t = appL10n();
+      AppSnack.error(t.loginRequiredTitle, t.snackSignInEmail);
       Get.toNamed(AppRoutes.login);
       return;
     }
@@ -255,7 +254,8 @@ class HomeController extends GetxController {
     try {
       final newId = await _upload.genUploadId();
       if (newId == null || newId.isEmpty) {
-        AppSnack.error('Upload', 'Could not start upload.');
+        final t = appL10n();
+        AppSnack.error(t.snackUpload, t.snackUploadStartFailed);
         uploading.value = false;
         return;
       }
@@ -269,7 +269,8 @@ class HomeController extends GetxController {
       // Match web behavior: only known error codes block upload.
       if (_isRegisterError(reg.code)) {
         uploading.value = false;
-        AppSnack.error('Upload', _registerErrorMessage(reg.code));
+        final t = appL10n();
+        AppSnack.error(t.snackUpload, _registerErrorMessage(reg.code));
         return;
       }
       await _runFileUploadAndComplete(langPath);
@@ -278,7 +279,7 @@ class HomeController extends GetxController {
       if (e is Exception && '$e'.toLowerCase().contains('cancel')) {
         // User cancelled; no snackbar needed.
       } else {
-        AppSnack.error('Error', '$e');
+        AppSnack.showDynamic(appL10n().snackError, '$e', type: AppSnackType.error);
       }
     } finally {
       if (!awaitingVerify.value) {
@@ -317,17 +318,17 @@ class HomeController extends GetxController {
     try {
       final reg = await _register(verifyCode: null);
       if (reg.verifyEmail) {
-        AppSnack.info('Verify', t?.verifyCodeSent ?? 'A new verification code was sent to your email.');
+        AppSnack.info(appL10n().snackVerify, t?.verifyCodeSent ?? appL10n().verifyCodeSent);
       } else if (reg.isOk) {
         awaitingVerify.value = false;
         await _runFileUploadAndComplete(_languagePathForUpload());
       } else if (_isRegisterError(reg.code)) {
-        AppSnack.error('Verify', _registerErrorMessage(reg.code));
+        AppSnack.error(appL10n().snackVerify, _registerErrorMessage(reg.code));
       } else {
-        AppSnack.error('Verify', 'Could not resend code. Try again.');
+        AppSnack.error(appL10n().snackVerify, appL10n().snackVerifyResendFailed);
       }
     } catch (e) {
-      AppSnack.error('Error', '$e');
+      AppSnack.showDynamic(appL10n().snackError, '$e', type: AppSnackType.error);
     } finally {
       resendVerifyBusy.value = false;
     }
@@ -337,7 +338,7 @@ class HomeController extends GetxController {
     if (activeUploadId.isEmpty) return;
     final code = verifyController.text.replaceAll(RegExp(r'\D'), '');
     if (code.length < 4) {
-      AppSnack.error('Verify', 'Enter the 4-digit code from your email.');
+      AppSnack.error(appL10n().snackVerify, appL10n().snackVerifyEnterCode);
       return;
     }
     uploading.value = true;
@@ -347,20 +348,20 @@ class HomeController extends GetxController {
         code: code,
       );
       if (!verified) {
-        AppSnack.error('Verify', 'Invalid or expired code. Check the email and try again.');
+        AppSnack.error(appL10n().snackVerify, appL10n().snackVerifyInvalid);
         uploading.value = false;
         return;
       }
       final reg = await _register(verifyCode: code);
       if (!reg.isOk) {
-        AppSnack.error('Verify', reg.code);
+        AppSnack.showDynamic(appL10n().snackVerify, reg.code, type: AppSnackType.error);
         uploading.value = false;
         return;
       }
       awaitingVerify.value = false;
       await _runFileUploadAndComplete(_languagePathForUpload());
     } catch (e) {
-      AppSnack.error('Error', '$e');
+      AppSnack.showDynamic(appL10n().snackError, '$e', type: AppSnackType.error);
     } finally {
       uploading.value = false;
     }
@@ -494,16 +495,16 @@ class HomeController extends GetxController {
   }
 
   String _registerErrorMessage(String code) {
-    // Keep text-only here (no BuildContext). Maps to existing l10n keys where possible.
+    final t = appL10n();
     switch (code) {
       case 'fields':
-        return 'Please fill required fields';
+        return t.fillFields;
       case 'ip_limit':
-        return 'Too many uploads from this network';
+        return t.ipLimit;
       case 'email':
-        return 'Invalid email';
+        return t.invalidEmail;
       case 'max_email':
-        return 'Too many recipients';
+        return t.maxRecipientsReached;
       default:
         return code;
     }

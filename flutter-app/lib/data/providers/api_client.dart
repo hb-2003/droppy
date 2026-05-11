@@ -4,8 +4,11 @@ import 'package:dio_cookie_manager/dio_cookie_manager.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:get/get.dart';
 import 'package:sendlargefiles/app/config.dart';
 import 'package:flutter/foundation.dart';
+import 'package:sendlargefiles/controllers/locale_controller.dart';
+import 'package:sendlargefiles/localization/app_locale.dart';
 import 'package:sendlargefiles/widgets/app_snackbar.dart';
 
 const _kBaseUrlKey = 'api_base_url';
@@ -98,7 +101,10 @@ class ApiClient {
         onError: (e, h) {
           // Avoid spamming: only show when no response was received (timeouts, DNS, offline).
           if (e.response == null) {
-            AppSnack.error('Network', 'Connection problem. Please try again.');
+            if (Get.isRegistered<LocaleController>()) {
+              final t = appL10n();
+              AppSnack.error(t.networkTitle, t.snackConnectionProblem);
+            }
           }
           h.next(e);
         },

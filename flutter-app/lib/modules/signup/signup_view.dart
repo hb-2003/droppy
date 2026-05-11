@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:sendlargefiles/l10n/app_localizations.dart';
+import 'package:sendlargefiles/localization/locale_rebuild.dart';
 import 'package:sendlargefiles/modules/signup/signup_controller.dart';
 import 'package:sendlargefiles/widgets/auth_top_bar.dart';
 
@@ -17,10 +19,12 @@ class SignupView extends GetView<SignupController> {
 
   @override
   Widget build(BuildContext context) {
+    final t = AppLocalizations.of(context)!;
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: isDark ? SystemUiOverlayStyle.light : SystemUiOverlayStyle.dark,
-      child: Scaffold(
+    return LocaleRebuild(
+      child: AnnotatedRegion<SystemUiOverlayStyle>(
+        value: isDark ? SystemUiOverlayStyle.light : SystemUiOverlayStyle.dark,
+        child: Scaffold(
         backgroundColor: _bg(context),
         body: SafeArea(
           child: Column(
@@ -34,7 +38,7 @@ class SignupView extends GetView<SignupController> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Text(
-                        'Create account',
+                        t.createAccountTitle,
                         style: TextStyle(
                           color: _onSurface(context),
                           fontSize: 30,
@@ -44,34 +48,34 @@ class SignupView extends GetView<SignupController> {
                       ),
                       const SizedBox(height: 6),
                       Text(
-                        'Sign up with email and password.',
+                        t.signUpSubtitle,
                         style: TextStyle(color: _dim2(context), fontSize: 14, height: 1.6),
                       ),
                       const SizedBox(height: 28),
-                      _Label('EMAIL ADDRESS'),
+                      _Label(t.emailAddressLabel),
                       const SizedBox(height: 8),
                       _Field(
                         ctrl: controller.emailCtrl,
-                        hint: 'you@example.com',
+                        hint: t.emailExampleHint,
                         keyboardType: TextInputType.emailAddress,
                         autofillHints: const [AutofillHints.email],
                       ),
                       const SizedBox(height: 14),
-                      _Label('PASSWORD'),
+                      _Label(t.passwordLabelCaps),
                       const SizedBox(height: 8),
                       _Field(
                         ctrl: controller.passwordCtrl,
-                        hint: 'Password (min 8 chars)',
+                        hint: t.passwordMin8,
                         keyboardType: TextInputType.visiblePassword,
                         obscureText: true,
                         autofillHints: const [AutofillHints.newPassword],
                       ),
                       const SizedBox(height: 14),
-                      _Label('CONFIRM PASSWORD'),
+                      _Label(t.confirmPasswordLabelCaps),
                       const SizedBox(height: 8),
                       _Field(
                         ctrl: controller.confirmCtrl,
-                        hint: 'Confirm password',
+                        hint: t.confirmPassword,
                         keyboardType: TextInputType.visiblePassword,
                         obscureText: true,
                         autofillHints: const [AutofillHints.newPassword],
@@ -94,17 +98,17 @@ class SignupView extends GetView<SignupController> {
                                   height: 18,
                                   child: CircularProgressIndicator(strokeWidth: 2),
                                 )
-                              : const Text('Create account', style: TextStyle(fontWeight: FontWeight.w700)),
+                              : Text(t.createAccountTitle, style: const TextStyle(fontWeight: FontWeight.w700)),
                         );
                       }),
                       const SizedBox(height: 18),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text('Already have an account? ', style: TextStyle(color: _dim(context), fontSize: 12)),
+                          Text('${t.alreadyHaveAccount} ', style: TextStyle(color: _dim(context), fontSize: 12)),
                           TextButton(
                             onPressed: controller.goLogin,
-                            child: Text('Sign in', style: TextStyle(color: _accent(context), fontWeight: FontWeight.w700)),
+                            child: Text(t.signIn, style: TextStyle(color: _accent(context), fontWeight: FontWeight.w700)),
                           ),
                         ],
                       ),
@@ -115,6 +119,7 @@ class SignupView extends GetView<SignupController> {
             ],
           ),
         ),
+      ),
       ),
     );
   }

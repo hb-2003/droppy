@@ -2,8 +2,13 @@
   "@@locale": "en",
   "appTitle": "Share Large Video Files",
   "heroAccent": "instantly.",
+  "heroTitle": "Send heavy files",
   "splashLoading": "Loading…",
   "navSend": "Dashboard",
+  "navHome": "Home",
+  "navHistory": "History",
+  "navReceive": "Receive",
+  "navPlans": "Plans",
   "navDownload": "Download",
   "navSettings": "Settings",
   "modeLink": "Get a link",
@@ -62,6 +67,8 @@
   "about": "About",
   "moreApps": "More apps",
   "settingsLanguage": "Language",
+  "languageEnglish": "English",
+  "languageHindi": "Hindi",
   "logout": "Log out",
   "maxFilesReached": "Too many files",
   "fileTooLarge": "File too large",
@@ -70,5 +77,279 @@
   "invalidEmail": "Invalid email",
   "maxRecipientsReached": "Too many recipients",
   "loginRequiredTitle": "Sign in required",
-  "loginRequiredBody": "This server requires an account to upload or download."
+  "loginRequiredBody": "This server requires an account to upload or download.",
+  "settingsSubtitle": "App preferences and account.",
+  "dropHeavyFile": "Drop a heavy file here.",
+  "upToTotal": "Up to {max} total",
+  "@upToTotal": {
+    "placeholders": {
+      "max": { "type": "String" }
+    }
+  },
+  "removeAll": "Remove all",
+  "addFiles": "Add files",
+  "adding": "Adding…",
+  "options": "Options",
+  "selfDestruct": "Self-destruct after download",
+  "expiry": "Expiry",
+  "cancelUpload": "Cancel upload",
+  "transferReady": "Transfer ready!",
+  "emailSentReady": "Email sent!",
+  "shareRecipientHint": "Share this link with your recipient.",
+  "emailSentBody": "We've notified your recipient(s).",
+  "scanQr": "Scan to open the transfer link.",
+  "shareLinkButton": "SHARE LINK",
+  "verifyFourDigit": "Enter the 4-digit code sent to your sender email.",
+  "starting": "Starting…",
+  "filesCount": "{count, plural, =1{1 file} other{{count} files}}",
+  "@filesCount": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "mbLeft": "{amount} MB left",
+  "@mbLeft": {
+    "placeholders": {
+      "amount": { "type": "String" }
+    }
+  },
+  "fillField": "Please fill in this field.",
+  "enterValidEmail": "Enter a valid email.",
+  "message": "Message",
+  "recipientEmail": "Recipient email",
+  "active": "Active",
+  "expired": "Expired",
+  "historyTitle": "My Transfers",
+  "signInToSeeTransfers": "Sign in to see your transfers",
+  "signInTransfersBody": "We use your email to link transfers to your account — no password needed.",
+  "couldNotLoadTransfers": "Could not load transfers",
+  "retry": "Retry",
+  "noTransfersYet": "No transfers yet",
+  "noTransfersBody": "Once you send a file, it will appear here.",
+  "transferDetails": "Transfer details",
+  "filesSection": "Files",
+  "receiveTitle": "Receive Files",
+  "receiveSubtitle": "Paste a transfer link to download files.",
+  "pasteTooltip": "Paste",
+  "findTransfer": "Find Transfer",
+  "receiveStepGetLink": "Get the link",
+  "receiveStepGetLinkBody": "Ask the sender to share the transfer link with you.",
+  "receiveStepPaste": "Paste & find",
+  "receiveStepPasteBody": "Paste the link above and tap \"Find Transfer\".",
+  "receiveStepDownload": "Download files",
+  "receiveStepDownloadBody": "See file details and download everything at once.",
+  "lookingUpTransfer": "Looking up transfer…",
+  "transferNotFound": "Transfer not found. Check the link and try again.",
+  "transferExpired": "This transfer has expired and is no longer available.",
+  "transferLoginRequired": "Sign in is required to access this transfer.",
+  "transferBadResponse": "Unexpected server response. Check your connection.",
+  "transferNetworkError": "Network error. Check your internet connection.",
+  "transferLoadFailed": "Could not load transfer: {error}",
+  "@transferLoadFailed": {
+    "placeholders": {
+      "error": { "type": "String" }
+    }
+  },
+  "passwordProtected": "Password protected",
+  "enterPassword": "Enter password",
+  "unlock": "Unlock",
+  "downloading": "Downloading…",
+  "downloadAllFiles": "Download all files",
+  "downloadSingleFile": "Download file",
+  "receiveAnother": "Receive another transfer",
+  "plansTitle": "Plans",
+  "plansSubtitle": "Upgrade to remove ads and send bigger files.",
+  "storeUnavailable": "Store unavailable",
+  "storeUnavailableBody": "In-app purchases are not available right now.",
+  "freeVersionAds": "Currently you are using our free version with ads",
+  "restorePurchases": "Restore purchases",
+  "createAccountTitle": "Create account",
+  "signUpSubtitle": "Sign up with email and password.",
+  "confirmPassword": "Confirm password",
+  "passwordMin8": "Password (min 8 chars)",
+  "alreadyHaveAccount": "Already have an account?",
+  "checkEmailTitle": "Check your\nemail",
+  "otpSentTo": "We sent a 6-digit code to\n{email}",
+  "@otpSentTo": {
+    "placeholders": {
+      "email": { "type": "String" }
+    }
+  },
+  "verifyAndSignIn": "Verify & Sign in",
+  "didntReceiveCode": "Didn't receive it?",
+  "tryAgain": "Try again",
+  "otpExpiresHint": "Code expires in 5 minutes. Check your spam folder if you don't see it.",
+  "snackError": "Error",
+  "snackCopied": "Copied",
+  "snackCopiedBody": "Link copied to clipboard",
+  "snackWelcome": "Welcome",
+  "snackAccountCreated": "Account created",
+  "snackEnterEmail": "Please enter your email",
+  "snackEnterPassword": "Please enter your password",
+  "snackInvalidEmail": "Invalid email address",
+  "snackInvalidCredentials": "Incorrect email or password",
+  "snackPasswordMin8": "Password must be at least 8 characters",
+  "snackPasswordMismatch": "Passwords do not match",
+  "snackAccountExists": "Account already exists. Please sign in.",
+  "snackSignupFailed": "Could not create account. Try again.",
+  "snackEnterOtp": "Please enter the 6-digit code",
+  "snackOtpExpired": "Code expired",
+  "snackOtpExpiredBody": "Please request a new code.",
+  "snackInvalidCode": "Invalid code",
+  "snackInvalidCodeBody": "The code is incorrect. Please try again.",
+  "snackSendCodeFailed": "Could not send code. Check your connection and try again.",
+  "snackEmptyFolder": "Empty folder",
+  "snackEmptyFolderBody": "No files found in the selected folder.",
+  "snackFolderUnsupported": "Not supported",
+  "snackFolderUnsupportedBody": "Folder upload is not available on this platform.",
+  "snackFolderReadError": "Could not read the selected folder.",
+  "snackLimitReached": "Limit reached",
+  "snackLimitFilesBody": "Some files were not added because of size or file count limits.",
+  "snackFreePlanLimit": "Free plan allows up to 5GB per transfer. Please remove some files or upgrade.",
+  "snackSignInEmail": "Please sign in to send by email.",
+  "snackUploadStartFailed": "Could not start upload.",
+  "snackVerifyEnterCode": "Enter the 4-digit code from your email.",
+  "snackVerifyInvalid": "Invalid or expired code. Check the email and try again.",
+  "snackVerifyResendFailed": "Could not resend code. Try again.",
+  "snackDownloadComplete": "Download complete",
+  "snackDownloadSaved": "\"{filename}\" saved to Downloads",
+  "@snackDownloadSaved": {
+    "placeholders": {
+      "filename": { "type": "String" }
+    }
+  },
+  "snackDownloadFailed": "Download failed",
+  "snackSaved": "Saved",
+  "snackServerUrlUpdated": "Server URL updated. Restart the app to apply.",
+  "snackStoreError": "Store error",
+  "snackMissingProducts": "Missing products",
+  "snackStoreUnavailable": "Store unavailable",
+  "snackStoreUnavailableBody": "In-app purchases are not available on this device.",
+  "snackProductNotLoaded": "Product is not loaded yet.",
+  "snackRestoreStarted": "Restore started",
+  "snackRestoreStartedBody": "We are checking your purchases.",
+  "snackRestoreFailed": "Restore failed",
+  "snackProcessing": "Processing",
+  "snackPleaseWait": "Please wait…",
+  "snackSuccess": "Success",
+  "snackPurchaseCompleted": "Purchase completed.",
+  "snackPurchaseError": "Purchase error",
+  "snackPurchaseFailed": "Purchase failed.",
+  "snackCanceled": "Canceled",
+  "snackPurchaseCanceled": "Purchase canceled.",
+  "snackUpload": "Upload",
+  "snackVerify": "Verify",
+  "doNotExpire": "Do not expire",
+  "hourSingular": "hour",
+  "hourPlural": "hours",
+  "daySingular": "day",
+  "dayPlural": "days",
+  "emailAddressLabel": "EMAIL ADDRESS",
+  "passwordLabelCaps": "PASSWORD",
+  "confirmPasswordLabelCaps": "CONFIRM PASSWORD",
+  "emailExampleHint": "you@example.com",
+  "otpSixDigitHint": "000000",
+  "verifyFourDigitHint": "0000",
+  "transferLinkOrId": "TRANSFER LINK OR ID",
+  "howToReceive": "HOW TO RECEIVE",
+  "transferLinkHint": "https://… or paste ID",
+  "filesReady": "{count, plural, =1{1 file ready} other{{count} files ready}}",
+  "@filesReady": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "planAdsTitle": "Ads Plan",
+  "planAdsBullet1": "Access to ads free app",
+  "planAdsBullet2": "Remove all ads",
+  "planProTitle": "Pro Plan",
+  "planProBullet1": "Send files up to 20GB",
+  "planProBullet2": "Fast Upload",
+  "planPremiumTitle": "Premium Plan",
+  "planPremiumBullet1": "Send files up to 100GB",
+  "planPremiumBullet2": "Super fast upload",
+  "planSubscriptionDisclaimer": "No trial period — subscription is required to use the additional app functionality. You will be charged immediately. You can cancel anytime.",
+  "perMonth": "/ month",
+  "perYear": "/ year",
+  "snackConnectionProblem": "Connection problem. Please try again.",
+  "networkTitle": "Network",
+  "transferIdLabel": "ID: {id}",
+  "@transferIdLabel": {
+    "placeholders": {
+      "id": { "type": "String" }
+    }
+  },
+  "downloadMetaSummary": "Files: {count} · {size} bytes",
+  "@downloadMetaSummary": {
+    "placeholders": {
+      "count": { "type": "String" },
+      "size": { "type": "String" }
+    }
+  },
+  "todayAt": "Today · {time}",
+  "@todayAt": {
+    "placeholders": {
+      "time": { "type": "String" }
+    }
+  },
+  "yesterdayAt": "Yesterday · {time}",
+  "@yesterdayAt": {
+    "placeholders": {
+      "time": { "type": "String" }
+    }
+  },
+  "daysAgoAt": "{days}d ago · {time}",
+  "@daysAgoAt": {
+    "placeholders": {
+      "days": { "type": "int" },
+      "time": { "type": "String" }
+    }
+  },
+  "dateAt": "{date} · {time}",
+  "@dateAt": {
+    "placeholders": {
+      "date": { "type": "String" },
+      "time": { "type": "String" }
+    }
+  },
+  "mbAmount": "{amount} MB",
+  "@mbAmount": {
+    "placeholders": {
+      "amount": { "type": "String" }
+    }
+  },
+  "uploadProgressSummary": "{sent} / {total}  •  {remaining} left",
+  "@uploadProgressSummary": {
+    "placeholders": {
+      "sent": { "type": "String" },
+      "total": { "type": "String" },
+      "remaining": { "type": "String" }
+    }
+  },
+  "loadingShort": "Loading…",
+  "colorPaletteTitle": "Color Palette",
+  "colorPaletteSectionBackgrounds": "Backgrounds (ink scale)",
+  "colorPaletteSectionAccent": "Accent / Primary",
+  "colorPaletteSectionText": "Text",
+  "colorPaletteSectionBorders": "Borders & Glass",
+  "colorPaletteSectionSemantic": "Semantic",
+  "colorPaletteSectionLive": "Live Theme (current)",
+  "colorPaletteActiveHint": "★ = actively used in screens",
+  "colorPaletteCopyHint": "Long-press any swatch to copy its hex value.",
+  "historyFilesSize": "{count, plural, =1{1 file} other{{count} files}} · {size}",
+  "@historyFilesSize": {
+    "placeholders": {
+      "count": { "type": "int" },
+      "size": { "type": "String" }
+    }
+  },
+  "settingsAppBrand": "Share Large\nVideo Files",
+  "loginEmailPasswordPrompt": "Enter your email and password to sign in.",
+  "otpDigitLabel": "6-DIGIT CODE",
+  "receiveMoreFiles": "+{count} more files",
+  "@receiveMoreFiles": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  }
 }

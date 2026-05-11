@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sendlargefiles/app/theme/app_theme.dart';
 import 'package:sendlargefiles/l10n/app_localizations.dart';
+import 'package:sendlargefiles/localization/locale_rebuild.dart';
 import 'package:sendlargefiles/modules/splash/splash_controller.dart';
 
 class SplashView extends GetView<SplashController> {
@@ -11,7 +12,8 @@ class SplashView extends GetView<SplashController> {
   Widget build(BuildContext context) {
     final t = AppLocalizations.of(context)!;
     final scheme = Theme.of(context).colorScheme;
-    return Scaffold(
+    return LocaleRebuild(
+      child: Scaffold(
       backgroundColor: scheme.surface,
       body: SafeArea(
         child: Center(
@@ -58,6 +60,7 @@ class SplashView extends GetView<SplashController> {
                 : const SizedBox.shrink(),
           ),
         ),
+      ),
       ),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:sendlargefiles/l10n/app_localizations.dart';
 import 'package:sendlargefiles/modules/download/receive_controller.dart';
 import 'package:sendlargefiles/widgets/app_top_bar.dart';
 
@@ -19,6 +20,7 @@ class ReceiveView extends GetView<ReceiveController> {
 
   @override
   Widget build(BuildContext context) {
+    final t = AppLocalizations.of(context)!;
     final bottomPad = MediaQuery.of(context).padding.bottom + 84;
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: Theme.of(context).brightness == Brightness.dark
@@ -30,9 +32,9 @@ class ReceiveView extends GetView<ReceiveController> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const AppTopBar(
-                title: 'Receive Files',
-                subtitle: 'Paste a transfer link to download files.',
+              AppTopBar(
+                title: t.receiveTitle,
+                subtitle: t.receiveSubtitle,
               ),
               Expanded(
                 child: ScrollConfiguration(
@@ -73,6 +75,7 @@ class _LinkInputCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = AppLocalizations.of(context)!;
     final scheme = Theme.of(context).colorScheme;
     return Container(
       padding: const EdgeInsets.all(16),
@@ -90,7 +93,7 @@ class _LinkInputCard extends StatelessWidget {
               Icon(Icons.link_rounded, color: _accent(context), size: 16),
               const SizedBox(width: 6),
               Text(
-                'TRANSFER LINK OR ID',
+                t.transferLinkOrId,
                 style: TextStyle(
                   color: _dim(context),
                   fontSize: 11,
@@ -110,7 +113,7 @@ class _LinkInputCard extends StatelessWidget {
                   onChanged: controller.setFromPastedLinkOrId,
                   style: TextStyle(color: _onSurface(context), fontSize: 14, fontWeight: FontWeight.w500),
                   decoration: InputDecoration(
-                    hintText: 'https://… or paste ID',
+                    hintText: t.transferLinkHint,
                     hintStyle: TextStyle(color: _dim2(context), fontSize: 14),
                     filled: true,
                     fillColor: scheme.surface,
@@ -137,7 +140,7 @@ class _LinkInputCard extends StatelessWidget {
                           controller.setFromPastedLinkOrId(text);
                         }
                       },
-                      tooltip: 'Paste',
+                      tooltip: t.pasteTooltip,
                     ),
                   ),
                   textInputAction: TextInputAction.search,
@@ -174,7 +177,7 @@ class _LinkInputCard extends StatelessWidget {
                         Icon(Icons.search_rounded, color: _accentInk(context), size: 18),
                         const SizedBox(width: 8),
                         Text(
-                          'Find Transfer',
+                          t.findTransfer,
                           style: TextStyle(color: _accentInk(context), fontSize: 15, fontWeight: FontWeight.w700),
                         ),
                       ],
@@ -192,6 +195,7 @@ class _LinkInputCard extends StatelessWidget {
 class _HowItWorksCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final t = AppLocalizations.of(context)!;
     final accent = _accent(context);
     return Container(
       padding: const EdgeInsets.all(20),
@@ -204,29 +208,29 @@ class _HowItWorksCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'HOW TO RECEIVE',
+            t.howToReceive,
             style: TextStyle(color: _dim(context), fontSize: 11, fontWeight: FontWeight.w600, letterSpacing: 1.2),
           ),
           const SizedBox(height: 16),
           _Step(
             accent: accent,
             number: '1',
-            title: 'Get the link',
-            subtitle: 'Ask the sender to share the transfer link with you.',
+            title: t.receiveStepGetLink,
+            subtitle: t.receiveStepGetLinkBody,
           ),
           const SizedBox(height: 14),
           _Step(
             accent: accent,
             number: '2',
-            title: 'Paste & find',
-            subtitle: 'Paste the link above and tap "Find Transfer".',
+            title: t.receiveStepPaste,
+            subtitle: t.receiveStepPasteBody,
           ),
           const SizedBox(height: 14),
           _Step(
             accent: accent,
             number: '3',
-            title: 'Download files',
-            subtitle: 'See file details and download everything at once.',
+            title: t.receiveStepDownload,
+            subtitle: t.receiveStepDownloadBody,
           ),
         ],
       ),
@@ -277,6 +281,7 @@ class _Step extends StatelessWidget {
 class _LoadingCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final t = AppLocalizations.of(context)!;
     final scheme = Theme.of(context).colorScheme;
     return Container(
       padding: const EdgeInsets.all(32),
@@ -289,7 +294,7 @@ class _LoadingCard extends StatelessWidget {
         children: [
           CircularProgressIndicator(color: scheme.primary, strokeWidth: 2.5),
           const SizedBox(height: 16),
-          Text('Looking up transfer…', style: TextStyle(color: _dim(context), fontSize: 14)),
+          Text(t.lookingUpTransfer, style: TextStyle(color: _dim(context), fontSize: 14)),
         ],
       ),
     );
@@ -302,15 +307,22 @@ class _ErrorCard extends StatelessWidget {
   const _ErrorCard({required this.error});
   final String error;
 
-  String _humanize(String e) {
+  String _humanize(BuildContext context, String e) {
+    final t = AppLocalizations.of(context)!;
     switch (e) {
-      case 'not_found': return 'Transfer not found. Check the link and try again.';
-      case 'expired': return 'This transfer has expired and is no longer available.';
-      case 'login_required': return 'Sign in is required to access this transfer.';
+      case 'not_found':
+        return t.transferNotFound;
+      case 'expired':
+        return t.transferExpired;
+      case 'login_required':
+        return t.transferLoginRequired;
       case 'html_response':
-      case 'bad_response': return 'Unexpected server response. Check your connection.';
-      case 'network_error': return 'Network error. Check your internet connection.';
-      default: return 'Could not load transfer: $e';
+      case 'bad_response':
+        return t.transferBadResponse;
+      case 'network_error':
+        return t.transferNetworkError;
+      default:
+        return t.transferLoadFailed(e);
     }
   }
 
@@ -336,7 +348,7 @@ class _ErrorCard extends StatelessWidget {
           const SizedBox(width: 14),
           Expanded(
             child: Text(
-              _humanize(error),
+              _humanize(context, error),
               style: TextStyle(color: _onSurface(context), fontSize: 13, height: 1.5),
             ),
           ),
@@ -371,6 +383,7 @@ class _TransferDetailsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = AppLocalizations.of(context)!;
     final m = controller.meta.value!;
     final scheme = Theme.of(context).colorScheme;
     final accent = _accent(context);
@@ -407,7 +420,7 @@ class _TransferDetailsCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          '${m.count ?? 0} file${(m.count ?? 0) == 1 ? '' : 's'} ready',
+                          t.filesReady(m.count ?? 0),
                           style: TextStyle(color: _onSurface(context), fontSize: 16, fontWeight: FontWeight.w700),
                         ),
                         if (totalBytes > 0)
@@ -424,7 +437,7 @@ class _TransferDetailsCard extends StatelessWidget {
                       color: accent.withValues(alpha: 0.12),
                       borderRadius: BorderRadius.circular(6),
                     ),
-                    child: Text('Active', style: TextStyle(color: accent, fontSize: 11, fontWeight: FontWeight.w600)),
+                    child: Text(t.active, style: TextStyle(color: accent, fontSize: 11, fontWeight: FontWeight.w600)),
                   ),
                 ],
               ),
@@ -460,7 +473,7 @@ class _TransferDetailsCard extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(top: 2, bottom: 4),
                     child: Text(
-                      '+${m.files.length - 5} more files',
+                      t.receiveMoreFiles(m.files.length - 5),
                       style: TextStyle(color: _dim2(context), fontSize: 11),
                     ),
                   ),
@@ -476,7 +489,7 @@ class _TransferDetailsCard extends StatelessWidget {
                     Icon(Icons.lock_outline_rounded, color: scheme.error, size: 16),
                     const SizedBox(width: 8),
                     Text(
-                      'Password protected',
+                      t.passwordProtected,
                       style: TextStyle(color: scheme.error, fontSize: 13, fontWeight: FontWeight.w600),
                     ),
                   ],
@@ -487,7 +500,7 @@ class _TransferDetailsCard extends StatelessWidget {
                   obscureText: true,
                   style: TextStyle(color: _onSurface(context), fontSize: 14),
                   decoration: InputDecoration(
-                    hintText: 'Enter password',
+                    hintText: t.enterPassword,
                     hintStyle: TextStyle(color: _dim2(context)),
                     prefixIcon: Icon(Icons.lock_outline_rounded, size: 18, color: _dim(context)),
                     filled: true,
@@ -524,7 +537,7 @@ class _TransferDetailsCard extends StatelessWidget {
                       children: [
                         Icon(Icons.lock_open_rounded, color: _accentInk(context), size: 16),
                         const SizedBox(width: 8),
-                        Text('Unlock', style: TextStyle(color: _accentInk(context), fontSize: 14, fontWeight: FontWeight.w700)),
+                        Text(t.unlock, style: TextStyle(color: _accentInk(context), fontSize: 14, fontWeight: FontWeight.w700)),
                       ],
                     ),
                   ),
@@ -568,7 +581,7 @@ class _TransferDetailsCard extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(width: 12),
-                          Text('Downloading…',
+                          Text(t.downloading,
                               style: TextStyle(color: _dim(context), fontSize: 15, fontWeight: FontWeight.w600)),
                         ],
                       )
@@ -578,7 +591,7 @@ class _TransferDetailsCard extends StatelessWidget {
                           Icon(Icons.download_rounded, color: _accentInk(context), size: 20),
                           const SizedBox(width: 8),
                           Text(
-                            (m.count ?? 0) > 1 ? 'Download all files' : 'Download file',
+                            (m.count ?? 0) > 1 ? t.downloadAllFiles : t.downloadSingleFile,
                             style: TextStyle(color: _accentInk(context), fontSize: 16, fontWeight: FontWeight.w700),
                           ),
                         ],
@@ -600,7 +613,7 @@ class _TransferDetailsCard extends StatelessWidget {
               ),
               alignment: Alignment.center,
               child: Text(
-                'Receive another transfer',
+                t.receiveAnother,
                 style: TextStyle(color: _dim(context), fontSize: 13, fontWeight: FontWeight.w500),
               ),
             ),

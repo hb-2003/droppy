@@ -14,12 +14,14 @@ import 'package:sendlargefiles/data/repositories/download_repository.dart';
 import 'package:sendlargefiles/data/repositories/history_repository.dart';
 import 'package:sendlargefiles/data/repositories/upload_repository.dart';
 import 'package:sendlargefiles/l10n/app_localizations.dart';
+import 'package:sendlargefiles/localization/translation_service.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await GetStorage.init();
   await ApiClient.instance.init();
   Get.put(LocaleController());
+  Get.put(TranslationService());
   Get.put(ThemeController());
   Get.put(ConfigRepository());
   Get.put(UploadRepository());
@@ -39,7 +41,7 @@ class SendLargeFilesApp extends StatelessWidget {
       final loc = Get.find<LocaleController>().locale.value;
       final mode = Get.find<ThemeController>().themeMode.value;
       return GetMaterialApp(
-        title: 'Share Large Video Files',
+        title: lookupAppLocalizations(loc).appTitle,
         theme: AppTheme.lightFromConfig(cfg),
         darkTheme: AppTheme.darkFromConfig(cfg),
         themeMode: mode,
@@ -54,6 +56,15 @@ class SendLargeFilesApp extends StatelessWidget {
         initialRoute: AppRoutes.splash,
         getPages: AppPages.pages,
         debugShowCheckedModeBanner: false,
+        builder: (context, child) {
+          return Obx(() {
+            final localeKey = Get.find<LocaleController>().locale.value.toString();
+            return KeyedSubtree(
+              key: ValueKey<String>('app-locale-$localeKey'),
+              child: child ?? const SizedBox.shrink(),
+            );
+          });
+        },
       );
     });
   }

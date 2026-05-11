@@ -5,6 +5,7 @@ import 'package:sendlargefiles/data/models/app_config.dart';
 import 'package:sendlargefiles/data/models/transfer_metadata.dart';
 import 'package:sendlargefiles/data/repositories/config_repository.dart';
 import 'package:sendlargefiles/data/repositories/download_repository.dart';
+import 'package:sendlargefiles/localization/app_locale.dart';
 import 'package:sendlargefiles/widgets/app_snackbar.dart';
 
 /// Dedicated controller for the Receive tab in the shell IndexedStack.
@@ -139,10 +140,15 @@ class ReceiveController extends GetxController {
   // ── Toast helpers ─────────────────────────────────────────────────────────
 
   void _showSuccessToast(String filename) {
-    AppSnack.success('Download complete', '"$filename" saved to Downloads');
+    final t = appL10n();
+    AppSnack.success(t.snackDownloadComplete, t.snackDownloadSaved(filename));
   }
 
   void _showErrorToast(String message) {
-    AppSnack.error('Download failed', message);
+    AppSnack.showDynamic(
+      appL10n().snackDownloadFailed,
+      message,
+      type: AppSnackType.error,
+    );
   }
 }
