@@ -5,6 +5,7 @@ import 'package:sendlargefiles/l10n/app_localizations.dart';
 import 'package:sendlargefiles/localization/locale_rebuild.dart';
 import 'package:sendlargefiles/modules/signup/signup_controller.dart';
 import 'package:sendlargefiles/widgets/auth_top_bar.dart';
+import 'package:sendlargefiles/widgets/password_text_field.dart';
 
 Color _bg(BuildContext ctx) => Theme.of(ctx).scaffoldBackgroundColor;
 Color _fieldBg(BuildContext ctx) => Theme.of(ctx).colorScheme.surfaceContainerHigh;
@@ -63,21 +64,17 @@ class SignupView extends GetView<SignupController> {
                       const SizedBox(height: 14),
                       _Label(t.passwordLabelCaps),
                       const SizedBox(height: 8),
-                      _Field(
+                      _PasswordField(
                         ctrl: controller.passwordCtrl,
                         hint: t.passwordMin8,
-                        keyboardType: TextInputType.visiblePassword,
-                        obscureText: true,
                         autofillHints: const [AutofillHints.newPassword],
                       ),
                       const SizedBox(height: 14),
                       _Label(t.confirmPasswordLabelCaps),
                       const SizedBox(height: 8),
-                      _Field(
+                      _PasswordField(
                         ctrl: controller.confirmCtrl,
                         hint: t.confirmPassword,
-                        keyboardType: TextInputType.visiblePassword,
-                        obscureText: true,
                         autofillHints: const [AutofillHints.newPassword],
                         onSubmitted: (_) => controller.signup(),
                       ),
@@ -142,21 +139,54 @@ class _Label extends StatelessWidget {
   }
 }
 
+class _PasswordField extends StatelessWidget {
+  const _PasswordField({
+    required this.ctrl,
+    required this.hint,
+    this.autofillHints,
+    this.onSubmitted,
+  });
+
+  final TextEditingController ctrl;
+  final String hint;
+  final List<String>? autofillHints;
+  final ValueChanged<String>? onSubmitted;
+
+  @override
+  Widget build(BuildContext context) {
+    final onSurface = _onSurface(context);
+    final line = _line(context);
+    final accent = _accent(context);
+    return PasswordTextField(
+      controller: ctrl,
+      autofillHints: autofillHints,
+      onSubmitted: onSubmitted,
+      style: TextStyle(color: onSurface, fontSize: 15, fontWeight: FontWeight.w600),
+      decoration: InputDecoration(
+        hintText: hint,
+        hintStyle: TextStyle(color: onSurface.withValues(alpha: 0.30), fontSize: 15, fontWeight: FontWeight.w400),
+        filled: true,
+        fillColor: _fieldBg(context),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(14), borderSide: BorderSide(color: line)),
+        enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(14), borderSide: BorderSide(color: line)),
+        focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(14), borderSide: BorderSide(color: accent, width: 1.5)),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 18, vertical: 16),
+      ),
+    );
+  }
+}
+
 class _Field extends StatelessWidget {
   const _Field({
     required this.ctrl,
     required this.hint,
     this.keyboardType,
-    this.obscureText = false,
     this.autofillHints,
-    this.onSubmitted,
   });
   final TextEditingController ctrl;
   final String hint;
   final TextInputType? keyboardType;
-  final bool obscureText;
   final List<String>? autofillHints;
-  final ValueChanged<String>? onSubmitted;
 
   @override
   Widget build(BuildContext context) {
@@ -166,9 +196,7 @@ class _Field extends StatelessWidget {
     return TextField(
       controller: ctrl,
       keyboardType: keyboardType,
-      obscureText: obscureText,
       autofillHints: autofillHints,
-      onSubmitted: onSubmitted,
       style: TextStyle(color: onSurface, fontSize: 15, fontWeight: FontWeight.w600),
       decoration: InputDecoration(
         hintText: hint,

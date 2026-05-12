@@ -5,6 +5,8 @@ import 'package:sendlargefiles/modules/download/download_view.dart';
 import 'package:sendlargefiles/modules/history/history_binding.dart';
 import 'package:sendlargefiles/modules/home/home_binding.dart';
 import 'package:sendlargefiles/modules/home/home_view.dart';
+import 'package:sendlargefiles/modules/forgot_password/forgot_password_binding.dart';
+import 'package:sendlargefiles/modules/forgot_password/forgot_password_view.dart';
 import 'package:sendlargefiles/modules/login/login_binding.dart';
 import 'package:sendlargefiles/modules/login/login_view.dart';
 import 'package:sendlargefiles/modules/plans/plans_binding.dart';
@@ -56,6 +58,11 @@ class AppPages {
       name: AppRoutes.signup,
       page: SignupView.new,
       binding: SignupBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.forgotPassword,
+      page: ForgotPasswordView.new,
+      binding: ForgotPasswordBinding(),
     ),
     GetPage(
       name: AppRoutes.settings,

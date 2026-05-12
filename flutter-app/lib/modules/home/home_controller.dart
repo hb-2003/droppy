@@ -1,7 +1,12 @@
+import 'dart:io';
+import 'dart:ui' as ui;
+
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:dio/dio.dart' show CancelToken;
+import 'package:path_provider/path_provider.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 import 'package:sendlargefiles/app/routes/app_routes.dart';
 import 'package:sendlargefiles/controllers/locale_controller.dart';
 import 'package:sendlargefiles/data/models/app_config.dart';
@@ -11,7 +16,7 @@ import 'package:sendlargefiles/data/repositories/history_repository.dart';
 import 'package:sendlargefiles/data/repositories/upload_repository.dart'
     show PickedFileItem, RegisterResult, UploadRepository;
 import 'package:sendlargefiles/data/providers/api_client.dart';
-import 'package:share_plus/share_plus.dart' show ShareParams, SharePlus;
+import 'package:share_plus/share_plus.dart' show ShareParams, SharePlus, XFile;
 import 'package:sendlargefiles/localization/app_locale.dart';
 import 'package:sendlargefiles/l10n/app_localizations.dart';
 import 'package:sendlargefiles/modules/history/history_controller.dart';
@@ -561,6 +566,46 @@ class HomeController extends GetxController {
     final link = finishedLink.value;
     if (link.isEmpty) return;
     await SharePlus.instance.share(ShareParams(text: link));
+  }
+
+  Future<void> shareQrCode() async {
+    final link = finishedLink.value;
+    if (link.isEmpty) return;
+
+    final painter = QrPainter(
+      data: link,
+      version: QrVersions.auto,
+      emptyColor: Colors.white,
+      eyeStyle: const QrEyeStyle(
+        eyeShape: QrEyeShape.square,
+        color: Color(0xFF0A0C14),
+      ),
+      dataModuleStyle: const QrDataModuleStyle(
+        color: Color(0xFF0A0C14),
+      ),
+    );
+
+    try {
+      final imageData = await painter.toImageData(
+        768,
+        format: ui.ImageByteFormat.png,
+      );
+      if (imageData == null) return;
+
+      final dir = await getTemporaryDirectory();
+      final id = activeUploadId.isNotEmpty ? activeUploadId : 'transfer';
+      final file = File('${dir.path}/$id-qr.png');
+      await file.writeAsBytes(imageData.buffer.asUint8List(), flush: true);
+
+      await SharePlus.instance.share(
+        ShareParams(
+          files: [XFile(file.path, mimeType: 'image/png')],
+          text: link,
+        ),
+      );
+    } catch (e) {
+      AppSnack.showDynamic(appL10n().snackError, '$e', type: AppSnackType.error);
+    }
   }
 
   void goDownload() {

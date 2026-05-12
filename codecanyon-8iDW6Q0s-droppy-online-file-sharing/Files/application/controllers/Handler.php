@@ -645,6 +645,139 @@ class Handler extends CI_Controller {
     }
 
     /**
+     * POST handler/request_password_reset { email }
+     */
+    public function request_password_reset()
+    {
+        header('Content-Type: application/json');
+
+        $email = trim((string) $this->input->post('email', TRUE));
+        if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            echo json_encode(['result' => 'invalid_email']);
+            return;
+        }
+
+        try {
+            $this->load->model('users');
+            $row = $this->users->getByEmail($email);
+            if (empty($row) || empty($row['password'])) {
+                echo json_encode(['result' => 'sent']);
+                return;
+            }
+
+            $code = str_pad((string) mt_rand(0, 999999), 6, '0', STR_PAD_LEFT);
+            $this->db->where('email', $email)->delete('droppy_password_resets');
+            $this->db->insert('droppy_password_resets', [
+                'email'      => $email,
+                'code'       => $code,
+                'created_at' => time(),
+                'used'       => 0,
+            ]);
+
+            $this->load->library('email');
+            $site    = $this->config->item('site_name') ?: 'Envento';
+            $subject = 'Your ' . $site . ' password reset code: ' . $code;
+            $body    = '<div style="font-family:sans-serif;max-width:480px;margin:0 auto;padding:32px;">'
+                     . '<h2 style="margin-bottom:8px;">Reset your password</h2>'
+                     . '<p style="color:#555;margin-bottom:24px;">Use the code below to reset your password for <strong>' . htmlspecialchars($site) . '</strong>. It expires in 15 minutes.</p>'
+                     . '<div style="font-size:36px;font-weight:700;letter-spacing:8px;text-align:center;padding:20px;background:#f4f4f8;border-radius:8px;">' . $code . '</div>'
+                     . '<p style="color:#999;font-size:12px;margin-top:24px;">If you did not request this reset, you can safely ignore this email.</p>'
+                     . '</div>';
+
+            try {
+                $theme   = $this->config->item('theme');
+                $message = $this->load->view('themes/' . $theme . '/emails/email.php', [
+                    'body'     => $body,
+                    'logo'     => $this->config->item('site_url') . $this->config->item('logo_path'),
+                    'settings' => $this->config->config,
+                ], TRUE);
+
+                $this->email->message($message);
+                $this->email->subject($subject);
+                $this->email->set_alt_message('Please use a HTML supported email client to view this message.');
+                $this->email->from($this->config->item('email_from_email'), $this->config->item('email_from_name'));
+                $this->email->to($email);
+
+                $sent = $this->email->send();
+            } catch (Exception $e) {
+                $sent = false;
+            }
+
+            echo json_encode(['result' => $sent ? 'sent' : 'error']);
+        } catch (Exception $e) {
+            echo json_encode(['result' => 'error']);
+        }
+    }
+
+    /**
+     * POST handler/reset_password { email, code, password }
+     */
+    public function reset_password()
+    {
+        header('Content-Type: application/json');
+
+        $email = trim((string) $this->input->post('email', TRUE));
+        $code  = trim((string) $this->input->post('code', TRUE));
+        $pass  = (string) $this->input->post('password', TRUE);
+
+        if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            echo json_encode(['result' => 'invalid_email']);
+            return;
+        }
+        if ($code === '') {
+            echo json_encode(['result' => 'invalid']);
+            return;
+        }
+        if (strlen($pass) < 8) {
+            echo json_encode(['result' => 'weak_password']);
+            return;
+        }
+
+        try {
+            $this->load->model('users');
+            $user = $this->users->getByEmail($email);
+            if (empty($user)) {
+                echo json_encode(['result' => 'invalid']);
+                return;
+            }
+
+            $row = $this->db
+                ->where('email', $email)
+                ->where('code', $code)
+                ->where('used', 0)
+                ->get('droppy_password_resets')
+                ->row_array();
+
+            if (empty($row)) {
+                echo json_encode(['result' => 'invalid']);
+                return;
+            }
+
+            if ((time() - (int) $row['created_at']) > 900) {
+                echo json_encode(['result' => 'expired']);
+                return;
+            }
+
+            $hash = password_hash($pass, PASSWORD_DEFAULT);
+            if (empty($hash)) {
+                echo json_encode(['result' => 'error']);
+                return;
+            }
+
+            if (!$this->users->updateByID(['password' => $hash], $user['id'])) {
+                echo json_encode(['result' => 'error']);
+                return;
+            }
+
+            $this->db->where('email', $email)->update('droppy_password_resets', ['used' => 1]);
+
+            echo json_encode(['result' => 'ok']);
+        } catch (Exception $e) {
+            echo json_encode(['result' => 'error']);
+        }
+    }
+
+    /**
      * Phase B — OTP: clear the OTP session (sign out)
      * POST handler/otp_logout
      */

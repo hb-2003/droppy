@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:get/get.dart';
 import 'package:sendlargefiles/modules/history/history_controller.dart';
+import 'package:sendlargefiles/modules/home/home_controller.dart';
 
 class AppShellController extends GetxController {
   /// 0 = Home, 1 = History, 2 = Receive, 3 = Plans, 4 = Settings
@@ -9,7 +10,10 @@ class AppShellController extends GetxController {
   Timer? _historyDebounce;
 
   void setTab(int i) {
-    if (tabIndex.value == i) return; // already on this tab — skip
+    if (tabIndex.value == i) {
+      if (i == 0) _focusHomeTab();
+      return;
+    }
     tabIndex.value = i;
 
     if (i == 1) {
@@ -21,6 +25,14 @@ class AppShellController extends GetxController {
           Get.find<HistoryController>().load(force: true, migrateLocal: true);
         }
       });
+    }
+  }
+
+  void _focusHomeTab() {
+    if (!Get.isRegistered<HomeController>()) return;
+    final home = Get.find<HomeController>();
+    if (home.finishedLink.value.isNotEmpty || home.mailFinished.value) {
+      home.resetForNewTransfer();
     }
   }
 

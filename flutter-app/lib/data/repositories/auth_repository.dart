@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart' as dio;
 import 'package:get/get.dart';
 import 'package:sendlargefiles/data/providers/api_client.dart';
+
 class AuthRepository extends GetxService {
   final RxBool loggedIn = false.obs;
   final RxString sessionEmail = ''.obs;
@@ -89,6 +90,46 @@ class AuthRepository extends GetxService {
         sessionEmail.value = (resp.data?['email'] as String?)?.trim() ?? email.trim();
       }
       return result;
+    } catch (_) {
+      return 'error';
+    }
+  }
+
+  /// POST handler/request_password_reset { email }
+  Future<String> requestPasswordReset(String email) async {
+    final client = ApiClient.instance.dio;
+    try {
+      final resp = await client.post<Map<String, dynamic>>(
+        'handler/request_password_reset',
+        data: dio.FormData.fromMap({'email': email}),
+        options: dio.Options(
+          validateStatus: (s) => s != null && s < 500,
+          contentType: dio.Headers.multipartFormDataContentType,
+        ),
+      );
+      return (resp.data?['result'] as String?) ?? 'error';
+    } catch (_) {
+      return 'error';
+    }
+  }
+
+  /// POST handler/reset_password { email, code, password }
+  Future<String> resetPassword(String email, String code, String password) async {
+    final client = ApiClient.instance.dio;
+    try {
+      final resp = await client.post<Map<String, dynamic>>(
+        'handler/reset_password',
+        data: dio.FormData.fromMap({
+          'email': email,
+          'code': code,
+          'password': password,
+        }),
+        options: dio.Options(
+          validateStatus: (s) => s != null && s < 500,
+          contentType: dio.Headers.multipartFormDataContentType,
+        ),
+      );
+      return (resp.data?['result'] as String?) ?? 'error';
     } catch (_) {
       return 'error';
     }

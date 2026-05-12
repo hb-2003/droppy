@@ -6,6 +6,7 @@ import 'package:sendlargefiles/l10n/app_localizations.dart';
 import 'package:sendlargefiles/modules/download/receive_controller.dart';
 import 'package:sendlargefiles/widgets/app_snackbar.dart';
 import 'package:sendlargefiles/widgets/app_top_bar.dart';
+import 'package:sendlargefiles/widgets/password_text_field.dart';
 import 'package:sendlargefiles/widgets/transfer_qr_scanner_page.dart';
 
 // ── Theme helpers ─────────────────────────────────────────────────────────────
@@ -531,9 +532,8 @@ class _TransferDetailsCard extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 10),
-                TextField(
+                PasswordTextField(
                   controller: controller.passwordCtrl,
-                  obscureText: true,
                   style: TextStyle(color: _onSurface(context), fontSize: 14),
                   decoration: InputDecoration(
                     hintText: t.enterPassword,

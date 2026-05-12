@@ -90,6 +90,9 @@ class AppLocalizationsHi extends AppLocalizations {
   String get share => 'साझा करें';
 
   @override
+  String get shareQrCode => 'QR कोड साझा करें';
+
+  @override
   String get uploadMore => 'एक और भेजें';
 
   @override
@@ -547,7 +550,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get snackPasswordMin8 => 'पासवर्ड कम से कम 8 अक्षर का होना चाहिए';
 
   @override
-  String get snackPasswordMismatch => 'पासवर्ड मेल नहीं खाते';
+  String get snackPasswordMismatch => 'पासवर्ड मेल नहीं खाते।';
 
   @override
   String get snackAccountExists => 'खाता पहले से मौजूद है। कृपया साइन इन करें।';
@@ -873,6 +876,49 @@ class AppLocalizationsHi extends AppLocalizations {
   @override
   String get loginEmailPasswordPrompt =>
       'साइन इन के लिए अपना ईमेल और पासवर्ड दर्ज करें।';
+
+  @override
+  String get forgotPassword => 'पासवर्ड भूल गए?';
+
+  @override
+  String get forgotPasswordTitle => 'पासवर्ड रीसेट करें';
+
+  @override
+  String get forgotPasswordBody =>
+      'अपना खाता ईमेल दर्ज करें, हम रीसेट कोड भेजेंगे।';
+
+  @override
+  String get forgotPasswordSubmit => 'रीसेट कोड भेजें';
+
+  @override
+  String get resetPasswordTitle => 'नया पासवर्ड बनाएं';
+
+  @override
+  String get resetPasswordBody =>
+      'ईमेल से 6-अंकीय कोड दर्ज करें और नया पासवर्ड चुनें।';
+
+  @override
+  String get resetPasswordSubmit => 'पासवर्ड अपडेट करें';
+
+  @override
+  String get snackPasswordResetSent => 'रीसेट कोड भेजा गया';
+
+  @override
+  String get snackPasswordResetSentBody =>
+      '6-अंकीय रीसेट कोड के लिए अपना ईमेल देखें।';
+
+  @override
+  String get snackPasswordResetFailed =>
+      'रीसेट कोड नहीं भेजा जा सका। फिर कोशिश करें।';
+
+  @override
+  String get snackPasswordUpdated => 'पासवर्ड अपडेट हो गया';
+
+  @override
+  String get snackPasswordUpdatedBody => 'नए पासवर्ड से साइन इन करें।';
+
+  @override
+  String get snackPasswordResetInvalid => 'अमान्य या समाप्त रीसेट कोड।';
 
   @override
   String get otpDigitLabel => '6-अंकीय कोड';

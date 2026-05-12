@@ -6,6 +6,7 @@ import 'package:sendlargefiles/l10n/app_localizations.dart';
 import 'package:sendlargefiles/localization/locale_rebuild.dart';
 import 'package:sendlargefiles/modules/login/login_controller.dart';
 import 'package:sendlargefiles/widgets/auth_top_bar.dart';
+import 'package:sendlargefiles/widgets/password_text_field.dart';
 
 // ── Theme helpers (computed at build time so they work in both light & dark) ───
 Color _bg(BuildContext ctx) => Theme.of(ctx).scaffoldBackgroundColor;
@@ -114,14 +115,23 @@ class _EmailScreen extends StatelessWidget {
                         const SizedBox(height: 16),
                         _Label(t.passwordLabelCaps),
                         const SizedBox(height: 8),
-                        _Field(
+                        _PasswordField(
                           ctrl: controller.passwordCtrl,
                           hint: t.passwordHint,
-                          keyboardType: TextInputType.visiblePassword,
-                          obscureText: true,
                           onSubmitted: (_) => controller.loginPassword(),
                         ),
-                        const SizedBox(height: 20),
+                        const SizedBox(height: 8),
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: TextButton(
+                            onPressed: () => Get.toNamed(AppRoutes.forgotPassword),
+                            child: Text(
+                              t.forgotPassword,
+                              style: TextStyle(color: accent, fontWeight: FontWeight.w600, fontSize: 13),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 12),
                         Obx(() => _PrimaryButton(
                           label: t.signIn,
                           icon: Icons.arrow_forward_rounded,
@@ -313,7 +323,6 @@ class _Field extends StatelessWidget {
     required this.ctrl,
     required this.hint,
     this.keyboardType,
-    this.obscureText = false,
     this.textAlign = TextAlign.start,
     this.fontSize = 15.0,
     this.letterSpacing = 0.0,
@@ -324,7 +333,6 @@ class _Field extends StatelessWidget {
   final TextEditingController ctrl;
   final String hint;
   final TextInputType? keyboardType;
-  final bool obscureText;
   final TextAlign textAlign;
   final double fontSize;
   final double letterSpacing;
@@ -340,7 +348,6 @@ class _Field extends StatelessWidget {
     return TextField(
       controller: ctrl,
       keyboardType: keyboardType,
-      obscureText: obscureText,
       textAlign: textAlign,
       maxLength: maxLength,
       autofocus: autofocus,
@@ -350,6 +357,42 @@ class _Field extends StatelessWidget {
       decoration: InputDecoration(
         hintText: hint,
         hintStyle: TextStyle(color: onSurface.withValues(alpha: 0.30), fontSize: fontSize, letterSpacing: 0, fontWeight: FontWeight.w400),
+        counterText: '',
+        filled: true,
+        fillColor: _fieldBg(context),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(14), borderSide: BorderSide(color: line)),
+        enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(14), borderSide: BorderSide(color: line)),
+        focusedBorder: OutlineInputBorder(borderRadius: const BorderRadius.all(Radius.circular(14)), borderSide: BorderSide(color: accent, width: 1.5)),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 18, vertical: 16),
+      ),
+    );
+  }
+}
+
+class _PasswordField extends StatelessWidget {
+  const _PasswordField({
+    required this.ctrl,
+    required this.hint,
+    this.onSubmitted,
+  });
+
+  final TextEditingController ctrl;
+  final String hint;
+  final ValueChanged<String>? onSubmitted;
+
+  @override
+  Widget build(BuildContext context) {
+    final accent = _accent(context);
+    final onSurface = _onSurface(context);
+    final line = _line(context);
+    return PasswordTextField(
+      controller: ctrl,
+      onSubmitted: onSubmitted,
+      textInputAction: onSubmitted != null ? TextInputAction.done : null,
+      style: TextStyle(color: onSurface, fontSize: 15, letterSpacing: 0, fontWeight: FontWeight.w600),
+      decoration: InputDecoration(
+        hintText: hint,
+        hintStyle: TextStyle(color: onSurface.withValues(alpha: 0.30), fontSize: 15, letterSpacing: 0, fontWeight: FontWeight.w400),
         counterText: '',
         filled: true,
         fillColor: _fieldBg(context),

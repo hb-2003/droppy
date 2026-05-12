@@ -6,6 +6,7 @@ import 'package:sendlargefiles/l10n/app_localizations.dart';
 import 'package:sendlargefiles/app/theme/app_theme.dart';
 import 'package:sendlargefiles/modules/home/home_controller.dart';
 import 'package:sendlargefiles/widgets/app_snackbar.dart';
+import 'package:sendlargefiles/widgets/password_text_field.dart';
 const _accentGlow = Color(0x33D4FF3B);
 
 Color _bg(BuildContext c) => Theme.of(c).scaffoldBackgroundColor;
@@ -106,6 +107,7 @@ class _MailShareForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final t = AppLocalizations.of(context)!;
+    final fieldStyle = _homeTextFieldStyle(context);
     return Form(
       key: controller.mailFormKey,
       autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -116,13 +118,11 @@ class _MailShareForm extends StatelessWidget {
             controller: controller.emailFromCtrl!,
             focusNode: controller.emailFromFocus,
             keyboardType: TextInputType.emailAddress,
-            decoration: InputDecoration(
-              hintText: t.emailFrom,
-              prefixIcon: Icon(
-                Icons.person_outline_rounded,
-                color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.55),
-                size: 18,
-              ),
+            style: fieldStyle,
+            decoration: _homeTextFieldDecoration(
+              context,
+              hint: t.emailFrom,
+              prefixIcon: Icons.person_outline_rounded,
             ),
             validator: (v) {
               final s = (v ?? '').trim();
@@ -138,13 +138,11 @@ class _MailShareForm extends StatelessWidget {
             controller: controller.emailToCtrl!,
             focusNode: controller.emailToFocus,
             keyboardType: TextInputType.emailAddress,
-            decoration: InputDecoration(
-              hintText: t.recipientEmail,
-              prefixIcon: Icon(
-                Icons.group_outlined,
-                color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.55),
-                size: 18,
-              ),
+            style: fieldStyle,
+            decoration: _homeTextFieldDecoration(
+              context,
+              hint: t.recipientEmail,
+              prefixIcon: Icons.group_outlined,
             ),
             validator: (v) {
               final s = (v ?? '').trim();
@@ -164,13 +162,11 @@ class _MailShareForm extends StatelessWidget {
             controller: controller.messageCtrl!,
             keyboardType: TextInputType.text,
             maxLines: 3,
-            decoration: InputDecoration(
-              hintText: t.message,
-              prefixIcon: Icon(
-                Icons.chat_bubble_outline_rounded,
-                color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.55),
-                size: 18,
-              ),
+            style: fieldStyle,
+            decoration: _homeTextFieldDecoration(
+              context,
+              hint: t.message,
+              prefixIcon: Icons.chat_bubble_outline_rounded,
             ),
             validator: (v) {
               final s = (v ?? '').trim();
@@ -759,6 +755,45 @@ class _ExpiryDropdown extends StatelessWidget {
   }
 }
 
+// ── Shared home text field decoration ─────────────────────────────────────────
+
+InputDecoration _homeTextFieldDecoration(
+  BuildContext context, {
+  required String hint,
+  IconData? prefixIcon,
+}) {
+  final scheme = Theme.of(context).colorScheme;
+  return InputDecoration(
+    hintText: hint,
+    hintStyle: TextStyle(color: scheme.onSurface.withValues(alpha: 0.35), fontSize: 14),
+    filled: true,
+    fillColor: _fieldBg(context),
+    prefixIcon: prefixIcon != null
+        ? Icon(prefixIcon, color: scheme.onSurface.withValues(alpha: 0.55), size: 18)
+        : null,
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(12),
+      borderSide: BorderSide(color: _line(context)),
+    ),
+    enabledBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(12),
+      borderSide: BorderSide(color: _line(context)),
+    ),
+    focusedBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(12),
+      borderSide: BorderSide(color: scheme.primary, width: 1.5),
+    ),
+    contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+  );
+}
+
+TextStyle _homeTextFieldStyle(BuildContext context) {
+  return TextStyle(
+    color: Theme.of(context).colorScheme.onSurface,
+    fontSize: 14,
+  );
+}
+
 // ── Shared dark field ─────────────────────────────────────────────────────────
 
 class _DarkField extends StatelessWidget {
@@ -775,22 +810,24 @@ class _DarkField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
+    final decoration = _homeTextFieldDecoration(
+      context,
+      hint: hint,
+      prefixIcon: prefixIcon,
+    );
+
+    if (obscureText) {
+      return PasswordTextField(
+        controller: ctrl,
+        style: _homeTextFieldStyle(context),
+        decoration: decoration,
+      );
+    }
+
     return TextField(
       controller: ctrl,
-      obscureText: obscureText,
-      style: TextStyle(color: scheme.onSurface, fontSize: 14),
-      decoration: InputDecoration(
-        hintText: hint,
-        hintStyle: TextStyle(color: scheme.onSurface.withValues(alpha: 0.35), fontSize: 14),
-        filled: true,
-        fillColor: _fieldBg(context),
-        prefixIcon: prefixIcon != null ? Icon(prefixIcon, color: scheme.onSurface.withValues(alpha: 0.55), size: 18) : null,
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide(color: _line(context))),
-        enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide(color: _line(context))),
-        focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide(color: scheme.primary, width: 1.5)),
-        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-      ),
+      style: _homeTextFieldStyle(context),
+      decoration: decoration,
     );
   }
 }
@@ -999,6 +1036,11 @@ class _SuccessPane extends StatelessWidget {
           const SizedBox(height: 12),
           _AccentButton(label: t.share, icon: Icons.share_rounded, onTap: controller.shareResult),
           const SizedBox(height: 10),
+          _OutlineButton(
+            label: t.shareQrCode,
+            onTap: controller.shareQrCode,
+          ),
+          const SizedBox(height: 10),
         ],
         _OutlineButton(
           label: t.uploadMore,
@@ -1155,9 +1197,12 @@ class _UploadBar extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
         child: Obx(() {
-          final disabled = controller.files.isEmpty ||
-              controller.uploading.value ||
-              controller.pickingFiles.value;
+          if (controller.files.isEmpty) {
+            return const SizedBox.shrink();
+          }
+
+          final disabled =
+              controller.uploading.value || controller.pickingFiles.value;
           return FilledButton(
             onPressed: disabled ? null : () => controller.startSend(context),
             style: FilledButton.styleFrom(minimumSize: const Size.fromHeight(52)),

@@ -260,6 +260,12 @@ abstract class AppLocalizations {
   /// **'Share'**
   String get share;
 
+  /// No description provided for @shareQrCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Share QR code'**
+  String get shareQrCode;
+
   /// No description provided for @uploadMore.
   ///
   /// In en, this message translates to:
@@ -1115,7 +1121,7 @@ abstract class AppLocalizations {
   /// No description provided for @snackPasswordMismatch.
   ///
   /// In en, this message translates to:
-  /// **'Passwords do not match'**
+  /// **'Passwords do not match.'**
   String get snackPasswordMismatch;
 
   /// No description provided for @snackAccountExists.
@@ -1681,6 +1687,84 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Enter your email and password to sign in.'**
   String get loginEmailPasswordPrompt;
+
+  /// No description provided for @forgotPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Forgot password?'**
+  String get forgotPassword;
+
+  /// No description provided for @forgotPasswordTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset password'**
+  String get forgotPasswordTitle;
+
+  /// No description provided for @forgotPasswordBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your account email and we will send a reset code.'**
+  String get forgotPasswordBody;
+
+  /// No description provided for @forgotPasswordSubmit.
+  ///
+  /// In en, this message translates to:
+  /// **'Send reset code'**
+  String get forgotPasswordSubmit;
+
+  /// No description provided for @resetPasswordTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Create new password'**
+  String get resetPasswordTitle;
+
+  /// No description provided for @resetPasswordBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the 6-digit code from your email and choose a new password.'**
+  String get resetPasswordBody;
+
+  /// No description provided for @resetPasswordSubmit.
+  ///
+  /// In en, this message translates to:
+  /// **'Update password'**
+  String get resetPasswordSubmit;
+
+  /// No description provided for @snackPasswordResetSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset code sent'**
+  String get snackPasswordResetSent;
+
+  /// No description provided for @snackPasswordResetSentBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Check your email for a 6-digit reset code.'**
+  String get snackPasswordResetSentBody;
+
+  /// No description provided for @snackPasswordResetFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not send reset code. Try again.'**
+  String get snackPasswordResetFailed;
+
+  /// No description provided for @snackPasswordUpdated.
+  ///
+  /// In en, this message translates to:
+  /// **'Password updated'**
+  String get snackPasswordUpdated;
+
+  /// No description provided for @snackPasswordUpdatedBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in with your new password.'**
+  String get snackPasswordUpdatedBody;
+
+  /// No description provided for @snackPasswordResetInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid or expired reset code.'**
+  String get snackPasswordResetInvalid;
 
   /// No description provided for @otpDigitLabel.
   ///

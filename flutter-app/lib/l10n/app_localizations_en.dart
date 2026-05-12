@@ -90,6 +90,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get share => 'Share';
 
   @override
+  String get shareQrCode => 'Share QR code';
+
+  @override
   String get uploadMore => 'Send another';
 
   @override
@@ -549,7 +552,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get snackPasswordMin8 => 'Password must be at least 8 characters';
 
   @override
-  String get snackPasswordMismatch => 'Passwords do not match';
+  String get snackPasswordMismatch => 'Passwords do not match.';
 
   @override
   String get snackAccountExists => 'Account already exists. Please sign in.';
@@ -876,6 +879,49 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get loginEmailPasswordPrompt =>
       'Enter your email and password to sign in.';
+
+  @override
+  String get forgotPassword => 'Forgot password?';
+
+  @override
+  String get forgotPasswordTitle => 'Reset password';
+
+  @override
+  String get forgotPasswordBody =>
+      'Enter your account email and we will send a reset code.';
+
+  @override
+  String get forgotPasswordSubmit => 'Send reset code';
+
+  @override
+  String get resetPasswordTitle => 'Create new password';
+
+  @override
+  String get resetPasswordBody =>
+      'Enter the 6-digit code from your email and choose a new password.';
+
+  @override
+  String get resetPasswordSubmit => 'Update password';
+
+  @override
+  String get snackPasswordResetSent => 'Reset code sent';
+
+  @override
+  String get snackPasswordResetSentBody =>
+      'Check your email for a 6-digit reset code.';
+
+  @override
+  String get snackPasswordResetFailed =>
+      'Could not send reset code. Try again.';
+
+  @override
+  String get snackPasswordUpdated => 'Password updated';
+
+  @override
+  String get snackPasswordUpdatedBody => 'Sign in with your new password.';
+
+  @override
+  String get snackPasswordResetInvalid => 'Invalid or expired reset code.';
 
   @override
   String get otpDigitLabel => '6-DIGIT CODE';

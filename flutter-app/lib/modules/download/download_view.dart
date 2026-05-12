@@ -4,6 +4,7 @@ import 'package:sendlargefiles/l10n/app_localizations.dart';
 import 'package:sendlargefiles/localization/locale_rebuild.dart';
 import 'package:sendlargefiles/modules/download/download_controller.dart';
 import 'package:sendlargefiles/widgets/app_snackbar.dart';
+import 'package:sendlargefiles/widgets/password_text_field.dart';
 
 class DownloadView extends GetView<DownloadController> {
   const DownloadView({super.key});
@@ -76,9 +77,8 @@ class DownloadView extends GetView<DownloadController> {
                   ),
                   if (m.hasPassword && !m.passwordUnlocked) ...[
                     const SizedBox(height: 12),
-                    TextField(
+                    PasswordTextField(
                       controller: controller.passwordCtrl,
-                      obscureText: true,
                       decoration: InputDecoration(labelText: t.passwordHint),
                     ),
                     FilledButton(
