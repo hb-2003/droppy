@@ -16,6 +16,8 @@
   "pickFiles": "फ़ाइलें चुनें",
   "pickFolder": "फ़ोल्डर चुनें",
   "emailFrom": "आपका ईमेल",
+  "mailFromUsesAccount": "साइन-इन ईमेल उपयोग में है।",
+  "recipientEmailsHelper": "कई प्राप्तकर्ता: अलग करने के लिए अल्पविराम, अर्धविराम या खाली जगह का उपयोग करें।",
   "emailTo": "प्राप्तकर्ता का ईमेल",
   "messageOptional": "संदेश (वैकल्पिक)",
   "passwordOptional": "पासवर्ड (वैकल्पिक)",
@@ -35,6 +37,16 @@
   "verifySubmit": "सत्यापित करें",
   "verifyResendCode": "कोड फिर भेजें",
   "verifyCodeSent": "आपके ईमेल पर नया सत्यापन कोड भेजा गया है।",
+  "verifyEmailSmtpWarningTitle": "सत्यापन ईमेल शायद नहीं गया",
+  "verifyEmailSmtpWarningBody": "सर्वर डिलीवरी की पुष्टि नहीं कर सका (अक्सर SMTP गलत होता है)। एडमिन से मेल सेटिंग जाँच करवाएँ, फिर कोड फिर भेजें पर टैप करें।",
+  "verifyEmailCheckSpamHint": "अगर न आए: स्पैम/प्रमोशन देखें, एक मिनट प्रतीक्षा करें, {email} में टाइपो न हो, फिर कोड फिर भेजें।",
+  "@verifyEmailCheckSpamHint": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
   "loginTitle": "साइन इन",
   "signupHint": "अपने साइट खाते का ईमेल और पासवर्ड उपयोग करें।",
   "emailHint": "ईमेल",

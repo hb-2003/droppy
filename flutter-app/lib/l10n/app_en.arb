@@ -16,6 +16,8 @@
   "pickFiles": "Choose files",
   "pickFolder": "Choose folder",
   "emailFrom": "Your email",
+  "mailFromUsesAccount": "Uses your signed-in email.",
+  "recipientEmailsHelper": "Multiple recipients: separate with commas, semicolons, or spaces.",
   "emailTo": "Recipient email",
   "messageOptional": "Message (optional)",
   "passwordOptional": "Password (optional)",
@@ -35,6 +37,16 @@
   "verifySubmit": "Verify",
   "verifyResendCode": "Resend code",
   "verifyCodeSent": "A new verification code was sent to your email.",
+  "verifyEmailSmtpWarningTitle": "Verification email may not have been sent",
+  "verifyEmailSmtpWarningBody": "The server could not confirm delivery (often SMTP is misconfigured). Ask your site admin to check Mail settings in the admin panel, then tap Resend code.",
+  "verifyEmailCheckSpamHint": "If it does not arrive: check Junk/Spam and Promotions, wait a minute, confirm {email} has no typos, then tap Resend.",
+  "@verifyEmailCheckSpamHint": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
   "loginTitle": "Sign in",
   "signupHint": "Use your site account email and password.",
   "emailHint": "Email",

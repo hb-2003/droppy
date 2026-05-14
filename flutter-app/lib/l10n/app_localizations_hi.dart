@@ -57,6 +57,13 @@ class AppLocalizationsHi extends AppLocalizations {
   String get emailFrom => 'आपका ईमेल';
 
   @override
+  String get mailFromUsesAccount => 'साइन-इन ईमेल उपयोग में है।';
+
+  @override
+  String get recipientEmailsHelper =>
+      'कई प्राप्तकर्ता: अलग करने के लिए अल्पविराम, अर्धविराम या खाली जगह का उपयोग करें।';
+
+  @override
   String get emailTo => 'प्राप्तकर्ता का ईमेल';
 
   @override
@@ -112,6 +119,18 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get verifyCodeSent => 'आपके ईमेल पर नया सत्यापन कोड भेजा गया है।';
+
+  @override
+  String get verifyEmailSmtpWarningTitle => 'सत्यापन ईमेल शायद नहीं गया';
+
+  @override
+  String get verifyEmailSmtpWarningBody =>
+      'सर्वर डिलीवरी की पुष्टि नहीं कर सका (अक्सर SMTP गलत होता है)। एडमिन से मेल सेटिंग जाँच करवाएँ, फिर कोड फिर भेजें पर टैप करें।';
+
+  @override
+  String verifyEmailCheckSpamHint(String email) {
+    return 'अगर न आए: स्पैम/प्रमोशन देखें, एक मिनट प्रतीक्षा करें, $email में टाइपो न हो, फिर कोड फिर भेजें।';
+  }
 
   @override
   String get loginTitle => 'साइन इन';

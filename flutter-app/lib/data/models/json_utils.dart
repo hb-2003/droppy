@@ -1,6 +1,41 @@
+import 'dart:convert';
+
 /// Safe extraction from dynamic JSON (nullable-first).
 abstract final class JsonRead {
   JsonRead._();
+
+  /// Parses JSON from API bodies that may be wrapped in HTML or served with a wrong `Content-Type`
+  /// (same issue as Droppy `upload/register` on some hosts).
+  static Map<String, dynamic>? decodeResponseJson(String raw) {
+    final s = raw.trim();
+    if (s.isEmpty) return null;
+    for (final candidate in <String>[
+      s,
+      () {
+        final i = s.indexOf('{');
+        final j = s.lastIndexOf('}');
+        if (i < 0 || j <= i) return '';
+        return s.substring(i, j + 1);
+      }(),
+    ]) {
+      if (candidate.isEmpty) continue;
+      try {
+        final decoded = jsonDecode(candidate);
+        if (decoded is Map) {
+          return decoded.map((k, v) => MapEntry(k.toString(), v));
+        }
+      } catch (_) {}
+    }
+    var m = RegExp(r'\{\s*"response"\s*:\s*"([^"]+)"\s*\}').firstMatch(s);
+    if (m != null) {
+      return {'response': m.group(1)};
+    }
+    m = RegExp(r'\{\s*"result"\s*:\s*"([^"]+)"\s*\}').firstMatch(s);
+    if (m != null) {
+      return {'result': m.group(1)};
+    }
+    return null;
+  }
 
   static Map<String, dynamic>? map(dynamic value) {
     if (value == null) return null;

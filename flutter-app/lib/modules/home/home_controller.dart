@@ -48,10 +48,11 @@ class HomeController extends GetxController {
   int _uidCounter = 0;
   CancelToken? _cancelToken;
 
-  // Mail-mode form validation (for "Send by email")
-  final GlobalKey<FormState> mailFormKey = GlobalKey<FormState>();
   final FocusNode emailFromFocus = FocusNode();
   final FocusNode emailToFocus = FocusNode();
+
+  Worker? _authMailLoggedWorker;
+  Worker? _authMailSessionWorker;
 
   AppConfig get cfg => _cfg.current;
 
@@ -121,14 +122,40 @@ class HomeController extends GetxController {
     if (!options.contains(expireSec.value)) {
       expireSec.value = options.last;
     }
+    final auth = Get.find<AuthRepository>();
+    _authMailLoggedWorker = ever(auth.loggedIn, (_) => _syncMailFromWithAccount());
+    _authMailSessionWorker = ever(auth.sessionEmail, (_) => _syncMailFromWithAccount());
   }
 
   @override
   void onClose() {
+    _authMailLoggedWorker?.dispose();
+    _authMailSessionWorker?.dispose();
     super.onClose();
   }
 
-  void setShareMode(String m) => shareMode.value = m;
+  void setShareMode(String m) {
+    shareMode.value = m;
+    if (m == 'mail') {
+      _syncMailFromWithAccount();
+    }
+  }
+
+  /// In mail mode, signed-in users always use their account email as sender.
+  void _syncMailFromWithAccount() {
+    if (shareMode.value != 'mail') return;
+    final auth = Get.find<AuthRepository>();
+    if (!auth.loggedIn.value) {
+      emailFromCtrl?.clear();
+      return;
+    }
+    final acc = auth.sessionEmail.value.trim();
+    if (acc.isEmpty) {
+      emailFromCtrl?.clear();
+      return;
+    }
+    emailFromCtrl?.text = acc;
+  }
 
   Future<void> pickFiles() async {
     if (pickingFiles.value) return;
@@ -227,12 +254,12 @@ class HomeController extends GetxController {
       return;
     }
 
-    // Validate email fields in mail mode (show inline "Please fill..." errors)
     if (shareMode.value == 'mail') {
-      final ok = mailFormKey.currentState?.validate() ?? true;
+      _syncMailFromWithAccount();
+      final ok = Form.maybeOf(context)?.validate() ?? true;
       if (!ok) {
         // Focus first missing field for faster fix.
-        final from = (emailFromCtrl?.text ?? '').trim();
+        final from = resolvedSenderEmail();
         final to = (emailToCtrl?.text ?? '').trim();
         if (from.isEmpty) {
           emailFromFocus.requestFocus();
@@ -269,6 +296,10 @@ class HomeController extends GetxController {
       if (reg.verifyEmail) {
         awaitingVerify.value = true;
         uploading.value = false;
+        if (reg.verifyEmailSent == false) {
+          final t = appL10n();
+          AppSnack.error(t.verifyEmailSmtpWarningTitle, t.verifyEmailSmtpWarningBody);
+        }
         return;
       }
       // Match web behavior: only known error codes block upload.
@@ -293,12 +324,21 @@ class HomeController extends GetxController {
     }
   }
 
-  Future<RegisterResult> _register({String? verifyCode}) {
+  /// Sender address sent to the API (mail mode uses account email when logged in).
+  String resolvedSenderEmail() {
     final fromField = (emailFromCtrl?.text ?? '').trim();
     final sessionEmail = Get.find<AuthRepository>().sessionEmail.value.trim();
-    // For link-mode uploads, keep ownership by associating the OTP session email
-    // (so History can show transfers created while signed in).
-    final emailFrom = shareMode.value == 'link' && fromField.isEmpty ? sessionEmail : fromField;
+    if (shareMode.value == 'link' && fromField.isEmpty) return sessionEmail;
+    if (shareMode.value == 'mail' &&
+        fromField.isEmpty &&
+        sessionEmail.isNotEmpty) {
+      return sessionEmail;
+    }
+    return fromField;
+  }
+
+  Future<RegisterResult> _register({String? verifyCode}) {
+    final emailFrom = resolvedSenderEmail();
 
     return _upload.register(
       uploadId: activeUploadId,
@@ -324,6 +364,10 @@ class HomeController extends GetxController {
       final reg = await _register(verifyCode: null);
       if (reg.verifyEmail) {
         AppSnack.info(appL10n().snackVerify, t?.verifyCodeSent ?? appL10n().verifyCodeSent);
+        if (reg.verifyEmailSent == false) {
+          final loc = appL10n();
+          AppSnack.error(loc.verifyEmailSmtpWarningTitle, loc.verifyEmailSmtpWarningBody);
+        }
       } else if (reg.isOk) {
         awaitingVerify.value = false;
         await _runFileUploadAndComplete(_languagePathForUpload());
@@ -349,7 +393,7 @@ class HomeController extends GetxController {
     uploading.value = true;
     try {
       final verified = await _upload.verifyEmail(
-        emailFrom: (emailFromCtrl?.text ?? '').trim(),
+        emailFrom: resolvedSenderEmail(),
         code: code,
       );
       if (!verified) {
@@ -408,12 +452,7 @@ class HomeController extends GetxController {
 
     await _runWithConcurrency<PickedFileItem>(files.toList(), maxConc, runOne);
 
-    final fromFieldComplete = (emailFromCtrl?.text ?? '').trim();
-    final sessionEmailComplete = Get.find<AuthRepository>().sessionEmail.value.trim();
-    final emailFromForComplete = shareMode.value == 'link' &&
-            fromFieldComplete.isEmpty
-        ? sessionEmailComplete
-        : fromFieldComplete;
+    final emailFromForComplete = resolvedSenderEmail();
 
     await _upload.complete(
       uploadId: activeUploadId,
@@ -492,7 +531,7 @@ class HomeController extends GetxController {
     messageCtrl?.clear();
     passwordCtrl?.clear();
     emailToCtrl?.clear();
-    // Keep email_from (often reused) but you can clear it too if desired.
+    _syncMailFromWithAccount();
   }
 
   static bool _isRegisterError(String code) {

@@ -462,6 +462,7 @@ class Handler extends CI_Controller {
 
         // sendEmailClean() has no return value — call send() directly so we can
         // capture success/failure. We replicate sendEmailClean's setup inline.
+        $sent = false;
         try {
             $theme   = $this->config->item('theme');
             $message = $this->load->view('themes/' . $theme . '/emails/email.php', [
@@ -470,6 +471,7 @@ class Handler extends CI_Controller {
                 'settings' => $this->config->config,
             ], TRUE);
 
+            $this->email->clear();
             $this->email->message($message);
             $this->email->subject($subject);
             $this->email->set_alt_message('Please use a HTML supported email client to view this message.');
@@ -479,6 +481,11 @@ class Handler extends CI_Controller {
             $sent = $this->email->send();
         } catch (Exception $e) {
             $sent = false;
+        }
+
+        if (!$sent) {
+            $this->db->where('email', $email)->delete('droppy_otp');
+            $this->logging->log('request_otp: email send failed for ' . $email . ' | ' . $this->email->print_debugger());
         }
 
         echo json_encode(['result' => $sent ? 'sent' : 'error']);
@@ -684,6 +691,7 @@ class Handler extends CI_Controller {
                      . '<p style="color:#999;font-size:12px;margin-top:24px;">If you did not request this reset, you can safely ignore this email.</p>'
                      . '</div>';
 
+            $sent = false;
             try {
                 $theme   = $this->config->item('theme');
                 $message = $this->load->view('themes/' . $theme . '/emails/email.php', [
@@ -692,6 +700,7 @@ class Handler extends CI_Controller {
                     'settings' => $this->config->config,
                 ], TRUE);
 
+                $this->email->clear();
                 $this->email->message($message);
                 $this->email->subject($subject);
                 $this->email->set_alt_message('Please use a HTML supported email client to view this message.');
@@ -701,6 +710,11 @@ class Handler extends CI_Controller {
                 $sent = $this->email->send();
             } catch (Exception $e) {
                 $sent = false;
+            }
+
+            if (!$sent) {
+                $this->db->where('email', $email)->delete('droppy_password_resets');
+                $this->logging->log('request_password_reset: email send failed for ' . $email . ' | ' . $this->email->print_debugger());
             }
 
             echo json_encode(['result' => $sent ? 'sent' : 'error']);

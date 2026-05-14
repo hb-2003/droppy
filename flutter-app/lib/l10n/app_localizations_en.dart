@@ -57,6 +57,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get emailFrom => 'Your email';
 
   @override
+  String get mailFromUsesAccount => 'Uses your signed-in email.';
+
+  @override
+  String get recipientEmailsHelper =>
+      'Multiple recipients: separate with commas, semicolons, or spaces.';
+
+  @override
   String get emailTo => 'Recipient email';
 
   @override
@@ -113,6 +120,19 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get verifyCodeSent =>
       'A new verification code was sent to your email.';
+
+  @override
+  String get verifyEmailSmtpWarningTitle =>
+      'Verification email may not have been sent';
+
+  @override
+  String get verifyEmailSmtpWarningBody =>
+      'The server could not confirm delivery (often SMTP is misconfigured). Ask your site admin to check Mail settings in the admin panel, then tap Resend code.';
+
+  @override
+  String verifyEmailCheckSpamHint(String email) {
+    return 'If it does not arrive: check Junk/Spam and Promotions, wait a minute, confirm $email has no typos, then tap Resend.';
+  }
 
   @override
   String get loginTitle => 'Sign in';

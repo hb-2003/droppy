@@ -194,6 +194,18 @@ abstract class AppLocalizations {
   /// **'Your email'**
   String get emailFrom;
 
+  /// No description provided for @mailFromUsesAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Uses your signed-in email.'**
+  String get mailFromUsesAccount;
+
+  /// No description provided for @recipientEmailsHelper.
+  ///
+  /// In en, this message translates to:
+  /// **'Multiple recipients: separate with commas, semicolons, or spaces.'**
+  String get recipientEmailsHelper;
+
   /// No description provided for @emailTo.
   ///
   /// In en, this message translates to:
@@ -307,6 +319,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'A new verification code was sent to your email.'**
   String get verifyCodeSent;
+
+  /// No description provided for @verifyEmailSmtpWarningTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Verification email may not have been sent'**
+  String get verifyEmailSmtpWarningTitle;
+
+  /// No description provided for @verifyEmailSmtpWarningBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The server could not confirm delivery (often SMTP is misconfigured). Ask your site admin to check Mail settings in the admin panel, then tap Resend code.'**
+  String get verifyEmailSmtpWarningBody;
+
+  /// No description provided for @verifyEmailCheckSpamHint.
+  ///
+  /// In en, this message translates to:
+  /// **'If it does not arrive: check Junk/Spam and Promotions, wait a minute, confirm {email} has no typos, then tap Resend.'**
+  String verifyEmailCheckSpamHint(String email);
 
   /// No description provided for @loginTitle.
   ///

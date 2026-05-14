@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'dart:convert';
 import 'package:dio/dio.dart' as d;
 import 'package:file_picker/file_picker.dart';
 import 'package:get/get.dart';
@@ -7,34 +6,6 @@ import 'package:path/path.dart' as p;
 import 'package:sendlargefiles/data/models/app_config.dart';
 import 'package:sendlargefiles/data/models/json_utils.dart';
 import 'package:sendlargefiles/data/providers/api_client.dart';
-
-/// Parses JSON from API bodies that may be wrapped in HTML or wrong Content-Type.
-Map<String, dynamic>? _decodeResponseJson(String raw) {
-  final s = raw.trim();
-  if (s.isEmpty) return null;
-  for (final candidate in <String>[
-    s,
-    () {
-      final i = s.indexOf('{');
-      final j = s.lastIndexOf('}');
-      if (i < 0 || j <= i) return '';
-      return s.substring(i, j + 1);
-    }(),
-  ]) {
-    if (candidate.isEmpty) continue;
-    try {
-      final decoded = jsonDecode(candidate);
-      if (decoded is Map) {
-        return decoded.map((k, v) => MapEntry(k.toString(), v));
-      }
-    } catch (_) {}
-  }
-  final m = RegExp(r'\{\s*"response"\s*:\s*"([^"]+)"\s*\}').firstMatch(s);
-  if (m != null) {
-    return {'response': m.group(1)};
-  }
-  return null;
-}
 
 class PickedFileItem {
   PickedFileItem({
@@ -58,9 +29,13 @@ class PickedFileItem {
 }
 
 class RegisterResult {
-  const RegisterResult({this.responseCode});
+  const RegisterResult({this.responseCode, this.verifyEmailSent});
 
   final String? responseCode;
+
+  /// When [responseCode] is `verify_email`: whether the server reports the message was accepted by SMTP.
+  /// Null if the server did not send this field (older installs).
+  final bool? verifyEmailSent;
 
   /// Back-compat with UI that checks `reg.code`.
   String get code => responseCode ?? 'unknown';
@@ -82,13 +57,7 @@ class UploadRepository extends GetxService {
         options: d.Options(responseType: d.ResponseType.plain),
       );
       final raw = (res.data ?? '').trim();
-      Map<String, dynamic>? data;
-      try {
-        final decoded = jsonDecode(raw);
-        if (decoded is Map) {
-          data = decoded.map((k, v) => MapEntry(k.toString(), v));
-        }
-      } catch (_) {}
+      final data = JsonRead.decodeResponseJson(raw);
       final id = JsonRead.string(data?['upload_id']);
       if (id == null || id.isEmpty) return null;
       return id;
@@ -145,15 +114,13 @@ class UploadRepository extends GetxService {
         ),
       );
       final raw = (res.data ?? '').trim();
-      Map<String, dynamic>? data;
-      try {
-        final decoded = jsonDecode(raw);
-        if (decoded is Map) {
-          data = decoded.map((k, v) => MapEntry(k.toString(), v));
-        }
-      } catch (_) {}
+      final data = JsonRead.decodeResponseJson(raw);
       final code = JsonRead.string(data?['response']);
-      return RegisterResult(responseCode: code);
+      bool? emailSent;
+      if (data != null && data.containsKey('email_sent')) {
+        emailSent = JsonRead.boolVal(data['email_sent']);
+      }
+      return RegisterResult(responseCode: code, verifyEmailSent: emailSent);
     } catch (_) {
       return const RegisterResult(responseCode: null);
     }
@@ -185,7 +152,7 @@ class UploadRepository extends GetxService {
         ),
       );
       final raw = (res.data ?? '').toString();
-      final data = _decodeResponseJson(raw);
+      final data = JsonRead.decodeResponseJson(raw);
       final resp = JsonRead.string(data?['response']);
       return resp == 'ok';
     } catch (_) {

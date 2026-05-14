@@ -126,6 +126,15 @@ class Emailverify extends CI_Model {
         return true;
     }
 
+    /**
+     * Remove all verification rows for an address so a new upload issues a fresh code
+     * and old verified codes cannot bypass the mail gate.
+     */
+    function deleteAllForEmail($email) {
+        $this->db->delete('droppy_email_verify', array('email' => $email));
+        return true;
+    }
+
     function countVerifiedByEmail($email) {
         $this->db->select('*');
         $this->db->from('droppy_email_verify');

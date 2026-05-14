@@ -97,6 +97,8 @@ class Upload extends CI_Controller
         }
 
         $error = false;
+        /** @var bool|null When response is verify_email: whether SMTP accepted the message */
+        $verify_email_sent = null;
 
         // Check IP upload rate limit (per-hour)
         $this->load->library('UploadLib');
@@ -195,6 +197,10 @@ class Upload extends CI_Controller
                         } else {
                             $code = mt_rand(1000, 9999);
 
+                            // Fresh code for this attempt; drop stale rows so old verified codes
+                            // cannot skip verification and leave the user waiting for an email that was never sent.
+                            $this->emailverify->deleteAllForEmail($post_data['email_from']);
+
                             $this->emailverify->add(array(
                                 'email' => $post_data['email_from'],
                                 'time' => time(),
@@ -202,16 +208,22 @@ class Upload extends CI_Controller
                             ));
 
                             // Send OTP email to sender
+                            $email_sent = false;
                             try {
                                 $this->load->library('email');
                                 $email_data = array('upload_id' => $post_data['upload_id'], 'code' => $code);
-                                $this->email->sendEmail('email_verify', $email_data, array($post_data['email_from']));
+                                $email_sent = (bool) $this->email->sendEmail('email_verify', $email_data, array($post_data['email_from']));
                             } catch (Exception $e) {
-                                // OTP saved in DB even if email fails — user can request resend
+                                $this->logging->log($post_data['upload_id'] . " > email_verify send exception: " . $e->getMessage());
+                            }
+
+                            if (!$email_sent) {
+                                $this->logging->log($post_data['upload_id'] . " > email_verify SMTP send returned false — check admin Mail settings");
                             }
 
                             $this->logging->log($post_data['upload_id'] . " > Sender email is not verified, requesting verification from user..");
                             $error = 'verify_email';
+                            $verify_email_sent = $email_sent;
                         }
                     } else {
                         $this->logging->log($post_data['upload_id'] . " > Error! Sender email is incorrect or recipients are not filled");
@@ -249,7 +261,11 @@ class Upload extends CI_Controller
         }
         else
         {
-            echo json_encode(array('response' => $error));
+            $payload = array('response' => $error);
+            if ($error === 'verify_email' && $verify_email_sent !== null) {
+                $payload['email_sent'] = $verify_email_sent;
+            }
+            echo json_encode($payload);
         }
     }
 

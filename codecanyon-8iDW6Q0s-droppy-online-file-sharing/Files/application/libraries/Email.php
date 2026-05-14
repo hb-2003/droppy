@@ -2592,13 +2592,13 @@ class Email {
         $this->CI->logging->log("Sending email '$template' to ".json_encode($to));
 
         // Whooosh, send the email
-        $this->send(FALSE);
+        $sent = $this->send(FALSE);
 
         $this->CI->logging->log($this->print_debugger());
 
         $this->clear();
 
-        return true;
+        return $sent;
     }
 
     /**

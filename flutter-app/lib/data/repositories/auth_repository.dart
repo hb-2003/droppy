@@ -1,6 +1,18 @@
 import 'package:dio/dio.dart' as dio;
 import 'package:get/get.dart';
+import 'package:sendlargefiles/data/models/json_utils.dart';
 import 'package:sendlargefiles/data/providers/api_client.dart';
+
+/// Handler JSON posts: some hosts return JSON as `text/html` or wrap the body, so Dio
+/// may not decode to a [Map]. We always request plain text and parse with [JsonRead.decodeResponseJson].
+dio.Options _handlerPostOptions() => dio.Options(
+      validateStatus: (s) => s != null && s < 500,
+      contentType: dio.Headers.multipartFormDataContentType,
+      responseType: dio.ResponseType.plain,
+    );
+
+String _resultFromBody(String raw) =>
+    JsonRead.string(JsonRead.decodeResponseJson(raw)?['result']) ?? 'error';
 
 class AuthRepository extends GetxService {
   final RxBool loggedIn = false.obs;
@@ -11,18 +23,18 @@ class AuthRepository extends GetxService {
   Future<String> loginWithPassword(String email, String password) async {
     final client = ApiClient.instance.dio;
     try {
-      final resp = await client.post<Map<String, dynamic>>(
+      final resp = await client.post<String>(
         'handler/login_password',
         data: dio.FormData.fromMap({'email': email, 'password': password}),
-        options: dio.Options(
-          validateStatus: (s) => s != null && s < 500,
-          contentType: dio.Headers.multipartFormDataContentType,
-        ),
+        options: _handlerPostOptions(),
       );
-      final result = (resp.data?['result'] as String?) ?? 'error';
+      final data = JsonRead.decodeResponseJson((resp.data ?? '').toString());
+      final result = JsonRead.string(data?['result']) ?? 'error';
       if (result == 'ok') {
         loggedIn.value = true;
-        sessionEmail.value = (resp.data?['email'] as String?)?.trim() ?? email.trim();
+        sessionEmail.value = (JsonRead.string(data?['email']) ?? '').trim().isEmpty
+            ? email.trim()
+            : JsonRead.string(data?['email'])!.trim();
       }
       return result;
     } catch (_) {
@@ -33,18 +45,18 @@ class AuthRepository extends GetxService {
   Future<String> signupWithPassword(String email, String password) async {
     final client = ApiClient.instance.dio;
     try {
-      final resp = await client.post<Map<String, dynamic>>(
+      final resp = await client.post<String>(
         'handler/signup_password',
         data: dio.FormData.fromMap({'email': email, 'password': password}),
-        options: dio.Options(
-          validateStatus: (s) => s != null && s < 500,
-          contentType: dio.Headers.multipartFormDataContentType,
-        ),
+        options: _handlerPostOptions(),
       );
-      final result = (resp.data?['result'] as String?) ?? 'error';
+      final data = JsonRead.decodeResponseJson((resp.data ?? '').toString());
+      final result = JsonRead.string(data?['result']) ?? 'error';
       if (result == 'ok') {
         loggedIn.value = true;
-        sessionEmail.value = (resp.data?['email'] as String?)?.trim() ?? email.trim();
+        sessionEmail.value = (JsonRead.string(data?['email']) ?? '').trim().isEmpty
+            ? email.trim()
+            : JsonRead.string(data?['email'])!.trim();
       }
       return result;
     } catch (_) {
@@ -57,15 +69,12 @@ class AuthRepository extends GetxService {
   Future<String> requestOtp(String email) async {
     final client = ApiClient.instance.dio;
     try {
-      final resp = await client.post<Map<String, dynamic>>(
+      final resp = await client.post<String>(
         'handler/request_otp',
         data: dio.FormData.fromMap({'email': email}),
-        options: dio.Options(
-          validateStatus: (s) => s != null && s < 500,
-          contentType: dio.Headers.multipartFormDataContentType,
-        ),
+        options: _handlerPostOptions(),
       );
-      return (resp.data?['result'] as String?) ?? 'error';
+      return _resultFromBody((resp.data ?? '').toString());
     } catch (_) {
       return 'error';
     }
@@ -76,18 +85,18 @@ class AuthRepository extends GetxService {
   Future<String> verifyOtp(String email, String code) async {
     final client = ApiClient.instance.dio;
     try {
-      final resp = await client.post<Map<String, dynamic>>(
+      final resp = await client.post<String>(
         'handler/verify_otp',
         data: dio.FormData.fromMap({'email': email, 'code': code}),
-        options: dio.Options(
-          validateStatus: (s) => s != null && s < 500,
-          contentType: dio.Headers.multipartFormDataContentType,
-        ),
+        options: _handlerPostOptions(),
       );
-      final result = (resp.data?['result'] as String?) ?? 'error';
+      final data = JsonRead.decodeResponseJson((resp.data ?? '').toString());
+      final result = JsonRead.string(data?['result']) ?? 'error';
       if (result == 'ok') {
         loggedIn.value = true;
-        sessionEmail.value = (resp.data?['email'] as String?)?.trim() ?? email.trim();
+        sessionEmail.value = (JsonRead.string(data?['email']) ?? '').trim().isEmpty
+            ? email.trim()
+            : JsonRead.string(data?['email'])!.trim();
       }
       return result;
     } catch (_) {
@@ -99,15 +108,12 @@ class AuthRepository extends GetxService {
   Future<String> requestPasswordReset(String email) async {
     final client = ApiClient.instance.dio;
     try {
-      final resp = await client.post<Map<String, dynamic>>(
+      final resp = await client.post<String>(
         'handler/request_password_reset',
         data: dio.FormData.fromMap({'email': email}),
-        options: dio.Options(
-          validateStatus: (s) => s != null && s < 500,
-          contentType: dio.Headers.multipartFormDataContentType,
-        ),
+        options: _handlerPostOptions(),
       );
-      return (resp.data?['result'] as String?) ?? 'error';
+      return _resultFromBody((resp.data ?? '').toString());
     } catch (_) {
       return 'error';
     }
@@ -117,19 +123,16 @@ class AuthRepository extends GetxService {
   Future<String> resetPassword(String email, String code, String password) async {
     final client = ApiClient.instance.dio;
     try {
-      final resp = await client.post<Map<String, dynamic>>(
+      final resp = await client.post<String>(
         'handler/reset_password',
         data: dio.FormData.fromMap({
           'email': email,
           'code': code,
           'password': password,
         }),
-        options: dio.Options(
-          validateStatus: (s) => s != null && s < 500,
-          contentType: dio.Headers.multipartFormDataContentType,
-        ),
+        options: _handlerPostOptions(),
       );
-      return (resp.data?['result'] as String?) ?? 'error';
+      return _resultFromBody((resp.data ?? '').toString());
     } catch (_) {
       return 'error';
     }
@@ -139,14 +142,17 @@ class AuthRepository extends GetxService {
   Future<void> refreshAuthFromServer() async {
     final client = ApiClient.instance.dio;
     try {
-      final resp = await client.get<Map<String, dynamic>>(
+      final resp = await client.get<String>(
         'handler/history_json',
-        options: dio.Options(validateStatus: (s) => s != null && s < 500),
+        options: dio.Options(
+          validateStatus: (s) => s != null && s < 500,
+          responseType: dio.ResponseType.plain,
+        ),
       );
-      final data = resp.data;
-      final r = (data?['result'] as String?) ?? 'error';
+      final data = JsonRead.decodeResponseJson((resp.data ?? '').toString());
+      final r = JsonRead.string(data?['result']) ?? 'error';
       loggedIn.value = r == 'ok';
-      sessionEmail.value = loggedIn.value ? ((data?['email'] as String?)?.trim() ?? '') : '';
+      sessionEmail.value = loggedIn.value ? ((JsonRead.string(data?['email']) ?? '').trim()) : '';
     } catch (_) {
       loggedIn.value = false;
       sessionEmail.value = '';
@@ -157,9 +163,12 @@ class AuthRepository extends GetxService {
   Future<void> logout() async {
     final client = ApiClient.instance.dio;
     try {
-      await client.post<dynamic>(
+      await client.post<String>(
         'handler/otp_logout',
-        options: dio.Options(validateStatus: (s) => s != null && s < 500),
+        options: dio.Options(
+          validateStatus: (s) => s != null && s < 500,
+          responseType: dio.ResponseType.plain,
+        ),
       );
     } catch (_) {}
     await ApiClient.instance.clearCookies();
