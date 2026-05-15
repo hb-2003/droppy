@@ -668,7 +668,7 @@ class Handler extends CI_Controller {
             $this->load->model('users');
             $row = $this->users->getByEmail($email);
             if (empty($row) || empty($row['password'])) {
-                echo json_encode(['result' => 'sent']);
+                echo json_encode(['result' => 'invalid_email']);
                 return;
             }
 

@@ -89,6 +89,10 @@ class CompleteHandler
                 // Get receivers
                 $receivers = $this->CI->receivers->getByUploadID($post_data['upload_id']);
 
+                if(empty($receivers)) {
+                    $this->CI->logging->log($post_data['upload_id'] . " > No receivers in database; recipient emails were not sent");
+                }
+
                 // Send email to receivers
                 foreach($receivers as $receiver) {
                     $this->CI->load->library('email');

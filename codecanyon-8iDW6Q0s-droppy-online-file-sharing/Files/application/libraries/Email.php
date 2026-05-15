@@ -2575,17 +2575,14 @@ class Email {
         // Set message for non html clients
         $this->set_alt_message('Please use a HTML supported email client to view this message.');
 
-        // Set from address — use sender's own email for receiver/sender emails
-        if(($template == 'receiver' || $template == 'sender') && !empty($data['email_from'])) {
-            $this->from($data['email_from'], $data['email_from']);
-        } else {
-            $this->from($this->CI->config->item('email_from_email'), $this->CI->config->item('email_from_name'));
-        }
+        // Always send through the site SMTP identity (SPF/DKIM). Recipient mail used the
+        // uploader address as From, which fails authentication and is dropped or spam-filtered.
+        $this->from($this->CI->config->item('email_from_email'), $this->CI->config->item('email_from_name'));
 
         // Set the to address(es)
         $this->to($strTo);
 
-        if($template == 'receiver') {
+        if($template == 'receiver' && !empty($data['email_from'])) {
             $this->reply_to($data['email_from']);
         }
 
