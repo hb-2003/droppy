@@ -278,6 +278,9 @@
                 <button class="auth-btn" type="submit">Sign in <i class="lni lni-arrow-right"></i></button>
             </form>
 
+            <div class="auth-footer" style="margin-top:16px;">
+                <a href="<?php echo base_url('forgot-password'); ?>">Forgot password?</a>
+            </div>
             <div class="auth-footer">
                 Don't have an account? <a href="<?php echo base_url('register'); ?>">Create account</a>
             </div>

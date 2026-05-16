@@ -26,9 +26,14 @@ $theme_url = $site_url . '/assets/themes/' . $settings['theme'];
     <section class="slvf-history">
         <div class="slvf-history__inner">
 
+            <div id="slvf-guest-history-section" class="slvf-history__guest-section" style="display:none;">
+                <h2 class="slvf-history__guest-title"><?php echo lang('guest_history_title') ?: 'Recent transfers on this device'; ?></h2>
+                <div class="slvf-history__list" id="slvf-guest-history-list"></div>
+            </div>
+
             <?php if (empty($otp_email)): ?>
             <!-- ── Not signed in ── -->
-            <div class="slvf-history__empty slvf-history__empty--auth">
+            <div class="slvf-history__empty slvf-history__empty--auth" id="slvf-history-auth-empty">
                 <div class="slvf-history__empty-icon">
                     <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                         <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
@@ -36,8 +41,11 @@ $theme_url = $site_url . '/assets/themes/' . $settings['theme'];
                 </div>
                 <h2 class="slvf-history__empty-title">Sign in to see your transfers</h2>
                 <p class="slvf-history__empty-sub">Sign in with your account to view transfers linked to your email.</p>
-                <a class="slvf-btn slvf-btn--primary slvf-history__signin-btn" href="<?php echo base_url('login'); ?>">
-                    Sign in
+                <button type="button" class="slvf-btn slvf-btn--primary slvf-history__signin-btn" id="slvf-history-signin">
+                    <?php echo lang('sign_in_otp') ?: 'Sign in with email'; ?>
+                </button>
+                <a class="slvf-btn slvf-btn--ghost slvf-btn--sm" href="<?php echo base_url('login'); ?>" style="margin-top:12px;display:inline-flex;">
+                    <?php echo lang('login') ?: 'Password sign in'; ?>
                 </a>
             </div>
 
@@ -83,10 +91,20 @@ $theme_url = $site_url . '/assets/themes/' . $settings['theme'];
                     elseif ($expired)              $expire_label = 'Expired';
                     else                           $expire_label = 'Expires ' . date('M j, Y', $expire_ts);
 
-                    $transfer_url = $site_url . '/' . $upload['upload_id'];
-                    $is_link_share = ($upload['share'] === 'link');
+                    $access_token = '';
+                    if (($upload['share'] ?? '') === 'mail' && !empty($upload['secret_code'])) {
+                        $access_token = $upload['secret_code'];
+                    }
+                    $transfer_url = droppy_share_url($settings['site_url'], $upload['upload_id'], $access_token);
+                    $not_ready = (($upload['status'] ?? '') !== 'ready');
                 ?>
-                <div class="slvf-history__item <?php echo $expired ? 'slvf-history__item--expired' : ''; ?>">
+                <div class="slvf-history__item <?php echo $expired ? 'slvf-history__item--expired' : ''; ?><?php echo $not_ready ? ' slvf-history__item--pending' : ''; ?>"
+                     data-upload-id="<?php echo htmlspecialchars($upload['upload_id']); ?>"
+                     data-url="<?php echo htmlspecialchars($transfer_url); ?>"
+                     data-private-id="<?php echo htmlspecialchars($access_token); ?>"
+                     data-expired="<?php echo $expired ? '1' : '0'; ?>"
+                     data-not-ready="<?php echo $not_ready ? '1' : '0'; ?>"
+                     role="button" tabindex="0">
 
                     <!-- Icon -->
                     <div class="slvf-history__item-icon" aria-hidden="true">
@@ -109,7 +127,9 @@ $theme_url = $site_url . '/assets/themes/' . $settings['theme'];
 
                     <!-- Actions -->
                     <div class="slvf-history__item-actions">
-                        <?php if (!$expired): ?>
+                        <?php if ($not_ready): ?>
+                        <span class="slvf-history__badge slvf-history__badge--pending">Processing</span>
+                        <?php elseif (!$expired): ?>
                         <button class="slvf-history__copy-btn slvf-btn slvf-btn--ghost slvf-btn--sm"
                                 data-url="<?php echo htmlspecialchars($transfer_url); ?>"
                                 title="Copy link">

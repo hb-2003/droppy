@@ -2753,6 +2753,8 @@ class Email {
 
         $upload = $this->CI->uploads->getByUploadID($upload_id);
         if($upload !== false) {
+            $this->CI->load->helper('share');
+            $site_url = $this->CI->config->item('site_url');
             // If it's GB
             if($upload['size'] > 1073741824) {
                 $file_size = round($upload['size'] / 1073741824, 2) . ' GB';
@@ -2772,6 +2774,7 @@ class Email {
 
             switch($template) {
                 case 'receiver':
+                    $receiver_url = droppy_share_url($site_url, $upload_id, $extra_data['private_id'] ?? '');
                     $data = array(
                         'email_to'      => $extra_data['email'],
                         'email_from'    => $upload['email_from'],
@@ -2785,12 +2788,14 @@ class Email {
                         'file_list'     => $this->genFileList($upload_id),
                         'file_comma_list' => $this->genFileList($upload_id, true),
                         'email_list'    => $this->genReceiverList($upload_id),
-                        'download_btn' => '<table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; box-sizing: border-box;"><tbody><tr><td align="left" style="font-family: sans-serif; font-size: 14px; vertical-align: top; padding-bottom: 15px;"><table border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: auto;"><tbody><tr><td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border-radius: 5px; text-align: center;"> <a href="'.$this->CI->config->item('site_url') . $upload_id . '/' . $extra_data['private_id'] . '" target="_blank" style="display: inline-block; border-radius: 5px; box-sizing: border-box; cursor: pointer; text-decoration: none; font-size: 14px; font-weight: bold; margin: 0; padding: 12px 25px; text-transform: capitalize;">'.lang('download').'</a> </td></tr></tbody></table></td></tr></tbody></table>',
-                        'download_url' => $this->CI->config->item('site_url') . $upload_id . '/' . $extra_data['private_id'],
+                        'download_btn' => '<table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; box-sizing: border-box;"><tbody><tr><td align="left" style="font-family: sans-serif; font-size: 14px; vertical-align: top; padding-bottom: 15px;"><table border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: auto;"><tbody><tr><td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border-radius: 5px; text-align: center;"> <a href="'.$receiver_url.'" target="_blank" style="display: inline-block; border-radius: 5px; box-sizing: border-box; cursor: pointer; text-decoration: none; font-size: 14px; font-weight: bold; margin: 0; padding: 12px 25px; text-transform: capitalize;">'.lang('download').'</a> </td></tr></tbody></table></td></tr></tbody></table>',
+                        'download_url' => $receiver_url,
                     );
                 break;
                 case 'sender':
                 case 'destroyed':
+                    $sender_url = droppy_share_url($site_url, $upload_id, $upload['secret_code']);
+                    $delete_url = rtrim($site_url, '/') . '/upload/delete/' . $upload_id . '/' . $upload['secret_code'];
                     $data = array(
                         'email_from'    => $upload['email_from'],
                         'size'          => $file_size,
@@ -2803,12 +2808,14 @@ class Email {
                         'file_list'     => $this->genFileList($upload_id),
                         'file_comma_list' => $this->genFileList($upload_id, true),
                         'email_list'    => $this->genReceiverList($upload_id),
-                        'download_btn' => '<table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; box-sizing: border-box;"><tbody><tr><td align="left" style="font-family: sans-serif; font-size: 14px; vertical-align: top; padding-bottom: 15px;"><table border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: auto;"><tbody><tr><td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border-radius: 5px; text-align: center;"> <a href="'.$this->CI->config->item('site_url') . $upload_id . '/' . $upload['secret_code'] . '" target="_blank" style="display: inline-block; border-radius: 5px; box-sizing: border-box; cursor: pointer; text-decoration: none; font-size: 14px; font-weight: bold; margin: 0; padding: 12px 25px; text-transform: capitalize;">'.lang('download').'</a> </td></tr></tbody></table></td></tr></tbody></table>',
-                        'download_url'  => $this->CI->config->item('site_url') . $upload_id . '/' . $upload['secret_code'],
-                        'delete_url'    => $this->CI->config->item('site_url') . 'upload/delete/' . $upload_id . '/' . $upload['secret_code']
+                        'download_btn' => '<table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; box-sizing: border-box;"><tbody><tr><td align="left" style="font-family: sans-serif; font-size: 14px; vertical-align: top; padding-bottom: 15px;"><table border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: auto;"><tbody><tr><td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border-radius: 5px; text-align: center;"> <a href="'.$sender_url.'" target="_blank" style="display: inline-block; border-radius: 5px; box-sizing: border-box; cursor: pointer; text-decoration: none; font-size: 14px; font-weight: bold; margin: 0; padding: 12px 25px; text-transform: capitalize;">'.lang('download').'</a> </td></tr></tbody></table></td></tr></tbody></table>',
+                        'download_url'  => $sender_url,
+                        'delete_url'    => $delete_url
                     );
                 break;
                 case 'downloaded':
+                    $sender_url = droppy_share_url($site_url, $upload_id, $upload['secret_code']);
+                    $delete_url = rtrim($site_url, '/') . '/upload/delete/' . $upload_id . '/' . $upload['secret_code'];
                     $data = array(
                         'email_from'    => $upload['email_from'],
                         'size'          => $file_size,
@@ -2821,9 +2828,9 @@ class Email {
                         'file_list'     => $this->genFileList($upload_id),
                         'file_comma_list' => $this->genFileList($upload_id, true),
                         'email_list'    => $this->genReceiverList($upload_id),
-                        'download_btn' => '<table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; box-sizing: border-box;"><tbody><tr><td align="left" style="font-family: sans-serif; font-size: 14px; vertical-align: top; padding-bottom: 15px;"><table border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: auto;"><tbody><tr><td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border-radius: 5px; text-align: center;"> <a href="'.$this->CI->config->item('site_url') . $upload_id . '/' . $upload['secret_code'] . '" target="_blank" style="display: inline-block; border-radius: 5px; box-sizing: border-box; cursor: pointer; text-decoration: none; font-size: 14px; font-weight: bold; margin: 0; padding: 12px 25px; text-transform: capitalize;">'.lang('download').'</a> </td></tr></tbody></table></td></tr></tbody></table>',
-                        'download_url'  => $this->CI->config->item('site_url') . $upload_id . '/' . $upload['secret_code'],
-                        'delete_url'    => $this->CI->config->item('site_url') . 'upload/delete/' . $upload_id . '/' . $upload['secret_code'],
+                        'download_btn' => '<table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; box-sizing: border-box;"><tbody><tr><td align="left" style="font-family: sans-serif; font-size: 14px; vertical-align: top; padding-bottom: 15px;"><table border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: auto;"><tbody><tr><td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border-radius: 5px; text-align: center;"> <a href="'.$sender_url.'" target="_blank" style="display: inline-block; border-radius: 5px; box-sizing: border-box; cursor: pointer; text-decoration: none; font-size: 14px; font-weight: bold; margin: 0; padding: 12px 25px; text-transform: capitalize;">'.lang('download').'</a> </td></tr></tbody></table></td></tr></tbody></table>',
+                        'download_url'  => $sender_url,
+                        'delete_url'    => $delete_url,
                         'downloader_ip' => (isset($extra_data['download_ip']) ? $extra_data['download_ip'] : ''),
                         'download_time' => date('Y-m-d H:i:s')
                     );

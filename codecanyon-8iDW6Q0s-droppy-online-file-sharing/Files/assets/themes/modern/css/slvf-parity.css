@@ -1,0 +1,86 @@
+/* SLVF web parity — receive, nav, QR, history modal */
+
+.slvf-nav__primary {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: auto;
+    margin-right: 12px;
+}
+.slvf-nav__primary .slvf-nav__link.is-active {
+    color: var(--slvf-accent);
+    background: rgba(212, 255, 58, 0.08);
+}
+@media (max-width: 1024px) {
+    .slvf-nav__primary { display: none; }
+}
+
+.slvf-receive__inner {
+    max-width: 520px;
+    margin: 0 auto 48px;
+    padding: 28px;
+    background: var(--slvf-surface);
+    border: 1px solid var(--slvf-border);
+    border-radius: var(--slvf-r22);
+}
+.slvf-receive__actions { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
+.slvf-receive__error { color: var(--slvf-rose); font-size: 13px; margin-top: 12px; min-height: 1.2em; }
+.slvf-receive__steps { max-width: 640px; margin: 0 auto; padding: 0 20px 60px; }
+.slvf-receive__step-list { list-style: none; padding: 0; margin: 16px 0 0; display: grid; gap: 16px; }
+.slvf-receive__step-list li { padding-left: 16px; border-left: 2px solid var(--slvf-accent); }
+.slvf-receive__step-list strong { display: block; margin-bottom: 4px; }
+
+.slvf-complete__qr {
+    display: flex; flex-direction: column; align-items: center; gap: 10px;
+    margin: 20px 0 8px; padding: 16px; border-radius: 14px;
+    background: rgba(255,255,255,0.03); border: 1px solid var(--slvf-border);
+}
+.slvf-complete__qr-label { font-size: 13px; color: var(--slvf-text-dim); margin: 0; }
+
+.slvf-qr-overlay {
+    position: fixed; inset: 0; z-index: 10050;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(10, 12, 20, 0.85); opacity: 0; pointer-events: none;
+    transition: opacity 0.2s;
+}
+.slvf-qr-overlay.is-open { opacity: 1; pointer-events: auto; }
+.slvf-qr-modal {
+    background: var(--slvf-surface); border: 1px solid var(--slvf-border);
+    border-radius: var(--slvf-r22); padding: 24px; max-width: 360px; width: 92%;
+    position: relative;
+}
+.slvf-qr-modal__close {
+    position: absolute; top: 12px; right: 12px; background: none; border: none;
+    color: var(--slvf-text-dim); font-size: 20px; cursor: pointer;
+}
+.slvf-qr-modal__reader { min-height: 240px; border-radius: 12px; overflow: hidden; }
+.slvf-qr-modal__hint { font-size: 13px; color: var(--slvf-text-dim); text-align: center; margin-top: 12px; }
+
+.slvf-history__guest-section { margin-bottom: 32px; }
+.slvf-history__guest-title { font-size: 14px; font-weight: 600; margin-bottom: 12px; color: var(--slvf-text-dim); }
+.slvf-history__item[role="button"] { cursor: pointer; }
+.slvf-history__item[role="button"]:hover { border-color: rgba(212, 255, 58, 0.25); }
+
+.slvf-history-modal {
+    position: fixed; inset: 0; z-index: 10040;
+    display: flex; align-items: flex-end; justify-content: center;
+    opacity: 0; pointer-events: none; transition: opacity 0.2s;
+}
+.slvf-history-modal.is-open { opacity: 1; pointer-events: auto; }
+.slvf-history-modal__backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.6); }
+.slvf-history-modal__panel {
+    position: relative; width: 100%; max-width: 520px; max-height: 85vh; overflow: auto;
+    background: var(--slvf-surface); border: 1px solid var(--slvf-border);
+    border-radius: 22px 22px 0 0; padding: 24px 20px 32px;
+    transform: translateY(100%); transition: transform 0.25s ease;
+}
+.slvf-history-modal.is-open .slvf-history-modal__panel { transform: translateY(0); }
+.slvf-history-modal__close {
+    position: absolute; top: 16px; right: 16px; background: none; border: none;
+    color: var(--slvf-text-dim); cursor: pointer; font-size: 18px;
+}
+.slvf-history-modal__title { font-size: 20px; font-weight: 700; margin: 0 0 16px; padding-right: 32px; }
+.slvf-history-modal__files { list-style: none; padding: 0; margin: 0 0 16px; font-size: 14px; }
+.slvf-history-modal__files li { padding: 8px 0; border-bottom: 1px solid var(--slvf-border); }
+.slvf-history-modal__meta { font-size: 13px; color: var(--slvf-text-dim); margin-bottom: 16px; }
+.slvf-history-modal__actions { display: flex; gap: 10px; flex-wrap: wrap; }

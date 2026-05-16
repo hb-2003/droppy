@@ -66,10 +66,12 @@ $route['handler/getjstranslation'] = 'Handler/GetJsTranslation';
 
 // SLVF — standalone CMS pages (must precede the generic page/(:any) plugin route)
 $route['history']  = 'home/history';
+$route['receive']  = 'home/receive';
 $route['about']    = 'home/about';
 $route['terms']    = 'home/terms';
 $route['register'] = 'login/register';
 $route['login']    = 'login/index';
+$route['forgot-password'] = 'login/forgot_password';
 
 $route['page/(:any)'] = 'Page/index/$1';
 

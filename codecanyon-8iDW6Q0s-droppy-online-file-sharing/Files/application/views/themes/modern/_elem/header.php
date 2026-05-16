@@ -44,6 +44,7 @@
 
     <!-- Share Large Video Files — Cinematic Studio design layer -->
     <link rel="stylesheet" href="assets/themes/<?php echo $settings['theme'] ?>/css/slvf.css?v=<?php echo rand() . $settings['version']; ?>">
+    <link rel="stylesheet" href="assets/themes/<?php echo $settings['theme'] ?>/css/slvf-parity.css?v=<?php echo rand() . $settings['version']; ?>">
 
     <?php if(!empty($settings['theme_color'])): ?>
     <style>
@@ -96,6 +97,32 @@
             </span>
         </a>
 
+        <?php
+        $nav_page   = isset($page) ? $page : '';
+        $show_plans = !empty($premium_active);
+        $nav_active = function ($key) use ($nav_page) {
+            return $nav_page === $key ? ' is-active' : '';
+        };
+        ?>
+
+        <!-- Primary app navigation -->
+        <div class="slvf-nav__primary" aria-label="<?php echo lang('main_navigation') ?: 'Main navigation'; ?>">
+            <a class="slvf-nav__link<?php echo $nav_active('upload'); ?>" href="<?php echo $settings['site_url']; ?>">
+                <span><?php echo lang('nav_send') ?: 'Send'; ?></span>
+            </a>
+            <a class="slvf-nav__link<?php echo $nav_active('receive'); ?>" href="<?php echo base_url('receive'); ?>">
+                <span><?php echo lang('nav_receive') ?: 'Receive'; ?></span>
+            </a>
+            <a class="slvf-nav__link<?php echo $nav_active('history'); ?>" href="<?php echo base_url('history'); ?>">
+                <span><?php echo lang('history') ?: 'History'; ?></span>
+            </a>
+            <?php if ($show_plans): ?>
+            <a class="slvf-nav__link" href="<?php echo base_url('page/premium'); ?>">
+                <span><?php echo lang('nav_plans') ?: 'Plans'; ?></span>
+            </a>
+            <?php endif; ?>
+        </div>
+
         <!-- Desktop right actions -->
         <div class="slvf-nav__actions">
             <?php if(is_array($extra_pages) && !empty($extra_pages)): ?>
@@ -111,11 +138,7 @@
                 <?php endforeach; ?>
             <?php endif; ?>
             <?php if(isset($_SESSION['otp_verified_email']) || (isset($session) && $session->has_userdata('user') && $session->userdata('user') == true)): ?>
-                <!-- Logged-in: History + Account dropdown -->
-                <a class="slvf-nav__link" href="<?php echo base_url('history') ?>">
-                    <i class="lni lni-timer"></i>
-                    <span><?php echo lang('history') ?: 'History'; ?></span>
-                </a>
+                <!-- Logged-in: Account dropdown (History is in primary nav) -->
                 <div class="slvf-nav__account" id="slvf-account-toggle">
                     <button class="slvf-btn slvf-btn--ghost slvf-btn--sm" id="slvf-account-btn">
                         <i class="lni lni-user"></i>
@@ -181,6 +204,22 @@
 
     <!-- Drawer body -->
     <div class="slvf-nav__mobile-body">
+
+        <div class="slvf-nav__mobile-section"><?php echo lang('main_navigation') ?: 'Navigate'; ?></div>
+        <a class="slvf-nav__mobile-item<?php echo $nav_active('upload'); ?>" href="<?php echo $settings['site_url']; ?>">
+            <i class="lni lni-upload"></i> <?php echo lang('nav_send') ?: 'Send'; ?>
+        </a>
+        <a class="slvf-nav__mobile-item<?php echo $nav_active('receive'); ?>" href="<?php echo base_url('receive'); ?>">
+            <i class="lni lni-download"></i> <?php echo lang('nav_receive') ?: 'Receive'; ?>
+        </a>
+        <a class="slvf-nav__mobile-item<?php echo $nav_active('history'); ?>" href="<?php echo base_url('history'); ?>">
+            <i class="lni lni-timer"></i> <?php echo lang('history') ?: 'History'; ?>
+        </a>
+        <?php if ($show_plans): ?>
+        <a class="slvf-nav__mobile-item" href="<?php echo base_url('page/premium'); ?>">
+            <i class="lni lni-diamond-alt"></i> <?php echo lang('nav_plans') ?: 'Plans'; ?>
+        </a>
+        <?php endif; ?>
 
         <!-- Guest: auth CTAs at top -->
         <?php if(!(isset($_SESSION['otp_verified_email']) || ($session->has_userdata('user') && $session->userdata('user') == true))): ?>

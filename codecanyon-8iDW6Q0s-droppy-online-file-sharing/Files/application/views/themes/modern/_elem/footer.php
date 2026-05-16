@@ -71,6 +71,13 @@ endif;
 </script>
 
 
+<?php if (isset($page) && in_array($page, ['upload', 'receive'], true)): ?>
+<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+<?php endif; ?>
+<?php if (isset($page) && $page === 'receive'): ?>
+<script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+<?php endif; ?>
+
 <!-- Loading the javascript -->
 <script src="assets/themes/<?php echo $settings['theme'] ?>/js/script.js?v=<?php echo $settings['version']; ?>"></script>
 <script src="assets/themes/<?php echo $settings['theme'] ?>/js/slvf.js?v=<?php echo $settings['version']; ?>"></script>

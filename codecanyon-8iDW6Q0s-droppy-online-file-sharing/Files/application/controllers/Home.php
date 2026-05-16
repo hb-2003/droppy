@@ -53,7 +53,8 @@ class Home extends CI_Controller {
             'custom_css'    => $this->plugin->_css,
             'session'       => $this->session,
             'mobile'        => false,
-            'sender_cookie' => get_cookie('sender')
+            'sender_cookie' => get_cookie('sender'),
+            'premium_active'=> $this->plugin->pluginLoaded('premium'),
         );
 
         if ($this->plugin->pluginLoaded('premium') && !empty($this->config->item('custom_backgrounds'))) {
@@ -129,7 +130,8 @@ class Home extends CI_Controller {
             'custom_tabs'   => $this->plugin->_tabs,
             'custom_css'    => $this->plugin->_css,
             'mobile'        => false,
-            'session'       => $this->session
+            'session'       => $this->session,
+            'premium_active'=> $this->plugin->pluginLoaded('premium'),
         );
 
         if ($this->plugin->pluginLoaded('premium') && $this->plugin->_plugins['premium']['version'] >= '2.1.6' && isset($upload_data['pm_email']) && !empty($upload_data['pm_email'])) {
@@ -213,6 +215,7 @@ class Home extends CI_Controller {
     {
         $this->load->helper('cookie');
         $this->load->helper('seconds');
+        $this->load->helper('share');
         $this->load->model('uploads');
         $this->load->model('files');
 
@@ -247,17 +250,10 @@ class Home extends CI_Controller {
             'backgrounds'   => $this->backgrounds->getAllOrderID(),
             'otp_email'     => $otp_email,
             'uploads'       => $uploads,
+            'premium_active'=> $this->plugin->pluginLoaded('premium'),
         );
 
-        $detect = new Mobile_Detect();
-        if (file_exists(FCPATH . 'application/views/themes/' . $this->config->item('theme') . '/_elem/header-mobile.php') && ($detect->isMobile() || $detect->isTablet() || $detect->isAndroidOS())) {
-            $data['mobile'] = true;
-            $this->load->view('themes/' . $this->config->item('theme') . '/_elem/header-mobile', $data);
-        } else {
-            $this->load->view('themes/' . $this->config->item('theme') . '/_elem/header', $data);
-        }
-        $this->load->view('themes/' . $this->config->item('theme') . '/history', $data);
-        $this->load->view('themes/' . $this->config->item('theme') . '/_elem/footer', $data);
+        $this->_slvf_render_page('history', $data);
     }
 
     public function about()
@@ -279,20 +275,11 @@ class Home extends CI_Controller {
             'mobile'        => false,
             'backgrounds'   => $this->backgrounds->getAllOrderID(),
             'page_title'    => is_array($page_row) && !empty($page_row['title']) ? $page_row['title'] : 'About',
-            'page_content'  => is_array($page_row) && !empty($page_row['content']) ? $page_row['content'] : ''
+            'page_content'  => is_array($page_row) && !empty($page_row['content']) ? $page_row['content'] : '',
+            'premium_active'=> $this->plugin->pluginLoaded('premium'),
         );
 
-        $detect = new Mobile_Detect();
-        if (file_exists(FCPATH . 'application/views/themes/' . $this->config->item('theme') . '/_elem/header-mobile.php') && ($detect->isMobile() || $detect->isTablet() || $detect->isAndroidOS())) {
-            $data['mobile'] = true;
-            $this->load->view('themes/' . $this->config->item('theme') . '/_elem/header-mobile', $data);
-        } else {
-            $this->load->view('themes/' . $this->config->item('theme') . '/_elem/header', $data);
-        }
-        $this->load->view('themes/' . $this->config->item('theme') . '/_elem/socials', $data);
-        $this->load->view('themes/' . $this->config->item('theme') . '/about', $data);
-        $this->load->view('themes/' . $this->config->item('theme') . '/_elem/modals', $data);
-        $this->load->view('themes/' . $this->config->item('theme') . '/_elem/footer', $data);
+        $this->_slvf_render_page('about', $data, true);
     }
 
     /**
@@ -318,19 +305,66 @@ class Home extends CI_Controller {
             'mobile'        => false,
             'backgrounds'   => $this->backgrounds->getAllOrderID(),
             'page_title'    => is_array($page_row) && !empty($page_row['title']) ? $page_row['title'] : 'Terms of service',
-            'page_content'  => is_array($page_row) && !empty($page_row['content']) ? $page_row['content'] : ''
+            'page_content'  => is_array($page_row) && !empty($page_row['content']) ? $page_row['content'] : '',
+            'premium_active'=> $this->plugin->pluginLoaded('premium'),
         );
 
+        $this->_slvf_render_page('legal', $data, true);
+    }
+
+    /**
+     * SLVF — Receive: paste transfer link or ID to open download page.
+     */
+    public function receive()
+    {
+        $this->load->helper('cookie');
+        $this->load->helper('seconds');
+
+        $prefill_id  = trim((string) $this->input->get('id'));
+        $prefill_pid = trim((string) $this->input->get('pid'));
+
+        $data = array(
+            'page'          => 'receive',
+            'settings'      => $this->config->config,
+            'socials'       => $this->socials->getAll(),
+            'language_list' => $this->language->getAll(),
+            'extra_pages'   => $this->pages->getAll(0, 0, $this->session->userdata('language')),
+            'custom_tabs'   => $this->plugin->_tabs,
+            'custom_css'    => $this->plugin->_css,
+            'session'       => $this->session,
+            'mobile'        => false,
+            'backgrounds'   => $this->backgrounds->getAllOrderID(),
+            'premium_active'=> $this->plugin->pluginLoaded('premium'),
+            'prefill_id'    => $prefill_id,
+            'prefill_pid'   => $prefill_pid,
+        );
+
+        $this->_slvf_render_page('receive', $data);
+    }
+
+    /**
+     * Load header + view + footer for SLVF standalone pages.
+     *
+     * @param string $view
+     * @param array  $data
+     * @param bool   $include_socials
+     */
+    private function _slvf_render_page($view, array $data, $include_socials = false)
+    {
         $detect = new Mobile_Detect();
-        if (file_exists(FCPATH . 'application/views/themes/' . $this->config->item('theme') . '/_elem/header-mobile.php') && ($detect->isMobile() || $detect->isTablet() || $detect->isAndroidOS())) {
+        $theme  = $this->config->item('theme');
+        if (file_exists(FCPATH . 'application/views/themes/' . $theme . '/_elem/header-mobile.php')
+            && ($detect->isMobile() || $detect->isTablet() || $detect->isAndroidOS())) {
             $data['mobile'] = true;
-            $this->load->view('themes/' . $this->config->item('theme') . '/_elem/header-mobile', $data);
+            $this->load->view('themes/' . $theme . '/_elem/header-mobile', $data);
         } else {
-            $this->load->view('themes/' . $this->config->item('theme') . '/_elem/header', $data);
+            $this->load->view('themes/' . $theme . '/_elem/header', $data);
         }
-        $this->load->view('themes/' . $this->config->item('theme') . '/_elem/socials', $data);
-        $this->load->view('themes/' . $this->config->item('theme') . '/legal', $data);
-        $this->load->view('themes/' . $this->config->item('theme') . '/_elem/modals', $data);
-        $this->load->view('themes/' . $this->config->item('theme') . '/_elem/footer', $data);
+        if ($include_socials) {
+            $this->load->view('themes/' . $theme . '/_elem/socials', $data);
+        }
+        $this->load->view('themes/' . $theme . '/' . $view, $data);
+        $this->load->view('themes/' . $theme . '/_elem/modals', $data);
+        $this->load->view('themes/' . $theme . '/_elem/footer', $data);
     }
 }

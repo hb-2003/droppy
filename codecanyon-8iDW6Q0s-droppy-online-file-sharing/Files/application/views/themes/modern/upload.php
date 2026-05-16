@@ -347,6 +347,14 @@ $ev_default_share   = isset($settings['default_sharetype']) ? $settings['default
                     </button>
                 </div>
 
+                <div class="slvf-complete__qr" id="slvf-complete-qr-wrap" hidden>
+                    <canvas id="slvf-qr-canvas" width="160" height="160" aria-label="<?php echo lang('scan_qr') ?: 'QR code'; ?>"></canvas>
+                    <p class="slvf-complete__qr-label"><?php echo lang('scan_qr') ?: 'Scan to download'; ?></p>
+                    <button type="button" class="slvf-btn slvf-btn--ghost slvf-btn--sm" id="slvf-qr-download">
+                        <i class="lni lni-download"></i> <?php echo lang('share_qr_code') ?: 'Download QR image'; ?>
+                    </button>
+                </div>
+
                 <div class="slvf-complete__meta">
                     <span><i class="lni lni-timer"></i> <?php echo lang('expires_in') ?: 'Auto-expires'; ?></span>
                     <span><i class="lni lni-eye"></i> <span id="slvf-dl-count">0</span> <?php echo lang('downloads') ?: 'downloads'; ?></span>

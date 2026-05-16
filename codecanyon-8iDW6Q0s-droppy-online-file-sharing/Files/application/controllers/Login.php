@@ -129,6 +129,20 @@ class Login extends CI_Controller {
         $this->load->view('themes/' . $this->config->item('theme') . '/register', $data);
     }
 
+    /**
+     * SLVF — Forgot password (client-side flow via handler/* JSON endpoints).
+     */
+    public function forgot_password()
+    {
+        $data = array(
+            'settings' => $this->config->config,
+            'noad'     => true,
+            'mobile'   => false,
+        );
+
+        $this->load->view('themes/' . $this->config->item('theme') . '/forgot_password', $data);
+    }
+
     public function logout() {
         $this->load->library('plugin');
         if ($this->plugin->pluginLoaded('auth') && isset($this->plugin->_plugins['auth']['external_login'])) {

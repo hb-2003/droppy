@@ -834,6 +834,85 @@ class Handler extends CI_Controller {
     }
 
     /**
+     * GET handler/metadata?upload_id=&private_id=
+     * JSON transfer metadata for receive/history (mobile + web).
+     */
+    public function metadata()
+    {
+        header('Content-Type: application/json');
+        $this->load->library('session');
+        $this->load->model('uploads');
+        $this->load->model('files');
+        $this->load->model('receivers');
+        $this->load->model('downloads');
+
+        $upload_id  = trim((string) $this->input->get('upload_id', TRUE));
+        $private_id = trim((string) $this->input->get('private_id', TRUE));
+
+        if ($upload_id === '') {
+            echo json_encode(['ok' => false, 'error' => 'missing_upload_id']);
+            return;
+        }
+
+        $upload = (array) $this->uploads->getByUploadID($upload_id);
+        if (empty($upload) || ($upload['status'] ?? '') !== 'ready') {
+            echo json_encode(['ok' => false, 'error' => 'not_found']);
+            return;
+        }
+
+        $allowed = false;
+        if (($upload['share'] ?? '') === 'link') {
+            $allowed = true;
+        } elseif (($upload['share'] ?? '') === 'mail') {
+            if ($private_id !== '' && (
+                is_array($this->receivers->getByUploadAndPrivateID($upload_id, $private_id))
+                || ($upload['secret_code'] ?? '') === $private_id
+            )) {
+                $allowed = true;
+            }
+        }
+
+        if (!$allowed) {
+            echo json_encode(['ok' => false, 'error' => 'forbidden']);
+            return;
+        }
+
+        $has_password = !empty($upload['password']);
+        $unlocked     = !$has_password
+            || ($this->session->userdata('download_password') == $upload_id);
+
+        $files_raw = $this->files->getByUploadID($upload_id);
+        $file_list = [];
+        if (!empty($files_raw)) {
+            foreach ($files_raw as $f) {
+                $file_list[] = [
+                    'name'         => $f['name'] ?? basename($f['original_path'] ?? ''),
+                    'size'         => (int) ($f['size'] ?? 0),
+                    'content_type' => $f['content_type'] ?? '',
+                ];
+            }
+        }
+
+        $dl_rows = $this->downloads->getByUploadID($upload_id);
+        $dl_count = is_array($dl_rows) ? count($dl_rows) : 0;
+
+        echo json_encode([
+            'ok'                 => true,
+            'upload_id'          => $upload_id,
+            'share'              => $upload['share'] ?? 'link',
+            'count'              => (int) ($upload['count'] ?? count($file_list)),
+            'size'               => (int) ($upload['size'] ?? 0),
+            'time'               => (int) ($upload['time'] ?? 0),
+            'time_expire'        => (int) ($upload['time_expire'] ?? 0),
+            'destruct'           => $upload['destruct'] ?? 'no',
+            'has_password'       => $has_password,
+            'password_unlocked'  => $unlocked,
+            'download_count'     => $dl_count,
+            'files'              => $file_list,
+        ]);
+    }
+
+    /**
      * GET handler/history_json
      * Returns the OTP-authenticated user's transfer history as JSON.
      * Requires an active OTP session (same session cookie used by the web).

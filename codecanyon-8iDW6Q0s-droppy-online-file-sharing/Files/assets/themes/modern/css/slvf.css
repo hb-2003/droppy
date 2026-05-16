@@ -3387,6 +3387,10 @@ body.is-uploading .slvf-bg-mesh {
     background: rgba(255,107,107,.12);
     color: #ff6b6b;
 }
+.slvf-history__badge--pending {
+    background: rgba(255,193,7,.12);
+    color: #ffc107;
+}
 
 /* Responsive */
 @media (max-width: 540px) {

@@ -792,6 +792,9 @@ var Uploader = {
                 if(typeof CopyLink !== 'undefined') {
                     setTimeout(function() { CopyLink.copy(transferLink); }, 600);
                 }
+                if (typeof jQuery !== 'undefined') {
+                    jQuery(document).trigger('slvf:transfer-complete', [transferLink, Uploader.uploadID]);
+                }
             }
             $('#uploadProcess').hide();
             $('#uploadSuccess').show();

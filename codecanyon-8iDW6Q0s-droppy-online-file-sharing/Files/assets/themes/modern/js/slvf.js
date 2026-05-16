@@ -221,6 +221,9 @@
                     if (data.result === 'ok') {
                         OtpModal.stopTimer();
                         OtpModal.showStep(3);
+                        if (typeof GuestHistory !== 'undefined') {
+                            GuestHistory.syncBeforeReload();
+                        }
                         // Reload so navbar reflects logged-in state
                         setTimeout(function () { w.location.reload(); }, 1500);
                     } else if (data.result === 'expired') {
@@ -604,6 +607,268 @@
     };
 
     /* ----------------------------------------------------------------------
+       Receive — paste link / ID and open transfer
+       ---------------------------------------------------------------------- */
+    var Receive = {
+        parseReference: function (raw) {
+            var v = (raw || '').trim();
+            if (!v) return null;
+            var looksUrl = v.indexOf('://') >= 0 || v.indexOf('/') >= 0 || v.indexOf('?') >= 0;
+            if (looksUrl) {
+                var normalized = v.indexOf('://') >= 0 ? v : 'https://' + v;
+                try {
+                    var u = new URL(normalized);
+                    var segs = u.pathname.split('/').filter(function (s) { return s; });
+                    if (!segs.length) return null;
+                    return { id: segs[0], pid: segs.length > 1 ? segs[1] : '' };
+                } catch (e) { return null; }
+            }
+            return { id: v, pid: '' };
+        },
+        go: function () {
+            var raw = $('#slvf-receive-input').val();
+            var pidManual = $.trim($('#slvf-receive-pid').val());
+            var ref = Receive.parseReference(raw);
+            if (!ref || !ref.id) {
+                $('#slvf-receive-error').text('Enter a valid transfer link or ID.');
+                return;
+            }
+            if (pidManual) ref.pid = pidManual;
+            var url = (typeof siteUrl !== 'undefined' ? siteUrl : '/') + ref.id;
+            if (ref.pid) url += '/' + ref.pid;
+            w.location.href = url.replace(/([^:]\/)\/+/g, '$1');
+        },
+        init: function () {
+            if (!$('#slvf-receive-load').length) return;
+            $('#slvf-receive-load').on('click', Receive.go);
+            $('#slvf-receive-input').on('keypress', function (e) {
+                if (e.which === 13) Receive.go();
+            });
+            var q = w.location.search.match(/[?&]id=([^&]+)/);
+            var qp = w.location.search.match(/[?&]pid=([^&]+)/);
+            if (q && !$('#slvf-receive-input').val()) {
+                $('#slvf-receive-input').val(decodeURIComponent(q[1]));
+                if (qp) $('#slvf-receive-pid').val(decodeURIComponent(qp[1]));
+            }
+            if (w.location.search.indexOf('id=') >= 0 && $('#slvf-receive-input').val()) {
+                Receive.go();
+            }
+            Receive.initScanner();
+        },
+        initScanner: function () {
+            if (!$('#slvf-receive-scan').length || typeof Html5Qrcode === 'undefined') return;
+            var scanner = null;
+            $('#slvf-receive-scan').on('click', function () {
+                $('#slvf-qr-overlay').addClass('is-open').attr('aria-hidden', 'false');
+                if (!scanner) {
+                    scanner = new Html5Qrcode('slvf-qr-reader');
+                }
+                scanner.start(
+                    { facingMode: 'environment' },
+                    { fps: 10, qrbox: { width: 220, height: 220 } },
+                    function (decoded) {
+                        scanner.stop().catch(function () {});
+                        $('#slvf-qr-overlay').removeClass('is-open');
+                        $('#slvf-receive-input').val(decoded);
+                        Receive.go();
+                    },
+                    function () {}
+                ).catch(function () {
+                    Toast.show('Camera access denied or unavailable.', 'error');
+                });
+            });
+            $('#slvf-qr-close, #slvf-qr-overlay').on('click', function (e) {
+                if (e.target === this || $(e.target).closest('#slvf-qr-close').length) {
+                    if (scanner && scanner.isScanning) {
+                        scanner.stop().catch(function () {});
+                    }
+                    $('#slvf-qr-overlay').removeClass('is-open').attr('aria-hidden', 'true');
+                }
+            });
+        }
+    };
+    w.Receive = Receive;
+
+    /* ----------------------------------------------------------------------
+       QR on upload success
+       ---------------------------------------------------------------------- */
+    var QrSuccess = {
+        render: function (link) {
+            if (!link || typeof QRCode === 'undefined') return;
+            var $wrap = $('#slvf-complete-qr-wrap');
+            var canvas = document.getElementById('slvf-qr-canvas');
+            if (!$wrap.length || !canvas) return;
+            QRCode.toCanvas(canvas, link, {
+                width: 160,
+                margin: 2,
+                color: { dark: '#F2F1EB', light: '#0A0C1400' }
+            }, function (err) {
+                if (!err) $wrap.prop('hidden', false);
+            });
+        },
+        init: function () {
+            $(document).on('slvf:transfer-complete', function (e, link) {
+                QrSuccess.render(link);
+                if (link && typeof GuestHistory !== 'undefined' && w.Uploader && w.Uploader.uploadID) {
+                    GuestHistory.push({
+                        upload_id: w.Uploader.uploadID,
+                        share: 'link',
+                        time: Math.floor(Date.now() / 1000),
+                        time_expire: 0,
+                        size: 0
+                    });
+                }
+            });
+            $(document).on('click', '#slvf-qr-download', function () {
+                var canvas = document.getElementById('slvf-qr-canvas');
+                if (!canvas) return;
+                var a = document.createElement('a');
+                a.download = 'transfer-qr.png';
+                a.href = canvas.toDataURL('image/png');
+                a.click();
+            });
+        }
+    };
+
+    /* ----------------------------------------------------------------------
+       Guest local history (localStorage)
+       ---------------------------------------------------------------------- */
+    var GuestHistory = {
+        KEY: 'slvf_guest_history',
+        read: function () {
+            try {
+                var raw = w.localStorage.getItem(GuestHistory.KEY);
+                return raw ? JSON.parse(raw) : [];
+            } catch (e) { return []; }
+        },
+        write: function (list) {
+            try { w.localStorage.setItem(GuestHistory.KEY, JSON.stringify(list)); } catch (e) {}
+        },
+        push: function (item) {
+            if (!item || !item.upload_id) return;
+            var list = GuestHistory.read();
+            list = list.filter(function (x) { return x.upload_id !== item.upload_id; });
+            list.unshift(item);
+            if (list.length > 50) list = list.slice(0, 50);
+            GuestHistory.write(list);
+        },
+        syncBeforeReload: function () {
+            var list = GuestHistory.read();
+            if (!list.length) return;
+            var ids = list.map(function (x) { return x.upload_id; });
+            $.ajax({
+                url: 'handler/sync_local_history',
+                type: 'POST',
+                dataType: 'json',
+                async: false,
+                data: { upload_ids: JSON.stringify(ids) }
+            });
+        },
+        renderGuestList: function () {
+            var $host = $('#slvf-guest-history-list');
+            if (!$host.length) return;
+            var list = GuestHistory.read();
+            if (!list.length) {
+                $host.hide();
+                return;
+            }
+            var html = '';
+            var base = (typeof siteUrl !== 'undefined' ? siteUrl : '/').replace(/\/?$/, '/');
+            list.forEach(function (t) {
+                var url = base + t.upload_id;
+                html += '<div class="slvf-history__item slvf-history__item--guest" data-upload-id="' + t.upload_id + '">' +
+                    '<div class="slvf-history__item-info"><span class="slvf-history__item-name">' + t.upload_id + '</span>' +
+                    '<span class="slvf-history__item-meta">Guest transfer</span></div>' +
+                    '<div class="slvf-history__item-actions">' +
+                    '<button type="button" class="slvf-history__copy-btn slvf-btn slvf-btn--ghost slvf-btn--sm" data-url="' + url + '">Copy</button>' +
+                    '<a class="slvf-btn slvf-btn--ghost slvf-btn--sm" href="' + url + '">Open</a></div></div>';
+            });
+            $host.html(html).show();
+            $('#slvf-guest-history-section').show();
+            if (list.length) {
+                $('#slvf-history-auth-empty').hide();
+            }
+        },
+        init: function () {
+            GuestHistory.renderGuestList();
+        }
+    };
+    w.GuestHistory = GuestHistory;
+
+    /* ----------------------------------------------------------------------
+       History detail modal
+       ---------------------------------------------------------------------- */
+    var HistoryDetail = {
+        $overlay: null,
+        init: function () {
+            if (!$('.slvf-page--history').length) return;
+            HistoryDetail.$overlay = $(
+                '<div class="slvf-history-modal" id="slvf-history-modal" aria-hidden="true">' +
+                '<div class="slvf-history-modal__backdrop"></div>' +
+                '<div class="slvf-history-modal__panel" role="dialog">' +
+                '<button type="button" class="slvf-history-modal__close" aria-label="Close"><i class="lni lni-close"></i></button>' +
+                '<h2 class="slvf-history-modal__title"></h2>' +
+                '<ul class="slvf-history-modal__files"></ul>' +
+                '<p class="slvf-history-modal__meta"></p>' +
+                '<div class="slvf-history-modal__actions"></div>' +
+                '</div></div>'
+            );
+            $('body').append(HistoryDetail.$overlay);
+            $(document).on('click', '.slvf-history__item:not(.slvf-history__item--guest)', function (e) {
+                if ($(e.target).closest('button, a').length) return;
+                var $item = $(this);
+                HistoryDetail.open(
+                    $item.data('upload-id'),
+                    $item.data('url'),
+                    $item.data('expired') === 1,
+                    $item.data('private-id') || ''
+                );
+            });
+            HistoryDetail.$overlay.on('click', '.slvf-history-modal__backdrop, .slvf-history-modal__close', function () {
+                HistoryDetail.close();
+            });
+        },
+        open: function (uploadId, url, expired, privateId) {
+            var params = { upload_id: uploadId };
+            if (privateId) {
+                params.private_id = privateId;
+            }
+            $.getJSON('handler/metadata', params, function (data) {
+                if (!data.ok) {
+                    if (url) w.location.href = url;
+                    return;
+                }
+                var $m = HistoryDetail.$overlay;
+                $m.find('.slvf-history-modal__title').text('Transfer ' + uploadId);
+                var $files = $m.find('.slvf-history-modal__files').empty();
+                (data.files || []).forEach(function (f) {
+                    $files.append('<li>' + (f.name || 'File') + ' — ' + HistoryDetail.fmtSize(f.size) + '</li>');
+                });
+                var exp = data.time_expire > 0 ? new Date(data.time_expire * 1000).toLocaleDateString() : 'No expiry';
+                $m.find('.slvf-history-modal__meta').text(
+                    HistoryDetail.fmtSize(data.size) + ' · ' + (data.download_count || 0) + ' downloads · ' + exp
+                );
+                var $actions = $m.find('.slvf-history-modal__actions').empty();
+                if (!expired && url) {
+                    $actions.append('<button type="button" class="slvf-btn slvf-btn--ghost slvf-btn--sm slvf-history-modal__copy" data-url="' + url + '">Copy link</button>');
+                    $actions.append('<a class="slvf-btn slvf-btn--primary slvf-btn--sm" href="' + url + '">Open transfer</a>');
+                }
+                $m.addClass('is-open').attr('aria-hidden', 'false');
+            });
+        },
+        close: function () {
+            HistoryDetail.$overlay.removeClass('is-open').attr('aria-hidden', 'true');
+        },
+        fmtSize: function (bytes) {
+            bytes = parseInt(bytes, 10) || 0;
+            if (bytes >= 1073741824) return (bytes / 1073741824).toFixed(1) + ' GB';
+            if (bytes >= 1048576) return (bytes / 1048576).toFixed(1) + ' MB';
+            if (bytes >= 1024) return Math.round(bytes / 1024) + ' KB';
+            return bytes + ' B';
+        }
+    };
+
+    /* ----------------------------------------------------------------------
        Boot
        ---------------------------------------------------------------------- */
     $(function () {
@@ -622,6 +887,13 @@
         CopyLink.init();
         SlvfComplete.init();
         NavScroll.init();
+        Receive.init();
+        QrSuccess.init();
+        GuestHistory.init();
+        HistoryDetail.init();
+        $(document).on('click', '.slvf-history-modal__copy', function () {
+            CopyLink.copy($(this).data('url'));
+        });
     });
 
 })(jQuery, window);
