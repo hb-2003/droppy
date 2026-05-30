@@ -24,11 +24,11 @@ $site_url = rtrim($settings['site_url'], '/');
                     value="<?php echo !empty($prefill_pid) ? htmlspecialchars($prefill_pid) : ''; ?>">
             </div>
             <div class="slvf-receive__actions">
-                <button type="button" class="slvf-btn slvf-btn--primary slvf-btn--full" id="slvf-receive-load">
+                <button type="button" class="slvf-btn slvf-btn--primary slvf-btn--lg slvf-btn--full" id="slvf-receive-load">
                     <i class="lni lni-download"></i>
                     <span><?php echo lang('receive_load') ?: 'Load transfer'; ?></span>
                 </button>
-                <button type="button" class="slvf-btn slvf-btn--ghost slvf-btn--full" id="slvf-receive-scan">
+                <button type="button" class="slvf-btn slvf-btn--ghost slvf-btn--lg slvf-btn--full" id="slvf-receive-scan">
                     <i class="lni lni-camera"></i>
                     <span><?php echo lang('receive_scan_qr') ?: 'Scan QR code'; ?></span>
                 </button>

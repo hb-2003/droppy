@@ -208,8 +208,7 @@ class Home extends CI_Controller {
      */
     /**
      * SLVF — Transfer history page.
-     * Shows uploads sent by the OTP-verified email stored in session.
-     * If no session, prompts the user to sign in via OTP modal.
+     * Shows uploads sent by the signed-in account email.
      */
     public function history()
     {
@@ -219,15 +218,14 @@ class Home extends CI_Controller {
         $this->load->model('uploads');
         $this->load->model('files');
 
-        // Support both OTP login and email+password login
-        $otp_email = $this->session->userdata('otp_verified_email');
-        if (empty($otp_email) && $this->session->userdata('user') == true) {
-            $otp_email = $this->session->userdata('user_email');
+        $user_email = '';
+        if ($this->session->userdata('user') == true) {
+            $user_email = trim((string) $this->session->userdata('user_email'));
         }
         $uploads = [];
 
-        if (!empty($otp_email)) {
-            $raw = $this->uploads->getByEmail($otp_email, 50);
+        if (!empty($user_email)) {
+            $raw = $this->uploads->getByEmail($user_email, 50);
             if (!empty($raw)) {
                 foreach ($raw as &$row) {
                     $row['files'] = $this->files->getByUploadID($row['upload_id']);
@@ -248,7 +246,7 @@ class Home extends CI_Controller {
             'session'       => $this->session,
             'mobile'        => false,
             'backgrounds'   => $this->backgrounds->getAllOrderID(),
-            'otp_email'     => $otp_email,
+            'user_email'    => $user_email,
             'uploads'       => $uploads,
             'premium_active'=> $this->plugin->pluginLoaded('premium'),
         );

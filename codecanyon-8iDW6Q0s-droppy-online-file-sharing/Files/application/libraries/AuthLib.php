@@ -80,6 +80,7 @@ class AuthLib
         );
 
         $this->CI->session->set_userdata($session_data);
+        $this->CI->session->unset_userdata('otp_verified_email');
 
         $this->CI->session->sess_regenerate();
     }

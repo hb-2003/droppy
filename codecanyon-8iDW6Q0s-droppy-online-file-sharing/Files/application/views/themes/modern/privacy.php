@@ -78,7 +78,7 @@ $ev_updated = date('F j, Y');
                 <h2>Information We Collect</h2>
                 <p>We collect information you provide directly to us when you use <?php echo $ev_company; ?>. This includes:</p>
                 <ul>
-                    <li><strong>Email address</strong> — when you sign in via OTP, register an account, or send/receive a transfer.</li>
+                    <li><strong>Email address</strong> — when you register an account, sign in, or send/receive a transfer.</li>
                     <li><strong>Files you upload</strong> — the files and their metadata (name, size, type) that you transfer through our service.</li>
                     <li><strong>Transfer metadata</strong> — sender email, recipient emails, upload timestamps, expiry settings, and download activity.</li>
                     <li><strong>Log data</strong> — IP address, browser type, referring URL, and pages visited, collected automatically when you access the service.</li>
@@ -93,7 +93,7 @@ $ev_updated = date('F j, Y');
                 <p>We use the information we collect to:</p>
                 <ul>
                     <li>Deliver, maintain, and improve the file transfer service.</li>
-                    <li>Send OTP verification codes and transfer notification emails.</li>
+                    <li>Send account, password-reset, and transfer notification emails.</li>
                     <li>Show you your transfer history when you're signed in.</li>
                     <li>Monitor and prevent abuse, fraud, and violations of our Terms of Service.</li>
                     <li>Comply with legal obligations.</li>
@@ -134,7 +134,7 @@ $ev_updated = date('F j, Y');
                 <h2>Third-Party Services</h2>
                 <p>We may use third-party services to help operate <?php echo $ev_company; ?>. These may include:</p>
                 <ul>
-                    <li><strong>Email providers</strong> — used to send OTP codes and transfer notification emails.</li>
+                    <li><strong>Email providers</strong> — used to send account, password-reset, and transfer notification emails.</li>
                     <li><strong>Cloud storage providers</strong> — if the installation uses S3-compatible or similar remote storage for file uploads.</li>
                     <li><strong>Google reCAPTCHA</strong> — if enabled, used to prevent automated abuse of upload forms.</li>
                     <li><strong>Analytics services</strong> — if configured by the site administrator.</li>

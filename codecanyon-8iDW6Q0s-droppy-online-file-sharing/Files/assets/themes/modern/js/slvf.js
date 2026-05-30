@@ -194,206 +194,6 @@
     };
 
     /* ----------------------------------------------------------------------
-       OTP modal — visual scaffolding only.
-       Backend wiring (request_otp / verify_otp endpoints) lands in Phase B.
-       ---------------------------------------------------------------------- */
-    var OtpModal = {
-        timer: null,
-        secondsLeft: 300,
-        open: function () {
-            $('#slvf-otp-overlay').addClass('is-open');
-            this.showStep(1);
-            setTimeout(function () { $('#slvf-otp-email').focus(); }, 200);
-        },
-        close: function () {
-            $('#slvf-otp-overlay').removeClass('is-open');
-            this.stopTimer();
-        },
-        showStep: function (n) {
-            for (var i = 1; i <= 3; i++) {
-                $('#slvf-otp-step-' + i).toggleClass('slvf-otp-step--hidden', i !== n);
-            }
-        },
-        _email: null,
-
-        sendCode: function () {
-            var email = ($('#slvf-otp-email').val() || '').trim();
-            if (!OtpModal.validateEmail(email)) {
-                $('#slvf-otp-email-error').text('Please enter a valid email address.').addClass('is-shown');
-                return;
-            }
-            $('#slvf-otp-email-error').removeClass('is-shown').text('');
-            OtpModal._email = email;
-
-            var $btn = $('#slvf-otp-send-btn');
-            $btn.prop('disabled', true).find('span').text('Sending…');
-
-            $.ajax({
-                url:      'handler/request_otp',
-                type:     'POST',
-                dataType: 'json',
-                data:     { email: email },
-                success: function (data) {
-                    $btn.prop('disabled', false).find('span').text('Send code');
-                    if (data.result === 'sent') {
-                        $('#slvf-otp-sent-to').text(email);
-                        $('#slvf-otp-digits .slvf-otp-digit').val('').removeClass('is-filled');
-                        $('#slvf-otp-code-error').removeClass('is-shown').text('');
-                        OtpModal.showStep(2);
-                        OtpModal.startTimer(300);
-                        setTimeout(function () {
-                            $('#slvf-otp-digits .slvf-otp-digit').first().focus();
-                        }, 250);
-                    } else {
-                        $('#slvf-otp-email-error').text('Could not send code. Please try again.').addClass('is-shown');
-                    }
-                },
-                error: function () {
-                    $btn.prop('disabled', false).find('span').text('Send code');
-                    $('#slvf-otp-email-error').text('Network error. Please try again.').addClass('is-shown');
-                }
-            });
-        },
-
-        verify: function () {
-            var code = $('#slvf-otp-digits .slvf-otp-digit').map(function () {
-                return $(this).val();
-            }).get().join('');
-
-            if (code.length < 6 || !/^\d{6}$/.test(code)) {
-                $('#slvf-otp-code-error').text('Enter all six digits.').addClass('is-shown');
-                return;
-            }
-            $('#slvf-otp-code-error').removeClass('is-shown').text('');
-
-            var $btn = $('#slvf-otp-verify-btn');
-            $btn.prop('disabled', true).find('span').text('Verifying…');
-
-            $.ajax({
-                url:      'handler/verify_otp',
-                type:     'POST',
-                dataType: 'json',
-                data:     { email: OtpModal._email, code: code },
-                success: function (data) {
-                    $btn.prop('disabled', false).find('span').text('Verify');
-                    if (data.result === 'ok') {
-                        OtpModal.stopTimer();
-                        OtpModal.showStep(3);
-                        if (typeof GuestHistory !== 'undefined') {
-                            GuestHistory.syncBeforeReload();
-                        }
-                        // Reload so navbar reflects logged-in state
-                        setTimeout(function () { w.location.reload(); }, 1500);
-                    } else if (data.result === 'expired') {
-                        $('#slvf-otp-code-error').text('Code expired. Request a new one.').addClass('is-shown');
-                    } else {
-                        $('#slvf-otp-code-error').text('Incorrect code. Please try again.').addClass('is-shown');
-                        $('#slvf-otp-digits').addClass('slvf-shake');
-                        setTimeout(function () { $('#slvf-otp-digits').removeClass('slvf-shake'); }, 500);
-                    }
-                },
-                error: function () {
-                    $btn.prop('disabled', false).find('span').text('Verify');
-                    $('#slvf-otp-code-error').text('Network error. Please try again.').addClass('is-shown');
-                }
-            });
-        },
-
-        resend: function () {
-            OtpModal.stopTimer();
-            if (OtpModal._email) $('#slvf-otp-email').val(OtpModal._email);
-            OtpModal.showStep(1);
-        },
-
-        logout: function () {
-            $.ajax({
-                url:  'handler/otp_logout',
-                type: 'POST',
-                complete: function () { w.location.reload(); }
-            });
-        },
-        validateEmail: function (e) {
-            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
-        },
-        startTimer: function (sec) {
-            this.stopTimer();
-            this.secondsLeft = sec;
-            this.tick();
-            this.timer = setInterval(function () { OtpModal.tick(); }, 1000);
-        },
-        stopTimer: function () {
-            if (this.timer) { clearInterval(this.timer); this.timer = null; }
-        },
-        tick: function () {
-            var m = Math.floor(this.secondsLeft / 60);
-            var s = this.secondsLeft % 60;
-            $('#slvf-otp-countdown').text(m + ':' + (s < 10 ? '0' + s : s));
-            if (this.secondsLeft <= 0) {
-                this.stopTimer();
-                $('#slvf-otp-countdown').text('expired');
-                return;
-            }
-            this.secondsLeft--;
-        },
-        initDigits: function () {
-            var $digits = $('#slvf-otp-digits .slvf-otp-digit');
-
-            $digits.on('input', function (e) {
-                var $this = $(this);
-                var v = $this.val().replace(/[^0-9]/g, '');
-                $this.val(v);
-
-                if (v) {
-                    $this.addClass('is-filled');
-                    $this.next('.slvf-otp-digit').focus();
-                } else {
-                    $this.removeClass('is-filled');
-                }
-
-                // Auto-verify when all six are filled
-                var full = $digits.map(function () { return $(this).val(); }).get().join('');
-                if (full.length === 6) {
-                    setTimeout(OtpModal.verify, 120);
-                }
-            });
-
-            $digits.on('keydown', function (e) {
-                var $this = $(this);
-                if (e.key === 'Backspace' && !$this.val()) {
-                    $this.prev('.slvf-otp-digit').focus();
-                }
-                if (e.key === 'ArrowLeft') $this.prev('.slvf-otp-digit').focus();
-                if (e.key === 'ArrowRight') $this.next('.slvf-otp-digit').focus();
-            });
-
-            $digits.on('paste', function (e) {
-                var data = (e.originalEvent.clipboardData || w.clipboardData).getData('text');
-                var digits = data.replace(/[^0-9]/g, '').slice(0, 6).split('');
-                if (digits.length === 0) return;
-                e.preventDefault();
-                $digits.each(function (i) {
-                    if (digits[i]) {
-                        $(this).val(digits[i]).addClass('is-filled');
-                    }
-                });
-                $digits.eq(Math.min(digits.length, 5)).focus();
-                if (digits.length === 6) setTimeout(OtpModal.verify, 120);
-            });
-        },
-        initOverlayClose: function () {
-            $('#slvf-otp-overlay').on('click', function (e) {
-                if (e.target === this) OtpModal.close();
-            });
-            $(document).on('keydown', function (e) {
-                if (e.key === 'Escape' && $('#slvf-otp-overlay').hasClass('is-open')) {
-                    OtpModal.close();
-                }
-            });
-        }
-    };
-    w.OtpModal = OtpModal;
-
-    /* ----------------------------------------------------------------------
        Selected files visibility hook — show the .selected-files panel
        once the legacy uploader appends an <li>.
        ---------------------------------------------------------------------- */
@@ -402,10 +202,82 @@
             var $panel = $('#selected-files');
             if (!$panel.length) return;
             var $list  = $panel.find('ul');
+            var $dropZone = $('.upload-form .select-first-files');
             var observer = new MutationObserver(function () {
-                $panel.toggleClass('is-shown', $list.children().length > 0);
+                var hasFiles = $list.children().length > 0;
+                $panel.toggleClass('is-shown', hasFiles);
+                $panel.toggleClass('active', hasFiles);
+                $dropZone.toggleClass('is-hidden', hasFiles);
             });
             observer.observe($list[0], { childList: true });
+        }
+    };
+
+    /* ----------------------------------------------------------------------
+       VerifyDigits — handles auto-advance, backspace, and paste for the 6-digit
+       email verification code on the upload card.
+       ---------------------------------------------------------------------- */
+    var VerifyDigits = {
+        init: function () {
+            var $digits = $('#slvf-verify-digits .slvf-verify-digit');
+            var $hidden = $('#verify-code-hidden');
+            if (!$digits.length) return;
+
+            function updateHidden() {
+                var code = $digits.map(function () { return $(this).val(); }).get().join('');
+                $hidden.val(code);
+                return code;
+            }
+
+            $digits.on('input', function () {
+                var $this = $(this);
+                var v = $this.val().replace(/[^0-9]/g, '');
+                $this.val(v);
+
+                if (v) {
+                    $this.addClass('is-filled');
+                    $this.next('.slvf-verify-digit').focus();
+                } else {
+                    $this.removeClass('is-filled');
+                }
+
+                var code = updateHidden();
+                if (code.length === 6) {
+                    setTimeout(function () {
+                        $('#upload-verify button').trigger('click');
+                    }, 120);
+                }
+            });
+
+            $digits.on('keydown', function (e) {
+                var $this = $(this);
+                if (e.key === 'Backspace' && !$this.val()) {
+                    $this.prev('.slvf-verify-digit').focus();
+                }
+                if (e.key === 'ArrowLeft') $this.prev('.slvf-verify-digit').focus();
+                if (e.key === 'ArrowRight') $this.next('.slvf-verify-digit').focus();
+            });
+
+            $digits.on('paste', function (e) {
+                var clipboardData = e.originalEvent.clipboardData || w.clipboardData;
+                if (!clipboardData) return;
+                var data = clipboardData.getData('text');
+                var digits = data.replace(/[^0-9]/g, '').slice(0, 6).split('');
+                if (digits.length === 0) return;
+                e.preventDefault();
+                $digits.each(function (i) {
+                    if (digits[i]) {
+                        $(this).val(digits[i]).addClass('is-filled');
+                    }
+                });
+                $digits.eq(Math.min(digits.length - 1, 5)).focus();
+                var code = updateHidden();
+                if (code.length === 6) {
+                    setTimeout(function () {
+                        $('#upload-verify button').trigger('click');
+                    }, 120);
+                }
+            });
         }
     };
 
@@ -665,8 +537,8 @@
                     }
                 }
                 $('#selected-files ul').empty();
-                $('.upload-form .select-first-files').show();
-                $('.upload-form .selected-files').removeClass('active');
+                $('.upload-form .select-first-files').removeClass('is-hidden').show();
+                $('.upload-form .selected-files').removeClass('active is-shown');
                 $('.upload-block-content').removeClass('active');
                 $('#upload').addClass('active');
                 w.onbeforeunload = null;
@@ -958,9 +830,8 @@
         TabWindow.init();
         LegalAccordion.init();
         ModeToggle.init();
-        OtpModal.initDigits();
-        OtpModal.initOverlayClose();
         SelectedFiles.init();
+        VerifyDigits.init();
         Reveal.init();
         UploadPulse.init();
         LegalToc.init();

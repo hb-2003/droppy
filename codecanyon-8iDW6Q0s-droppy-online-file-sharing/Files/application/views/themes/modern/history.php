@@ -1,8 +1,7 @@
 <?php
 /**
  * SLVF — Transfer History page.
- * Shows all uploads linked to the OTP-verified email in session.
- * If not signed in, shows a prompt to authenticate via the OTP modal.
+ * Shows uploads linked to the signed-in account email.
  */
 $site_url  = rtrim($settings['site_url'], '/');
 $theme_url = $site_url . '/assets/themes/' . $settings['theme'];
@@ -14,8 +13,8 @@ $theme_url = $site_url . '/assets/themes/' . $settings['theme'];
     <section class="slvf-page__hero slvf-page__hero--sm">
         <div class="slvf-page__hero-inner">
             <h1 class="slvf-page__title">Transfer History</h1>
-            <?php if (!empty($otp_email)): ?>
-                <p class="slvf-page__sub">Transfers sent from <strong><?php echo htmlspecialchars($otp_email); ?></strong></p>
+            <?php if (!empty($user_email)): ?>
+                <p class="slvf-page__sub">Transfers sent from <strong><?php echo htmlspecialchars($user_email); ?></strong></p>
             <?php else: ?>
                 <p class="slvf-page__sub">Sign in to view your past transfers.</p>
             <?php endif; ?>
@@ -31,7 +30,7 @@ $theme_url = $site_url . '/assets/themes/' . $settings['theme'];
                 <div class="slvf-history__list" id="slvf-guest-history-list"></div>
             </div>
 
-            <?php if (empty($otp_email)): ?>
+            <?php if (empty($user_email)): ?>
             <!-- ── Not signed in ── -->
             <div class="slvf-history__empty slvf-history__empty--auth" id="slvf-history-auth-empty">
                 <div class="slvf-history__empty-icon">
@@ -40,12 +39,9 @@ $theme_url = $site_url . '/assets/themes/' . $settings['theme'];
                     </svg>
                 </div>
                 <h2 class="slvf-history__empty-title">Sign in to see your transfers</h2>
-                <p class="slvf-history__empty-sub">Sign in with your account to view transfers linked to your email.</p>
-                <button type="button" class="slvf-btn slvf-btn--primary slvf-history__signin-btn" id="slvf-history-signin">
-                    <?php echo lang('sign_in_otp') ?: 'Sign in with email'; ?>
-                </button>
-                <a class="slvf-btn slvf-btn--ghost slvf-btn--sm" href="<?php echo base_url('login'); ?>" style="margin-top:12px;display:inline-flex;">
-                    <?php echo lang('login') ?: 'Password sign in'; ?>
+                <p class="slvf-history__empty-sub">Sign in with your email and password to view transfers linked to your account.</p>
+                <a class="slvf-btn slvf-btn--primary slvf-history__signin-btn" href="<?php echo base_url('login'); ?>">
+                    <?php echo lang('login') ?: 'Sign in'; ?>
                 </a>
             </div>
 
@@ -185,18 +181,6 @@ $theme_url = $site_url . '/assets/themes/' . $settings['theme'];
         setTimeout(function () { btn.innerHTML = orig; btn.style.color = ''; }, 2000);
     }
 
-    // Sign-in button triggers the OTP modal
-    var signinBtn = document.getElementById('slvf-history-signin');
-    if (signinBtn) {
-        signinBtn.addEventListener('click', function () {
-            if (typeof OtpModal !== 'undefined') {
-                OtpModal.open();
-            } else {
-                var overlay = document.getElementById('slvf-otp-overlay');
-                if (overlay) overlay.classList.add('is-open');
-            }
-        });
-    }
 })();
 </script>
 

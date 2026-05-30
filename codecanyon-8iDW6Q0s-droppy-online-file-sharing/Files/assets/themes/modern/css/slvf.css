@@ -100,6 +100,33 @@ body .slvf-shell .container { max-width: none; }
     color: var(--slvf-accent-ink);
 }
 
+/* Override browser autofill background/text color (clashing yellow/white) */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 1000px var(--slvf-ink-850) inset !important;
+    -webkit-text-fill-color: var(--slvf-text) !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* For verify digits and OTP digits, match their specific background */
+.slvf-verify-digit:-webkit-autofill,
+.slvf-verify-digit:-webkit-autofill:hover,
+.slvf-verify-digit:-webkit-autofill:focus,
+.slvf-otp-digit:-webkit-autofill,
+.slvf-otp-digit:-webkit-autofill:hover,
+.slvf-otp-digit:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 1000px var(--slvf-ink-950) inset !important;
+    -webkit-text-fill-color: var(--slvf-text) !important;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-track { background: var(--slvf-ink-950); }
@@ -1420,6 +1447,9 @@ body.is-uploading .slvf-bg-mesh {
     padding: 14px;
 }
 .selected-files.is-shown { display: block; }
+
+/* Hide the drop zone when files have been selected */
+.upload-block .upload-form .select-first-files.is-hidden { display: none !important; }
 .selected-files ul {
     list-style: none;
     margin: 0;
@@ -1661,6 +1691,69 @@ body.is-uploading .slvf-bg-mesh {
     margin: 0 auto 18px;
 }
 #upload-verify .input { max-width: 280px; margin: 0 auto; text-align: center; letter-spacing: 0.6em !important; font-family: var(--slvf-font-mono) !important; font-size: 22px !important; }
+
+/* Verify icon */
+.slvf-verify__icon {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px;
+    color: var(--slvf-accent);
+    background: var(--slvf-accent-soft);
+    border: 1px solid rgba(212,255,58,0.22);
+    margin-bottom: 8px;
+    animation: slvf-pulse-glow 2.5s infinite ease-in-out;
+}
+
+@keyframes slvf-pulse-glow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(212,255,58,0.15); transform: scale(1); }
+    50% { box-shadow: 0 0 16px 4px rgba(212,255,58,0.3); transform: scale(1.04); }
+}
+
+/* Verify 6-digit inputs */
+.slvf-verify-digits {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 8px;
+    margin: 16px auto 4px;
+    width: 100%;
+    max-width: 320px;
+}
+.slvf-verify-digit {
+    width: 100%;
+    min-width: 0;
+    height: 56px;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background: var(--slvf-ink-950) !important;
+    border: 1.5px solid var(--slvf-line) !important;
+    border-radius: var(--slvf-radius) !important;
+    color: var(--slvf-text) !important;
+    font: 600 22px/1 var(--slvf-font-mono) !important;
+    text-align: center;
+    -webkit-appearance: none;
+    appearance: none;
+    transition: border-color .2s var(--slvf-ease), background .2s var(--slvf-ease), transform .15s var(--slvf-ease), box-shadow .2s var(--slvf-ease);
+}
+.slvf-verify-digit:focus {
+    outline: none;
+    border-color: var(--slvf-accent) !important;
+    background: var(--slvf-ink-850) !important;
+    box-shadow: 0 0 0 4px var(--slvf-accent-soft);
+    transform: scale(1.06);
+}
+.slvf-verify-digit.is-filled {
+    border-color: var(--slvf-line-strong) !important;
+    color: var(--slvf-accent) !important;
+}
+.slvf-verify__error {
+    display: block;
+    font-size: 13px;
+    color: var(--slvf-rose, #ff6b5c);
+    min-height: 1.2em;
+    margin-top: 8px;
+}
 
 /* Progress */
 #upload-progress { gap: 22px; }
@@ -3624,7 +3717,7 @@ body.is-uploading .slvf-bg-mesh {
     gap: 10px;
     align-items: center;
 }
-.slvf-btn--full { flex: 1; justify-content: center; }
+.slvf-dl-actions .slvf-btn--full { flex: 1; justify-content: center; }
 
 /* Report button — icon-only square */
 .slvf-dl-report-btn {

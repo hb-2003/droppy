@@ -839,14 +839,14 @@ var Uploader = {
            Uploader.submitEmailVerify();
         });
 
-        $('.upload-block-content#upload-verify input[type="number"]').on('keypress', function (e) {
+        $('.upload-block-content#upload-verify input').on('keypress', function (e) {
             if(e.which === 13){
                 Uploader.submitEmailVerify();
             }
         });
     },
     submitEmailVerify: function() {
-        let code = $('.upload-block-content#upload-verify input').val();
+        let code = $('#verify-code-hidden').val();
 
         let formData = $(Uploader.uploadForm).serialize();
         formData = formData + '&code='+code;

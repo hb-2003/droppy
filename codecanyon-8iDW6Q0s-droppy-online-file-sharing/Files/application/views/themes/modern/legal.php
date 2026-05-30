@@ -111,8 +111,8 @@ $ev_updated = date('F j, Y');
             <!-- Section 4 -->
             <div class="slvf-legal-section" id="s-4">
                 <span class="slvf-legal-section__num">04</span>
-                <h2>Account &amp; Passwordless Access</h2>
-                <p>The Service supports passwordless sign-in via one-time passcodes (OTP) sent to your email address. You are responsible for maintaining access to the email account you use to sign in.</p>
+                <h2>Account &amp; Sign-In</h2>
+                <p>The Service supports sign-in with your email address and password. You are responsible for maintaining access to the email account you use and keeping your password secure.</p>
                 <p>You agree to:</p>
                 <ul>
                     <li>Provide a valid email address.</li>

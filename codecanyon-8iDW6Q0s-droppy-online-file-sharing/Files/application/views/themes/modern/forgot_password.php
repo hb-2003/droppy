@@ -43,6 +43,14 @@
         .auth-label { display: block; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--a-muted); margin-bottom: 8px; }
         .auth-input { width: 100%; padding: 13px 16px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--a-r8); color: var(--a-text); font-family: var(--a-font); font-size: 15px; outline: none; }
         .auth-input:focus { border-color: var(--a-accent); box-shadow: 0 0 0 3px rgba(212,255,58,0.10); }
+        .auth-input:-webkit-autofill,
+        .auth-input:-webkit-autofill:hover,
+        .auth-input:-webkit-autofill:focus,
+        .auth-input:-webkit-autofill:active {
+            -webkit-box-shadow: 0 0 0 1000px #12151e inset !important;
+            -webkit-text-fill-color: var(--a-text) !important;
+            transition: background-color 5000s ease-in-out 0s;
+        }
         .auth-input--code { text-align: center; letter-spacing: 0.5em; font-size: 22px; font-weight: 700; }
         .auth-alert { background: rgba(244,123,123,0.10); border: 1px solid rgba(244,123,123,0.25); color: var(--a-rose); border-radius: var(--a-r8); padding: 10px 14px; font-size: 13px; margin-bottom: 16px; display: none; }
         .auth-alert.is-shown { display: block; }

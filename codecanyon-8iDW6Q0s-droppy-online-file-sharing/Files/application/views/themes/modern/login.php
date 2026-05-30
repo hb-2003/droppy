@@ -191,6 +191,14 @@
             background: rgba(212,255,58,0.04);
             box-shadow: 0 0 0 3px rgba(212,255,58,0.10);
         }
+        .auth-input:-webkit-autofill,
+        .auth-input:-webkit-autofill:hover,
+        .auth-input:-webkit-autofill:focus,
+        .auth-input:-webkit-autofill:active {
+            -webkit-box-shadow: 0 0 0 1000px #12151e inset !important;
+            -webkit-text-fill-color: var(--a-text) !important;
+            transition: background-color 5000s ease-in-out 0s;
+        }
 
         /* Button */
         .auth-btn {

@@ -298,19 +298,25 @@ $ev_default_share   = isset($settings['default_sharetype']) ? $settings['default
         </div>
 
         <div class="upload-block-content" id="upload-verify">
-            <lord-icon
-                    src="assets/themes/<?php echo $settings['theme'] ?>/rhvddzym.json"
-                    trigger="loop"
-                    colors="primary:<?php echo (!empty($settings['theme_color']) ? $settings['theme_color'] : '#121331'); ?>,<?php echo (!empty($settings['theme_color_secondary']) ? $settings['theme_color_secondary'] : '#3e8ed0'); ?>"
-                    style="width:180px;height:180px">
-            </lord-icon>
+            <div class="slvf-verify__icon">
+                <i class="lni lni-envelope"></i>
+            </div>
 
             <div class="upload-verify-details">
                 <h1><?php echo lang('verify_email_title') ?></h1>
 
                 <p><?php echo lang('verify_email_desc') ?> <span id="email-to-verify"></span></p>
 
-                <input type="number" class="input is-normal" placeholder="<?php echo lang('enter_verify_code') ?>">
+                <div class="slvf-verify-digits" id="slvf-verify-digits">
+                    <input class="slvf-verify-digit" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]" autocomplete="one-time-code" aria-label="Digit 1">
+                    <input class="slvf-verify-digit" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]" aria-label="Digit 2">
+                    <input class="slvf-verify-digit" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]" aria-label="Digit 3">
+                    <input class="slvf-verify-digit" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]" aria-label="Digit 4">
+                    <input class="slvf-verify-digit" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]" aria-label="Digit 5">
+                    <input class="slvf-verify-digit" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]" aria-label="Digit 6">
+                </div>
+                <input type="hidden" class="input is-normal" id="verify-code-hidden">
+                <span class="slvf-verify__error" id="slvf-verify-error"></span>
             </div>
 
             <div class="button-block">

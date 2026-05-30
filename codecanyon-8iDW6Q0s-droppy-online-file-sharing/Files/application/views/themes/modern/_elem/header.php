@@ -136,12 +136,15 @@
                     <?php endif; ?>
                 <?php endforeach; ?>
             <?php endif; ?>
-            <?php if(isset($_SESSION['otp_verified_email']) || (isset($session) && $session->has_userdata('user') && $session->userdata('user') == true)): ?>
+            <?php if(isset($session) && $session->has_userdata('user') && $session->userdata('user') == true): ?>
                 <!-- Logged-in: Account dropdown (History is in primary nav) -->
                 <div class="slvf-nav__account" id="slvf-account-toggle">
                     <button class="slvf-btn slvf-btn--ghost slvf-btn--sm" id="slvf-account-btn">
                         <i class="lni lni-user"></i>
-                        <span><?php echo isset($_SESSION['otp_verified_email']) ? explode('@', $_SESSION['otp_verified_email'])[0] : lang('account'); ?></span>
+                        <span><?php
+                            $nav_email = $session->userdata('user_email');
+                            echo !empty($nav_email) ? htmlspecialchars(explode('@', $nav_email)[0]) : lang('account');
+                        ?></span>
                         <i class="lni lni-chevron-down slvf-nav__caret"></i>
                     </button>
                     <div class="slvf-dropdown" id="slvf-account-menu">
@@ -149,19 +152,9 @@
                             <i class="lni lni-files"></i> <?php echo lang('my_transfers') ?: 'My Transfers'; ?>
                         </a>
                         <div class="slvf-dropdown__divider"></div>
-                        <?php if($session->has_userdata('user') && $session->userdata('user') == true): ?>
-                            <a class="slvf-dropdown__item slvf-dropdown__item--danger" href="<?php echo base_url('login/logout') ?>">
-                                <i class="lni lni-exit"></i> <?php echo lang('logout'); ?>
-                            </a>
-                        <?php elseif(isset($_SESSION['droppy_premium'])): ?>
-                            <a class="slvf-dropdown__item slvf-dropdown__item--danger" href="<?php echo base_url('page/premium?action=logout') ?>">
-                                <i class="lni lni-exit"></i> <?php echo lang('logout'); ?>
-                            </a>
-                        <?php else: ?>
-                            <a class="slvf-dropdown__item slvf-dropdown__item--danger" href="#" onclick="OtpModal.logout(); return false;">
-                                <i class="lni lni-exit"></i> <?php echo lang('logout') ?: 'Sign out'; ?>
-                            </a>
-                        <?php endif; ?>
+                        <a class="slvf-dropdown__item slvf-dropdown__item--danger" href="<?php echo base_url('login/logout') ?>">
+                            <i class="lni lni-exit"></i> <?php echo lang('logout'); ?>
+                        </a>
                     </div>
                 </div>
             <?php else: ?>
@@ -221,7 +214,7 @@
         <?php endif; ?>
 
         <!-- Guest: auth CTAs at top -->
-        <?php if(!(isset($_SESSION['otp_verified_email']) || ($session->has_userdata('user') && $session->userdata('user') == true))): ?>
+        <?php if(!(isset($session) && $session->has_userdata('user') && $session->userdata('user') == true)): ?>
             <a class="slvf-nav__mobile-cta slvf-nav__mobile-cta--primary" href="<?php echo base_url('login'); ?>">
                 <i class="lni lni-enter"></i> Sign in
             </a>
@@ -262,21 +255,11 @@
     </div>
 
     <!-- Logged-in: Logout pinned at bottom -->
-    <?php if(isset($_SESSION['otp_verified_email']) || ($session->has_userdata('user') && $session->userdata('user') == true)): ?>
+    <?php if(isset($session) && $session->has_userdata('user') && $session->userdata('user') == true): ?>
     <div class="slvf-nav__mobile-auth">
-        <?php if($session->has_userdata('user') && $session->userdata('user') == true): ?>
         <a class="slvf-nav__mobile-cta slvf-nav__mobile-cta--danger" href="<?php echo base_url('login/logout') ?>">
             <i class="lni lni-exit"></i> <?php echo lang('logout'); ?>
         </a>
-        <?php elseif(isset($_SESSION['droppy_premium'])): ?>
-        <a class="slvf-nav__mobile-cta slvf-nav__mobile-cta--danger" href="<?php echo base_url('page/premium?action=logout') ?>">
-            <i class="lni lni-exit"></i> <?php echo lang('logout'); ?>
-        </a>
-        <?php else: ?>
-        <a class="slvf-nav__mobile-cta slvf-nav__mobile-cta--danger" href="#" onclick="OtpModal.logout(); return false;">
-            <i class="lni lni-exit"></i> Sign out
-        </a>
-        <?php endif; ?>
     </div>
     <?php endif; ?>
 
@@ -287,83 +270,6 @@
 
 </div>
 <!-- END NAVBAR -->
-
-
-<!-- =============================================
-     OTP MODAL
-     ============================================= -->
-<div class="slvf-otp-overlay" id="slvf-otp-overlay">
-    <div class="slvf-otp-modal" id="slvf-otp-modal" role="dialog" aria-modal="true" aria-labelledby="slvf-otp-title">
-
-        <button class="slvf-otp-modal__close" onclick="OtpModal.close()" aria-label="Close">
-            <i class="lni lni-close"></i>
-        </button>
-
-        <!-- Step 1: Email input -->
-        <div class="slvf-otp-step" id="slvf-otp-step-1">
-            <div class="slvf-otp-modal__icon">
-                <i class="lni lni-lock-alt"></i>
-            </div>
-            <h2 class="slvf-otp-modal__title" id="slvf-otp-title">Sign in to <?php echo htmlspecialchars($settings['site_name']); ?></h2>
-            <p class="slvf-otp-modal__sub">Enter your email and we'll send you a one-time code — no password needed.</p>
-
-            <div class="slvf-otp-modal__field">
-                <label class="slvf-label" for="slvf-otp-email">Email address</label>
-                <input class="slvf-input" type="email" id="slvf-otp-email" placeholder="you@example.com" autocomplete="email">
-                <span class="slvf-input-error" id="slvf-otp-email-error"></span>
-            </div>
-
-            <button class="slvf-btn slvf-btn--primary slvf-btn--full" id="slvf-otp-send-btn" onclick="OtpModal.sendCode()">
-                <span>Send code</span>
-                <i class="lni lni-arrow-right"></i>
-            </button>
-        </div>
-
-        <!-- Step 2: OTP input -->
-        <div class="slvf-otp-step slvf-otp-step--hidden" id="slvf-otp-step-2">
-            <div class="slvf-otp-modal__icon slvf-otp-modal__icon--sent">
-                <i class="lni lni-envelope"></i>
-            </div>
-            <h2 class="slvf-otp-modal__title">Check your email</h2>
-            <p class="slvf-otp-modal__sub">We sent a 6-digit code to <strong id="slvf-otp-sent-to"></strong></p>
-
-            <div class="slvf-otp-digits" id="slvf-otp-digits">
-                <input class="slvf-otp-digit" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]" autocomplete="one-time-code">
-                <input class="slvf-otp-digit" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]">
-                <input class="slvf-otp-digit" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]">
-                <input class="slvf-otp-digit" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]">
-                <input class="slvf-otp-digit" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]">
-                <input class="slvf-otp-digit" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]">
-            </div>
-            <span class="slvf-input-error" id="slvf-otp-code-error"></span>
-
-            <div class="slvf-otp-modal__timer">
-                Code expires in <span id="slvf-otp-countdown">5:00</span>
-            </div>
-
-            <button class="slvf-btn slvf-btn--primary slvf-btn--full" id="slvf-otp-verify-btn" onclick="OtpModal.verify()">
-                <span>Verify</span>
-                <i class="lni lni-checkmark"></i>
-            </button>
-
-            <button class="slvf-btn slvf-btn--ghost slvf-btn--full slvf-otp-modal__resend" onclick="OtpModal.resend()">
-                Resend code
-            </button>
-        </div>
-
-        <!-- Step 3: Verified -->
-        <div class="slvf-otp-step slvf-otp-step--hidden" id="slvf-otp-step-3">
-            <div class="slvf-otp-modal__icon slvf-otp-modal__icon--success">
-                <i class="lni lni-checkmark-circle"></i>
-            </div>
-            <h2 class="slvf-otp-modal__title">You're signed in!</h2>
-            <p class="slvf-otp-modal__sub">Welcome back. Your transfers will now be saved to your history.</p>
-            <button class="slvf-btn slvf-btn--primary slvf-btn--full" onclick="OtpModal.close()">Continue</button>
-        </div>
-
-    </div>
-</div>
-<!-- END OTP MODAL -->
 
 
 <!-- =============================================
