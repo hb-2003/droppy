@@ -199,3 +199,36 @@ $theme_url = $site_url . '/assets/themes/' . $settings['theme'];
     }
 })();
 </script>
+
+<footer class="slvf-footer">
+    <div class="slvf-footer__inner">
+        <div class="slvf-footer__brand"><?php echo htmlspecialchars($settings['site_name']); ?></div>
+        <nav class="slvf-footer__links">
+            <?php
+            $has_terms_in_pages = false;
+            if(is_array($extra_pages) && !empty($extra_pages)) {
+                foreach ($extra_pages AS $key => $tab) {
+                    if ($tab['type'] === 'about_page') {
+                        echo '<a href="' . base_url('about') . '">' . htmlspecialchars($tab['title']) . '</a>';
+                    } elseif ($tab['type'] === 'terms_page') {
+                        $has_terms_in_pages = true;
+                        echo '<a href="' . base_url('terms') . '">' . htmlspecialchars($tab['title']) . '</a>';
+                    } elseif ($tab['type'] === 'link') {
+                        $href = strpos($tab['content'], 'http') === false ? base_url($tab['content']) : $tab['content'];
+                        echo '<a href="' . $href . '" target="_blank">' . htmlspecialchars($tab['title']) . '</a>';
+                    } else {
+                        echo '<a href="' . base_url('page/' . rawurlencode($tab['title'])) . '">' . htmlspecialchars($tab['title']) . '</a>';
+                    }
+                }
+            }
+            if (!$has_terms_in_pages): ?>
+            <a href="<?php echo base_url('terms'); ?>">Terms of service</a>
+            <?php endif; ?>
+            <a href="<?php echo base_url('privacy'); ?>">Privacy policy</a>
+            <?php if($settings['contact_enabled'] == 'true'): ?>
+            <a data-target="tab-contact"><?php echo lang('contact'); ?></a>
+            <?php endif; ?>
+        </nav>
+        <div class="slvf-footer__copy">© <?php echo date('Y'); ?> · <?php echo htmlspecialchars($settings['site_name']); ?></div>
+    </div>
+</footer>

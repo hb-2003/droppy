@@ -283,6 +283,34 @@ class Home extends CI_Controller {
     }
 
     /**
+     * SLVF — Standalone Privacy Policy page.
+     * Pulls editable copy from droppy_pages WHERE type='privacy_page'.
+     */
+    public function privacy()
+    {
+        $this->load->helper('cookie');
+        $this->load->helper('seconds');
+
+        $data = array(
+            'page'          => 'privacy',
+            'settings'      => $this->config->config,
+            'socials'       => $this->socials->getAll(),
+            'language_list' => $this->language->getAll(),
+            'extra_pages'   => $this->pages->getAll(0, 0, $this->session->userdata('language')),
+            'custom_tabs'   => $this->plugin->_tabs,
+            'custom_css'    => $this->plugin->_css,
+            'session'       => $this->session,
+            'mobile'        => false,
+            'backgrounds'   => $this->backgrounds->getAllOrderID(),
+            'page_title'    => 'Privacy Policy',
+            'page_content'  => '',
+            'premium_active'=> $this->plugin->pluginLoaded('premium'),
+        );
+
+        $this->_slvf_render_page('privacy', $data, true);
+    }
+
+    /**
      * SLVF — Standalone Terms / Legal page.
      * Pulls editable copy from droppy_pages WHERE type='terms_page'.
      */
@@ -290,8 +318,6 @@ class Home extends CI_Controller {
     {
         $this->load->helper('cookie');
         $this->load->helper('seconds');
-
-        $page_row = $this->pages->getByType('terms_page');
 
         $data = array(
             'page'          => 'terms',
@@ -304,8 +330,8 @@ class Home extends CI_Controller {
             'session'       => $this->session,
             'mobile'        => false,
             'backgrounds'   => $this->backgrounds->getAllOrderID(),
-            'page_title'    => is_array($page_row) && !empty($page_row['title']) ? $page_row['title'] : 'Terms of service',
-            'page_content'  => is_array($page_row) && !empty($page_row['content']) ? $page_row['content'] : '',
+            'page_title'    => 'Terms of service',
+            'page_content'  => '',
             'premium_active'=> $this->plugin->pluginLoaded('premium'),
         );
 

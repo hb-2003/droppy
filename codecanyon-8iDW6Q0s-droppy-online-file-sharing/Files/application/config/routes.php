@@ -69,6 +69,7 @@ $route['history']  = 'home/history';
 $route['receive']  = 'home/receive';
 $route['about']    = 'home/about';
 $route['terms']    = 'home/terms';
+$route['privacy']  = 'home/privacy';
 $route['register'] = 'login/register';
 $route['login']    = 'login/index';
 $route['forgot-password'] = 'login/forgot_password';

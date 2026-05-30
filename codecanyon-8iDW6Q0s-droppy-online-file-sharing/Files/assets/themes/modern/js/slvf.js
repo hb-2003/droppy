@@ -8,6 +8,64 @@
     /* ----------------------------------------------------------------------
        Account dropdown
        ---------------------------------------------------------------------- */
+
+    /* ----------------------------------------------------------------------
+       Legal pages — Mobile Accordion
+       ---------------------------------------------------------------------- */
+    var LegalAccordion = {
+        init: function() {
+            if (!$('.slvf-legal-section').length) return;
+            
+            // Transform sections for accordion behavior
+            $('.slvf-legal-section').each(function() {
+                var $section = $(this);
+                var $num = $section.find('.slvf-legal-section__num');
+                var $h2 = $section.find('h2');
+                
+                // Only wrap if not already wrapped
+                if ($section.find('.slvf-legal-section__header').length === 0) {
+                    var $header = $('<div class="slvf-legal-section__header"></div>');
+                    var $body = $('<div class="slvf-legal-section__body"></div>');
+                    
+                    // Move num and h2 to header
+                    $header.append($num).append($h2);
+                    
+                    // Add caret icon
+                    $header.append('<i class="lni lni-chevron-down slvf-legal-section__caret"></i>');
+                    
+                    // Move everything else to body
+                    var children = $section.children().not('.slvf-legal-section__header').detach();
+                    var nodes = $section.contents().detach(); // get raw text nodes too
+                    $body.append(children).append(nodes);
+                    
+                    $section.append($header).append($body);
+                    
+                    // On mobile, first section is open by default, others closed
+                    if ($section.index() === 0) {
+                        $section.addClass('is-open');
+                    }
+                }
+            });
+            
+            // Handle click
+            $(document).on('click', '.slvf-legal-section__header', function() {
+                // Only act as accordion on mobile (when caret is visible)
+                if ($('.slvf-legal-section__caret').is(':visible')) {
+                    var $section = $(this).closest('.slvf-legal-section');
+                    var wasOpen = $section.hasClass('is-open');
+                    
+                    // Close all
+                    $('.slvf-legal-section').removeClass('is-open');
+                    
+                    // If it wasn't open, open it
+                    if (!wasOpen) {
+                        $section.addClass('is-open');
+                    }
+                }
+            });
+        }
+    };
+
     var Account = {
         init: function () {
             $(document).on('click', '#slvf-account-btn', function (e) {
@@ -450,6 +508,14 @@
                 $nav.find('.slvf-toc__link[href="#' + id + '"]').addClass('is-active');
             };
 
+            // Use the content panel as the scroll root when in split-panel mode,
+            // otherwise fall back to the viewport (window).
+            var contentPanel = document.querySelector('.slvf-page--legal .slvf-legal__body');
+            var ioRoot = contentPanel || null;
+
+            // Always start at the top — prevent browser from restoring a stale scroll position
+            if (contentPanel) contentPanel.scrollTop = 0;
+
             var visible = {};
             var io = new IntersectionObserver(function (entries) {
                 entries.forEach(function (entry) {
@@ -462,7 +528,7 @@
                     }
                 });
 
-                // Pick the id that is visible AND highest in document order
+                // Pick the section highest in document order that is visible
                 var ids = Object.keys(visible);
                 if (ids.length) {
                     var ordered = $sections.toArray()
@@ -471,12 +537,27 @@
                     if (ordered.length) setActive(ordered[0]);
                 }
             }, {
-                // Trigger when the section's top crosses ~25% from the viewport top.
-                rootMargin: '-25% 0px -65% 0px',
-                threshold: [0, 0.05, 0.25, 0.5, 1]
+                root: ioRoot,
+                rootMargin: '-10% 0px -45% 0px',
+                threshold: [0, 0.1, 0.5, 1]
             });
 
             $sections.each(function () { io.observe(this); });
+
+            // Fallback: scroll listener on the content panel (or window).
+            var $scrollEl = contentPanel ? $(contentPanel) : $(w);
+            $scrollEl.on('scroll.legaltoc', function () {
+                if (Object.keys(visible).length) return;
+                var scrollTop = contentPanel ? contentPanel.scrollTop : $(w).scrollTop();
+                var best = null;
+                $sections.each(function () {
+                    var elTop = contentPanel
+                        ? this.offsetTop
+                        : $(this).offset().top;
+                    if (elTop <= scrollTop + 80) best = this.id;
+                });
+                if (best) setActive(best);
+            });
         }
     };
 
@@ -875,6 +956,7 @@
         Account.init();
         SlvfNav.init();
         TabWindow.init();
+        LegalAccordion.init();
         ModeToggle.init();
         OtpModal.initDigits();
         OtpModal.initOverlayClose();

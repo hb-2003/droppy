@@ -125,12 +125,11 @@
 
         <!-- Desktop right actions -->
         <div class="slvf-nav__actions">
+            <a class="slvf-nav__link" href="<?php echo base_url('about'); ?>"><span>About us</span></a>
             <?php if(is_array($extra_pages) && !empty($extra_pages)): ?>
                 <?php foreach($extra_pages as $tab): ?>
-                    <?php if($tab['type'] === 'about_page'): ?>
-                        <a class="slvf-nav__link" href="<?php echo base_url('about'); ?>"><span><?php echo htmlspecialchars($tab['title']); ?></span></a>
-                    <?php elseif($tab['type'] === 'terms_page'): ?>
-                        <a class="slvf-nav__link" href="<?php echo base_url('terms'); ?>"><span><?php echo htmlspecialchars($tab['title']); ?></span></a>
+                    <?php if($tab['type'] === 'terms_page'): ?>
+                        <?php /* Terms of service intentionally excluded from header nav — available in footer */ ?>
                     <?php elseif($tab['type'] === 'link'): ?>
                         <?php $href = strpos($tab['content'], 'http') === false ? base_url($tab['content']) : $tab['content']; ?>
                         <a class="slvf-nav__link" href="<?php echo $href; ?>" target="_blank"><span><?php echo htmlspecialchars($tab['title']); ?></span></a>
@@ -231,21 +230,13 @@
             </a>
         <?php endif; ?>
 
-        <!-- Logged-in: History at top -->
-        <?php if(isset($_SESSION['otp_verified_email']) || ($session->has_userdata('user') && $session->userdata('user') == true)): ?>
-            <a class="slvf-nav__mobile-item" href="<?php echo base_url('history') ?>">
-                <i class="lni lni-timer"></i> <?php echo lang('history') ?: 'History'; ?>
-            </a>
-        <?php endif; ?>
-
+        <div class="slvf-nav__mobile-section">Pages</div>
+        <a class="slvf-nav__mobile-item" href="<?php echo base_url('about'); ?>">
+            <i class="lni lni-information"></i> About us
+        </a>
         <?php if(is_array($extra_pages) && !empty($extra_pages)): ?>
-            <div class="slvf-nav__mobile-section">Pages</div>
             <?php foreach($extra_pages as $tab): ?>
-                <?php if($tab['type'] === 'about_page'): ?>
-                <a class="slvf-nav__mobile-item" href="<?php echo base_url('about'); ?>">
-                    <i class="lni lni-information"></i> <?php echo htmlspecialchars($tab['title']); ?>
-                </a>
-                <?php elseif($tab['type'] === 'terms_page'): ?>
+                <?php if($tab['type'] === 'terms_page'): ?>
                 <a class="slvf-nav__mobile-item" href="<?php echo base_url('terms'); ?>">
                     <i class="lni lni-shield"></i> <?php echo htmlspecialchars($tab['title']); ?>
                 </a>
@@ -257,6 +248,9 @@
                 <?php endif; ?>
             <?php endforeach; ?>
         <?php endif; ?>
+        <a class="slvf-nav__mobile-item" href="<?php echo base_url('privacy'); ?>">
+            <i class="lni lni-lock-alt"></i> Privacy policy
+        </a>
 
         <?php if($settings['contact_enabled'] == 'true'): ?>
             <div class="slvf-nav__mobile-section">Support</div>

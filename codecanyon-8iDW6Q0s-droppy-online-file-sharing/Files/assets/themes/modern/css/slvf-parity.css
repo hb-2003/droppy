@@ -1,5 +1,15 @@
 /* SLVF web parity — receive, nav, QR, history modal */
 
+/* Override legacy mobile body fixed position which breaks scrolling */
+@media (max-width: 768px) {
+    body {
+        position: relative !important;
+    }
+}
+
+/* Global layout token — footer height used for legal page calculation */
+:root { --slvf-footer-h: 56px; }
+
 .slvf-nav__primary {
     display: flex;
     align-items: center;
@@ -84,3 +94,485 @@
 .slvf-history-modal__files li { padding: 8px 0; border-bottom: 1px solid var(--slvf-border); }
 .slvf-history-modal__meta { font-size: 13px; color: var(--slvf-text-dim); margin-bottom: 16px; }
 .slvf-history-modal__actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+/* ---------------------------------------------------------------------------
+   SITE FOOTER
+   --------------------------------------------------------------------------- */
+
+/* Footer brand — accent color matching the header wordmark */
+.slvf-footer__brand { color: var(--slvf-accent) !important; }
+
+/* Allow the split hero to shrink naturally so footer is visible without scrolling */
+.slvf-hero--split { min-height: unset !important; }
+.slvf-hero__grid  { min-height: unset !important; }
+
+/* Remove bottom padding from the homepage shell so footer sits flush */
+.slvf-shell--hero { padding-bottom: 0 !important; }
+
+/* Ensure footer sits above background layers */
+.slvf-footer { position: relative; z-index: 2; }
+
+/* ---------------------------------------------------------------------------
+   ABOUT PAGE — more spacious hero & taller stat tiles
+   --------------------------------------------------------------------------- */
+
+.slvf-page--about .slvf-page__hero {
+    padding-top: 80px !important;
+    padding-bottom: 80px !important;
+    min-height: 52vh !important;
+}
+
+/* Stat tiles — taller with more internal padding */
+.slvf-numbers {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+}
+.slvf-numbers .slvf-number {
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
+}
+.slvf-numbers .slvf-number__val {
+    font-size: clamp(36px, 5vw, 56px) !important;
+    line-height: 1 !important;
+    margin: 8px 0 !important;
+}
+
+@media (max-width: 768px) {
+    .slvf-numbers { grid-template-columns: repeat(2, 1fr) !important; }
+    .slvf-page--about .slvf-page__hero { min-height: unset !important; padding-top: 48px !important; padding-bottom: 48px !important; }
+}
+
+
+/* ---------------------------------------------------------------------------
+   LEGAL / PRIVACY — split-panel layout
+   Left TOC: fixed panel. Right content: ONLY scrollable part.
+   --------------------------------------------------------------------------- */
+
+/* Lock html + body so body cannot scroll on legal pages.
+   flex-column + min-height ensures footer stays anchored even if fixed is overridden. */
+html:has(.slvf-page--legal) {
+    overflow: hidden;
+    height: 100%;
+}
+html:has(.slvf-page--legal) body {
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Lock the page to viewport — no full-page scroll.
+   Override .slvf-page base: clears 96px top padding, 32px side padding, 1240px max-width. */
+.slvf-page--legal {
+    height: calc(100vh - var(--slvf-nav-h, 72px) - var(--slvf-footer-h, 56px));
+    min-height: min(400px, 50vh);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    /* Reset .slvf-page defaults that break the split-panel layout */
+    padding: 0 !important;
+    max-width: 100% !important;
+}
+
+/* Hide decorative corner scaffold marks — they look like ghost rectangles on the legal hero */
+.slvf-page--legal .slvf-hero__scaffold { display: none !important; }
+
+/* Hero: compact header strip — padding and max-width match the legal grid below */
+.slvf-page--legal .slvf-page__hero {
+    flex-shrink: 0;
+    padding-top: 28px !important;
+    padding-bottom: 24px !important;
+    padding-left: clamp(20px, 4vw, 56px) !important;
+    padding-right: clamp(20px, 4vw, 56px) !important;
+    max-width: 1200px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    align-self: stretch !important;
+}
+
+/* Legal grid: fills remaining height, consistent max-width with hero above */
+.slvf-page--legal .slvf-legal {
+    flex: 1 1 0;
+    min-height: 0;
+    overflow: hidden;
+    margin: 0 auto !important;
+    max-width: 1200px;
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: clamp(20px, 4vw, 56px) !important;
+    padding-right: clamp(20px, 4vw, 56px) !important;
+    column-gap: 48px !important;
+    align-items: start;
+    border-top: 1px solid var(--slvf-line);
+}
+
+/* TOC column: locked, scrolls only if list overflows */
+.slvf-page--legal .slvf-toc {
+    height: 100%;
+    overflow-y: auto;
+    border-right: 1px solid var(--slvf-line);
+    padding-right: 24px;
+}
+
+/* ---------------------------------------------------------------------------
+   LEGAL SECTIONS — refined typography & spacing
+   --------------------------------------------------------------------------- */
+
+.slvf-legal-section {
+    padding: 32px 0 20px !important;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.slvf-legal-section:first-of-type { padding-top: 4px !important; }
+.slvf-legal-section:last-of-type { border-bottom: none; }
+
+/* Section number — accent pill badge */
+.slvf-legal-section__num {
+    display: inline-flex !important;
+    align-items: center !important;
+    font-family: var(--slvf-font-mono, monospace) !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.1em !important;
+    color: var(--slvf-accent) !important;
+    background: rgba(212, 255, 58, 0.07) !important;
+    border: 1px solid rgba(212, 255, 58, 0.15) !important;
+    border-radius: 5px !important;
+    padding: 2px 8px !important;
+    margin-bottom: 10px !important;
+    line-height: 1.6 !important;
+}
+
+/* Section heading */
+.slvf-legal-section h2 {
+    font-size: clamp(17px, 2vw, 20px) !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.025em !important;
+    line-height: 1.3 !important;
+    margin-bottom: 14px !important;
+    margin-top: 0 !important;
+    color: var(--slvf-text, #fff) !important;
+}
+
+/* Accordion structural overrides */
+.slvf-legal-section__header {
+    display: block;
+}
+.slvf-legal-section__caret {
+    display: none;
+}
+.slvf-legal-section__body {
+    display: block;
+}
+
+/* Prose body text */
+.slvf-legal__body p {
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--slvf-text-dim);
+    margin-bottom: 12px;
+}
+
+/* Lists */
+.slvf-legal__body ul,
+.slvf-legal__body ol {
+    padding-left: 0 !important;
+    list-style: none !important;
+    margin: 10px 0 14px !important;
+}
+.slvf-legal__body ul li,
+.slvf-legal__body ol li {
+    position: relative;
+    padding-left: 18px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--slvf-text-dim);
+    margin-bottom: 6px;
+}
+.slvf-legal__body ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--slvf-accent);
+    opacity: 0.55;
+}
+.slvf-legal__body ol { counter-reset: ol-counter; }
+.slvf-legal__body ol li { counter-increment: ol-counter; }
+.slvf-legal__body ol li::before {
+    content: counter(ol-counter) '.';
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 12px;
+    font-family: var(--slvf-font-mono, monospace);
+    font-weight: 700;
+    color: var(--slvf-accent);
+    opacity: 0.7;
+}
+.slvf-legal__body li strong { color: var(--slvf-text, #fff); font-weight: 600; }
+.slvf-legal__body a { color: var(--slvf-accent); text-decoration: none; }
+.slvf-legal__body a:hover { text-decoration: underline; }
+
+/* ---------------------------------------------------------------------------
+   TOC — polished active & hover states
+   --------------------------------------------------------------------------- */
+
+.slvf-toc__link {
+    position: relative;
+    padding-left: 12px !important;
+    transition: color 0.18s, background 0.18s !important;
+}
+.slvf-toc__link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%) scaleY(0);
+    width: 2px;
+    height: 60%;
+    background: var(--slvf-accent);
+    border-radius: 2px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    opacity: 0;
+}
+.slvf-toc__link.is-active::before {
+    transform: translateY(-50%) scaleY(1);
+    opacity: 1;
+}
+.slvf-toc__link.is-active .slvf-toc__num {
+    color: var(--slvf-accent) !important;
+}
+.slvf-toc__link.is-active .slvf-toc__text {
+    color: var(--slvf-text, #fff) !important;
+}
+.slvf-toc__link:not(.is-active):hover {
+    background: rgba(255,255,255,0.03) !important;
+}
+.slvf-toc__link:not(.is-active):hover .slvf-toc__num {
+    color: var(--slvf-text-dim) !important;
+}
+
+/* ---------------------------------------------------------------------------
+   LEGAL PAGE HERO — compact & refined
+   --------------------------------------------------------------------------- */
+
+.slvf-page--legal .slvf-page__hero {
+    background: transparent !important;
+    border-bottom: none !important;
+}
+.slvf-page--legal .slvf-hero__eyebrow {
+    font-family: var(--slvf-font-mono, monospace) !important;
+    font-size: 10px !important;
+    letter-spacing: 0.15em !important;
+    text-transform: uppercase !important;
+    color: var(--slvf-accent) !important;
+    background: rgba(212,255,58,0.07) !important;
+    border: 1px solid rgba(212,255,58,0.15) !important;
+    border-radius: 100px !important;
+    padding: 3px 12px !important;
+    margin-bottom: 14px !important;
+}
+.slvf-page--legal .slvf-page__title {
+    font-size: clamp(26px, 4vw, 40px) !important;
+    letter-spacing: -0.03em !important;
+    line-height: 1.1 !important;
+    text-align: center !important;
+    margin-bottom: 10px !important;
+}
+.slvf-page--legal .slvf-page__lead {
+    font-size: 14px !important;
+    color: var(--slvf-text-dim) !important;
+    margin-bottom: 6px !important;
+}
+.slvf-page--legal .slvf-page__meta {
+    font-family: var(--slvf-font-mono, monospace) !important;
+    font-size: 11px !important;
+    color: var(--slvf-text-mute, rgba(255,255,255,0.3)) !important;
+    letter-spacing: 0.04em !important;
+}
+
+/* ---------------------------------------------------------------------------
+   LEGAL CLOSE BLOCK
+   --------------------------------------------------------------------------- */
+
+.slvf-legal__close {
+    padding: 32px 0 48px !important;
+    border-top: 1px solid rgba(255,255,255,0.06) !important;
+    margin-top: 16px !important;
+}
+.slvf-legal__close-meta {
+    font-size: 13px !important;
+    color: var(--slvf-text-mute, rgba(255,255,255,0.3)) !important;
+    margin-bottom: 16px !important;
+    font-family: var(--slvf-font-mono, monospace) !important;
+    letter-spacing: 0.03em !important;
+}
+
+/* Disable built-in sticky — panel layout handles it */
+.slvf-page--legal .slvf-toc__sticky {
+    position: relative !important;
+    top: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    padding: 28px 0 32px;
+}
+
+/* Content column: THE ONLY SCROLLABLE PART.
+   align-self: stretch ensures it fills the full panel height even with align-items: start on the grid. */
+.slvf-page--legal .slvf-legal__body {
+    height: 100%;
+    overflow-y: auto;
+    align-self: stretch;
+    padding-left: 8px;
+    padding-top: 8px;
+    padding-bottom: calc(var(--slvf-footer-h, 56px) + 48px);
+}
+
+.slvf-page--legal .slvf-legal__body::-webkit-scrollbar { width: 5px; }
+.slvf-page--legal .slvf-legal__body::-webkit-scrollbar-thumb {
+    background: var(--slvf-line-strong);
+    border-radius: 3px;
+}
+
+/* Footer on legal pages — always fixed at viewport bottom */
+.slvf-page--legal ~ .slvf-footer,
+.slvf-footer--legal {
+    display: flex !important;
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    top: auto !important;
+    z-index: 9000 !important;
+    height: var(--slvf-footer-h, 56px) !important;
+    background: var(--slvf-bg, #0a0c14) !important;
+    border-top: 1px solid var(--slvf-line) !important;
+}
+
+/* ---------------------------------------------------------------------------
+   LEGAL PAGES — MOBILE (≤ 900px): disable viewport lock, stack layout
+   --------------------------------------------------------------------------- */
+
+@media (max-width: 900px) {
+    /* Release the body scroll lock */
+    html:has(.slvf-page--legal),
+    html:has(.slvf-page--legal) body {
+        overflow: auto !important;
+        height: auto !important;
+        display: block !important;
+        min-height: unset !important;
+    }
+
+    /* Page flows naturally, fills full height for footer anchoring */
+    .slvf-page--legal {
+        height: auto !important;
+        min-height: unset !important;
+        overflow: visible !important;
+        flex: 1 !important;
+    }
+
+    /* Hero: no max-width constraint on mobile, fill full width */
+    .slvf-page--legal .slvf-page__hero {
+        max-width: 100% !important;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        align-self: auto !important;
+    }
+
+    /* Hide the TOC sidebar — not usable on narrow screens */
+    .slvf-page--legal .slvf-toc {
+        display: none !important;
+    }
+
+    /* Content takes full width and scrolls with the page */
+    .slvf-page--legal .slvf-legal__body {
+        height: auto !important;
+        overflow: visible !important;
+        padding-left: 0 !important;
+        padding-top: 0 !important;
+        padding-bottom: calc(var(--slvf-footer-h, 56px) + 32px) !important;
+    }
+
+    /* Legal grid collapses to single column, full width */
+    .slvf-page--legal .slvf-legal {
+        flex: none !important;
+        min-height: unset !important;
+        overflow: visible !important;
+        max-width: 100% !important;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        column-gap: 0 !important;
+    }
+
+    /* Footer stays fixed on mobile too */
+    .slvf-footer--legal,
+    .slvf-page--legal ~ .slvf-footer {
+        position: fixed !important;
+        bottom: 0 !important;
+    }
+}
+
+/* Legal Accordion - Mobile Only */
+@media (max-width: 900px) {
+    .slvf-legal-section {
+        padding: 24px 0 0 !important;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .slvf-legal-section__header {
+        position: relative;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding-bottom: 24px;
+        padding-right: 32px; /* space for caret */
+    }
+    .slvf-legal-section h2 {
+        margin-bottom: 0 !important;
+        transition: color 0.2s;
+    }
+    .slvf-legal-section__caret {
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 18px;
+        color: var(--slvf-text-dim);
+        transition: transform 0.3s ease;
+    }
+    
+    /* Body is hidden by default on mobile */
+    .slvf-legal-section__body {
+        display: none;
+        padding-bottom: 24px;
+    }
+    
+    /* Open state */
+    .slvf-legal-section.is-open .slvf-legal-section__body {
+        display: block;
+        animation: accordionFadeIn 0.3s ease forwards;
+    }
+    .slvf-legal-section.is-open .slvf-legal-section__header {
+        padding-bottom: 16px;
+    }
+    .slvf-legal-section.is-open h2 {
+        color: var(--slvf-accent) !important;
+    }
+    .slvf-legal-section.is-open .slvf-legal-section__caret {
+        transform: translateY(-50%) rotate(180deg);
+        color: var(--slvf-accent);
+    }
+}
+
+@keyframes accordionFadeIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+}
