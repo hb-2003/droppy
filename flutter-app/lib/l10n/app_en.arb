@@ -83,6 +83,13 @@
   "languageEnglish": "English",
   "languageHindi": "Hindi",
   "logout": "Log out",
+  "deleteAccount": "Delete account",
+  "deleteAccountConfirmTitle": "Delete your account?",
+  "deleteAccountConfirmBody": "This permanently deletes your account and signs you out. Your transfer links will keep working, but they will no longer appear in your history.",
+  "deleteAccountSuccess": "Account deleted",
+  "deleteAccountSuccessBody": "Your account has been removed.",
+  "deleteAccountFailed": "Could not delete account",
+  "deleteAccountFailedBody": "Please try again or contact support.",
   "maxFilesReached": "Too many files",
   "fileTooLarge": "File too large",
   "ipLimit": "Too many uploads from this network",
@@ -179,8 +186,29 @@
   "plansSubtitle": "Upgrade to remove ads and send bigger files.",
   "storeUnavailable": "Store unavailable",
   "storeUnavailableBody": "In-app purchases are not available right now.",
+  "storeLoadingPrices": "Loading prices from App Store…",
+  "storePricesUnavailable": "Prices unavailable",
+  "storePricesPartial": "Some prices could not be loaded",
+  "storePricesPartialBody": "{loaded} of {total} subscription products loaded.",
+  "@storePricesPartialBody": {
+    "placeholders": {
+      "loaded": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+  "storeSetupHint": "Test on a real iPhone (not Simulator), use a Sandbox Apple ID, and ensure all 6 subscriptions are created under this app’s bundle ID in App Store Connect with pricing set.",
+  "priceUnavailable": "—",
+  "effectiveMonthlyPrice": "{price}/month",
+  "@effectiveMonthlyPrice": {
+    "placeholders": {
+      "price": { "type": "String" }
+    }
+  },
   "freeVersionAds": "Currently you are using our free version with ads",
   "restorePurchases": "Restore purchases",
+  "plansContinue": "Continue",
+  "planLinkRestore": "Restore",
+  "termsAndConditions": "Terms and conditions",
   "createAccountTitle": "Create account",
   "signUpSubtitle": "Sign up with email and password.",
   "confirmPassword": "Confirm password",

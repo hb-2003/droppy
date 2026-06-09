@@ -241,6 +241,29 @@ class AppLocalizationsHi extends AppLocalizations {
   String get logout => 'लॉग आउट';
 
   @override
+  String get deleteAccount => 'खाता हटाएँ';
+
+  @override
+  String get deleteAccountConfirmTitle => 'अपना खाता हटाएँ?';
+
+  @override
+  String get deleteAccountConfirmBody =>
+      'यह आपका खाता स्थायी रूप से हटा देगा और आपको साइन आउट कर देगा। आपके ट्रांसफ़र लिंक काम करते रहेंगे, लेकिन वे अब आपके इतिहास में नहीं दिखेंगे।';
+
+  @override
+  String get deleteAccountSuccess => 'खाता हटाया गया';
+
+  @override
+  String get deleteAccountSuccessBody => 'आपका खाता हटा दिया गया है।';
+
+  @override
+  String get deleteAccountFailed => 'खाता हटाया नहीं जा सका';
+
+  @override
+  String get deleteAccountFailedBody =>
+      'कृपया फिर कोशिश करें या सहायता से संपर्क करें।';
+
+  @override
   String get maxFilesReached => 'बहुत अधिक फ़ाइलें';
 
   @override
@@ -496,11 +519,46 @@ class AppLocalizationsHi extends AppLocalizations {
   String get storeUnavailableBody => 'इन-ऐप खरीद अभी उपलब्ध नहीं है।';
 
   @override
+  String get storeLoadingPrices => 'App Store से कीमतें लोड हो रही हैं…';
+
+  @override
+  String get storePricesUnavailable => 'कीमतें उपलब्ध नहीं';
+
+  @override
+  String get storePricesPartial => 'कुछ कीमतें लोड नहीं हो सकीं';
+
+  @override
+  String storePricesPartialBody(int loaded, int total) {
+    return '$total में से $loaded सदस्यता उत्पाद लोड हुए।';
+  }
+
+  @override
+  String get storeSetupHint =>
+      'वास्तविक iPhone पर टेस्ट करें (सिम्युलेटर नहीं), Sandbox Apple ID का उपयोग करें, और App Store Connect में इस ऐप के bundle ID के तहत सभी 6 सदस्यताएँ और कीमत सेट करें।';
+
+  @override
+  String get priceUnavailable => '—';
+
+  @override
+  String effectiveMonthlyPrice(String price) {
+    return '$price/माह';
+  }
+
+  @override
   String get freeVersionAds =>
       'आप अभी विज्ञापनों वाला मुफ़्त संस्करण उपयोग कर रहे हैं';
 
   @override
   String get restorePurchases => 'खरीद पुनर्स्थापित करें';
+
+  @override
+  String get plansContinue => 'जारी रखें';
+
+  @override
+  String get planLinkRestore => 'पुनर्स्थापित करें';
+
+  @override
+  String get termsAndConditions => 'नियम और शर्तें';
 
   @override
   String get createAccountTitle => 'खाता बनाएं';

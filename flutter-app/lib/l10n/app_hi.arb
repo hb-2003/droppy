@@ -83,6 +83,13 @@
   "languageEnglish": "अंग्रेज़ी",
   "languageHindi": "हिंदी",
   "logout": "लॉग आउट",
+  "deleteAccount": "खाता हटाएँ",
+  "deleteAccountConfirmTitle": "अपना खाता हटाएँ?",
+  "deleteAccountConfirmBody": "यह आपका खाता स्थायी रूप से हटा देगा और आपको साइन आउट कर देगा। आपके ट्रांसफ़र लिंक काम करते रहेंगे, लेकिन वे अब आपके इतिहास में नहीं दिखेंगे।",
+  "deleteAccountSuccess": "खाता हटाया गया",
+  "deleteAccountSuccessBody": "आपका खाता हटा दिया गया है।",
+  "deleteAccountFailed": "खाता हटाया नहीं जा सका",
+  "deleteAccountFailedBody": "कृपया फिर कोशिश करें या सहायता से संपर्क करें।",
   "maxFilesReached": "बहुत अधिक फ़ाइलें",
   "fileTooLarge": "फ़ाइल बहुत बड़ी है",
   "ipLimit": "इस नेटवर्क से बहुत अधिक अपलोड",
@@ -159,8 +166,29 @@
   "plansSubtitle": "विज्ञापन हटाने और बड़ी फ़ाइलें भेजने के लिए अपग्रेड करें।",
   "storeUnavailable": "स्टोर उपलब्ध नहीं",
   "storeUnavailableBody": "इन-ऐप खरीद अभी उपलब्ध नहीं है।",
+  "storeLoadingPrices": "App Store से कीमतें लोड हो रही हैं…",
+  "storePricesUnavailable": "कीमतें उपलब्ध नहीं",
+  "storePricesPartial": "कुछ कीमतें लोड नहीं हो सकीं",
+  "storePricesPartialBody": "{total} में से {loaded} सदस्यता उत्पाद लोड हुए।",
+  "@storePricesPartialBody": {
+    "placeholders": {
+      "loaded": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+  "storeSetupHint": "वास्तविक iPhone पर टेस्ट करें (सिम्युलेटर नहीं), Sandbox Apple ID का उपयोग करें, और App Store Connect में इस ऐप के bundle ID के तहत सभी 6 सदस्यताएँ और कीमत सेट करें।",
+  "priceUnavailable": "—",
+  "effectiveMonthlyPrice": "{price}/माह",
+  "@effectiveMonthlyPrice": {
+    "placeholders": {
+      "price": { "type": "String" }
+    }
+  },
   "freeVersionAds": "आप अभी विज्ञापनों वाला मुफ़्त संस्करण उपयोग कर रहे हैं",
   "restorePurchases": "खरीद पुनर्स्थापित करें",
+  "plansContinue": "जारी रखें",
+  "planLinkRestore": "पुनर्स्थापित करें",
+  "termsAndConditions": "नियम और शर्तें",
   "createAccountTitle": "खाता बनाएं",
   "signUpSubtitle": "ईमेल और पासवर्ड से साइन अप करें।",
   "confirmPassword": "पासवर्ड की पुष्टि करें",

@@ -146,24 +146,60 @@ class SettingsView extends GetView<SettingsController> {
                                       TextStyle(color: scheme.onSurface, fontSize: 18, fontWeight: FontWeight.w800),
                                 ),
                                 const SizedBox(height: 12),
-                                GestureDetector(
-                                  onTap: controller.logout,
-                                  child: Container(
-                                    height: 48,
-                                    decoration: BoxDecoration(
-                                      border: Border.all(color: line),
-                                      borderRadius: BorderRadius.circular(50),
-                                    ),
-                                    alignment: Alignment.center,
-                                    child: Text(
-                                      t.logout,
-                                      style: TextStyle(
-                                        color: scheme.onSurface.withValues(alpha: 0.75),
-                                        fontWeight: FontWeight.w600,
+                                Obx(() {
+                                  final busy = controller.deletingAccount.value;
+                                  return Column(
+                                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                                    children: [
+                                      GestureDetector(
+                                        onTap: busy ? null : controller.logout,
+                                        child: Container(
+                                          height: 48,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: line),
+                                            borderRadius: BorderRadius.circular(50),
+                                          ),
+                                          alignment: Alignment.center,
+                                          child: Text(
+                                            t.logout,
+                                            style: TextStyle(
+                                              color: scheme.onSurface.withValues(alpha: busy ? 0.35 : 0.75),
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                          ),
+                                        ),
                                       ),
-                                    ),
-                                  ),
-                                ),
+                                      const SizedBox(height: 10),
+                                      GestureDetector(
+                                        onTap: busy ? null : controller.deleteAccount,
+                                        child: Container(
+                                          height: 48,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: scheme.error.withValues(alpha: 0.45)),
+                                            borderRadius: BorderRadius.circular(50),
+                                          ),
+                                          alignment: Alignment.center,
+                                          child: busy
+                                              ? SizedBox(
+                                                  width: 20,
+                                                  height: 20,
+                                                  child: CircularProgressIndicator(
+                                                    strokeWidth: 2,
+                                                    color: scheme.error.withValues(alpha: 0.8),
+                                                  ),
+                                                )
+                                              : Text(
+                                                  t.deleteAccount,
+                                                  style: TextStyle(
+                                                    color: scheme.error.withValues(alpha: 0.9),
+                                                    fontWeight: FontWeight.w600,
+                                                  ),
+                                                ),
+                                        ),
+                                      ),
+                                    ],
+                                  );
+                                }),
                               ],
                             ),
                           );
@@ -230,12 +266,13 @@ class SettingsView extends GetView<SettingsController> {
                               title: Text(t.about, style: TextStyle(color: scheme.onSurface.withValues(alpha: 0.85))),
                               onTap: controller.openAbout,
                             ),
-                            Divider(height: 1, color: line.withValues(alpha: 0.6)),
-                            ListTile(
-                              leading: Icon(Icons.apps_outlined, color: scheme.onSurface.withValues(alpha: 0.6)),
-                              title: Text(t.moreApps, style: TextStyle(color: scheme.onSurface.withValues(alpha: 0.85))),
-                              onTap: controller.openMoreApps,
-                            ),
+                            // More apps link hidden for this release.
+                            // Divider(height: 1, color: line.withValues(alpha: 0.6)),
+                            // ListTile(
+                            //   leading: Icon(Icons.apps_outlined, color: scheme.onSurface.withValues(alpha: 0.6)),
+                            //   title: Text(t.moreApps, style: TextStyle(color: scheme.onSurface.withValues(alpha: 0.85))),
+                            //   onTap: controller.openMoreApps,
+                            // ),
                           ],
                         ),
                       ),

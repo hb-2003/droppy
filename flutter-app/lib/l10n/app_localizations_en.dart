@@ -243,6 +243,28 @@ class AppLocalizationsEn extends AppLocalizations {
   String get logout => 'Log out';
 
   @override
+  String get deleteAccount => 'Delete account';
+
+  @override
+  String get deleteAccountConfirmTitle => 'Delete your account?';
+
+  @override
+  String get deleteAccountConfirmBody =>
+      'This permanently deletes your account and signs you out. Your transfer links will keep working, but they will no longer appear in your history.';
+
+  @override
+  String get deleteAccountSuccess => 'Account deleted';
+
+  @override
+  String get deleteAccountSuccessBody => 'Your account has been removed.';
+
+  @override
+  String get deleteAccountFailed => 'Could not delete account';
+
+  @override
+  String get deleteAccountFailedBody => 'Please try again or contact support.';
+
+  @override
   String get maxFilesReached => 'Too many files';
 
   @override
@@ -499,11 +521,46 @@ class AppLocalizationsEn extends AppLocalizations {
       'In-app purchases are not available right now.';
 
   @override
+  String get storeLoadingPrices => 'Loading prices from App Store…';
+
+  @override
+  String get storePricesUnavailable => 'Prices unavailable';
+
+  @override
+  String get storePricesPartial => 'Some prices could not be loaded';
+
+  @override
+  String storePricesPartialBody(int loaded, int total) {
+    return '$loaded of $total subscription products loaded.';
+  }
+
+  @override
+  String get storeSetupHint =>
+      'Test on a real iPhone (not Simulator), use a Sandbox Apple ID, and ensure all 6 subscriptions are created under this app’s bundle ID in App Store Connect with pricing set.';
+
+  @override
+  String get priceUnavailable => '—';
+
+  @override
+  String effectiveMonthlyPrice(String price) {
+    return '$price/month';
+  }
+
+  @override
   String get freeVersionAds =>
       'Currently you are using our free version with ads';
 
   @override
   String get restorePurchases => 'Restore purchases';
+
+  @override
+  String get plansContinue => 'Continue';
+
+  @override
+  String get planLinkRestore => 'Restore';
+
+  @override
+  String get termsAndConditions => 'Terms and conditions';
 
   @override
   String get createAccountTitle => 'Create account';

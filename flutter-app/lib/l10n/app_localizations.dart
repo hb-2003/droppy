@@ -554,6 +554,48 @@ abstract class AppLocalizations {
   /// **'Log out'**
   String get logout;
 
+  /// No description provided for @deleteAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete account'**
+  String get deleteAccount;
+
+  /// No description provided for @deleteAccountConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete your account?'**
+  String get deleteAccountConfirmTitle;
+
+  /// No description provided for @deleteAccountConfirmBody.
+  ///
+  /// In en, this message translates to:
+  /// **'This permanently deletes your account and signs you out. Your transfer links will keep working, but they will no longer appear in your history.'**
+  String get deleteAccountConfirmBody;
+
+  /// No description provided for @deleteAccountSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Account deleted'**
+  String get deleteAccountSuccess;
+
+  /// No description provided for @deleteAccountSuccessBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Your account has been removed.'**
+  String get deleteAccountSuccessBody;
+
+  /// No description provided for @deleteAccountFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not delete account'**
+  String get deleteAccountFailed;
+
+  /// No description provided for @deleteAccountFailedBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Please try again or contact support.'**
+  String get deleteAccountFailedBody;
+
   /// No description provided for @maxFilesReached.
   ///
   /// In en, this message translates to:
@@ -1010,6 +1052,48 @@ abstract class AppLocalizations {
   /// **'In-app purchases are not available right now.'**
   String get storeUnavailableBody;
 
+  /// No description provided for @storeLoadingPrices.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading prices from App Store…'**
+  String get storeLoadingPrices;
+
+  /// No description provided for @storePricesUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Prices unavailable'**
+  String get storePricesUnavailable;
+
+  /// No description provided for @storePricesPartial.
+  ///
+  /// In en, this message translates to:
+  /// **'Some prices could not be loaded'**
+  String get storePricesPartial;
+
+  /// No description provided for @storePricesPartialBody.
+  ///
+  /// In en, this message translates to:
+  /// **'{loaded} of {total} subscription products loaded.'**
+  String storePricesPartialBody(int loaded, int total);
+
+  /// No description provided for @storeSetupHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Test on a real iPhone (not Simulator), use a Sandbox Apple ID, and ensure all 6 subscriptions are created under this app’s bundle ID in App Store Connect with pricing set.'**
+  String get storeSetupHint;
+
+  /// No description provided for @priceUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'—'**
+  String get priceUnavailable;
+
+  /// No description provided for @effectiveMonthlyPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'{price}/month'**
+  String effectiveMonthlyPrice(String price);
+
   /// No description provided for @freeVersionAds.
   ///
   /// In en, this message translates to:
@@ -1021,6 +1105,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Restore purchases'**
   String get restorePurchases;
+
+  /// No description provided for @plansContinue.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get plansContinue;
+
+  /// No description provided for @planLinkRestore.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore'**
+  String get planLinkRestore;
+
+  /// No description provided for @termsAndConditions.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms and conditions'**
+  String get termsAndConditions;
 
   /// No description provided for @createAccountTitle.
   ///

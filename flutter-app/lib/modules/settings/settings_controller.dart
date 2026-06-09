@@ -16,6 +16,7 @@ class SettingsController extends GetxController {
   late final TextEditingController serverUrlCtrl;
 
   RxBool get loggedIn => _auth.loggedIn;
+  final deletingAccount = false.obs;
   ThemeMode get themeMode => _theme.themeMode.value;
 
   /// Base URL used to open public pages in an external browser.
@@ -64,6 +65,44 @@ class SettingsController extends GetxController {
   Future<void> logout() async {
     await _auth.logout();
     Get.offAllNamed(AppRoutes.shell);
+  }
+
+  Future<void> deleteAccount() async {
+    if (deletingAccount.value) return;
+    final t = appL10n();
+    final confirmed = await Get.dialog<bool>(
+      AlertDialog(
+        title: Text(t.deleteAccountConfirmTitle),
+        content: Text(t.deleteAccountConfirmBody),
+        actions: [
+          TextButton(onPressed: () => Get.back(result: false), child: Text(t.cancel)),
+          TextButton(
+            onPressed: () => Get.back(result: true),
+            style: TextButton.styleFrom(foregroundColor: Get.theme.colorScheme.error),
+            child: Text(t.deleteAccount),
+          ),
+        ],
+      ),
+      barrierDismissible: false,
+    );
+    if (confirmed != true) return;
+
+    deletingAccount.value = true;
+    try {
+      final result = await _auth.deleteAccount();
+      switch (result) {
+        case 'ok':
+          AppSnack.success(t.deleteAccountSuccess, t.deleteAccountSuccessBody);
+          Get.offAllNamed(AppRoutes.shell);
+        case 'unauthenticated':
+          await _auth.logout();
+          Get.offAllNamed(AppRoutes.shell);
+        default:
+          AppSnack.error(t.deleteAccountFailed, t.deleteAccountFailedBody);
+      }
+    } finally {
+      deletingAccount.value = false;
+    }
   }
 
   void setLocale(Locale l) {

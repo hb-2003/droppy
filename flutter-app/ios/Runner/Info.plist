@@ -10,6 +10,8 @@
 	<string>Select photos and videos to upload.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Scan transfer QR codes to download shared files.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+    <string>This app uses your location to provide location-based features and improve your experience.</string>
 	<key>CFBundleDisplayName</key>
 	<string>Share Large Video Files</string>
 	<key>CFBundleExecutable</key>
@@ -23,11 +25,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>$(FLUTTER_BUILD_NAME)</string>
+	<string>1.0.4</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>$(FLUTTER_BUILD_NUMBER)</string>
+	<string>5</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIApplicationSceneManifest</key>

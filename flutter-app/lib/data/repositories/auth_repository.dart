@@ -159,6 +159,30 @@ class AuthRepository extends GetxService {
     }
   }
 
+  /// POST handler/delete_account
+  /// Returns: 'ok' | 'unauthenticated' | 'error'
+  Future<String> deleteAccount() async {
+    final client = ApiClient.instance.dio;
+    try {
+      final resp = await client.post<String>(
+        'handler/delete_account',
+        options: dio.Options(
+          validateStatus: (s) => s != null && s < 500,
+          responseType: dio.ResponseType.plain,
+        ),
+      );
+      final result = _resultFromBody((resp.data ?? '').toString());
+      if (result == 'ok') {
+        await ApiClient.instance.clearCookies();
+        loggedIn.value = false;
+        sessionEmail.value = '';
+      }
+      return result;
+    } catch (_) {
+      return 'error';
+    }
+  }
+
   /// POST handler/otp_logout
   Future<void> logout() async {
     final client = ApiClient.instance.dio;

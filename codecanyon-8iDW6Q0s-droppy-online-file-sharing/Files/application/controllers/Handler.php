@@ -668,7 +668,7 @@ class Handler extends CI_Controller {
             $this->load->model('users');
             $row = $this->users->getByEmail($email);
             if (empty($row) || empty($row['password'])) {
-                echo json_encode(['result' => 'invalid_email']);
+                echo json_encode(['result' => 'sent']);
                 return;
             }
 
@@ -804,6 +804,47 @@ class Handler extends CI_Controller {
     }
 
     /**
+     * POST handler/delete_account
+     * Permanently deletes the signed-in account and clears related auth data.
+     *
+     * Returns:
+     *  - { result: ok }
+     *  - { result: unauthenticated }
+     *  - { result: error }
+     */
+    public function delete_account()
+    {
+        header('Content-Type: application/json');
+        $this->load->library('session');
+        $this->load->model('users');
+
+        $email = trim((string) $this->session->userdata('otp_verified_email'));
+        if ($email === '') {
+            echo json_encode(['result' => 'unauthenticated']);
+            return;
+        }
+
+        try {
+            $user = $this->users->getByEmail($email);
+            if (!empty($user) && !empty($user['id'])) {
+                $this->users->deleteByID($user['id']);
+            }
+
+            $this->db->where('email', $email)->delete('droppy_otp');
+            $this->db->where('email', $email)->delete('droppy_password_resets');
+
+            // Keep uploads but unlink them from the deleted account email.
+            $this->db->where('email_from', $email)->update('droppy_uploads', ['email_from' => '']);
+
+            $this->session->unset_userdata('otp_verified_email');
+
+            echo json_encode(['result' => 'ok']);
+        } catch (Exception $e) {
+            echo json_encode(['result' => 'error']);
+        }
+    }
+
+    /**
      * POST handler/sync_local_history { upload_ids: JSON array of upload_id strings }
      * Links guest uploads to the signed-in account (sets droppy_uploads.email_from).
      */
@@ -830,85 +871,6 @@ class Handler extends CI_Controller {
             'result'     => 'ok',
             'synced'     => count($claimed),
             'upload_ids' => $claimed,
-        ]);
-    }
-
-    /**
-     * GET handler/metadata?upload_id=&private_id=
-     * JSON transfer metadata for receive/history (mobile + web).
-     */
-    public function metadata()
-    {
-        header('Content-Type: application/json');
-        $this->load->library('session');
-        $this->load->model('uploads');
-        $this->load->model('files');
-        $this->load->model('receivers');
-        $this->load->model('downloads');
-
-        $upload_id  = trim((string) $this->input->get('upload_id', TRUE));
-        $private_id = trim((string) $this->input->get('private_id', TRUE));
-
-        if ($upload_id === '') {
-            echo json_encode(['ok' => false, 'error' => 'missing_upload_id']);
-            return;
-        }
-
-        $upload = (array) $this->uploads->getByUploadID($upload_id);
-        if (empty($upload) || ($upload['status'] ?? '') !== 'ready') {
-            echo json_encode(['ok' => false, 'error' => 'not_found']);
-            return;
-        }
-
-        $allowed = false;
-        if (($upload['share'] ?? '') === 'link') {
-            $allowed = true;
-        } elseif (($upload['share'] ?? '') === 'mail') {
-            if ($private_id !== '' && (
-                is_array($this->receivers->getByUploadAndPrivateID($upload_id, $private_id))
-                || ($upload['secret_code'] ?? '') === $private_id
-            )) {
-                $allowed = true;
-            }
-        }
-
-        if (!$allowed) {
-            echo json_encode(['ok' => false, 'error' => 'forbidden']);
-            return;
-        }
-
-        $has_password = !empty($upload['password']);
-        $unlocked     = !$has_password
-            || ($this->session->userdata('download_password') == $upload_id);
-
-        $files_raw = $this->files->getByUploadID($upload_id);
-        $file_list = [];
-        if (!empty($files_raw)) {
-            foreach ($files_raw as $f) {
-                $file_list[] = [
-                    'name'         => $f['name'] ?? basename($f['original_path'] ?? ''),
-                    'size'         => (int) ($f['size'] ?? 0),
-                    'content_type' => $f['content_type'] ?? '',
-                ];
-            }
-        }
-
-        $dl_rows = $this->downloads->getByUploadID($upload_id);
-        $dl_count = is_array($dl_rows) ? count($dl_rows) : 0;
-
-        echo json_encode([
-            'ok'                 => true,
-            'upload_id'          => $upload_id,
-            'share'              => $upload['share'] ?? 'link',
-            'count'              => (int) ($upload['count'] ?? count($file_list)),
-            'size'               => (int) ($upload['size'] ?? 0),
-            'time'               => (int) ($upload['time'] ?? 0),
-            'time_expire'        => (int) ($upload['time_expire'] ?? 0),
-            'destruct'           => $upload['destruct'] ?? 'no',
-            'has_password'       => $has_password,
-            'password_unlocked'  => $unlocked,
-            'download_count'     => $dl_count,
-            'files'              => $file_list,
         ]);
     }
 
