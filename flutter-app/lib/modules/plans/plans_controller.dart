@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:get/get.dart';
 import 'package:sendlargefiles/data/providers/api_client.dart';
 import 'package:sendlargefiles/services/iap/iap_product_ids.dart';
@@ -9,6 +11,25 @@ class PlansController extends GetxController {
   IapService get _iap => IapService.to;
 
   final selectedProductId = RxnString(IapProductIds.adsMonthly);
+
+  @override
+  void onInit() {
+    super.onInit();
+    ever(_iap.products, (_) => _syncDefaultSelection());
+    unawaited(refreshStore());
+  }
+
+  void _syncDefaultSelection() {
+    final current = selectedProductId.value;
+    if (current != null && priceFor(current) != null) return;
+
+    for (final id in IapProductIds.all) {
+      if (priceFor(id) != null) {
+        selectedProductId.value = id;
+        return;
+      }
+    }
+  }
 
   Rx<IapStoreState> get storeState => _iap.storeState;
 

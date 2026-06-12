@@ -76,24 +76,40 @@ class IapService extends GetxService {
         return;
       }
 
-      ProductDetailsResponse? response;
+      final merged = <String, ProductDetails>{};
+      var pendingIds = Set<String>.from(IapProductIds.all);
       Object? lastException;
+      String? queryError;
 
-      for (var attempt = 0; attempt < 3; attempt++) {
+      for (var attempt = 0; attempt < 5; attempt++) {
         if (attempt > 0) {
           await Future<void>.delayed(Duration(seconds: 1 + attempt));
         }
+        if (pendingIds.isEmpty) break;
+
         try {
-          response = await _iap.queryProductDetails(IapProductIds.all);
+          final response = await _iap.queryProductDetails(pendingIds);
           if (kDebugMode) {
             debugPrint(
               '[IapService] query attempt ${attempt + 1}: '
+              'requested=${pendingIds.length} '
               'found=${response.productDetails.length} '
               'notFound=${response.notFoundIDs} '
               'error=${response.error?.message}',
             );
           }
-          if (response.error == null && response.productDetails.isNotEmpty) {
+
+          for (final p in response.productDetails) {
+            merged[p.id] = p;
+          }
+
+          if (response.error != null) {
+            queryError = response.error!.message;
+          }
+
+          pendingIds = response.notFoundIDs.toSet();
+
+          if (merged.length == IapProductIds.all.length) {
             break;
           }
         } catch (e, st) {
@@ -102,20 +118,40 @@ class IapService extends GetxService {
         }
       }
 
-      if (response == null) {
+      // StoreKit sometimes returns partial batch results; query leftovers one-by-one.
+      final stillMissing = IapProductIds.all.where((id) => !merged.containsKey(id)).toList();
+      for (final id in stillMissing) {
+        await Future<void>.delayed(const Duration(milliseconds: 400));
+        try {
+          final solo = await _iap.queryProductDetails({id});
+          if (kDebugMode) {
+            debugPrint(
+              '[IapService] solo query $id: '
+              'found=${solo.productDetails.length} notFound=${solo.notFoundIDs}',
+            );
+          }
+          for (final p in solo.productDetails) {
+            merged[p.id] = p;
+          }
+        } catch (e, st) {
+          if (kDebugMode) debugPrint('[IapService] solo query failed for $id: $e\n$st');
+        }
+      }
+
+      if (merged.isEmpty && lastException != null) {
         storeState.value = IapStoreState.failed;
-        lastError.value = lastException?.toString() ?? 'Could not query the App Store.';
+        lastError.value = lastException.toString();
         return;
       }
 
-      if (response.error != null) {
-        lastError.value = response.error!.message;
+      if (queryError != null && merged.isEmpty) {
+        lastError.value = queryError;
       }
 
-      products.assignAll({
-        for (final p in response.productDetails) p.id: p,
-      });
-      notFoundIds.assignAll(response.notFoundIDs);
+      products.assignAll(merged);
+      notFoundIds.assignAll(
+        IapProductIds.all.where((id) => !merged.containsKey(id)),
+      );
 
       if (products.length == IapProductIds.all.length) {
         storeState.value = IapStoreState.ready;
