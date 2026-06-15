@@ -1,0 +1,466 @@
+{
+  "@@locale": "be",
+  "@verifyEmailCheckSpamHint": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@upToTotal": {
+    "placeholders": {
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "@filesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesCount": "{count, plural, =1{1 file} other{{count} files}}",
+  "@mbLeft": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@transferLoadFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@storePricesPartialBody": {
+    "placeholders": {
+      "loaded": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "priceUnavailable": "—",
+  "@effectiveMonthlyPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "@otpSentTo": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@snackDownloadSaved": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "emailExampleHint": "you@example.com",
+  "otpSixDigitHint": "000000",
+  "verifyFourDigitHint": "0000",
+  "transferLinkHint": "https://… or paste ID",
+  "@filesReady": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesReady": "{count, plural, =1{1 file ready} other{{count} files ready}}",
+  "@transferIdLabel": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadMetaSummary": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "@todayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@yesterdayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@daysAgoAt": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@dateAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@mbAmount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@uploadProgressSummary": {
+    "placeholders": {
+      "sent": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      },
+      "remaining": {
+        "type": "String"
+      }
+    }
+  },
+  "@historyFilesSize": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "historyFilesSize": "{count, plural, =1{1 file} other{{count} files}} · {size}",
+  "@receiveMoreFiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appTitle": "Абагульвайце вялікія відэафайлы",
+  "heroAccent": "імгненна.",
+  "heroTitle": "Адпраўляйце цяжкія файлы",
+  "splashLoading": "Загрузка...",
+  "navSend": "Прыборная панэль",
+  "navHome": "дадому",
+  "navHistory": "Гісторыя",
+  "navReceive": "Атрымлівайце",
+  "navPlans": "Планы",
+  "navDownload": "Спампаваць",
+  "navSettings": "Налады",
+  "modeLink": "Атрымаць спасылку",
+  "modeEmail": "Адправіць па электроннай пошце",
+  "pickFiles": "Выберыце файлы",
+  "pickFolder": "Выберыце тэчку",
+  "emailFrom": "Ваша электронная пошта",
+  "mailFromUsesAccount": "Выкарыстоўвае электронную пошту, на якую вы ўвайшлі.",
+  "recipientEmailsHelper": "Некалькі атрымальнікаў: падзяляйце іх коскамі, кропкай з коскай або прабеламі.",
+  "emailTo": "Электронная пошта атрымальніка",
+  "messageOptional": "Паведамленне (неабавязкова)",
+  "passwordOptional": "Пароль (неабавязкова)",
+  "destructAfterDownload": "Выдаліць пасля загрузкі",
+  "destructNo": "Захоўваць у наяўнасці",
+  "sendButton": "Адправіць",
+  "uploading": "Загрузка...",
+  "uploadComplete": "Гатова",
+  "shareLinkTitle": "Ваша спасылка",
+  "copyLink": "Скапіраваць спасылку",
+  "share": "падзяліцца",
+  "shareQrCode": "Падзяліцеся QR-кодам",
+  "uploadMore": "Адправіць іншы",
+  "emailSentTitle": "Электронныя лісты адпраўлены",
+  "verifyEmailTitle": "Пацвердзіце сваю электронную пошту",
+  "verifyCodeHint": "Увядзіце код з вашай электроннай пошты",
+  "verifySubmit": "Праверыць",
+  "verifyResendCode": "Паўторна адправіць код",
+  "verifyCodeSent": "Новы код спраўджання быў адпраўлены на вашу электронную пошту.",
+  "verifyEmailSmtpWarningTitle": "Магчыма, электронны ліст для праверкі не быў адпраўлены",
+  "verifyEmailSmtpWarningBody": "Сервер не можа пацвердзіць дастаўку (часта SMTP настроены няправільна). Папрасіце адміністратара вашага сайта праверыць налады пошты на панэлі адміністратара, а затым націсніце Паўторна адправіць код.",
+  "verifyEmailCheckSpamHint": "Калі ён не прыходзіць: праверце непажаданую пошту і акцыі, пачакайце хвілінку, пацвердзіце, што ў <<PH0>> няма памылак друку, затым націсніце «Адправіць паўторна».",
+  "loginTitle": "Увайдзіце ў сістэму",
+  "signupHint": "Выкарыстоўвайце адрас электроннай пошты і пароль уліковага запісу вашага сайта.",
+  "emailHint": "Электронная пошта",
+  "passwordHint": "Пароль",
+  "cancel": "Адмяніць",
+  "signIn": "Увайдзіце ў сістэму",
+  "downloadIdHint": "ID перадачы",
+  "privateIdHint": "Асабісты ідэнтыфікатар (неабавязкова)",
+  "fetchTransfer": "Адкрытая перадача",
+  "downloadFile": "Спампаваць",
+  "unlockDownload": "Разблакіраваць спампоўку",
+  "downloadSaved": "Захавана ў спампоўках",
+  "errorGeneric": "Нешта пайшло не так",
+  "errorNetwork": "Памылка сеткі",
+  "errorBadResponse": "Нечаканы адказ сервера",
+  "termsAccept": "Я згодны з умовамі",
+  "settingsApiUrl": "Публічны сайт URL",
+  "settingsAccount": "Уліковы запіс",
+  "settingsAppearance": "Знешні выгляд",
+  "settingsTheme": "Тэма",
+  "themeSystem": "Сістэма",
+  "themeLight": "Светлы",
+  "themeDark": "Цёмны",
+  "settingsSignedIn": "Вы ўвайшлі.",
+  "settingsSignedOut": "Вы не ўвайшлі у.",
+  "settingsOpenWebsite": "Адкрыць вэб-сайт",
+  "signUp": "Зарэгістравацца",
+  "settingsLinks": "Спасылкі",
+  "privacyPolicy": "Палітыка прыватнасці",
+  "termsOfService": "Умовы выкарыстання",
+  "about": "Пра",
+  "moreApps": "Больш прыкладанні",
+  "settingsLanguage": "Мова",
+  "languageEnglish": "Англійская",
+  "languageHindi": "Хіндзі",
+  "logout": "Выйсці",
+  "deleteAccount": "Выдаліць уліковы запіс",
+  "deleteAccountConfirmTitle": "Выдаліць свой уліковы запіс?",
+  "deleteAccountConfirmBody": "Гэта назаўжды выдаляе ваш уліковы запіс і выходзіць з яго. Вашы спасылкі для перадачы будуць працягваць працаваць, але яны больш не будуць адлюстроўвацца ў вашай гісторыі.",
+  "deleteAccountSuccess": "Уліковы запіс выдалены",
+  "deleteAccountSuccessBody": "Ваш уліковы запіс выдалены.",
+  "deleteAccountFailed": "Не атрымалася выдаліць уліковы запіс",
+  "deleteAccountFailedBody": "Паўтарыце спробу або звярніцеся ў службу падтрымкі.",
+  "maxFilesReached": "Зашмат файлаў",
+  "fileTooLarge": "Файл таксама вялікі",
+  "ipLimit": "Зашмат загрузак з гэтай сеткі",
+  "fillFields": "Запоўніце абавязковыя палі",
+  "invalidEmail": "Няправільная электронная пошта",
+  "maxRecipientsReached": "Занадта шмат атрымальнікаў",
+  "loginRequiredTitle": "Патрабуецца ўваход",
+  "loginRequiredBody": "Гэты сервер патрабуе ўліковага запісу для загрузкі або спампаваць.",
+  "settingsSubtitle": "Параметры праграмы і ўліковы запіс.",
+  "dropHeavyFile": "Апусціце сюды цяжкі файл.",
+  "upToTotal": "Усяго да <<PH0>>",
+  "removeAll": "Выдаліць усё",
+  "addFiles": "Дадаць файлы",
+  "adding": "Даданне…",
+  "options": "Параметры",
+  "selfDestruct": "Самазнішчэнне пасля загрузкі",
+  "expiry": "Заканчэнне",
+  "cancelUpload": "Скасаваць запампоўку",
+  "transferReady": "Перадача гатовая!",
+  "emailSentReady": "Электронны ліст адпраўлены!",
+  "shareRecipientHint": "Абагуліцеся гэтай спасылкай са сваім атрымальнікам.",
+  "emailSentBody": "Мы апавясцілі вашага атрымальніка(-аў).",
+  "scanQr": "Сканіруйце, каб адкрыць спасылку для перадачы.",
+  "shareLinkButton": "ПАДАМІЦЦА СПАСЫЛКА",
+  "verifyFourDigit": "Увядзіце 4-значны код, адпраўлены на вашу электронную пошту адпраўшчыка.",
+  "starting": "Пачатак…",
+  "mbLeft": "<<PH0>> МБ засталося",
+  "fillField": "Калі ласка, запоўніце гэта поле.",
+  "enterValidEmail": "Увядзіце сапраўдны электронная пошта.",
+  "message": "Паведамленне",
+  "recipientEmail": "Электронная пошта атрымальніка",
+  "active": "Актыўны",
+  "expired": "Скончаны",
+  "historyTitle": "Мае пераводы",
+  "signInToSeeTransfers": "Увайдзіце, каб убачыць свае пераводы",
+  "signInTransfersBody": "Мы выкарыстоўваем вашу электронную пошту, каб звязаць пераводы з вашым уліковым запісам — пароль не патрабуецца.",
+  "couldNotLoadTransfers": "Немагчыма загрузіць перадачы",
+  "retry": "Паўтор",
+  "noTransfersYet": "Перадачы пакуль няма",
+  "noTransfersBody": "Пасля адпраўкі файла ён з'явіцца тут.",
+  "transferDetails": "Падрабязнасці перадачы",
+  "filesSection": "Файлы",
+  "receiveTitle": "Атрымаць файлы",
+  "receiveSubtitle": "Устаўце спасылку для перадачы для спампоўкі файлы.",
+  "pasteTooltip": "Уставіць",
+  "findTransfer": "Знайсці перадачу",
+  "receiveScanQr": "Сканаваць QR-код",
+  "receiveScanQrTitle": "Сканаваць QR-код перадачы",
+  "receiveScanQrHint": "Выраўнаваць QR-код унутры рамкі.",
+  "receiveScanQrInvalid": "Гэты QR-код не з'яўляецца сапраўднай спасылкай для перадачы.",
+  "receiveScanQrCameraDenied": "Камера патрабуецца доступ для сканіравання QR-кодаў.",
+  "receiveStepGetLink": "Атрымаць спасылку",
+  "receiveStepGetLinkBody": "Папрасі адпраўшчыка падзяліцца з вамі спасылкай для перадачы.",
+  "receiveStepPaste": "Уставіць і знайсці",
+  "receiveStepPasteBody": "Уставіць спасылку вышэй і націснуць «Знайсці перадачу».",
+  "receiveStepDownload": "Спампаваць файлы",
+  "receiveStepDownloadBody": "Глядзець падрабязнасці файла і спампаваць усё адразу.",
+  "lookingUpTransfer": "Пошук перадачы...",
+  "transferNotFound": "Перадача не знойдзена. Праверце спасылку і паўтарыце спробу.",
+  "transferExpired": "Тэрмін дзеяння гэтай перадачы скончыўся, і яна больш не даступная.",
+  "transferLoginRequired": "Для доступу да гэтай перадачы патрабуецца ўвайсці.",
+  "transferBadResponse": "Нечаканы адказ сервера. Праверце падключэнне.",
+  "transferNetworkError": "Памылка сеткі. Праверце падключэнне да інтэрнэту.",
+  "transferLoadFailed": "Не атрымалася загрузіць перадачу: <<PH0>>",
+  "passwordProtected": "Абаронены паролем",
+  "enterPassword": "Увядзіце пароль",
+  "unlock": "Разблакіраваць",
+  "downloading": "Спампоўка…",
+  "downloadAllFiles": "Спампоўка ўсіх файлаў",
+  "downloadSingleFile": "Спампоўка файла",
+  "receiveAnother": "Атрымайце яшчэ адну перадачу",
+  "plansTitle": "Планы",
+  "plansSubtitle": "Абнавіце, каб выдаліць рэкламу і адправіць файлы большага памеру.",
+  "storeUnavailable": "Крама недаступная",
+  "storeUnavailableBody": "Пакупкі ў праграме недаступныя зараз.",
+  "storeLoadingPrices": "Загрузка цэн з App Store…",
+  "storePricesUnavailable": "Цэны недаступныя",
+  "storePricesPartial": "Некаторыя цэны не ўдалося загрузіць",
+  "storePricesPartialBody": "<<PH0>> з <<PH1>> прадуктаў падпіскі загружаны.",
+  "storeSetupHint": "Праверце на рэальным iPhone (не Simulator), выкарыстоўвайце Sandbox Apple ID і пераканайцеся, што ўсе Пад ідэнтыфікатарам пакета гэтай праграмы створана 6 падпісак у App Store Connect з устаноўленымі цэнамі.",
+  "effectiveMonthlyPrice": "<<PH0>>/месяц",
+  "freeVersionAds": "У цяперашні час вы карыстаецеся нашай бясплатнай версіяй з рэкламай",
+  "restorePurchases": "Аднавіць пакупкі",
+  "plansContinue": "Працягваць",
+  "planLinkRestore": "Аднавіць",
+  "termsAndConditions": "Умовы",
+  "createAccountTitle": "Стварыць уліковы запіс",
+  "signUpSubtitle": "Зарэгістравацца з дапамогай электроннай пошты і пароля.",
+  "confirmPassword": "Пацвердзіць пароль",
+  "passwordMin8": "Пароль (мін. 8 chars)",
+  "alreadyHaveAccount": "У вас ужо ёсць уліковы запіс?",
+  "checkEmailTitle": "Праверце свой\nэлектронная пошта",
+  "otpSentTo": "Мы адправілі 6-значны код на\n<<PH0>>",
+  "verifyAndSignIn": "Праверце і ўвайдзіце",
+  "didntReceiveCode": "Не атрымалі?",
+  "tryAgain": "Паўтарыце спробу",
+  "otpExpiresHint": "Тэрмін дзеяння кода заканчваецца праз 5 хвілін. Праверце папку са спамам, калі вы яе не бачыце.",
+  "snackError": "Памылка",
+  "snackCopied": "Скапіявана",
+  "snackCopiedBody": "Спасылка скапіравана ў буфер абмену",
+  "snackWelcome": "Вітаем",
+  "snackAccountCreated": "Уліковы запіс створаны",
+  "snackEnterEmail": "Калі ласка, увядзіце свой электронная пошта",
+  "snackEnterPassword": "Калі ласка, увядзіце свой пароль",
+  "snackInvalidEmail": "Няправільны адрас электроннай пошты",
+  "snackInvalidCredentials": "Няправільны адрас электроннай пошты ці пароль",
+  "snackPasswordMin8": "Пароль павінен складацца як мінімум з 8 сімвалаў",
+  "snackPasswordMismatch": "Паролі не супадаюць.",
+  "snackAccountExists": "Уліковы запіс ужо існуе. Калі ласка, увайдзіце.",
+  "snackSignupFailed": "Не атрымалася стварыць уліковы запіс. Паспрабуйце яшчэ раз.",
+  "snackEnterOtp": "Калі ласка, увядзіце 6-значны код",
+  "snackOtpExpired": "Тэрмін дзеяння кода скончыўся",
+  "snackOtpExpiredBody": "Запытайце новы код.",
+  "snackInvalidCode": "Няправільны код",
+  "snackInvalidCodeBody": "Код няправільны. Калі ласка, паспрабуйце яшчэ раз.",
+  "snackSendCodeFailed": "Не атрымалася адправіць код. Праверце падключэнне і паўтарыце спробу.",
+  "snackEmptyFolder": "Папка пустая",
+  "snackEmptyFolderBody": "У выбранай папцы не знойдзены файлы.",
+  "snackFolderUnsupported": "Не падтрымліваецца",
+  "snackFolderUnsupportedBody": "Загрузка папак недаступная на гэтай платформе.",
+  "snackFolderReadError": "Немагчыма прачытаць выбраную папку.",
+  "snackLimitReached": "Дасягнуты ліміт",
+  "snackLimitFilesBody": "Некаторыя файлы не былі дададзены з-за памеру або колькасці файлаў абмежаванні.",
+  "snackFreePlanLimit": "Бясплатны план дазваляе да 5 ГБ за перадачу. Выдаліце ​​некаторыя файлы або абнавіце.",
+  "snackSignInEmail": "Калі ласка, увайдзіце, каб адправіць па электроннай пошце.",
+  "snackUploadStartFailed": "Немагчыма пачаць запампоўку.",
+  "snackVerifyEnterCode": "Увядзіце 4-значны код са сваёй электроннай пошты.",
+  "snackVerifyInvalid": "Няправільны або пратэрмінаваны код. Праверце электронную пошту і паўтарыце спробу.",
+  "snackVerifyResendFailed": "Немагчыма паўторна адправіць код. Паспрабуйце яшчэ раз.",
+  "snackDownloadComplete": "Спампоўка завершана",
+  "snackDownloadSaved": "\"<<PH0>>\" захавана ў Спампоўкі",
+  "snackDownloadFailed": "Збой спампоўкі",
+  "snackSaved": "Захавана",
+  "snackServerUrlUpdated": "URL-адрас сервера абноўлены. Перазапусціце праграму, каб прымяніць.",
+  "snackStoreError": "Памылка крамы",
+  "snackMissingProducts": "Прадукты адсутнічаюць",
+  "snackStoreUnavailable": "Крама недаступная",
+  "snackStoreUnavailableBody": "Пакупкі ў праграме недаступныя на гэтай прыладзе.",
+  "snackProductNotLoaded": "Прадукт яшчэ не загружаны.",
+  "snackRestoreStarted": "Аднаўленне пачата",
+  "snackRestoreStartedBody": "Мы правяраем ваш пакупкі.",
+  "snackRestoreFailed": "Збой аднаўлення",
+  "snackProcessing": "Апрацоўка",
+  "snackPleaseWait": "Калі ласка, пачакайце...",
+  "snackSuccess": "Поспех",
+  "snackPurchaseCompleted": "Купля завершана.",
+  "snackPurchaseError": "Памылка пакупкі",
+  "snackPurchaseFailed": "Купля не ўдалося.",
+  "snackCanceled": "Адменена",
+  "snackPurchaseCanceled": "Купля адменена.",
+  "snackUpload": "Загружаць",
+  "snackVerify": "Праверыць",
+  "doNotExpire": "Не рабіць мінае",
+  "hourSingular": "гадзіна",
+  "hourPlural": "гадзін",
+  "daySingular": "дзень",
+  "dayPlural": "дзень",
+  "emailAddressLabel": "АДРАС ЭЛЕКТРОННАЙ ПОШТЫ",
+  "passwordLabelCaps": "ПАРОЛЬ",
+  "confirmPasswordLabelCaps": "ПАЦВЕРДЗІЦЬ ПАРОЛЬ",
+  "transferLinkOrId": "СПАСЫЛКА ДЛЯ ПЕРАДАЧЫ АБО ID",
+  "howToReceive": "ЯК АТРЫМАЦЬ",
+  "planAdsTitle": "План Ads",
+  "planAdsBullet1": "Доступ да праграмы з бясплатнай рэкламай",
+  "planAdsBullet2": "Выдаліць усю рэкламу",
+  "planProTitle": "План Pro",
+  "planProBullet1": "Адпраўляйце файлы памерам да 20 ГБ",
+  "planProBullet2": "Хуткая запампоўка",
+  "planPremiumTitle": "Прэміум-план",
+  "planPremiumBullet1": "Адпраўляйце файлы памерам да 100 ГБ",
+  "planPremiumBullet2": "Звышхуткая запампоўка",
+  "planSubscriptionDisclaimer": "Без пробнага перыяду — для выкарыстання дадатковых функцый праграмы патрабуецца падпіска. Вам неадкладна спаганяць плату. Вы можаце адмяніць у любы час.",
+  "perMonth": "/ месяц",
+  "perYear": "/ год",
+  "snackConnectionProblem": "Праблема з падключэннем. Паўтарыце спробу.",
+  "networkTitle": "Сетка",
+  "transferIdLabel": "ID: <<PH0>>",
+  "downloadMetaSummary": "Файлы: <<PH0>> · <<PH1>> байты",
+  "todayAt": "Сёння · <<PH0>>",
+  "yesterdayAt": "Учора · <<PH0>>",
+  "daysAgoAt": "<<PH0>>дзён таму · <<PH1>>",
+  "dateAt": "<<PH0>> · <<PH1>>",
+  "mbAmount": "<<PH0>> MB",
+  "uploadProgressSummary": "<<PH0>> / <<PH1>> • <<PH2>> злева",
+  "loadingShort": "Загрузка...",
+  "colorPaletteTitle": "Каляровая палітра",
+  "colorPaletteSectionBackgrounds": "Фон (чарніла маштаб)",
+  "colorPaletteSectionAccent": "Акцэнт / Асноўны",
+  "colorPaletteSectionText": "Тэкст",
+  "colorPaletteSectionBorders": "Межы і шкло",
+  "colorPaletteSectionSemantic": "Семантыка",
+  "colorPaletteSectionLive": "Жывая тэма (бягучая)",
+  "colorPaletteActiveHint": "★ = актыўна выкарыстоўваецца ў экраны",
+  "colorPaletteCopyHint": "Доўга націскайце любы ўзор, каб скапіяваць яго шаснаццатковае значэнне.",
+  "settingsAppBrand": "Падзяліцца вялікім\nВідэафайлы",
+  "loginEmailPasswordPrompt": "Увядзіце электронную пошту і пароль для ўваходу.",
+  "forgotPassword": "Забыліся пароль?",
+  "forgotPasswordTitle": "Скінуць пароль",
+  "forgotPasswordBody": "Увядзіце электронную пошту ўліковага запісу, і мы вышлем код скіду.",
+  "forgotPasswordSubmit": "Адправіць код скіду",
+  "resetPasswordTitle": "Стварыць новы пароль",
+  "resetPasswordBody": "Увядзіце 6-значны код са сваёй электроннай пошты і абярыце новы пароль.",
+  "resetPasswordSubmit": "Абнавіць пароль",
+  "snackPasswordResetSent": "Код скіду адпраўлены",
+  "snackPasswordResetSentBody": "Праверце, ці няма ў вашай электроннай пошце 6-значнага кода скіду.",
+  "snackPasswordResetFailed": "Не атрымалася адправіць код скіду. Паспрабуйце яшчэ раз.",
+  "snackPasswordUpdated": "Пароль абноўлены",
+  "snackPasswordUpdatedBody": "Увайдзіце з новым паролем.",
+  "snackPasswordResetInvalid": "Няправільны або пратэрмінаваны код скіду.",
+  "otpDigitLabel": "6-ЗНАЧНЫ КОД",
+  "receiveMoreFiles": "+<<PH0>> іншыя файлы"
+}

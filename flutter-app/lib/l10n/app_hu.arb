@@ -1,0 +1,466 @@
+{
+  "@@locale": "hu",
+  "@verifyEmailCheckSpamHint": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@upToTotal": {
+    "placeholders": {
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "@filesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesCount": "{count, plural, =1{1 file} other{{count} files}}",
+  "@mbLeft": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@transferLoadFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@storePricesPartialBody": {
+    "placeholders": {
+      "loaded": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "priceUnavailable": "—",
+  "@effectiveMonthlyPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "@otpSentTo": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@snackDownloadSaved": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "emailExampleHint": "you@example.com",
+  "otpSixDigitHint": "000000",
+  "verifyFourDigitHint": "0000",
+  "transferLinkHint": "https://… or paste ID",
+  "@filesReady": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesReady": "{count, plural, =1{1 file ready} other{{count} files ready}}",
+  "@transferIdLabel": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadMetaSummary": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "@todayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@yesterdayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@daysAgoAt": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@dateAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@mbAmount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@uploadProgressSummary": {
+    "placeholders": {
+      "sent": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      },
+      "remaining": {
+        "type": "String"
+      }
+    }
+  },
+  "@historyFilesSize": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "historyFilesSize": "{count, plural, =1{1 file} other{{count} files}} · {size}",
+  "@receiveMoreFiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appTitle": "Nagy videofájlok megosztása",
+  "heroAccent": "azonnal.",
+  "heroTitle": "Nehéz fájlok küldése",
+  "splashLoading": "Terhelés…",
+  "navSend": "Műszerfal",
+  "navHome": "Otthon",
+  "navHistory": "Történelem",
+  "navReceive": "Kap",
+  "navPlans": "Tervek",
+  "navDownload": "Letöltés",
+  "navSettings": "Beállítások elemre",
+  "modeLink": "Kap egy linket",
+  "modeEmail": "Küldje el e-mailben",
+  "pickFiles": "Válasszon fájlokat",
+  "pickFolder": "Válasszon mappát",
+  "emailFrom": "Az Ön email címe",
+  "mailFromUsesAccount": "A bejelentkezett e-mail-címét használja.",
+  "recipientEmailsHelper": "Több címzett: vesszővel, pontosvesszővel vagy szóközzel válassza el.",
+  "emailTo": "Címzett e-mail",
+  "messageOptional": "Üzenet (opcionális)",
+  "passwordOptional": "Jelszó (nem kötelező)",
+  "destructAfterDownload": "Letöltés után töröld",
+  "destructNo": "Tartsa elérhető",
+  "sendButton": "Elküld",
+  "uploading": "Feltöltés…",
+  "uploadComplete": "Kész",
+  "shareLinkTitle": "Az Ön linkje",
+  "copyLink": "Link másolása",
+  "share": "Részesedés",
+  "shareQrCode": "QR-kód megosztása",
+  "uploadMore": "Küldj másikat",
+  "emailSentTitle": "E-mailek elküldve",
+  "verifyEmailTitle": "Igazolja e-mail-címét",
+  "verifyCodeHint": "Írja be az e-mailben kapott kódot",
+  "verifySubmit": "Ellenőrizze",
+  "verifyResendCode": "Kód újraküldése",
+  "verifyCodeSent": "Új ellenőrző kódot küldtünk az e-mail címére.",
+  "verifyEmailSmtpWarningTitle": "Lehetséges, hogy az ellenőrző e-mailt nem küldték el",
+  "verifyEmailSmtpWarningBody": "A szerver nem tudta megerősíteni a kézbesítést (az SMTP gyakran rosszul van konfigurálva). Kérje meg a webhely rendszergazdáját, hogy ellenőrizze a Levelezés beállításait az adminisztrációs panelen, majd koppintson a Kód újraküldése elemre.",
+  "verifyEmailCheckSpamHint": "Ha nem érkezik meg: jelölje be a Levélszemét/Spam és Promóciók elemet, várjon egy percet, ellenőrizze, hogy a <<PH0>> nem tartalmaz-e elírást, majd érintse meg az Újraküldés gombot.",
+  "loginTitle": "Jelentkezzen be",
+  "signupHint": "Használja webhelyfiókja e-mail-címét és jelszavát.",
+  "emailHint": "Email",
+  "passwordHint": "Jelszó",
+  "cancel": "Mégse",
+  "signIn": "Jelentkezzen be",
+  "downloadIdHint": "Átigazolási azonosító",
+  "privateIdHint": "Személyes azonosító (nem kötelező)",
+  "fetchTransfer": "Nyissa meg az átvitelt",
+  "downloadFile": "Letöltés",
+  "unlockDownload": "Letöltés feloldása",
+  "downloadSaved": "Mentve a Letöltések közé",
+  "errorGeneric": "Valami elromlott",
+  "errorNetwork": "Hálózati hiba",
+  "errorBadResponse": "Váratlan szerver válasz",
+  "termsAccept": "Elfogadom a feltételeket",
+  "settingsApiUrl": "Nyilvános webhely URL-je",
+  "settingsAccount": "fiók",
+  "settingsAppearance": "Megjelenés",
+  "settingsTheme": "Téma",
+  "themeSystem": "Rendszer",
+  "themeLight": "Fény",
+  "themeDark": "Sötét",
+  "settingsSignedIn": "Be vagy jelentkezve.",
+  "settingsSignedOut": "Nem vagy bejelentkezve.",
+  "settingsOpenWebsite": "Webhely megnyitása",
+  "signUp": "Regisztráljon",
+  "settingsLinks": "Linkek",
+  "privacyPolicy": "Adatvédelmi szabályzat",
+  "termsOfService": "Szolgáltatási feltételek",
+  "about": "Körülbelül",
+  "moreApps": "További alkalmazások",
+  "settingsLanguage": "Nyelv",
+  "languageEnglish": "angol",
+  "languageHindi": "hindi",
+  "logout": "Jelentkezzen ki",
+  "deleteAccount": "Fiók törlése",
+  "deleteAccountConfirmTitle": "Törli a fiókját?",
+  "deleteAccountConfirmBody": "Ezzel véglegesen törli fiókját, és kijelentkezteti Önt. Az átviteli linkek továbbra is működni fognak, de többé nem jelennek meg az előzmények között.",
+  "deleteAccountSuccess": "Fiók törölve",
+  "deleteAccountSuccessBody": "Fiókját eltávolítottuk.",
+  "deleteAccountFailed": "Nem sikerült törölni a fiókot",
+  "deleteAccountFailedBody": "Kérjük, próbálja újra, vagy forduljon az ügyfélszolgálathoz.",
+  "maxFilesReached": "Túl sok fájl",
+  "fileTooLarge": "A fájl túl nagy",
+  "ipLimit": "Túl sok feltöltés erről a hálózatról",
+  "fillFields": "Kérjük, töltse ki a kötelező mezőket",
+  "invalidEmail": "Érvénytelen e-mail-cím",
+  "maxRecipientsReached": "Túl sok címzett",
+  "loginRequiredTitle": "Bejelentkezés szükséges",
+  "loginRequiredBody": "Ennek a szervernek a feltöltéséhez vagy letöltéséhez fiók szükséges.",
+  "settingsSubtitle": "Alkalmazásbeállítások és fiók.",
+  "dropHeavyFile": "Dobj ide egy nehéz fájlt.",
+  "upToTotal": "Összesen legfeljebb <<PH0>>",
+  "removeAll": "Az összes eltávolítása",
+  "addFiles": "Fájlok hozzáadása",
+  "adding": "Hozzáadás…",
+  "options": "Opciók",
+  "selfDestruct": "Önmegsemmisítés letöltés után",
+  "expiry": "Lejárat",
+  "cancelUpload": "Feltöltés megszakítása",
+  "transferReady": "Kész az átutalás!",
+  "emailSentReady": "E-mail elküldve!",
+  "shareRecipientHint": "Oszd meg ezt a linket a címzettel.",
+  "emailSentBody": "Értesítettük a címzett(eke)t.",
+  "scanQr": "Szkennelje be az átviteli hivatkozás megnyitásához.",
+  "shareLinkButton": "LINK MEGOSZTÁSA",
+  "verifyFourDigit": "Írja be a feladó e-mail címére küldött 4 számjegyű kódot.",
+  "starting": "Indítás…",
+  "mbLeft": "<<PH0>> MB maradt",
+  "fillField": "Kérjük, töltse ki ezt a mezőt.",
+  "enterValidEmail": "Adjon meg egy érvényes e-mail-címet.",
+  "message": "Üzenet",
+  "recipientEmail": "Címzett e-mail",
+  "active": "Aktív",
+  "expired": "Lejárt",
+  "historyTitle": "Saját átvitelek",
+  "signInToSeeTransfers": "Jelentkezzen be az átutalás megtekintéséhez",
+  "signInTransfersBody": "Az Ön e-mail-címét használjuk arra, hogy összekapcsoljuk az átviteleket a fiókjával – nincs szükség jelszóra.",
+  "couldNotLoadTransfers": "Nem sikerült betölteni az átviteleket",
+  "retry": "Próbálja újra",
+  "noTransfersYet": "Még nincs transzfer",
+  "noTransfersBody": "Ha elküld egy fájlt, az itt fog megjelenni.",
+  "transferDetails": "Az átvitel részletei",
+  "filesSection": "Fájlok",
+  "receiveTitle": "Fájlok fogadása",
+  "receiveSubtitle": "Illesszen be egy átviteli hivatkozást a fájlok letöltéséhez.",
+  "pasteTooltip": "Paszta",
+  "findTransfer": "Keresse meg a Transzfert",
+  "receiveScanQr": "QR-kód beolvasása",
+  "receiveScanQrTitle": "Átviteli QR beolvasása",
+  "receiveScanQrHint": "Igazítsa a QR-kódot a keretbe.",
+  "receiveScanQrInvalid": "Ez a QR-kód nem érvényes átviteli link.",
+  "receiveScanQrCameraDenied": "A QR-kódok beolvasásához kamera-hozzáférés szükséges.",
+  "receiveStepGetLink": "Szerezd meg a linket",
+  "receiveStepGetLinkBody": "Kérje meg a feladót, hogy ossza meg Önnel az átviteli linket.",
+  "receiveStepPaste": "Beillesztés és keresés",
+  "receiveStepPasteBody": "Illessze be a fenti linket, és koppintson az „Átvitel keresése” elemre.",
+  "receiveStepDownload": "Fájlok letöltése",
+  "receiveStepDownloadBody": "Tekintse meg a fájl részleteit, és töltsön le mindent egyszerre.",
+  "lookingUpTransfer": "Átvitel keresése…",
+  "transferNotFound": "Az átvitel nem található. Ellenőrizze a linket, és próbálja újra.",
+  "transferExpired": "Ez az átvitel lejárt, és már nem érhető el.",
+  "transferLoginRequired": "Az átvitel eléréséhez be kell jelentkezni.",
+  "transferBadResponse": "Váratlan szerver válasz. Ellenőrizze a kapcsolatot.",
+  "transferNetworkError": "Hálózati hiba. Ellenőrizze az internetkapcsolatot.",
+  "transferLoadFailed": "Nem sikerült betölteni az átvitelt: <<PH0>>",
+  "passwordProtected": "Jelszóval védett",
+  "enterPassword": "Írja be a jelszót",
+  "unlock": "Kinyit",
+  "downloading": "Letöltés…",
+  "downloadAllFiles": "Töltse le az összes fájlt",
+  "downloadSingleFile": "Fájl letöltése",
+  "receiveAnother": "Új átutalás fogadása",
+  "plansTitle": "Tervek",
+  "plansSubtitle": "Frissítsen hirdetések eltávolításához és nagyobb fájlok küldéséhez.",
+  "storeUnavailable": "Az üzlet nem elérhető",
+  "storeUnavailableBody": "Az alkalmazáson belüli vásárlások jelenleg nem érhetők el.",
+  "storeLoadingPrices": "Árak betöltése az App Store-ból…",
+  "storePricesUnavailable": "Az árak nem elérhetők",
+  "storePricesPartial": "Egyes árakat nem sikerült betölteni",
+  "storePricesPartialBody": "<<PH0>> / <<PH1>> előfizetéses termék betöltve.",
+  "storeSetupHint": "Teszteljen valódi iPhone-on (nem szimulátoron), használjon Sandbox Apple ID-t, és győződjön meg arról, hogy mind a 6 előfizetés ennek az alkalmazásnak az App Store Connect csomagazonosítója alatt jön létre az árképzési beállításokkal együtt.",
+  "effectiveMonthlyPrice": "<<PH0>>/hónap",
+  "freeVersionAds": "Jelenleg ingyenes verziónkat használja hirdetésekkel",
+  "restorePurchases": "Vásárlások visszaállítása",
+  "plansContinue": "Folytatás",
+  "planLinkRestore": "Visszaállítás",
+  "termsAndConditions": "Feltételek",
+  "createAccountTitle": "Hozzon létre fiókot",
+  "signUpSubtitle": "Regisztráljon e-mail címmel és jelszóval.",
+  "confirmPassword": "Erősítse meg a jelszót",
+  "passwordMin8": "Jelszó (minimum 8 karakter)",
+  "alreadyHaveAccount": "Már van fiókja?",
+  "checkEmailTitle": "Ellenőrizze a\ne-mailben",
+  "otpSentTo": "6 számjegyű kódot küldtünk a címre\n<<PH0>>",
+  "verifyAndSignIn": "Ellenőrzés és bejelentkezés",
+  "didntReceiveCode": "nem kapta meg?",
+  "tryAgain": "Próbáld újra",
+  "otpExpiresHint": "A kód 5 percen belül lejár. Ellenőrizze a spam mappát, ha nem látja.",
+  "snackError": "Hiba",
+  "snackCopied": "Másolva",
+  "snackCopiedBody": "Link a vágólapra másolva",
+  "snackWelcome": "Üdvözöljük",
+  "snackAccountCreated": "Fiók létrehozva",
+  "snackEnterEmail": "Kérjük, adja meg e-mail címét",
+  "snackEnterPassword": "Kérjük, adja meg jelszavát",
+  "snackInvalidEmail": "Érvénytelen e-mail cím",
+  "snackInvalidCredentials": "Hibás e-mail cím vagy jelszó",
+  "snackPasswordMin8": "A jelszónak legalább 8 karakterből kell állnia",
+  "snackPasswordMismatch": "A jelszavak nem egyeznek.",
+  "snackAccountExists": "A fiók már létezik. Kérjük, jelentkezzen be.",
+  "snackSignupFailed": "Nem sikerült fiókot létrehozni. Próbáld újra.",
+  "snackEnterOtp": "Kérjük, adja meg a 6 számjegyű kódot",
+  "snackOtpExpired": "A kód lejárt",
+  "snackOtpExpiredBody": "Kérjen új kódot.",
+  "snackInvalidCode": "Érvénytelen kód",
+  "snackInvalidCodeBody": "A kód helytelen. Kérjük, próbálja újra.",
+  "snackSendCodeFailed": "Nem sikerült elküldeni a kódot. Ellenőrizze a kapcsolatot, és próbálja újra.",
+  "snackEmptyFolder": "Üres mappa",
+  "snackEmptyFolderBody": "Nem található fájl a kiválasztott mappában.",
+  "snackFolderUnsupported": "Nem támogatott",
+  "snackFolderUnsupportedBody": "Mappafeltöltés nem érhető el ezen a platformon.",
+  "snackFolderReadError": "Nem sikerült beolvasni a kiválasztott mappát.",
+  "snackLimitReached": "Elérte a határt",
+  "snackLimitFilesBody": "Néhány fájl nem lett hozzáadva a méret vagy a fájlszám korlátozása miatt.",
+  "snackFreePlanLimit": "Az ingyenes csomag átvitelenként akár 5 GB-ot tesz lehetővé. Kérjük, távolítson el néhány fájlt, vagy frissítsen.",
+  "snackSignInEmail": "Kérjük, jelentkezzen be, hogy e-mailben küldje el.",
+  "snackUploadStartFailed": "Nem sikerült elindítani a feltöltést.",
+  "snackVerifyEnterCode": "Írja be az e-mailben kapott 4 számjegyű kódot.",
+  "snackVerifyInvalid": "Érvénytelen vagy lejárt kód. Ellenőrizze az e-mailt, és próbálja újra.",
+  "snackVerifyResendFailed": "Nem sikerült újraküldeni a kódot. Próbáld újra.",
+  "snackDownloadComplete": "Letöltés kész",
+  "snackDownloadSaved": "\"<<PH0>>\" mentve a Letöltések közé",
+  "snackDownloadFailed": "Letöltés sikertelen",
+  "snackSaved": "Mentve",
+  "snackServerUrlUpdated": "A szerver URL-je frissítve. Az alkalmazáshoz indítsa újra az alkalmazást.",
+  "snackStoreError": "Tárolási hiba",
+  "snackMissingProducts": "Hiányzó termékek",
+  "snackStoreUnavailable": "Az üzlet nem elérhető",
+  "snackStoreUnavailableBody": "Az alkalmazáson belüli vásárlás nem érhető el ezen az eszközön.",
+  "snackProductNotLoaded": "A termék még nincs betöltve.",
+  "snackRestoreStarted": "A visszaállítás megkezdődött",
+  "snackRestoreStartedBody": "Ellenőrizzük vásárlásait.",
+  "snackRestoreFailed": "A visszaállítás nem sikerült",
+  "snackProcessing": "Feldolgozás",
+  "snackPleaseWait": "Kérjük, várjon…",
+  "snackSuccess": "Siker",
+  "snackPurchaseCompleted": "A vásárlás befejeződött.",
+  "snackPurchaseError": "Vásárlási hiba",
+  "snackPurchaseFailed": "A vásárlás sikertelen.",
+  "snackCanceled": "Törölve",
+  "snackPurchaseCanceled": "Vásárlás törölve.",
+  "snackUpload": "Feltöltés",
+  "snackVerify": "Ellenőrizze",
+  "doNotExpire": "Ne járjon le",
+  "hourSingular": "óra",
+  "hourPlural": "óra",
+  "daySingular": "nap",
+  "dayPlural": "napokon",
+  "emailAddressLabel": "E-MAIL CÍM",
+  "passwordLabelCaps": "JELSZÓ",
+  "confirmPasswordLabelCaps": "JELSZÓ MEGERŐSÍTÉSE",
+  "transferLinkOrId": "ÁTVITELI LINK VAGY AZONOSÍTÓ",
+  "howToReceive": "HOGYAN KELL FOGADNI",
+  "planAdsTitle": "Hirdetési terv",
+  "planAdsBullet1": "Hozzáférés a hirdetések ingyenes alkalmazáshoz",
+  "planAdsBullet2": "Távolítsa el az összes hirdetést",
+  "planProTitle": "Pro terv",
+  "planProBullet1": "Fájlok küldése 20 GB-ig",
+  "planProBullet2": "Gyors feltöltés",
+  "planPremiumTitle": "Prémium csomag",
+  "planPremiumBullet1": "Fájlok küldése 100 GB-ig",
+  "planPremiumBullet2": "Szuper gyors feltöltés",
+  "planSubscriptionDisclaimer": "Nincs próbaidőszak – a további alkalmazásfunkciók használatához előfizetés szükséges. Azonnal megterheljük a díjat. Bármikor lemondhatja.",
+  "perMonth": "/ hónap",
+  "perYear": "/ év",
+  "snackConnectionProblem": "Csatlakozási probléma. Kérjük, próbálja újra.",
+  "networkTitle": "Hálózat",
+  "transferIdLabel": "ID: <<PH0>>",
+  "downloadMetaSummary": "Fájlok: <<PH0>> · <<PH1>> bájt",
+  "todayAt": "Ma · <<PH0>>",
+  "yesterdayAt": "Tegnap · <<PH0>>",
+  "daysAgoAt": "<<PH0>>napja · <<PH1>>",
+  "dateAt": "<<PH0>> · <<PH1>>",
+  "mbAmount": "<<PH0>> MB",
+  "uploadProgressSummary": "<<PH0>> / <<PH1>> • <<PH2>> balra",
+  "loadingShort": "Terhelés…",
+  "colorPaletteTitle": "Színpaletta",
+  "colorPaletteSectionBackgrounds": "Hátterek (tinta skála)",
+  "colorPaletteSectionAccent": "Ékezet / Elsődleges",
+  "colorPaletteSectionText": "Szöveg",
+  "colorPaletteSectionBorders": "Borders & Glass",
+  "colorPaletteSectionSemantic": "Szemantikus",
+  "colorPaletteSectionLive": "Élő téma (jelenlegi)",
+  "colorPaletteActiveHint": "★ = aktívan használják képernyőkön",
+  "colorPaletteCopyHint": "Nyomja meg hosszan bármelyik színmintát a hexadecimális érték másolásához.",
+  "settingsAppBrand": "Share Large\nVideó fájlok",
+  "loginEmailPasswordPrompt": "A bejelentkezéshez adja meg e-mail címét és jelszavát.",
+  "forgotPassword": "Elfelejtetted a jelszavad?",
+  "forgotPasswordTitle": "Jelszó visszaállítása",
+  "forgotPasswordBody": "Adja meg fiókjának e-mail-címét, és küldünk egy visszaállító kódot.",
+  "forgotPasswordSubmit": "Reset kód küldése",
+  "resetPasswordTitle": "Hozzon létre új jelszót",
+  "resetPasswordBody": "Írja be az e-mailben kapott 6 számjegyű kódot, és válasszon új jelszót.",
+  "resetPasswordSubmit": "Frissítse a jelszót",
+  "snackPasswordResetSent": "Visszaállítási kód elküldve",
+  "snackPasswordResetSentBody": "Nézze meg az e-mailben a 6 számjegyű visszaállítási kódot.",
+  "snackPasswordResetFailed": "Nem sikerült elküldeni a visszaállítási kódot. Próbáld újra.",
+  "snackPasswordUpdated": "Jelszó frissítve",
+  "snackPasswordUpdatedBody": "Jelentkezzen be új jelszavával.",
+  "snackPasswordResetInvalid": "Érvénytelen vagy lejárt visszaállítási kód.",
+  "otpDigitLabel": "6 SZÁMJEGYES KÓD",
+  "receiveMoreFiles": "+<<PH0>> további fájlok"
+}

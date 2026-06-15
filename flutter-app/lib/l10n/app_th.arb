@@ -1,0 +1,466 @@
+{
+  "@@locale": "th",
+  "@verifyEmailCheckSpamHint": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@upToTotal": {
+    "placeholders": {
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "@filesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesCount": "{count, plural, =1{1 file} other{{count} files}}",
+  "@mbLeft": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@transferLoadFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@storePricesPartialBody": {
+    "placeholders": {
+      "loaded": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "priceUnavailable": "—",
+  "@effectiveMonthlyPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "@otpSentTo": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@snackDownloadSaved": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "emailExampleHint": "you@example.com",
+  "otpSixDigitHint": "000000",
+  "verifyFourDigitHint": "0000",
+  "transferLinkHint": "https://… or paste ID",
+  "@filesReady": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesReady": "{count, plural, =1{1 file ready} other{{count} files ready}}",
+  "@transferIdLabel": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadMetaSummary": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "@todayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@yesterdayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@daysAgoAt": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@dateAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@mbAmount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@uploadProgressSummary": {
+    "placeholders": {
+      "sent": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      },
+      "remaining": {
+        "type": "String"
+      }
+    }
+  },
+  "@historyFilesSize": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "historyFilesSize": "{count, plural, =1{1 file} other{{count} files}} · {size}",
+  "@receiveMoreFiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appTitle": "แชร์ไฟล์วิดีโอขนาดใหญ่",
+  "heroAccent": "ทันที",
+  "heroTitle": "ส่งหนักๆ files",
+  "splashLoading": "กำลังโหลด…",
+  "navSend": "Dashboard",
+  "navHome": "Home",
+  "navHistory": "History",
+  "navReceive": "Receive",
+  "navPlans": "Plans",
+  "navDownload": "ดาวน์โหลด",
+  "navSettings": "Settings",
+  "modeLink": "รับ link",
+  "modeEmail": "ส่งทางอีเมล",
+  "pickFiles": "เลือกไฟล์",
+  "pickFolder": "เลือกโฟลเดอร์",
+  "emailFrom": "อีเมลของคุณ",
+  "mailFromUsesAccount": "ใช้อีเมลที่คุณลงชื่อเข้าใช้",
+  "recipientEmailsHelper": "ผู้รับหลายคน: คั่นด้วยเครื่องหมายจุลภาค อัฒภาค หรือ ช่องว่าง",
+  "emailTo": "อีเมลผู้รับ",
+  "messageOptional": "ข้อความ (ไม่บังคับ)",
+  "passwordOptional": "รหัสผ่าน (ไม่บังคับ)",
+  "destructAfterDownload": "ลบหลังจากดาวน์โหลด",
+  "destructNo": "Keep ใช้ได้",
+  "sendButton": "ส่ง",
+  "uploading": "กำลังอัปโหลด…",
+  "uploadComplete": "เสร็จสิ้น",
+  "shareLinkTitle": "ลิงก์ของคุณ",
+  "copyLink": "คัดลอกลิงก์",
+  "share": "Share",
+  "shareQrCode": "แชร์รหัส QR",
+  "uploadMore": "ส่ง another",
+  "emailSentTitle": "อีเมลที่ส่งแล้ว",
+  "verifyEmailTitle": "ยืนยันอีเมลของคุณ",
+  "verifyCodeHint": "ป้อนรหัสจากอีเมลของคุณ",
+  "verifySubmit": "ยืนยัน",
+  "verifyResendCode": "ส่งรหัสอีกครั้ง",
+  "verifyCodeSent": "รหัสยืนยันใหม่ถูกส่งไปยังอีเมลของคุณ",
+  "verifyEmailSmtpWarningTitle": "อีเมลยืนยันอาจไม่ได้รับ send",
+  "verifyEmailSmtpWarningBody": "เซิร์ฟเวอร์ไม่สามารถยืนยันการจัดส่งได้ (มักมีการกำหนดค่า SMTP ไม่ถูกต้อง) ขอให้ผู้ดูแลไซต์ของคุณตรวจสอบการตั้งค่าเมลในแผงผู้ดูแลระบบ จากนั้นแตะส่งรหัสอีกครั้ง",
+  "verifyEmailCheckSpamHint": "หากมาไม่ถึง: ตรวจสอบขยะ/สแปมและโปรโมชัน รอสักครู่ ยืนยันว่า <<PH0>> ไม่มีการพิมพ์ผิด จากนั้นแตะส่งอีกครั้ง",
+  "loginTitle": "ลงชื่อเข้าใช้",
+  "signupHint": "ใช้อีเมลบัญชีไซต์ของคุณและ รหัสผ่าน",
+  "emailHint": "อีเมล",
+  "passwordHint": "รหัสผ่าน",
+  "cancel": "ยกเลิก",
+  "signIn": "ลงชื่อเข้าใช้",
+  "downloadIdHint": "โอน ID",
+  "privateIdHint": "รหัสส่วนตัว (ไม่จำเป็น)",
+  "fetchTransfer": "เปิดการถ่ายโอน",
+  "downloadFile": "ดาวน์โหลด",
+  "unlockDownload": "ปลดล็อคการดาวน์โหลด",
+  "downloadSaved": "บันทึกลงในการดาวน์โหลด",
+  "errorGeneric": "มีบางอย่างผิดพลาด",
+  "errorNetwork": "ข้อผิดพลาดของเครือข่าย",
+  "errorBadResponse": "การตอบสนองของเซิร์ฟเวอร์ที่ไม่คาดคิด",
+  "termsAccept": "ฉันยอมรับข้อกำหนด",
+  "settingsApiUrl": "เว็บไซต์สาธารณะ URL",
+  "settingsAccount": "บัญชี",
+  "settingsAppearance": "ลักษณะที่ปรากฏ",
+  "settingsTheme": "ธีม",
+  "themeSystem": "ระบบ",
+  "themeLight": "Light",
+  "themeDark": "Dark",
+  "settingsSignedIn": "คุณลงชื่อเข้าใช้แล้ว",
+  "settingsSignedOut": "คุณไม่ได้ลงนาม ใน",
+  "settingsOpenWebsite": "เปิดเว็บไซต์",
+  "signUp": "ลงทะเบียน",
+  "settingsLinks": "ลิงก์",
+  "privacyPolicy": "นโยบายความเป็นส่วนตัว",
+  "termsOfService": "ข้อกำหนดในการให้บริการ",
+  "about": "เกี่ยวกับ",
+  "moreApps": "เพิ่มเติม แอป",
+  "settingsLanguage": "ภาษา",
+  "languageEnglish": "อังกฤษ",
+  "languageHindi": "ภาษาฮินดี",
+  "logout": "ออกจากระบบ",
+  "deleteAccount": "ลบบัญชี",
+  "deleteAccountConfirmTitle": "ลบบัญชีของคุณ?",
+  "deleteAccountConfirmBody": "การดำเนินการนี้จะลบบัญชีของคุณอย่างถาวรและออกจากระบบ ลิงก์ถ่ายโอนของคุณจะยังคงใช้งานได้ แต่จะไม่ปรากฏในประวัติของคุณอีกต่อไป",
+  "deleteAccountSuccess": "บัญชีถูกลบ",
+  "deleteAccountSuccessBody": "บัญชีของคุณถูกลบแล้ว",
+  "deleteAccountFailed": "ไม่สามารถลบบัญชี",
+  "deleteAccountFailedBody": "โปรดลองอีกครั้งหรือติดต่อฝ่ายสนับสนุน",
+  "maxFilesReached": "มีไฟล์มากเกินไป",
+  "fileTooLarge": "ไฟล์ด้วย ใหญ่",
+  "ipLimit": "อัปโหลดจากเครือข่ายนี้มากเกินไป",
+  "fillFields": "กรุณากรอกข้อมูลในช่องที่ต้องกรอก",
+  "invalidEmail": "อีเมลไม่ถูกต้อง",
+  "maxRecipientsReached": "มีผู้รับมากเกินไป",
+  "loginRequiredTitle": "ต้องลงชื่อเข้าใช้",
+  "loginRequiredBody": "เซิร์ฟเวอร์นี้ต้องมีบัญชีในการอัปโหลดหรือดาวน์โหลด",
+  "settingsSubtitle": "การตั้งค่าแอปและ บัญชี",
+  "dropHeavyFile": "วางไฟล์จำนวนมากที่นี่",
+  "upToTotal": "สูงสุด <<PH0>> ทั้งหมด",
+  "removeAll": "ลบทั้งหมด",
+  "addFiles": "เพิ่มไฟล์",
+  "adding": "การเพิ่ม…",
+  "options": "ตัวเลือก",
+  "selfDestruct": "ทำลายตัวเองหลังจาก ดาวน์โหลด",
+  "expiry": "หมดอายุ",
+  "cancelUpload": "ยกเลิกการอัปโหลด",
+  "transferReady": "โอนพร้อมแล้ว!",
+  "emailSentReady": "ส่งอีเมลแล้ว!",
+  "shareRecipientHint": "แชร์ลิงก์นี้กับผู้รับของคุณ",
+  "emailSentBody": "เราได้แจ้งผู้รับของคุณแล้ว",
+  "scanQr": "สแกนเพื่อเปิดลิงก์โอน",
+  "shareLinkButton": "แชร์ LINK",
+  "verifyFourDigit": "ป้อนรหัส 4 หลักที่ส่งไปยังอีเมลผู้ส่งของคุณ",
+  "starting": "กำลังเริ่มต้น…",
+  "mbLeft": "<<PH0>> MB เหลือ",
+  "fillField": "กรุณากรอกข้อมูลในช่องนี้",
+  "enterValidEmail": "ป้อนที่ถูกต้อง อีเมล",
+  "message": "ข้อความ",
+  "recipientEmail": "อีเมลผู้รับ",
+  "active": "ใช้งานอยู่",
+  "expired": "หมดอายุ",
+  "historyTitle": "การโอนเงินของฉัน",
+  "signInToSeeTransfers": "ลงชื่อเข้าใช้เพื่อดูการโอนเงินของคุณ",
+  "signInTransfersBody": "เราใช้อีเมลของคุณเพื่อเชื่อมโยงการโอนเงินไปยังบัญชีของคุณ — ไม่ต้องใช้รหัสผ่าน",
+  "couldNotLoadTransfers": "ไม่สามารถโหลดได้ การถ่ายโอน",
+  "retry": "ลองอีกครั้ง",
+  "noTransfersYet": "ยังไม่มีการถ่ายโอน",
+  "noTransfersBody": "เมื่อคุณส่งไฟล์ ไฟล์นั้นจะปรากฏที่นี่",
+  "transferDetails": "รายละเอียดการถ่ายโอน",
+  "filesSection": "ไฟล์",
+  "receiveTitle": "รับไฟล์",
+  "receiveSubtitle": "วางลิงก์การถ่ายโอนเพื่อดาวน์โหลด ไฟล์",
+  "pasteTooltip": "Paste",
+  "findTransfer": "ค้นหาการถ่ายโอน",
+  "receiveScanQr": "สแกน QR",
+  "receiveScanQrTitle": "สแกนถ่ายโอน QR",
+  "receiveScanQrHint": "จัดแนวรหัส QR ภายในกรอบ",
+  "receiveScanQrInvalid": "รหัส QR นี้ไม่ใช่ลิงก์ถ่ายโอนที่ถูกต้อง",
+  "receiveScanQrCameraDenied": "จำเป็นต้องเข้าถึงกล้องเพื่อสแกน QR รหัส",
+  "receiveStepGetLink": "รับลิงก์",
+  "receiveStepGetLinkBody": "ขอให้ผู้ส่งแชร์ลิงก์การโอนกับคุณ",
+  "receiveStepPaste": "วางและค้นหา",
+  "receiveStepPasteBody": "วางลิงก์ด้านบนแล้วแตะ \"ค้นหาการโอน\"",
+  "receiveStepDownload": "ดาวน์โหลดไฟล์",
+  "receiveStepDownloadBody": "ดูรายละเอียดไฟล์และดาวน์โหลดทุกอย่างที่ หนึ่งครั้ง",
+  "lookingUpTransfer": "กำลังค้นหาการถ่ายโอน…",
+  "transferNotFound": "ไม่พบการถ่ายโอน ตรวจสอบลิงก์แล้วลองอีกครั้ง",
+  "transferExpired": "การถ่ายโอนนี้หมดอายุแล้วและไม่มีให้บริการอีกต่อไป",
+  "transferLoginRequired": "ต้องลงชื่อเข้าใช้เพื่อเข้าถึงการถ่ายโอนนี้",
+  "transferBadResponse": "การตอบสนองของเซิร์ฟเวอร์ที่ไม่คาดคิด ตรวจสอบการเชื่อมต่อของคุณ",
+  "transferNetworkError": "ข้อผิดพลาดของเครือข่าย ตรวจสอบการเชื่อมต่ออินเทอร์เน็ตของคุณ",
+  "transferLoadFailed": "ไม่สามารถโหลดการถ่ายโอน: <<PH0>>",
+  "passwordProtected": "ป้องกันด้วยรหัสผ่าน",
+  "enterPassword": "ป้อนรหัสผ่าน",
+  "unlock": "ปลดล็อค",
+  "downloading": "กำลังดาวน์โหลด…",
+  "downloadAllFiles": "ดาวน์โหลดไฟล์ทั้งหมด",
+  "downloadSingleFile": "ดาวน์โหลดไฟล์",
+  "receiveAnother": "รับการถ่ายโอนอีกครั้ง",
+  "plansTitle": "Plans",
+  "plansSubtitle": "อัปเกรดเพื่อลบโฆษณาและส่งไฟล์ที่ใหญ่ขึ้น",
+  "storeUnavailable": "ร้านค้าไม่พร้อมใช้งาน",
+  "storeUnavailableBody": "การซื้อในแอปไม่สามารถใช้งานได้ในขณะนี้",
+  "storeLoadingPrices": "กำลังโหลด ราคาจาก App Store…",
+  "storePricesUnavailable": "ไม่มีราคา",
+  "storePricesPartial": "ไม่สามารถโหลดราคาบางราคา",
+  "storePricesPartialBody": "<<PH0>> ของ <<PH1>> ผลิตภัณฑ์ที่สมัครสมาชิกโหลดแล้ว",
+  "storeSetupHint": "ทดสอบบน iPhone จริง (ไม่ใช่โปรแกรมจำลอง) ใช้ Sandbox Apple ID และตรวจสอบให้แน่ใจว่าการสมัครสมาชิกทั้ง 6 รายการถูกสร้างขึ้นภายใต้ ID บันเดิลของแอพนี้ใน App Store Connect พร้อมราคา set.",
+  "effectiveMonthlyPrice": "<<PH0>>/เดือน",
+  "freeVersionAds": "ขณะนี้คุณกำลังใช้เวอร์ชันฟรีของเรากับโฆษณา",
+  "restorePurchases": "คืนค่าการซื้อ",
+  "plansContinue": "ดำเนินการต่อ",
+  "planLinkRestore": "คืนค่า",
+  "termsAndConditions": "ข้อกำหนดและเงื่อนไข",
+  "createAccountTitle": "สร้าง บัญชี",
+  "signUpSubtitle": "ลงทะเบียนด้วยอีเมลและรหัสผ่าน",
+  "confirmPassword": "ยืนยันรหัสผ่าน",
+  "passwordMin8": "รหัสผ่าน (ขั้นต่ำ 8 ตัวอักษร)",
+  "alreadyHaveAccount": "มีบัญชีอยู่แล้ว?",
+  "checkEmailTitle": "ตรวจสอบของคุณ\nemail",
+  "otpSentTo": "เราได้ส่งรหัส 6 หลักไปที่\n<<PH0>>",
+  "verifyAndSignIn": "ยืนยันและลงชื่อเข้าใช้",
+  "didntReceiveCode": "ไม่ได้รับหรือไม่",
+  "tryAgain": "ลองอีกครั้ง",
+  "otpExpiresHint": "รหัสจะหมดอายุใน 5 นาที ตรวจสอบโฟลเดอร์สแปมของคุณหากคุณไม่เห็น",
+  "snackError": "ข้อผิดพลาด",
+  "snackCopied": "คัดลอก",
+  "snackCopiedBody": "คัดลอกลิงก์ไปยังคลิปบอร์ด",
+  "snackWelcome": "ยินดีต้อนรับ",
+  "snackAccountCreated": "สร้างบัญชีแล้ว",
+  "snackEnterEmail": "กรุณากรอกอีเมลของคุณ",
+  "snackEnterPassword": "กรุณากรอกอีเมลของคุณ รหัสผ่าน",
+  "snackInvalidEmail": "ที่อยู่อีเมลไม่ถูกต้อง",
+  "snackInvalidCredentials": "อีเมลหรือรหัสผ่านไม่ถูกต้อง",
+  "snackPasswordMin8": "รหัสผ่านต้องมีอักขระอย่างน้อย 8 ตัว",
+  "snackPasswordMismatch": "รหัสผ่านไม่ตรงกัน",
+  "snackAccountExists": "มีบัญชีอยู่แล้ว กรุณาเข้าสู่ระบบ",
+  "snackSignupFailed": "ไม่สามารถสร้างบัญชีได้ ลองอีกครั้ง",
+  "snackEnterOtp": "กรุณากรอกรหัส 6 หลัก",
+  "snackOtpExpired": "รหัสหมดอายุ",
+  "snackOtpExpiredBody": "กรุณาขอรหัสใหม่",
+  "snackInvalidCode": "รหัสไม่ถูกต้อง",
+  "snackInvalidCodeBody": "รหัสไม่ถูกต้อง โปรดลองอีกครั้ง",
+  "snackSendCodeFailed": "ไม่สามารถส่งรหัสได้ ตรวจสอบการเชื่อมต่อของคุณแล้วลองอีกครั้ง",
+  "snackEmptyFolder": "โฟลเดอร์ว่าง",
+  "snackEmptyFolderBody": "ไม่พบไฟล์ในโฟลเดอร์ที่เลือก",
+  "snackFolderUnsupported": "ไม่รองรับ",
+  "snackFolderUnsupportedBody": "การอัปโหลดโฟลเดอร์ไม่พร้อมใช้งานบนแพลตฟอร์มนี้",
+  "snackFolderReadError": "ไม่สามารถอ่านโฟลเดอร์ที่เลือกได้",
+  "snackLimitReached": "ถึงขีดจำกัด",
+  "snackLimitFilesBody": "บางไฟล์ไม่ได้ถูกเพิ่มเนื่องจากขนาดหรือขีดจำกัดจำนวนไฟล์",
+  "snackFreePlanLimit": "แผนฟรีอนุญาต สูงสุด 5GB ต่อการถ่ายโอน โปรดลบไฟล์บางไฟล์หรืออัปเกรด",
+  "snackSignInEmail": "กรุณาลงชื่อเข้าใช้เพื่อส่งทางอีเมล",
+  "snackUploadStartFailed": "ไม่สามารถเริ่มการอัปโหลดได้",
+  "snackVerifyEnterCode": "ป้อนรหัส 4 หลักจากอีเมลของคุณ",
+  "snackVerifyInvalid": "รหัสไม่ถูกต้องหรือหมดอายุ ตรวจสอบอีเมลแล้วลองอีกครั้ง",
+  "snackVerifyResendFailed": "ไม่สามารถส่งรหัสอีกครั้งได้ ลองอีกครั้ง",
+  "snackDownloadComplete": "การดาวน์โหลดเสร็จสมบูรณ์",
+  "snackDownloadSaved": "\"<<PH0>>\" บันทึกไปยังการดาวน์โหลด",
+  "snackDownloadFailed": "การดาวน์โหลดล้มเหลว",
+  "snackSaved": "บันทึก",
+  "snackServerUrlUpdated": "URL ของเซิร์ฟเวอร์อัปเดตแล้ว รีสตาร์ทแอปเพื่อใช้",
+  "snackStoreError": "ข้อผิดพลาดในร้านค้า",
+  "snackMissingProducts": "ผลิตภัณฑ์ที่หายไป",
+  "snackStoreUnavailable": "ร้านค้าไม่พร้อมใช้งาน",
+  "snackStoreUnavailableBody": "ไม่มีการซื้อในแอปบนอุปกรณ์นี้",
+  "snackProductNotLoaded": "ยังไม่ได้โหลดผลิตภัณฑ์",
+  "snackRestoreStarted": "เริ่มการคืนค่าแล้ว",
+  "snackRestoreStartedBody": "เรากำลังตรวจสอบของคุณ การซื้อ",
+  "snackRestoreFailed": "การกู้คืนล้มเหลว",
+  "snackProcessing": "กำลังประมวลผล",
+  "snackPleaseWait": "โปรดรอสักครู่…",
+  "snackSuccess": "สำเร็จ",
+  "snackPurchaseCompleted": "การซื้อเสร็จสมบูรณ์",
+  "snackPurchaseError": "ข้อผิดพลาดในการซื้อ",
+  "snackPurchaseFailed": "การซื้อเสร็จสมบูรณ์ ล้มเหลว",
+  "snackCanceled": "ยกเลิก",
+  "snackPurchaseCanceled": "การซื้อถูกยกเลิก",
+  "snackUpload": "อัปโหลด",
+  "snackVerify": "ยืนยัน",
+  "doNotExpire": "อย่า หมดอายุ",
+  "hourSingular": "ชั่วโมง",
+  "hourPlural": "ชั่วโมง",
+  "daySingular": "วัน",
+  "dayPlural": "วัน",
+  "emailAddressLabel": "ที่อยู่อีเมล",
+  "passwordLabelCaps": "รหัสผ่าน",
+  "confirmPasswordLabelCaps": "ยืนยันรหัสผ่าน",
+  "transferLinkOrId": "ลิงก์โอนหรือ ID",
+  "howToReceive": "วิธีรับ",
+  "planAdsTitle": "แผนโฆษณา",
+  "planAdsBullet1": "เข้าถึงแอปฟรีโฆษณา",
+  "planAdsBullet2": "ลบโฆษณาทั้งหมด",
+  "planProTitle": "Pro Plan",
+  "planProBullet1": "ส่งไฟล์สูงสุด 20GB",
+  "planProBullet2": "อัปโหลดเร็ว",
+  "planPremiumTitle": "แผนพรีเมียม",
+  "planPremiumBullet1": "ส่งไฟล์สูงสุด 100GB",
+  "planPremiumBullet2": "อัปโหลดเร็วสุด",
+  "planSubscriptionDisclaimer": "ไม่มีช่วงทดลองใช้ — จำเป็นต้องสมัครสมาชิกเพื่อใช้ฟังก์ชันแอปเพิ่มเติม คุณจะถูกเรียกเก็บเงินทันที คุณสามารถยกเลิกได้ตลอดเวลา",
+  "perMonth": "/ เดือน",
+  "perYear": "/ ปี",
+  "snackConnectionProblem": "ปัญหาการเชื่อมต่อ โปรดลองอีกครั้ง",
+  "networkTitle": "เครือข่าย",
+  "transferIdLabel": "ID: <<PH0>>",
+  "downloadMetaSummary": "ไฟล์: <<PH0>> · <<PH1>> ไบต์",
+  "todayAt": "วันนี้ · <<PH0>>",
+  "yesterdayAt": "เมื่อวาน · <<PH0>>",
+  "daysAgoAt": "<<PH0>>d ที่แล้ว · <<PH1>>",
+  "dateAt": "<<PH0>> · <<PH1>>",
+  "mbAmount": "<<PH0>> MB",
+  "uploadProgressSummary": "<<PH0>> / <<PH1>> • <<PH2>> ซ้าย",
+  "loadingShort": "กำลังโหลด…",
+  "colorPaletteTitle": "สี จานสี",
+  "colorPaletteSectionBackgrounds": "พื้นหลัง (ขนาดหมึก)",
+  "colorPaletteSectionAccent": "สำเนียง / หลัก",
+  "colorPaletteSectionText": "ข้อความ",
+  "colorPaletteSectionBorders": "เส้นขอบและกระจก",
+  "colorPaletteSectionSemantic": "ความหมาย",
+  "colorPaletteSectionLive": "ธีมสด (ปัจจุบัน)",
+  "colorPaletteActiveHint": "★ = ใช้งานอยู่ใน หน้าจอ",
+  "colorPaletteCopyHint": "กดสวอตช์ใดๆ ค้างไว้เพื่อคัดลอกค่าเลขฐานสิบหก",
+  "settingsAppBrand": "แบ่งปันขนาดใหญ่\nไฟล์วิดีโอ",
+  "loginEmailPasswordPrompt": "ป้อนอีเมลและรหัสผ่านของคุณเพื่อลงชื่อเข้าใช้",
+  "forgotPassword": "ลืมรหัสผ่าน?",
+  "forgotPasswordTitle": "รีเซ็ตรหัสผ่าน",
+  "forgotPasswordBody": "ป้อนอีเมลบัญชีของคุณแล้วเราจะส่งรหัสรีเซ็ต",
+  "forgotPasswordSubmit": "ส่งรหัสรีเซ็ต",
+  "resetPasswordTitle": "สร้างรหัสผ่านใหม่",
+  "resetPasswordBody": "ป้อน รหัส 6 หลักจากอีเมลของคุณและเลือกรหัสผ่านใหม่",
+  "resetPasswordSubmit": "อัปเดตรหัสผ่าน",
+  "snackPasswordResetSent": "รีเซ็ตรหัสที่ส่งแล้ว",
+  "snackPasswordResetSentBody": "ตรวจสอบอีเมลของคุณเพื่อหารหัสรีเซ็ต 6 หลัก",
+  "snackPasswordResetFailed": "ไม่สามารถส่งรหัสรีเซ็ตได้ ลองอีกครั้ง",
+  "snackPasswordUpdated": "อัปเดตรหัสผ่าน",
+  "snackPasswordUpdatedBody": "ลงชื่อเข้าใช้ด้วยรหัสผ่านใหม่ของคุณ",
+  "snackPasswordResetInvalid": "รหัสรีเซ็ตไม่ถูกต้องหรือหมดอายุ",
+  "otpDigitLabel": "6-DIGIT CODE",
+  "receiveMoreFiles": "+<<PH0>> ไฟล์เพิ่มเติม"
+}

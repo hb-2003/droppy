@@ -1,0 +1,466 @@
+{
+  "@@locale": "nl",
+  "appTitle": "Deel grote videobestanden",
+  "heroAccent": "onmiddellijk.",
+  "heroTitle": "Verzend zware bestanden",
+  "splashLoading": "Laden...",
+  "navSend": "Dashboard",
+  "navHome": "Thuis",
+  "navHistory": "Geschiedenis",
+  "navReceive": "Ontvangen",
+  "navPlans": "Plannen",
+  "navDownload": "Downloaden",
+  "navSettings": "Instellingen",
+  "modeLink": "Ontvang een link",
+  "modeEmail": "Verzenden per e-mail",
+  "pickFiles": "Kies bestanden",
+  "pickFolder": "Kies map",
+  "emailFrom": "Uw e-mail",
+  "mailFromUsesAccount": "Maakt gebruik van uw ingelogde e-mailadres.",
+  "recipientEmailsHelper": "Meerdere ontvangers: gescheiden door komma's, puntkomma's of spaties.",
+  "emailTo": "E-mailadres van ontvanger",
+  "messageOptional": "Bericht (optioneel)",
+  "passwordOptional": "Wachtwoord (optioneel)",
+  "destructAfterDownload": "Verwijderen na downloaden",
+  "destructNo": "Beschikbaar houden",
+  "sendButton": "Versturen",
+  "uploading": "Uploaden…",
+  "uploadComplete": "Klaar",
+  "shareLinkTitle": "Jouw link",
+  "copyLink": "Kopieer link",
+  "share": "Deel",
+  "shareQrCode": "Deel QR-code",
+  "uploadMore": "Stuur er nog een",
+  "emailSentTitle": "E-mails verzonden",
+  "verifyEmailTitle": "Controleer uw e-mailadres",
+  "verifyCodeHint": "Voer de code uit uw e-mail in",
+  "verifySubmit": "Verifiëren",
+  "verifyResendCode": "Code opnieuw verzenden",
+  "verifyCodeSent": "Er is een nieuwe verificatiecode naar uw e-mailadres verzonden.",
+  "verifyEmailSmtpWarningTitle": "Er is mogelijk geen verificatie-e-mail verzonden",
+  "verifyEmailSmtpWarningBody": "De server kon de bezorging niet bevestigen (SMTP is vaak verkeerd geconfigureerd). Vraag uw sitebeheerder om de e-mailinstellingen in het beheerderspaneel te controleren en tik vervolgens op Code opnieuw verzenden.",
+  "@verifyEmailCheckSpamHint": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "verifyEmailCheckSpamHint": "Als het niet aankomt: controleer Junk/Spam en Promoties, wacht een minuut, controleer of <<PH0>> geen typefouten bevat en tik vervolgens op Opnieuw verzenden.",
+  "loginTitle": "Log in",
+  "signupHint": "Gebruik het e-mailadres en wachtwoord van uw siteaccount.",
+  "emailHint": "E-mail",
+  "passwordHint": "Wachtwoord",
+  "cancel": "Annuleren",
+  "signIn": "Log in",
+  "downloadIdHint": "Overdrachts-ID",
+  "privateIdHint": "Privé-ID (optioneel)",
+  "fetchTransfer": "Openstaande overdracht",
+  "downloadFile": "Downloaden",
+  "unlockDownload": "Ontgrendel het downloaden",
+  "downloadSaved": "Opgeslagen in Downloads",
+  "errorGeneric": "Er is iets misgegaan",
+  "errorNetwork": "Netwerkfout",
+  "errorBadResponse": "Onverwachte serverreactie",
+  "termsAccept": "Ik ga akkoord met de voorwaarden",
+  "settingsApiUrl": "URL van openbare site",
+  "settingsAccount": "Rekening",
+  "settingsAppearance": "Verschijning",
+  "settingsTheme": "Thema",
+  "themeSystem": "Systeem",
+  "themeLight": "Licht",
+  "themeDark": "Donker",
+  "settingsSignedIn": "U bent aangemeld.",
+  "settingsSignedOut": "U bent niet aangemeld.",
+  "settingsOpenWebsite": "Website openen",
+  "signUp": "Schrijf je in",
+  "settingsLinks": "Koppelingen",
+  "privacyPolicy": "Privacybeleid",
+  "termsOfService": "Servicevoorwaarden",
+  "about": "Over",
+  "moreApps": "Meer apps",
+  "settingsLanguage": "Taal",
+  "languageEnglish": "Engels",
+  "languageHindi": "Hindi",
+  "logout": "Uitloggen",
+  "deleteAccount": "Account verwijderen",
+  "deleteAccountConfirmTitle": "Uw account verwijderen?",
+  "deleteAccountConfirmBody": "Hierdoor wordt uw account definitief verwijderd en wordt u afgemeld. Uw overdrachtslinks blijven werken, maar verschijnen niet meer in uw geschiedenis.",
+  "deleteAccountSuccess": "Account verwijderd",
+  "deleteAccountSuccessBody": "Uw account is verwijderd.",
+  "deleteAccountFailed": "Kan account niet verwijderen",
+  "deleteAccountFailedBody": "Probeer het opnieuw of neem contact op met de ondersteuning.",
+  "maxFilesReached": "Te veel bestanden",
+  "fileTooLarge": "Bestand te groot",
+  "ipLimit": "Te veel uploads van dit netwerk",
+  "fillFields": "Vul de verplichte velden in",
+  "invalidEmail": "Ongeldig e-mailadres",
+  "maxRecipientsReached": "Te veel ontvangers",
+  "loginRequiredTitle": "Inloggen vereist",
+  "loginRequiredBody": "Voor deze server is een account vereist om te kunnen uploaden of downloaden.",
+  "settingsSubtitle": "App-voorkeuren en account.",
+  "dropHeavyFile": "Zet hier een zwaar bestand neer.",
+  "@upToTotal": {
+    "placeholders": {
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "upToTotal": "Tot <<PH0>> totaal",
+  "removeAll": "Verwijder alles",
+  "addFiles": "Bestanden toevoegen",
+  "adding": "Toevoegen…",
+  "options": "Opties",
+  "selfDestruct": "Zelfvernietiging na downloaden",
+  "expiry": "Vervaldatum",
+  "cancelUpload": "Uploaden annuleren",
+  "transferReady": "Overdracht klaar!",
+  "emailSentReady": "E-mail verzonden!",
+  "shareRecipientHint": "Deel deze link met uw ontvanger.",
+  "emailSentBody": "We hebben uw ontvanger(s) op de hoogte gebracht.",
+  "scanQr": "Scan om de overdrachtslink te openen.",
+  "shareLinkButton": "DEEL LINK",
+  "verifyFourDigit": "Voer de 4-cijferige code in die naar uw afzender-e-mail is verzonden.",
+  "starting": "Beginnen…",
+  "@filesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesCount": "{count, plural, =1{1 file} other{{count} files}}",
+  "@mbLeft": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "mbLeft": "<<PH0>> MB over",
+  "fillField": "Vul dit veld in.",
+  "enterValidEmail": "Voer een geldig e-mailadres in.",
+  "message": "Bericht",
+  "recipientEmail": "E-mailadres van ontvanger",
+  "active": "Actief",
+  "expired": "Verlopen",
+  "historyTitle": "Mijn overboekingen",
+  "signInToSeeTransfers": "Log in om uw overboekingen te zien",
+  "signInTransfersBody": "We gebruiken uw e-mailadres om overdrachten aan uw account te koppelen - geen wachtwoord nodig.",
+  "couldNotLoadTransfers": "Kan overdrachten niet laden",
+  "retry": "Opnieuw proberen",
+  "noTransfersYet": "Nog geen overdrachten",
+  "noTransfersBody": "Zodra u een bestand verzendt, wordt het hier weergegeven.",
+  "transferDetails": "Overdrachtsgegevens",
+  "filesSection": "Bestanden",
+  "receiveTitle": "Ontvang bestanden",
+  "receiveSubtitle": "Plak een overdrachtslink om bestanden te downloaden.",
+  "pasteTooltip": "Plakken",
+  "findTransfer": "Vind Overdracht",
+  "receiveScanQr": "QR scannen",
+  "receiveScanQrTitle": "Scanoverdracht QR",
+  "receiveScanQrHint": "Lijn de QR-code uit binnen het frame.",
+  "receiveScanQrInvalid": "Deze QR-code is geen geldige overdrachtslink.",
+  "receiveScanQrCameraDenied": "Cameratoegang is vereist om QR-codes te scannen.",
+  "receiveStepGetLink": "Verkrijg de link",
+  "receiveStepGetLinkBody": "Vraag de afzender om de overdrachtslink met u te delen.",
+  "receiveStepPaste": "Plakken en zoeken",
+  "receiveStepPasteBody": "Plak de bovenstaande link en tik op 'Overdracht zoeken'.",
+  "receiveStepDownload": "Bestanden downloaden",
+  "receiveStepDownloadBody": "Bekijk bestandsdetails en download alles in één keer.",
+  "lookingUpTransfer": "Overdracht opzoeken…",
+  "transferNotFound": "Overdracht niet gevonden. Controleer de link en probeer het opnieuw.",
+  "transferExpired": "Deze overdracht is verlopen en is niet langer beschikbaar.",
+  "transferLoginRequired": "Om toegang te krijgen tot deze overdracht is inloggen vereist.",
+  "transferBadResponse": "Onverwachte serverreactie. Controleer uw verbinding.",
+  "transferNetworkError": "Netwerkfout. Controleer uw internetverbinding.",
+  "@transferLoadFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "transferLoadFailed": "Kan overdracht niet laden: <<PH0>>",
+  "passwordProtected": "Wachtwoord beveiligd",
+  "enterPassword": "Voer wachtwoord in",
+  "unlock": "Ontgrendelen",
+  "downloading": "Downloaden…",
+  "downloadAllFiles": "Alle bestanden downloaden",
+  "downloadSingleFile": "Bestand downloaden",
+  "receiveAnother": "Ontvang nog een overschrijving",
+  "plansTitle": "Plannen",
+  "plansSubtitle": "Upgrade om advertenties te verwijderen en grotere bestanden te verzenden.",
+  "storeUnavailable": "Winkel niet beschikbaar",
+  "storeUnavailableBody": "In-app-aankopen zijn momenteel niet beschikbaar.",
+  "storeLoadingPrices": "Prijzen laden vanuit de App Store…",
+  "storePricesUnavailable": "Prijzen niet beschikbaar",
+  "storePricesPartial": "Sommige prijzen konden niet worden geladen",
+  "@storePricesPartialBody": {
+    "placeholders": {
+      "loaded": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "storePricesPartialBody": "<<PH0>> van <<PH1>> abonnementsproducten geladen.",
+  "storeSetupHint": "Test op een echte iPhone (geen Simulator), gebruik een Sandbox Apple ID en zorg ervoor dat alle zes de abonnementen worden aangemaakt onder de bundel-ID van deze app in App Store Connect met de ingestelde prijzen.",
+  "priceUnavailable": "—",
+  "@effectiveMonthlyPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "effectiveMonthlyPrice": "<<PH0>>/maand",
+  "freeVersionAds": "Momenteel gebruikt u onze gratis versie met advertenties",
+  "restorePurchases": "Aankopen herstellen",
+  "plansContinue": "Doorgaan",
+  "planLinkRestore": "Herstellen",
+  "termsAndConditions": "Algemene voorwaarden",
+  "createAccountTitle": "Account aanmaken",
+  "signUpSubtitle": "Meld u aan met e-mailadres en wachtwoord.",
+  "confirmPassword": "Bevestig wachtwoord",
+  "passwordMin8": "Wachtwoord (min. 8 tekens)",
+  "alreadyHaveAccount": "Heeft u al een account?",
+  "checkEmailTitle": "Controleer uw\ne-mail",
+  "@otpSentTo": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "otpSentTo": "We hebben een 6-cijferige code gestuurd naar\n<<PH0>>",
+  "verifyAndSignIn": "Verifiëren en inloggen",
+  "didntReceiveCode": "Niet ontvangen?",
+  "tryAgain": "Probeer het opnieuw",
+  "otpExpiresHint": "Code verloopt over 5 minuten. Controleer uw spammap als u deze niet ziet.",
+  "snackError": "Fout",
+  "snackCopied": "Gekopieerd",
+  "snackCopiedBody": "Link gekopieerd naar klembord",
+  "snackWelcome": "Welkom",
+  "snackAccountCreated": "Account aangemaakt",
+  "snackEnterEmail": "Voer uw e-mailadres in",
+  "snackEnterPassword": "Voer uw wachtwoord in",
+  "snackInvalidEmail": "Ongeldig e-mailadres",
+  "snackInvalidCredentials": "Onjuist e-mailadres of wachtwoord",
+  "snackPasswordMin8": "Wachtwoord moet minimaal 8 tekens lang zijn",
+  "snackPasswordMismatch": "Wachtwoorden komen niet overeen.",
+  "snackAccountExists": "Account bestaat al. Meld u aan.",
+  "snackSignupFailed": "Kan account niet aanmaken. Probeer het opnieuw.",
+  "snackEnterOtp": "Voer de 6-cijferige code in",
+  "snackOtpExpired": "Code verlopen",
+  "snackOtpExpiredBody": "Vraag een nieuwe code aan.",
+  "snackInvalidCode": "Ongeldige code",
+  "snackInvalidCodeBody": "De code is onjuist. Probeer het opnieuw.",
+  "snackSendCodeFailed": "Kan code niet verzenden. Controleer uw verbinding en probeer het opnieuw.",
+  "snackEmptyFolder": "Lege map",
+  "snackEmptyFolderBody": "Geen bestanden gevonden in de geselecteerde map.",
+  "snackFolderUnsupported": "Niet ondersteund",
+  "snackFolderUnsupportedBody": "Het uploaden van mappen is niet beschikbaar op dit platform.",
+  "snackFolderReadError": "Kon de geselecteerde map niet lezen.",
+  "snackLimitReached": "Limiet bereikt",
+  "snackLimitFilesBody": "Sommige bestanden zijn niet toegevoegd vanwege de limieten voor de grootte of het aantal bestanden.",
+  "snackFreePlanLimit": "Met het gratis abonnement is maximaal 5 GB per overdracht mogelijk. Verwijder enkele bestanden of upgrade.",
+  "snackSignInEmail": "Meld u aan om per e-mail te verzenden.",
+  "snackUploadStartFailed": "Kan het uploaden niet starten.",
+  "snackVerifyEnterCode": "Voer de 4-cijferige code uit uw e-mail in.",
+  "snackVerifyInvalid": "Ongeldige of verlopen code. Controleer de e-mail en probeer het opnieuw.",
+  "snackVerifyResendFailed": "Kan code niet opnieuw verzenden. Probeer het opnieuw.",
+  "snackDownloadComplete": "Downloaden voltooid",
+  "@snackDownloadSaved": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "snackDownloadSaved": "\"<<PH0>>\" opgeslagen in Downloads",
+  "snackDownloadFailed": "Downloaden mislukt",
+  "snackSaved": "Opgeslagen",
+  "snackServerUrlUpdated": "Server-URL bijgewerkt. Start de app opnieuw om te solliciteren.",
+  "snackStoreError": "Winkelfout",
+  "snackMissingProducts": "Ontbrekende producten",
+  "snackStoreUnavailable": "Winkel niet beschikbaar",
+  "snackStoreUnavailableBody": "In-app-aankopen zijn niet beschikbaar op dit apparaat.",
+  "snackProductNotLoaded": "Product is nog niet geladen.",
+  "snackRestoreStarted": "Herstel gestart",
+  "snackRestoreStartedBody": "Wij controleren uw aankopen.",
+  "snackRestoreFailed": "Herstellen mislukt",
+  "snackProcessing": "Verwerking",
+  "snackPleaseWait": "Even geduld a.u.b....",
+  "snackSuccess": "Succes",
+  "snackPurchaseCompleted": "Aankoop voltooid.",
+  "snackPurchaseError": "Aankoopfout",
+  "snackPurchaseFailed": "Aankoop mislukt.",
+  "snackCanceled": "Geannuleerd",
+  "snackPurchaseCanceled": "Aankoop geannuleerd.",
+  "snackUpload": "Uploaden",
+  "snackVerify": "Verifiëren",
+  "doNotExpire": "Verlopen niet",
+  "hourSingular": "uur",
+  "hourPlural": "uur",
+  "daySingular": "dag",
+  "dayPlural": "dagen",
+  "emailAddressLabel": "E-MAILADRES",
+  "passwordLabelCaps": "WACHTWOORD",
+  "confirmPasswordLabelCaps": "BEVESTIG WACHTWOORD",
+  "emailExampleHint": "you@example.com",
+  "otpSixDigitHint": "000000",
+  "verifyFourDigitHint": "0000",
+  "transferLinkOrId": "OVERDRACHTLINK OF ID",
+  "howToReceive": "HOE TE ONTVANGEN",
+  "transferLinkHint": "https://… or paste ID",
+  "@filesReady": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesReady": "{count, plural, =1{1 file ready} other{{count} files ready}}",
+  "planAdsTitle": "Advertentieplan",
+  "planAdsBullet1": "Toegang tot advertenties gratis app",
+  "planAdsBullet2": "Verwijder alle advertenties",
+  "planProTitle": "Pro-plan",
+  "planProBullet1": "Verzend bestanden tot 20 GB",
+  "planProBullet2": "Snel uploaden",
+  "planPremiumTitle": "Premium-abonnement",
+  "planPremiumBullet1": "Verzend bestanden tot 100 GB",
+  "planPremiumBullet2": "Supersnel uploaden",
+  "planSubscriptionDisclaimer": "Geen proefperiode – er is een abonnement vereist om de extra app-functionaliteit te gebruiken. Er worden onmiddellijk kosten in rekening gebracht. Je kunt op elk moment opzeggen.",
+  "perMonth": "/ maand",
+  "perYear": "/ jaar",
+  "snackConnectionProblem": "Verbindingsprobleem. Probeer het opnieuw.",
+  "networkTitle": "Netwerk",
+  "@transferIdLabel": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "transferIdLabel": "ID: <<PH0>>",
+  "@downloadMetaSummary": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "downloadMetaSummary": "Bestanden: <<PH0>> · <<PH1>> bytes",
+  "@todayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "todayAt": "Vandaag · <<PH0>>",
+  "@yesterdayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "yesterdayAt": "Gisteren · <<PH0>>",
+  "@daysAgoAt": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "daysAgoAt": "<<PH0>>d geleden · <<PH1>>",
+  "@dateAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "dateAt": "<<PH0>> · <<PH1>>",
+  "@mbAmount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "mbAmount": "<<PH0>>MB",
+  "@uploadProgressSummary": {
+    "placeholders": {
+      "sent": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      },
+      "remaining": {
+        "type": "String"
+      }
+    }
+  },
+  "uploadProgressSummary": "<<PH0>> / <<PH1>> • <<PH2>> links",
+  "loadingShort": "Laden...",
+  "colorPaletteTitle": "Kleurenpalet",
+  "colorPaletteSectionBackgrounds": "Achtergronden (inktschaal)",
+  "colorPaletteSectionAccent": "Accent / Primair",
+  "colorPaletteSectionText": "Tekst",
+  "colorPaletteSectionBorders": "Randen en glas",
+  "colorPaletteSectionSemantic": "Semantisch",
+  "colorPaletteSectionLive": "Live-thema (huidig)",
+  "colorPaletteActiveHint": "★ = actief gebruikt in schermen",
+  "colorPaletteCopyHint": "Houd een staal lang ingedrukt om de hexadecimale waarde ervan te kopiëren.",
+  "@historyFilesSize": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "historyFilesSize": "{count, plural, =1{1 file} other{{count} files}} · {size}",
+  "settingsAppBrand": "Deel groot\nVideobestanden",
+  "loginEmailPasswordPrompt": "Voer uw e-mailadres en wachtwoord in om in te loggen.",
+  "forgotPassword": "Wachtwoord vergeten?",
+  "forgotPasswordTitle": "Wachtwoord opnieuw instellen",
+  "forgotPasswordBody": "Voer het e-mailadres van uw account in en wij sturen u een resetcode.",
+  "forgotPasswordSubmit": "Verstuur resetcode",
+  "resetPasswordTitle": "Maak een nieuw wachtwoord aan",
+  "resetPasswordBody": "Voer de 6-cijferige code uit uw e-mail in en kies een nieuw wachtwoord.",
+  "resetPasswordSubmit": "Wachtwoord bijwerken",
+  "snackPasswordResetSent": "Resetcode verzonden",
+  "snackPasswordResetSentBody": "Controleer uw e-mail voor een 6-cijferige resetcode.",
+  "snackPasswordResetFailed": "Kan de resetcode niet verzenden. Probeer het opnieuw.",
+  "snackPasswordUpdated": "Wachtwoord bijgewerkt",
+  "snackPasswordUpdatedBody": "Meld u aan met uw nieuwe wachtwoord.",
+  "snackPasswordResetInvalid": "Ongeldige of verlopen resetcode.",
+  "otpDigitLabel": "6-CIJFERIGE CODE",
+  "@receiveMoreFiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "receiveMoreFiles": "+<<PH0>> meer bestanden"
+}

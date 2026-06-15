@@ -1,0 +1,466 @@
+{
+  "@@locale": "fil",
+  "@verifyEmailCheckSpamHint": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@upToTotal": {
+    "placeholders": {
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "@filesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesCount": "{count, plural, =1{1 file} other{{count} files}}",
+  "@mbLeft": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@transferLoadFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@storePricesPartialBody": {
+    "placeholders": {
+      "loaded": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "priceUnavailable": "—",
+  "@effectiveMonthlyPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "@otpSentTo": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@snackDownloadSaved": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "emailExampleHint": "you@example.com",
+  "otpSixDigitHint": "000000",
+  "verifyFourDigitHint": "0000",
+  "transferLinkHint": "https://… or paste ID",
+  "@filesReady": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesReady": "{count, plural, =1{1 file ready} other{{count} files ready}}",
+  "@transferIdLabel": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadMetaSummary": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "@todayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@yesterdayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@daysAgoAt": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@dateAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@mbAmount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@uploadProgressSummary": {
+    "placeholders": {
+      "sent": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      },
+      "remaining": {
+        "type": "String"
+      }
+    }
+  },
+  "@historyFilesSize": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "historyFilesSize": "{count, plural, =1{1 file} other{{count} files}} · {size}",
+  "@receiveMoreFiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appTitle": "Ibahagi ang Malaking Video File",
+  "heroAccent": "kaagad.",
+  "heroTitle": "Magpadala ng mabibigat na file",
+  "splashLoading": "Naglo-load…",
+  "navSend": "Dashboard",
+  "navHome": "Bahay",
+  "navHistory": "Kasaysayan",
+  "navReceive": "Tumanggap",
+  "navPlans": "Mga plano",
+  "navDownload": "I-download",
+  "navSettings": "Mga setting",
+  "modeLink": "Kumuha ng link",
+  "modeEmail": "Ipadala sa pamamagitan ng email",
+  "pickFiles": "Pumili ng mga file",
+  "pickFolder": "Pumili ng folder",
+  "emailFrom": "Ang iyong email",
+  "mailFromUsesAccount": "Ginagamit ang iyong naka-sign-in na email.",
+  "recipientEmailsHelper": "Maramihang tatanggap: hiwalay na may mga kuwit, semicolon, o mga puwang.",
+  "emailTo": "Email ng tatanggap",
+  "messageOptional": "Mensahe (opsyonal)",
+  "passwordOptional": "Password (opsyonal)",
+  "destructAfterDownload": "Tanggalin pagkatapos i-download",
+  "destructNo": "Panatilihing available",
+  "sendButton": "Ipadala",
+  "uploading": "Ina-upload…",
+  "uploadComplete": "Tapos na",
+  "shareLinkTitle": "Ang iyong link",
+  "copyLink": "Kopyahin ang link",
+  "share": "Ibahagi",
+  "shareQrCode": "Ibahagi ang QR code",
+  "uploadMore": "Magpadala ng isa pa",
+  "emailSentTitle": "Ipinadala ang mga email",
+  "verifyEmailTitle": "I-verify ang iyong email",
+  "verifyCodeHint": "Ilagay ang code mula sa iyong email",
+  "verifySubmit": "I-verify",
+  "verifyResendCode": "Muling ipadala ang code",
+  "verifyCodeSent": "Isang bagong verification code ang ipinadala sa iyong email.",
+  "verifyEmailSmtpWarningTitle": "Maaaring hindi naipadala ang email ng pagpapatunay",
+  "verifyEmailSmtpWarningBody": "Hindi makumpirma ng server ang paghahatid (kadalasan ay mali ang pagkaka-configure ng SMTP). Hilingin sa admin ng iyong site na tingnan ang mga setting ng Mail sa admin panel, pagkatapos ay i-tap ang Ipadala muli ang code.",
+  "verifyEmailCheckSpamHint": "Kung hindi ito dumating: tingnan ang Junk/Spam at Promotions, maghintay ng isang minuto, kumpirmahin na walang typo ang <<PH0>>, pagkatapos ay i-tap ang Ipadala muli.",
+  "loginTitle": "Mag-sign in",
+  "signupHint": "Gamitin ang email at password ng iyong site account.",
+  "emailHint": "Email",
+  "passwordHint": "Password",
+  "cancel": "Kanselahin",
+  "signIn": "Mag-sign in",
+  "downloadIdHint": "Transfer ID",
+  "privateIdHint": "Pribadong ID (opsyonal)",
+  "fetchTransfer": "Buksan ang paglipat",
+  "downloadFile": "I-download",
+  "unlockDownload": "I-unlock ang pag-download",
+  "downloadSaved": "Na-save sa Mga Download",
+  "errorGeneric": "Nagkaproblema",
+  "errorNetwork": "Error sa network",
+  "errorBadResponse": "Hindi inaasahang tugon ng server",
+  "termsAccept": "Sumasang-ayon ako sa mga tuntunin",
+  "settingsApiUrl": "URL ng pampublikong site",
+  "settingsAccount": "Account",
+  "settingsAppearance": "Hitsura",
+  "settingsTheme": "Tema",
+  "themeSystem": "Sistema",
+  "themeLight": "Liwanag",
+  "themeDark": "Madilim",
+  "settingsSignedIn": "Naka-sign in ka.",
+  "settingsSignedOut": "Hindi ka naka-sign in.",
+  "settingsOpenWebsite": "Buksan ang website",
+  "signUp": "Mag-sign up",
+  "settingsLinks": "Mga link",
+  "privacyPolicy": "Patakaran sa privacy",
+  "termsOfService": "Mga tuntunin ng serbisyo",
+  "about": "Tungkol sa",
+  "moreApps": "Higit pang mga app",
+  "settingsLanguage": "Wika",
+  "languageEnglish": "Ingles",
+  "languageHindi": "Hindi",
+  "logout": "Log out",
+  "deleteAccount": "Tanggalin ang account",
+  "deleteAccountConfirmTitle": "Tanggalin ang iyong account?",
+  "deleteAccountConfirmBody": "Permanente nitong dine-delete ang iyong account at masa-sign out ka. Patuloy na gagana ang iyong mga link sa paglilipat, ngunit hindi na lilitaw ang mga ito sa iyong kasaysayan.",
+  "deleteAccountSuccess": "Na-delete ang account",
+  "deleteAccountSuccessBody": "Inalis na ang iyong account.",
+  "deleteAccountFailed": "Hindi matanggal ang account",
+  "deleteAccountFailedBody": "Pakisubukang muli o makipag-ugnayan sa suporta.",
+  "maxFilesReached": "Masyadong maraming file",
+  "fileTooLarge": "Masyadong malaki ang file",
+  "ipLimit": "Masyadong maraming pag-upload mula sa network na ito",
+  "fillFields": "Mangyaring punan ang mga kinakailangang field",
+  "invalidEmail": "Di-wastong email",
+  "maxRecipientsReached": "Masyadong maraming tatanggap",
+  "loginRequiredTitle": "Kailangang mag-sign in",
+  "loginRequiredBody": "Nangangailangan ang server na ito ng account para mag-upload o mag-download.",
+  "settingsSubtitle": "Mga kagustuhan sa app at account.",
+  "dropHeavyFile": "Mag-drop ng mabigat na file dito.",
+  "upToTotal": "Hanggang <<PH0>> kabuuan",
+  "removeAll": "Alisin lahat",
+  "addFiles": "Magdagdag ng mga file",
+  "adding": "Idinaragdag…",
+  "options": "Mga pagpipilian",
+  "selfDestruct": "Self-destruct pagkatapos ng pag-download",
+  "expiry": "Expiry",
+  "cancelUpload": "Kanselahin ang pag-upload",
+  "transferReady": "Handa na ang paglipat!",
+  "emailSentReady": "Naipadala na ang email!",
+  "shareRecipientHint": "Ibahagi ang link na ito sa iyong tatanggap.",
+  "emailSentBody": "Inabisuhan namin ang iyong (mga) tatanggap.",
+  "scanQr": "I-scan para buksan ang link ng paglilipat.",
+  "shareLinkButton": "IBAHAGI ANG LINK",
+  "verifyFourDigit": "Ilagay ang 4-digit na code na ipinadala sa iyong email ng nagpadala.",
+  "starting": "Nagsisimula…",
+  "mbLeft": "<<PH0>> MB ang natitira",
+  "fillField": "Mangyaring punan ang field na ito.",
+  "enterValidEmail": "Maglagay ng wastong email.",
+  "message": "Mensahe",
+  "recipientEmail": "Email ng tatanggap",
+  "active": "Aktibo",
+  "expired": "Nag-expire na",
+  "historyTitle": "Aking Mga Paglilipat",
+  "signInToSeeTransfers": "Mag-sign in upang makita ang iyong mga paglilipat",
+  "signInTransfersBody": "Ginagamit namin ang iyong email para i-link ang mga paglilipat sa iyong account — hindi kailangan ng password.",
+  "couldNotLoadTransfers": "Hindi ma-load ang mga paglilipat",
+  "retry": "Subukan muli",
+  "noTransfersYet": "Wala pang transfer",
+  "noTransfersBody": "Kapag nagpadala ka ng file, lalabas ito dito.",
+  "transferDetails": "Mga detalye ng paglilipat",
+  "filesSection": "Mga file",
+  "receiveTitle": "Tumanggap ng mga File",
+  "receiveSubtitle": "Mag-paste ng link sa paglilipat upang mag-download ng mga file.",
+  "pasteTooltip": "Idikit",
+  "findTransfer": "Maghanap ng Transfer",
+  "receiveScanQr": "I-scan ang QR",
+  "receiveScanQrTitle": "I-scan ang paglilipat ng QR",
+  "receiveScanQrHint": "I-align ang QR code sa loob ng frame.",
+  "receiveScanQrInvalid": "Ang QR code na ito ay hindi isang wastong link sa paglilipat.",
+  "receiveScanQrCameraDenied": "Kinakailangan ang access sa camera upang ma-scan ang mga QR code.",
+  "receiveStepGetLink": "Kunin ang link",
+  "receiveStepGetLinkBody": "Hilingin sa nagpadala na ibahagi sa iyo ang link ng paglilipat.",
+  "receiveStepPaste": "Idikit at hanapin",
+  "receiveStepPasteBody": "I-paste ang link sa itaas at i-tap ang \"Find Transfer\".",
+  "receiveStepDownload": "Mag-download ng mga file",
+  "receiveStepDownloadBody": "Tingnan ang mga detalye ng file at i-download ang lahat nang sabay-sabay.",
+  "lookingUpTransfer": "Hinahanap ang paglilipat...",
+  "transferNotFound": "Hindi nahanap ang paglipat. Tingnan ang link at subukang muli.",
+  "transferExpired": "Ang paglipat na ito ay nag-expire at hindi na magagamit.",
+  "transferLoginRequired": "Kinakailangan ang pag-sign in para ma-access ang paglilipat na ito.",
+  "transferBadResponse": "Hindi inaasahang tugon ng server. Suriin ang iyong koneksyon.",
+  "transferNetworkError": "Error sa network. Suriin ang iyong koneksyon sa internet.",
+  "transferLoadFailed": "Hindi ma-load ang paglipat: <<PH0>>",
+  "passwordProtected": "Pinoprotektahan ng password",
+  "enterPassword": "Ipasok ang password",
+  "unlock": "I-unlock",
+  "downloading": "Dina-download…",
+  "downloadAllFiles": "I-download ang lahat ng mga file",
+  "downloadSingleFile": "Mag-download ng file",
+  "receiveAnother": "Tumanggap ng isa pang paglipat",
+  "plansTitle": "Mga plano",
+  "plansSubtitle": "Mag-upgrade para mag-alis ng mga ad at magpadala ng mas malalaking file.",
+  "storeUnavailable": "Hindi available ang tindahan",
+  "storeUnavailableBody": "Ang mga in-app na pagbili ay hindi available sa ngayon.",
+  "storeLoadingPrices": "Nilo-load ang mga presyo mula sa App Store…",
+  "storePricesUnavailable": "Hindi available ang mga presyo",
+  "storePricesPartial": "Hindi ma-load ang ilang presyo",
+  "storePricesPartialBody": "Na-load ang <<PH0>> ng <<PH1>> mga produkto ng subscription.",
+  "storeSetupHint": "Subukan sa isang tunay na iPhone (hindi Simulator), gumamit ng Sandbox Apple ID, at tiyaking lahat ng 6 na subscription ay ginawa sa ilalim ng bundle ID ng app na ito sa App Store Kumonekta sa set ng pagpepresyo.",
+  "effectiveMonthlyPrice": "<<PH0>>/buwan",
+  "freeVersionAds": "Sa kasalukuyan ay ginagamit mo ang aming libreng bersyon na may mga ad",
+  "restorePurchases": "Ibalik ang mga binili",
+  "plansContinue": "Magpatuloy",
+  "planLinkRestore": "Ibalik",
+  "termsAndConditions": "Mga tuntunin at kundisyon",
+  "createAccountTitle": "Gumawa ng account",
+  "signUpSubtitle": "Mag-sign up gamit ang email at password.",
+  "confirmPassword": "Kumpirmahin ang password",
+  "passwordMin8": "Password (min 8 chars)",
+  "alreadyHaveAccount": "Mayroon ka nang account?",
+  "checkEmailTitle": "Suriin ang iyong\nemail",
+  "otpSentTo": "Nagpadala kami ng 6 na digit na code sa\n<<PH0>>",
+  "verifyAndSignIn": "I-verify at Mag-sign in",
+  "didntReceiveCode": "Hindi natanggap?",
+  "tryAgain": "Subukan muli",
+  "otpExpiresHint": "Mag-e-expire ang code sa loob ng 5 minuto. Suriin ang iyong folder ng spam kung hindi mo ito nakikita.",
+  "snackError": "Error",
+  "snackCopied": "Kinopya",
+  "snackCopiedBody": "Nakopya ang link sa clipboard",
+  "snackWelcome": "Maligayang pagdating",
+  "snackAccountCreated": "Nagawa ang account",
+  "snackEnterEmail": "Pakilagay ang iyong email",
+  "snackEnterPassword": "Mangyaring ipasok ang iyong password",
+  "snackInvalidEmail": "Di-wastong email address",
+  "snackInvalidCredentials": "Maling email o password",
+  "snackPasswordMin8": "Dapat na hindi bababa sa 8 character ang password",
+  "snackPasswordMismatch": "Hindi tugma ang mga password.",
+  "snackAccountExists": "Umiiral na ang account. Mangyaring mag-sign in.",
+  "snackSignupFailed": "Hindi makalikha ng account. Subukan muli.",
+  "snackEnterOtp": "Pakilagay ang 6 na digit na code",
+  "snackOtpExpired": "Nag-expire ang code",
+  "snackOtpExpiredBody": "Mangyaring humiling ng bagong code.",
+  "snackInvalidCode": "Di-wastong code",
+  "snackInvalidCodeBody": "Mali ang code. Pakisubukang muli.",
+  "snackSendCodeFailed": "Hindi maipadala ang code. Suriin ang iyong koneksyon at subukang muli.",
+  "snackEmptyFolder": "Walang laman na folder",
+  "snackEmptyFolderBody": "Walang nakitang mga file sa napiling folder.",
+  "snackFolderUnsupported": "Hindi suportado",
+  "snackFolderUnsupportedBody": "Hindi available ang pag-upload ng folder sa platform na ito.",
+  "snackFolderReadError": "Hindi mabasa ang napiling folder.",
+  "snackLimitReached": "Naabot na ang limitasyon",
+  "snackLimitFilesBody": "Ang ilang mga file ay hindi naidagdag dahil sa laki o mga limitasyon sa bilang ng file.",
+  "snackFreePlanLimit": "Nagbibigay-daan ang libreng plano ng hanggang 5GB bawat paglipat. Mangyaring alisin ang ilang mga file o mag-upgrade.",
+  "snackSignInEmail": "Mangyaring mag-sign in upang ipadala sa pamamagitan ng email.",
+  "snackUploadStartFailed": "Hindi masimulan ang pag-upload.",
+  "snackVerifyEnterCode": "Ilagay ang 4-digit na code mula sa iyong email.",
+  "snackVerifyInvalid": "Di-wasto o nag-expire na code. Tingnan ang email at subukang muli.",
+  "snackVerifyResendFailed": "Hindi maipadalang muli ang code. Subukan muli.",
+  "snackDownloadComplete": "Kumpleto na ang pag-download",
+  "snackDownloadSaved": "Na-save ang \"<<PH0>>\" sa Downloads",
+  "snackDownloadFailed": "Nabigo ang pag-download",
+  "snackSaved": "Nai-save",
+  "snackServerUrlUpdated": "Na-update ang URL ng server. I-restart ang app para mag-apply.",
+  "snackStoreError": "Error sa tindahan",
+  "snackMissingProducts": "Mga nawawalang produkto",
+  "snackStoreUnavailable": "Hindi available ang tindahan",
+  "snackStoreUnavailableBody": "Ang mga in-app na pagbili ay hindi available sa device na ito.",
+  "snackProductNotLoaded": "Hindi pa nalo-load ang produkto.",
+  "snackRestoreStarted": "Nagsimula ang pagpapanumbalik",
+  "snackRestoreStartedBody": "Sinusuri namin ang iyong mga binili.",
+  "snackRestoreFailed": "Nabigo ang pag-restore",
+  "snackProcessing": "Pinoproseso",
+  "snackPleaseWait": "Mangyaring maghintay…",
+  "snackSuccess": "Tagumpay",
+  "snackPurchaseCompleted": "Nakumpleto ang pagbili.",
+  "snackPurchaseError": "Error sa pagbili",
+  "snackPurchaseFailed": "Nabigo ang pagbili.",
+  "snackCanceled": "Kinansela",
+  "snackPurchaseCanceled": "Kinansela ang pagbili.",
+  "snackUpload": "Mag-upload",
+  "snackVerify": "I-verify",
+  "doNotExpire": "Huwag mag-expire",
+  "hourSingular": "oras",
+  "hourPlural": "oras",
+  "daySingular": "araw",
+  "dayPlural": "araw",
+  "emailAddressLabel": "EMAIL ADDRESS",
+  "passwordLabelCaps": "PASSWORD",
+  "confirmPasswordLabelCaps": "KUMPIRMA ANG PASSWORD",
+  "transferLinkOrId": "TRANSFER LINK O ID",
+  "howToReceive": "PAANO MAKATANGGAP",
+  "planAdsTitle": "Plano ng Mga Ad",
+  "planAdsBullet1": "Access sa ads free app",
+  "planAdsBullet2": "Alisin ang lahat ng ad",
+  "planProTitle": "Pro Plan",
+  "planProBullet1": "Magpadala ng mga file hanggang sa 20GB",
+  "planProBullet2": "Mabilis na Upload",
+  "planPremiumTitle": "Premium na Plano",
+  "planPremiumBullet1": "Magpadala ng mga file hanggang sa 100GB",
+  "planPremiumBullet2": "Sobrang bilis ng upload",
+  "planSubscriptionDisclaimer": "Walang panahon ng pagsubok — kailangan ng subscription para magamit ang karagdagang functionality ng app. Sisingilin ka kaagad. Maaari kang magkansela anumang oras.",
+  "perMonth": "/ buwan",
+  "perYear": "/ taon",
+  "snackConnectionProblem": "Problema sa koneksyon. Pakisubukang muli.",
+  "networkTitle": "Network",
+  "transferIdLabel": "ID: <<PH0>>",
+  "downloadMetaSummary": "Mga file: <<PH0>> · <<PH1>> bytes",
+  "todayAt": "Ngayon · <<PH0>>",
+  "yesterdayAt": "Kahapon · <<PH0>>",
+  "daysAgoAt": "<<PH0>>d ang nakalipas · <<PH1>>",
+  "dateAt": "<<PH0>> · <<PH1>>",
+  "mbAmount": "<<PH0>> MB",
+  "uploadProgressSummary": "<<PH0>> / <<PH1>> • <<PH2>> kaliwa",
+  "loadingShort": "Naglo-load…",
+  "colorPaletteTitle": "Palette ng Kulay",
+  "colorPaletteSectionBackgrounds": "Mga background (ink scale)",
+  "colorPaletteSectionAccent": "Accent / Pangunahin",
+  "colorPaletteSectionText": "Text",
+  "colorPaletteSectionBorders": "Borders at Salamin",
+  "colorPaletteSectionSemantic": "Semantiko",
+  "colorPaletteSectionLive": "Live na Tema (kasalukuyan)",
+  "colorPaletteActiveHint": "★ = aktibong ginagamit sa mga screen",
+  "colorPaletteCopyHint": "Pindutin nang matagal ang anumang swatch upang kopyahin ang hex na halaga nito.",
+  "settingsAppBrand": "Ibahagi ang Malaki\nMga Video File",
+  "loginEmailPasswordPrompt": "Ilagay ang iyong email at password para mag-sign in.",
+  "forgotPassword": "Nakalimutan ang password?",
+  "forgotPasswordTitle": "I-reset ang password",
+  "forgotPasswordBody": "Ilagay ang iyong account email at magpapadala kami ng reset code.",
+  "forgotPasswordSubmit": "Magpadala ng reset code",
+  "resetPasswordTitle": "Lumikha ng bagong password",
+  "resetPasswordBody": "Ilagay ang 6 na digit na code mula sa iyong email at pumili ng bagong password.",
+  "resetPasswordSubmit": "I-update ang password",
+  "snackPasswordResetSent": "Ipinadala ang reset code",
+  "snackPasswordResetSentBody": "Tingnan ang iyong email para sa isang 6 na digit na reset code.",
+  "snackPasswordResetFailed": "Hindi maipadala ang reset code. Subukan muli.",
+  "snackPasswordUpdated": "Na-update ang password",
+  "snackPasswordUpdatedBody": "Mag-sign in gamit ang iyong bagong password.",
+  "snackPasswordResetInvalid": "Di-wasto o nag-expire na reset code.",
+  "otpDigitLabel": "6-DIGIT CODE",
+  "receiveMoreFiles": "+<<PH0>> higit pang mga file"
+}

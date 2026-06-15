@@ -1,0 +1,466 @@
+{
+  "@@locale": "az",
+  "@verifyEmailCheckSpamHint": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@upToTotal": {
+    "placeholders": {
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "@filesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesCount": "{count, plural, =1{1 file} other{{count} files}}",
+  "@mbLeft": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@transferLoadFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@storePricesPartialBody": {
+    "placeholders": {
+      "loaded": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "priceUnavailable": "—",
+  "@effectiveMonthlyPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "@otpSentTo": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@snackDownloadSaved": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "emailExampleHint": "you@example.com",
+  "otpSixDigitHint": "000000",
+  "verifyFourDigitHint": "0000",
+  "transferLinkHint": "https://… or paste ID",
+  "@filesReady": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesReady": "{count, plural, =1{1 file ready} other{{count} files ready}}",
+  "@transferIdLabel": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadMetaSummary": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "@todayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@yesterdayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@daysAgoAt": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@dateAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@mbAmount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@uploadProgressSummary": {
+    "placeholders": {
+      "sent": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      },
+      "remaining": {
+        "type": "String"
+      }
+    }
+  },
+  "@historyFilesSize": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "historyFilesSize": "{count, plural, =1{1 file} other{{count} files}} · {size}",
+  "@receiveMoreFiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appTitle": "Böyük Video Faylları Paylaşın",
+  "heroAccent": "dərhal.",
+  "heroTitle": "Ağır faylları göndərin",
+  "splashLoading": "Yüklənir...",
+  "navSend": "İdarə paneli",
+  "navHome": "Ev",
+  "navHistory": "Tarix",
+  "navReceive": "Qəbul edin",
+  "navPlans": "Planlar",
+  "navDownload": "Yüklə",
+  "navSettings": "Parametrlər",
+  "modeLink": "Link əldə edin",
+  "modeEmail": "E-poçtla göndərin",
+  "pickFiles": "Faylları seçin",
+  "pickFolder": "Qovluq seçin",
+  "emailFrom": "E-poçtunuz",
+  "mailFromUsesAccount": "Daxil olduğunuz e-poçtunuzdan istifadə edir.",
+  "recipientEmailsHelper": "Çoxsaylı alıcılar: vergül, nöqtəli vergül və ya boşluqla ayırın.",
+  "emailTo": "Alıcı e-poçtu",
+  "messageOptional": "Mesaj (istəyə görə)",
+  "passwordOptional": "Parol (isteğe bağlı)",
+  "destructAfterDownload": "Yüklədikdən sonra silin",
+  "destructNo": "Mövcud saxlayın",
+  "sendButton": "Göndər",
+  "uploading": "Yüklənir...",
+  "uploadComplete": "Bitdi",
+  "shareLinkTitle": "Sizin linkiniz",
+  "copyLink": "Linki kopyalayın",
+  "share": "Paylaşın",
+  "shareQrCode": "QR kodu paylaşın",
+  "uploadMore": "Başqasını göndər",
+  "emailSentTitle": "E-poçtlar göndərildi",
+  "verifyEmailTitle": "E-poçtunuzu doğrulayın",
+  "verifyCodeHint": "E-poçtunuzdan kodu daxil edin",
+  "verifySubmit": "Doğrulayın",
+  "verifyResendCode": "Kodu yenidən göndərin",
+  "verifyCodeSent": "E-poçtunuza yeni doğrulama kodu göndərildi.",
+  "verifyEmailSmtpWarningTitle": "Doğrulama e-poçtu göndərilməmiş ola bilər",
+  "verifyEmailSmtpWarningBody": "Server çatdırılmanı təsdiq edə bilmədi (tez-tez SMTP səhv konfiqurasiya edilir). Sayt admininizdən admin panelində Poçt parametrlərini yoxlamağı xahiş edin, sonra Kodu yenidən göndərin üzərinə klikləyin.",
+  "verifyEmailCheckSpamHint": "Əgər o gəlmirsə: Junk/Spam və Promosyonları yoxlayın, bir dəqiqə gözləyin, <<PH0>>-də yazı xətası olmadığını təsdiqləyin, sonra Yenidən Göndər üzərinə klikləyin.",
+  "loginTitle": "Daxil olun",
+  "signupHint": "Sayt hesabı e-poçtunuzu və şifrənizi istifadə edin.",
+  "emailHint": "E-poçt",
+  "passwordHint": "parol",
+  "cancel": "Ləğv et",
+  "signIn": "Daxil olun",
+  "downloadIdHint": "Transfer ID",
+  "privateIdHint": "Şəxsi ID (isteğe bağlı)",
+  "fetchTransfer": "Köçürməni açın",
+  "downloadFile": "Yüklə",
+  "unlockDownload": "Yükləmə kilidini açın",
+  "downloadSaved": "Endirmələr bölməsində yadda saxlandı",
+  "errorGeneric": "Nəsə xəta baş verdi",
+  "errorNetwork": "Şəbəkə xətası",
+  "errorBadResponse": "Gözlənilməz server cavabı",
+  "termsAccept": "Mən şərtlərlə razıyam",
+  "settingsApiUrl": "İctimai saytın URL-i",
+  "settingsAccount": "Hesab",
+  "settingsAppearance": "Görünüş",
+  "settingsTheme": "Mövzu",
+  "themeSystem": "Sistem",
+  "themeLight": "İşıq",
+  "themeDark": "Qaranlıq",
+  "settingsSignedIn": "Siz daxil olmusunuz.",
+  "settingsSignedOut": "Siz daxil olmamısınız.",
+  "settingsOpenWebsite": "Veb saytı açın",
+  "signUp": "Qeydiyyatdan keçin",
+  "settingsLinks": "Bağlantılar",
+  "privacyPolicy": "Məxfilik siyasəti",
+  "termsOfService": "Xidmət şərtləri",
+  "about": "Haqqında",
+  "moreApps": "Daha çox proqram",
+  "settingsLanguage": "Dil",
+  "languageEnglish": "İngilis dili",
+  "languageHindi": "hind",
+  "logout": "Çıxın",
+  "deleteAccount": "Hesabı silin",
+  "deleteAccountConfirmTitle": "Hesabınız silinsin?",
+  "deleteAccountConfirmBody": "Bu, hesabınızı həmişəlik silir və sizi hesabdan çıxarır. Transfer bağlantılarınız işləməyə davam edəcək, lakin onlar daha tarixinizdə görünməyəcək.",
+  "deleteAccountSuccess": "Hesab silindi",
+  "deleteAccountSuccessBody": "Hesabınız silindi.",
+  "deleteAccountFailed": "Hesabı silmək mümkün olmadı",
+  "deleteAccountFailedBody": "Yenidən cəhd edin və ya dəstək ilə əlaqə saxlayın.",
+  "maxFilesReached": "Həddindən artıq fayl",
+  "fileTooLarge": "Fayl çox böyükdür",
+  "ipLimit": "Bu şəbəkədən həddən artıq çox yükləmələr",
+  "fillFields": "Zəhmət olmasa tələb olunan sahələri doldurun",
+  "invalidEmail": "Etibarsız e-poçt",
+  "maxRecipientsReached": "Həddən çox alıcı",
+  "loginRequiredTitle": "Giriş tələb olunur",
+  "loginRequiredBody": "Bu server yükləmək və ya yükləmək üçün hesab tələb edir.",
+  "settingsSubtitle": "Tətbiq seçimləri və hesab.",
+  "dropHeavyFile": "Ağır bir faylı bura buraxın.",
+  "upToTotal": "<<PH0>> cəmi qədər",
+  "removeAll": "Hamısını silin",
+  "addFiles": "Fayllar əlavə edin",
+  "adding": "Əlavə edilir...",
+  "options": "Seçimlər",
+  "selfDestruct": "Yüklədikdən sonra özünü məhv edin",
+  "expiry": "İstifadə müddəti",
+  "cancelUpload": "Yükləməni ləğv edin",
+  "transferReady": "Transfer hazırdır!",
+  "emailSentReady": "E-poçt göndərildi!",
+  "shareRecipientHint": "Bu linki alıcınızla paylaşın.",
+  "emailSentBody": "Biz sizin alıcı(lar)ınızı xəbərdar etmişik.",
+  "scanQr": "Transfer linkini açmaq üçün skan edin.",
+  "shareLinkButton": "LİNKİ PAYLAŞIN",
+  "verifyFourDigit": "Göndərən e-poçtunuza göndərilən 4 rəqəmli kodu daxil edin.",
+  "starting": "Başlanır...",
+  "mbLeft": "<<PH0>> MB qalıb",
+  "fillField": "Zəhmət olmasa bu sahəni doldurun.",
+  "enterValidEmail": "Etibarlı e-poçt ünvanını daxil edin.",
+  "message": "Mesaj",
+  "recipientEmail": "Alıcı e-poçtu",
+  "active": "Aktiv",
+  "expired": "İstifadə müddəti bitdi",
+  "historyTitle": "Köçürmələrim",
+  "signInToSeeTransfers": "Köçürmələrinizi görmək üçün daxil olun",
+  "signInTransfersBody": "Köçürmələri hesabınıza bağlamaq üçün e-poçtunuzdan istifadə edirik – parol tələb olunmur.",
+  "couldNotLoadTransfers": "Köçürmələri yükləmək mümkün olmadı",
+  "retry": "Yenidən cəhd edin",
+  "noTransfersYet": "Hələlik transfer yoxdur",
+  "noTransfersBody": "Fayl göndərdikdən sonra o, burada görünəcək.",
+  "transferDetails": "Transfer təfərrüatları",
+  "filesSection": "Fayllar",
+  "receiveTitle": "Faylları qəbul edin",
+  "receiveSubtitle": "Faylları endirmək üçün köçürmə linkini yapışdırın.",
+  "pasteTooltip": "Yapışdırın",
+  "findTransfer": "Transferi tapın",
+  "receiveScanQr": "QR skan edin",
+  "receiveScanQrTitle": "QR köçürməsini skan edin",
+  "receiveScanQrHint": "QR kodunu çərçivənin içərisinə düzün.",
+  "receiveScanQrInvalid": "Bu QR kodu etibarlı transfer linki deyil.",
+  "receiveScanQrCameraDenied": "QR kodları skan etmək üçün kameraya giriş tələb olunur.",
+  "receiveStepGetLink": "Linki əldə edin",
+  "receiveStepGetLinkBody": "Göndərəndən köçürmə linkini sizinlə paylaşmasını xahiş edin.",
+  "receiveStepPaste": "Yapışdırın və tapın",
+  "receiveStepPasteBody": "Yuxarıdakı linki yapışdırın və \"Köçürməni tap\" üzərinə klikləyin.",
+  "receiveStepDownload": "Faylları yükləyin",
+  "receiveStepDownloadBody": "Fayl təfərrüatlarına baxın və hər şeyi bir anda endirin.",
+  "lookingUpTransfer": "Transfer axtarılır...",
+  "transferNotFound": "Transfer tapılmadı. Linki yoxlayın və yenidən cəhd edin.",
+  "transferExpired": "Bu transferin vaxtı bitib və artıq mövcud deyil.",
+  "transferLoginRequired": "Bu transferə daxil olmaq üçün daxil olmaq tələb olunur.",
+  "transferBadResponse": "Gözlənilməz server cavabı. Bağlantınızı yoxlayın.",
+  "transferNetworkError": "Şəbəkə xətası. İnternet bağlantınızı yoxlayın.",
+  "transferLoadFailed": "Transferi yükləmək mümkün olmadı: <<PH0>>",
+  "passwordProtected": "Parol qorunur",
+  "enterPassword": "parol daxil edin",
+  "unlock": "Kilidi aç",
+  "downloading": "Endirilir...",
+  "downloadAllFiles": "Bütün faylları yükləyin",
+  "downloadSingleFile": "Faylı endirin",
+  "receiveAnother": "Başqa bir köçürmə alın",
+  "plansTitle": "Planlar",
+  "plansSubtitle": "Reklamları silmək və daha böyük faylları göndərmək üçün təkmilləşdirin.",
+  "storeUnavailable": "Mağaza mövcud deyil",
+  "storeUnavailableBody": "Tətbiqdaxili satınalmalar hazırda mövcud deyil.",
+  "storeLoadingPrices": "App Store-dan qiymətlər yüklənir...",
+  "storePricesUnavailable": "Qiymətlər mövcud deyil",
+  "storePricesPartial": "Bəzi qiymətləri yükləmək mümkün olmadı",
+  "storePricesPartialBody": "<<PH1>> abunə məhsullarından <<PH0>> yükləndi.",
+  "storeSetupHint": "Həqiqi iPhone-da (Simulyator deyil) sınaqdan keçirin, Sandbox Apple ID-dən istifadə edin və bütün 6 abunəliyin bu proqram paketi ID-si altında App Store Connect-də yaradıldığından əmin olun.",
+  "effectiveMonthlyPrice": "<<PH0>>/ay",
+  "freeVersionAds": "Hal-hazırda siz reklamlarla pulsuz versiyamızdan istifadə edirsiniz",
+  "restorePurchases": "Satınalmaları bərpa edin",
+  "plansContinue": "Davam et",
+  "planLinkRestore": "Bərpa et",
+  "termsAndConditions": "Qaydalar və şərtlər",
+  "createAccountTitle": "Hesab yaradın",
+  "signUpSubtitle": "E-poçt və parol ilə qeydiyyatdan keçin.",
+  "confirmPassword": "Şifrəni təsdiqləyin",
+  "passwordMin8": "Parol (min 8 simvol)",
+  "alreadyHaveAccount": "Artıq hesabınız var?",
+  "checkEmailTitle": "Özünüzü yoxlayın\ne-poçt",
+  "otpSentTo": "6 rəqəmli kod göndərdik\n<<PH0>>",
+  "verifyAndSignIn": "Doğrulayın və daxil olun",
+  "didntReceiveCode": "Almadınız?",
+  "tryAgain": "Yenidən cəhd edin",
+  "otpExpiresHint": "Kodun müddəti 5 dəqiqə ərzində bitir. Əgər onu görmürsünüzsə, spam qovluğunuzu yoxlayın.",
+  "snackError": "Xəta",
+  "snackCopied": "Kopyalandı",
+  "snackCopiedBody": "Link buferə kopyalandı",
+  "snackWelcome": "Xoş gəldiniz",
+  "snackAccountCreated": "Hesab yaradıldı",
+  "snackEnterEmail": "E-poçtunuzu daxil edin",
+  "snackEnterPassword": "Zəhmət olmasa parolunuzu daxil edin",
+  "snackInvalidEmail": "Yanlış e-poçt ünvanı",
+  "snackInvalidCredentials": "Yanlış e-poçt və ya parol",
+  "snackPasswordMin8": "Parol ən azı 8 simvoldan ibarət olmalıdır",
+  "snackPasswordMismatch": "Parollar uyğun gəlmir.",
+  "snackAccountExists": "Hesab artıq mövcuddur. Zəhmət olmasa daxil olun.",
+  "snackSignupFailed": "Hesab yaratmaq mümkün olmadı. Yenidən cəhd edin.",
+  "snackEnterOtp": "Zəhmət olmasa 6 rəqəmli kodu daxil edin",
+  "snackOtpExpired": "Kodun müddəti bitdi",
+  "snackOtpExpiredBody": "Yeni kod tələb edin.",
+  "snackInvalidCode": "Yanlış kod",
+  "snackInvalidCodeBody": "Kod səhvdir. Yenidən cəhd edin.",
+  "snackSendCodeFailed": "Kodu göndərmək mümkün olmadı. Bağlantınızı yoxlayın və yenidən cəhd edin.",
+  "snackEmptyFolder": "Boş qovluq",
+  "snackEmptyFolderBody": "Seçilmiş qovluqda heç bir fayl tapılmadı.",
+  "snackFolderUnsupported": "Dəstəklənmir",
+  "snackFolderUnsupportedBody": "Qovluq yükləmə bu platformada mövcud deyil.",
+  "snackFolderReadError": "Seçilmiş qovluğu oxumaq mümkün olmadı.",
+  "snackLimitReached": "Limitə çatıldı",
+  "snackLimitFilesBody": "Bəzi fayllar ölçüsü və ya fayl sayı limitlərinə görə əlavə edilmədi.",
+  "snackFreePlanLimit": "Pulsuz plan hər transfer üçün 5 GB-a qədər imkan verir. Lütfən, bəzi faylları silin və ya təkmilləşdirin.",
+  "snackSignInEmail": "E-poçt ilə göndərmək üçün daxil olun.",
+  "snackUploadStartFailed": "Yükləməyə başlamaq mümkün olmadı.",
+  "snackVerifyEnterCode": "E-poçtunuzdan 4 rəqəmli kodu daxil edin.",
+  "snackVerifyInvalid": "Yanlış və ya vaxtı keçmiş kod. E-poçtu yoxlayın və yenidən cəhd edin.",
+  "snackVerifyResendFailed": "Kodu yenidən göndərmək mümkün olmadı. Yenidən cəhd edin.",
+  "snackDownloadComplete": "Yükləmə tamamlandı",
+  "snackDownloadSaved": "\"<<PH0>>\" Endirmələr bölməsində yadda saxlanıldı",
+  "snackDownloadFailed": "Yükləmə uğursuz oldu",
+  "snackSaved": "Saxlandı",
+  "snackServerUrlUpdated": "Server URL yeniləndi. Müraciət etmək üçün proqramı yenidən başladın.",
+  "snackStoreError": "Mağaza xətası",
+  "snackMissingProducts": "Çatışmayan məhsullar",
+  "snackStoreUnavailable": "Mağaza mövcud deyil",
+  "snackStoreUnavailableBody": "Tətbiqdaxili satınalmalar bu cihazda mövcud deyil.",
+  "snackProductNotLoaded": "Məhsul hələ yüklənməyib.",
+  "snackRestoreStarted": "Bərpa başladı",
+  "snackRestoreStartedBody": "Alışlarınızı yoxlayırıq.",
+  "snackRestoreFailed": "Bərpa edilmədi",
+  "snackProcessing": "Emal edilir",
+  "snackPleaseWait": "Zəhmət olmasa gözləyin...",
+  "snackSuccess": "Uğur",
+  "snackPurchaseCompleted": "Satınalma tamamlandı.",
+  "snackPurchaseError": "Satınalma xətası",
+  "snackPurchaseFailed": "Alış alınmadı.",
+  "snackCanceled": "Ləğv edildi",
+  "snackPurchaseCanceled": "Satınalma ləğv edildi.",
+  "snackUpload": "Yüklə",
+  "snackVerify": "Doğrulayın",
+  "doNotExpire": "Müddəti bitməsin",
+  "hourSingular": "saat",
+  "hourPlural": "saat",
+  "daySingular": "gün",
+  "dayPlural": "günlər",
+  "emailAddressLabel": "E-poçt ünvanı",
+  "passwordLabelCaps": "ŞİFRƏ",
+  "confirmPasswordLabelCaps": "ŞİFRƏNİ TƏQDİM EDİN",
+  "transferLinkOrId": "Köçürmə Linki və ya ID",
+  "howToReceive": "NECƏ QƏBUL ETMƏK",
+  "planAdsTitle": "Reklam Planı",
+  "planAdsBullet1": "Reklamsız proqrama giriş",
+  "planAdsBullet2": "Bütün reklamları silin",
+  "planProTitle": "Pro Planı",
+  "planProBullet1": "20 GB-a qədər faylları göndərin",
+  "planProBullet2": "Sürətli Yükləmə",
+  "planPremiumTitle": "Premium Plan",
+  "planPremiumBullet1": "100 GB-a qədər faylları göndərin",
+  "planPremiumBullet2": "Super sürətli yükləmə",
+  "planSubscriptionDisclaimer": "Sınaq müddəti yoxdur — əlavə proqram funksionallığından istifadə etmək üçün abunəlik tələb olunur. Sizdən dərhal ödəniş tutulacaq. İstənilən vaxt ləğv edə bilərsiniz.",
+  "perMonth": "/ ay",
+  "perYear": "/ il",
+  "snackConnectionProblem": "Bağlantı problemi. Yenidən cəhd edin.",
+  "networkTitle": "Şəbəkə",
+  "transferIdLabel": "ID: <<PH0>>",
+  "downloadMetaSummary": "Fayllar: <<PH0>> · <<PH1>> bayt",
+  "todayAt": "Bu gün · <<PH0>>",
+  "yesterdayAt": "Dünən · <<PH0>>",
+  "daysAgoAt": "<<PH0>>g əvvəl · <<PH1>>",
+  "dateAt": "<<PH0>> · <<PH1>>",
+  "mbAmount": "<<PH0>> MB",
+  "uploadProgressSummary": "<<PH0>> / <<PH1>> • <<PH2>> sol",
+  "loadingShort": "Yüklənir...",
+  "colorPaletteTitle": "Rəng Palitrası",
+  "colorPaletteSectionBackgrounds": "Fonlar (mürəkkəb miqyası)",
+  "colorPaletteSectionAccent": "Vurğu / Əsas",
+  "colorPaletteSectionText": "Mətn",
+  "colorPaletteSectionBorders": "Sərhədlər və Şüşə",
+  "colorPaletteSectionSemantic": "Semantik",
+  "colorPaletteSectionLive": "Canlı Mövzu (cari)",
+  "colorPaletteActiveHint": "★ = ekranlarda fəal istifadə olunur",
+  "colorPaletteCopyHint": "Hex dəyərini kopyalamaq üçün istənilən nümunəyə uzun basın.",
+  "settingsAppBrand": "Böyük Paylaşın\nVideo faylları",
+  "loginEmailPasswordPrompt": "Daxil olmaq üçün e-poçt və şifrənizi daxil edin.",
+  "forgotPassword": "Şifrəni unutmusunuz?",
+  "forgotPasswordTitle": "Parolu sıfırlayın",
+  "forgotPasswordBody": "Hesab e-poçtunuzu daxil edin və biz sıfırlama kodu göndərəcəyik.",
+  "forgotPasswordSubmit": "Sıfırlama kodunu göndərin",
+  "resetPasswordTitle": "Yeni parol yaradın",
+  "resetPasswordBody": "E-poçtunuzdan 6 rəqəmli kodu daxil edin və yeni parol seçin.",
+  "resetPasswordSubmit": "Parolu yeniləyin",
+  "snackPasswordResetSent": "Sıfırlama kodu göndərildi",
+  "snackPasswordResetSentBody": "6 rəqəmli sıfırlama kodu üçün e-poçtunuzu yoxlayın.",
+  "snackPasswordResetFailed": "Sıfırlama kodunu göndərmək mümkün olmadı. Yenidən cəhd edin.",
+  "snackPasswordUpdated": "Parol yeniləndi",
+  "snackPasswordUpdatedBody": "Yeni parolunuzla daxil olun.",
+  "snackPasswordResetInvalid": "Yanlış və ya vaxtı keçmiş sıfırlama kodu.",
+  "otpDigitLabel": "6-RƏQMƏLİ KOD",
+  "receiveMoreFiles": "+<<PH0>> daha çox fayl"
+}

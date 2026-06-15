@@ -1,0 +1,466 @@
+{
+  "@@locale": "ru",
+  "appTitle": "Делитесь большими видеофайлами",
+  "heroAccent": "немедленно.",
+  "heroTitle": "Отправляйте тяжелые файлы",
+  "splashLoading": "Загрузка…",
+  "navSend": "Панель управления",
+  "navHome": "Дом",
+  "navHistory": "История",
+  "navReceive": "Получать",
+  "navPlans": "Планы",
+  "navDownload": "Скачать",
+  "navSettings": "Настройки",
+  "modeLink": "Получить ссылку",
+  "modeEmail": "Отправить по электронной почте",
+  "pickFiles": "Выберите файлы",
+  "pickFolder": "Выбрать папку",
+  "emailFrom": "Ваш адрес электронной почты",
+  "mailFromUsesAccount": "Использует адрес электронной почты, указанный для входа.",
+  "recipientEmailsHelper": "Несколько получателей: разделяйте их запятыми, точками с запятой или пробелами.",
+  "emailTo": "Адрес электронной почты получателя",
+  "messageOptional": "Сообщение (необязательно)",
+  "passwordOptional": "Пароль (необязательно)",
+  "destructAfterDownload": "Удалить после загрузки",
+  "destructNo": "Держите доступным",
+  "sendButton": "Отправлять",
+  "uploading": "Загрузка…",
+  "uploadComplete": "Сделанный",
+  "shareLinkTitle": "Ваша ссылка",
+  "copyLink": "Копировать ссылку",
+  "share": "Делиться",
+  "shareQrCode": "Поделиться QR-кодом",
+  "uploadMore": "Отправить еще",
+  "emailSentTitle": "Письма отправлены",
+  "verifyEmailTitle": "Подтвердите свой адрес электронной почты",
+  "verifyCodeHint": "Введите код с вашей электронной почты",
+  "verifySubmit": "Проверять",
+  "verifyResendCode": "Отправить код повторно",
+  "verifyCodeSent": "На вашу электронную почту был отправлен новый код подтверждения.",
+  "verifyEmailSmtpWarningTitle": "Возможно, письмо с подтверждением не было отправлено.",
+  "verifyEmailSmtpWarningBody": "Серверу не удалось подтвердить доставку (часто SMTP настроен неправильно). Попросите администратора вашего сайта проверить настройки почты в панели администратора, затем нажмите «Отправить код повторно».",
+  "@verifyEmailCheckSpamHint": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "verifyEmailCheckSpamHint": "Если письмо не пришло: проверьте «Нежелательная почта/Спам» и «Промоакции», подождите минуту, убедитесь, что на <<PH0>> нет опечаток, затем нажмите «Отправить повторно».",
+  "loginTitle": "Войти",
+  "signupHint": "Используйте адрес электронной почты и пароль своей учетной записи на сайте.",
+  "emailHint": "Электронная почта",
+  "passwordHint": "Пароль",
+  "cancel": "Отмена",
+  "signIn": "Войти",
+  "downloadIdHint": "Идентификатор перевода",
+  "privateIdHint": "Личный идентификатор (необязательно)",
+  "fetchTransfer": "Открытый перевод",
+  "downloadFile": "Скачать",
+  "unlockDownload": "Разблокировать загрузку",
+  "downloadSaved": "Сохранено в загрузках",
+  "errorGeneric": "Что-то пошло не так",
+  "errorNetwork": "Ошибка сети",
+  "errorBadResponse": "Неожиданный ответ сервера",
+  "termsAccept": "Я согласен с условиями",
+  "settingsApiUrl": "URL общедоступного сайта",
+  "settingsAccount": "Счет",
+  "settingsAppearance": "Появление",
+  "settingsTheme": "Тема",
+  "themeSystem": "Система",
+  "themeLight": "Свет",
+  "themeDark": "Темный",
+  "settingsSignedIn": "Вы вошли в систему.",
+  "settingsSignedOut": "Вы не вошли в систему.",
+  "settingsOpenWebsite": "Открыть сайт",
+  "signUp": "Зарегистрироваться",
+  "settingsLinks": "Ссылки",
+  "privacyPolicy": "Политика конфиденциальности",
+  "termsOfService": "Условия обслуживания",
+  "about": "О",
+  "moreApps": "Больше приложений",
+  "settingsLanguage": "Язык",
+  "languageEnglish": "Английский",
+  "languageHindi": "хинди",
+  "logout": "Выйти",
+  "deleteAccount": "Удалить аккаунт",
+  "deleteAccountConfirmTitle": "Удалить свой аккаунт?",
+  "deleteAccountConfirmBody": "Это приведет к окончательному удалению вашей учетной записи и выходу из нее. Ваши ссылки для перевода продолжат работать, но они больше не будут отображаться в вашей истории.",
+  "deleteAccountSuccess": "Аккаунт удален",
+  "deleteAccountSuccessBody": "Ваш аккаунт был удален.",
+  "deleteAccountFailed": "Не удалось удалить аккаунт",
+  "deleteAccountFailedBody": "Пожалуйста, попробуйте еще раз или обратитесь в службу поддержки.",
+  "maxFilesReached": "Слишком много файлов",
+  "fileTooLarge": "Файл слишком большой",
+  "ipLimit": "Слишком много загрузок из этой сети",
+  "fillFields": "Пожалуйста, заполните обязательные поля",
+  "invalidEmail": "Неверный адрес электронной почты",
+  "maxRecipientsReached": "Слишком много получателей",
+  "loginRequiredTitle": "Требуется вход",
+  "loginRequiredBody": "Этот сервер требует учетной записи для загрузки или скачивания.",
+  "settingsSubtitle": "Настройки приложения и учетная запись.",
+  "dropHeavyFile": "Перетащите сюда тяжелый файл.",
+  "@upToTotal": {
+    "placeholders": {
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "upToTotal": "Всего до <<PH0>>",
+  "removeAll": "Удалить все",
+  "addFiles": "Добавить файлы",
+  "adding": "Добавление…",
+  "options": "Параметры",
+  "selfDestruct": "Самоуничтожение после загрузки",
+  "expiry": "Срок действия",
+  "cancelUpload": "Отменить загрузку",
+  "transferReady": "Трансфер готов!",
+  "emailSentReady": "Письмо отправлено!",
+  "shareRecipientHint": "Поделитесь этой ссылкой с получателем.",
+  "emailSentBody": "Мы уведомили ваших получателей.",
+  "scanQr": "Отсканируйте, чтобы открыть ссылку для передачи.",
+  "shareLinkButton": "ПОДЕЛИТЬСЯ ССЫЛКОЙ",
+  "verifyFourDigit": "Введите 4-значный код, отправленный на адрес электронной почты отправителя.",
+  "starting": "Начало…",
+  "@filesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesCount": "{count, plural, =1{1 file} other{{count} files}}",
+  "@mbLeft": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "mbLeft": "<<PH0>> осталось МБ",
+  "fillField": "Пожалуйста, заполните это поле.",
+  "enterValidEmail": "Введите действительный адрес электронной почты.",
+  "message": "Сообщение",
+  "recipientEmail": "Адрес электронной почты получателя",
+  "active": "Активный",
+  "expired": "Истекший",
+  "historyTitle": "Мои переводы",
+  "signInToSeeTransfers": "Войдите, чтобы увидеть свои переводы",
+  "signInTransfersBody": "Мы используем вашу электронную почту, чтобы связать переводы с вашей учетной записью — пароль не требуется.",
+  "couldNotLoadTransfers": "Не удалось загрузить переводы",
+  "retry": "Повторить попытку",
+  "noTransfersYet": "Трансферов пока нет",
+  "noTransfersBody": "После отправки файла он появится здесь.",
+  "transferDetails": "Детали трансфера",
+  "filesSection": "Файлы",
+  "receiveTitle": "Получить файлы",
+  "receiveSubtitle": "Вставьте ссылку для загрузки файлов.",
+  "pasteTooltip": "Вставить",
+  "findTransfer": "Найти трансфер",
+  "receiveScanQr": "Сканировать QR-код",
+  "receiveScanQrTitle": "Сканировать QR-код передачи",
+  "receiveScanQrHint": "Выровняйте QR-код внутри рамки.",
+  "receiveScanQrInvalid": "Этот QR-код не является действительной ссылкой для передачи.",
+  "receiveScanQrCameraDenied": "Для сканирования QR-кодов требуется доступ к камере.",
+  "receiveStepGetLink": "Получить ссылку",
+  "receiveStepGetLinkBody": "Попросите отправителя поделиться с вами ссылкой для перевода.",
+  "receiveStepPaste": "Вставить и найти",
+  "receiveStepPasteBody": "Вставьте ссылку выше и нажмите «Найти перевод».",
+  "receiveStepDownload": "Скачать файлы",
+  "receiveStepDownloadBody": "Просмотрите детали файла и загрузите все сразу.",
+  "lookingUpTransfer": "Ищу трансфер…",
+  "transferNotFound": "Трансфер не найден. Проверьте ссылку и повторите попытку.",
+  "transferExpired": "Срок действия этой передачи истек и она больше не доступна.",
+  "transferLoginRequired": "Для доступа к этой передаче необходимо войти в систему.",
+  "transferBadResponse": "Неожиданный ответ сервера. Проверьте свое соединение.",
+  "transferNetworkError": "Ошибка сети. Проверьте подключение к Интернету.",
+  "@transferLoadFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "transferLoadFailed": "Не удалось загрузить передачу: <<PH0>>",
+  "passwordProtected": "Защищено паролем",
+  "enterPassword": "Введите пароль",
+  "unlock": "Разблокировать",
+  "downloading": "Загрузка…",
+  "downloadAllFiles": "Скачать все файлы",
+  "downloadSingleFile": "Скачать файл",
+  "receiveAnother": "Получить еще один перевод",
+  "plansTitle": "Планы",
+  "plansSubtitle": "Обновите версию, чтобы удалить рекламу и отправлять файлы большего размера.",
+  "storeUnavailable": "Магазин недоступен",
+  "storeUnavailableBody": "Покупки в приложении сейчас недоступны.",
+  "storeLoadingPrices": "Загрузка цен из App Store…",
+  "storePricesUnavailable": "Цены недоступны",
+  "storePricesPartial": "Не удалось загрузить некоторые цены.",
+  "@storePricesPartialBody": {
+    "placeholders": {
+      "loaded": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "storePricesPartialBody": "Загружены продукты по подписке <<PH0>> из <<PH1>>.",
+  "storeSetupHint": "Протестируйте на реальном iPhone (не в симуляторе), используйте Apple ID в песочнице и убедитесь, что все 6 подписок созданы под идентификатором пакета этого приложения в App Store Connect с установленными ценами.",
+  "priceUnavailable": "—",
+  "@effectiveMonthlyPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "effectiveMonthlyPrice": "<<PH0>>/месяц",
+  "freeVersionAds": "В настоящее время вы используете нашу бесплатную версию с рекламой",
+  "restorePurchases": "Восстановление покупок",
+  "plansContinue": "Продолжать",
+  "planLinkRestore": "Восстановить",
+  "termsAndConditions": "Условия и положения",
+  "createAccountTitle": "Зарегистрироваться",
+  "signUpSubtitle": "Зарегистрируйтесь, указав адрес электронной почты и пароль.",
+  "confirmPassword": "Подтвердите пароль",
+  "passwordMin8": "Пароль (минимум 8 символов)",
+  "alreadyHaveAccount": "У вас уже есть аккаунт?",
+  "checkEmailTitle": "Проверьте свой\nэлектронная почта",
+  "@otpSentTo": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "otpSentTo": "Мы отправили 6-значный код на\n<<PH0>>",
+  "verifyAndSignIn": "Подтвердить и войти",
+  "didntReceiveCode": "Не получили?",
+  "tryAgain": "Попробуйте еще раз",
+  "otpExpiresHint": "Срок действия кода истекает через 5 минут. Проверьте папку со спамом, если вы ее не видите.",
+  "snackError": "Ошибка",
+  "snackCopied": "Скопировано",
+  "snackCopiedBody": "Ссылка скопирована в буфер обмена",
+  "snackWelcome": "Добро пожаловать",
+  "snackAccountCreated": "Аккаунт создан",
+  "snackEnterEmail": "Пожалуйста, введите свой адрес электронной почты",
+  "snackEnterPassword": "Пожалуйста, введите свой пароль",
+  "snackInvalidEmail": "Неверный адрес электронной почты",
+  "snackInvalidCredentials": "Неправильный адрес электронной почты или пароль",
+  "snackPasswordMin8": "Пароль должен быть не менее 8 символов",
+  "snackPasswordMismatch": "Пароли не совпадают.",
+  "snackAccountExists": "Аккаунт уже существует. Пожалуйста, войдите в систему.",
+  "snackSignupFailed": "Не удалось создать учетную запись. Попробуйте еще раз.",
+  "snackEnterOtp": "Пожалуйста, введите 6-значный код",
+  "snackOtpExpired": "Срок действия кода истек",
+  "snackOtpExpiredBody": "Пожалуйста, запросите новый код.",
+  "snackInvalidCode": "Неверный код",
+  "snackInvalidCodeBody": "Код неверен. Пожалуйста, попробуйте еще раз.",
+  "snackSendCodeFailed": "Не удалось отправить код. Проверьте подключение и повторите попытку.",
+  "snackEmptyFolder": "Пустая папка",
+  "snackEmptyFolderBody": "В выбранной папке файлы не найдены.",
+  "snackFolderUnsupported": "Не поддерживается",
+  "snackFolderUnsupportedBody": "Загрузка папок недоступна на этой платформе.",
+  "snackFolderReadError": "Не удалось прочитать выбранную папку.",
+  "snackLimitReached": "Достигнут лимит",
+  "snackLimitFilesBody": "Некоторые файлы не были добавлены из-за ограничений на размер или количество файлов.",
+  "snackFreePlanLimit": "Бесплатный план позволяет использовать до 5 ГБ за одну передачу. Пожалуйста, удалите некоторые файлы или обновите.",
+  "snackSignInEmail": "Пожалуйста, войдите в систему, чтобы отправить по электронной почте.",
+  "snackUploadStartFailed": "Не удалось начать загрузку.",
+  "snackVerifyEnterCode": "Введите 4-значный код с вашей электронной почты.",
+  "snackVerifyInvalid": "Неверный или просроченный код. Проверьте электронную почту и повторите попытку.",
+  "snackVerifyResendFailed": "Не удалось повторно отправить код. Попробуйте еще раз.",
+  "snackDownloadComplete": "Загрузка завершена",
+  "@snackDownloadSaved": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "snackDownloadSaved": "«<<PH0>>» сохранен в папке «Загрузки».",
+  "snackDownloadFailed": "Загрузка не удалась",
+  "snackSaved": "Сохранено",
+  "snackServerUrlUpdated": "URL-адрес сервера обновлен. Перезапустите приложение, чтобы применить.",
+  "snackStoreError": "Ошибка магазина",
+  "snackMissingProducts": "Отсутствующие продукты",
+  "snackStoreUnavailable": "Магазин недоступен",
+  "snackStoreUnavailableBody": "Покупки в приложении недоступны на этом устройстве.",
+  "snackProductNotLoaded": "Товар еще не загружен.",
+  "snackRestoreStarted": "Восстановление началось",
+  "snackRestoreStartedBody": "Мы проверяем ваши покупки.",
+  "snackRestoreFailed": "Восстановление не удалось",
+  "snackProcessing": "Обработка",
+  "snackPleaseWait": "Пожалуйста, подождите…",
+  "snackSuccess": "Успех",
+  "snackPurchaseCompleted": "Покупка завершена.",
+  "snackPurchaseError": "Ошибка покупки",
+  "snackPurchaseFailed": "Покупка не удалась.",
+  "snackCanceled": "Отменено",
+  "snackPurchaseCanceled": "Покупка отменена.",
+  "snackUpload": "Загрузить",
+  "snackVerify": "Проверять",
+  "doNotExpire": "Не истекает",
+  "hourSingular": "час",
+  "hourPlural": "часы",
+  "daySingular": "день",
+  "dayPlural": "дни",
+  "emailAddressLabel": "АДРЕС ЭЛЕКТРОННОЙ ПОЧТЫ",
+  "passwordLabelCaps": "ПАРОЛЬ",
+  "confirmPasswordLabelCaps": "ПОДТВЕРДИТЕ ПАРОЛЬ",
+  "emailExampleHint": "you@example.com",
+  "otpSixDigitHint": "000000",
+  "verifyFourDigitHint": "0000",
+  "transferLinkOrId": "ССЫЛКА ДЛЯ ПЕРЕДАЧИ ИЛИ Идентификатор",
+  "howToReceive": "КАК ПОЛУЧИТЬ",
+  "transferLinkHint": "https://… or paste ID",
+  "@filesReady": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesReady": "{count, plural, =1{1 file ready} other{{count} files ready}}",
+  "planAdsTitle": "План рекламы",
+  "planAdsBullet1": "Доступ к бесплатному приложению рекламы",
+  "planAdsBullet2": "Удалить все объявления",
+  "planProTitle": "Профессиональный план",
+  "planProBullet1": "Отправляйте файлы размером до 20 ГБ.",
+  "planProBullet2": "Быстрая загрузка",
+  "planPremiumTitle": "Премиум-план",
+  "planPremiumBullet1": "Отправляйте файлы размером до 100 ГБ.",
+  "planPremiumBullet2": "Супер быстрая загрузка",
+  "planSubscriptionDisclaimer": "Нет пробного периода — для использования дополнительного функционала приложения необходима подписка. Плата будет списана немедленно. Вы можете отменить в любое время.",
+  "perMonth": "/ месяц",
+  "perYear": "/ год",
+  "snackConnectionProblem": "Проблема с подключением. Пожалуйста, попробуйте еще раз.",
+  "networkTitle": "Сеть",
+  "@transferIdLabel": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "transferIdLabel": "Идентификатор: <<PH0>>",
+  "@downloadMetaSummary": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "downloadMetaSummary": "Файлы: <<PH0>> · <<PH1>> байт",
+  "@todayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "todayAt": "Сегодня · <<PH0>>",
+  "@yesterdayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "yesterdayAt": "Вчера · <<PH0>>",
+  "@daysAgoAt": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "daysAgoAt": "<<PH0>>д назад · <<PH1>>",
+  "@dateAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "dateAt": "<<PH0>> · <<PH1>>",
+  "@mbAmount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "mbAmount": "<<PH0>> МБ",
+  "@uploadProgressSummary": {
+    "placeholders": {
+      "sent": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      },
+      "remaining": {
+        "type": "String"
+      }
+    }
+  },
+  "uploadProgressSummary": "<<PH0>> / <<PH1>> • <<PH2>> слева",
+  "loadingShort": "Загрузка…",
+  "colorPaletteTitle": "Цветовая палитра",
+  "colorPaletteSectionBackgrounds": "Фоны (шкала чернил)",
+  "colorPaletteSectionAccent": "Акцент / Основной",
+  "colorPaletteSectionText": "Текст",
+  "colorPaletteSectionBorders": "Границы и стекло",
+  "colorPaletteSectionSemantic": "Семантический",
+  "colorPaletteSectionLive": "Живая тема (текущая)",
+  "colorPaletteActiveHint": "★ = активно используется на экранах",
+  "colorPaletteCopyHint": "Нажмите и удерживайте любой образец, чтобы скопировать его шестнадцатеричное значение.",
+  "@historyFilesSize": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "historyFilesSize": "{count, plural, =1{1 file} other{{count} files}} · {size}",
+  "settingsAppBrand": "Поделиться большим\nВидео файлы",
+  "loginEmailPasswordPrompt": "Введите свой адрес электронной почты и пароль, чтобы войти.",
+  "forgotPassword": "Забыли пароль?",
+  "forgotPasswordTitle": "Сбросить пароль",
+  "forgotPasswordBody": "Введите адрес электронной почты своей учетной записи, и мы вышлем код сброса.",
+  "forgotPasswordSubmit": "Отправить код сброса",
+  "resetPasswordTitle": "Создать новый пароль",
+  "resetPasswordBody": "Введите 6-значный код из вашей электронной почты и выберите новый пароль.",
+  "resetPasswordSubmit": "Обновить пароль",
+  "snackPasswordResetSent": "Код сброса отправлен",
+  "snackPasswordResetSentBody": "Проверьте свою электронную почту на наличие 6-значного кода сброса.",
+  "snackPasswordResetFailed": "Не удалось отправить код сброса. Попробуйте еще раз.",
+  "snackPasswordUpdated": "Пароль обновлен",
+  "snackPasswordUpdatedBody": "Войдите с новым паролем.",
+  "snackPasswordResetInvalid": "Неверный или просроченный код сброса.",
+  "otpDigitLabel": "6-ЦИФРНЫЙ КОД",
+  "@receiveMoreFiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "receiveMoreFiles": "+<<PH0>> еще файлы"
+}

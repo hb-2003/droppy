@@ -1,0 +1,466 @@
+{
+  "@@locale": "pt",
+  "appTitle": "Compartilhe arquivos de vídeo grandes",
+  "heroAccent": "imediatamente.",
+  "heroTitle": "Envie arquivos pesados",
+  "splashLoading": "Carregando…",
+  "navSend": "Painel",
+  "navHome": "Lar",
+  "navHistory": "História",
+  "navReceive": "Receber",
+  "navPlans": "Planos",
+  "navDownload": "Download",
+  "navSettings": "Configurações",
+  "modeLink": "Obtenha um link",
+  "modeEmail": "Enviar por e-mail",
+  "pickFiles": "Escolha os arquivos",
+  "pickFolder": "Escolha a pasta",
+  "emailFrom": "Seu e-mail",
+  "mailFromUsesAccount": "Usa seu e-mail conectado.",
+  "recipientEmailsHelper": "Vários destinatários: separe com vírgulas, ponto e vírgula ou espaços.",
+  "emailTo": "E-mail do destinatário",
+  "messageOptional": "Mensagem (opcional)",
+  "passwordOptional": "Senha (opcional)",
+  "destructAfterDownload": "Excluir após download",
+  "destructNo": "Mantenha-se disponível",
+  "sendButton": "Enviar",
+  "uploading": "Fazendo upload…",
+  "uploadComplete": "Feito",
+  "shareLinkTitle": "Seu link",
+  "copyLink": "Copiar link",
+  "share": "Compartilhar",
+  "shareQrCode": "Compartilhar código QR",
+  "uploadMore": "Envie outro",
+  "emailSentTitle": "E-mails enviados",
+  "verifyEmailTitle": "Verifique seu e-mail",
+  "verifyCodeHint": "Digite o código do seu e-mail",
+  "verifySubmit": "Verificar",
+  "verifyResendCode": "Reenviar código",
+  "verifyCodeSent": "Um novo código de verificação foi enviado para seu e-mail.",
+  "verifyEmailSmtpWarningTitle": "O e-mail de verificação pode não ter sido enviado",
+  "verifyEmailSmtpWarningBody": "O servidor não pôde confirmar a entrega (muitas vezes o SMTP está configurado incorretamente). Peça ao administrador do site para verificar as configurações do Mail no painel de administração e toque em Reenviar código.",
+  "@verifyEmailCheckSpamHint": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "verifyEmailCheckSpamHint": "Se não chegar: verifique Lixo/Spam e Promoções, espere um minuto, confirme que <<PH0>> não contém erros de digitação e toque em Reenviar.",
+  "loginTitle": "Entrar",
+  "signupHint": "Use o e-mail e a senha da sua conta do site.",
+  "emailHint": "E-mail",
+  "passwordHint": "Senha",
+  "cancel": "Cancelar",
+  "signIn": "Entrar",
+  "downloadIdHint": "ID de transferência",
+  "privateIdHint": "ID privado (opcional)",
+  "fetchTransfer": "Transferência aberta",
+  "downloadFile": "Download",
+  "unlockDownload": "Desbloquear download",
+  "downloadSaved": "Salvo em downloads",
+  "errorGeneric": "Algo deu errado",
+  "errorNetwork": "Erro de rede",
+  "errorBadResponse": "Resposta inesperada do servidor",
+  "termsAccept": "Eu concordo com os termos",
+  "settingsApiUrl": "URL do site público",
+  "settingsAccount": "Conta",
+  "settingsAppearance": "Aparência",
+  "settingsTheme": "Tema",
+  "themeSystem": "Sistema",
+  "themeLight": "Luz",
+  "themeDark": "Escuro",
+  "settingsSignedIn": "Você está conectado.",
+  "settingsSignedOut": "Você não está conectado.",
+  "settingsOpenWebsite": "Abrir site",
+  "signUp": "Inscrever-se",
+  "settingsLinks": "Ligações",
+  "privacyPolicy": "Política de Privacidade",
+  "termsOfService": "Termos de serviço",
+  "about": "Sobre",
+  "moreApps": "Mais aplicativos",
+  "settingsLanguage": "Linguagem",
+  "languageEnglish": "Inglês",
+  "languageHindi": "hindi",
+  "logout": "Sair",
+  "deleteAccount": "Excluir conta",
+  "deleteAccountConfirmTitle": "Excluir sua conta?",
+  "deleteAccountConfirmBody": "Isso exclui permanentemente sua conta e desconecta você. Seus links de transferência continuarão funcionando, mas não aparecerão mais no seu histórico.",
+  "deleteAccountSuccess": "Conta excluída",
+  "deleteAccountSuccessBody": "Sua conta foi removida.",
+  "deleteAccountFailed": "Não foi possível excluir a conta",
+  "deleteAccountFailedBody": "Tente novamente ou entre em contato com o suporte.",
+  "maxFilesReached": "Muitos arquivos",
+  "fileTooLarge": "Arquivo muito grande",
+  "ipLimit": "Muitos uploads desta rede",
+  "fillFields": "Por favor preencha os campos obrigatórios",
+  "invalidEmail": "E-mail inválido",
+  "maxRecipientsReached": "Muitos destinatários",
+  "loginRequiredTitle": "É necessário fazer login",
+  "loginRequiredBody": "Este servidor requer uma conta para fazer upload ou download.",
+  "settingsSubtitle": "Preferências e conta do aplicativo.",
+  "dropHeavyFile": "Solte um arquivo pesado aqui.",
+  "@upToTotal": {
+    "placeholders": {
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "upToTotal": "Até <<PH0>> total",
+  "removeAll": "Remover tudo",
+  "addFiles": "Adicionar arquivos",
+  "adding": "Adicionando…",
+  "options": "Opções",
+  "selfDestruct": "Autodestruição após download",
+  "expiry": "Termo",
+  "cancelUpload": "Cancelar upload",
+  "transferReady": "Transferência pronta!",
+  "emailSentReady": "E-mail enviado!",
+  "shareRecipientHint": "Compartilhe este link com seu destinatário.",
+  "emailSentBody": "Notificamos seu(s) destinatário(s).",
+  "scanQr": "Digitalize para abrir o link de transferência.",
+  "shareLinkButton": "COMPARTILHAR LINK",
+  "verifyFourDigit": "Digite o código de 4 dígitos enviado para o e-mail do remetente.",
+  "starting": "Começando…",
+  "@filesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesCount": "{count, plural, =1{1 file} other{{count} files}}",
+  "@mbLeft": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "mbLeft": "<<PH0>> MB restantes",
+  "fillField": "Por favor preencha este campo.",
+  "enterValidEmail": "Insira um e-mail válido.",
+  "message": "Mensagem",
+  "recipientEmail": "E-mail do destinatário",
+  "active": "Ativo",
+  "expired": "Expirado",
+  "historyTitle": "Minhas transferências",
+  "signInToSeeTransfers": "Faça login para ver suas transferências",
+  "signInTransfersBody": "Usamos seu e-mail para vincular transferências à sua conta – não é necessária senha.",
+  "couldNotLoadTransfers": "Não foi possível carregar as transferências",
+  "retry": "Tentar novamente",
+  "noTransfersYet": "Ainda não há transferências",
+  "noTransfersBody": "Depois de enviar um arquivo, ele aparecerá aqui.",
+  "transferDetails": "Detalhes da transferência",
+  "filesSection": "Arquivos",
+  "receiveTitle": "Receber arquivos",
+  "receiveSubtitle": "Cole um link de transferência para baixar os arquivos.",
+  "pasteTooltip": "Colar",
+  "findTransfer": "Encontrar transferência",
+  "receiveScanQr": "Digitalize QR",
+  "receiveScanQrTitle": "QR de transferência de digitalização",
+  "receiveScanQrHint": "Alinhe o código QR dentro da moldura.",
+  "receiveScanQrInvalid": "Este código QR não é um link de transferência válido.",
+  "receiveScanQrCameraDenied": "O acesso à câmera é necessário para digitalizar códigos QR.",
+  "receiveStepGetLink": "Obtenha o link",
+  "receiveStepGetLinkBody": "Peça ao remetente para compartilhar o link de transferência com você.",
+  "receiveStepPaste": "Colar e encontrar",
+  "receiveStepPasteBody": "Cole o link acima e toque em “Encontrar transferência”.",
+  "receiveStepDownload": "Baixar arquivos",
+  "receiveStepDownloadBody": "Veja detalhes do arquivo e baixe tudo de uma vez.",
+  "lookingUpTransfer": "Procurando transferência…",
+  "transferNotFound": "Transferência não encontrada. Verifique o link e tente novamente.",
+  "transferExpired": "Esta transferência expirou e não está mais disponível.",
+  "transferLoginRequired": "É necessário fazer login para acessar esta transferência.",
+  "transferBadResponse": "Resposta inesperada do servidor. Verifique sua conexão.",
+  "transferNetworkError": "Erro de rede. Verifique sua conexão com a Internet.",
+  "@transferLoadFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "transferLoadFailed": "Não foi possível carregar a transferência: <<PH0>>",
+  "passwordProtected": "Protegido por senha",
+  "enterPassword": "Digite a senha",
+  "unlock": "Desbloquear",
+  "downloading": "Baixando…",
+  "downloadAllFiles": "Baixe todos os arquivos",
+  "downloadSingleFile": "Baixar arquivo",
+  "receiveAnother": "Receber outra transferência",
+  "plansTitle": "Planos",
+  "plansSubtitle": "Atualize para remover anúncios e enviar arquivos maiores.",
+  "storeUnavailable": "Loja indisponível",
+  "storeUnavailableBody": "As compras no aplicativo não estão disponíveis no momento.",
+  "storeLoadingPrices": "Carregando preços da App Store…",
+  "storePricesUnavailable": "Preços indisponíveis",
+  "storePricesPartial": "Não foi possível carregar alguns preços",
+  "@storePricesPartialBody": {
+    "placeholders": {
+      "loaded": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "storePricesPartialBody": "<<PH0>> de produtos de assinatura <<PH1>> carregados.",
+  "storeSetupHint": "Teste em um iPhone real (não no simulador), use um ID Apple Sandbox e certifique-se de que todas as 6 assinaturas sejam criadas sob o ID do pacote deste aplicativo no App Store Connect com preço definido.",
+  "priceUnavailable": "—",
+  "@effectiveMonthlyPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "effectiveMonthlyPrice": "<<PH0>>/mês",
+  "freeVersionAds": "Atualmente você está usando nossa versão gratuita com anúncios",
+  "restorePurchases": "Restaurar compras",
+  "plansContinue": "Continuar",
+  "planLinkRestore": "Restaurar",
+  "termsAndConditions": "Termos e Condições",
+  "createAccountTitle": "Criar uma conta",
+  "signUpSubtitle": "Cadastre-se com e-mail e senha.",
+  "confirmPassword": "Confirme sua senha",
+  "passwordMin8": "Senha (mín. 8 caracteres)",
+  "alreadyHaveAccount": "Já tem uma conta?",
+  "checkEmailTitle": "Verifique o seu\ne-mail",
+  "@otpSentTo": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "otpSentTo": "Enviamos um código de 6 dígitos para\n<<PH0>>",
+  "verifyAndSignIn": "Verifique e faça login",
+  "didntReceiveCode": "Não recebeu?",
+  "tryAgain": "Tente novamente",
+  "otpExpiresHint": "O código expira em 5 minutos. Verifique sua pasta de spam se não a encontrar.",
+  "snackError": "Erro",
+  "snackCopied": "Copiado",
+  "snackCopiedBody": "Link copiado para a área de transferência",
+  "snackWelcome": "Bem-vindo",
+  "snackAccountCreated": "Conta criada",
+  "snackEnterEmail": "Por favor insira seu e-mail",
+  "snackEnterPassword": "Por favor digite sua senha",
+  "snackInvalidEmail": "Endereço de e-mail inválido",
+  "snackInvalidCredentials": "E-mail ou senha incorretos",
+  "snackPasswordMin8": "A senha deve ter pelo menos 8 caracteres",
+  "snackPasswordMismatch": "As senhas não coincidem.",
+  "snackAccountExists": "A conta já existe. Faça login.",
+  "snackSignupFailed": "Não foi possível criar a conta. Tente novamente.",
+  "snackEnterOtp": "Por favor insira o código de 6 dígitos",
+  "snackOtpExpired": "Código expirou",
+  "snackOtpExpiredBody": "Solicite um novo código.",
+  "snackInvalidCode": "Código inválido",
+  "snackInvalidCodeBody": "O código está incorreto. Por favor, tente novamente.",
+  "snackSendCodeFailed": "Não foi possível enviar o código. Verifique sua conexão e tente novamente.",
+  "snackEmptyFolder": "Pasta vazia",
+  "snackEmptyFolderBody": "Nenhum arquivo encontrado na pasta selecionada.",
+  "snackFolderUnsupported": "Não compatível",
+  "snackFolderUnsupportedBody": "O upload de pasta não está disponível nesta plataforma.",
+  "snackFolderReadError": "Não foi possível ler a pasta selecionada.",
+  "snackLimitReached": "Limite atingido",
+  "snackLimitFilesBody": "Alguns arquivos não foram adicionados devido ao tamanho ou aos limites de contagem de arquivos.",
+  "snackFreePlanLimit": "O plano gratuito permite até 5 GB por transferência. Remova alguns arquivos ou atualize.",
+  "snackSignInEmail": "Faça login para enviar por e-mail.",
+  "snackUploadStartFailed": "Não foi possível iniciar o upload.",
+  "snackVerifyEnterCode": "Digite o código de 4 dígitos do seu e-mail.",
+  "snackVerifyInvalid": "Código inválido ou expirado. Verifique o e-mail e tente novamente.",
+  "snackVerifyResendFailed": "Não foi possível reenviar o código. Tente novamente.",
+  "snackDownloadComplete": "Download concluído",
+  "@snackDownloadSaved": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "snackDownloadSaved": "\"<<PH0>>\" salvo em Downloads",
+  "snackDownloadFailed": "Falha no download",
+  "snackSaved": "Salvo",
+  "snackServerUrlUpdated": "URL do servidor atualizado. Reinicie o aplicativo para aplicar.",
+  "snackStoreError": "Erro de armazenamento",
+  "snackMissingProducts": "Produtos ausentes",
+  "snackStoreUnavailable": "Loja indisponível",
+  "snackStoreUnavailableBody": "As compras no aplicativo não estão disponíveis neste dispositivo.",
+  "snackProductNotLoaded": "O produto ainda não foi carregado.",
+  "snackRestoreStarted": "Restauração iniciada",
+  "snackRestoreStartedBody": "Estamos verificando suas compras.",
+  "snackRestoreFailed": "Falha na restauração",
+  "snackProcessing": "Processamento",
+  "snackPleaseWait": "Por favor, aguarde…",
+  "snackSuccess": "Sucesso",
+  "snackPurchaseCompleted": "Compra concluída.",
+  "snackPurchaseError": "Erro de compra",
+  "snackPurchaseFailed": "A compra falhou.",
+  "snackCanceled": "Cancelado",
+  "snackPurchaseCanceled": "Compra cancelada.",
+  "snackUpload": "Carregar",
+  "snackVerify": "Verificar",
+  "doNotExpire": "Não expire",
+  "hourSingular": "hora",
+  "hourPlural": "horas",
+  "daySingular": "dia",
+  "dayPlural": "dias",
+  "emailAddressLabel": "ENDEREÇO ​​DE EMAIL",
+  "passwordLabelCaps": "SENHA",
+  "confirmPasswordLabelCaps": "CONFIRME SUA SENHA",
+  "emailExampleHint": "you@example.com",
+  "otpSixDigitHint": "000000",
+  "verifyFourDigitHint": "0000",
+  "transferLinkOrId": "LINK DE TRANSFERÊNCIA OU ID",
+  "howToReceive": "COMO RECEBER",
+  "transferLinkHint": "https://… or paste ID",
+  "@filesReady": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesReady": "{count, plural, =1{1 file ready} other{{count} files ready}}",
+  "planAdsTitle": "Plano de anúncios",
+  "planAdsBullet1": "Acesso ao aplicativo gratuito de anúncios",
+  "planAdsBullet2": "Remover todos os anúncios",
+  "planProTitle": "Plano Profissional",
+  "planProBullet1": "Envie arquivos de até 20 GB",
+  "planProBullet2": "Carregamento rápido",
+  "planPremiumTitle": "Plano Premium",
+  "planPremiumBullet1": "Envie arquivos de até 100 GB",
+  "planPremiumBullet2": "Carregamento super rápido",
+  "planSubscriptionDisclaimer": "Sem período de teste – é necessária assinatura para usar a funcionalidade adicional do aplicativo. Você será cobrado imediatamente. Você pode cancelar a qualquer momento.",
+  "perMonth": "/ mês",
+  "perYear": "/ ano",
+  "snackConnectionProblem": "Problema de conexão. Por favor, tente novamente.",
+  "networkTitle": "Rede",
+  "@transferIdLabel": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "transferIdLabel": "ID: <<PH0>>",
+  "@downloadMetaSummary": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "downloadMetaSummary": "Arquivos: <<PH0>> · <<PH1>> bytes",
+  "@todayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "todayAt": "Hoje · <<PH0>>",
+  "@yesterdayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "yesterdayAt": "Ontem · <<PH0>>",
+  "@daysAgoAt": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "daysAgoAt": "<<PH0>>d atrás · <<PH1>>",
+  "@dateAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "dateAt": "<<PH0>> · <<PH1>>",
+  "@mbAmount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "mbAmount": "<<PH0>>MB",
+  "@uploadProgressSummary": {
+    "placeholders": {
+      "sent": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      },
+      "remaining": {
+        "type": "String"
+      }
+    }
+  },
+  "uploadProgressSummary": "<<PH0>> / <<PH1>> • <<PH2>> esquerda",
+  "loadingShort": "Carregando…",
+  "colorPaletteTitle": "Paleta de cores",
+  "colorPaletteSectionBackgrounds": "Planos de fundo (escala de tinta)",
+  "colorPaletteSectionAccent": "Sotaque / Primário",
+  "colorPaletteSectionText": "Texto",
+  "colorPaletteSectionBorders": "Bordas e vidro",
+  "colorPaletteSectionSemantic": "Semântica",
+  "colorPaletteSectionLive": "Tema ao vivo (atual)",
+  "colorPaletteActiveHint": "★ = usado ativamente em telas",
+  "colorPaletteCopyHint": "Mantenha qualquer amostra pressionada para copiar seu valor hexadecimal.",
+  "@historyFilesSize": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "historyFilesSize": "{count, plural, =1{1 file} other{{count} files}} · {size}",
+  "settingsAppBrand": "Compartilhe grande\nArquivos de vídeo",
+  "loginEmailPasswordPrompt": "Digite seu e-mail e senha para fazer login.",
+  "forgotPassword": "Esqueceu sua senha?",
+  "forgotPasswordTitle": "Redefinir senha",
+  "forgotPasswordBody": "Digite o e-mail da sua conta e enviaremos um código de redefinição.",
+  "forgotPasswordSubmit": "Enviar código de redefinição",
+  "resetPasswordTitle": "Criar nova senha",
+  "resetPasswordBody": "Digite o código de 6 dígitos do seu e-mail e escolha uma nova senha.",
+  "resetPasswordSubmit": "Atualizar senha",
+  "snackPasswordResetSent": "Código de redefinição enviado",
+  "snackPasswordResetSentBody": "Verifique seu e-mail para obter um código de redefinição de 6 dígitos.",
+  "snackPasswordResetFailed": "Não foi possível enviar o código de redefinição. Tente novamente.",
+  "snackPasswordUpdated": "Senha atualizada",
+  "snackPasswordUpdatedBody": "Faça login com sua nova senha.",
+  "snackPasswordResetInvalid": "Código de redefinição inválido ou expirado.",
+  "otpDigitLabel": "CÓDIGO DE 6 DÍGITOS",
+  "@receiveMoreFiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "receiveMoreFiles": "+<<PH0>> mais arquivos"
+}

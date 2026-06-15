@@ -1,0 +1,466 @@
+{
+  "@@locale": "id",
+  "@verifyEmailCheckSpamHint": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@upToTotal": {
+    "placeholders": {
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "@filesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesCount": "{count, plural, =1{1 file} other{{count} files}}",
+  "@mbLeft": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@transferLoadFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@storePricesPartialBody": {
+    "placeholders": {
+      "loaded": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "priceUnavailable": "—",
+  "@effectiveMonthlyPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "@otpSentTo": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@snackDownloadSaved": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "emailExampleHint": "you@example.com",
+  "otpSixDigitHint": "000000",
+  "verifyFourDigitHint": "0000",
+  "transferLinkHint": "https://… or paste ID",
+  "@filesReady": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesReady": "{count, plural, =1{1 file ready} other{{count} files ready}}",
+  "@transferIdLabel": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadMetaSummary": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "@todayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@yesterdayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@daysAgoAt": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@dateAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@mbAmount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@uploadProgressSummary": {
+    "placeholders": {
+      "sent": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      },
+      "remaining": {
+        "type": "String"
+      }
+    }
+  },
+  "@historyFilesSize": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "historyFilesSize": "{count, plural, =1{1 file} other{{count} files}} · {size}",
+  "@receiveMoreFiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appTitle": "Bagikan File Video Besar",
+  "heroAccent": "secara instan.",
+  "heroTitle": "Kirim dalam jumlah besar file",
+  "splashLoading": "Memuat…",
+  "navSend": "Dasbor",
+  "navHome": "Beranda",
+  "navHistory": "Riwayat",
+  "navReceive": "Terima",
+  "navPlans": "Paket",
+  "navDownload": "Unduh",
+  "navSettings": "Pengaturan",
+  "modeLink": "Dapatkan tautan",
+  "modeEmail": "Kirim melalui email",
+  "pickFiles": "Pilih file",
+  "pickFolder": "Pilih folder",
+  "emailFrom": "Email Anda",
+  "mailFromUsesAccount": "Menggunakan email yang Anda gunakan untuk masuk.",
+  "recipientEmailsHelper": "Beberapa penerima: pisahkan dengan koma, titik koma, atau spasi.",
+  "emailTo": "Email penerima",
+  "messageOptional": "Pesan (opsional)",
+  "passwordOptional": "Kata Sandi (opsional)",
+  "destructAfterDownload": "Hapus setelah diunduh",
+  "destructNo": "Simpan tersedia",
+  "sendButton": "Kirim",
+  "uploading": "Mengunggah…",
+  "uploadComplete": "Selesai",
+  "shareLinkTitle": "Tautan Anda",
+  "copyLink": "Salin tautan",
+  "share": "Bagikan",
+  "shareQrCode": "Bagikan kode QR",
+  "uploadMore": "Kirim yang lain",
+  "emailSentTitle": "Email terkirim",
+  "verifyEmailTitle": "Verifikasi email Anda",
+  "verifyCodeHint": "Masukkan kode dari email Anda",
+  "verifySubmit": "Verifikasi",
+  "verifyResendCode": "Kirim ulang kode",
+  "verifyCodeSent": "Kode verifikasi baru telah dikirimkan ke email Anda.",
+  "verifyEmailSmtpWarningTitle": "Email verifikasi mungkin tidak ada telah terkirim",
+  "verifyEmailSmtpWarningBody": "Server tidak dapat mengonfirmasi pengiriman (seringkali SMTP salah dikonfigurasi). Minta admin situs Anda untuk memeriksa pengaturan Mail di panel admin, lalu ketuk Kirim ulang kode.",
+  "verifyEmailCheckSpamHint": "Jika tidak sampai: periksa Sampah/Spam dan Promosi, tunggu sebentar, konfirmasi <<PH0>> tidak ada kesalahan ketik, lalu ketuk Kirim Ulang.",
+  "loginTitle": "Masuk",
+  "signupHint": "Gunakan email akun situs Anda dan kata sandi.",
+  "emailHint": "Email",
+  "passwordHint": "Kata Sandi",
+  "cancel": "Batal",
+  "signIn": "Masuk",
+  "downloadIdHint": "ID Transfer",
+  "privateIdHint": "ID Pribadi (opsional)",
+  "fetchTransfer": "Buka transfer",
+  "downloadFile": "Unduh",
+  "unlockDownload": "Buka kunci unduhan",
+  "downloadSaved": "Disimpan ke Unduhan",
+  "errorGeneric": "Ada yang tidak beres",
+  "errorNetwork": "Kesalahan jaringan",
+  "errorBadResponse": "Respon server tidak terduga",
+  "termsAccept": "Saya menyetujui persyaratan",
+  "settingsApiUrl": "Situs publik URL",
+  "settingsAccount": "Akun",
+  "settingsAppearance": "Penampilan",
+  "settingsTheme": "Tema",
+  "themeSystem": "Sistem",
+  "themeLight": "Terang",
+  "themeDark": "Gelap",
+  "settingsSignedIn": "Anda sudah masuk.",
+  "settingsSignedOut": "Anda belum masuk di.",
+  "settingsOpenWebsite": "Buka situs web",
+  "signUp": "Daftar",
+  "settingsLinks": "Tautan",
+  "privacyPolicy": "Kebijakan privasi",
+  "termsOfService": "Ketentuan layanan",
+  "about": "Tentang",
+  "moreApps": "Selengkapnya apps",
+  "settingsLanguage": "Bahasa",
+  "languageEnglish": "Bahasa Inggris",
+  "languageHindi": "Hindi",
+  "logout": "Keluar",
+  "deleteAccount": "Hapus akun",
+  "deleteAccountConfirmTitle": "Hapus akun Anda?",
+  "deleteAccountConfirmBody": "Ini akan menghapus akun Anda secara permanen dan mengeluarkan Anda. Tautan transfer Anda akan tetap berfungsi, tetapi tidak akan muncul lagi di riwayat Anda.",
+  "deleteAccountSuccess": "Akun dihapus",
+  "deleteAccountSuccessBody": "Akun Anda telah dihapus.",
+  "deleteAccountFailed": "Tidak dapat menghapus akun",
+  "deleteAccountFailedBody": "Silakan coba lagi atau hubungi dukungan.",
+  "maxFilesReached": "Terlalu banyak file",
+  "fileTooLarge": "File juga besar",
+  "ipLimit": "Terlalu banyak unggahan dari jaringan ini",
+  "fillFields": "Silakan isi kolom yang wajib diisi",
+  "invalidEmail": "Email tidak valid",
+  "maxRecipientsReached": "Terlalu banyak penerima",
+  "loginRequiredTitle": "Harus masuk",
+  "loginRequiredBody": "Server ini memerlukan akun untuk mengunggah atau mengunduh.",
+  "settingsSubtitle": "Preferensi aplikasi dan akun.",
+  "dropHeavyFile": "Lepaskan file berat di sini.",
+  "upToTotal": "Hingga <<PH0>> total",
+  "removeAll": "Hapus semua",
+  "addFiles": "Tambahkan file",
+  "adding": "Menambahkan…",
+  "options": "Opsi",
+  "selfDestruct": "Penghancuran otomatis setelahnya unduh",
+  "expiry": "Kedaluwarsa",
+  "cancelUpload": "Batalkan unggahan",
+  "transferReady": "Transfer siap!",
+  "emailSentReady": "Email terkirim!",
+  "shareRecipientHint": "Bagikan tautan ini kepada penerima Anda.",
+  "emailSentBody": "Kami telah memberi tahu penerima Anda.",
+  "scanQr": "Pindai untuk membuka tautan transfer.",
+  "shareLinkButton": "BAGIKAN LINK",
+  "verifyFourDigit": "Masukkan 4 digit kode yang dikirimkan ke email pengirim Anda.",
+  "starting": "Mulai…",
+  "mbLeft": "<<PH0>> MB tersisa",
+  "fillField": "Silakan isi kolom ini.",
+  "enterValidEmail": "Masukkan yang valid email.",
+  "message": "Pesan",
+  "recipientEmail": "Email penerima",
+  "active": "Aktif",
+  "expired": "Kedaluwarsa",
+  "historyTitle": "Transfer Saya",
+  "signInToSeeTransfers": "Masuk untuk melihat transfer Anda",
+  "signInTransfersBody": "Kami menggunakan email Anda untuk menghubungkan transfer ke akun Anda — tidak perlu kata sandi.",
+  "couldNotLoadTransfers": "Bisa tidak memuat transfer",
+  "retry": "Coba lagi",
+  "noTransfersYet": "Belum ada transfer",
+  "noTransfersBody": "Setelah Anda mengirim file, file tersebut akan muncul di sini.",
+  "transferDetails": "Rincian transfer",
+  "filesSection": "File",
+  "receiveTitle": "Terima File",
+  "receiveSubtitle": "Tempel tautan transfer untuk mengunduh file.",
+  "pasteTooltip": "Tempel",
+  "findTransfer": "Temukan Transfer",
+  "receiveScanQr": "Pindai QR",
+  "receiveScanQrTitle": "Pindai transfer QR",
+  "receiveScanQrHint": "Sejajarkan kode QR di dalam bingkai.",
+  "receiveScanQrInvalid": "Kode QR ini bukan tautan transfer yang valid.",
+  "receiveScanQrCameraDenied": "Akses kamera diperlukan untuk memindai QR kode.",
+  "receiveStepGetLink": "Dapatkan tautannya",
+  "receiveStepGetLinkBody": "Minta pengirim untuk membagikan tautan transfer dengan Anda.",
+  "receiveStepPaste": "Tempel & temukan",
+  "receiveStepPasteBody": "Tempel tautan di atas dan ketuk \"Temukan Transfer\".",
+  "receiveStepDownload": "Unduh file",
+  "receiveStepDownloadBody": "Lihat detail file dan unduh semuanya di sekali.",
+  "lookingUpTransfer": "Mencari transfer…",
+  "transferNotFound": "Transfer tidak ditemukan. Periksa tautannya dan coba lagi.",
+  "transferExpired": "Transfer ini telah kedaluwarsa dan tidak tersedia lagi.",
+  "transferLoginRequired": "Harus masuk untuk mengakses transfer ini.",
+  "transferBadResponse": "Respon server tak terduga. Periksa koneksi Anda.",
+  "transferNetworkError": "Kesalahan jaringan. Periksa koneksi internet Anda.",
+  "transferLoadFailed": "Tidak dapat memuat transfer: <<PH0>>",
+  "passwordProtected": "Dilindungi kata sandi",
+  "enterPassword": "Masukkan kata sandi",
+  "unlock": "Buka kunci",
+  "downloading": "Mengunduh…",
+  "downloadAllFiles": "Unduh semua file",
+  "downloadSingleFile": "Unduh file",
+  "receiveAnother": "Terima transfer lagi",
+  "plansTitle": "Paket",
+  "plansSubtitle": "Tingkatkan versi untuk menghapus iklan dan mengirim file yang lebih besar.",
+  "storeUnavailable": "Toko tidak tersedia",
+  "storeUnavailableBody": "Pembelian dalam aplikasi tidak tersedia, kan sekarang.",
+  "storeLoadingPrices": "Memuat harga dari App Store…",
+  "storePricesUnavailable": "Harga tidak tersedia",
+  "storePricesPartial": "Beberapa harga tidak dapat dimuat",
+  "storePricesPartialBody": "<<PH0>> dari <<PH1>> produk langganan dimuat.",
+  "storeSetupHint": "Uji pada iPhone asli (bukan Simulator), gunakan ID Apple Sandbox, dan pastikan semua 6 langganan dibuat berdasarkan ini ID paket aplikasi di App Store Terhubung dengan harga yang ditetapkan.",
+  "effectiveMonthlyPrice": "<<PH0>>/bulan",
+  "freeVersionAds": "Saat ini Anda menggunakan versi gratis kami dengan iklan",
+  "restorePurchases": "Pulihkan pembelian",
+  "plansContinue": "Lanjutkan",
+  "planLinkRestore": "Pulihkan",
+  "termsAndConditions": "Syarat dan ketentuan",
+  "createAccountTitle": "Buat akun",
+  "signUpSubtitle": "Daftar dengan email dan kata sandi.",
+  "confirmPassword": "Konfirmasi kata sandi",
+  "passwordMin8": "Kata sandi (min 8 karakter)",
+  "alreadyHaveAccount": "Sudah punya akun?",
+  "checkEmailTitle": "Periksa\nemail",
+  "otpSentTo": "Kami mengirimkan kode 6 digit ke\n<<PH0>>",
+  "verifyAndSignIn": "Verifikasi & Masuk",
+  "didntReceiveCode": "Tidak menerimanya?",
+  "tryAgain": "Coba lagi",
+  "otpExpiresHint": "Kode kedaluwarsa dalam 5 menit. Periksa folder spam Anda jika Anda tidak melihatnya.",
+  "snackError": "Error",
+  "snackCopied": "Disalin",
+  "snackCopiedBody": "Tautan disalin ke clipboard",
+  "snackWelcome": "Selamat datang",
+  "snackAccountCreated": "Akun dibuat",
+  "snackEnterEmail": "Silakan masukkan email Anda",
+  "snackEnterPassword": "Silakan masukkan email Anda kata sandi",
+  "snackInvalidEmail": "Alamat email tidak valid",
+  "snackInvalidCredentials": "Email atau kata sandi salah",
+  "snackPasswordMin8": "Kata sandi minimal harus 8 karakter",
+  "snackPasswordMismatch": "Kata sandi tidak cocok.",
+  "snackAccountExists": "Akun sudah ada. Silakan masuk.",
+  "snackSignupFailed": "Tidak dapat membuat akun. Coba lagi.",
+  "snackEnterOtp": "Silakan masukkan kode 6 digit",
+  "snackOtpExpired": "Kode habis masa berlakunya",
+  "snackOtpExpiredBody": "Silakan minta kode baru.",
+  "snackInvalidCode": "Kode tidak valid",
+  "snackInvalidCodeBody": "Kode salah. Silakan coba lagi.",
+  "snackSendCodeFailed": "Tidak dapat mengirim kode. Periksa koneksi Anda dan coba lagi.",
+  "snackEmptyFolder": "Folder kosong",
+  "snackEmptyFolderBody": "Tidak ada file yang ditemukan di folder yang dipilih.",
+  "snackFolderUnsupported": "Tidak didukung",
+  "snackFolderUnsupportedBody": "Unggahan folder tidak tersedia di platform ini.",
+  "snackFolderReadError": "Tidak dapat membaca folder yang dipilih.",
+  "snackLimitReached": "Batas tercapai",
+  "snackLimitFilesBody": "Beberapa file tidak ditambahkan karena batas ukuran atau jumlah file.",
+  "snackFreePlanLimit": "Paket gratis memungkinkan hingga 5GB per transfer. Harap hapus beberapa file atau tingkatkan.",
+  "snackSignInEmail": "Silakan masuk untuk mengirim melalui email.",
+  "snackUploadStartFailed": "Tidak dapat memulai pengunggahan.",
+  "snackVerifyEnterCode": "Masukkan kode 4 digit dari email Anda.",
+  "snackVerifyInvalid": "Kode tidak valid atau kedaluwarsa. Periksa email dan coba lagi.",
+  "snackVerifyResendFailed": "Tidak dapat mengirim ulang kode. Coba lagi.",
+  "snackDownloadComplete": "Unduhan selesai",
+  "snackDownloadSaved": "\"<<PH0>>\" disimpan ke Unduhan",
+  "snackDownloadFailed": "Pengunduhan gagal",
+  "snackSaved": "Tersimpan",
+  "snackServerUrlUpdated": "URL server diperbarui. Mulai ulang aplikasi untuk menerapkan.",
+  "snackStoreError": "Kesalahan penyimpanan",
+  "snackMissingProducts": "Produk hilang",
+  "snackStoreUnavailable": "Toko tidak tersedia",
+  "snackStoreUnavailableBody": "Pembelian dalam aplikasi tidak tersedia di perangkat ini.",
+  "snackProductNotLoaded": "Produk belum dimuat.",
+  "snackRestoreStarted": "Pemulihan dimulai",
+  "snackRestoreStartedBody": "Kami sedang memeriksa pembelian.",
+  "snackRestoreFailed": "Pemulihan gagal",
+  "snackProcessing": "Pemrosesan",
+  "snackPleaseWait": "Harap tunggu…",
+  "snackSuccess": "Sukses",
+  "snackPurchaseCompleted": "Pembelian selesai.",
+  "snackPurchaseError": "Kesalahan pembelian",
+  "snackPurchaseFailed": "Pembelian gagal.",
+  "snackCanceled": "Dibatalkan",
+  "snackPurchaseCanceled": "Pembelian dibatalkan.",
+  "snackUpload": "Unggah",
+  "snackVerify": "Verifikasi",
+  "doNotExpire": "Jangan kadaluwarsa",
+  "hourSingular": "jam",
+  "hourPlural": "jam",
+  "daySingular": "hari",
+  "dayPlural": "hari",
+  "emailAddressLabel": "ALAMAT EMAIL",
+  "passwordLabelCaps": "PASSWORD",
+  "confirmPasswordLabelCaps": "KONFIRMASI PASSWORD",
+  "transferLinkOrId": "LINK TRANSFER ATAU ID",
+  "howToReceive": "CARA MENERIMA",
+  "planAdsTitle": "Paket Iklan",
+  "planAdsBullet1": "Akses ke aplikasi gratis iklan",
+  "planAdsBullet2": "Hapus semua iklan",
+  "planProTitle": "Paket Pro",
+  "planProBullet1": "Kirim file hingga 20GB",
+  "planProBullet2": "Unggah Cepat",
+  "planPremiumTitle": "Paket Premium",
+  "planPremiumBullet1": "Kirim file hingga 100GB",
+  "planPremiumBullet2": "Unggah super cepat",
+  "planSubscriptionDisclaimer": "Tidak ada masa uji coba — diperlukan langganan untuk menggunakan fungsionalitas aplikasi tambahan. Anda akan segera ditagih. Anda dapat membatalkan kapan saja.",
+  "perMonth": "/ bulan",
+  "perYear": "/ tahun",
+  "snackConnectionProblem": "Masalah koneksi. Silakan coba lagi.",
+  "networkTitle": "Jaringan",
+  "transferIdLabel": "ID: <<PH0>>",
+  "downloadMetaSummary": "File: <<PH0>> · <<PH1>> bytes",
+  "todayAt": "Hari ini · <<PH0>>",
+  "yesterdayAt": "Kemarin · <<PH0>>",
+  "daysAgoAt": "<<PH0>>d lalu · <<PH1>>",
+  "dateAt": "<<PH0>> · <<PH1>>",
+  "mbAmount": "<<PH0>> MB",
+  "uploadProgressSummary": "<<PH0>> / <<PH1>> • <<PH2>> kiri",
+  "loadingShort": "Memuat…",
+  "colorPaletteTitle": "Warna Palet",
+  "colorPaletteSectionBackgrounds": "Latar Belakang (skala tinta)",
+  "colorPaletteSectionAccent": "Aksen / Utama",
+  "colorPaletteSectionText": "Teks",
+  "colorPaletteSectionBorders": "Perbatasan & Kaca",
+  "colorPaletteSectionSemantic": "Semantik",
+  "colorPaletteSectionLive": "Tema Langsung (saat ini)",
+  "colorPaletteActiveHint": "★ = aktif digunakan di layar",
+  "colorPaletteCopyHint": "Tekan lama contoh apa pun untuk menyalin nilai hexnya.",
+  "settingsAppBrand": "Bagikan Besar\nFile Video",
+  "loginEmailPasswordPrompt": "Masukkan email dan kata sandi Anda untuk masuk.",
+  "forgotPassword": "Lupa kata sandi?",
+  "forgotPasswordTitle": "Reset kata sandi",
+  "forgotPasswordBody": "Masukkan email akun Anda dan kami akan mengirimkan kode reset.",
+  "forgotPasswordSubmit": "Kirim kode reset",
+  "resetPasswordTitle": "Buat baru kata sandi",
+  "resetPasswordBody": "Masukkan kode 6 digit dari email Anda dan pilih kata sandi baru.",
+  "resetPasswordSubmit": "Perbarui kata sandi",
+  "snackPasswordResetSent": "Kode reset terkirim",
+  "snackPasswordResetSentBody": "Periksa email Anda untuk kode reset 6 digit.",
+  "snackPasswordResetFailed": "Tidak dapat mengirim kode reset. Coba lagi.",
+  "snackPasswordUpdated": "Kata sandi diperbarui",
+  "snackPasswordUpdatedBody": "Masuk dengan kata sandi baru Anda.",
+  "snackPasswordResetInvalid": "Kode reset tidak valid atau kedaluwarsa.",
+  "otpDigitLabel": "KODE 6 DIGIT",
+  "receiveMoreFiles": "+<<PH0>> file lainnya"
+}

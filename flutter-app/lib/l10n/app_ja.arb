@@ -1,0 +1,466 @@
+{
+  "@@locale": "ja",
+  "@verifyEmailCheckSpamHint": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@upToTotal": {
+    "placeholders": {
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "@filesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesCount": "{count, plural, =1{1 file} other{{count} files}}",
+  "@mbLeft": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@transferLoadFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@storePricesPartialBody": {
+    "placeholders": {
+      "loaded": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "priceUnavailable": "—",
+  "@effectiveMonthlyPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "@otpSentTo": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@snackDownloadSaved": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "emailExampleHint": "you@example.com",
+  "otpSixDigitHint": "000000",
+  "verifyFourDigitHint": "0000",
+  "transferLinkHint": "https://… or paste ID",
+  "@filesReady": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesReady": "{count, plural, =1{1 file ready} other{{count} files ready}}",
+  "@transferIdLabel": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadMetaSummary": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "@todayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@yesterdayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@daysAgoAt": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@dateAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@mbAmount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@uploadProgressSummary": {
+    "placeholders": {
+      "sent": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      },
+      "remaining": {
+        "type": "String"
+      }
+    }
+  },
+  "@historyFilesSize": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "historyFilesSize": "{count, plural, =1{1 file} other{{count} files}} · {size}",
+  "@receiveMoreFiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appTitle": "大きなビデオ ファイルを共有",
+  "heroAccent": "すぐに共有します。",
+  "heroTitle": "大量に送信しますファイル",
+  "splashLoading": "読み込み中…",
+  "navSend": "ダッシュボード",
+  "navHome": "ホーム",
+  "navHistory": "履歴",
+  "navReceive": "受信",
+  "navPlans": "計画",
+  "navDownload": "ダウンロード",
+  "navSettings": "設定",
+  "modeLink": "取得リンク",
+  "modeEmail": "電子メールで送信",
+  "pickFiles": "ファイルを選択",
+  "pickFolder": "フォルダーを選択",
+  "emailFrom": "あなたの電子メール",
+  "mailFromUsesAccount": "サインインした電子メールを使用します。",
+  "recipientEmailsHelper": "複数の受信者: カンマ、セミコロン、またはで区切ります。スペース。",
+  "emailTo": "受信者の電子メール",
+  "messageOptional": "メッセージ (オプション)",
+  "passwordOptional": "パスワード (オプション)",
+  "destructAfterDownload": "ダウンロード後に削除",
+  "destructNo": "保持利用可能",
+  "sendButton": "送信",
+  "uploading": "アップロード中…",
+  "uploadComplete": "完了",
+  "shareLinkTitle": "あなたのリンク",
+  "copyLink": "リンクをコピー",
+  "share": "共有",
+  "shareQrCode": "QRコードを共有",
+  "uploadMore": "送信別の",
+  "emailSentTitle": "送信されたメール",
+  "verifyEmailTitle": "メールを確認してください",
+  "verifyCodeHint": "メールからコードを入力してください",
+  "verifySubmit": "確認",
+  "verifyResendCode": "コードを再送信",
+  "verifyCodeSent": "新しい確認コードがメールに送信されました。",
+  "verifyEmailSmtpWarningTitle": "確認メールが送信されていない可能性があります。送信済み",
+  "verifyEmailSmtpWarningBody": "サーバーは配信を確認できませんでした (多くの場合、SMTP の構成が間違っています)。サイト管理者に管理パネルのメール設定を確認するよう依頼し、[コードを再送信] をタップします。",
+  "verifyEmailCheckSpamHint": "コードが届かない場合: ジャンク/スパムとプロモーションを確認し、少し待ってから、<<PH1> にタイプミスがないことを確認して、[再送信] をタップします。",
+  "loginTitle": "サインイン",
+  "signupHint": "サイト アカウントの電子メールを使用し、パスワード。",
+  "emailHint": "メール",
+  "passwordHint": "パスワード",
+  "cancel": "キャンセル",
+  "signIn": "サインイン",
+  "downloadIdHint": "転送ID",
+  "privateIdHint": "プライベートID（オプション）",
+  "fetchTransfer": "転送を開く",
+  "downloadFile": "ダウンロード",
+  "unlockDownload": "ダウンロードのロックを解除",
+  "downloadSaved": "ダウンロードに保存しました",
+  "errorGeneric": "問題が発生しました",
+  "errorNetwork": "ネットワークエラー",
+  "errorBadResponse": "予期しないサーバー応答",
+  "termsAccept": "規約に同意します",
+  "settingsApiUrl": "公開サイトURL",
+  "settingsAccount": "アカウント",
+  "settingsAppearance": "外観",
+  "settingsTheme": "テーマ",
+  "themeSystem": "システム",
+  "themeLight": "ライト",
+  "themeDark": "ダーク",
+  "settingsSignedIn": "サインインしています。",
+  "settingsSignedOut": "サインインしていません",
+  "settingsOpenWebsite": "開くウェブサイト",
+  "signUp": "サインアップ",
+  "settingsLinks": "リンク",
+  "privacyPolicy": "プライバシーポリシー",
+  "termsOfService": "利用規約",
+  "about": "概要",
+  "moreApps": "もっと見るアプリ",
+  "settingsLanguage": "言語",
+  "languageEnglish": "英語",
+  "languageHindi": "ヒンディー語",
+  "logout": "ログアウト",
+  "deleteAccount": "アカウントを削除",
+  "deleteAccountConfirmTitle": "アカウントを削除しますか?",
+  "deleteAccountConfirmBody": "これにより、アカウントが完全に削除され、サインアウトされます。転送リンクは引き続き機能しますが、履歴には表示されなくなります。",
+  "deleteAccountSuccess": "アカウントが削除されました",
+  "deleteAccountSuccessBody": "アカウントが削除されました。",
+  "deleteAccountFailed": "アカウントを削除できませんでした",
+  "deleteAccountFailedBody": "もう一度試すか、サポートにお問い合わせください。",
+  "maxFilesReached": "ファイルが多すぎます",
+  "fileTooLarge": "ファイルも大",
+  "ipLimit": "このネットワークからのアップロードが多すぎます",
+  "fillFields": "必須フィールドに入力してください",
+  "invalidEmail": "無効なメール",
+  "maxRecipientsReached": "受信者が多すぎます",
+  "loginRequiredTitle": "サインインが必要です",
+  "loginRequiredBody": "このサーバーにはアップロードまたはダウンロードするアカウントが必要です",
+  "settingsSubtitle": "アプリの設定とアカウント。",
+  "dropHeavyFile": "重いファイルをここにドロップしてください。",
+  "upToTotal": "合計<<PH0>>まで",
+  "removeAll": "すべて削除",
+  "addFiles": "ファイルを追加",
+  "adding": "追加中…",
+  "options": "オプション",
+  "selfDestruct": "その後自己破壊ダウンロード",
+  "expiry": "期限切れ",
+  "cancelUpload": "アップロードをキャンセル",
+  "transferReady": "転送準備完了!",
+  "emailSentReady": "メール送信済み!",
+  "shareRecipientHint": "このリンクを受信者と共有します。",
+  "emailSentBody": "受信者に通知しました。",
+  "scanQr": "スキャンして転送リンクを開きます。",
+  "shareLinkButton": "共有リンク",
+  "verifyFourDigit": "送信者メールに送信された 4 桁のコードを入力してください。",
+  "starting": "開始…",
+  "mbLeft": "<<PH0>> 残り MB",
+  "fillField": "このフィールドに入力してください。",
+  "enterValidEmail": "有効な値を入力してくださいメール。",
+  "message": "メッセージ",
+  "recipientEmail": "受信者の電子メール",
+  "active": "アクティブ",
+  "expired": "期限切れ",
+  "historyTitle": "私の送金",
+  "signInToSeeTransfers": "サインインして送金を確認します",
+  "signInTransfersBody": "メールを使用して送金をアカウントにリンクします。パスワードは必要ありません。",
+  "couldNotLoadTransfers": "ロードできませんでした転送",
+  "retry": "再試行",
+  "noTransfersYet": "まだ転送はありません",
+  "noTransfersBody": "ファイルを送信すると、ここに表示されます。",
+  "transferDetails": "転送の詳細",
+  "filesSection": "ファイル",
+  "receiveTitle": "ファイルを受信",
+  "receiveSubtitle": "ダウンロードする転送リンクを貼り付けてくださいファイル。",
+  "pasteTooltip": "貼り付け",
+  "findTransfer": "転送を検索",
+  "receiveScanQr": "QRをスキャン",
+  "receiveScanQrTitle": "転送QRをスキャン",
+  "receiveScanQrHint": "QRコードをフレーム内に配置します。",
+  "receiveScanQrInvalid": "このQRコードは有効な転送リンクではありません。",
+  "receiveScanQrCameraDenied": "カメラアクセスはQR コードをスキャンするために必要です。",
+  "receiveStepGetLink": "リンクを取得します",
+  "receiveStepGetLinkBody": "送信者に転送リンクを共有するよう依頼します。",
+  "receiveStepPaste": "貼り付けて検索",
+  "receiveStepPasteBody": "上のリンクを貼り付け、「転送を検索」をタップします。",
+  "receiveStepDownload": "ファイルをダウンロード",
+  "receiveStepDownloadBody": "ファイルの詳細を確認し、すべてをダウンロードします。 ",
+  "lookingUpTransfer": "転送を検索中…",
+  "transferNotFound": "転送が見つかりません。リンクを確認して、もう一度お試しください。",
+  "transferExpired": "この転送は有効期限が切れたため、利用できません。",
+  "transferLoginRequired": "この転送にアクセスするにはサインインが必要です。",
+  "transferBadResponse": "予期しないサーバーの応答。接続を確認してください。",
+  "transferNetworkError": "ネットワーク エラー。インターネット接続を確認してください。",
+  "transferLoadFailed": "転送を読み込めませんでした: <<PH0>>",
+  "passwordProtected": "パスワードで保護されています",
+  "enterPassword": "パスワードを入力してください",
+  "unlock": "ロックを解除",
+  "downloading": "ダウンロード中…",
+  "downloadAllFiles": "すべてのファイルをダウンロード",
+  "downloadSingleFile": "ファイルをダウンロード",
+  "receiveAnother": "別の転送を受け取る",
+  "plansTitle": "計画",
+  "plansSubtitle": "アップグレードして広告を削除し、より大きなファイルを送信します。",
+  "storeUnavailable": "ストアは利用できません",
+  "storeUnavailableBody": "現在、アプリ内購入はご利用いただけません。",
+  "storeLoadingPrices": "アプリから価格を読み込んでいますストア…",
+  "storePricesUnavailable": "価格を利用できません",
+  "storePricesPartial": "一部の価格を読み込めませんでした",
+  "storePricesPartialBody": "<<PH0>>/<<PH1>> サブスクリプション製品が読み込まれました。",
+  "storeSetupHint": "実際の iPhone (シミュレータではなく) でテストし、サンドボックス Apple ID を使用し、6 つのサブスクリプションすべてが App Store Connect のこのアプリのバンドル ID で価格設定とともに作成されていることを確認してくださいset.",
+  "effectiveMonthlyPrice": "<<PH0>>/月",
+  "freeVersionAds": "現在、広告付きの無料版をご利用中",
+  "restorePurchases": "購入内容を復元",
+  "plansContinue": "続行",
+  "planLinkRestore": "復元",
+  "termsAndConditions": "利用規約",
+  "createAccountTitle": "作成アカウント",
+  "signUpSubtitle": "電子メールとパスワードを使用してサインアップします。",
+  "confirmPassword": "パスワードを確認してください",
+  "passwordMin8": "パスワード (8 文字以上)",
+  "alreadyHaveAccount": "すでにアカウントをお持ちですか?",
+  "checkEmailTitle": "アカウントを確認してください\nemail",
+  "otpSentTo": "6桁のコードを送信しました\n<<PH0>>",
+  "verifyAndSignIn": "確認してサインイン",
+  "didntReceiveCode": "受け取れませんでしたか?",
+  "tryAgain": "もう一度お試しください",
+  "otpExpiresHint": "コードの有効期限は 5 分です。スパム フォルダーが表示されない場合は、スパム フォルダーを確認してください。",
+  "snackError": "エラー",
+  "snackCopied": "コピーしました",
+  "snackCopiedBody": "リンクをクリップボードにコピーしました",
+  "snackWelcome": "ようこそ",
+  "snackAccountCreated": "アカウントが作成されました",
+  "snackEnterEmail": "メールアドレスを入力してください",
+  "snackEnterPassword": "あなたのメールアドレスを入力してくださいパスワード",
+  "snackInvalidEmail": "電子メールアドレスが無効です",
+  "snackInvalidCredentials": "電子メールまたはパスワードが間違っています",
+  "snackPasswordMin8": "パスワードは8文字以上である必要があります",
+  "snackPasswordMismatch": "パスワードが一致しません。",
+  "snackAccountExists": "アカウントはすでに存在します。サインインしてください。",
+  "snackSignupFailed": "アカウントを作成できませんでした。もう一度お試しください。",
+  "snackEnterOtp": "6桁のコードを入力してください",
+  "snackOtpExpired": "コードの有効期限が切れています",
+  "snackOtpExpiredBody": "新しいコードをリクエストしてください。",
+  "snackInvalidCode": "コードが無効です",
+  "snackInvalidCodeBody": "コードが間違っています。もう一度お試しください。",
+  "snackSendCodeFailed": "コードを送信できませんでした。接続を確認して、もう一度お試しください。",
+  "snackEmptyFolder": "空のフォルダー",
+  "snackEmptyFolderBody": "選択したフォルダーにファイルが見つかりません。",
+  "snackFolderUnsupported": "サポートされていません",
+  "snackFolderUnsupportedBody": "このプラットフォームではフォルダーのアップロードは利用できません。",
+  "snackFolderReadError": "選択したフォルダーを読み取れませんでした。",
+  "snackLimitReached": "制限に達しました",
+  "snackLimitFilesBody": "サイズまたはファイル数の制限のため、一部のファイルは追加されませんでした。",
+  "snackFreePlanLimit": "無料プランでは最大数まで許可されます転送ごとに最大 5GB。一部のファイルを削除するか、アップグレードしてください。",
+  "snackSignInEmail": "メールで送信するにはサインインしてください。",
+  "snackUploadStartFailed": "アップロードを開始できませんでした。",
+  "snackVerifyEnterCode": "メールの 4 桁のコードを入力してください。",
+  "snackVerifyInvalid": "コードが無効または期限切れです。メールを確認して、もう一度お試しください。",
+  "snackVerifyResendFailed": "コードを再送信できませんでした。もう一度お試しください。",
+  "snackDownloadComplete": "ダウンロードが完了しました",
+  "snackDownloadSaved": "「<<PH0>>」がダウンロードに保存されました",
+  "snackDownloadFailed": "ダウンロードに失敗しました",
+  "snackSaved": "保存されました",
+  "snackServerUrlUpdated": "サーバーURLが更新されました。適用するにはアプリを再起動してください。",
+  "snackStoreError": "ストアエラー",
+  "snackMissingProducts": "商品がありません",
+  "snackStoreUnavailable": "ストアは利用できません",
+  "snackStoreUnavailableBody": "このデバイスではアプリ内購入をご利用いただけません。",
+  "snackProductNotLoaded": "商品がまだ読み込まれていません。",
+  "snackRestoreStarted": "復元を開始しました",
+  "snackRestoreStartedBody": "購入内容を確認中です。",
+  "snackRestoreFailed": "復元失敗",
+  "snackProcessing": "処理中",
+  "snackPleaseWait": "お待ちください…",
+  "snackSuccess": "成功",
+  "snackPurchaseCompleted": "購入完了",
+  "snackPurchaseError": "購入エラー",
+  "snackPurchaseFailed": "購入失敗しました。",
+  "snackCanceled": "キャンセルされました",
+  "snackPurchaseCanceled": "購入がキャンセルされました。",
+  "snackUpload": "アップロード",
+  "snackVerify": "確認",
+  "doNotExpire": "しないでください有効期限",
+  "hourSingular": "時間",
+  "hourPlural": "時間",
+  "daySingular": "日",
+  "dayPlural": "日",
+  "emailAddressLabel": "メールアドレス",
+  "passwordLabelCaps": "パスワード",
+  "confirmPasswordLabelCaps": "パスワード確認",
+  "transferLinkOrId": "転送リンクまたはID",
+  "howToReceive": "受け取り方法",
+  "planAdsTitle": "広告プラン",
+  "planAdsBullet1": "広告無料アプリへのアクセス",
+  "planAdsBullet2": "すべての広告を削除",
+  "planProTitle": "プロプラン",
+  "planProBullet1": "最大20GBのファイルを送信",
+  "planProBullet2": "高速アップロード",
+  "planPremiumTitle": "プレミアムプラン",
+  "planPremiumBullet1": "最大100GBのファイルを送信",
+  "planPremiumBullet2": "超高速アップロード",
+  "planSubscriptionDisclaimer": "試用期間なし — アプリの追加機能を使用するにはサブスクリプションが必要です。すぐに料金が請求されます。いつでもキャンセルできます。",
+  "perMonth": "/月",
+  "perYear": "/年",
+  "snackConnectionProblem": "接続の問題。もう一度お試しください。",
+  "networkTitle": "ネットワーク",
+  "transferIdLabel": "ID: <<PH0>>",
+  "downloadMetaSummary": "ファイル: <<PH0>> · <<PH1>> バイト",
+  "todayAt": "今日 · <<PH0>>",
+  "yesterdayAt": "昨日 · <<PH0>>",
+  "daysAgoAt": "<<PH0>>日前 · 《PH3》",
+  "dateAt": "《PH2》・《PH3》",
+  "mbAmount": "《PH1》 MB",
+  "uploadProgressSummary": "《PH3》 / 《PH4》・《PH5》 左",
+  "loadingShort": "読み込み中…",
+  "colorPaletteTitle": "カラーパレット",
+  "colorPaletteSectionBackgrounds": "背景（インクスケール）",
+  "colorPaletteSectionAccent": "アクセント /プライマリ",
+  "colorPaletteSectionText": "テキスト",
+  "colorPaletteSectionBorders": "ボーダーとガラス",
+  "colorPaletteSectionSemantic": "セマンティック",
+  "colorPaletteSectionLive": "ライブテーマ（現在）",
+  "colorPaletteActiveHint": "★ = 画面で積極的に使用されています",
+  "colorPaletteCopyHint": "任意のスウォッチを長押しして、その 16 進値をコピーします。",
+  "settingsAppBrand": "共有大\nビデオ ファイル",
+  "loginEmailPasswordPrompt": "メール アドレスとパスワードを入力してサインインします。",
+  "forgotPassword": "パスワードをお忘れですか?",
+  "forgotPasswordTitle": "パスワードをリセット",
+  "forgotPasswordBody": "アカウントのメール アドレスを入力すると、リセット コードが送信されます。",
+  "forgotPasswordSubmit": "リセット コードを送信します",
+  "resetPasswordTitle": "新規作成パスワード",
+  "resetPasswordBody": "メールから6桁のコードを入力し、新しいパスワードを選択してください。",
+  "resetPasswordSubmit": "パスワードを更新",
+  "snackPasswordResetSent": "リセットコードを送信しました",
+  "snackPasswordResetSentBody": "6桁のリセットコードについてメールを確認してください。",
+  "snackPasswordResetFailed": "リセットコードを送信できませんでした。もう一度お試しください。",
+  "snackPasswordUpdated": "パスワードが更新されました",
+  "snackPasswordUpdatedBody": "新しいパスワードでサインインしてください。",
+  "snackPasswordResetInvalid": "リセットコードが無効または期限切れです。",
+  "otpDigitLabel": "6桁のコード",
+  "receiveMoreFiles": "+<<PH0>> その他のファイル"
+}

@@ -1,0 +1,466 @@
+{
+  "@@locale": "ro",
+  "@verifyEmailCheckSpamHint": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@upToTotal": {
+    "placeholders": {
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "@filesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesCount": "{count, plural, =1{1 file} other{{count} files}}",
+  "@mbLeft": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@transferLoadFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@storePricesPartialBody": {
+    "placeholders": {
+      "loaded": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "priceUnavailable": "—",
+  "@effectiveMonthlyPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "@otpSentTo": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@snackDownloadSaved": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "emailExampleHint": "you@example.com",
+  "otpSixDigitHint": "000000",
+  "verifyFourDigitHint": "0000",
+  "transferLinkHint": "https://… or paste ID",
+  "@filesReady": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesReady": "{count, plural, =1{1 file ready} other{{count} files ready}}",
+  "@transferIdLabel": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadMetaSummary": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "@todayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@yesterdayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@daysAgoAt": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@dateAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@mbAmount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@uploadProgressSummary": {
+    "placeholders": {
+      "sent": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      },
+      "remaining": {
+        "type": "String"
+      }
+    }
+  },
+  "@historyFilesSize": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "historyFilesSize": "{count, plural, =1{1 file} other{{count} files}} · {size}",
+  "@receiveMoreFiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appTitle": "Partajați fișiere video mari",
+  "heroAccent": "imediat.",
+  "heroTitle": "Trimite fișiere grele",
+  "splashLoading": "Încărcare…",
+  "navSend": "Bord",
+  "navHome": "Acasă",
+  "navHistory": "Istorie",
+  "navReceive": "Primi",
+  "navPlans": "Planuri",
+  "navDownload": "Descărcați",
+  "navSettings": "Setări",
+  "modeLink": "Obțineți un link",
+  "modeEmail": "Trimite prin email",
+  "pickFiles": "Alegeți fișierele",
+  "pickFolder": "Alegeți folderul",
+  "emailFrom": "E-mailul dvs",
+  "mailFromUsesAccount": "Utilizează e-mailul de conectare.",
+  "recipientEmailsHelper": "Destinatari multipli: separați prin virgule, punct și virgulă sau spații.",
+  "emailTo": "E-mailul destinatarului",
+  "messageOptional": "Mesaj (opțional)",
+  "passwordOptional": "Parolă (opțional)",
+  "destructAfterDownload": "Ștergeți după descărcare",
+  "destructNo": "Păstrați la dispoziție",
+  "sendButton": "Trimite",
+  "uploading": "Se încarcă...",
+  "uploadComplete": "Făcut",
+  "shareLinkTitle": "Link-ul dvs",
+  "copyLink": "Copiați linkul",
+  "share": "Distribuie",
+  "shareQrCode": "Partajați codul QR",
+  "uploadMore": "Trimite altul",
+  "emailSentTitle": "E-mailuri trimise",
+  "verifyEmailTitle": "Verificați-vă adresa de e-mail",
+  "verifyCodeHint": "Introdu codul de pe adresa ta de e-mail",
+  "verifySubmit": "Verifica",
+  "verifyResendCode": "Retrimiteți codul",
+  "verifyCodeSent": "Un nou cod de verificare a fost trimis la adresa dvs. de e-mail.",
+  "verifyEmailSmtpWarningTitle": "Este posibil ca e-mailul de verificare să nu fi fost trimis",
+  "verifyEmailSmtpWarningBody": "Serverul nu a putut confirma livrarea (de multe ori SMTP este configurat greșit). Solicitați administratorului site-ului să verifice setările de e-mail în panoul de administrare, apoi atingeți Retrimiteți codul.",
+  "verifyEmailCheckSpamHint": "Dacă nu ajunge: verificați Junk/Spam și Promoții, așteptați un minut, confirmați că <<PH0>> nu are greșeli de scriere, apoi atingeți Retrimiteți.",
+  "loginTitle": "Conectare",
+  "signupHint": "Utilizați adresa de e-mail și parola contului dvs. de site.",
+  "emailHint": "E-mail",
+  "passwordHint": "Parolă",
+  "cancel": "Anula",
+  "signIn": "Conectare",
+  "downloadIdHint": "Transfer ID",
+  "privateIdHint": "ID privat (opțional)",
+  "fetchTransfer": "Transfer deschis",
+  "downloadFile": "Descărcați",
+  "unlockDownload": "Deblocați descărcarea",
+  "downloadSaved": "Salvat în Descărcări",
+  "errorGeneric": "Ceva a mers prost",
+  "errorNetwork": "Eroare de rețea",
+  "errorBadResponse": "Răspuns neașteptat al serverului",
+  "termsAccept": "Sunt de acord cu termenii",
+  "settingsApiUrl": "Adresa URL a site-ului public",
+  "settingsAccount": "Cont",
+  "settingsAppearance": "Aspect",
+  "settingsTheme": "Temă",
+  "themeSystem": "Sistem",
+  "themeLight": "Aprinde",
+  "themeDark": "Întuneric",
+  "settingsSignedIn": "Sunteți conectat.",
+  "settingsSignedOut": "Nu sunteți conectat.",
+  "settingsOpenWebsite": "Deschide site-ul web",
+  "signUp": "Înscrie-te",
+  "settingsLinks": "Legături",
+  "privacyPolicy": "Politica de confidențialitate",
+  "termsOfService": "Termeni și condiții",
+  "about": "Despre",
+  "moreApps": "Mai multe aplicații",
+  "settingsLanguage": "Limbă",
+  "languageEnglish": "engleză",
+  "languageHindi": "hindi",
+  "logout": "Deconectați-vă",
+  "deleteAccount": "Ștergeți contul",
+  "deleteAccountConfirmTitle": "Ștergeți contul?",
+  "deleteAccountConfirmBody": "Acest lucru vă șterge definitiv contul și vă deconectați. Linkurile dvs. de transfer vor continua să funcționeze, dar nu vor mai apărea în istoricul dvs.",
+  "deleteAccountSuccess": "Contul a fost șters",
+  "deleteAccountSuccessBody": "Contul dvs. a fost eliminat.",
+  "deleteAccountFailed": "Nu s-a putut șterge contul",
+  "deleteAccountFailedBody": "Vă rugăm să încercați din nou sau să contactați asistența.",
+  "maxFilesReached": "Prea multe fișiere",
+  "fileTooLarge": "Fișier prea mare",
+  "ipLimit": "Prea multe încărcări din această rețea",
+  "fillFields": "Vă rugăm să completați câmpurile obligatorii",
+  "invalidEmail": "E-mail nevalid",
+  "maxRecipientsReached": "Prea mulți destinatari",
+  "loginRequiredTitle": "Este necesară conectarea",
+  "loginRequiredBody": "Acest server necesită un cont pentru a încărca sau descărca.",
+  "settingsSubtitle": "Preferințele aplicației și contul.",
+  "dropHeavyFile": "Aruncă un fișier greu aici.",
+  "upToTotal": "Până la <<PH0>> total",
+  "removeAll": "Eliminați toate",
+  "addFiles": "Adăugați fișiere",
+  "adding": "Se adaugă…",
+  "options": "Opțiuni",
+  "selfDestruct": "Autodistrugerea după descărcare",
+  "expiry": "Expirare",
+  "cancelUpload": "Anulează încărcarea",
+  "transferReady": "Transfer gata!",
+  "emailSentReady": "Email trimis!",
+  "shareRecipientHint": "Distribuiți acest link cu destinatarul dvs.",
+  "emailSentBody": "Am notificat destinatarii dvs.",
+  "scanQr": "Scanați pentru a deschide legătura de transfer.",
+  "shareLinkButton": "SHARE LINK",
+  "verifyFourDigit": "Introdu codul din 4 cifre trimis la adresa de e-mail a expeditorului.",
+  "starting": "Pornire…",
+  "mbLeft": "<<PH0>> MB rămas",
+  "fillField": "Vă rugăm să completați acest câmp.",
+  "enterValidEmail": "Introduceți un e-mail valid.",
+  "message": "Mesaj",
+  "recipientEmail": "E-mailul destinatarului",
+  "active": "Activ",
+  "expired": "Expirat",
+  "historyTitle": "Transferurile mele",
+  "signInToSeeTransfers": "Conectați-vă pentru a vedea transferurile dvs",
+  "signInTransfersBody": "Utilizăm e-mailul dvs. pentru a conecta transferurile la contul dvs. - nu este nevoie de parolă.",
+  "couldNotLoadTransfers": "Transferurile nu au putut fi încărcate",
+  "retry": "Reîncercați",
+  "noTransfersYet": "Încă nu există transferuri",
+  "noTransfersBody": "Odată ce trimiteți un fișier, acesta va apărea aici.",
+  "transferDetails": "Detalii transfer",
+  "filesSection": "Fișiere",
+  "receiveTitle": "Primiți fișiere",
+  "receiveSubtitle": "Lipiți un link de transfer pentru a descărca fișiere.",
+  "pasteTooltip": "Pastă",
+  "findTransfer": "Găsiți Transfer",
+  "receiveScanQr": "Scanați QR",
+  "receiveScanQrTitle": "Scanare transfer QR",
+  "receiveScanQrHint": "Aliniați codul QR în interiorul cadrului.",
+  "receiveScanQrInvalid": "Acest cod QR nu este o legătură de transfer validă.",
+  "receiveScanQrCameraDenied": "Accesul la cameră este necesar pentru a scana codurile QR.",
+  "receiveStepGetLink": "Obțineți linkul",
+  "receiveStepGetLinkBody": "Cereți expeditorului să vă distribuie linkul de transfer.",
+  "receiveStepPaste": "Lipiți și găsiți",
+  "receiveStepPasteBody": "Lipiți linkul de mai sus și atingeți „Găsiți transfer”.",
+  "receiveStepDownload": "Descărcați fișiere",
+  "receiveStepDownloadBody": "Vedeți detaliile fișierului și descărcați totul deodată.",
+  "lookingUpTransfer": "Se caută transferul...",
+  "transferNotFound": "Transferul nu a fost găsit. Verificați linkul și încercați din nou.",
+  "transferExpired": "Acest transfer a expirat și nu mai este disponibil.",
+  "transferLoginRequired": "Este necesară conectarea pentru a accesa acest transfer.",
+  "transferBadResponse": "Răspuns neașteptat al serverului. Verificați-vă conexiunea.",
+  "transferNetworkError": "Eroare de rețea. Verificați-vă conexiunea la internet.",
+  "transferLoadFailed": "Transferul nu a putut fi încărcat: <<PH0>>",
+  "passwordProtected": "Protejat prin parolă",
+  "enterPassword": "Introduceți parola",
+  "unlock": "Deblocați",
+  "downloading": "Se descarcă...",
+  "downloadAllFiles": "Descărcați toate fișierele",
+  "downloadSingleFile": "Descărcați fișierul",
+  "receiveAnother": "Primiți un alt transfer",
+  "plansTitle": "Planuri",
+  "plansSubtitle": "Faceți upgrade pentru a elimina reclamele și a trimite fișiere mai mari.",
+  "storeUnavailable": "Magazin indisponibil",
+  "storeUnavailableBody": "Achizițiile în aplicație nu sunt disponibile momentan.",
+  "storeLoadingPrices": "Se încarcă prețurile din App Store...",
+  "storePricesUnavailable": "Preturi indisponibile",
+  "storePricesPartial": "Unele prețuri nu au putut fi încărcate",
+  "storePricesPartialBody": "<<PH0>> din produsele cu abonament <<PH1>> încărcate.",
+  "storeSetupHint": "Testați pe un iPhone real (nu Simulator), utilizați un ID Apple Sandbox și asigurați-vă că toate cele 6 abonamente sunt create sub ID-ul pachetului acestei aplicații în App Store Connect cu prețuri setate.",
+  "effectiveMonthlyPrice": "<<PH0>>/lună",
+  "freeVersionAds": "În prezent, utilizați versiunea noastră gratuită cu reclame",
+  "restorePurchases": "Restabiliți achizițiile",
+  "plansContinue": "Continua",
+  "planLinkRestore": "Restabili",
+  "termsAndConditions": "Termeni și condiții",
+  "createAccountTitle": "Creează cont",
+  "signUpSubtitle": "Înscrieți-vă cu e-mail și parolă.",
+  "confirmPassword": "Confirmați parola",
+  "passwordMin8": "Parola (min 8 caractere)",
+  "alreadyHaveAccount": "Aveți deja un cont?",
+  "checkEmailTitle": "Verificați-vă\ne-mail",
+  "otpSentTo": "Am trimis un cod din 6 cifre către\n<<PH0>>",
+  "verifyAndSignIn": "Verificați și conectați-vă",
+  "didntReceiveCode": "Nu l-ai primit?",
+  "tryAgain": "Încearcă din nou",
+  "otpExpiresHint": "Codul expiră în 5 minute. Verificați folderul de spam dacă nu îl vedeți.",
+  "snackError": "Eroare",
+  "snackCopied": "Copiat",
+  "snackCopiedBody": "Link copiat în clipboard",
+  "snackWelcome": "Bun venit",
+  "snackAccountCreated": "Cont creat",
+  "snackEnterEmail": "Vă rugăm să introduceți adresa dvs. de e-mail",
+  "snackEnterPassword": "Vă rugăm să introduceți parola",
+  "snackInvalidEmail": "Adresă de e-mail nevalidă",
+  "snackInvalidCredentials": "E-mail sau parolă incorectă",
+  "snackPasswordMin8": "Parola trebuie să aibă cel puțin 8 caractere",
+  "snackPasswordMismatch": "Parolele nu se potrivesc.",
+  "snackAccountExists": "Contul există deja. Vă rugăm să vă conectați.",
+  "snackSignupFailed": "Nu s-a putut crea contul. Încearcă din nou.",
+  "snackEnterOtp": "Vă rugăm să introduceți codul din 6 cifre",
+  "snackOtpExpired": "Codul a expirat",
+  "snackOtpExpiredBody": "Vă rugăm să solicitați un nou cod.",
+  "snackInvalidCode": "Cod nevalid",
+  "snackInvalidCodeBody": "Codul este incorect. Vă rugăm să încercați din nou.",
+  "snackSendCodeFailed": "Codul nu a putut fi trimis. Verificați conexiunea și încercați din nou.",
+  "snackEmptyFolder": "Dosar gol",
+  "snackEmptyFolderBody": "Nu s-au găsit fișiere în folderul selectat.",
+  "snackFolderUnsupported": "Nu este acceptat",
+  "snackFolderUnsupportedBody": "Încărcarea folderului nu este disponibilă pe această platformă.",
+  "snackFolderReadError": "Nu s-a putut citi folderul selectat.",
+  "snackLimitReached": "Limita atinsa",
+  "snackLimitFilesBody": "Unele fișiere nu au fost adăugate din cauza limitelor de dimensiune sau număr de fișiere.",
+  "snackFreePlanLimit": "Planul gratuit permite până la 5 GB per transfer. Vă rugăm să eliminați unele fișiere sau să faceți upgrade.",
+  "snackSignInEmail": "Vă rugăm să vă conectați pentru a trimite prin e-mail.",
+  "snackUploadStartFailed": "Nu s-a putut începe încărcarea.",
+  "snackVerifyEnterCode": "Introdu codul din 4 cifre din e-mailul tău.",
+  "snackVerifyInvalid": "Cod invalid sau expirat. Verificați e-mailul și încercați din nou.",
+  "snackVerifyResendFailed": "Codul nu a putut fi retrimis. Încearcă din nou.",
+  "snackDownloadComplete": "Descărcare finalizată",
+  "snackDownloadSaved": "„<<PH0>>” a fost salvat în Descărcări",
+  "snackDownloadFailed": "Descărcarea a eșuat",
+  "snackSaved": "Salvat",
+  "snackServerUrlUpdated": "Adresa URL a serverului a fost actualizată. Reporniți aplicația pentru a aplica.",
+  "snackStoreError": "Eroare de stocare",
+  "snackMissingProducts": "Lipsesc produse",
+  "snackStoreUnavailable": "Magazin indisponibil",
+  "snackStoreUnavailableBody": "Achizițiile în aplicație nu sunt disponibile pe acest dispozitiv.",
+  "snackProductNotLoaded": "Produsul nu este încă încărcat.",
+  "snackRestoreStarted": "Restaurarea a început",
+  "snackRestoreStartedBody": "Vă verificăm achizițiile.",
+  "snackRestoreFailed": "Restaurarea a eșuat",
+  "snackProcessing": "Prelucrare",
+  "snackPleaseWait": "Va rugam asteptati…",
+  "snackSuccess": "Succes",
+  "snackPurchaseCompleted": "Achiziție finalizată.",
+  "snackPurchaseError": "Eroare de cumpărare",
+  "snackPurchaseFailed": "Achiziția nu a reușit.",
+  "snackCanceled": "Anulat",
+  "snackPurchaseCanceled": "Achiziție anulată.",
+  "snackUpload": "Încărcați",
+  "snackVerify": "Verifica",
+  "doNotExpire": "Nu expiră",
+  "hourSingular": "oră",
+  "hourPlural": "ore",
+  "daySingular": "zi",
+  "dayPlural": "zile",
+  "emailAddressLabel": "ADRESA DE E-MAIL",
+  "passwordLabelCaps": "PAROLĂ",
+  "confirmPasswordLabelCaps": "CONFIRMĂ PAROLA",
+  "transferLinkOrId": "LINK DE TRANSFER SAU ID",
+  "howToReceive": "CUM SE PRIMI",
+  "planAdsTitle": "Plan de reclame",
+  "planAdsBullet1": "Acces la aplicația fără reclame",
+  "planAdsBullet2": "Eliminați toate anunțurile",
+  "planProTitle": "Plan Pro",
+  "planProBullet1": "Trimite fișiere de până la 20 GB",
+  "planProBullet2": "Încărcare rapidă",
+  "planPremiumTitle": "Plan Premium",
+  "planPremiumBullet1": "Trimite fișiere de până la 100 GB",
+  "planPremiumBullet2": "Încărcare super rapidă",
+  "planSubscriptionDisclaimer": "Fără perioadă de probă - este necesar un abonament pentru a utiliza funcționalitatea suplimentară a aplicației. Veți fi taxat imediat. Puteți anula oricând.",
+  "perMonth": "/luna",
+  "perYear": "/an",
+  "snackConnectionProblem": "Problemă de conectare. Vă rugăm să încercați din nou.",
+  "networkTitle": "Reţea",
+  "transferIdLabel": "ID: <<PH0>>",
+  "downloadMetaSummary": "Fișiere: <<PH0>> · <<PH1>> octeți",
+  "todayAt": "Astăzi · <<PH0>>",
+  "yesterdayAt": "Ieri · <<PH0>>",
+  "daysAgoAt": "<<PH0>> cu zi în urmă · <<PH1>>",
+  "dateAt": "<<PH0>> · <<PH1>>",
+  "mbAmount": "<<PH0>> MB",
+  "uploadProgressSummary": "<<PH0>> / <<PH1>> • <<PH2>> stânga",
+  "loadingShort": "Încărcare…",
+  "colorPaletteTitle": "Paleta de culori",
+  "colorPaletteSectionBackgrounds": "Fundaluri (scara de cerneală)",
+  "colorPaletteSectionAccent": "Accent / Primar",
+  "colorPaletteSectionText": "Text",
+  "colorPaletteSectionBorders": "Borduri și sticlă",
+  "colorPaletteSectionSemantic": "Semantic",
+  "colorPaletteSectionLive": "Tema live (actuală)",
+  "colorPaletteActiveHint": "★ = utilizat în mod activ în ecrane",
+  "colorPaletteCopyHint": "Apăsați lung orice eșantion pentru a-i copia valoarea hex.",
+  "settingsAppBrand": "Distribuie mare\nFișiere video",
+  "loginEmailPasswordPrompt": "Introduceți adresa de e-mail și parola pentru a vă conecta.",
+  "forgotPassword": "Aţi uitat parola?",
+  "forgotPasswordTitle": "Resetează parola",
+  "forgotPasswordBody": "Introduceți e-mailul contului și vă vom trimite un cod de resetare.",
+  "forgotPasswordSubmit": "Trimite codul de resetare",
+  "resetPasswordTitle": "Creați o nouă parolă",
+  "resetPasswordBody": "Introdu codul din 6 cifre din e-mailul tău și alege o nouă parolă.",
+  "resetPasswordSubmit": "Actualizați parola",
+  "snackPasswordResetSent": "Codul de resetare a fost trimis",
+  "snackPasswordResetSentBody": "Verificați e-mailul pentru un cod de resetare din 6 cifre.",
+  "snackPasswordResetFailed": "Nu s-a putut trimite codul de resetare. Încearcă din nou.",
+  "snackPasswordUpdated": "Parola a fost actualizată",
+  "snackPasswordUpdatedBody": "Conectați-vă cu noua parolă.",
+  "snackPasswordResetInvalid": "Cod de resetare invalid sau expirat.",
+  "otpDigitLabel": "COD 6 CIFRE",
+  "receiveMoreFiles": "+<<PH0>> mai multe fișiere"
+}

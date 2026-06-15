@@ -1,0 +1,466 @@
+{
+  "@@locale": "ta",
+  "@verifyEmailCheckSpamHint": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@upToTotal": {
+    "placeholders": {
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "@filesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesCount": "{count, plural, =1{1 file} other{{count} files}}",
+  "@mbLeft": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@transferLoadFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@storePricesPartialBody": {
+    "placeholders": {
+      "loaded": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "priceUnavailable": "—",
+  "@effectiveMonthlyPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "@otpSentTo": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@snackDownloadSaved": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "emailExampleHint": "you@example.com",
+  "otpSixDigitHint": "000000",
+  "verifyFourDigitHint": "0000",
+  "transferLinkHint": "https://… or paste ID",
+  "@filesReady": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesReady": "{count, plural, =1{1 file ready} other{{count} files ready}}",
+  "@transferIdLabel": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadMetaSummary": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "@todayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@yesterdayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@daysAgoAt": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@dateAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@mbAmount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@uploadProgressSummary": {
+    "placeholders": {
+      "sent": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      },
+      "remaining": {
+        "type": "String"
+      }
+    }
+  },
+  "@historyFilesSize": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "historyFilesSize": "{count, plural, =1{1 file} other{{count} files}} · {size}",
+  "@receiveMoreFiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appTitle": "பெரிய வீடியோ கோப்புகளைப் பகிரவும்",
+  "heroAccent": "உடனடியாக.",
+  "heroTitle": "கனமான கோப்புகளை அனுப்பவும்",
+  "splashLoading": "ஏற்றுகிறது…",
+  "navSend": "டாஷ்போர்டு",
+  "navHome": "வீடு",
+  "navHistory": "வரலாறு",
+  "navReceive": "பெறு",
+  "navPlans": "திட்டங்கள்",
+  "navDownload": "பதிவிறக்கவும்",
+  "navSettings": "அமைப்புகள்",
+  "modeLink": "இணைப்பைப் பெறுங்கள்",
+  "modeEmail": "மின்னஞ்சல் மூலம் அனுப்பவும்",
+  "pickFiles": "கோப்புகளைத் தேர்ந்தெடுக்கவும்",
+  "pickFolder": "கோப்புறையைத் தேர்ந்தெடுக்கவும்",
+  "emailFrom": "உங்கள் மின்னஞ்சல்",
+  "mailFromUsesAccount": "நீங்கள் உள்நுழைந்த மின்னஞ்சலைப் பயன்படுத்துகிறது.",
+  "recipientEmailsHelper": "பல பெறுநர்கள்: காற்புள்ளிகள், அரைப்புள்ளிகள் அல்லது இடைவெளிகளுடன் பிரிக்கவும்.",
+  "emailTo": "பெறுநரின் மின்னஞ்சல்",
+  "messageOptional": "செய்தி (விரும்பினால்)",
+  "passwordOptional": "கடவுச்சொல் (விரும்பினால்)",
+  "destructAfterDownload": "பதிவிறக்கிய பிறகு நீக்கவும்",
+  "destructNo": "கிடைக்கும்படி வைத்திருங்கள்",
+  "sendButton": "அனுப்பு",
+  "uploading": "பதிவேற்றுகிறது…",
+  "uploadComplete": "முடிந்தது",
+  "shareLinkTitle": "உங்கள் இணைப்பு",
+  "copyLink": "இணைப்பை நகலெடுக்கவும்",
+  "share": "பகிரவும்",
+  "shareQrCode": "QR குறியீட்டைப் பகிரவும்",
+  "uploadMore": "இன்னொன்றை அனுப்பு",
+  "emailSentTitle": "மின்னஞ்சல்கள் அனுப்பப்பட்டன",
+  "verifyEmailTitle": "உங்கள் மின்னஞ்சலைச் சரிபார்க்கவும்",
+  "verifyCodeHint": "உங்கள் மின்னஞ்சலில் உள்ள குறியீட்டை உள்ளிடவும்",
+  "verifySubmit": "சரிபார்க்கவும்",
+  "verifyResendCode": "குறியீட்டை மீண்டும் அனுப்பு",
+  "verifyCodeSent": "உங்கள் மின்னஞ்சலுக்கு புதிய சரிபார்ப்புக் குறியீடு அனுப்பப்பட்டுள்ளது.",
+  "verifyEmailSmtpWarningTitle": "சரிபார்ப்பு மின்னஞ்சல் அனுப்பப்படாமல் இருக்கலாம்",
+  "verifyEmailSmtpWarningBody": "சேவையகத்தால் விநியோகத்தை உறுதிப்படுத்த முடியவில்லை (பெரும்பாலும் SMTP தவறாக உள்ளமைக்கப்படுகிறது). உங்கள் தள நிர்வாகியிடம் அட்மின் பேனலில் அஞ்சல் அமைப்புகளைச் சரிபார்க்கச் சொல்லவும், பின்னர் குறியீட்டை மீண்டும் அனுப்பு என்பதைத் தட்டவும்.",
+  "verifyEmailCheckSpamHint": "அது வரவில்லை என்றால்: குப்பை/ஸ்பேம் மற்றும் விளம்பரங்களைச் சரிபார்த்து, ஒரு நிமிடம் காத்திருந்து, <<PH0>> எழுத்துப் பிழைகள் இல்லை என்பதை உறுதிசெய்து, மீண்டும் அனுப்பு என்பதைத் தட்டவும்.",
+  "loginTitle": "உள்நுழைக",
+  "signupHint": "உங்கள் தள கணக்கு மின்னஞ்சல் மற்றும் கடவுச்சொல்லைப் பயன்படுத்தவும்.",
+  "emailHint": "மின்னஞ்சல்",
+  "passwordHint": "கடவுச்சொல்",
+  "cancel": "ரத்து செய்",
+  "signIn": "உள்நுழைக",
+  "downloadIdHint": "ஐடியை மாற்றவும்",
+  "privateIdHint": "தனிப்பட்ட ஐடி (விரும்பினால்)",
+  "fetchTransfer": "திறந்த பரிமாற்றம்",
+  "downloadFile": "பதிவிறக்கவும்",
+  "unlockDownload": "பதிவிறக்கத்தைத் திறக்கவும்",
+  "downloadSaved": "பதிவிறக்கங்களில் சேமிக்கப்பட்டது",
+  "errorGeneric": "ஏதோ தவறாகிவிட்டது",
+  "errorNetwork": "நெட்வொர்க் பிழை",
+  "errorBadResponse": "எதிர்பாராத சர்வர் பதில்",
+  "termsAccept": "நான் நிபந்தனைகளை ஒப்புக்கொள்கிறேன்",
+  "settingsApiUrl": "பொது தள URL",
+  "settingsAccount": "கணக்கு",
+  "settingsAppearance": "தோற்றம்",
+  "settingsTheme": "தீம்",
+  "themeSystem": "அமைப்பு",
+  "themeLight": "ஒளி",
+  "themeDark": "இருள்",
+  "settingsSignedIn": "நீங்கள் உள்நுழைந்துள்ளீர்கள்.",
+  "settingsSignedOut": "நீங்கள் உள்நுழையவில்லை.",
+  "settingsOpenWebsite": "இணையதளத்தைத் திறக்கவும்",
+  "signUp": "பதிவு செய்யவும்",
+  "settingsLinks": "இணைப்புகள்",
+  "privacyPolicy": "தனியுரிமைக் கொள்கை",
+  "termsOfService": "சேவை விதிமுறைகள்",
+  "about": "பற்றி",
+  "moreApps": "மேலும் பயன்பாடுகள்",
+  "settingsLanguage": "மொழி",
+  "languageEnglish": "ஆங்கிலம்",
+  "languageHindi": "ஹிந்தி",
+  "logout": "வெளியேறு",
+  "deleteAccount": "கணக்கை நீக்கு",
+  "deleteAccountConfirmTitle": "உங்கள் கணக்கை நீக்கவா?",
+  "deleteAccountConfirmBody": "இது உங்கள் கணக்கை நிரந்தரமாக நீக்கி, உங்களை வெளியேற்றும். உங்கள் பரிமாற்ற இணைப்புகள் தொடர்ந்து செயல்படும், ஆனால் அவை இனி உங்கள் வரலாற்றில் தோன்றாது.",
+  "deleteAccountSuccess": "கணக்கு நீக்கப்பட்டது",
+  "deleteAccountSuccessBody": "உங்கள் கணக்கு அகற்றப்பட்டது.",
+  "deleteAccountFailed": "கணக்கை நீக்க முடியவில்லை",
+  "deleteAccountFailedBody": "மீண்டும் முயற்சிக்கவும் அல்லது ஆதரவைத் தொடர்பு கொள்ளவும்.",
+  "maxFilesReached": "அதிகமான கோப்புகள்",
+  "fileTooLarge": "கோப்பு மிகவும் பெரியது",
+  "ipLimit": "இந்த நெட்வொர்க்கில் இருந்து அதிகமான பதிவேற்றங்கள்",
+  "fillFields": "தேவையான புலங்களை நிரப்பவும்",
+  "invalidEmail": "தவறான மின்னஞ்சல்",
+  "maxRecipientsReached": "அதிகமான பெறுநர்கள்",
+  "loginRequiredTitle": "உள்நுழைய வேண்டும்",
+  "loginRequiredBody": "இந்த சேவையகத்திற்கு பதிவேற்ற அல்லது பதிவிறக்க ஒரு கணக்கு தேவை.",
+  "settingsSubtitle": "பயன்பாட்டு விருப்பத்தேர்வுகள் மற்றும் கணக்கு.",
+  "dropHeavyFile": "ஒரு கனமான கோப்பை இங்கே விடுங்கள்.",
+  "upToTotal": "மொத்தம் <<PH0>> வரை",
+  "removeAll": "அனைத்தையும் அகற்று",
+  "addFiles": "கோப்புகளைச் சேர்க்கவும்",
+  "adding": "சேர்க்கிறது…",
+  "options": "விருப்பங்கள்",
+  "selfDestruct": "பதிவிறக்கிய பிறகு சுய அழிவு",
+  "expiry": "காலாவதியாகும்",
+  "cancelUpload": "பதிவேற்றத்தை ரத்துசெய்",
+  "transferReady": "இடமாற்றம் தயார்!",
+  "emailSentReady": "மின்னஞ்சல் அனுப்பப்பட்டது!",
+  "shareRecipientHint": "இந்த இணைப்பை உங்கள் பெறுநருடன் பகிரவும்.",
+  "emailSentBody": "உங்கள் பெறுநருக்கு(களுக்கு) தெரிவித்துள்ளோம்.",
+  "scanQr": "பரிமாற்ற இணைப்பைத் திறக்க ஸ்கேன் செய்யவும்.",
+  "shareLinkButton": "இணைப்பைப் பகிரவும்",
+  "verifyFourDigit": "உங்கள் அனுப்புநரின் மின்னஞ்சலுக்கு அனுப்பப்பட்ட 4 இலக்கக் குறியீட்டை உள்ளிடவும்.",
+  "starting": "தொடங்குகிறது…",
+  "mbLeft": "<<PH0>> MB மீதமுள்ளது",
+  "fillField": "இந்த புலத்தை நிரப்பவும்.",
+  "enterValidEmail": "சரியான மின்னஞ்சலை உள்ளிடவும்.",
+  "message": "செய்தி",
+  "recipientEmail": "பெறுநரின் மின்னஞ்சல்",
+  "active": "செயலில்",
+  "expired": "காலாவதியானது",
+  "historyTitle": "எனது இடமாற்றங்கள்",
+  "signInToSeeTransfers": "உங்கள் இடமாற்றங்களைக் காண உள்நுழையவும்",
+  "signInTransfersBody": "உங்கள் கணக்கில் பரிமாற்றங்களை இணைக்க உங்கள் மின்னஞ்சலைப் பயன்படுத்துகிறோம் - கடவுச்சொல் தேவையில்லை.",
+  "couldNotLoadTransfers": "இடமாற்றங்களை ஏற்ற முடியவில்லை",
+  "retry": "மீண்டும் முயற்சிக்கவும்",
+  "noTransfersYet": "இதுவரை இடமாற்றங்கள் இல்லை",
+  "noTransfersBody": "நீங்கள் ஒரு கோப்பை அனுப்பியதும், அது இங்கே தோன்றும்.",
+  "transferDetails": "பரிமாற்ற விவரங்கள்",
+  "filesSection": "கோப்புகள்",
+  "receiveTitle": "கோப்புகளைப் பெறுக",
+  "receiveSubtitle": "கோப்புகளைப் பதிவிறக்க, பரிமாற்ற இணைப்பை ஒட்டவும்.",
+  "pasteTooltip": "ஒட்டவும்",
+  "findTransfer": "இடமாற்றத்தைக் கண்டறியவும்",
+  "receiveScanQr": "QR ஐ ஸ்கேன் செய்யவும்",
+  "receiveScanQrTitle": "பரிமாற்ற QR ஐ ஸ்கேன் செய்யவும்",
+  "receiveScanQrHint": "சட்டகத்தின் உள்ளே QR குறியீட்டை சீரமைக்கவும்.",
+  "receiveScanQrInvalid": "இந்த QR குறியீடு சரியான பரிமாற்ற இணைப்பு அல்ல.",
+  "receiveScanQrCameraDenied": "QR குறியீடுகளை ஸ்கேன் செய்ய கேமரா அணுகல் தேவை.",
+  "receiveStepGetLink": "இணைப்பைப் பெறுங்கள்",
+  "receiveStepGetLinkBody": "பரிமாற்ற இணைப்பை உங்களுடன் பகிர்ந்து கொள்ள அனுப்புநரிடம் கேளுங்கள்.",
+  "receiveStepPaste": "ஒட்டு & கண்டுபிடி",
+  "receiveStepPasteBody": "மேலே உள்ள இணைப்பை ஒட்டவும் மற்றும் \"பரிமாற்றத்தைக் கண்டுபிடி\" என்பதைத் தட்டவும்.",
+  "receiveStepDownload": "கோப்புகளைப் பதிவிறக்கவும்",
+  "receiveStepDownloadBody": "கோப்பு விவரங்களைப் பார்த்து அனைத்தையும் ஒரே நேரத்தில் பதிவிறக்கவும்.",
+  "lookingUpTransfer": "பரிமாற்றத்தைத் தேடுகிறது…",
+  "transferNotFound": "இடமாற்றம் கிடைக்கவில்லை. இணைப்பைச் சரிபார்த்து மீண்டும் முயற்சிக்கவும்.",
+  "transferExpired": "இந்த பரிமாற்றம் காலாவதியானது மற்றும் இனி கிடைக்காது.",
+  "transferLoginRequired": "இந்த பரிமாற்றத்தை அணுக உள்நுழைய வேண்டும்.",
+  "transferBadResponse": "எதிர்பாராத சர்வர் பதில். உங்கள் இணைப்பைச் சரிபார்க்கவும்.",
+  "transferNetworkError": "நெட்வொர்க் பிழை. உங்கள் இணைய இணைப்பைச் சரிபார்க்கவும்.",
+  "transferLoadFailed": "பரிமாற்றத்தை ஏற்ற முடியவில்லை: <<PH0>>",
+  "passwordProtected": "கடவுச்சொல் பாதுகாக்கப்பட்டது",
+  "enterPassword": "கடவுச்சொல்லை உள்ளிடவும்",
+  "unlock": "திறக்கவும்",
+  "downloading": "பதிவிறக்குகிறது…",
+  "downloadAllFiles": "எல்லா கோப்புகளையும் பதிவிறக்கவும்",
+  "downloadSingleFile": "கோப்பைப் பதிவிறக்கவும்",
+  "receiveAnother": "மற்றொரு பரிமாற்றத்தைப் பெறுங்கள்",
+  "plansTitle": "திட்டங்கள்",
+  "plansSubtitle": "விளம்பரங்களை அகற்றவும் பெரிய கோப்புகளை அனுப்பவும் மேம்படுத்தவும்.",
+  "storeUnavailable": "ஸ்டோர் கிடைக்கவில்லை",
+  "storeUnavailableBody": "பயன்பாட்டில் வாங்குதல்கள் இப்போது கிடைக்கவில்லை.",
+  "storeLoadingPrices": "App Store இலிருந்து விலைகளை ஏற்றுகிறது…",
+  "storePricesUnavailable": "விலைகள் கிடைக்கவில்லை",
+  "storePricesPartial": "சில விலைகளை ஏற்ற முடியவில்லை",
+  "storePricesPartialBody": "<<PH1>> இல் <<PH0>> சந்தா தயாரிப்புகள் ஏற்றப்பட்டன.",
+  "storeSetupHint": "உண்மையான iPhone இல் சோதிக்கவும் (சிமுலேட்டர் அல்ல), சாண்ட்பாக்ஸ் ஆப்பிள் ஐடியைப் பயன்படுத்தவும், மேலும் 6 சந்தாக்களும் இந்த ஆப்ஸின் பண்டில் ஐடியின் கீழ் உருவாக்கப்பட்டதை உறுதிசெய்யவும். விலை நிர்ணயத்துடன் இணைக்கவும்.",
+  "effectiveMonthlyPrice": "<<PH0>>/மாதம்",
+  "freeVersionAds": "தற்போது நீங்கள் எங்கள் இலவச பதிப்பை விளம்பரங்களுடன் பயன்படுத்துகிறீர்கள்",
+  "restorePurchases": "வாங்குதல்களை மீட்டெடுக்கவும்",
+  "plansContinue": "தொடரவும்",
+  "planLinkRestore": "மீட்டமை",
+  "termsAndConditions": "விதிமுறைகள் மற்றும் நிபந்தனைகள்",
+  "createAccountTitle": "கணக்கை உருவாக்கவும்",
+  "signUpSubtitle": "மின்னஞ்சல் மற்றும் கடவுச்சொல் மூலம் பதிவு செய்யவும்.",
+  "confirmPassword": "கடவுச்சொல்லை உறுதிப்படுத்தவும்",
+  "passwordMin8": "கடவுச்சொல் (குறைந்தது 8 எழுத்துகள்)",
+  "alreadyHaveAccount": "ஏற்கனவே கணக்கு உள்ளதா?",
+  "checkEmailTitle": "உங்கள் சரிபார்க்கவும்\nமின்னஞ்சல்",
+  "otpSentTo": "6 இலக்கக் குறியீட்டை அனுப்பினோம்\n<<PH0>>",
+  "verifyAndSignIn": "சரிபார்த்து உள்நுழையவும்",
+  "didntReceiveCode": "பெறவில்லையா?",
+  "tryAgain": "மீண்டும் முயற்சிக்கவும்",
+  "otpExpiresHint": "குறியீடு 5 நிமிடங்களில் காலாவதியாகிறது. உங்கள் ஸ்பேம் கோப்புறையைப் பார்க்கவில்லை எனில் அதைச் சரிபார்க்கவும்.",
+  "snackError": "பிழை",
+  "snackCopied": "நகலெடுக்கப்பட்டது",
+  "snackCopiedBody": "இணைப்பு கிளிப்போர்டுக்கு நகலெடுக்கப்பட்டது",
+  "snackWelcome": "வரவேற்கிறோம்",
+  "snackAccountCreated": "கணக்கு உருவாக்கப்பட்டது",
+  "snackEnterEmail": "தயவுசெய்து உங்கள் மின்னஞ்சலை உள்ளிடவும்",
+  "snackEnterPassword": "உங்கள் கடவுச்சொல்லை உள்ளிடவும்",
+  "snackInvalidEmail": "தவறான மின்னஞ்சல் முகவரி",
+  "snackInvalidCredentials": "தவறான மின்னஞ்சல் அல்லது கடவுச்சொல்",
+  "snackPasswordMin8": "கடவுச்சொல் குறைந்தது 8 எழுத்துகளாக இருக்க வேண்டும்",
+  "snackPasswordMismatch": "கடவுச்சொற்கள் பொருந்தவில்லை.",
+  "snackAccountExists": "கணக்கு ஏற்கனவே உள்ளது. உள்நுழையவும்.",
+  "snackSignupFailed": "கணக்கை உருவாக்க முடியவில்லை. மீண்டும் முயற்சிக்கவும்.",
+  "snackEnterOtp": "6 இலக்கக் குறியீட்டை உள்ளிடவும்",
+  "snackOtpExpired": "குறியீடு காலாவதியானது",
+  "snackOtpExpiredBody": "புதிய குறியீட்டைக் கோரவும்.",
+  "snackInvalidCode": "தவறான குறியீடு",
+  "snackInvalidCodeBody": "குறியீடு தவறானது. மீண்டும் முயற்சிக்கவும்.",
+  "snackSendCodeFailed": "குறியீட்டை அனுப்ப முடியவில்லை. உங்கள் இணைப்பைச் சரிபார்த்து மீண்டும் முயலவும்.",
+  "snackEmptyFolder": "வெற்று கோப்புறை",
+  "snackEmptyFolderBody": "தேர்ந்தெடுக்கப்பட்ட கோப்புறையில் கோப்புகள் எதுவும் இல்லை.",
+  "snackFolderUnsupported": "ஆதரிக்கப்படவில்லை",
+  "snackFolderUnsupportedBody": "இந்த மேடையில் கோப்புறை பதிவேற்றம் இல்லை.",
+  "snackFolderReadError": "தேர்ந்தெடுக்கப்பட்ட கோப்புறையைப் படிக்க முடியவில்லை.",
+  "snackLimitReached": "வரம்பை எட்டிவிட்டது",
+  "snackLimitFilesBody": "அளவு அல்லது கோப்பு எண்ணிக்கை வரம்புகள் காரணமாக சில கோப்புகள் சேர்க்கப்படவில்லை.",
+  "snackFreePlanLimit": "இலவச திட்டம் ஒரு பரிமாற்றத்திற்கு 5 ஜிபி வரை அனுமதிக்கிறது. சில கோப்புகளை அகற்றவும் அல்லது மேம்படுத்தவும்.",
+  "snackSignInEmail": "மின்னஞ்சல் மூலம் அனுப்ப உள்நுழையவும்.",
+  "snackUploadStartFailed": "பதிவேற்றத்தைத் தொடங்க முடியவில்லை.",
+  "snackVerifyEnterCode": "உங்கள் மின்னஞ்சலில் உள்ள 4 இலக்கக் குறியீட்டை உள்ளிடவும்.",
+  "snackVerifyInvalid": "தவறான அல்லது காலாவதியான குறியீடு. மின்னஞ்சலைச் சரிபார்த்து மீண்டும் முயலவும்.",
+  "snackVerifyResendFailed": "குறியீட்டை மீண்டும் அனுப்ப முடியவில்லை. மீண்டும் முயற்சிக்கவும்.",
+  "snackDownloadComplete": "பதிவிறக்கம் முடிந்தது",
+  "snackDownloadSaved": "\"<<PH0>>\" பதிவிறக்கங்களில் சேமிக்கப்பட்டது",
+  "snackDownloadFailed": "பதிவிறக்கம் தோல்வியடைந்தது",
+  "snackSaved": "சேமிக்கப்பட்டது",
+  "snackServerUrlUpdated": "சேவையக URL புதுப்பிக்கப்பட்டது. விண்ணப்பிக்க, பயன்பாட்டை மறுதொடக்கம் செய்யவும்.",
+  "snackStoreError": "ஸ்டோர் பிழை",
+  "snackMissingProducts": "பொருட்கள் காணவில்லை",
+  "snackStoreUnavailable": "ஸ்டோர் கிடைக்கவில்லை",
+  "snackStoreUnavailableBody": "இந்தச் சாதனத்தில் பயன்பாட்டில் வாங்குதல்கள் கிடைக்காது.",
+  "snackProductNotLoaded": "தயாரிப்பு இன்னும் ஏற்றப்படவில்லை.",
+  "snackRestoreStarted": "மீட்டெடுப்பு தொடங்கியது",
+  "snackRestoreStartedBody": "உங்கள் வாங்குதல்களை நாங்கள் சரிபார்க்கிறோம்.",
+  "snackRestoreFailed": "மீட்டமைக்க முடியவில்லை",
+  "snackProcessing": "செயலாக்கம்",
+  "snackPleaseWait": "தயவுசெய்து காத்திருங்கள்…",
+  "snackSuccess": "வெற்றி",
+  "snackPurchaseCompleted": "கொள்முதல் முடிந்தது.",
+  "snackPurchaseError": "வாங்குவதில் பிழை",
+  "snackPurchaseFailed": "வாங்க முடியவில்லை.",
+  "snackCanceled": "ரத்து செய்யப்பட்டது",
+  "snackPurchaseCanceled": "கொள்முதல் ரத்து செய்யப்பட்டது.",
+  "snackUpload": "பதிவேற்றவும்",
+  "snackVerify": "சரிபார்க்கவும்",
+  "doNotExpire": "காலாவதியாகாதே",
+  "hourSingular": "மணி",
+  "hourPlural": "மணி",
+  "daySingular": "நாள்",
+  "dayPlural": "நாட்கள்",
+  "emailAddressLabel": "மின்னஞ்சல் முகவரி",
+  "passwordLabelCaps": "கடவுச்சொல்",
+  "confirmPasswordLabelCaps": "கடவுச்சொல்லை உறுதிப்படுத்தவும்",
+  "transferLinkOrId": "இணைப்பு அல்லது ஐடியை மாற்றவும்",
+  "howToReceive": "எப்படி பெறுவது",
+  "planAdsTitle": "விளம்பரத் திட்டம்",
+  "planAdsBullet1": "விளம்பரங்கள் இல்லாத பயன்பாட்டிற்கான அணுகல்",
+  "planAdsBullet2": "அனைத்து விளம்பரங்களையும் அகற்று",
+  "planProTitle": "ப்ரோ திட்டம்",
+  "planProBullet1": "20 ஜிபி வரை கோப்புகளை அனுப்பவும்",
+  "planProBullet2": "வேகமான பதிவேற்றம்",
+  "planPremiumTitle": "பிரீமியம் திட்டம்",
+  "planPremiumBullet1": "100 ஜிபி வரை கோப்புகளை அனுப்பவும்",
+  "planPremiumBullet2": "மிக வேகமாக பதிவேற்றம்",
+  "planSubscriptionDisclaimer": "சோதனைக் காலம் இல்லை - கூடுதல் பயன்பாட்டுச் செயல்பாட்டைப் பயன்படுத்த சந்தா தேவையில்லை. உங்களுக்கு உடனடியாக கட்டணம் விதிக்கப்படும். நீங்கள் எப்போது வேண்டுமானாலும் ரத்து செய்யலாம்.",
+  "perMonth": "/ மாதம்",
+  "perYear": "/ வருடம்",
+  "snackConnectionProblem": "இணைப்பு சிக்கல். மீண்டும் முயற்சிக்கவும்.",
+  "networkTitle": "நெட்வொர்க்",
+  "transferIdLabel": "ஐடி: <<PH0>>",
+  "downloadMetaSummary": "கோப்புகள்: <<PH0>> · <<PH1>> பைட்டுகள்",
+  "todayAt": "இன்று · <<PH0>>",
+  "yesterdayAt": "நேற்று · <<PH0>>",
+  "daysAgoAt": "<<PH0>>நா முன்பு · <<PH1>>",
+  "dateAt": "<<PH0>> · <<PH1>>",
+  "mbAmount": "<<PH0>> MB",
+  "uploadProgressSummary": "<<PH0>> / <<PH1>> • <<PH2>> விட்டு",
+  "loadingShort": "ஏற்றுகிறது…",
+  "colorPaletteTitle": "வண்ண தட்டு",
+  "colorPaletteSectionBackgrounds": "பின்னணிகள் (மை அளவு)",
+  "colorPaletteSectionAccent": "உச்சரிப்பு / முதன்மை",
+  "colorPaletteSectionText": "உரை",
+  "colorPaletteSectionBorders": "எல்லைகள் & கண்ணாடி",
+  "colorPaletteSectionSemantic": "சொற்பொருள்",
+  "colorPaletteSectionLive": "நேரடி தீம் (தற்போதைய)",
+  "colorPaletteActiveHint": "★ = திரைகளில் தீவிரமாகப் பயன்படுத்தப்படுகிறது",
+  "colorPaletteCopyHint": "எந்த ஸ்வாட்சையும் அதன் ஹெக்ஸ் மதிப்பை நகலெடுக்க நீண்ட நேரம் அழுத்தவும்.",
+  "settingsAppBrand": "பெரிதாகப் பகிரவும்\nவீடியோ கோப்புகள்",
+  "loginEmailPasswordPrompt": "உள்நுழைய உங்கள் மின்னஞ்சல் மற்றும் கடவுச்சொல்லை உள்ளிடவும்.",
+  "forgotPassword": "கடவுச்சொல் மறந்துவிட்டதா?",
+  "forgotPasswordTitle": "கடவுச்சொல்லை மீட்டமைக்கவும்",
+  "forgotPasswordBody": "உங்கள் கணக்கு மின்னஞ்சலை உள்ளிடவும், நாங்கள் மீட்டமைப்புக் குறியீட்டை அனுப்புவோம்.",
+  "forgotPasswordSubmit": "மீட்டமைக் குறியீட்டை அனுப்பவும்",
+  "resetPasswordTitle": "புதிய கடவுச்சொல்லை உருவாக்கவும்",
+  "resetPasswordBody": "உங்கள் மின்னஞ்சலில் உள்ள 6 இலக்கக் குறியீட்டை உள்ளிட்டு புதிய கடவுச்சொல்லைத் தேர்வு செய்யவும்.",
+  "resetPasswordSubmit": "கடவுச்சொல்லை புதுப்பிக்கவும்",
+  "snackPasswordResetSent": "மீட்டமை குறியீடு அனுப்பப்பட்டது",
+  "snackPasswordResetSentBody": "உங்கள் மின்னஞ்சலில் 6 இலக்க மீட்டமைப்புக் குறியீட்டைப் பார்க்கவும்.",
+  "snackPasswordResetFailed": "மீட்டமைக் குறியீட்டை அனுப்ப முடியவில்லை. மீண்டும் முயற்சிக்கவும்.",
+  "snackPasswordUpdated": "கடவுச்சொல் புதுப்பிக்கப்பட்டது",
+  "snackPasswordUpdatedBody": "உங்கள் புதிய கடவுச்சொல் மூலம் உள்நுழையவும்.",
+  "snackPasswordResetInvalid": "தவறான அல்லது காலாவதியான மீட்டமைப்பு குறியீடு.",
+  "otpDigitLabel": "6-இலக்கக் குறியீடு",
+  "receiveMoreFiles": "+<<PH0>> மேலும் கோப்புகள்"
+}

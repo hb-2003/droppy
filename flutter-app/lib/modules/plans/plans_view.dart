@@ -143,27 +143,6 @@ class PlansView extends GetView<PlansController> {
                           tier: kIapPlanTiers[2],
                           controller: controller,
                         ),
-                        const SizedBox(height: 18),
-                        FilledButton(
-                          onPressed: controller.canContinue ? controller.continuePurchase : null,
-                          style: FilledButton.styleFrom(
-                            backgroundColor: scheme.primary,
-                            foregroundColor: scheme.onPrimary,
-                            disabledBackgroundColor: scheme.primary.withValues(alpha: 0.35),
-                            minimumSize: const Size.fromHeight(52),
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-                          ),
-                          child: Text(
-                            t.plansContinue,
-                            style: const TextStyle(fontWeight: FontWeight.w900, fontSize: 16, letterSpacing: 0.4),
-                          ),
-                        ),
-                        const SizedBox(height: 12),
-                        Text(
-                          t.planSubscriptionDisclaimer,
-                          style: TextStyle(color: scheme.onSurface.withValues(alpha: 0.50), fontSize: 11.5, height: 1.4),
-                          textAlign: TextAlign.center,
-                        ),
                       ],
                     ),
                     if (controller.isPurchasing)
@@ -175,12 +154,80 @@ class PlansView extends GetView<PlansController> {
                 );
               }),
             ),
+            Obx(() {
+              final state = controller.storeState.value;
+              final showPlans = !controller.loading &&
+                  state != IapStoreState.unavailable &&
+                  !(state == IapStoreState.failed && controller.loadedCount == 0);
+              if (!showPlans) return const SizedBox.shrink();
+              return _PlansContinueBar(
+                enabled: controller.canContinue,
+                busy: controller.isPurchasing,
+                onContinue: controller.continuePurchase,
+              );
+            }),
             Obx(() => _PlansFooterLinks(
                   busy: controller.loading || controller.isPurchasing,
                   onRestore: controller.restore,
                   onTerms: controller.openTerms,
                   onPrivacy: controller.openPrivacy,
                 )),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _PlansContinueBar extends StatelessWidget {
+  const _PlansContinueBar({
+    required this.enabled,
+    required this.busy,
+    required this.onContinue,
+  });
+
+  final bool enabled;
+  final bool busy;
+  final VoidCallback onContinue;
+
+  @override
+  Widget build(BuildContext context) {
+    final t = AppLocalizations.of(context)!;
+    final scheme = Theme.of(context).colorScheme;
+    final bg = Theme.of(context).scaffoldBackgroundColor;
+    final line = scheme.outlineVariant.withValues(alpha: 0.35);
+
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        color: bg,
+        border: Border(top: BorderSide(color: line)),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(20, 12, 20, 8),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            FilledButton(
+              onPressed: enabled && !busy ? onContinue : null,
+              style: FilledButton.styleFrom(
+                backgroundColor: scheme.primary,
+                foregroundColor: scheme.onPrimary,
+                disabledBackgroundColor: scheme.primary.withValues(alpha: 0.35),
+                minimumSize: const Size.fromHeight(52),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+              ),
+              child: Text(
+                t.plansContinue,
+                style: const TextStyle(fontWeight: FontWeight.w900, fontSize: 16, letterSpacing: 0.4),
+              ),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              t.planSubscriptionDisclaimer,
+              style: TextStyle(color: scheme.onSurface.withValues(alpha: 0.50), fontSize: 11.5, height: 1.4),
+              textAlign: TextAlign.center,
+            ),
           ],
         ),
       ),

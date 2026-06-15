@@ -1,0 +1,466 @@
+{
+  "@@locale": "fi",
+  "@verifyEmailCheckSpamHint": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@upToTotal": {
+    "placeholders": {
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "@filesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesCount": "{count, plural, =1{1 file} other{{count} files}}",
+  "@mbLeft": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@transferLoadFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@storePricesPartialBody": {
+    "placeholders": {
+      "loaded": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "priceUnavailable": "—",
+  "@effectiveMonthlyPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "@otpSentTo": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@snackDownloadSaved": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "emailExampleHint": "you@example.com",
+  "otpSixDigitHint": "000000",
+  "verifyFourDigitHint": "0000",
+  "transferLinkHint": "https://… or paste ID",
+  "@filesReady": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesReady": "{count, plural, =1{1 file ready} other{{count} files ready}}",
+  "@transferIdLabel": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadMetaSummary": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "@todayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@yesterdayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@daysAgoAt": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@dateAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@mbAmount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@uploadProgressSummary": {
+    "placeholders": {
+      "sent": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      },
+      "remaining": {
+        "type": "String"
+      }
+    }
+  },
+  "@historyFilesSize": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "historyFilesSize": "{count, plural, =1{1 file} other{{count} files}} · {size}",
+  "@receiveMoreFiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appTitle": "Jaa suuria videotiedostoja",
+  "heroAccent": "välittömästi.",
+  "heroTitle": "Lähetä raskaita tiedostoja",
+  "splashLoading": "Ladataan…",
+  "navSend": "Kojelauta",
+  "navHome": "Kotiin",
+  "navHistory": "Historia",
+  "navReceive": "Vastaanota",
+  "navPlans": "Suunnitelmat",
+  "navDownload": "Lataa",
+  "navSettings": "Asetukset",
+  "modeLink": "Hanki linkki",
+  "modeEmail": "Lähetä sähköpostilla",
+  "pickFiles": "Valitse tiedostot",
+  "pickFolder": "Valitse kansio",
+  "emailFrom": "Sähköpostisi",
+  "mailFromUsesAccount": "Käyttää kirjautuneena sähköpostiosoitettasi.",
+  "recipientEmailsHelper": "Useita vastaanottajia: erottele pilkuilla, puolipisteillä tai välilyönneillä.",
+  "emailTo": "Vastaanottajan sähköposti",
+  "messageOptional": "Viesti (valinnainen)",
+  "passwordOptional": "Salasana (valinnainen)",
+  "destructAfterDownload": "Poista latauksen jälkeen",
+  "destructNo": "Pidä saatavilla",
+  "sendButton": "Lähetä",
+  "uploading": "Ladataan…",
+  "uploadComplete": "Tehty",
+  "shareLinkTitle": "Sinun linkkisi",
+  "copyLink": "Kopioi linkki",
+  "share": "Jakaa",
+  "shareQrCode": "Jaa QR-koodi",
+  "uploadMore": "Lähetä toinen",
+  "emailSentTitle": "Sähköpostit lähetetty",
+  "verifyEmailTitle": "Vahvista sähköpostiosoitteesi",
+  "verifyCodeHint": "Syötä koodi sähköpostistasi",
+  "verifySubmit": "Vahvista",
+  "verifyResendCode": "Lähetä koodi uudelleen",
+  "verifyCodeSent": "Sähköpostiisi lähetettiin uusi vahvistuskoodi.",
+  "verifyEmailSmtpWarningTitle": "Vahvistussähköpostia ei ehkä ole lähetetty",
+  "verifyEmailSmtpWarningBody": "Palvelin ei voinut vahvistaa toimitusta (usein SMTP on määritetty väärin). Pyydä sivustosi järjestelmänvalvojaa tarkistamaan sähköpostiasetukset hallintapaneelista ja napauta sitten Lähetä koodi uudelleen.",
+  "verifyEmailCheckSpamHint": "Jos se ei tule perille: tarkista Roskaposti/Roskaposti ja Tarjoukset, odota hetki, varmista, että <<PH0>> ei sisällä kirjoitusvirheitä, ja napauta sitten Lähetä uudelleen.",
+  "loginTitle": "Kirjaudu sisään",
+  "signupHint": "Käytä sivustosi sähköpostiosoitetta ja salasanaa.",
+  "emailHint": "Sähköposti",
+  "passwordHint": "Salasana",
+  "cancel": "Peruuttaa",
+  "signIn": "Kirjaudu sisään",
+  "downloadIdHint": "Siirtotunnus",
+  "privateIdHint": "Yksityinen henkilöllisyystodistus (valinnainen)",
+  "fetchTransfer": "Avaa siirto",
+  "downloadFile": "Lataa",
+  "unlockDownload": "Avaa lataus",
+  "downloadSaved": "Tallennettu latauksiin",
+  "errorGeneric": "Jotain meni pieleen",
+  "errorNetwork": "Verkkovirhe",
+  "errorBadResponse": "Odottamaton palvelimen vastaus",
+  "termsAccept": "Hyväksyn ehdot",
+  "settingsApiUrl": "Julkisen sivuston URL-osoite",
+  "settingsAccount": "Tili",
+  "settingsAppearance": "Ulkonäkö",
+  "settingsTheme": "Teema",
+  "themeSystem": "Järjestelmä",
+  "themeLight": "Kevyt",
+  "themeDark": "Tumma",
+  "settingsSignedIn": "Olet kirjautunut sisään.",
+  "settingsSignedOut": "Et ole kirjautunut sisään.",
+  "settingsOpenWebsite": "Avaa verkkosivusto",
+  "signUp": "Rekisteröidy",
+  "settingsLinks": "Linkit",
+  "privacyPolicy": "Tietosuojakäytäntö",
+  "termsOfService": "Palveluehdot",
+  "about": "Noin",
+  "moreApps": "Lisää sovelluksia",
+  "settingsLanguage": "Kieli",
+  "languageEnglish": "englanti",
+  "languageHindi": "hindi",
+  "logout": "Kirjaudu ulos",
+  "deleteAccount": "Poista tili",
+  "deleteAccountConfirmTitle": "Poistetaanko tilisi?",
+  "deleteAccountConfirmBody": "Tämä poistaa tilisi pysyvästi ja kirjaa sinut ulos. Siirtolinkkisi toimivat edelleen, mutta ne eivät enää näy historiassasi.",
+  "deleteAccountSuccess": "Tili poistettu",
+  "deleteAccountSuccessBody": "Tilisi on poistettu.",
+  "deleteAccountFailed": "Tiliä ei voitu poistaa",
+  "deleteAccountFailedBody": "Yritä uudelleen tai ota yhteyttä tukeen.",
+  "maxFilesReached": "Liian monta tiedostoa",
+  "fileTooLarge": "Tiedosto liian suuri",
+  "ipLimit": "Liian monta latausta tästä verkosta",
+  "fillFields": "Täytä pakolliset kentät",
+  "invalidEmail": "Virheellinen sähköpostiosoite",
+  "maxRecipientsReached": "Liian monta vastaanottajaa",
+  "loginRequiredTitle": "Kirjautuminen vaaditaan",
+  "loginRequiredBody": "Tämä palvelin vaatii tilin lataamiseen tai lataamiseen.",
+  "settingsSubtitle": "Sovellusasetukset ja tili.",
+  "dropHeavyFile": "Pudota raskas tiedosto tähän.",
+  "upToTotal": "Enintään <<PH0>> yhteensä",
+  "removeAll": "Poista kaikki",
+  "addFiles": "Lisää tiedostoja",
+  "adding": "Lisätään…",
+  "options": "Vaihtoehdot",
+  "selfDestruct": "Itsetuho latauksen jälkeen",
+  "expiry": "Vanheneminen",
+  "cancelUpload": "Peruuta lataus",
+  "transferReady": "Siirto valmis!",
+  "emailSentReady": "Sähköposti lähetetty!",
+  "shareRecipientHint": "Jaa tämä linkki vastaanottajallesi.",
+  "emailSentBody": "Olemme ilmoittaneet vastaanottajallesi.",
+  "scanQr": "Skannaa avataksesi siirtolinkin.",
+  "shareLinkButton": "JAA LINKKI",
+  "verifyFourDigit": "Syötä lähettäjän sähköpostiisi lähetetty 4-numeroinen koodi.",
+  "starting": "Alkaen…",
+  "mbLeft": "<<PH0>> Mt jäljellä",
+  "fillField": "Täytä tämä kenttä.",
+  "enterValidEmail": "Anna kelvollinen sähköpostiosoite.",
+  "message": "Viesti",
+  "recipientEmail": "Vastaanottajan sähköposti",
+  "active": "Aktiivinen",
+  "expired": "Vanhentunut",
+  "historyTitle": "Omat siirrot",
+  "signInToSeeTransfers": "Kirjaudu sisään nähdäksesi siirrot",
+  "signInTransfersBody": "Käytämme sähköpostiasi linkittääksemme siirrot tiliisi – salasanaa ei tarvita.",
+  "couldNotLoadTransfers": "Siirtoja ei voitu ladata",
+  "retry": "Yritä uudelleen",
+  "noTransfersYet": "Ei vielä siirtoja",
+  "noTransfersBody": "Kun lähetät tiedoston, se näkyy täällä.",
+  "transferDetails": "Siirron tiedot",
+  "filesSection": "Tiedostot",
+  "receiveTitle": "Vastaanota tiedostoja",
+  "receiveSubtitle": "Liitä siirtolinkki tiedostojen lataamista varten.",
+  "pasteTooltip": "Liitä",
+  "findTransfer": "Etsi siirto",
+  "receiveScanQr": "Skannaa QR",
+  "receiveScanQrTitle": "Skannaa siirto QR",
+  "receiveScanQrHint": "Kohdista QR-koodi kehyksen sisään.",
+  "receiveScanQrInvalid": "Tämä QR-koodi ei ole kelvollinen siirtolinkki.",
+  "receiveScanQrCameraDenied": "QR-koodien skannaamiseen tarvitaan kameran käyttöoikeus.",
+  "receiveStepGetLink": "Hanki linkki",
+  "receiveStepGetLinkBody": "Pyydä lähettäjää jakamaan siirtolinkki kanssasi.",
+  "receiveStepPaste": "Liitä ja etsi",
+  "receiveStepPasteBody": "Liitä yllä oleva linkki ja napauta \"Etsi siirto\".",
+  "receiveStepDownload": "Lataa tiedostoja",
+  "receiveStepDownloadBody": "Katso tiedoston tiedot ja lataa kaikki kerralla.",
+  "lookingUpTransfer": "Haetaan siirtoa…",
+  "transferNotFound": "Siirtoa ei löytynyt. Tarkista linkki ja yritä uudelleen.",
+  "transferExpired": "Tämä siirto on vanhentunut, eikä se ole enää käytettävissä.",
+  "transferLoginRequired": "Tämän siirron käyttäminen edellyttää kirjautumista.",
+  "transferBadResponse": "Odottamaton palvelimen vastaus. Tarkista yhteys.",
+  "transferNetworkError": "Verkkovirhe. Tarkista Internet-yhteytesi.",
+  "transferLoadFailed": "Siirtoa ei voitu ladata: <<PH0>>",
+  "passwordProtected": "Salasana suojattu",
+  "enterPassword": "Anna salasana",
+  "unlock": "Avata",
+  "downloading": "Ladataan…",
+  "downloadAllFiles": "Lataa kaikki tiedostot",
+  "downloadSingleFile": "Lataa tiedosto",
+  "receiveAnother": "Vastaanota toinen siirto",
+  "plansTitle": "Suunnitelmat",
+  "plansSubtitle": "Päivitä mainosten poistamiseksi ja suurempien tiedostojen lähettämiseksi.",
+  "storeUnavailable": "Kauppa ei ole saatavilla",
+  "storeUnavailableBody": "Sovelluksen sisäiset ostokset eivät ole tällä hetkellä saatavilla.",
+  "storeLoadingPrices": "Ladataan hintoja App Storesta…",
+  "storePricesUnavailable": "Hintoja ei saatavilla",
+  "storePricesPartial": "Joitakin hintoja ei voitu ladata",
+  "storePricesPartialBody": "<<PH0>> / <<PH1>> tilaustuotteista ladattu.",
+  "storeSetupHint": "Testaa aidolla iPhonella (ei simulaattorilla), käytä Sandbox Apple ID:tä ja varmista, että kaikki 6 tilausta on luotu tämän sovelluksen pakettitunnuksella App Store Connectissa hinnoitteluasetuksen kanssa.",
+  "effectiveMonthlyPrice": "<<PH0>>/kk",
+  "freeVersionAds": "Tällä hetkellä käytät ilmaista versiotamme mainoksilla",
+  "restorePurchases": "Palauta ostokset",
+  "plansContinue": "Jatkaa",
+  "planLinkRestore": "Palauttaa",
+  "termsAndConditions": "Ehdot",
+  "createAccountTitle": "Luo tili",
+  "signUpSubtitle": "Rekisteröidy sähköpostilla ja salasanalla.",
+  "confirmPassword": "Vahvista salasana",
+  "passwordMin8": "Salasana (vähintään 8 merkkiä)",
+  "alreadyHaveAccount": "Onko sinulla jo tili?",
+  "checkEmailTitle": "Tarkista omasi\nsähköposti",
+  "otpSentTo": "Lähetimme 6-numeroisen koodin osoitteeseen\n<<PH0>>",
+  "verifyAndSignIn": "Vahvista ja kirjaudu sisään",
+  "didntReceiveCode": "Etkö saanut sitä?",
+  "tryAgain": "Yritä uudelleen",
+  "otpExpiresHint": "Koodi vanhenee 5 minuutin kuluttua. Tarkista roskapostikansiosi, jos et näe sitä.",
+  "snackError": "Virhe",
+  "snackCopied": "Kopioitu",
+  "snackCopiedBody": "Linkki kopioitu leikepöydälle",
+  "snackWelcome": "Tervetuloa",
+  "snackAccountCreated": "Tili luotu",
+  "snackEnterEmail": "Anna sähköpostiosoitteesi",
+  "snackEnterPassword": "Anna salasanasi",
+  "snackInvalidEmail": "Virheellinen sähköpostiosoite",
+  "snackInvalidCredentials": "Väärä sähköpostiosoite tai salasana",
+  "snackPasswordMin8": "Salasanassa on oltava vähintään 8 merkkiä",
+  "snackPasswordMismatch": "Salasanat eivät täsmää.",
+  "snackAccountExists": "Tili on jo olemassa. Kirjaudu sisään.",
+  "snackSignupFailed": "Tiliä ei voitu luoda. Yritä uudelleen.",
+  "snackEnterOtp": "Anna 6-numeroinen koodi",
+  "snackOtpExpired": "Koodi vanhentunut",
+  "snackOtpExpiredBody": "Pyydä uusi koodi.",
+  "snackInvalidCode": "Virheellinen koodi",
+  "snackInvalidCodeBody": "Koodi on virheellinen. Yritä uudelleen.",
+  "snackSendCodeFailed": "Koodia ei voitu lähettää. Tarkista yhteys ja yritä uudelleen.",
+  "snackEmptyFolder": "Tyhjä kansio",
+  "snackEmptyFolderBody": "Valitusta kansiosta ei löytynyt tiedostoja.",
+  "snackFolderUnsupported": "Ei tuettu",
+  "snackFolderUnsupportedBody": "Kansion lataus ei ole käytettävissä tällä alustalla.",
+  "snackFolderReadError": "Valittua kansiota ei voitu lukea.",
+  "snackLimitReached": "Raja saavutettu",
+  "snackLimitFilesBody": "Joitakin tiedostoja ei lisätty koon tai tiedostomäärän rajoitusten vuoksi.",
+  "snackFreePlanLimit": "Ilmainen paketti sallii jopa 5 Gt siirtoa kohden. Poista joitakin tiedostoja tai päivitä.",
+  "snackSignInEmail": "Kirjaudu sisään lähettääksesi sähköpostitse.",
+  "snackUploadStartFailed": "Lähetystä ei voitu aloittaa.",
+  "snackVerifyEnterCode": "Syötä 4-numeroinen koodi sähköpostistasi.",
+  "snackVerifyInvalid": "Virheellinen tai vanhentunut koodi. Tarkista sähköposti ja yritä uudelleen.",
+  "snackVerifyResendFailed": "Koodia ei voitu lähettää uudelleen. Yritä uudelleen.",
+  "snackDownloadComplete": "Lataus valmis",
+  "snackDownloadSaved": "\"<<PH0>>\" tallennettu latauksiin",
+  "snackDownloadFailed": "Lataus epäonnistui",
+  "snackSaved": "Tallennettu",
+  "snackServerUrlUpdated": "Palvelimen URL-osoite päivitetty. Käynnistä sovellus uudelleen soveltaaksesi.",
+  "snackStoreError": "Store-virhe",
+  "snackMissingProducts": "Puuttuvat tuotteet",
+  "snackStoreUnavailable": "Kauppa ei ole saatavilla",
+  "snackStoreUnavailableBody": "Sovelluksen sisäiset ostokset eivät ole käytettävissä tällä laitteella.",
+  "snackProductNotLoaded": "Tuotetta ei ole vielä ladattu.",
+  "snackRestoreStarted": "Palautus aloitettu",
+  "snackRestoreStartedBody": "Tarkistamme ostoksesi.",
+  "snackRestoreFailed": "Palautus epäonnistui",
+  "snackProcessing": "Käsittely",
+  "snackPleaseWait": "Odota…",
+  "snackSuccess": "Menestys",
+  "snackPurchaseCompleted": "Osto suoritettu.",
+  "snackPurchaseError": "Ostovirhe",
+  "snackPurchaseFailed": "Osto epäonnistui.",
+  "snackCanceled": "Peruutettu",
+  "snackPurchaseCanceled": "Ostos peruutettu.",
+  "snackUpload": "Lataa",
+  "snackVerify": "Vahvista",
+  "doNotExpire": "Älä vanhene",
+  "hourSingular": "tunnin",
+  "hourPlural": "tuntia",
+  "daySingular": "päivä",
+  "dayPlural": "päivää",
+  "emailAddressLabel": "SÄHKÖPOSTIOSOITE",
+  "passwordLabelCaps": "SALASANA",
+  "confirmPasswordLabelCaps": "VAHVISTA SALASANA",
+  "transferLinkOrId": "SIIRTOLINKKI TAI ID",
+  "howToReceive": "MITEN VASTAANOTTAA",
+  "planAdsTitle": "Mainossuunnitelma",
+  "planAdsBullet1": "Pääsy mainoksittomaan sovellukseen",
+  "planAdsBullet2": "Poista kaikki mainokset",
+  "planProTitle": "Pro Plan",
+  "planProBullet1": "Lähetä tiedostoja 20 Gt asti",
+  "planProBullet2": "Nopea lataus",
+  "planPremiumTitle": "Premium-suunnitelma",
+  "planPremiumBullet1": "Lähetä tiedostoja 100 Gt asti",
+  "planPremiumBullet2": "Supernopea lataus",
+  "planSubscriptionDisclaimer": "Ei koeaikaa – sovelluksen lisätoimintojen käyttäminen edellyttää tilausta. Sinua veloitetaan välittömästi. Voit peruuttaa milloin tahansa.",
+  "perMonth": "/ kuukausi",
+  "perYear": "/ vuosi",
+  "snackConnectionProblem": "Yhteysongelma. Yritä uudelleen.",
+  "networkTitle": "Verkko",
+  "transferIdLabel": "ID: <<PH0>>",
+  "downloadMetaSummary": "Tiedostot: <<PH0>> · <<PH1>> tavua",
+  "todayAt": "Tänään · <<PH0>>",
+  "yesterdayAt": "Eilen · <<PH0>>",
+  "daysAgoAt": "<<PH0>>pv sitten · <<PH1>>",
+  "dateAt": "<<PH0>> · <<PH1>>",
+  "mbAmount": "<<PH0>> Mt",
+  "uploadProgressSummary": "<<PH0>> / <<PH1>> • <<PH2>> vasemmalle",
+  "loadingShort": "Ladataan…",
+  "colorPaletteTitle": "Väripaletti",
+  "colorPaletteSectionBackgrounds": "Taustat (musteasteikko)",
+  "colorPaletteSectionAccent": "Aksentti / Ensisijainen",
+  "colorPaletteSectionText": "Teksti",
+  "colorPaletteSectionBorders": "Reunat ja lasit",
+  "colorPaletteSectionSemantic": "Semanttinen",
+  "colorPaletteSectionLive": "Live-teema (nykyinen)",
+  "colorPaletteActiveHint": "★ = käytetään aktiivisesti näytöissä",
+  "colorPaletteCopyHint": "Paina mitä tahansa värimallia pitkään kopioidaksesi sen heksadesimaaliarvo.",
+  "settingsAppBrand": "Jaa suuri\nVideotiedostot",
+  "loginEmailPasswordPrompt": "Syötä sähköpostiosoitteesi ja salasanasi kirjautuaksesi sisään.",
+  "forgotPassword": "Unohditko salasanan?",
+  "forgotPasswordTitle": "Palauta salasana",
+  "forgotPasswordBody": "Anna tilisi sähköpostiosoite, niin lähetämme palautuskoodin.",
+  "forgotPasswordSubmit": "Lähetä nollauskoodi",
+  "resetPasswordTitle": "Luo uusi salasana",
+  "resetPasswordBody": "Syötä 6-numeroinen koodi sähköpostistasi ja valitse uusi salasana.",
+  "resetPasswordSubmit": "Päivitä salasana",
+  "snackPasswordResetSent": "Nollauskoodi lähetetty",
+  "snackPasswordResetSentBody": "Tarkista sähköpostistasi 6-numeroinen palautuskoodi.",
+  "snackPasswordResetFailed": "Nollauskoodia ei voitu lähettää. Yritä uudelleen.",
+  "snackPasswordUpdated": "Salasana päivitetty",
+  "snackPasswordUpdatedBody": "Kirjaudu sisään uudella salasanallasi.",
+  "snackPasswordResetInvalid": "Virheellinen tai vanhentunut palautuskoodi.",
+  "otpDigitLabel": "6-NUMEROINEN KOODI",
+  "receiveMoreFiles": "+<<PH0>> lisää tiedostoja"
+}

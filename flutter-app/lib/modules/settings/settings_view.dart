@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:sendlargefiles/controllers/locale_controller.dart';
+import 'package:sendlargefiles/localization/app_locale_catalog.dart';
+import 'package:sendlargefiles/widgets/language_picker_sheet.dart';
 import 'package:sendlargefiles/controllers/theme_controller.dart';
 import 'package:sendlargefiles/l10n/app_localizations.dart';
 import 'package:sendlargefiles/modules/settings/settings_controller.dart';
@@ -281,41 +283,24 @@ class SettingsView extends GetView<SettingsController> {
                       const SizedBox(height: 8),
                       Obx(() {
                         final lc = Get.find<LocaleController>().locale.value;
-                        return DropdownButtonFormField<String>(
-                          key: ValueKey<String>(lc.languageCode),
-                          initialValue: lc.languageCode,
-                          dropdownColor: cardBg,
-                          style: TextStyle(color: scheme.onSurface),
-                          iconEnabledColor: scheme.onSurface.withValues(alpha: 0.6),
-                          decoration: InputDecoration(
-                            filled: true,
-                            fillColor: scheme.surface,
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12),
-                              borderSide: BorderSide(color: line),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12),
-                              borderSide: BorderSide(color: line),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12),
-                              borderSide: BorderSide(color: scheme.primary, width: 1.5),
-                            ),
+                        final option = AppLocaleCatalog.findByCode(lc.languageCode);
+                        final label = option?.nativeLabel ?? lc.languageCode;
+                        return ListTile(
+                          contentPadding: EdgeInsets.zero,
+                          title: Text(label, style: TextStyle(color: scheme.onSurface)),
+                          trailing: Icon(
+                            Icons.language,
+                            color: scheme.onSurface.withValues(alpha: 0.6),
                           ),
-                          items: [
-                            DropdownMenuItem(
-                              value: 'en',
-                              child: Text(t.languageEnglish),
-                            ),
-                            DropdownMenuItem(
-                              value: 'hi',
-                              child: Text(t.languageHindi),
-                            ),
-                          ],
-                          onChanged: (code) {
-                            if (code != null) controller.setLocale(Locale(code));
-                          },
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            side: BorderSide(color: line),
+                          ),
+                          tileColor: scheme.surface,
+                          onTap: () => showLanguagePickerSheet(
+                            context: context,
+                            onSelected: controller.setLocale,
+                          ),
                         );
                       }),
                         ],

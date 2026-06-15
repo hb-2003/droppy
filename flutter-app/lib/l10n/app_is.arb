@@ -1,0 +1,466 @@
+{
+  "@@locale": "is",
+  "@verifyEmailCheckSpamHint": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@upToTotal": {
+    "placeholders": {
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "@filesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesCount": "{count, plural, =1{1 file} other{{count} files}}",
+  "@mbLeft": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@transferLoadFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@storePricesPartialBody": {
+    "placeholders": {
+      "loaded": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "priceUnavailable": "—",
+  "@effectiveMonthlyPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "@otpSentTo": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@snackDownloadSaved": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "emailExampleHint": "you@example.com",
+  "otpSixDigitHint": "000000",
+  "verifyFourDigitHint": "0000",
+  "transferLinkHint": "https://… or paste ID",
+  "@filesReady": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesReady": "{count, plural, =1{1 file ready} other{{count} files ready}}",
+  "@transferIdLabel": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadMetaSummary": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "@todayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@yesterdayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@daysAgoAt": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@dateAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@mbAmount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@uploadProgressSummary": {
+    "placeholders": {
+      "sent": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      },
+      "remaining": {
+        "type": "String"
+      }
+    }
+  },
+  "@historyFilesSize": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "historyFilesSize": "{count, plural, =1{1 file} other{{count} files}} · {size}",
+  "@receiveMoreFiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appTitle": "Deildu stórum myndbandsskrám",
+  "heroAccent": "samstundis.",
+  "heroTitle": "Sendu þungar skrár",
+  "splashLoading": "Hleður…",
+  "navSend": "Mælaborð",
+  "navHome": "Heim",
+  "navHistory": "Saga",
+  "navReceive": "Taka á móti",
+  "navPlans": "Áætlanir",
+  "navDownload": "Sækja",
+  "navSettings": "Stillingar",
+  "modeLink": "Fáðu tengil",
+  "modeEmail": "Senda með tölvupósti",
+  "pickFiles": "Veldu skrár",
+  "pickFolder": "Veldu möppu",
+  "emailFrom": "Netfangið þitt",
+  "mailFromUsesAccount": "Notar innskráða netfangið þitt.",
+  "recipientEmailsHelper": "Margir viðtakendur: aðskilið með kommum, semíkommum eða bilum.",
+  "emailTo": "Netfang viðtakanda",
+  "messageOptional": "Skilaboð (valfrjálst)",
+  "passwordOptional": "Lykilorð (valfrjálst)",
+  "destructAfterDownload": "Eyða eftir niðurhal",
+  "destructNo": "Haltu tiltækum",
+  "sendButton": "Senda",
+  "uploading": "Hleður inn...",
+  "uploadComplete": "Búið",
+  "shareLinkTitle": "Hlekkurinn þinn",
+  "copyLink": "Afritaðu tengil",
+  "share": "Deila",
+  "shareQrCode": "Deildu QR kóða",
+  "uploadMore": "Sendu annan",
+  "emailSentTitle": "Tölvupóstar sendir",
+  "verifyEmailTitle": "Staðfestu netfangið þitt",
+  "verifyCodeHint": "Sláðu inn kóðann úr tölvupóstinum þínum",
+  "verifySubmit": "Staðfestu",
+  "verifyResendCode": "Sendu kóða aftur",
+  "verifyCodeSent": "Nýr staðfestingarkóði var sendur á netfangið þitt.",
+  "verifyEmailSmtpWarningTitle": "Staðfestingarpóstur gæti ekki hafa verið sendur",
+  "verifyEmailSmtpWarningBody": "Miðlarinn gat ekki staðfest afhendingu (oft er SMTP rangt stillt). Biddu síðustjórann þinn um að athuga póststillingar á stjórnborðinu og pikkaðu síðan á Endursenda kóða.",
+  "verifyEmailCheckSpamHint": "Ef það berst ekki: athugaðu rusl/ruslpóst og kynningar, bíddu í eina mínútu, staðfestu að <<PH0>> hafi engar innsláttarvillur, pikkaðu síðan á Senda aftur.",
+  "loginTitle": "Skráðu þig inn",
+  "signupHint": "Notaðu netfang og lykilorð síðureikningsins þíns.",
+  "emailHint": "Tölvupóstur",
+  "passwordHint": "Lykilorð",
+  "cancel": "Hætta við",
+  "signIn": "Skráðu þig inn",
+  "downloadIdHint": "Flytja auðkenni",
+  "privateIdHint": "Einkaauðkenni (valfrjálst)",
+  "fetchTransfer": "Opinn flutningur",
+  "downloadFile": "Sækja",
+  "unlockDownload": "Aflæsa niðurhal",
+  "downloadSaved": "Vistað í niðurhal",
+  "errorGeneric": "Eitthvað fór úrskeiðis",
+  "errorNetwork": "Netvilla",
+  "errorBadResponse": "Óvænt svar netþjóns",
+  "termsAccept": "Ég samþykki skilmálana",
+  "settingsApiUrl": "Opinber vefslóð",
+  "settingsAccount": "Reikningur",
+  "settingsAppearance": "Útlit",
+  "settingsTheme": "Þema",
+  "themeSystem": "Kerfi",
+  "themeLight": "Ljós",
+  "themeDark": "Myrkur",
+  "settingsSignedIn": "Þú ert skráður inn.",
+  "settingsSignedOut": "Þú ert ekki skráður inn.",
+  "settingsOpenWebsite": "Opin vefsíða",
+  "signUp": "Skráðu þig",
+  "settingsLinks": "Tenglar",
+  "privacyPolicy": "Persónuverndarstefna",
+  "termsOfService": "Þjónustuskilmálar",
+  "about": "Um",
+  "moreApps": "Fleiri forrit",
+  "settingsLanguage": "Tungumál",
+  "languageEnglish": "ensku",
+  "languageHindi": "hindí",
+  "logout": "Skráðu þig út",
+  "deleteAccount": "Eyða reikningi",
+  "deleteAccountConfirmTitle": "Eyða reikningnum þínum?",
+  "deleteAccountConfirmBody": "Þetta eyðir reikningnum þínum varanlega og skráir þig út. Flutningstenglar þínir munu halda áfram að virka en þeir munu ekki lengur birtast í ferlinum þínum.",
+  "deleteAccountSuccess": "Reikningi eytt",
+  "deleteAccountSuccessBody": "Reikningurinn þinn hefur verið fjarlægður.",
+  "deleteAccountFailed": "Gat ekki eytt reikningi",
+  "deleteAccountFailedBody": "Vinsamlegast reyndu aftur eða hafðu samband við þjónustudeild.",
+  "maxFilesReached": "Of margar skrár",
+  "fileTooLarge": "Skrá of stór",
+  "ipLimit": "Of mörg upphleðsla frá þessu neti",
+  "fillFields": "Vinsamlegast fylltu út nauðsynlega reiti",
+  "invalidEmail": "Ógilt netfang",
+  "maxRecipientsReached": "Of margir viðtakendur",
+  "loginRequiredTitle": "Innskráning krafist",
+  "loginRequiredBody": "Þessi þjónn krefst reiknings til að hlaða upp eða hlaða niður.",
+  "settingsSubtitle": "App óskir og reikningur.",
+  "dropHeavyFile": "Slepptu þungri skrá hér.",
+  "upToTotal": "Allt að <<PH0>> samtals",
+  "removeAll": "Fjarlægðu allt",
+  "addFiles": "Bæta við skrám",
+  "adding": "Bætir við...",
+  "options": "Valmöguleikar",
+  "selfDestruct": "Sjálfseyðing eftir niðurhal",
+  "expiry": "Rennur út",
+  "cancelUpload": "Hætta við upphleðslu",
+  "transferReady": "Flutningur tilbúinn!",
+  "emailSentReady": "Tölvupóstur sendur!",
+  "shareRecipientHint": "Deildu þessum tengli með viðtakanda þínum.",
+  "emailSentBody": "Við höfum látið viðtakanda/viðtakendur vita.",
+  "scanQr": "Skannaðu til að opna flutningstengilinn.",
+  "shareLinkButton": "DEILA TENGLI",
+  "verifyFourDigit": "Sláðu inn 4 stafa kóðann sem sendur var á tölvupóstfang sendanda.",
+  "starting": "Er að byrja...",
+  "mbLeft": "<<PH0>> MB eftir",
+  "fillField": "Vinsamlegast fylltu út þennan reit.",
+  "enterValidEmail": "Sláðu inn gilt netfang.",
+  "message": "Skilaboð",
+  "recipientEmail": "Netfang viðtakanda",
+  "active": "Virkur",
+  "expired": "Útrunnið",
+  "historyTitle": "Flutningarnir mínir",
+  "signInToSeeTransfers": "Skráðu þig inn til að sjá millifærslurnar þínar",
+  "signInTransfersBody": "Við notum tölvupóstinn þinn til að tengja millifærslur við reikninginn þinn - ekkert lykilorð þarf.",
+  "couldNotLoadTransfers": "Gat ekki hlaðið millifærslur",
+  "retry": "Reyndu aftur",
+  "noTransfersYet": "Engar millifærslur ennþá",
+  "noTransfersBody": "Þegar þú hefur sent skrá birtist hún hér.",
+  "transferDetails": "Flutningaupplýsingar",
+  "filesSection": "Skrár",
+  "receiveTitle": "Fáðu skrár",
+  "receiveSubtitle": "Límdu flutningstengil til að hlaða niður skrám.",
+  "pasteTooltip": "Líma",
+  "findTransfer": "Finndu Transfer",
+  "receiveScanQr": "Skannaðu QR",
+  "receiveScanQrTitle": "Skanna flytja QR",
+  "receiveScanQrHint": "Stilltu QR kóðann inni í rammanum.",
+  "receiveScanQrInvalid": "Þessi QR-kóði er ekki gildur flutningstengur.",
+  "receiveScanQrCameraDenied": "Aðgangur að myndavél er nauðsynlegur til að skanna QR kóða.",
+  "receiveStepGetLink": "Fáðu hlekkinn",
+  "receiveStepGetLinkBody": "Biddu sendanda um að deila flutningstenglinum með þér.",
+  "receiveStepPaste": "Límdu og finndu",
+  "receiveStepPasteBody": "Límdu hlekkinn hér að ofan og pikkaðu á „Finna flutning“.",
+  "receiveStepDownload": "Sækja skrár",
+  "receiveStepDownloadBody": "Sjáðu skráarupplýsingar og halaðu niður öllu í einu.",
+  "lookingUpTransfer": "Leitar upp flutning...",
+  "transferNotFound": "Flutningur fannst ekki. Athugaðu hlekkinn og reyndu aftur.",
+  "transferExpired": "Þessi flutningur er útrunninn og er ekki lengur tiltækur.",
+  "transferLoginRequired": "Innskráning er nauðsynleg til að fá aðgang að þessum flutningi.",
+  "transferBadResponse": "Óvænt svar netþjóns. Athugaðu tenginguna þína.",
+  "transferNetworkError": "Netvilla. Athugaðu nettenginguna þína.",
+  "transferLoadFailed": "Gat ekki hlaðið flutning: <<PH0>>",
+  "passwordProtected": "Lykilorð varið",
+  "enterPassword": "Sláðu inn lykilorð",
+  "unlock": "Opnaðu",
+  "downloading": "Sækir…",
+  "downloadAllFiles": "Sækja allar skrár",
+  "downloadSingleFile": "Sækja skrá",
+  "receiveAnother": "Fáðu aðra millifærslu",
+  "plansTitle": "Áætlanir",
+  "plansSubtitle": "Uppfærðu til að fjarlægja auglýsingar og senda stærri skrár.",
+  "storeUnavailable": "Verslun ekki tiltæk",
+  "storeUnavailableBody": "Innkaup í forriti eru ekki í boði eins og er.",
+  "storeLoadingPrices": "Hleður verð úr App Store…",
+  "storePricesUnavailable": "Verð ekki í boði",
+  "storePricesPartial": "Ekki tókst að hlaða sum verð",
+  "storePricesPartialBody": "<<PH0>> af <<PH1>> áskriftarvörum hlaðnar.",
+  "storeSetupHint": "Prófaðu á alvöru iPhone (ekki Simulator), notaðu Sandbox Apple ID og tryggðu að allar 6 áskriftirnar séu búnar til undir búntaauðkenni þessa forrits í App Store Tengstu við verðsett.",
+  "effectiveMonthlyPrice": "<<PH0>>/mánuði",
+  "freeVersionAds": "Eins og er ertu að nota ókeypis útgáfuna okkar með auglýsingum",
+  "restorePurchases": "Endurheimta kaup",
+  "plansContinue": "Halda áfram",
+  "planLinkRestore": "Endurheimta",
+  "termsAndConditions": "Skilmálar og skilyrði",
+  "createAccountTitle": "Búðu til reikning",
+  "signUpSubtitle": "Skráðu þig með tölvupósti og lykilorði.",
+  "confirmPassword": "Staðfestu lykilorð",
+  "passwordMin8": "Lykilorð (lágmark 8 stafir)",
+  "alreadyHaveAccount": "Ertu nú þegar með reikning?",
+  "checkEmailTitle": "Athugaðu þitt\ntölvupósti",
+  "otpSentTo": "Við sendum 6 stafa kóða til\n<<PH0>>",
+  "verifyAndSignIn": "Staðfestu og skráðu þig inn",
+  "didntReceiveCode": "Fékkstu það ekki?",
+  "tryAgain": "Reyndu aftur",
+  "otpExpiresHint": "Kóðinn rennur út eftir 5 mínútur. Athugaðu ruslpóstmöppuna þína ef þú sérð hana ekki.",
+  "snackError": "Villa",
+  "snackCopied": "Afritað",
+  "snackCopiedBody": "Tengill afritaður á klippiborð",
+  "snackWelcome": "Verið velkomin",
+  "snackAccountCreated": "Reikningur búinn til",
+  "snackEnterEmail": "Vinsamlegast sláðu inn netfangið þitt",
+  "snackEnterPassword": "Vinsamlegast sláðu inn lykilorðið þitt",
+  "snackInvalidEmail": "Ógilt netfang",
+  "snackInvalidCredentials": "Rangt netfang eða lykilorð",
+  "snackPasswordMin8": "Lykilorð verður að vera að minnsta kosti 8 stafir",
+  "snackPasswordMismatch": "Lykilorð passa ekki saman.",
+  "snackAccountExists": "Reikningur er þegar til. Vinsamlegast skráðu þig inn.",
+  "snackSignupFailed": "Gat ekki búið til reikning. Reyndu aftur.",
+  "snackEnterOtp": "Vinsamlegast sláðu inn 6 stafa kóðann",
+  "snackOtpExpired": "Kóði rann út",
+  "snackOtpExpiredBody": "Vinsamlegast biðjið um nýjan kóða.",
+  "snackInvalidCode": "Ógildur kóði",
+  "snackInvalidCodeBody": "Kóðinn er rangur. Vinsamlegast reyndu aftur.",
+  "snackSendCodeFailed": "Gat ekki sent kóða. Athugaðu tenginguna þína og reyndu aftur.",
+  "snackEmptyFolder": "Tóm mappa",
+  "snackEmptyFolderBody": "Engar skrár fundust í valinni möppu.",
+  "snackFolderUnsupported": "Ekki stutt",
+  "snackFolderUnsupportedBody": "Ekki er hægt að hlaða upp möppum á þessum vettvangi.",
+  "snackFolderReadError": "Gat ekki lesið valda möppu.",
+  "snackLimitReached": "Takmarki náð",
+  "snackLimitFilesBody": "Sumum skrám var ekki bætt við vegna takmarkana á stærð eða skráafjölda.",
+  "snackFreePlanLimit": "Ókeypis áætlun leyfir allt að 5GB á hvern flutning. Vinsamlegast fjarlægðu einhverjar skrár eða uppfærðu.",
+  "snackSignInEmail": "Vinsamlegast skráðu þig inn til að senda með tölvupósti.",
+  "snackUploadStartFailed": "Gat ekki byrjað að hlaða upp.",
+  "snackVerifyEnterCode": "Sláðu inn 4 stafa kóðann úr tölvupóstinum þínum.",
+  "snackVerifyInvalid": "Ógildur eða útrunninn kóði. Athugaðu tölvupóstinn og reyndu aftur.",
+  "snackVerifyResendFailed": "Gat ekki sent kóða aftur. Reyndu aftur.",
+  "snackDownloadComplete": "Niðurhali lokið",
+  "snackDownloadSaved": "\"<<PH0>>\" vistað í niðurhali",
+  "snackDownloadFailed": "Niðurhal mistókst",
+  "snackSaved": "Vistað",
+  "snackServerUrlUpdated": "Vefslóð netþjóns uppfærð. Endurræstu forritið til að sækja um.",
+  "snackStoreError": "Villa í verslun",
+  "snackMissingProducts": "Vörur vantar",
+  "snackStoreUnavailable": "Verslun ekki tiltæk",
+  "snackStoreUnavailableBody": "Innkaup í forriti eru ekki í boði á þessu tæki.",
+  "snackProductNotLoaded": "Varan er ekki hlaðin enn.",
+  "snackRestoreStarted": "Endurheimt hófst",
+  "snackRestoreStartedBody": "Við erum að athuga innkaupin þín.",
+  "snackRestoreFailed": "Endurheimt mistókst",
+  "snackProcessing": "Vinnsla",
+  "snackPleaseWait": "Vinsamlegast bíddu…",
+  "snackSuccess": "Árangur",
+  "snackPurchaseCompleted": "Kaup lokið.",
+  "snackPurchaseError": "Villa við kaup",
+  "snackPurchaseFailed": "Kaup mistókst.",
+  "snackCanceled": "Hætt við",
+  "snackPurchaseCanceled": "Hætt við kaup.",
+  "snackUpload": "Hlaða upp",
+  "snackVerify": "Staðfestu",
+  "doNotExpire": "Ekki renna út",
+  "hourSingular": "klukkustund",
+  "hourPlural": "klukkustundir",
+  "daySingular": "dag",
+  "dayPlural": "daga",
+  "emailAddressLabel": "NETVÖL",
+  "passwordLabelCaps": "LYKILORÐ",
+  "confirmPasswordLabelCaps": "STEFNA LYKILORÐ",
+  "transferLinkOrId": "FLYTJA TENGILL EÐA auðkenni",
+  "howToReceive": "HVERNIG Á AÐ MÓTA",
+  "planAdsTitle": "Auglýsingaáætlun",
+  "planAdsBullet1": "Aðgangur að ókeypis auglýsingaforriti",
+  "planAdsBullet2": "Fjarlægðu allar auglýsingar",
+  "planProTitle": "Pro Plan",
+  "planProBullet1": "Sendu skrár allt að 20GB",
+  "planProBullet2": "Hratt upphleðsla",
+  "planPremiumTitle": "Premium áætlun",
+  "planPremiumBullet1": "Sendu skrár allt að 100GB",
+  "planPremiumBullet2": "Ofur hröð upphleðsla",
+  "planSubscriptionDisclaimer": "Enginn prufutími - áskrift er nauðsynleg til að nota viðbótarvirkni appsins. Þú verður rukkaður strax. Þú getur hætt við hvenær sem er.",
+  "perMonth": "/ mánuði",
+  "perYear": "/ ári",
+  "snackConnectionProblem": "Tengingarvandamál. Vinsamlegast reyndu aftur.",
+  "networkTitle": "Net",
+  "transferIdLabel": "Auðkenni: <<PH0>>",
+  "downloadMetaSummary": "Skrár: <<PH0>> · <<PH1>> bæti",
+  "todayAt": "Í dag · <<PH0>>",
+  "yesterdayAt": "Í gær · <<PH0>>",
+  "daysAgoAt": "<<PH0>>d. síðan · <<PH1>>",
+  "dateAt": "<<PH0>> · <<PH1>>",
+  "mbAmount": "<<PH0>> MB",
+  "uploadProgressSummary": "<<PH0>> / <<PH1>> • <<PH2>> vinstri",
+  "loadingShort": "Hleður…",
+  "colorPaletteTitle": "Litapalletta",
+  "colorPaletteSectionBackgrounds": "Bakgrunnur (blekkvarði)",
+  "colorPaletteSectionAccent": "Hreimur / aðal",
+  "colorPaletteSectionText": "Texti",
+  "colorPaletteSectionBorders": "Borders & Gler",
+  "colorPaletteSectionSemantic": "Merkingarfræði",
+  "colorPaletteSectionLive": "Lifandi þema (núverandi)",
+  "colorPaletteActiveHint": "★ = virkur notaður á skjám",
+  "colorPaletteCopyHint": "Ýttu lengi á hvaða sýni sem er til að afrita hex gildi þess.",
+  "settingsAppBrand": "Deila Large\nVídeó skrár",
+  "loginEmailPasswordPrompt": "Sláðu inn netfangið þitt og lykilorð til að skrá þig inn.",
+  "forgotPassword": "Gleymt lykilorð?",
+  "forgotPasswordTitle": "Endurstilla lykilorð",
+  "forgotPasswordBody": "Sláðu inn netfang reikningsins þíns og við munum senda endurstillingarkóða.",
+  "forgotPasswordSubmit": "Sendu endurstillingarkóða",
+  "resetPasswordTitle": "Búðu til nýtt lykilorð",
+  "resetPasswordBody": "Sláðu inn 6 stafa kóðann úr tölvupóstinum þínum og veldu nýtt lykilorð.",
+  "resetPasswordSubmit": "Uppfærðu lykilorð",
+  "snackPasswordResetSent": "Endurstilla kóða sendur",
+  "snackPasswordResetSentBody": "Athugaðu tölvupóstinn þinn fyrir 6 stafa endurstillingarkóða.",
+  "snackPasswordResetFailed": "Gat ekki sent endurstillingarkóða. Reyndu aftur.",
+  "snackPasswordUpdated": "Lykilorð uppfært",
+  "snackPasswordUpdatedBody": "Skráðu þig inn með nýja lykilorðinu þínu.",
+  "snackPasswordResetInvalid": "Ógildur eða útrunninn endurstillingarkóði.",
+  "otpDigitLabel": "6-STAFA KÓÐI",
+  "receiveMoreFiles": "+<<PH0>> fleiri skrár"
+}

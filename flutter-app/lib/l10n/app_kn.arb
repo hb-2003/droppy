@@ -1,0 +1,466 @@
+{
+  "@@locale": "kn",
+  "@verifyEmailCheckSpamHint": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@upToTotal": {
+    "placeholders": {
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "@filesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesCount": "{count, plural, =1{1 file} other{{count} files}}",
+  "@mbLeft": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@transferLoadFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@storePricesPartialBody": {
+    "placeholders": {
+      "loaded": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "priceUnavailable": "—",
+  "@effectiveMonthlyPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "@otpSentTo": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@snackDownloadSaved": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "emailExampleHint": "you@example.com",
+  "otpSixDigitHint": "000000",
+  "verifyFourDigitHint": "0000",
+  "transferLinkHint": "https://… or paste ID",
+  "@filesReady": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesReady": "{count, plural, =1{1 file ready} other{{count} files ready}}",
+  "@transferIdLabel": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadMetaSummary": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "@todayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@yesterdayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@daysAgoAt": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@dateAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@mbAmount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@uploadProgressSummary": {
+    "placeholders": {
+      "sent": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      },
+      "remaining": {
+        "type": "String"
+      }
+    }
+  },
+  "@historyFilesSize": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "historyFilesSize": "{count, plural, =1{1 file} other{{count} files}} · {size}",
+  "@receiveMoreFiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appTitle": "ದೊಡ್ಡ ವೀಡಿಯೊ ಫೈಲ್‌ಗಳನ್ನು ಹಂಚಿಕೊಳ್ಳಿ",
+  "heroAccent": "ತಕ್ಷಣ.",
+  "heroTitle": "ಭಾರೀ ಫೈಲ್‌ಗಳನ್ನು ಕಳುಹಿಸಿ",
+  "splashLoading": "ಲೋಡ್ ಆಗುತ್ತಿದೆ...",
+  "navSend": "ಡ್ಯಾಶ್‌ಬೋರ್ಡ್",
+  "navHome": "ಮನೆ",
+  "navHistory": "ಇತಿಹಾಸ",
+  "navReceive": "ಸ್ವೀಕರಿಸಿ",
+  "navPlans": "ಯೋಜನೆಗಳು",
+  "navDownload": "ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ",
+  "navSettings": "ಸೆಟ್ಟಿಂಗ್‌ಗಳು",
+  "modeLink": "ಲಿಂಕ್ ಪಡೆಯಿರಿ",
+  "modeEmail": "ಇಮೇಲ್ ಮೂಲಕ ಕಳುಹಿಸಿ",
+  "pickFiles": "ಫೈಲ್‌ಗಳನ್ನು ಆಯ್ಕೆಮಾಡಿ",
+  "pickFolder": "ಫೋಲ್ಡರ್ ಆಯ್ಕೆಮಾಡಿ",
+  "emailFrom": "ನಿಮ್ಮ ಇಮೇಲ್",
+  "mailFromUsesAccount": "ನಿಮ್ಮ ಸೈನ್ ಇನ್ ಮಾಡಿದ ಇಮೇಲ್ ಅನ್ನು ಬಳಸುತ್ತದೆ.",
+  "recipientEmailsHelper": "ಬಹು ಸ್ವೀಕೃತದಾರರು: ಅಲ್ಪವಿರಾಮಗಳು, ಅರ್ಧವಿರಾಮ ಚಿಹ್ನೆಗಳು ಅಥವಾ ಸ್ಪೇಸ್‌ಗಳೊಂದಿಗೆ ಪ್ರತ್ಯೇಕಿಸಿ.",
+  "emailTo": "ಸ್ವೀಕರಿಸುವವರ ಇಮೇಲ್",
+  "messageOptional": "ಸಂದೇಶ (ಐಚ್ಛಿಕ)",
+  "passwordOptional": "ಪಾಸ್ವರ್ಡ್ (ಐಚ್ಛಿಕ)",
+  "destructAfterDownload": "ಡೌನ್‌ಲೋಡ್ ಮಾಡಿದ ನಂತರ ಅಳಿಸಿ",
+  "destructNo": "ಲಭ್ಯವಿರಲಿ",
+  "sendButton": "ಕಳುಹಿಸು",
+  "uploading": "ಅಪ್‌ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ...",
+  "uploadComplete": "ಮುಗಿದಿದೆ",
+  "shareLinkTitle": "ನಿಮ್ಮ ಲಿಂಕ್",
+  "copyLink": "ಲಿಂಕ್ ನಕಲಿಸಿ",
+  "share": "ಹಂಚಿಕೊಳ್ಳಿ",
+  "shareQrCode": "QR ಕೋಡ್ ಹಂಚಿಕೊಳ್ಳಿ",
+  "uploadMore": "ಇನ್ನೊಂದನ್ನು ಕಳುಹಿಸಿ",
+  "emailSentTitle": "ಇಮೇಲ್‌ಗಳನ್ನು ಕಳುಹಿಸಲಾಗಿದೆ",
+  "verifyEmailTitle": "ನಿಮ್ಮ ಇಮೇಲ್ ಪರಿಶೀಲಿಸಿ",
+  "verifyCodeHint": "ನಿಮ್ಮ ಇಮೇಲ್‌ನಿಂದ ಕೋಡ್ ಅನ್ನು ನಮೂದಿಸಿ",
+  "verifySubmit": "ಪರಿಶೀಲಿಸಿ",
+  "verifyResendCode": "ಕೋಡ್ ಅನ್ನು ಮರುಕಳುಹಿಸಿ",
+  "verifyCodeSent": "ನಿಮ್ಮ ಇಮೇಲ್‌ಗೆ ಹೊಸ ಪರಿಶೀಲನಾ ಕೋಡ್ ಅನ್ನು ಕಳುಹಿಸಲಾಗಿದೆ.",
+  "verifyEmailSmtpWarningTitle": "ಪರಿಶೀಲನೆ ಇಮೇಲ್ ಕಳುಹಿಸದೇ ಇರಬಹುದು",
+  "verifyEmailSmtpWarningBody": "ಸರ್ವರ್ ವಿತರಣೆಯನ್ನು ಖಚಿತಪಡಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ (ಸಾಮಾನ್ಯವಾಗಿ SMTP ಅನ್ನು ತಪ್ಪಾಗಿ ಕಾನ್ಫಿಗರ್ ಮಾಡಲಾಗಿದೆ). ನಿರ್ವಾಹಕ ಫಲಕದಲ್ಲಿ ಮೇಲ್ ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ಪರಿಶೀಲಿಸಲು ನಿಮ್ಮ ಸೈಟ್ ನಿರ್ವಾಹಕರನ್ನು ಕೇಳಿ, ನಂತರ ಕೋಡ್ ಅನ್ನು ಮರುಕಳುಹಿಸಿ ಟ್ಯಾಪ್ ಮಾಡಿ.",
+  "verifyEmailCheckSpamHint": "ಅದು ಬರದಿದ್ದರೆ: ಜಂಕ್/ಸ್ಪ್ಯಾಮ್ ಮತ್ತು ಪ್ರಚಾರಗಳನ್ನು ಪರಿಶೀಲಿಸಿ, ಒಂದು ನಿಮಿಷ ನಿರೀಕ್ಷಿಸಿ, <<PH0>> ಯಾವುದೇ ಮುದ್ರಣದೋಷಗಳಿಲ್ಲ ಎಂದು ಖಚಿತಪಡಿಸಿ, ನಂತರ ಮರುಕಳುಹಿಸಿ ಟ್ಯಾಪ್ ಮಾಡಿ.",
+  "loginTitle": "ಸೈನ್ ಇನ್ ಮಾಡಿ",
+  "signupHint": "ನಿಮ್ಮ ಸೈಟ್ ಖಾತೆ ಇಮೇಲ್ ಮತ್ತು ಪಾಸ್‌ವರ್ಡ್ ಬಳಸಿ.",
+  "emailHint": "ಇಮೇಲ್",
+  "passwordHint": "ಪಾಸ್ವರ್ಡ್",
+  "cancel": "ರದ್ದುಮಾಡಿ",
+  "signIn": "ಸೈನ್ ಇನ್ ಮಾಡಿ",
+  "downloadIdHint": "ವರ್ಗಾವಣೆ ID",
+  "privateIdHint": "ಖಾಸಗಿ ID (ಐಚ್ಛಿಕ)",
+  "fetchTransfer": "ತೆರೆದ ವರ್ಗಾವಣೆ",
+  "downloadFile": "ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ",
+  "unlockDownload": "ಡೌನ್‌ಲೋಡ್ ಅನ್ನು ಅನ್‌ಲಾಕ್ ಮಾಡಿ",
+  "downloadSaved": "ಡೌನ್‌ಲೋಡ್‌ಗಳಿಗೆ ಉಳಿಸಲಾಗಿದೆ",
+  "errorGeneric": "ಏನೋ ತಪ್ಪಾಗಿದೆ",
+  "errorNetwork": "ನೆಟ್‌ವರ್ಕ್ ದೋಷ",
+  "errorBadResponse": "ಅನಿರೀಕ್ಷಿತ ಸರ್ವರ್ ಪ್ರತಿಕ್ರಿಯೆ",
+  "termsAccept": "ನಾನು ನಿಯಮಗಳನ್ನು ಒಪ್ಪುತ್ತೇನೆ",
+  "settingsApiUrl": "ಸಾರ್ವಜನಿಕ ಸೈಟ್ URL",
+  "settingsAccount": "ಖಾತೆ",
+  "settingsAppearance": "ಗೋಚರತೆ",
+  "settingsTheme": "ಥೀಮ್",
+  "themeSystem": "ವ್ಯವಸ್ಥೆ",
+  "themeLight": "ಬೆಳಕು",
+  "themeDark": "ಕತ್ತಲು",
+  "settingsSignedIn": "ನೀವು ಸೈನ್ ಇನ್ ಆಗಿರುವಿರಿ.",
+  "settingsSignedOut": "ನೀವು ಸೈನ್ ಇನ್ ಆಗಿಲ್ಲ.",
+  "settingsOpenWebsite": "ವೆಬ್‌ಸೈಟ್ ತೆರೆಯಿರಿ",
+  "signUp": "ಸೈನ್ ಅಪ್ ಮಾಡಿ",
+  "settingsLinks": "ಲಿಂಕ್‌ಗಳು",
+  "privacyPolicy": "ಗೌಪ್ಯತೆ ನೀತಿ",
+  "termsOfService": "ಸೇವಾ ನಿಯಮಗಳು",
+  "about": "ಬಗ್ಗೆ",
+  "moreApps": "ಇನ್ನಷ್ಟು ಅಪ್ಲಿಕೇಶನ್‌ಗಳು",
+  "settingsLanguage": "ಭಾಷೆ",
+  "languageEnglish": "ಇಂಗ್ಲೀಷ್",
+  "languageHindi": "ಹಿಂದಿ",
+  "logout": "ಲಾಗ್ ಔಟ್ ಮಾಡಿ",
+  "deleteAccount": "ಖಾತೆಯನ್ನು ಅಳಿಸಿ",
+  "deleteAccountConfirmTitle": "ನಿಮ್ಮ ಖಾತೆಯನ್ನು ಅಳಿಸುವುದೇ?",
+  "deleteAccountConfirmBody": "ಇದು ನಿಮ್ಮ ಖಾತೆಯನ್ನು ಶಾಶ್ವತವಾಗಿ ಅಳಿಸುತ್ತದೆ ಮತ್ತು ನಿಮ್ಮನ್ನು ಸೈನ್ ಔಟ್ ಮಾಡುತ್ತದೆ. ನಿಮ್ಮ ವರ್ಗಾವಣೆ ಲಿಂಕ್‌ಗಳು ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತಲೇ ಇರುತ್ತವೆ, ಆದರೆ ಅವು ಇನ್ನು ಮುಂದೆ ನಿಮ್ಮ ಇತಿಹಾಸದಲ್ಲಿ ಕಾಣಿಸುವುದಿಲ್ಲ.",
+  "deleteAccountSuccess": "ಖಾತೆಯನ್ನು ಅಳಿಸಲಾಗಿದೆ",
+  "deleteAccountSuccessBody": "ನಿಮ್ಮ ಖಾತೆಯನ್ನು ತೆಗೆದುಹಾಕಲಾಗಿದೆ.",
+  "deleteAccountFailed": "ಖಾತೆಯನ್ನು ಅಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ",
+  "deleteAccountFailedBody": "ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ ಅಥವಾ ಬೆಂಬಲವನ್ನು ಸಂಪರ್ಕಿಸಿ.",
+  "maxFilesReached": "ಹಲವಾರು ಫೈಲ್‌ಗಳು",
+  "fileTooLarge": "ಫೈಲ್ ತುಂಬಾ ದೊಡ್ಡದಾಗಿದೆ",
+  "ipLimit": "ಈ ನೆಟ್‌ವರ್ಕ್‌ನಿಂದ ಹಲವಾರು ಅಪ್‌ಲೋಡ್‌ಗಳು",
+  "fillFields": "ದಯವಿಟ್ಟು ಅಗತ್ಯವಿರುವ ಕ್ಷೇತ್ರಗಳನ್ನು ಭರ್ತಿ ಮಾಡಿ",
+  "invalidEmail": "ಅಮಾನ್ಯ ಇಮೇಲ್",
+  "maxRecipientsReached": "ಹಲವಾರು ಸ್ವೀಕರಿಸುವವರು",
+  "loginRequiredTitle": "ಸೈನ್ ಇನ್ ಅಗತ್ಯವಿದೆ",
+  "loginRequiredBody": "ಈ ಸರ್ವರ್‌ಗೆ ಅಪ್‌ಲೋಡ್ ಮಾಡಲು ಅಥವಾ ಡೌನ್‌ಲೋಡ್ ಮಾಡಲು ಖಾತೆಯ ಅಗತ್ಯವಿದೆ.",
+  "settingsSubtitle": "ಅಪ್ಲಿಕೇಶನ್ ಆದ್ಯತೆಗಳು ಮತ್ತು ಖಾತೆ.",
+  "dropHeavyFile": "ಭಾರೀ ಫೈಲ್ ಅನ್ನು ಇಲ್ಲಿ ಬಿಡಿ.",
+  "upToTotal": "ಒಟ್ಟು <<PH0>> ವರೆಗೆ",
+  "removeAll": "ಎಲ್ಲವನ್ನೂ ತೆಗೆದುಹಾಕಿ",
+  "addFiles": "ಫೈಲ್‌ಗಳನ್ನು ಸೇರಿಸಿ",
+  "adding": "ಸೇರಿಸಲಾಗುತ್ತಿದೆ...",
+  "options": "ಆಯ್ಕೆಗಳು",
+  "selfDestruct": "ಡೌನ್‌ಲೋಡ್ ಮಾಡಿದ ನಂತರ ಸ್ವಯಂ-ನಾಶ",
+  "expiry": "ಅವಧಿ ಮುಗಿಯುತ್ತಿದೆ",
+  "cancelUpload": "ಅಪ್‌ಲೋಡ್ ರದ್ದುಮಾಡಿ",
+  "transferReady": "ವರ್ಗಾವಣೆ ಸಿದ್ಧವಾಗಿದೆ!",
+  "emailSentReady": "ಇಮೇಲ್ ಕಳುಹಿಸಲಾಗಿದೆ!",
+  "shareRecipientHint": "ಈ ಲಿಂಕ್ ಅನ್ನು ನಿಮ್ಮ ಸ್ವೀಕೃತದಾರರೊಂದಿಗೆ ಹಂಚಿಕೊಳ್ಳಿ.",
+  "emailSentBody": "ನಾವು ನಿಮ್ಮ ಸ್ವೀಕೃತದಾರರಿಗೆ(ರು) ಸೂಚನೆ ನೀಡಿದ್ದೇವೆ.",
+  "scanQr": "ವರ್ಗಾವಣೆ ಲಿಂಕ್ ತೆರೆಯಲು ಸ್ಕ್ಯಾನ್ ಮಾಡಿ.",
+  "shareLinkButton": "ಲಿಂಕ್ ಅನ್ನು ಹಂಚಿಕೊಳ್ಳಿ",
+  "verifyFourDigit": "ನಿಮ್ಮ ಕಳುಹಿಸುವವರ ಇಮೇಲ್‌ಗೆ ಕಳುಹಿಸಲಾದ 4-ಅಂಕಿಯ ಕೋಡ್ ಅನ್ನು ನಮೂದಿಸಿ.",
+  "starting": "ಪ್ರಾರಂಭಿಸಲಾಗುತ್ತಿದೆ...",
+  "mbLeft": "<<PH0>> MB ಉಳಿದಿದೆ",
+  "fillField": "ದಯವಿಟ್ಟು ಈ ಕ್ಷೇತ್ರವನ್ನು ಭರ್ತಿ ಮಾಡಿ.",
+  "enterValidEmail": "ಮಾನ್ಯವಾದ ಇಮೇಲ್ ಅನ್ನು ನಮೂದಿಸಿ.",
+  "message": "ಸಂದೇಶ",
+  "recipientEmail": "ಸ್ವೀಕರಿಸುವವರ ಇಮೇಲ್",
+  "active": "ಸಕ್ರಿಯ",
+  "expired": "ಅವಧಿ ಮೀರಿದೆ",
+  "historyTitle": "ನನ್ನ ವರ್ಗಾವಣೆಗಳು",
+  "signInToSeeTransfers": "ನಿಮ್ಮ ವರ್ಗಾವಣೆಗಳನ್ನು ನೋಡಲು ಸೈನ್ ಇನ್ ಮಾಡಿ",
+  "signInTransfersBody": "ನಿಮ್ಮ ಖಾತೆಗೆ ವರ್ಗಾವಣೆಗಳನ್ನು ಲಿಂಕ್ ಮಾಡಲು ನಾವು ನಿಮ್ಮ ಇಮೇಲ್ ಅನ್ನು ಬಳಸುತ್ತೇವೆ - ಯಾವುದೇ ಪಾಸ್‌ವರ್ಡ್ ಅಗತ್ಯವಿಲ್ಲ.",
+  "couldNotLoadTransfers": "ವರ್ಗಾವಣೆಗಳನ್ನು ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ",
+  "retry": "ಮರುಪ್ರಯತ್ನಿಸಿ",
+  "noTransfersYet": "ಇನ್ನೂ ಯಾವುದೇ ವರ್ಗಾವಣೆಗಳಿಲ್ಲ",
+  "noTransfersBody": "ಒಮ್ಮೆ ನೀವು ಫೈಲ್ ಅನ್ನು ಕಳುಹಿಸಿದರೆ, ಅದು ಇಲ್ಲಿ ಕಾಣಿಸುತ್ತದೆ.",
+  "transferDetails": "ವರ್ಗಾವಣೆ ವಿವರಗಳು",
+  "filesSection": "ಫೈಲ್‌ಗಳು",
+  "receiveTitle": "ಫೈಲ್‌ಗಳನ್ನು ಸ್ವೀಕರಿಸಿ",
+  "receiveSubtitle": "ಫೈಲ್‌ಗಳನ್ನು ಡೌನ್‌ಲೋಡ್ ಮಾಡಲು ವರ್ಗಾವಣೆ ಲಿಂಕ್ ಅನ್ನು ಅಂಟಿಸಿ.",
+  "pasteTooltip": "ಅಂಟಿಸಿ",
+  "findTransfer": "ವರ್ಗಾವಣೆಯನ್ನು ಹುಡುಕಿ",
+  "receiveScanQr": "QR ಅನ್ನು ಸ್ಕ್ಯಾನ್ ಮಾಡಿ",
+  "receiveScanQrTitle": "ವರ್ಗಾವಣೆ QR ಅನ್ನು ಸ್ಕ್ಯಾನ್ ಮಾಡಿ",
+  "receiveScanQrHint": "ಫ್ರೇಮ್ ಒಳಗೆ QR ಕೋಡ್ ಅನ್ನು ಹೊಂದಿಸಿ.",
+  "receiveScanQrInvalid": "ಈ QR ಕೋಡ್ ಮಾನ್ಯ ವರ್ಗಾವಣೆ ಲಿಂಕ್ ಅಲ್ಲ.",
+  "receiveScanQrCameraDenied": "QR ಕೋಡ್‌ಗಳನ್ನು ಸ್ಕ್ಯಾನ್ ಮಾಡಲು ಕ್ಯಾಮರಾ ಪ್ರವೇಶದ ಅಗತ್ಯವಿದೆ.",
+  "receiveStepGetLink": "ಲಿಂಕ್ ಪಡೆಯಿರಿ",
+  "receiveStepGetLinkBody": "ನಿಮ್ಮೊಂದಿಗೆ ವರ್ಗಾವಣೆ ಲಿಂಕ್ ಅನ್ನು ಹಂಚಿಕೊಳ್ಳಲು ಕಳುಹಿಸುವವರನ್ನು ಕೇಳಿ.",
+  "receiveStepPaste": "ಅಂಟಿಸಿ ಮತ್ತು ಹುಡುಕಿ",
+  "receiveStepPasteBody": "ಮೇಲಿನ ಲಿಂಕ್ ಅನ್ನು ಅಂಟಿಸಿ ಮತ್ತು \"ವರ್ಗಾವಣೆ ಹುಡುಕಿ\" ಟ್ಯಾಪ್ ಮಾಡಿ.",
+  "receiveStepDownload": "ಫೈಲ್‌ಗಳನ್ನು ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ",
+  "receiveStepDownloadBody": "ಫೈಲ್ ವಿವರಗಳನ್ನು ನೋಡಿ ಮತ್ತು ಎಲ್ಲವನ್ನೂ ಒಂದೇ ಬಾರಿಗೆ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ.",
+  "lookingUpTransfer": "ವರ್ಗಾವಣೆಯನ್ನು ಹುಡುಕಲಾಗುತ್ತಿದೆ...",
+  "transferNotFound": "ವರ್ಗಾವಣೆ ಕಂಡುಬಂದಿಲ್ಲ. ಲಿಂಕ್ ಪರಿಶೀಲಿಸಿ ಹಾಗೂ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+  "transferExpired": "ಈ ವರ್ಗಾವಣೆಯ ಅವಧಿ ಮುಗಿದಿದೆ ಮತ್ತು ಇನ್ನು ಮುಂದೆ ಲಭ್ಯವಿರುವುದಿಲ್ಲ.",
+  "transferLoginRequired": "ಈ ವರ್ಗಾವಣೆಯನ್ನು ಪ್ರವೇಶಿಸಲು ಸೈನ್ ಇನ್ ಅಗತ್ಯವಿದೆ.",
+  "transferBadResponse": "ಅನಿರೀಕ್ಷಿತ ಸರ್ವರ್ ಪ್ರತಿಕ್ರಿಯೆ. ನಿಮ್ಮ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ.",
+  "transferNetworkError": "ನೆಟ್‌ವರ್ಕ್ ದೋಷ. ನಿಮ್ಮ ಇಂಟರ್ನೆಟ್ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ.",
+  "transferLoadFailed": "ವರ್ಗಾವಣೆಯನ್ನು ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ: <<PH0>>",
+  "passwordProtected": "ಪಾಸ್ವರ್ಡ್ ರಕ್ಷಿಸಲಾಗಿದೆ",
+  "enterPassword": "ಪಾಸ್ವರ್ಡ್ ನಮೂದಿಸಿ",
+  "unlock": "ಅನ್ಲಾಕ್ ಮಾಡಿ",
+  "downloading": "ಡೌನ್‌ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ...",
+  "downloadAllFiles": "ಎಲ್ಲಾ ಫೈಲ್‌ಗಳನ್ನು ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ",
+  "downloadSingleFile": "ಫೈಲ್ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ",
+  "receiveAnother": "ಮತ್ತೊಂದು ವರ್ಗಾವಣೆಯನ್ನು ಸ್ವೀಕರಿಸಿ",
+  "plansTitle": "ಯೋಜನೆಗಳು",
+  "plansSubtitle": "ಜಾಹೀರಾತುಗಳನ್ನು ತೆಗೆದುಹಾಕಲು ಮತ್ತು ದೊಡ್ಡ ಫೈಲ್‌ಗಳನ್ನು ಕಳುಹಿಸಲು ಅಪ್‌ಗ್ರೇಡ್ ಮಾಡಿ.",
+  "storeUnavailable": "ಅಂಗಡಿ ಲಭ್ಯವಿಲ್ಲ",
+  "storeUnavailableBody": "ಅಪ್ಲಿಕೇಶನ್‌ನಲ್ಲಿನ ಖರೀದಿಗಳು ಇದೀಗ ಲಭ್ಯವಿಲ್ಲ.",
+  "storeLoadingPrices": "ಆಪ್ ಸ್ಟೋರ್‌ನಿಂದ ಬೆಲೆಗಳನ್ನು ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ...",
+  "storePricesUnavailable": "ಬೆಲೆಗಳು ಲಭ್ಯವಿಲ್ಲ",
+  "storePricesPartial": "ಕೆಲವು ಬೆಲೆಗಳನ್ನು ಲೋಡ್ ಮಾಡಲಾಗಲಿಲ್ಲ",
+  "storePricesPartialBody": "<<PH1>> ಚಂದಾದಾರಿಕೆ ಉತ್ಪನ್ನಗಳ <<PH0>> ಅನ್ನು ಲೋಡ್ ಮಾಡಲಾಗಿದೆ.",
+  "storeSetupHint": "ನಿಜವಾದ iPhone ನಲ್ಲಿ ಪರೀಕ್ಷಿಸಿ (ಸಿಮ್ಯುಲೇಟರ್ ಅಲ್ಲ), ಸ್ಯಾಂಡ್‌ಬಾಕ್ಸ್ Apple ID ಅನ್ನು ಬಳಸಿ ಮತ್ತು ಎಲ್ಲಾ 6 ಚಂದಾದಾರಿಕೆಗಳನ್ನು ಈ ಅಪ್ಲಿಕೇಶನ್‌ನ ಬಂಡಲ್ ID ಅಡಿಯಲ್ಲಿ ಅಪ್ಲಿಕೇಶನ್ ಸ್ಟೋರ್‌ನಲ್ಲಿ ಬೆಲೆ ಸೆಟ್‌ನೊಂದಿಗೆ ಸಂಪರ್ಕಿಸಿ.",
+  "effectiveMonthlyPrice": "<<PH0>>/ತಿಂಗಳು",
+  "freeVersionAds": "ಪ್ರಸ್ತುತ ನೀವು ಜಾಹೀರಾತುಗಳೊಂದಿಗೆ ನಮ್ಮ ಉಚಿತ ಆವೃತ್ತಿಯನ್ನು ಬಳಸುತ್ತಿರುವಿರಿ",
+  "restorePurchases": "ಖರೀದಿಗಳನ್ನು ಮರುಸ್ಥಾಪಿಸಿ",
+  "plansContinue": "ಮುಂದುವರಿಸಿ",
+  "planLinkRestore": "ಮರುಸ್ಥಾಪಿಸಿ",
+  "termsAndConditions": "ನಿಯಮಗಳು ಮತ್ತು ಷರತ್ತುಗಳು",
+  "createAccountTitle": "ಖಾತೆಯನ್ನು ರಚಿಸಿ",
+  "signUpSubtitle": "ಇಮೇಲ್ ಮತ್ತು ಪಾಸ್ವರ್ಡ್ನೊಂದಿಗೆ ಸೈನ್ ಅಪ್ ಮಾಡಿ.",
+  "confirmPassword": "ಪಾಸ್ವರ್ಡ್ ಅನ್ನು ದೃಢೀಕರಿಸಿ",
+  "passwordMin8": "ಪಾಸ್ವರ್ಡ್ (ನಿಮಿಷ 8 ಅಕ್ಷರಗಳು)",
+  "alreadyHaveAccount": "ಈಗಾಗಲೇ ಖಾತೆಯನ್ನು ಹೊಂದಿರುವಿರಾ?",
+  "checkEmailTitle": "ನಿಮ್ಮ ಪರಿಶೀಲಿಸಿ\nಇಮೇಲ್",
+  "otpSentTo": "ನಾವು 6-ಅಂಕಿಯ ಕೋಡ್ ಅನ್ನು ಕಳುಹಿಸಿದ್ದೇವೆ\n<<PH0>>",
+  "verifyAndSignIn": "ಪರಿಶೀಲಿಸಿ ಮತ್ತು ಸೈನ್ ಇನ್ ಮಾಡಿ",
+  "didntReceiveCode": "ಅದನ್ನು ಸ್ವೀಕರಿಸಲಿಲ್ಲವೇ?",
+  "tryAgain": "ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ",
+  "otpExpiresHint": "ಕೋಡ್ 5 ನಿಮಿಷಗಳಲ್ಲಿ ಮುಕ್ತಾಯಗೊಳ್ಳುತ್ತದೆ. ನಿಮ್ಮ ಸ್ಪ್ಯಾಮ್ ಫೋಲ್ಡರ್ ನಿಮಗೆ ಕಾಣಿಸದಿದ್ದರೆ ಅದನ್ನು ಪರಿಶೀಲಿಸಿ.",
+  "snackError": "ದೋಷ",
+  "snackCopied": "ನಕಲು ಮಾಡಲಾಗಿದೆ",
+  "snackCopiedBody": "ಲಿಂಕ್ ಅನ್ನು ಕ್ಲಿಪ್‌ಬೋರ್ಡ್‌ಗೆ ನಕಲಿಸಲಾಗಿದೆ",
+  "snackWelcome": "ಸ್ವಾಗತ",
+  "snackAccountCreated": "ಖಾತೆಯನ್ನು ರಚಿಸಲಾಗಿದೆ",
+  "snackEnterEmail": "ದಯವಿಟ್ಟು ನಿಮ್ಮ ಇಮೇಲ್ ನಮೂದಿಸಿ",
+  "snackEnterPassword": "ದಯವಿಟ್ಟು ನಿಮ್ಮ ಗುಪ್ತಪದವನ್ನು ನಮೂದಿಸಿ",
+  "snackInvalidEmail": "ಅಮಾನ್ಯ ಇಮೇಲ್ ವಿಳಾಸ",
+  "snackInvalidCredentials": "ತಪ್ಪಾದ ಇಮೇಲ್ ಅಥವಾ ಪಾಸ್‌ವರ್ಡ್",
+  "snackPasswordMin8": "ಪಾಸ್ವರ್ಡ್ ಕನಿಷ್ಠ 8 ಅಕ್ಷರಗಳಾಗಿರಬೇಕು",
+  "snackPasswordMismatch": "ಪಾಸ್‌ವರ್ಡ್‌ಗಳು ಹೊಂದಿಕೆಯಾಗುತ್ತಿಲ್ಲ.",
+  "snackAccountExists": "ಖಾತೆ ಈಗಾಗಲೇ ಅಸ್ತಿತ್ವದಲ್ಲಿದೆ. ದಯವಿಟ್ಟು ಸೈನ್ ಇನ್ ಮಾಡಿ.",
+  "snackSignupFailed": "ಖಾತೆಯನ್ನು ರಚಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+  "snackEnterOtp": "ದಯವಿಟ್ಟು 6-ಅಂಕಿಯ ಕೋಡ್ ಅನ್ನು ನಮೂದಿಸಿ",
+  "snackOtpExpired": "ಕೋಡ್ ಅವಧಿ ಮೀರಿದೆ",
+  "snackOtpExpiredBody": "ದಯವಿಟ್ಟು ಹೊಸ ಕೋಡ್ ಅನ್ನು ವಿನಂತಿಸಿ.",
+  "snackInvalidCode": "ಅಮಾನ್ಯ ಕೋಡ್",
+  "snackInvalidCodeBody": "ಕೋಡ್ ತಪ್ಪಾಗಿದೆ. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+  "snackSendCodeFailed": "ಕೋಡ್ ಕಳುಹಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ನಿಮ್ಮ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ ಹಾಗೂ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+  "snackEmptyFolder": "ಖಾಲಿ ಫೋಲ್ಡರ್",
+  "snackEmptyFolderBody": "ಆಯ್ಕೆಮಾಡಿದ ಫೋಲ್ಡರ್‌ನಲ್ಲಿ ಯಾವುದೇ ಫೈಲ್‌ಗಳು ಕಂಡುಬಂದಿಲ್ಲ.",
+  "snackFolderUnsupported": "ಬೆಂಬಲಿತವಾಗಿಲ್ಲ",
+  "snackFolderUnsupportedBody": "ಈ ಪ್ಲಾಟ್‌ಫಾರ್ಮ್‌ನಲ್ಲಿ ಫೋಲ್ಡರ್ ಅಪ್‌ಲೋಡ್ ಲಭ್ಯವಿಲ್ಲ.",
+  "snackFolderReadError": "ಆಯ್ಕೆಮಾಡಿದ ಫೋಲ್ಡರ್ ಅನ್ನು ಓದಲಾಗಲಿಲ್ಲ.",
+  "snackLimitReached": "ಮಿತಿಯನ್ನು ತಲುಪಿದೆ",
+  "snackLimitFilesBody": "ಗಾತ್ರ ಅಥವಾ ಫೈಲ್ ಎಣಿಕೆ ಮಿತಿಗಳ ಕಾರಣದಿಂದಾಗಿ ಕೆಲವು ಫೈಲ್‌ಗಳನ್ನು ಸೇರಿಸಲಾಗಿಲ್ಲ.",
+  "snackFreePlanLimit": "ಉಚಿತ ಯೋಜನೆಯು ಪ್ರತಿ ವರ್ಗಾವಣೆಗೆ 5GB ವರೆಗೆ ಅನುಮತಿಸುತ್ತದೆ. ದಯವಿಟ್ಟು ಕೆಲವು ಫೈಲ್‌ಗಳನ್ನು ತೆಗೆದುಹಾಕಿ ಅಥವಾ ಅಪ್‌ಗ್ರೇಡ್ ಮಾಡಿ.",
+  "snackSignInEmail": "ಇಮೇಲ್ ಮೂಲಕ ಕಳುಹಿಸಲು ದಯವಿಟ್ಟು ಸೈನ್ ಇನ್ ಮಾಡಿ.",
+  "snackUploadStartFailed": "ಅಪ್‌ಲೋಡ್ ಪ್ರಾರಂಭಿಸಲಾಗಲಿಲ್ಲ.",
+  "snackVerifyEnterCode": "ನಿಮ್ಮ ಇಮೇಲ್‌ನಿಂದ 4-ಅಂಕಿಯ ಕೋಡ್ ಅನ್ನು ನಮೂದಿಸಿ.",
+  "snackVerifyInvalid": "ಅಮಾನ್ಯ ಅಥವಾ ಅವಧಿ ಮೀರಿದ ಕೋಡ್. ಇಮೇಲ್ ಪರಿಶೀಲಿಸಿ ಹಾಗೂ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+  "snackVerifyResendFailed": "ಕೋಡ್ ಅನ್ನು ಮರುಕಳುಹಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+  "snackDownloadComplete": "ಡೌನ್‌ಲೋಡ್ ಪೂರ್ಣಗೊಂಡಿದೆ",
+  "snackDownloadSaved": "\"<<PH0>>\" ಅನ್ನು ಡೌನ್‌ಲೋಡ್‌ಗಳಿಗೆ ಉಳಿಸಲಾಗಿದೆ",
+  "snackDownloadFailed": "ಡೌನ್‌ಲೋಡ್ ವಿಫಲವಾಗಿದೆ",
+  "snackSaved": "ಉಳಿಸಲಾಗಿದೆ",
+  "snackServerUrlUpdated": "ಸರ್ವರ್ URL ಅನ್ನು ನವೀಕರಿಸಲಾಗಿದೆ. ಅನ್ವಯಿಸಲು ಅಪ್ಲಿಕೇಶನ್ ಅನ್ನು ಮರುಪ್ರಾರಂಭಿಸಿ.",
+  "snackStoreError": "ಅಂಗಡಿ ದೋಷ",
+  "snackMissingProducts": "ಕಾಣೆಯಾದ ಉತ್ಪನ್ನಗಳು",
+  "snackStoreUnavailable": "ಅಂಗಡಿ ಲಭ್ಯವಿಲ್ಲ",
+  "snackStoreUnavailableBody": "ಈ ಸಾಧನದಲ್ಲಿ ಅಪ್ಲಿಕೇಶನ್‌ನಲ್ಲಿನ ಖರೀದಿಗಳು ಲಭ್ಯವಿಲ್ಲ.",
+  "snackProductNotLoaded": "ಉತ್ಪನ್ನವನ್ನು ಇನ್ನೂ ಲೋಡ್ ಮಾಡಲಾಗಿಲ್ಲ.",
+  "snackRestoreStarted": "ಮರುಸ್ಥಾಪನೆ ಪ್ರಾರಂಭವಾಗಿದೆ",
+  "snackRestoreStartedBody": "ನಿಮ್ಮ ಖರೀದಿಗಳನ್ನು ನಾವು ಪರಿಶೀಲಿಸುತ್ತಿದ್ದೇವೆ.",
+  "snackRestoreFailed": "ಮರುಸ್ಥಾಪನೆ ವಿಫಲವಾಗಿದೆ",
+  "snackProcessing": "ಸಂಸ್ಕರಣೆ",
+  "snackPleaseWait": "ದಯವಿಟ್ಟು ನಿರೀಕ್ಷಿಸಿ...",
+  "snackSuccess": "ಯಶಸ್ಸು",
+  "snackPurchaseCompleted": "ಖರೀದಿ ಪೂರ್ಣಗೊಂಡಿದೆ.",
+  "snackPurchaseError": "ಖರೀದಿ ದೋಷ",
+  "snackPurchaseFailed": "ಖರೀದಿ ವಿಫಲವಾಗಿದೆ.",
+  "snackCanceled": "ರದ್ದುಗೊಳಿಸಲಾಗಿದೆ",
+  "snackPurchaseCanceled": "ಖರೀದಿಯನ್ನು ರದ್ದುಗೊಳಿಸಲಾಗಿದೆ.",
+  "snackUpload": "ಅಪ್ಲೋಡ್ ಮಾಡಿ",
+  "snackVerify": "ಪರಿಶೀಲಿಸಿ",
+  "doNotExpire": "ಅವಧಿ ಮೀರಬಾರದು",
+  "hourSingular": "ಗಂಟೆ",
+  "hourPlural": "ಗಂಟೆಗಳು",
+  "daySingular": "ದಿನ",
+  "dayPlural": "ದಿನಗಳು",
+  "emailAddressLabel": "ಇಮೇಲ್ ವಿಳಾಸ",
+  "passwordLabelCaps": "ಪಾಸ್ವರ್ಡ್",
+  "confirmPasswordLabelCaps": "ಪಾಸ್ವರ್ಡ್ ಅನ್ನು ದೃಢೀಕರಿಸಿ",
+  "transferLinkOrId": "ಲಿಂಕ್ ಅಥವಾ ಐಡಿಯನ್ನು ವರ್ಗಾಯಿಸಿ",
+  "howToReceive": "ಹೇಗೆ ಸ್ವೀಕರಿಸುವುದು",
+  "planAdsTitle": "ಜಾಹೀರಾತು ಯೋಜನೆ",
+  "planAdsBullet1": "ಜಾಹೀರಾತುಗಳ ಉಚಿತ ಅಪ್ಲಿಕೇಶನ್‌ಗೆ ಪ್ರವೇಶ",
+  "planAdsBullet2": "ಎಲ್ಲಾ ಜಾಹೀರಾತುಗಳನ್ನು ತೆಗೆದುಹಾಕಿ",
+  "planProTitle": "ಪ್ರೊ ಯೋಜನೆ",
+  "planProBullet1": "20GB ವರೆಗಿನ ಫೈಲ್‌ಗಳನ್ನು ಕಳುಹಿಸಿ",
+  "planProBullet2": "ವೇಗದ ಅಪ್ಲೋಡ್",
+  "planPremiumTitle": "ಪ್ರೀಮಿಯಂ ಯೋಜನೆ",
+  "planPremiumBullet1": "100GB ವರೆಗಿನ ಫೈಲ್‌ಗಳನ್ನು ಕಳುಹಿಸಿ",
+  "planPremiumBullet2": "ಸೂಪರ್ ಫಾಸ್ಟ್ ಅಪ್‌ಲೋಡ್",
+  "planSubscriptionDisclaimer": "ಯಾವುದೇ ಪ್ರಾಯೋಗಿಕ ಅವಧಿಯಿಲ್ಲ - ಹೆಚ್ಚುವರಿ ಅಪ್ಲಿಕೇಶನ್ ಕಾರ್ಯವನ್ನು ಬಳಸಲು ಚಂದಾದಾರಿಕೆಯ ಅಗತ್ಯವಿದೆ. ನಿಮಗೆ ತಕ್ಷಣವೇ ಶುಲ್ಕ ವಿಧಿಸಲಾಗುತ್ತದೆ. ನೀವು ಯಾವಾಗ ಬೇಕಾದರೂ ರದ್ದು ಮಾಡಬಹುದು.",
+  "perMonth": "/ ತಿಂಗಳು",
+  "perYear": "/ ವರ್ಷ",
+  "snackConnectionProblem": "ಸಂಪರ್ಕ ಸಮಸ್ಯೆ. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+  "networkTitle": "ನೆಟ್ವರ್ಕ್",
+  "transferIdLabel": "ID: <<PH0>>",
+  "downloadMetaSummary": "ಫೈಲ್‌ಗಳು: <<PH0>> · <<PH1>> ಬೈಟ್‌ಗಳು",
+  "todayAt": "ಇಂದು · <<PH0>>",
+  "yesterdayAt": "ನಿನ್ನೆ · <<PH0>>",
+  "daysAgoAt": "<<PH0>>ದಿನ ಹಿಂದೆ · <<PH1>>",
+  "dateAt": "<<PH0>> · <<PH1>>",
+  "mbAmount": "<<PH0>> MB",
+  "uploadProgressSummary": "<<PH0>> / <<PH1>> • <<PH2>> ಉಳಿದಿದೆ",
+  "loadingShort": "ಲೋಡ್ ಆಗುತ್ತಿದೆ...",
+  "colorPaletteTitle": "ಬಣ್ಣದ ಪ್ಯಾಲೆಟ್",
+  "colorPaletteSectionBackgrounds": "ಹಿನ್ನೆಲೆಗಳು (ಇಂಕ್ ಸ್ಕೇಲ್)",
+  "colorPaletteSectionAccent": "ಉಚ್ಚಾರಣೆ / ಪ್ರಾಥಮಿಕ",
+  "colorPaletteSectionText": "ಪಠ್ಯ",
+  "colorPaletteSectionBorders": "ಗಡಿಗಳು ಮತ್ತು ಗಾಜು",
+  "colorPaletteSectionSemantic": "ಲಾಕ್ಷಣಿಕ",
+  "colorPaletteSectionLive": "ಲೈವ್ ಥೀಮ್ (ಪ್ರಸ್ತುತ)",
+  "colorPaletteActiveHint": "★ = ಪರದೆಗಳಲ್ಲಿ ಸಕ್ರಿಯವಾಗಿ ಬಳಸಲಾಗುತ್ತದೆ",
+  "colorPaletteCopyHint": "ಅದರ ಹೆಕ್ಸ್ ಮೌಲ್ಯವನ್ನು ನಕಲಿಸಲು ಯಾವುದೇ ಸ್ವಾಚ್ ಅನ್ನು ದೀರ್ಘವಾಗಿ ಒತ್ತಿರಿ.",
+  "settingsAppBrand": "ದೊಡ್ಡದಾಗಿ ಹಂಚಿಕೊಳ್ಳಿ\nವೀಡಿಯೊ ಫೈಲ್‌ಗಳು",
+  "loginEmailPasswordPrompt": "ಸೈನ್ ಇನ್ ಮಾಡಲು ನಿಮ್ಮ ಇಮೇಲ್ ಮತ್ತು ಪಾಸ್‌ವರ್ಡ್ ಅನ್ನು ನಮೂದಿಸಿ.",
+  "forgotPassword": "ಪಾಸ್ವರ್ಡ್ ಮರೆತಿರುವಿರಾ?",
+  "forgotPasswordTitle": "ಪಾಸ್ವರ್ಡ್ ಮರುಹೊಂದಿಸಿ",
+  "forgotPasswordBody": "ನಿಮ್ಮ ಖಾತೆಯ ಇಮೇಲ್ ಅನ್ನು ನಮೂದಿಸಿ ಮತ್ತು ನಾವು ಮರುಹೊಂದಿಸುವ ಕೋಡ್ ಅನ್ನು ಕಳುಹಿಸುತ್ತೇವೆ.",
+  "forgotPasswordSubmit": "ಮರುಹೊಂದಿಸುವ ಕೋಡ್ ಕಳುಹಿಸಿ",
+  "resetPasswordTitle": "ಹೊಸ ಗುಪ್ತಪದವನ್ನು ರಚಿಸಿ",
+  "resetPasswordBody": "ನಿಮ್ಮ ಇಮೇಲ್‌ನಿಂದ 6-ಅಂಕಿಯ ಕೋಡ್ ಅನ್ನು ನಮೂದಿಸಿ ಮತ್ತು ಹೊಸ ಪಾಸ್‌ವರ್ಡ್ ಆಯ್ಕೆಮಾಡಿ.",
+  "resetPasswordSubmit": "ಪಾಸ್ವರ್ಡ್ ಅನ್ನು ನವೀಕರಿಸಿ",
+  "snackPasswordResetSent": "ಮರುಹೊಂದಿಸಿ ಕೋಡ್ ಕಳುಹಿಸಲಾಗಿದೆ",
+  "snackPasswordResetSentBody": "6-ಅಂಕಿಯ ಮರುಹೊಂದಿಸುವ ಕೋಡ್‌ಗಾಗಿ ನಿಮ್ಮ ಇಮೇಲ್ ಅನ್ನು ಪರಿಶೀಲಿಸಿ.",
+  "snackPasswordResetFailed": "ಮರುಹೊಂದಿಸುವ ಕೋಡ್ ಅನ್ನು ಕಳುಹಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+  "snackPasswordUpdated": "ಪಾಸ್ವರ್ಡ್ ನವೀಕರಿಸಲಾಗಿದೆ",
+  "snackPasswordUpdatedBody": "ನಿಮ್ಮ ಹೊಸ ಪಾಸ್‌ವರ್ಡ್‌ನೊಂದಿಗೆ ಸೈನ್ ಇನ್ ಮಾಡಿ.",
+  "snackPasswordResetInvalid": "ಅಮಾನ್ಯ ಅಥವಾ ಅವಧಿ ಮೀರಿದ ಮರುಹೊಂದಿಸುವ ಕೋಡ್.",
+  "otpDigitLabel": "6-ಅಂಕಿಯ ಕೋಡ್",
+  "receiveMoreFiles": "+<<PH0>> ಹೆಚ್ಚಿನ ಫೈಲ್‌ಗಳು"
+}

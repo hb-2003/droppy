@@ -1,0 +1,466 @@
+{
+  "@@locale": "gl",
+  "@verifyEmailCheckSpamHint": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@upToTotal": {
+    "placeholders": {
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "@filesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesCount": "{count, plural, =1{1 file} other{{count} files}}",
+  "@mbLeft": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@transferLoadFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@storePricesPartialBody": {
+    "placeholders": {
+      "loaded": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "priceUnavailable": "—",
+  "@effectiveMonthlyPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "@otpSentTo": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@snackDownloadSaved": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "emailExampleHint": "you@example.com",
+  "otpSixDigitHint": "000000",
+  "verifyFourDigitHint": "0000",
+  "transferLinkHint": "https://… or paste ID",
+  "@filesReady": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesReady": "{count, plural, =1{1 file ready} other{{count} files ready}}",
+  "@transferIdLabel": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadMetaSummary": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "@todayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@yesterdayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@daysAgoAt": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@dateAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@mbAmount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@uploadProgressSummary": {
+    "placeholders": {
+      "sent": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      },
+      "remaining": {
+        "type": "String"
+      }
+    }
+  },
+  "@historyFilesSize": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "historyFilesSize": "{count, plural, =1{1 file} other{{count} files}} · {size}",
+  "@receiveMoreFiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appTitle": "Compartir ficheiros de vídeo grandes",
+  "heroAccent": "ao instante.",
+  "heroTitle": "Enviar ficheiros pesados",
+  "splashLoading": "Cargando…",
+  "navSend": "Panel de control",
+  "navHome": "Casa",
+  "navHistory": "Historia",
+  "navReceive": "Recibir",
+  "navPlans": "Plans",
+  "navDownload": "Descargar",
+  "navSettings": "Configuración",
+  "modeLink": "Obter unha ligazón",
+  "modeEmail": "Enviar por correo electrónico",
+  "pickFiles": "Escolle ficheiros",
+  "pickFolder": "Escolla cartafol",
+  "emailFrom": "O teu correo electrónico",
+  "mailFromUsesAccount": "Usa o teu correo electrónico de inicio de sesión.",
+  "recipientEmailsHelper": "Múltiples destinatarios: sepáranse con comas, punto e coma ou espazos.",
+  "emailTo": "Correo electrónico do destinatario",
+  "messageOptional": "Mensaxe (opcional)",
+  "passwordOptional": "Contrasinal (opcional)",
+  "destructAfterDownload": "Eliminar despois da descarga",
+  "destructNo": "Mantéñase dispoñible",
+  "sendButton": "Enviar",
+  "uploading": "Cargando…",
+  "uploadComplete": "Feito",
+  "shareLinkTitle": "A túa ligazón",
+  "copyLink": "Copiar ligazón",
+  "share": "Compartir",
+  "shareQrCode": "Compartir código QR",
+  "uploadMore": "Envía outro",
+  "emailSentTitle": "Correos electrónicos enviados",
+  "verifyEmailTitle": "Verifica o teu correo electrónico",
+  "verifyCodeHint": "Introduce o código do teu correo electrónico",
+  "verifySubmit": "Verificar",
+  "verifyResendCode": "Reenviar o código",
+  "verifyCodeSent": "Enviouse un novo código de verificación ao teu correo electrónico.",
+  "verifyEmailSmtpWarningTitle": "É posible que non se enviou o correo electrónico de verificación",
+  "verifyEmailSmtpWarningBody": "O servidor non puido confirmar a entrega (moitas veces SMTP está mal configurado). Pídelle ao administrador do teu sitio que verifique a configuración do correo no panel de administración e, a continuación, toque Reenviar o código.",
+  "verifyEmailCheckSpamHint": "Se non chega: comproba Correo lixo/Spam e Promocións, agarda un minuto, confirma que <<PH0>> non ten erros tipográficos e, a continuación, toca Reenviar.",
+  "loginTitle": "Inicia sesión",
+  "signupHint": "Use o correo electrónico e o contrasinal da súa conta do sitio.",
+  "emailHint": "Correo electrónico",
+  "passwordHint": "Contrasinal",
+  "cancel": "Cancelar",
+  "signIn": "Inicia sesión",
+  "downloadIdHint": "ID de transferencia",
+  "privateIdHint": "Identificación privada (opcional)",
+  "fetchTransfer": "Transferencia aberta",
+  "downloadFile": "Descargar",
+  "unlockDownload": "Desbloquear descarga",
+  "downloadSaved": "Gardado en Descargas",
+  "errorGeneric": "Algo saíu mal",
+  "errorNetwork": "Erro de rede",
+  "errorBadResponse": "Resposta do servidor inesperada",
+  "termsAccept": "Acepto os termos",
+  "settingsApiUrl": "URL do sitio público",
+  "settingsAccount": "Conta",
+  "settingsAppearance": "Aparición",
+  "settingsTheme": "Tema",
+  "themeSystem": "Sistema",
+  "themeLight": "Luz",
+  "themeDark": "Escuro",
+  "settingsSignedIn": "Iniciaches sesión.",
+  "settingsSignedOut": "Non iniciaches sesión.",
+  "settingsOpenWebsite": "Sitio web aberto",
+  "signUp": "Rexístrate",
+  "settingsLinks": "Ligazóns",
+  "privacyPolicy": "Política de privacidade",
+  "termsOfService": "Condicións do servizo",
+  "about": "Sobre",
+  "moreApps": "Máis aplicacións",
+  "settingsLanguage": "Linguaxe",
+  "languageEnglish": "inglés",
+  "languageHindi": "Hindi",
+  "logout": "Pechar sesión",
+  "deleteAccount": "Eliminar conta",
+  "deleteAccountConfirmTitle": "Queres eliminar a túa conta?",
+  "deleteAccountConfirmBody": "Isto eliminará a túa conta permanentemente e pechará sesión. As túas ligazóns de transferencia seguirán funcionando, pero xa non aparecerán no teu historial.",
+  "deleteAccountSuccess": "Eliminouse a conta",
+  "deleteAccountSuccessBody": "Eliminouse a túa conta.",
+  "deleteAccountFailed": "Non se puido eliminar a conta",
+  "deleteAccountFailedBody": "Téntao de novo ou ponte en contacto co servizo de asistencia.",
+  "maxFilesReached": "Demasiados ficheiros",
+  "fileTooLarge": "Ficheiro demasiado grande",
+  "ipLimit": "Demasiadas cargas desta rede",
+  "fillFields": "Encha os campos obrigatorios",
+  "invalidEmail": "Correo electrónico non válido",
+  "maxRecipientsReached": "Demasiados destinatarios",
+  "loginRequiredTitle": "É necesario iniciar sesión",
+  "loginRequiredBody": "Este servidor require unha conta para cargar ou descargar.",
+  "settingsSubtitle": "Preferencias da aplicación e conta.",
+  "dropHeavyFile": "Solta aquí un ficheiro pesado.",
+  "upToTotal": "Ata <<PH0>> total",
+  "removeAll": "Eliminar todo",
+  "addFiles": "Engadir ficheiros",
+  "adding": "Engadindo…",
+  "options": "Opcións",
+  "selfDestruct": "Autodestruír despois da descarga",
+  "expiry": "Caducidade",
+  "cancelUpload": "Cancelar a carga",
+  "transferReady": "Transferencia lista!",
+  "emailSentReady": "Correo electrónico enviado!",
+  "shareRecipientHint": "Comparte esta ligazón co teu destinatario.",
+  "emailSentBody": "Notificamos aos teus destinatarios.",
+  "scanQr": "Escanear para abrir a ligazón de transferencia.",
+  "shareLinkButton": "ENLACE COMPARTIR",
+  "verifyFourDigit": "Introduce o código de 4 díxitos enviado ao correo electrónico do teu remitente.",
+  "starting": "Comezando…",
+  "mbLeft": "<<PH0>> MB restantes",
+  "fillField": "Enche este campo.",
+  "enterValidEmail": "Introduce un correo electrónico válido.",
+  "message": "Mensaxe",
+  "recipientEmail": "Correo electrónico do destinatario",
+  "active": "Activo",
+  "expired": "Caducou",
+  "historyTitle": "As miñas transferencias",
+  "signInToSeeTransfers": "Inicia sesión para ver as túas transferencias",
+  "signInTransfersBody": "Usamos o teu correo electrónico para vincular transferencias á túa conta, sen necesidade de contrasinal.",
+  "couldNotLoadTransfers": "Non se puideron cargar as transferencias",
+  "retry": "Volve tentar",
+  "noTransfersYet": "Aínda non hai transferencias",
+  "noTransfersBody": "Unha vez que envíe un ficheiro, aparecerá aquí.",
+  "transferDetails": "Detalles da transferencia",
+  "filesSection": "Arquivos",
+  "receiveTitle": "Recibir arquivos",
+  "receiveSubtitle": "Pega unha ligazón de transferencia para descargar ficheiros.",
+  "pasteTooltip": "Pegar",
+  "findTransfer": "Buscar Transfer",
+  "receiveScanQr": "Escanear QR",
+  "receiveScanQrTitle": "Escanear transferencia QR",
+  "receiveScanQrHint": "Aliña o código QR dentro do marco.",
+  "receiveScanQrInvalid": "Este código QR non é unha ligazón de transferencia válida.",
+  "receiveScanQrCameraDenied": "Requírese acceso á cámara para escanear códigos QR.",
+  "receiveStepGetLink": "Obter a ligazón",
+  "receiveStepGetLinkBody": "Pídelle ao remitente que comparta a ligazón de transferencia contigo.",
+  "receiveStepPaste": "Pegar e atopar",
+  "receiveStepPasteBody": "Pega a ligazón anterior e toca \"Buscar transferencia\".",
+  "receiveStepDownload": "Descargar ficheiros",
+  "receiveStepDownloadBody": "Consulta os detalles do ficheiro e descarga todo á vez.",
+  "lookingUpTransfer": "Buscando transferencia...",
+  "transferNotFound": "Non se atopou a transferencia. Comproba a ligazón e téntao de novo.",
+  "transferExpired": "Esta transferencia caducou e xa non está dispoñible.",
+  "transferLoginRequired": "É necesario iniciar sesión para acceder a esta transferencia.",
+  "transferBadResponse": "Resposta do servidor inesperada. Comproba a túa conexión.",
+  "transferNetworkError": "Erro de rede. Comproba a túa conexión a internet.",
+  "transferLoadFailed": "Non se puido cargar a transferencia: <<PH0>>",
+  "passwordProtected": "Protexido por contrasinal",
+  "enterPassword": "Introduza o contrasinal",
+  "unlock": "Desbloquear",
+  "downloading": "Descargando…",
+  "downloadAllFiles": "Descarga todos os ficheiros",
+  "downloadSingleFile": "Descargar ficheiro",
+  "receiveAnother": "Recibir outra transferencia",
+  "plansTitle": "Plans",
+  "plansSubtitle": "Actualiza para eliminar anuncios e enviar ficheiros máis grandes.",
+  "storeUnavailable": "Tenda non dispoñible",
+  "storeUnavailableBody": "As compras integradas na aplicación non están dispoñibles neste momento.",
+  "storeLoadingPrices": "Cargando prezos da App Store...",
+  "storePricesUnavailable": "Prezos non dispoñibles",
+  "storePricesPartial": "Non se puideron cargar algúns prezos",
+  "storePricesPartialBody": "<<PH0>> dos produtos de subscrición <<PH1>> cargados.",
+  "storeSetupHint": "Proba nun iPhone real (non nun simulador), usa un ID de Apple Sandbox e asegúrate de que as 6 subscricións se creen baixo o ID do paquete desta aplicación en App Store Connect co prezo establecido.",
+  "effectiveMonthlyPrice": "<<PH0>>/mes",
+  "freeVersionAds": "Actualmente estás usando a nosa versión gratuíta con anuncios",
+  "restorePurchases": "Restaurar compras",
+  "plansContinue": "Continuar",
+  "planLinkRestore": "Restaurar",
+  "termsAndConditions": "Termos e condicións",
+  "createAccountTitle": "Crear conta",
+  "signUpSubtitle": "Rexístrese con correo electrónico e contrasinal.",
+  "confirmPassword": "Confirmar contrasinal",
+  "passwordMin8": "Contrasinal (mínimo 8 caracteres)",
+  "alreadyHaveAccount": "Xa tes unha conta?",
+  "checkEmailTitle": "Comproba o teu\ncorreo electrónico",
+  "otpSentTo": "Enviamos un código de 6 díxitos a\n<<PH0>>",
+  "verifyAndSignIn": "Verifica e inicia sesión",
+  "didntReceiveCode": "Non o recibiu?",
+  "tryAgain": "Téntao de novo",
+  "otpExpiresHint": "O código caduca en 5 minutos. Comproba o teu cartafol de spam se non o ves.",
+  "snackError": "Erro",
+  "snackCopied": "Copiouse",
+  "snackCopiedBody": "A ligazón copiouse no portapapeis",
+  "snackWelcome": "Benvido",
+  "snackAccountCreated": "Conta creada",
+  "snackEnterEmail": "Introduce o teu correo electrónico",
+  "snackEnterPassword": "Introduza o seu contrasinal",
+  "snackInvalidEmail": "Enderezo de correo electrónico non válido",
+  "snackInvalidCredentials": "Correo electrónico ou contrasinal incorrectos",
+  "snackPasswordMin8": "O contrasinal debe ter polo menos 8 caracteres",
+  "snackPasswordMismatch": "Os contrasinais non coinciden.",
+  "snackAccountExists": "A conta xa existe. Inicia sesión.",
+  "snackSignupFailed": "Non se puido crear a conta. Téntao de novo.",
+  "snackEnterOtp": "Introduce o código de 6 díxitos",
+  "snackOtpExpired": "O código caducou",
+  "snackOtpExpiredBody": "Solicita un novo código.",
+  "snackInvalidCode": "Código non válido",
+  "snackInvalidCodeBody": "O código é incorrecto. Téntao de novo.",
+  "snackSendCodeFailed": "Non se puido enviar o código. Comproba a túa conexión e téntao de novo.",
+  "snackEmptyFolder": "Cartafol baleiro",
+  "snackEmptyFolderBody": "Non se atoparon ficheiros no cartafol seleccionado.",
+  "snackFolderUnsupported": "Non é compatible",
+  "snackFolderUnsupportedBody": "A carga de cartafoles non está dispoñible nesta plataforma.",
+  "snackFolderReadError": "Non se puido ler o cartafol seleccionado.",
+  "snackLimitReached": "Alcanzouse o límite",
+  "snackLimitFilesBody": "Algúns ficheiros non se engadiron por mor dos límites de tamaño ou número de ficheiros.",
+  "snackFreePlanLimit": "O plan gratuíto permite ata 5 GB por transferencia. Elimina algúns ficheiros ou actualiza.",
+  "snackSignInEmail": "Inicia sesión para enviar por correo electrónico.",
+  "snackUploadStartFailed": "Non se puido iniciar a carga.",
+  "snackVerifyEnterCode": "Introduce o código de 4 díxitos do teu correo electrónico.",
+  "snackVerifyInvalid": "Código non válido ou caducado. Comproba o correo electrónico e téntao de novo.",
+  "snackVerifyResendFailed": "Non se puido reenviar o código. Téntao de novo.",
+  "snackDownloadComplete": "Descarga completa",
+  "snackDownloadSaved": "\"<<PH0>>\" gardouse en Descargas",
+  "snackDownloadFailed": "Fallou a descarga",
+  "snackSaved": "Gardado",
+  "snackServerUrlUpdated": "URL do servidor actualizado. Reinicia a aplicación para aplicar.",
+  "snackStoreError": "Erro de almacenamento",
+  "snackMissingProducts": "Faltan produtos",
+  "snackStoreUnavailable": "Tenda non dispoñible",
+  "snackStoreUnavailableBody": "As compras integradas na aplicación non están dispoñibles neste dispositivo.",
+  "snackProductNotLoaded": "O produto aínda non está cargado.",
+  "snackRestoreStarted": "Comezou a restauración",
+  "snackRestoreStartedBody": "Estamos comprobando as túas compras.",
+  "snackRestoreFailed": "Fallou a restauración",
+  "snackProcessing": "Procesamento",
+  "snackPleaseWait": "Agarde…",
+  "snackSuccess": "Éxito",
+  "snackPurchaseCompleted": "Compra rematada.",
+  "snackPurchaseError": "Erro de compra",
+  "snackPurchaseFailed": "Produciuse un erro na compra.",
+  "snackCanceled": "Cancelado",
+  "snackPurchaseCanceled": "Compra cancelada.",
+  "snackUpload": "Cargar",
+  "snackVerify": "Verificar",
+  "doNotExpire": "Non caduque",
+  "hourSingular": "hora",
+  "hourPlural": "horas",
+  "daySingular": "día",
+  "dayPlural": "días",
+  "emailAddressLabel": "ENDEREZO DE CORREO ELECTRÓNICO",
+  "passwordLabelCaps": "CONTRASEÑA",
+  "confirmPasswordLabelCaps": "CONFIRMAR CONTRASEÑA",
+  "transferLinkOrId": "ENLACE DE TRANSFERENCIA OU DNI",
+  "howToReceive": "COMO RECIBIR",
+  "planAdsTitle": "Plan de anuncios",
+  "planAdsBullet1": "Acceso á aplicación gratuíta de anuncios",
+  "planAdsBullet2": "Elimina todos os anuncios",
+  "planProTitle": "Plan Pro",
+  "planProBullet1": "Envía ficheiros de ata 20 GB",
+  "planProBullet2": "Carga rápida",
+  "planPremiumTitle": "Plan Premium",
+  "planPremiumBullet1": "Envía ficheiros de ata 100 GB",
+  "planPremiumBullet2": "Carga super rápida",
+  "planSubscriptionDisclaimer": "Sen período de proba: é necesaria unha subscrición para usar a funcionalidade adicional da aplicación. Cobraráseche inmediatamente. Podes cancelar en calquera momento.",
+  "perMonth": "/mes",
+  "perYear": "/ano",
+  "snackConnectionProblem": "Problema de conexión. Téntao de novo.",
+  "networkTitle": "Rede",
+  "transferIdLabel": "ID: <<PH0>>",
+  "downloadMetaSummary": "Ficheiros: <<PH0>> · <<PH1>> bytes",
+  "todayAt": "Hoxe · <<PH0>>",
+  "yesterdayAt": "Onte · <<PH0>>",
+  "daysAgoAt": "Hai <<PH0>>d · <<PH1>>",
+  "dateAt": "<<PH0>> · <<PH1>>",
+  "mbAmount": "<<PH0>> MB",
+  "uploadProgressSummary": "<<PH0>> / <<PH1>> • <<PH2>> á esquerda",
+  "loadingShort": "Cargando…",
+  "colorPaletteTitle": "Paleta de cores",
+  "colorPaletteSectionBackgrounds": "Fondos (escala de tinta)",
+  "colorPaletteSectionAccent": "Acento / Primaria",
+  "colorPaletteSectionText": "Texto",
+  "colorPaletteSectionBorders": "Bordes e Vidro",
+  "colorPaletteSectionSemantic": "Semántica",
+  "colorPaletteSectionLive": "Tema en directo (actual)",
+  "colorPaletteActiveHint": "★ = usado activamente nas pantallas",
+  "colorPaletteCopyHint": "Mantén presionado calquera mostra para copiar o seu valor hexadecimal.",
+  "settingsAppBrand": "Compartir en grande\nArquivos de vídeo",
+  "loginEmailPasswordPrompt": "Introduce o teu correo electrónico e contrasinal para iniciar sesión.",
+  "forgotPassword": "Esqueciches o contrasinal?",
+  "forgotPasswordTitle": "Restablecer o contrasinal",
+  "forgotPasswordBody": "Introduce o correo electrónico da túa conta e enviarémosche un código de restablecemento.",
+  "forgotPasswordSubmit": "Enviar código de reinicio",
+  "resetPasswordTitle": "Crea un novo contrasinal",
+  "resetPasswordBody": "Introduce o código de 6 díxitos do teu correo electrónico e escolle un novo contrasinal.",
+  "resetPasswordSubmit": "Actualizar contrasinal",
+  "snackPasswordResetSent": "Enviouse o código de restablecemento",
+  "snackPasswordResetSentBody": "Consulta o teu correo electrónico para ver un código de restablecemento de 6 díxitos.",
+  "snackPasswordResetFailed": "Non se puido enviar o código de restablecemento. Téntao de novo.",
+  "snackPasswordUpdated": "Contrasinal actualizado",
+  "snackPasswordUpdatedBody": "Inicia sesión co teu novo contrasinal.",
+  "snackPasswordResetInvalid": "Código de restablecemento non válido ou caducado.",
+  "otpDigitLabel": "CÓDIGO DE 6 DÍXITOS",
+  "receiveMoreFiles": "+<<PH0>> máis ficheiros"
+}

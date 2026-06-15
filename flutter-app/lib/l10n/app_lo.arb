@@ -1,0 +1,466 @@
+{
+  "@@locale": "lo",
+  "@verifyEmailCheckSpamHint": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@upToTotal": {
+    "placeholders": {
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "@filesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesCount": "{count, plural, =1{1 file} other{{count} files}}",
+  "@mbLeft": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@transferLoadFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@storePricesPartialBody": {
+    "placeholders": {
+      "loaded": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "priceUnavailable": "—",
+  "@effectiveMonthlyPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "@otpSentTo": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@snackDownloadSaved": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "emailExampleHint": "you@example.com",
+  "otpSixDigitHint": "000000",
+  "verifyFourDigitHint": "0000",
+  "transferLinkHint": "https://… or paste ID",
+  "@filesReady": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesReady": "{count, plural, =1{1 file ready} other{{count} files ready}}",
+  "@transferIdLabel": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadMetaSummary": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "@todayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@yesterdayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@daysAgoAt": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@dateAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@mbAmount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@uploadProgressSummary": {
+    "placeholders": {
+      "sent": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      },
+      "remaining": {
+        "type": "String"
+      }
+    }
+  },
+  "@historyFilesSize": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "historyFilesSize": "{count, plural, =1{1 file} other{{count} files}} · {size}",
+  "@receiveMoreFiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appTitle": "ແບ່ງປັນໄຟລ໌ວິດີໂອຂະຫນາດໃຫຍ່",
+  "heroAccent": "ທັນທີ.",
+  "heroTitle": "ສົ່ງໄຟລ໌ທີ່ຮຸນແຮງ",
+  "splashLoading": "ກຳລັງໂຫລດ...",
+  "navSend": "ແຜງໜ້າປັດ",
+  "navHome": "ບ້ານ",
+  "navHistory": "ປະຫວັດສາດ",
+  "navReceive": "ຮັບ",
+  "navPlans": "ແຜນການ",
+  "navDownload": "ດາວໂຫຼດ",
+  "navSettings": "ການຕັ້ງຄ່າ",
+  "modeLink": "ໄດ້ຮັບການເຊື່ອມຕໍ່",
+  "modeEmail": "ສົ່ງທາງອີເມວ",
+  "pickFiles": "ເລືອກໄຟລ໌",
+  "pickFolder": "ເລືອກໂຟນເດີ",
+  "emailFrom": "ອີເມວຂອງເຈົ້າ",
+  "mailFromUsesAccount": "ໃຊ້ອີເມວທີ່ເຂົ້າສູ່ລະບົບຂອງທ່ານ.",
+  "recipientEmailsHelper": "ຜູ້ຮັບຫຼາຍອັນ: ແຍກດ້ວຍເຄື່ອງໝາຍຈຸດ, ເຄື່ອງໝາຍຈຸດ, ຫຼືຍະຫວ່າງ.",
+  "emailTo": "ອີເມວຜູ້ຮັບ",
+  "messageOptional": "ຂໍ້ຄວາມ (ທາງເລືອກ)",
+  "passwordOptional": "ລະຫັດຜ່ານ (ທາງເລືອກ)",
+  "destructAfterDownload": "ລົບຫຼັງຈາກດາວໂຫຼດ",
+  "destructNo": "ຮັກສາໄວ້",
+  "sendButton": "ສົ່ງ",
+  "uploading": "ກຳລັງອັບໂຫລດ...",
+  "uploadComplete": "ສຳເລັດແລ້ວ",
+  "shareLinkTitle": "ລິ້ງຂອງເຈົ້າ",
+  "copyLink": "ສຳເນົາລິ້ງ",
+  "share": "ແບ່ງປັນ",
+  "shareQrCode": "ແບ່ງປັນລະຫັດ QR",
+  "uploadMore": "ສົ່ງອັນອື່ນ",
+  "emailSentTitle": "ສົ່ງອີເມວແລ້ວ",
+  "verifyEmailTitle": "ຢືນຢັນອີເມວຂອງທ່ານ",
+  "verifyCodeHint": "ໃສ່ລະຫັດຈາກອີເມວຂອງທ່ານ",
+  "verifySubmit": "ຢືນຢັນ",
+  "verifyResendCode": "ສົ່ງລະຫັດຄືນໃໝ່",
+  "verifyCodeSent": "ລະຫັດຢືນຢັນໃຫມ່ຖືກສົ່ງໄປຫາອີເມວຂອງທ່ານ.",
+  "verifyEmailSmtpWarningTitle": "ອີເມວຢືນຢັນອາດຈະບໍ່ໄດ້ຖືກສົ່ງໄປ",
+  "verifyEmailSmtpWarningBody": "ເຊີບເວີບໍ່ສາມາດຢືນຢັນການຈັດສົ່ງໄດ້ (ເລື້ອຍໆ SMTP ຖືກຕັ້ງຄ່າຜິດ). ຂໍໃຫ້ຜູ້ເບິ່ງແຍງເວັບໄຊທ໌ຂອງເຈົ້າກວດເບິ່ງການຕັ້ງຄ່າ Mail ໃນກະດານຜູ້ເບິ່ງແຍງ, ຈາກນັ້ນແຕະສົ່ງລະຫັດຄືນ.",
+  "verifyEmailCheckSpamHint": "ຖ້າມັນບໍ່ມາຮອດ: ກວດເບິ່ງ Junk/Spam ແລະ Promotions, ລໍຖ້ານາທີ, ຢືນຢັນວ່າ <<PH0>> ບໍ່ມີການພິມຜິດ, ຈາກນັ້ນແຕະ Resend.",
+  "loginTitle": "ເຂົ້າສູ່ລະບົບ",
+  "signupHint": "ໃຊ້ບັນຊີເວັບໄຊທ໌ຂອງເຈົ້າອີເມລ໌ແລະລະຫັດຜ່ານ.",
+  "emailHint": "ອີເມວ",
+  "passwordHint": "ລະຫັດຜ່ານ",
+  "cancel": "ຍົກເລີກ",
+  "signIn": "ເຂົ້າສູ່ລະບົບ",
+  "downloadIdHint": "ID ໂອນ",
+  "privateIdHint": "ID ສ່ວນຕົວ (ທາງເລືອກ)",
+  "fetchTransfer": "ເປີດການໂອນ",
+  "downloadFile": "ດາວໂຫຼດ",
+  "unlockDownload": "ປົດລັອກການດາວໂຫຼດ",
+  "downloadSaved": "ບັນທຶກໃສ່ການດາວໂຫຼດ",
+  "errorGeneric": "ມີບາງຢ່າງຜິດພາດ",
+  "errorNetwork": "ເຄືອຂ່າຍຜິດພາດ",
+  "errorBadResponse": "ການຕອບສະໜອງຂອງເຊີບເວີທີ່ບໍ່ຄາດຄິດ",
+  "termsAccept": "ຂ້ອຍຕົກລົງເຫັນດີກັບເງື່ອນໄຂ",
+  "settingsApiUrl": "URL ເວັບໄຊສາທາລະນະ",
+  "settingsAccount": "ບັນຊີ",
+  "settingsAppearance": "ຮູບລັກສະນະ",
+  "settingsTheme": "ຫົວຂໍ້",
+  "themeSystem": "ລະບົບ",
+  "themeLight": "ແສງສະຫວ່າງ",
+  "themeDark": "ມືດ",
+  "settingsSignedIn": "ເຈົ້າເຂົ້າສູ່ລະບົບແລ້ວ.",
+  "settingsSignedOut": "ເຈົ້າຍັງບໍ່ໄດ້ເຂົ້າສູ່ລະບົບ.",
+  "settingsOpenWebsite": "ເປີດເວັບໄຊທ໌",
+  "signUp": "ລົງທະບຽນ",
+  "settingsLinks": "ລິ້ງຄ໌",
+  "privacyPolicy": "ນະໂຍບາຍຄວາມເປັນສ່ວນຕົວ",
+  "termsOfService": "ເງື່ອນໄຂການໃຫ້ບໍລິການ",
+  "about": "ກ່ຽວກັບ",
+  "moreApps": "ແອັບເພີ່ມເຕີມ",
+  "settingsLanguage": "ພາສາ",
+  "languageEnglish": "ພາສາອັງກິດ",
+  "languageHindi": "ຮິນດູ",
+  "logout": "ອອກຈາກລະບົບ",
+  "deleteAccount": "ລຶບບັນຊີ",
+  "deleteAccountConfirmTitle": "ລຶບບັນຊີຂອງທ່ານບໍ?",
+  "deleteAccountConfirmBody": "ນີ້ຈະເປັນການລຶບບັນຊີຂອງທ່ານຢ່າງຖາວອນ ແລະນຳທ່ານອອກຈາກລະບົບ. ການເຊື່ອມຕໍ່ການໂອນຍ້າຍຂອງທ່ານຈະເຮັດວຽກຕໍ່ໄປ, ແຕ່ພວກມັນຈະບໍ່ປາກົດຢູ່ໃນປະຫວັດຂອງທ່ານອີກຕໍ່ໄປ.",
+  "deleteAccountSuccess": "ລຶບບັນຊີແລ້ວ",
+  "deleteAccountSuccessBody": "ບັນຊີຂອງທ່ານໄດ້ຖືກລຶບອອກແລ້ວ.",
+  "deleteAccountFailed": "ບໍ່ສາມາດລຶບບັນຊີໄດ້",
+  "deleteAccountFailedBody": "ກະລຸນາລອງອີກຄັ້ງ ຫຼືຕິດຕໍ່ຝ່າຍຊ່ວຍເຫຼືອ.",
+  "maxFilesReached": "ໄຟລ໌ຫຼາຍເກີນໄປ",
+  "fileTooLarge": "ໄຟລ໌ໃຫຍ່ເກີນໄປ",
+  "ipLimit": "ອັບໂຫຼດຈາກເຄືອຂ່າຍນີ້ຫຼາຍເກີນໄປ",
+  "fillFields": "ກະລຸນາຕື່ມຂໍ້ມູນໃສ່ຊ່ອງຂໍ້ມູນທີ່ຕ້ອງການ",
+  "invalidEmail": "ອີເມວບໍ່ຖືກຕ້ອງ",
+  "maxRecipientsReached": "ຜູ້ຮັບຫຼາຍເກີນໄປ",
+  "loginRequiredTitle": "ຕ້ອງເຂົ້າສູ່ລະບົບ",
+  "loginRequiredBody": "ເຊີບເວີນີ້ຕ້ອງການບັນຊີເພື່ອອັບໂຫລດ ຫຼືດາວໂຫລດ.",
+  "settingsSubtitle": "ການຕັ້ງຄ່າແອັບ ແລະບັນຊີ.",
+  "dropHeavyFile": "ວາງໄຟລ໌ໜັກໃສ່ບ່ອນນີ້.",
+  "upToTotal": "ສູງສຸດ <<PH0>> ທັງໝົດ",
+  "removeAll": "ເອົາອອກທັງໝົດ",
+  "addFiles": "ເພີ່ມໄຟລ໌",
+  "adding": "ກຳລັງເພີ່ມ...",
+  "options": "ທາງເລືອກ",
+  "selfDestruct": "ທໍາລາຍຕົນເອງຫຼັງຈາກການດາວໂຫຼດ",
+  "expiry": "ໝົດອາຍຸ",
+  "cancelUpload": "ຍົກເລີກການອັບໂຫລດ",
+  "transferReady": "ພ້ອມໂອນແລ້ວ!",
+  "emailSentReady": "ສົ່ງອີເມວແລ້ວ!",
+  "shareRecipientHint": "ແບ່ງປັນລິ້ງນີ້ກັບຜູ້ຮັບຂອງທ່ານ.",
+  "emailSentBody": "ພວກເຮົາໄດ້ແຈ້ງໃຫ້ຜູ້ຮັບຂອງທ່ານແລ້ວ.",
+  "scanQr": "ສະແກນເພື່ອເປີດລິ້ງໂອນຍ້າຍ.",
+  "shareLinkButton": "ແບ່ງປັນລິ້ງ",
+  "verifyFourDigit": "ໃສ່ລະຫັດ 4 ຕົວເລກທີ່ສົ່ງໄປຫາອີເມວຜູ້ສົ່ງຂອງທ່ານ.",
+  "starting": "ກຳລັງເລີ່ມ...",
+  "mbLeft": "<<PH0>> MB ຍັງເຫຼືອ",
+  "fillField": "ກະລຸນາຕື່ມຂໍ້ມູນໃສ່ໃນຊ່ອງນີ້.",
+  "enterValidEmail": "ໃສ່ອີເມວທີ່ຖືກຕ້ອງ.",
+  "message": "ຂໍ້ຄວາມ",
+  "recipientEmail": "ອີເມວຜູ້ຮັບ",
+  "active": "ເຄື່ອນໄຫວ",
+  "expired": "ໝົດອາຍຸແລ້ວ",
+  "historyTitle": "ການໂອນຂອງຂ້ອຍ",
+  "signInToSeeTransfers": "ເຂົ້າສູ່ລະບົບເພື່ອເບິ່ງການໂອນຍ້າຍຂອງທ່ານ",
+  "signInTransfersBody": "ພວກ​ເຮົາ​ໃຊ້​ອີ​ເມວ​ຂອງ​ທ່ານ​ເພື່ອ​ເຊື່ອມ​ຕໍ່​ການ​ໂອນ​ເຂົ້າ​ບັນ​ຊີ​ຂອງ​ທ່ານ — ບໍ່​ຈໍາ​ເປັນ​ຕ້ອງ​ມີ​ລະ​ຫັດ​ຜ່ານ.",
+  "couldNotLoadTransfers": "ບໍ່ສາມາດໂຫຼດການໂອນຍ້າຍໄດ້",
+  "retry": "ລອງໃໝ່",
+  "noTransfersYet": "ບໍ່ມີການໂອນຍ້າຍເທື່ອ",
+  "noTransfersBody": "ເມື່ອທ່ານສົ່ງໄຟລ໌, ມັນຈະປາກົດຢູ່ທີ່ນີ້.",
+  "transferDetails": "ລາຍລະອຽດການໂອນ",
+  "filesSection": "ໄຟລ໌",
+  "receiveTitle": "ຮັບໄຟລ໌",
+  "receiveSubtitle": "ວາງລິ້ງໂອນຍ້າຍເພື່ອດາວໂຫລດໄຟລ໌.",
+  "pasteTooltip": "ວາງ",
+  "findTransfer": "ຊອກຫາການໂອນ",
+  "receiveScanQr": "ສະແກນ QR",
+  "receiveScanQrTitle": "ສະແກນ QR ໂອນ",
+  "receiveScanQrHint": "ຈັດຮຽງລະຫັດ QR ພາຍໃນກອບ.",
+  "receiveScanQrInvalid": "ລະຫັດ QR ນີ້ບໍ່ແມ່ນການເຊື່ອມຕໍ່ການໂອນທີ່ຖືກຕ້ອງ.",
+  "receiveScanQrCameraDenied": "ຕ້ອງມີການເຂົ້າເຖິງກ້ອງຖ່າຍຮູບເພື່ອສະແກນລະຫັດ QR.",
+  "receiveStepGetLink": "ໄດ້ຮັບການເຊື່ອມຕໍ່",
+  "receiveStepGetLinkBody": "ຂໍໃຫ້ຜູ້ສົ່ງແບ່ງປັນການເຊື່ອມຕໍ່ການໂອນກັບທ່ານ.",
+  "receiveStepPaste": "ວາງ & ຊອກຫາ",
+  "receiveStepPasteBody": "ວາງການເຊື່ອມຕໍ່ຂ້າງເທິງແລະແຕະ \"ຊອກຫາການໂອນ\".",
+  "receiveStepDownload": "ດາວໂຫຼດໄຟລ໌",
+  "receiveStepDownloadBody": "ເບິ່ງລາຍລະອຽດໄຟລ໌ ແລະດາວໂຫຼດທຸກຢ່າງພ້ອມໆກັນ.",
+  "lookingUpTransfer": "ກຳລັງຊອກຫາການໂອນຍ້າຍ...",
+  "transferNotFound": "ບໍ່ພົບການໂອນຍ້າຍ. ກວດເບິ່ງລິ້ງແລ້ວລອງໃໝ່ອີກຄັ້ງ.",
+  "transferExpired": "ການໂອນຍ້າຍນີ້ໝົດອາຍຸແລ້ວ ແລະບໍ່ສາມາດນຳໃຊ້ໄດ້ອີກຕໍ່ໄປ.",
+  "transferLoginRequired": "ຕ້ອງເຂົ້າສູ່ລະບົບເພື່ອເຂົ້າເຖິງການໂອນຍ້າຍນີ້.",
+  "transferBadResponse": "ການຕອບສະໜອງຂອງເຊີບເວີທີ່ບໍ່ຄາດຄິດ. ກວດເບິ່ງການເຊື່ອມຕໍ່ຂອງທ່ານ.",
+  "transferNetworkError": "ເຄືອຂ່າຍຜິດພາດ. ກວດເບິ່ງການເຊື່ອມຕໍ່ອິນເຕີເນັດຂອງທ່ານ.",
+  "transferLoadFailed": "ບໍ່ສາມາດໂຫຼດການໂອນຍ້າຍໄດ້: <<PH0>>",
+  "passwordProtected": "ປ້ອງກັນລະຫັດຜ່ານ",
+  "enterPassword": "ໃສ່ລະຫັດຜ່ານ",
+  "unlock": "ປົດລັອກ",
+  "downloading": "ກຳລັງດາວໂຫຼດ...",
+  "downloadAllFiles": "ດາວໂຫຼດໄຟລ໌ທັງໝົດ",
+  "downloadSingleFile": "ດາວໂຫຼດໄຟລ໌",
+  "receiveAnother": "ຮັບການໂອນເງິນອື່ນ",
+  "plansTitle": "ແຜນການ",
+  "plansSubtitle": "ອັບເກຣດເພື່ອລຶບໂຄສະນາ ແລະສົ່ງໄຟລ໌ທີ່ໃຫຍ່ກວ່າ.",
+  "storeUnavailable": "ຮ້ານຄ້າບໍ່ສາມາດໃຊ້ໄດ້",
+  "storeUnavailableBody": "ການຊື້ໃນແອັບບໍ່ສາມາດໃຊ້ໄດ້ໃນຕອນນີ້.",
+  "storeLoadingPrices": "ກຳລັງໂຫຼດລາຄາຈາກ App Store...",
+  "storePricesUnavailable": "ບໍ່ມີລາຄາ",
+  "storePricesPartial": "ລາຄາບາງອັນບໍ່ສາມາດໂຫຼດໄດ້",
+  "storePricesPartialBody": "<<PH0>> ຂອງ <<PH1>> ຜະລິດຕະພັນການສະໝັກໃຊ້ຖືກໂຫຼດແລ້ວ.",
+  "storeSetupHint": "ທົດສອບໃນ iPhone ທີ່ແທ້ຈິງ (ບໍ່ແມ່ນ Simulator), ໃຊ້ Sandbox Apple ID, ແລະໃຫ້ແນ່ໃຈວ່າການສະຫມັກທັງຫມົດ 6 ໄດ້ຖືກສ້າງຂື້ນພາຍໃຕ້ bundle ID ຂອງແອັບຯນີ້ໃນ App Store Connect ກັບລາຄາທີ່ກໍານົດໄວ້.",
+  "effectiveMonthlyPrice": "<<PH0>>/ເດືອນ",
+  "freeVersionAds": "ໃນປັດຈຸບັນທ່ານກໍາລັງໃຊ້ສະບັບຟຣີຂອງພວກເຮົາກັບການໂຄສະນາ",
+  "restorePurchases": "ຟື້ນຟູການຊື້",
+  "plansContinue": "ສືບຕໍ່",
+  "planLinkRestore": "ຟື້ນຟູ",
+  "termsAndConditions": "ຂໍ້ກໍານົດແລະເງື່ອນໄຂ",
+  "createAccountTitle": "ສ້າງບັນຊີ",
+  "signUpSubtitle": "ລົງທະບຽນດ້ວຍອີເມວ ແລະລະຫັດຜ່ານ.",
+  "confirmPassword": "ຢືນຢັນລະຫັດຜ່ານ",
+  "passwordMin8": "ລະຫັດຜ່ານ (ຂັ້ນຕ່ຳ 8 ຕົວອັກສອນ)",
+  "alreadyHaveAccount": "ມີບັນຊີຢູ່ແລ້ວບໍ?",
+  "checkEmailTitle": "ກວດເບິ່ງຂອງທ່ານ\nອີເມວ",
+  "otpSentTo": "ພວກເຮົາໄດ້ສົ່ງລະຫັດ 6 ຕົວເລກໄປໃຫ້\n<<PH0>>",
+  "verifyAndSignIn": "ຢືນຢັນ & ເຂົ້າສູ່ລະບົບ",
+  "didntReceiveCode": "ບໍ່ໄດ້ຮັບມັນບໍ?",
+  "tryAgain": "ລອງອີກຄັ້ງ",
+  "otpExpiresHint": "ລະຫັດໝົດອາຍຸໃນ 5 ນາທີ. ກວດເບິ່ງໂຟນເດີ spam ຂອງທ່ານຖ້າທ່ານບໍ່ເຫັນມັນ.",
+  "snackError": "ຜິດພາດ",
+  "snackCopied": "ສຳເນົາແລ້ວ",
+  "snackCopiedBody": "ສຳເນົາລິ້ງໃສ່ຄລິບບອດແລ້ວ",
+  "snackWelcome": "ຍິນດີຕ້ອນຮັບ",
+  "snackAccountCreated": "ສ້າງບັນຊີແລ້ວ",
+  "snackEnterEmail": "ກະລຸນາໃສ່ອີເມວຂອງທ່ານ",
+  "snackEnterPassword": "ກະລຸນາໃສ່ລະຫັດຜ່ານຂອງທ່ານ",
+  "snackInvalidEmail": "ທີ່ຢູ່ອີເມວບໍ່ຖືກຕ້ອງ",
+  "snackInvalidCredentials": "ອີເມວ ຫຼືລະຫັດຜ່ານບໍ່ຖືກຕ້ອງ",
+  "snackPasswordMin8": "ລະຫັດຜ່ານຕ້ອງມີຢ່າງໜ້ອຍ 8 ຕົວອັກສອນ",
+  "snackPasswordMismatch": "ລະຫັດຜ່ານບໍ່ກົງກັນ.",
+  "snackAccountExists": "ມີບັນຊີຢູ່ແລ້ວ. ກະລຸນາເຂົ້າສູ່ລະບົບ.",
+  "snackSignupFailed": "ບໍ່ສາມາດສ້າງບັນຊີໄດ້. ລອງອີກຄັ້ງ.",
+  "snackEnterOtp": "ກະລຸນາໃສ່ລະຫັດ 6 ຕົວເລກ",
+  "snackOtpExpired": "ລະຫັດໝົດອາຍຸແລ້ວ",
+  "snackOtpExpiredBody": "ກະລຸນາຮ້ອງຂໍລະຫັດໃຫມ່.",
+  "snackInvalidCode": "ລະຫັດບໍ່ຖືກຕ້ອງ",
+  "snackInvalidCodeBody": "ລະຫັດບໍ່ຖືກຕ້ອງ. ກະລຸນາລອງອີກຄັ້ງ.",
+  "snackSendCodeFailed": "ບໍ່ສາມາດສົ່ງລະຫັດໄດ້. ກວດເບິ່ງການເຊື່ອມຕໍ່ຂອງທ່ານແລ້ວລອງໃໝ່ອີກຄັ້ງ.",
+  "snackEmptyFolder": "ໂຟນເດີເປົ່າ",
+  "snackEmptyFolderBody": "ບໍ່ພົບໄຟລ໌ໃນໂຟນເດີທີ່ເລືອກ.",
+  "snackFolderUnsupported": "ບໍ່ຮອງຮັບ",
+  "snackFolderUnsupportedBody": "ການອັບໂຫລດໂຟນເດີບໍ່ສາມາດໃຊ້ໄດ້ໃນເວທີນີ້.",
+  "snackFolderReadError": "ບໍ່ສາມາດອ່ານໂຟນເດີທີ່ເລືອກໄດ້.",
+  "snackLimitReached": "ຮອດຂີດຈຳກັດແລ້ວ",
+  "snackLimitFilesBody": "ບາງໄຟລ໌ບໍ່ໄດ້ຖືກເພີ່ມເນື່ອງຈາກຂະໜາດ ຫຼືຈຳນວນໄຟລ໌ຈຳກັດ.",
+  "snackFreePlanLimit": "ແຜນການຟຣີອະນຸຍາດໃຫ້ສູງເຖິງ 5GB ຕໍ່ການໂອນ. ກະລຸນາລຶບບາງໄຟລ໌ອອກ ຫຼືອັບເກຣດ.",
+  "snackSignInEmail": "ກະລຸນາເຂົ້າສູ່ລະບົບເພື່ອສົ່ງອີເມວ.",
+  "snackUploadStartFailed": "ບໍ່ສາມາດເລີ່ມອັບໂຫລດໄດ້.",
+  "snackVerifyEnterCode": "ໃສ່ລະຫັດ 4 ຕົວເລກຈາກອີເມວຂອງທ່ານ.",
+  "snackVerifyInvalid": "ລະຫັດບໍ່ຖືກຕ້ອງ ຫຼືໝົດອາຍຸ. ກວດເບິ່ງອີເມວແລ້ວລອງອີກຄັ້ງ.",
+  "snackVerifyResendFailed": "ບໍ່ສາມາດສົ່ງລະຫັດຄືນໃໝ່ໄດ້. ລອງອີກຄັ້ງ.",
+  "snackDownloadComplete": "ດາວໂຫຼດສຳເລັດ",
+  "snackDownloadSaved": "\"<<PH0>>\" ຖືກບັນທຶກໃສ່ການດາວໂຫຼດແລ້ວ",
+  "snackDownloadFailed": "ການດາວໂຫຼດລົ້ມເຫລວ",
+  "snackSaved": "ບັນທຶກແລ້ວ",
+  "snackServerUrlUpdated": "ອັບເດດ URL ຂອງເຊີບເວີແລ້ວ. ຣີສະຕາດແອັບເພື່ອນຳໃຊ້.",
+  "snackStoreError": "ຮ້ານຄ້າຜິດພາດ",
+  "snackMissingProducts": "ຜະລິດຕະພັນທີ່ຂາດຫາຍໄປ",
+  "snackStoreUnavailable": "ຮ້ານຄ້າບໍ່ສາມາດໃຊ້ໄດ້",
+  "snackStoreUnavailableBody": "ການຊື້ໃນແອັບບໍ່ສາມາດໃຊ້ໄດ້ໃນອຸປະກອນນີ້.",
+  "snackProductNotLoaded": "ສິນຄ້າຍັງບໍ່ໄດ້ໂຫລດເທື່ອ.",
+  "snackRestoreStarted": "ການ​ຟື້ນ​ຟູ​ໄດ້​ເລີ່ມ​ຕົ້ນ​",
+  "snackRestoreStartedBody": "ພວກເຮົາກວດສອບການຊື້ຂອງທ່ານ.",
+  "snackRestoreFailed": "ກູ້ຄືນບໍ່ສຳເລັດ",
+  "snackProcessing": "ການປຸງແຕ່ງ",
+  "snackPleaseWait": "ກະລຸນາລໍຖ້າ...",
+  "snackSuccess": "ສຳເລັດ",
+  "snackPurchaseCompleted": "ສຳເລັດການຊື້.",
+  "snackPurchaseError": "ການຊື້ຜິດພາດ",
+  "snackPurchaseFailed": "ການຊື້ລົ້ມເຫລວ.",
+  "snackCanceled": "ຍົກເລີກ",
+  "snackPurchaseCanceled": "ຍົກເລີກການຊື້ແລ້ວ.",
+  "snackUpload": "ອັບໂຫຼດ",
+  "snackVerify": "ຢືນຢັນ",
+  "doNotExpire": "ບໍ່ໝົດອາຍຸ",
+  "hourSingular": "ຊົ່ວໂມງ",
+  "hourPlural": "ຊົ່ວໂມງ",
+  "daySingular": "ມື້",
+  "dayPlural": "ມື້",
+  "emailAddressLabel": "ທີ່ຢູ່ອີເມວ",
+  "passwordLabelCaps": "ລະຫັດຜ່ານ",
+  "confirmPasswordLabelCaps": "ຢືນຢັນລະຫັດຜ່ານ",
+  "transferLinkOrId": "ໂອນຍ້າຍລິ້ງ ຫຼື ID",
+  "howToReceive": "ວິທີການຮັບ",
+  "planAdsTitle": "ແຜນການໂຄສະນາ",
+  "planAdsBullet1": "ເຂົ້າເຖິງແອັບຟຣີໂຄສະນາ",
+  "planAdsBullet2": "ເອົາໂຄສະນາທັງໝົດອອກ",
+  "planProTitle": "ແຜນ Pro",
+  "planProBullet1": "ສົ່ງໄຟລ໌ສູງສຸດ 20GB",
+  "planProBullet2": "ອັບໂຫຼດໄວ",
+  "planPremiumTitle": "ແຜນພຣີມຽມ",
+  "planPremiumBullet1": "ສົ່ງໄຟລ໌ສູງສຸດ 100GB",
+  "planPremiumBullet2": "ອັບໂຫຼດໄວຫຼາຍ",
+  "planSubscriptionDisclaimer": "ບໍ່​ມີ​ໄລ​ຍະ​ການ​ທົດ​ລອງ — ຈໍາ​ເປັນ​ຕ້ອງ​ມີ​ການ​ສະ​ຫມັກ​ເພື່ອ​ນໍາ​ໃຊ້​ການ​ທໍາ​ງານ​ຂອງ app ເພີ່ມ​ເຕີມ​. ທ່ານຈະຖືກຄິດຄ່າບໍລິການທັນທີ. ທ່ານສາມາດຍົກເລີກໄດ້ທຸກເວລາ.",
+  "perMonth": "/ ເດືອນ",
+  "perYear": "/ ປີ",
+  "snackConnectionProblem": "ບັນຫາການເຊື່ອມຕໍ່. ກະລຸນາລອງອີກຄັ້ງ.",
+  "networkTitle": "ເຄືອຂ່າຍ",
+  "transferIdLabel": "ID: <<PH0>>",
+  "downloadMetaSummary": "ໄຟລ໌: <<PH0>> · <<PH1>> bytes",
+  "todayAt": "ມື້ນີ້ · <<PH0>>",
+  "yesterdayAt": "ມື້ວານນີ້ · <<PH0>>",
+  "daysAgoAt": "<<PH0>>ມື້ກ່ອນ · <<PH1>>",
+  "dateAt": "<<PH0>> · <<PH1>>",
+  "mbAmount": "<<PH0>> MB",
+  "uploadProgressSummary": "<<PH0>> / <<PH1>> • <<PH2>> ຊ້າຍ",
+  "loadingShort": "ກຳລັງໂຫລດ...",
+  "colorPaletteTitle": "ສີ Palette",
+  "colorPaletteSectionBackgrounds": "ພື້ນຫຼັງ (ຂະຫນາດຫມຶກ)",
+  "colorPaletteSectionAccent": "ສຳນຽງ/ປະຖົມ",
+  "colorPaletteSectionText": "ຂໍ້ຄວາມ",
+  "colorPaletteSectionBorders": "ຂອບ & ແກ້ວ",
+  "colorPaletteSectionSemantic": "ຄວາມຫມາຍ",
+  "colorPaletteSectionLive": "ຮູບແບບສີສັນສົດ (ປັດຈຸບັນ)",
+  "colorPaletteActiveHint": "★ = ຖືກນໍາໃຊ້ຢ່າງຫ້າວຫັນໃນຫນ້າຈໍ",
+  "colorPaletteCopyHint": "ກົດປຸ່ມໃດນຶ່ງຄ້າງໄວ້ເພື່ອສຳເນົາຄ່າ hex ຂອງມັນ.",
+  "settingsAppBrand": "ແບ່ງປັນຂະຫນາດໃຫຍ່\nໄຟລ໌ວິດີໂອ",
+  "loginEmailPasswordPrompt": "ໃສ່ອີເມວ ແລະລະຫັດຜ່ານຂອງທ່ານເພື່ອເຂົ້າສູ່ລະບົບ.",
+  "forgotPassword": "ລືມລະຫັດຜ່ານ?",
+  "forgotPasswordTitle": "ຣີເຊັດລະຫັດຜ່ານ",
+  "forgotPasswordBody": "ໃສ່ອີເມລ໌ບັນຊີຂອງທ່ານ ແລ້ວພວກເຮົາຈະສົ່ງລະຫັດຣີເຊັດ.",
+  "forgotPasswordSubmit": "ສົ່ງລະຫັດຣີເຊັດ",
+  "resetPasswordTitle": "ສ້າງລະຫັດຜ່ານໃຫມ່",
+  "resetPasswordBody": "ໃສ່ລະຫັດ 6 ຕົວເລກຈາກອີເມວຂອງທ່ານແລະເລືອກລະຫັດຜ່ານໃຫມ່.",
+  "resetPasswordSubmit": "ອັບເດດລະຫັດຜ່ານ",
+  "snackPasswordResetSent": "ສົ່ງລະຫັດຄືນໃຫມ່",
+  "snackPasswordResetSentBody": "ກວດເບິ່ງອີເມວຂອງທ່ານສຳລັບລະຫັດຣີເຊັດ 6 ຕົວເລກ.",
+  "snackPasswordResetFailed": "ບໍ່ສາມາດສົ່ງລະຫັດຣີເຊັດໄດ້. ລອງອີກຄັ້ງ.",
+  "snackPasswordUpdated": "ອັບເດດລະຫັດຜ່ານ",
+  "snackPasswordUpdatedBody": "ເຂົ້າສູ່ລະບົບດ້ວຍລະຫັດຜ່ານໃໝ່ຂອງເຈົ້າ.",
+  "snackPasswordResetInvalid": "ລະຫັດຣີເຊັດບໍ່ຖືກຕ້ອງ ຫຼືໝົດອາຍຸ.",
+  "otpDigitLabel": "ລະຫັດ 6 ຕົວເລກ",
+  "receiveMoreFiles": "+<<PH0>> ໄຟລ໌ເພີ່ມເຕີມ"
+}

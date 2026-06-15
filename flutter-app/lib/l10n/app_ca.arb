@@ -1,0 +1,466 @@
+{
+  "@@locale": "ca",
+  "@verifyEmailCheckSpamHint": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@upToTotal": {
+    "placeholders": {
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "@filesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesCount": "{count, plural, =1{1 file} other{{count} files}}",
+  "@mbLeft": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@transferLoadFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@storePricesPartialBody": {
+    "placeholders": {
+      "loaded": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "priceUnavailable": "—",
+  "@effectiveMonthlyPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "@otpSentTo": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@snackDownloadSaved": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "emailExampleHint": "you@example.com",
+  "otpSixDigitHint": "000000",
+  "verifyFourDigitHint": "0000",
+  "transferLinkHint": "https://… or paste ID",
+  "@filesReady": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesReady": "{count, plural, =1{1 file ready} other{{count} files ready}}",
+  "@transferIdLabel": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadMetaSummary": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "@todayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@yesterdayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@daysAgoAt": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@dateAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@mbAmount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@uploadProgressSummary": {
+    "placeholders": {
+      "sent": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      },
+      "remaining": {
+        "type": "String"
+      }
+    }
+  },
+  "@historyFilesSize": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "historyFilesSize": "{count, plural, =1{1 file} other{{count} files}} · {size}",
+  "@receiveMoreFiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appTitle": "Compartiu fitxers de vídeo grans",
+  "heroAccent": "instantàniament.",
+  "heroTitle": "Envia fitxers pesats",
+  "splashLoading": "S'està carregant…",
+  "navSend": "Tauler de control",
+  "navHome": "a casa",
+  "navHistory": "Història",
+  "navReceive": "Rebre",
+  "navPlans": "Plans",
+  "navDownload": "Descarregar",
+  "navSettings": "Configuració",
+  "modeLink": "Aconsegueix un enllaç",
+  "modeEmail": "Enviar per correu electrònic",
+  "pickFiles": "Trieu fitxers",
+  "pickFolder": "Trieu la carpeta",
+  "emailFrom": "El teu correu electrònic",
+  "mailFromUsesAccount": "Utilitza el correu electrònic en què heu iniciat la sessió.",
+  "recipientEmailsHelper": "Diversos destinataris: separeu-los amb comes, punt i coma o espais.",
+  "emailTo": "Correu electrònic del destinatari",
+  "messageOptional": "Missatge (opcional)",
+  "passwordOptional": "Contrasenya (opcional)",
+  "destructAfterDownload": "Suprimeix després de la descàrrega",
+  "destructNo": "Mantenir disponible",
+  "sendButton": "Enviar",
+  "uploading": "S'està carregant…",
+  "uploadComplete": "Fet",
+  "shareLinkTitle": "El teu enllaç",
+  "copyLink": "Copia l'enllaç",
+  "share": "Comparteix",
+  "shareQrCode": "Comparteix el codi QR",
+  "uploadMore": "Envieu-ne un altre",
+  "emailSentTitle": "Correus electrònics enviats",
+  "verifyEmailTitle": "Verifica el teu correu electrònic",
+  "verifyCodeHint": "Introduïu el codi del vostre correu electrònic",
+  "verifySubmit": "Verificar",
+  "verifyResendCode": "Torna a enviar el codi",
+  "verifyCodeSent": "S'ha enviat un codi de verificació nou al vostre correu electrònic.",
+  "verifyEmailSmtpWarningTitle": "És possible que no s'hagi enviat el correu electrònic de verificació",
+  "verifyEmailSmtpWarningBody": "El servidor no ha pogut confirmar el lliurament (sovint SMTP està mal configurat). Demaneu a l'administrador del vostre lloc que comproveu la configuració del correu al tauler d'administració i, a continuació, toqueu Torna a enviar el codi.",
+  "verifyEmailCheckSpamHint": "Si no arriba: comproveu Correu brossa/Spam i Promocions, espereu un minut, confirmeu que <<PH0>> no té errors d'ortografia i, a continuació, toqueu Torna a enviar.",
+  "loginTitle": "Inicia sessió",
+  "signupHint": "Utilitzeu el correu electrònic i la contrasenya del vostre compte del lloc.",
+  "emailHint": "Correu electrònic",
+  "passwordHint": "Contrasenya",
+  "cancel": "Cancel·la",
+  "signIn": "Inicia sessió",
+  "downloadIdHint": "ID de transferència",
+  "privateIdHint": "Identificació privada (opcional)",
+  "fetchTransfer": "Transferència oberta",
+  "downloadFile": "Descarregar",
+  "unlockDownload": "Desbloqueja la descàrrega",
+  "downloadSaved": "Desat a Baixades",
+  "errorGeneric": "Alguna cosa va fallar",
+  "errorNetwork": "Error de xarxa",
+  "errorBadResponse": "Resposta del servidor inesperada",
+  "termsAccept": "Estic d'acord amb els termes",
+  "settingsApiUrl": "URL del lloc públic",
+  "settingsAccount": "Compte",
+  "settingsAppearance": "Aparença",
+  "settingsTheme": "Tema",
+  "themeSystem": "Sistema",
+  "themeLight": "Llum",
+  "themeDark": "Fosc",
+  "settingsSignedIn": "Heu iniciat la sessió.",
+  "settingsSignedOut": "No heu iniciat la sessió.",
+  "settingsOpenWebsite": "Lloc web obert",
+  "signUp": "Registra't",
+  "settingsLinks": "Enllaços",
+  "privacyPolicy": "Política de privadesa",
+  "termsOfService": "Condicions del servei",
+  "about": "Sobre",
+  "moreApps": "Més aplicacions",
+  "settingsLanguage": "Llengua",
+  "languageEnglish": "Anglès",
+  "languageHindi": "hindi",
+  "logout": "Tanca la sessió",
+  "deleteAccount": "Suprimeix el compte",
+  "deleteAccountConfirmTitle": "Vols suprimir el teu compte?",
+  "deleteAccountConfirmBody": "Això suprimirà permanentment el vostre compte i us tancarà la sessió. Els vostres enllaços de transferència continuaran funcionant, però ja no apareixeran al vostre historial.",
+  "deleteAccountSuccess": "Compte suprimit",
+  "deleteAccountSuccessBody": "El teu compte s'ha eliminat.",
+  "deleteAccountFailed": "No s'ha pogut suprimir el compte",
+  "deleteAccountFailedBody": "Si us plau, torna-ho a provar o contacta amb l'assistència.",
+  "maxFilesReached": "Massa fitxers",
+  "fileTooLarge": "Fitxer massa gran",
+  "ipLimit": "Hi ha massa càrregues d'aquesta xarxa",
+  "fillFields": "Ompliu els camps obligatoris",
+  "invalidEmail": "Correu electrònic no vàlid",
+  "maxRecipientsReached": "Massa destinataris",
+  "loginRequiredTitle": "Cal iniciar sessió",
+  "loginRequiredBody": "Aquest servidor requereix un compte per pujar o descarregar.",
+  "settingsSubtitle": "Preferències de l'aplicació i compte.",
+  "dropHeavyFile": "Deixeu un fitxer pesat aquí.",
+  "upToTotal": "Fins a <<PH0>> total",
+  "removeAll": "Elimina-ho tot",
+  "addFiles": "Afegeix fitxers",
+  "adding": "S'està afegint…",
+  "options": "Opcions",
+  "selfDestruct": "Autodestrucció després de la descàrrega",
+  "expiry": "Caducitat",
+  "cancelUpload": "Cancel·la la càrrega",
+  "transferReady": "Transferència a punt!",
+  "emailSentReady": "Correu electrònic enviat!",
+  "shareRecipientHint": "Comparteix aquest enllaç amb el teu destinatari.",
+  "emailSentBody": "Hem notificat els vostres destinataris.",
+  "scanQr": "Escaneja per obrir l'enllaç de transferència.",
+  "shareLinkButton": "COMPARTIR ENLLAÇ",
+  "verifyFourDigit": "Introduïu el codi de 4 dígits enviat al correu electrònic del vostre remitent.",
+  "starting": "S'està començant…",
+  "mbLeft": "<<PH0>> MB restants",
+  "fillField": "Si us plau, ompliu aquest camp.",
+  "enterValidEmail": "Introduïu un correu electrònic vàlid.",
+  "message": "Missatge",
+  "recipientEmail": "Correu electrònic del destinatari",
+  "active": "Actius",
+  "expired": "Caducat",
+  "historyTitle": "Les meves transferències",
+  "signInToSeeTransfers": "Inicieu la sessió per veure les vostres transferències",
+  "signInTransfersBody": "Utilitzem el vostre correu electrònic per enllaçar les transferències al vostre compte, sense necessitat de contrasenya.",
+  "couldNotLoadTransfers": "No s'han pogut carregar les transferències",
+  "retry": "Torna-ho a provar",
+  "noTransfersYet": "Encara no hi ha transferències",
+  "noTransfersBody": "Un cop envieu un fitxer, apareixerà aquí.",
+  "transferDetails": "Detalls de la transferència",
+  "filesSection": "Fitxers",
+  "receiveTitle": "Rebre arxius",
+  "receiveSubtitle": "Enganxeu un enllaç de transferència per descarregar fitxers.",
+  "pasteTooltip": "Enganxa",
+  "findTransfer": "Cerca Transferència",
+  "receiveScanQr": "Escaneja QR",
+  "receiveScanQrTitle": "Escaneig de transferència QR",
+  "receiveScanQrHint": "Alineeu el codi QR dins del marc.",
+  "receiveScanQrInvalid": "Aquest codi QR no és un enllaç de transferència vàlid.",
+  "receiveScanQrCameraDenied": "Es requereix accés a la càmera per escanejar codis QR.",
+  "receiveStepGetLink": "Obteniu l'enllaç",
+  "receiveStepGetLinkBody": "Demana al remitent que comparteixi l'enllaç de transferència amb tu.",
+  "receiveStepPaste": "Enganxa i troba",
+  "receiveStepPasteBody": "Enganxeu l'enllaç de dalt i toqueu \"Troba la transferència\".",
+  "receiveStepDownload": "Descarregar fitxers",
+  "receiveStepDownloadBody": "Vegeu els detalls del fitxer i descarregueu-ho tot alhora.",
+  "lookingUpTransfer": "S'està buscant la transferència...",
+  "transferNotFound": "No s'ha trobat la transferència. Comprova l'enllaç i torna-ho a provar.",
+  "transferExpired": "Aquesta transferència ha caducat i ja no està disponible.",
+  "transferLoginRequired": "Cal iniciar sessió per accedir a aquesta transferència.",
+  "transferBadResponse": "Resposta del servidor inesperada. Comproveu la vostra connexió.",
+  "transferNetworkError": "Error de xarxa. Comproveu la vostra connexió a Internet.",
+  "transferLoadFailed": "No s'ha pogut carregar la transferència: <<PH0>>",
+  "passwordProtected": "Protegit amb contrasenya",
+  "enterPassword": "Introduïu la contrasenya",
+  "unlock": "Desbloqueja",
+  "downloading": "S'està baixant…",
+  "downloadAllFiles": "Baixeu tots els fitxers",
+  "downloadSingleFile": "Descarregar fitxer",
+  "receiveAnother": "Rebre una altra transferència",
+  "plansTitle": "Plans",
+  "plansSubtitle": "Actualitzeu per eliminar anuncis i enviar fitxers més grans.",
+  "storeUnavailable": "Botiga no disponible",
+  "storeUnavailableBody": "Les compres des de l'aplicació no estan disponibles ara mateix.",
+  "storeLoadingPrices": "S'estan carregant els preus de l'App Store...",
+  "storePricesUnavailable": "Preus no disponibles",
+  "storePricesPartial": "Alguns preus no s'han pogut carregar",
+  "storePricesPartialBody": "S'han carregat <<PH0>> dels productes de subscripció <<PH1>>.",
+  "storeSetupHint": "Proveu en un iPhone real (no en un simulador), utilitzeu un identificador d'Apple Sandbox i assegureu-vos que les 6 subscripcions es creïn amb l'identificador de paquet d'aquesta aplicació a l'App Store Connect amb el preu establert.",
+  "effectiveMonthlyPrice": "<<PH0>>/mes",
+  "freeVersionAds": "Actualment estàs utilitzant la nostra versió gratuïta amb anuncis",
+  "restorePurchases": "Restaurar les compres",
+  "plansContinue": "Continua",
+  "planLinkRestore": "Restaurar",
+  "termsAndConditions": "Termes i condicions",
+  "createAccountTitle": "Crea un compte",
+  "signUpSubtitle": "Registra't amb correu electrònic i contrasenya.",
+  "confirmPassword": "Confirmeu la contrasenya",
+  "passwordMin8": "Contrasenya (mínim 8 caràcters)",
+  "alreadyHaveAccount": "Ja tens un compte?",
+  "checkEmailTitle": "Comproveu el vostre\ncorreu electrònic",
+  "otpSentTo": "Hem enviat un codi de 6 dígits a\n<<PH0>>",
+  "verifyAndSignIn": "Verifica i inicia la sessió",
+  "didntReceiveCode": "No l'heu rebut?",
+  "tryAgain": "Torna-ho a provar",
+  "otpExpiresHint": "El codi caduca en 5 minuts. Comproveu la vostra carpeta de correu brossa si no la veieu.",
+  "snackError": "Error",
+  "snackCopied": "Copiat",
+  "snackCopiedBody": "S'ha copiat l'enllaç al porta-retalls",
+  "snackWelcome": "Benvingut",
+  "snackAccountCreated": "Compte creat",
+  "snackEnterEmail": "Introduïu el vostre correu electrònic",
+  "snackEnterPassword": "Introduïu la vostra contrasenya",
+  "snackInvalidEmail": "Adreça de correu electrònic no vàlida",
+  "snackInvalidCredentials": "Correu electrònic o contrasenya incorrectes",
+  "snackPasswordMin8": "La contrasenya ha de tenir com a mínim 8 caràcters",
+  "snackPasswordMismatch": "Les contrasenyes no coincideixen.",
+  "snackAccountExists": "El compte ja existeix. Si us plau, inicieu la sessió.",
+  "snackSignupFailed": "No s'ha pogut crear el compte. Torna-ho a provar.",
+  "snackEnterOtp": "Introduïu el codi de 6 dígits",
+  "snackOtpExpired": "El codi ha caducat",
+  "snackOtpExpiredBody": "Sol·liciteu un codi nou.",
+  "snackInvalidCode": "Codi no vàlid",
+  "snackInvalidCodeBody": "El codi és incorrecte. Si us plau, torna-ho a provar.",
+  "snackSendCodeFailed": "No s'ha pogut enviar el codi. Comprova la teva connexió i torna-ho a provar.",
+  "snackEmptyFolder": "Carpeta buida",
+  "snackEmptyFolderBody": "No s'han trobat fitxers a la carpeta seleccionada.",
+  "snackFolderUnsupported": "No s'admet",
+  "snackFolderUnsupportedBody": "La càrrega de carpetes no està disponible en aquesta plataforma.",
+  "snackFolderReadError": "No s'ha pogut llegir la carpeta seleccionada.",
+  "snackLimitReached": "S'ha arribat al límit",
+  "snackLimitFilesBody": "Alguns fitxers no s'han afegit a causa dels límits de mida o de recompte de fitxers.",
+  "snackFreePlanLimit": "El pla gratuït permet fins a 5 GB per transferència. Si us plau, elimineu alguns fitxers o actualitzeu-los.",
+  "snackSignInEmail": "Si us plau, inicieu la sessió per enviar-lo per correu electrònic.",
+  "snackUploadStartFailed": "No s'ha pogut iniciar la càrrega.",
+  "snackVerifyEnterCode": "Introduïu el codi de 4 dígits del vostre correu electrònic.",
+  "snackVerifyInvalid": "Codi no vàlid o caducat. Comproveu el correu electrònic i torneu-ho a provar.",
+  "snackVerifyResendFailed": "No s'ha pogut tornar a enviar el codi. Torna-ho a provar.",
+  "snackDownloadComplete": "Descàrrega completa",
+  "snackDownloadSaved": "\"<<PH0>>\" s'ha desat a Baixades",
+  "snackDownloadFailed": "La baixada ha fallat",
+  "snackSaved": "Desat",
+  "snackServerUrlUpdated": "S'ha actualitzat l'URL del servidor. Reinicieu l'aplicació per aplicar.",
+  "snackStoreError": "Error de la botiga",
+  "snackMissingProducts": "Falten productes",
+  "snackStoreUnavailable": "Botiga no disponible",
+  "snackStoreUnavailableBody": "Les compres des de l'aplicació no estan disponibles en aquest dispositiu.",
+  "snackProductNotLoaded": "El producte encara no s'ha carregat.",
+  "snackRestoreStarted": "S'ha iniciat la restauració",
+  "snackRestoreStartedBody": "Estem revisant les teves compres.",
+  "snackRestoreFailed": "La restauració ha fallat",
+  "snackProcessing": "Tramitació",
+  "snackPleaseWait": "Si us plau, espereu...",
+  "snackSuccess": "Èxit",
+  "snackPurchaseCompleted": "Compra completada.",
+  "snackPurchaseError": "Error de compra",
+  "snackPurchaseFailed": "La compra ha fallat.",
+  "snackCanceled": "Cancel·lat",
+  "snackPurchaseCanceled": "Compra cancel·lada.",
+  "snackUpload": "Carrega",
+  "snackVerify": "Verificar",
+  "doNotExpire": "No caduqui",
+  "hourSingular": "hora",
+  "hourPlural": "hores",
+  "daySingular": "dia",
+  "dayPlural": "dies",
+  "emailAddressLabel": "ADREÇA DE CORREU ELECTRÒNIC",
+  "passwordLabelCaps": "CONTRAsenya",
+  "confirmPasswordLabelCaps": "CONFIRMAR LA CONTRAsenya",
+  "transferLinkOrId": "ENLLAÇ DE TRANSFERÈNCIA O DNI",
+  "howToReceive": "COM REBRE",
+  "planAdsTitle": "Pla d'anuncis",
+  "planAdsBullet1": "Accés a l'aplicació gratuïta d'anuncis",
+  "planAdsBullet2": "Elimina tots els anuncis",
+  "planProTitle": "Pla Pro",
+  "planProBullet1": "Envia fitxers de fins a 20 GB",
+  "planProBullet2": "Pujada ràpida",
+  "planPremiumTitle": "Pla Premium",
+  "planPremiumBullet1": "Envia fitxers de fins a 100 GB",
+  "planPremiumBullet2": "Pujada súper ràpida",
+  "planSubscriptionDisclaimer": "No hi ha període de prova: cal subscriure's per utilitzar la funcionalitat addicional de l'aplicació. Se us cobrarà immediatament. Pots cancel·lar-ho en qualsevol moment.",
+  "perMonth": "/mes",
+  "perYear": "/ any",
+  "snackConnectionProblem": "Problema de connexió. Si us plau, torna-ho a provar.",
+  "networkTitle": "Xarxa",
+  "transferIdLabel": "ID: <<PH0>>",
+  "downloadMetaSummary": "Fitxers: <<PH0>> · <<PH1>> bytes",
+  "todayAt": "Avui · <<PH0>>",
+  "yesterdayAt": "Ahir · <<PH0>>",
+  "daysAgoAt": "Fa <<PH0>>d · <<PH1>>",
+  "dateAt": "<<PH0>> · <<PH1>>",
+  "mbAmount": "<<PH0>> MB",
+  "uploadProgressSummary": "<<PH0>> / <<PH1>> • <<PH2>> a l'esquerra",
+  "loadingShort": "S'està carregant…",
+  "colorPaletteTitle": "Paleta de colors",
+  "colorPaletteSectionBackgrounds": "Fons (escala de tinta)",
+  "colorPaletteSectionAccent": "Accent / Primària",
+  "colorPaletteSectionText": "Text",
+  "colorPaletteSectionBorders": "Vores i vidre",
+  "colorPaletteSectionSemantic": "Semàntica",
+  "colorPaletteSectionLive": "Tema en directe (actual)",
+  "colorPaletteActiveHint": "★ = utilitzat activament a les pantalles",
+  "colorPaletteCopyHint": "Premeu llargament qualsevol mostra per copiar el seu valor hexadecimal.",
+  "settingsAppBrand": "Comparteix en gran\nArxius de vídeo",
+  "loginEmailPasswordPrompt": "Introduïu el vostre correu electrònic i contrasenya per iniciar la sessió.",
+  "forgotPassword": "Heu oblidat la contrasenya?",
+  "forgotPasswordTitle": "Restableix la contrasenya",
+  "forgotPasswordBody": "Introduïu el correu electrònic del vostre compte i us enviarem un codi de restabliment.",
+  "forgotPasswordSubmit": "Envia el codi de restabliment",
+  "resetPasswordTitle": "Crea una contrasenya nova",
+  "resetPasswordBody": "Introduïu el codi de 6 dígits del vostre correu electrònic i trieu una nova contrasenya.",
+  "resetPasswordSubmit": "Actualitza la contrasenya",
+  "snackPasswordResetSent": "S'ha enviat el codi de restabliment",
+  "snackPasswordResetSentBody": "Comproveu el vostre correu electrònic per obtenir un codi de restabliment de 6 dígits.",
+  "snackPasswordResetFailed": "No s'ha pogut enviar el codi de restabliment. Torna-ho a provar.",
+  "snackPasswordUpdated": "Contrasenya actualitzada",
+  "snackPasswordUpdatedBody": "Inicieu la sessió amb la vostra nova contrasenya.",
+  "snackPasswordResetInvalid": "Codi de restabliment no vàlid o caducat.",
+  "otpDigitLabel": "CODI DE 6 DIGITS",
+  "receiveMoreFiles": "+<<PH0>> més fitxers"
+}

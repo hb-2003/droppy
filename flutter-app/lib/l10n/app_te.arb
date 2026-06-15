@@ -1,0 +1,466 @@
+{
+  "@@locale": "te",
+  "@verifyEmailCheckSpamHint": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@upToTotal": {
+    "placeholders": {
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "@filesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesCount": "{count, plural, =1{1 file} other{{count} files}}",
+  "@mbLeft": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@transferLoadFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@storePricesPartialBody": {
+    "placeholders": {
+      "loaded": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "priceUnavailable": "—",
+  "@effectiveMonthlyPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "@otpSentTo": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@snackDownloadSaved": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "emailExampleHint": "you@example.com",
+  "otpSixDigitHint": "000000",
+  "verifyFourDigitHint": "0000",
+  "transferLinkHint": "https://… or paste ID",
+  "@filesReady": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesReady": "{count, plural, =1{1 file ready} other{{count} files ready}}",
+  "@transferIdLabel": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadMetaSummary": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "@todayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@yesterdayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@daysAgoAt": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@dateAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@mbAmount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@uploadProgressSummary": {
+    "placeholders": {
+      "sent": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      },
+      "remaining": {
+        "type": "String"
+      }
+    }
+  },
+  "@historyFilesSize": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "historyFilesSize": "{count, plural, =1{1 file} other{{count} files}} · {size}",
+  "@receiveMoreFiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appTitle": "పెద్ద వీడియో ఫైల్‌లను షేర్ చేయండి",
+  "heroAccent": "తక్షణమే.",
+  "heroTitle": "భారీ ఫైళ్లను పంపండి",
+  "splashLoading": "లోడ్ అవుతోంది...",
+  "navSend": "డాష్‌బోర్డ్",
+  "navHome": "హోమ్",
+  "navHistory": "చరిత్ర",
+  "navReceive": "స్వీకరించండి",
+  "navPlans": "ప్రణాళికలు",
+  "navDownload": "డౌన్‌లోడ్ చేయండి",
+  "navSettings": "సెట్టింగ్‌లు",
+  "modeLink": "లింక్ పొందండి",
+  "modeEmail": "ఇమెయిల్ ద్వారా పంపండి",
+  "pickFiles": "ఫైల్‌లను ఎంచుకోండి",
+  "pickFolder": "ఫోల్డర్‌ని ఎంచుకోండి",
+  "emailFrom": "మీ ఇమెయిల్",
+  "mailFromUsesAccount": "మీ సైన్ ఇన్ చేసిన ఇమెయిల్‌ను ఉపయోగిస్తుంది.",
+  "recipientEmailsHelper": "బహుళ గ్రహీతలు: కామాలు, సెమికోలన్‌లు లేదా ఖాళీలతో వేరు చేయండి.",
+  "emailTo": "స్వీకర్త ఇమెయిల్",
+  "messageOptional": "సందేశం (ఐచ్ఛికం)",
+  "passwordOptional": "పాస్‌వర్డ్ (ఐచ్ఛికం)",
+  "destructAfterDownload": "డౌన్‌లోడ్ చేసిన తర్వాత తొలగించండి",
+  "destructNo": "అందుబాటులో ఉంచుకోండి",
+  "sendButton": "పంపండి",
+  "uploading": "అప్‌లోడ్ చేస్తోంది...",
+  "uploadComplete": "పూర్తయింది",
+  "shareLinkTitle": "మీ లింక్",
+  "copyLink": "లింక్‌ని కాపీ చేయండి",
+  "share": "షేర్ చేయండి",
+  "shareQrCode": "QR కోడ్‌ని షేర్ చేయండి",
+  "uploadMore": "మరొకటి పంపండి",
+  "emailSentTitle": "ఇమెయిల్‌లు పంపబడ్డాయి",
+  "verifyEmailTitle": "మీ ఇమెయిల్‌ని ధృవీకరించండి",
+  "verifyCodeHint": "మీ ఇమెయిల్ నుండి కోడ్‌ను నమోదు చేయండి",
+  "verifySubmit": "ధృవీకరించండి",
+  "verifyResendCode": "కోడ్‌ని మళ్లీ పంపండి",
+  "verifyCodeSent": "మీ ఇమెయిల్‌కి కొత్త ధృవీకరణ కోడ్ పంపబడింది.",
+  "verifyEmailSmtpWarningTitle": "ధృవీకరణ ఇమెయిల్ పంపబడకపోవచ్చు",
+  "verifyEmailSmtpWarningBody": "సర్వర్ డెలివరీని నిర్ధారించలేకపోయింది (తరచుగా SMTP తప్పుగా కాన్ఫిగర్ చేయబడుతుంది). అడ్మిన్ ప్యానెల్‌లో మెయిల్ సెట్టింగ్‌లను తనిఖీ చేయమని మీ సైట్ అడ్మిన్‌ని అడగండి, ఆపై కోడ్‌ని మళ్లీ పంపు నొక్కండి.",
+  "verifyEmailCheckSpamHint": "అది రాకపోతే: జంక్/స్పామ్ మరియు ప్రమోషన్‌లను తనిఖీ చేయండి, ఒక నిమిషం వేచి ఉండండి, <<PH0>> అక్షరదోషాలు లేవని నిర్ధారించి, ఆపై మళ్లీ పంపు నొక్కండి.",
+  "loginTitle": "సైన్ ఇన్ చేయండి",
+  "signupHint": "మీ సైట్ ఖాతా ఇమెయిల్ మరియు పాస్‌వర్డ్‌ని ఉపయోగించండి.",
+  "emailHint": "ఇమెయిల్",
+  "passwordHint": "పాస్వర్డ్",
+  "cancel": "రద్దు చేయి",
+  "signIn": "సైన్ ఇన్ చేయండి",
+  "downloadIdHint": "బదిలీ ID",
+  "privateIdHint": "ప్రైవేట్ ID (ఐచ్ఛికం)",
+  "fetchTransfer": "ఓపెన్ బదిలీ",
+  "downloadFile": "డౌన్‌లోడ్ చేయండి",
+  "unlockDownload": "డౌన్‌లోడ్‌ను అన్‌లాక్ చేయండి",
+  "downloadSaved": "డౌన్‌లోడ్‌లకు సేవ్ చేయబడింది",
+  "errorGeneric": "ఏదో తప్పు జరిగింది",
+  "errorNetwork": "నెట్‌వర్క్ లోపం",
+  "errorBadResponse": "ఊహించని సర్వర్ ప్రతిస్పందన",
+  "termsAccept": "నేను నిబంధనలను అంగీకరిస్తున్నాను",
+  "settingsApiUrl": "పబ్లిక్ సైట్ URL",
+  "settingsAccount": "ఖాతా",
+  "settingsAppearance": "స్వరూపం",
+  "settingsTheme": "థీమ్",
+  "themeSystem": "వ్యవస్థ",
+  "themeLight": "కాంతి",
+  "themeDark": "చీకటి",
+  "settingsSignedIn": "మీరు సైన్ ఇన్ చేసారు.",
+  "settingsSignedOut": "మీరు సైన్ ఇన్ చేయలేదు.",
+  "settingsOpenWebsite": "వెబ్‌సైట్‌ను తెరవండి",
+  "signUp": "సైన్ అప్ చేయండి",
+  "settingsLinks": "లింకులు",
+  "privacyPolicy": "గోప్యతా విధానం",
+  "termsOfService": "సేవా నిబంధనలు",
+  "about": "గురించి",
+  "moreApps": "మరిన్ని యాప్‌లు",
+  "settingsLanguage": "భాష",
+  "languageEnglish": "ఇంగ్లీష్",
+  "languageHindi": "హిందీ",
+  "logout": "లాగ్ అవుట్ చేయండి",
+  "deleteAccount": "ఖాతాను తొలగించండి",
+  "deleteAccountConfirmTitle": "మీ ఖాతాను తొలగించాలా?",
+  "deleteAccountConfirmBody": "ఇది మీ ఖాతాను శాశ్వతంగా తొలగిస్తుంది మరియు మిమ్మల్ని సైన్ అవుట్ చేస్తుంది. మీ బదిలీ లింక్‌లు పని చేస్తూనే ఉంటాయి, కానీ అవి మీ చరిత్రలో కనిపించవు.",
+  "deleteAccountSuccess": "ఖాతా తొలగించబడింది",
+  "deleteAccountSuccessBody": "మీ ఖాతా తీసివేయబడింది.",
+  "deleteAccountFailed": "ఖాతాను తొలగించడం సాధ్యపడలేదు",
+  "deleteAccountFailedBody": "దయచేసి మళ్లీ ప్రయత్నించండి లేదా మద్దతును సంప్రదించండి.",
+  "maxFilesReached": "చాలా ఫైల్‌లు",
+  "fileTooLarge": "ఫైల్ చాలా పెద్దది",
+  "ipLimit": "ఈ నెట్‌వర్క్ నుండి చాలా ఎక్కువ అప్‌లోడ్‌లు ఉన్నాయి",
+  "fillFields": "దయచేసి అవసరమైన ఫీల్డ్‌లను పూరించండి",
+  "invalidEmail": "చెల్లని ఇమెయిల్",
+  "maxRecipientsReached": "చాలా మంది గ్రహీతలు",
+  "loginRequiredTitle": "సైన్ ఇన్ అవసరం",
+  "loginRequiredBody": "ఈ సర్వర్‌కి అప్‌లోడ్ చేయడానికి లేదా డౌన్‌లోడ్ చేయడానికి ఖాతా అవసరం.",
+  "settingsSubtitle": "యాప్ ప్రాధాన్యతలు మరియు ఖాతా.",
+  "dropHeavyFile": "భారీ ఫైల్‌ను ఇక్కడ వదలండి.",
+  "upToTotal": "మొత్తం <<PH0>> వరకు",
+  "removeAll": "అన్నింటినీ తీసివేయండి",
+  "addFiles": "ఫైల్‌లను జోడించండి",
+  "adding": "జోడిస్తోంది...",
+  "options": "ఎంపికలు",
+  "selfDestruct": "డౌన్‌లోడ్ చేసిన తర్వాత స్వీయ-నాశనం",
+  "expiry": "గడువు ముగిసింది",
+  "cancelUpload": "అప్‌లోడ్‌ని రద్దు చేయండి",
+  "transferReady": "బదిలీ సిద్ధంగా ఉంది!",
+  "emailSentReady": "ఇమెయిల్ పంపబడింది!",
+  "shareRecipientHint": "ఈ లింక్‌ని మీ గ్రహీతతో షేర్ చేయండి.",
+  "emailSentBody": "మేము మీ స్వీకర్త(ల)కు తెలియజేసాము.",
+  "scanQr": "బదిలీ లింక్‌ను తెరవడానికి స్కాన్ చేయండి.",
+  "shareLinkButton": "లింక్ భాగస్వామ్యం చేయండి",
+  "verifyFourDigit": "మీ పంపినవారి ఇమెయిల్‌కు పంపబడిన 4-అంకెల కోడ్‌ను నమోదు చేయండి.",
+  "starting": "ప్రారంభిస్తోంది…",
+  "mbLeft": "<<PH0>> MB మిగిలి ఉంది",
+  "fillField": "దయచేసి ఈ ఫీల్డ్‌ను పూరించండి.",
+  "enterValidEmail": "చెల్లుబాటు అయ్యే ఇమెయిల్‌ను నమోదు చేయండి.",
+  "message": "సందేశం",
+  "recipientEmail": "స్వీకర్త ఇమెయిల్",
+  "active": "చురుకుగా",
+  "expired": "గడువు ముగిసింది",
+  "historyTitle": "నా బదిలీలు",
+  "signInToSeeTransfers": "మీ బదిలీలను చూడటానికి సైన్ ఇన్ చేయండి",
+  "signInTransfersBody": "మీ ఖాతాకు బదిలీలను లింక్ చేయడానికి మేము మీ ఇమెయిల్‌ని ఉపయోగిస్తాము — పాస్‌వర్డ్ అవసరం లేదు.",
+  "couldNotLoadTransfers": "బదిలీలను లోడ్ చేయడం సాధ్యపడలేదు",
+  "retry": "మళ్లీ ప్రయత్నించండి",
+  "noTransfersYet": "ఇంకా బదిలీలు లేవు",
+  "noTransfersBody": "మీరు ఫైల్‌ను పంపిన తర్వాత, అది ఇక్కడ కనిపిస్తుంది.",
+  "transferDetails": "బదిలీ వివరాలు",
+  "filesSection": "ఫైళ్లు",
+  "receiveTitle": "ఫైల్‌లను స్వీకరించండి",
+  "receiveSubtitle": "ఫైల్‌లను డౌన్‌లోడ్ చేయడానికి బదిలీ లింక్‌ను అతికించండి.",
+  "pasteTooltip": "అతికించండి",
+  "findTransfer": "బదిలీని కనుగొనండి",
+  "receiveScanQr": "QRని స్కాన్ చేయండి",
+  "receiveScanQrTitle": "QR బదిలీని స్కాన్ చేయండి",
+  "receiveScanQrHint": "ఫ్రేమ్ లోపల QR కోడ్‌ను సమలేఖనం చేయండి.",
+  "receiveScanQrInvalid": "ఈ QR కోడ్ చెల్లుబాటు అయ్యే బదిలీ లింక్ కాదు.",
+  "receiveScanQrCameraDenied": "QR కోడ్‌లను స్కాన్ చేయడానికి కెమెరా యాక్సెస్ అవసరం.",
+  "receiveStepGetLink": "లింక్ పొందండి",
+  "receiveStepGetLinkBody": "మీతో బదిలీ లింక్‌ను షేర్ చేయమని పంపినవారిని అడగండి.",
+  "receiveStepPaste": "అతికించండి & కనుగొనండి",
+  "receiveStepPasteBody": "ఎగువ లింక్‌ను అతికించి, \"బదిలీని కనుగొను\" నొక్కండి.",
+  "receiveStepDownload": "ఫైల్‌లను డౌన్‌లోడ్ చేయండి",
+  "receiveStepDownloadBody": "ఫైల్ వివరాలను చూడండి మరియు అన్నింటినీ ఒకేసారి డౌన్‌లోడ్ చేయండి.",
+  "lookingUpTransfer": "బదిలీ కోసం వెతుకుతోంది…",
+  "transferNotFound": "బదిలీ కనుగొనబడలేదు. లింక్‌ని తనిఖీ చేసి, మళ్లీ ప్రయత్నించండి.",
+  "transferExpired": "ఈ బదిలీ గడువు ముగిసింది మరియు ఇకపై అందుబాటులో ఉండదు.",
+  "transferLoginRequired": "ఈ బదిలీని యాక్సెస్ చేయడానికి సైన్ ఇన్ అవసరం.",
+  "transferBadResponse": "ఊహించని సర్వర్ ప్రతిస్పందన. మీ కనెక్షన్‌ని తనిఖీ చేయండి.",
+  "transferNetworkError": "నెట్‌వర్క్ లోపం. మీ ఇంటర్నెట్ కనెక్షన్‌ని తనిఖీ చేయండి.",
+  "transferLoadFailed": "బదిలీని లోడ్ చేయడం సాధ్యపడలేదు: <<PH0>>",
+  "passwordProtected": "పాస్‌వర్డ్ రక్షించబడింది",
+  "enterPassword": "పాస్వర్డ్ను నమోదు చేయండి",
+  "unlock": "అన్‌లాక్ చేయండి",
+  "downloading": "డౌన్‌లోడ్ చేస్తోంది...",
+  "downloadAllFiles": "అన్ని ఫైల్‌లను డౌన్‌లోడ్ చేయండి",
+  "downloadSingleFile": "ఫైల్‌ని డౌన్‌లోడ్ చేయండి",
+  "receiveAnother": "మరొక బదిలీని స్వీకరించండి",
+  "plansTitle": "ప్రణాళికలు",
+  "plansSubtitle": "ప్రకటనలను తీసివేయడానికి మరియు పెద్ద ఫైల్‌లను పంపడానికి అప్‌గ్రేడ్ చేయండి.",
+  "storeUnavailable": "స్టోర్ అందుబాటులో లేదు",
+  "storeUnavailableBody": "యాప్‌లో కొనుగోళ్లు ప్రస్తుతం అందుబాటులో లేవు.",
+  "storeLoadingPrices": "యాప్ స్టోర్ నుండి ధరలను లోడ్ చేస్తోంది…",
+  "storePricesUnavailable": "ధరలు అందుబాటులో లేవు",
+  "storePricesPartial": "కొన్ని ధరలను లోడ్ చేయడం సాధ్యపడలేదు",
+  "storePricesPartialBody": "<<PH1>> యొక్క <<PH0>> సబ్‌స్క్రిప్షన్ ఉత్పత్తులు లోడ్ చేయబడ్డాయి.",
+  "storeSetupHint": "నిజమైన iPhoneలో పరీక్షించండి (సిమ్యులేటర్ కాదు), శాండ్‌బాక్స్ Apple IDని ఉపయోగించండి మరియు ధర సెట్‌తో కనెక్ట్ అయ్యే యాప్ స్టోర్‌లో ఈ యాప్ బండిల్ ID కింద మొత్తం 6 సభ్యత్వాలు సృష్టించబడినట్లు నిర్ధారించుకోండి.",
+  "effectiveMonthlyPrice": "<<PH0>>/నెల",
+  "freeVersionAds": "ప్రస్తుతం మీరు ప్రకటనలతో మా ఉచిత సంస్కరణను ఉపయోగిస్తున్నారు",
+  "restorePurchases": "కొనుగోళ్లను పునరుద్ధరించండి",
+  "plansContinue": "కొనసాగించు",
+  "planLinkRestore": "పునరుద్ధరించు",
+  "termsAndConditions": "నిబంధనలు మరియు షరతులు",
+  "createAccountTitle": "ఖాతాను సృష్టించండి",
+  "signUpSubtitle": "ఇమెయిల్ మరియు పాస్‌వర్డ్‌తో సైన్ అప్ చేయండి.",
+  "confirmPassword": "పాస్వర్డ్ను నిర్ధారించండి",
+  "passwordMin8": "పాస్‌వర్డ్ (నిమిషం 8 అక్షరాలు)",
+  "alreadyHaveAccount": "ఇప్పటికే ఖాతా ఉందా?",
+  "checkEmailTitle": "మీ తనిఖీ\nఇమెయిల్",
+  "otpSentTo": "మేము 6 అంకెల కోడ్‌ని పంపాము\n<<PH0>>",
+  "verifyAndSignIn": "ధృవీకరించండి & సైన్ ఇన్ చేయండి",
+  "didntReceiveCode": "అందుకోలేదా?",
+  "tryAgain": "మళ్లీ ప్రయత్నించండి",
+  "otpExpiresHint": "కోడ్ గడువు 5 నిమిషాల్లో ముగుస్తుంది. మీ స్పామ్ ఫోల్డర్ మీకు కనిపించకుంటే దాన్ని తనిఖీ చేయండి.",
+  "snackError": "లోపం",
+  "snackCopied": "కాపీ చేయబడింది",
+  "snackCopiedBody": "లింక్ క్లిప్‌బోర్డ్‌కి కాపీ చేయబడింది",
+  "snackWelcome": "స్వాగతం",
+  "snackAccountCreated": "ఖాతా సృష్టించబడింది",
+  "snackEnterEmail": "దయచేసి మీ ఇమెయిల్‌ని నమోదు చేయండి",
+  "snackEnterPassword": "దయచేసి మీ పాస్‌వర్డ్‌ని నమోదు చేయండి",
+  "snackInvalidEmail": "చెల్లని ఇమెయిల్ చిరునామా",
+  "snackInvalidCredentials": "తప్పు ఇమెయిల్ లేదా పాస్‌వర్డ్",
+  "snackPasswordMin8": "పాస్‌వర్డ్ తప్పనిసరిగా కనీసం 8 అక్షరాలు ఉండాలి",
+  "snackPasswordMismatch": "పాస్‌వర్డ్‌లు సరిపోలడం లేదు.",
+  "snackAccountExists": "ఖాతా ఇప్పటికే ఉంది. దయచేసి సైన్ ఇన్ చేయండి.",
+  "snackSignupFailed": "ఖాతాను సృష్టించడం సాధ్యపడలేదు. మళ్లీ ప్రయత్నించండి.",
+  "snackEnterOtp": "దయచేసి 6-అంకెల కోడ్‌ను నమోదు చేయండి",
+  "snackOtpExpired": "కోడ్ గడువు ముగిసింది",
+  "snackOtpExpiredBody": "దయచేసి కొత్త కోడ్‌ను అభ్యర్థించండి.",
+  "snackInvalidCode": "చెల్లని కోడ్",
+  "snackInvalidCodeBody": "కోడ్ తప్పు. దయచేసి మళ్లీ ప్రయత్నించండి.",
+  "snackSendCodeFailed": "కోడ్‌ని పంపడం సాధ్యపడలేదు. మీ కనెక్షన్‌ని తనిఖీ చేసి, మళ్లీ ప్రయత్నించండి.",
+  "snackEmptyFolder": "ఖాళీ ఫోల్డర్",
+  "snackEmptyFolderBody": "ఎంచుకున్న ఫోల్డర్‌లో ఫైల్‌లు ఏవీ కనుగొనబడలేదు.",
+  "snackFolderUnsupported": "మద్దతు లేదు",
+  "snackFolderUnsupportedBody": "ఈ ప్లాట్‌ఫారమ్‌లో ఫోల్డర్ అప్‌లోడ్ అందుబాటులో లేదు.",
+  "snackFolderReadError": "ఎంచుకున్న ఫోల్డర్‌ని చదవడం సాధ్యపడలేదు.",
+  "snackLimitReached": "పరిమితిని చేరుకున్నారు",
+  "snackLimitFilesBody": "పరిమాణం లేదా ఫైల్ కౌంట్ పరిమితుల కారణంగా కొన్ని ఫైల్‌లు జోడించబడలేదు.",
+  "snackFreePlanLimit": "ఉచిత ప్లాన్ ప్రతి బదిలీకి 5GB వరకు అనుమతిస్తుంది. దయచేసి కొన్ని ఫైల్‌లను తీసివేయండి లేదా అప్‌గ్రేడ్ చేయండి.",
+  "snackSignInEmail": "ఇమెయిల్ ద్వారా పంపడానికి దయచేసి సైన్ ఇన్ చేయండి.",
+  "snackUploadStartFailed": "అప్‌లోడ్ ప్రారంభించడం సాధ్యపడలేదు.",
+  "snackVerifyEnterCode": "మీ ఇమెయిల్ నుండి 4-అంకెల కోడ్‌ను నమోదు చేయండి.",
+  "snackVerifyInvalid": "చెల్లని లేదా గడువు ముగిసిన కోడ్. ఇమెయిల్‌ని తనిఖీ చేసి, మళ్లీ ప్రయత్నించండి.",
+  "snackVerifyResendFailed": "కోడ్‌ని మళ్లీ పంపడం సాధ్యపడలేదు. మళ్లీ ప్రయత్నించండి.",
+  "snackDownloadComplete": "డౌన్‌లోడ్ పూర్తయింది",
+  "snackDownloadSaved": "\"<<PH0>>\" డౌన్‌లోడ్‌లకు సేవ్ చేయబడింది",
+  "snackDownloadFailed": "డౌన్‌లోడ్ విఫలమైంది",
+  "snackSaved": "సేవ్ చేయబడింది",
+  "snackServerUrlUpdated": "సర్వర్ URL నవీకరించబడింది. దరఖాస్తు చేయడానికి యాప్‌ని రీస్టార్ట్ చేయండి.",
+  "snackStoreError": "స్టోర్ లోపం",
+  "snackMissingProducts": "ఉత్పత్తులు లేవు",
+  "snackStoreUnavailable": "స్టోర్ అందుబాటులో లేదు",
+  "snackStoreUnavailableBody": "ఈ పరికరంలో యాప్‌లో కొనుగోళ్లు అందుబాటులో లేవు.",
+  "snackProductNotLoaded": "ఉత్పత్తి ఇంకా లోడ్ కాలేదు.",
+  "snackRestoreStarted": "పునరుద్ధరణ ప్రారంభమైంది",
+  "snackRestoreStartedBody": "మేము మీ కొనుగోళ్లను తనిఖీ చేస్తున్నాము.",
+  "snackRestoreFailed": "పునరుద్ధరించడం విఫలమైంది",
+  "snackProcessing": "ప్రాసెసింగ్",
+  "snackPleaseWait": "దయచేసి వేచి ఉండండి…",
+  "snackSuccess": "విజయం",
+  "snackPurchaseCompleted": "కొనుగోలు పూర్తయింది.",
+  "snackPurchaseError": "కొనుగోలు లోపం",
+  "snackPurchaseFailed": "కొనుగోలు విఫలమైంది.",
+  "snackCanceled": "రద్దు చేయబడింది",
+  "snackPurchaseCanceled": "కొనుగోలు రద్దు చేయబడింది.",
+  "snackUpload": "అప్‌లోడ్ చేయండి",
+  "snackVerify": "ధృవీకరించండి",
+  "doNotExpire": "గడువు ముగియవద్దు",
+  "hourSingular": "గంట",
+  "hourPlural": "గంటలు",
+  "daySingular": "రోజు",
+  "dayPlural": "రోజులు",
+  "emailAddressLabel": "ఇమెయిల్ చిరునామా",
+  "passwordLabelCaps": "పాస్వర్డ్",
+  "confirmPasswordLabelCaps": "పాస్‌వర్డ్‌ని నిర్ధారించండి",
+  "transferLinkOrId": "లింక్ లేదా IDని బదిలీ చేయండి",
+  "howToReceive": "ఎలా స్వీకరించాలి",
+  "planAdsTitle": "ప్రకటనల ప్రణాళిక",
+  "planAdsBullet1": "ప్రకటనలు లేని యాప్‌కి యాక్సెస్",
+  "planAdsBullet2": "అన్ని ప్రకటనలను తీసివేయండి",
+  "planProTitle": "ప్రో ప్లాన్",
+  "planProBullet1": "20GB వరకు ఫైల్‌లను పంపండి",
+  "planProBullet2": "వేగవంతమైన అప్‌లోడ్",
+  "planPremiumTitle": "ప్రీమియం ప్లాన్",
+  "planPremiumBullet1": "100GB వరకు ఫైల్‌లను పంపండి",
+  "planPremiumBullet2": "సూపర్ ఫాస్ట్ అప్‌లోడ్",
+  "planSubscriptionDisclaimer": "ట్రయల్ పీరియడ్ లేదు — అదనపు యాప్ ఫంక్షనాలిటీని ఉపయోగించడానికి సబ్‌స్క్రిప్షన్ అవసరం. మీకు వెంటనే ఛార్జీ విధించబడుతుంది. మీరు ఎప్పుడైనా రద్దు చేయవచ్చు.",
+  "perMonth": "/ నెల",
+  "perYear": "/ సంవత్సరం",
+  "snackConnectionProblem": "కనెక్షన్ సమస్య. దయచేసి మళ్లీ ప్రయత్నించండి.",
+  "networkTitle": "నెట్‌వర్క్",
+  "transferIdLabel": "ID: <<PH0>>",
+  "downloadMetaSummary": "ఫైల్‌లు: <<PH0>> · <<PH1>> బైట్‌లు",
+  "todayAt": "ఈరోజు · <<PH0>>",
+  "yesterdayAt": "నిన్న · <<PH0>>",
+  "daysAgoAt": "<<PH0>>రోజు క్రితం · <<PH1>>",
+  "dateAt": "<<PH0>> · <<PH1>>",
+  "mbAmount": "<<PH0>> MB",
+  "uploadProgressSummary": "<<PH0>> / <<PH1>> • <<PH2>> మిగిలి ఉంది",
+  "loadingShort": "లోడ్ అవుతోంది...",
+  "colorPaletteTitle": "రంగుల పాలెట్",
+  "colorPaletteSectionBackgrounds": "నేపథ్యాలు (ఇంక్ స్కేల్)",
+  "colorPaletteSectionAccent": "యాస / ప్రాథమిక",
+  "colorPaletteSectionText": "వచనం",
+  "colorPaletteSectionBorders": "సరిహద్దులు & గాజు",
+  "colorPaletteSectionSemantic": "అర్థసంబంధమైన",
+  "colorPaletteSectionLive": "లైవ్ థీమ్ (ప్రస్తుతం)",
+  "colorPaletteActiveHint": "★ = స్క్రీన్‌లలో చురుకుగా ఉపయోగించబడుతుంది",
+  "colorPaletteCopyHint": "హెక్స్ విలువను కాపీ చేయడానికి ఏదైనా స్వాచ్‌ని ఎక్కువసేపు నొక్కండి.",
+  "settingsAppBrand": "పెద్దగా షేర్ చేయండి\nవీడియో ఫైల్స్",
+  "loginEmailPasswordPrompt": "సైన్ ఇన్ చేయడానికి మీ ఇమెయిల్ మరియు పాస్‌వర్డ్‌ని నమోదు చేయండి.",
+  "forgotPassword": "పాస్‌వర్డ్ మర్చిపోయారా?",
+  "forgotPasswordTitle": "పాస్వర్డ్ను రీసెట్ చేయండి",
+  "forgotPasswordBody": "మీ ఖాతా ఇమెయిల్‌ను నమోదు చేయండి మరియు మేము రీసెట్ కోడ్‌ను పంపుతాము.",
+  "forgotPasswordSubmit": "రీసెట్ కోడ్‌ని పంపండి",
+  "resetPasswordTitle": "కొత్త పాస్‌వర్డ్‌ని సృష్టించండి",
+  "resetPasswordBody": "మీ ఇమెయిల్ నుండి 6-అంకెల కోడ్‌ను నమోదు చేసి, కొత్త పాస్‌వర్డ్‌ను ఎంచుకోండి.",
+  "resetPasswordSubmit": "పాస్వర్డ్ను నవీకరించండి",
+  "snackPasswordResetSent": "రీసెట్ కోడ్ పంపబడింది",
+  "snackPasswordResetSentBody": "6-అంకెల రీసెట్ కోడ్ కోసం మీ ఇమెయిల్‌ను తనిఖీ చేయండి.",
+  "snackPasswordResetFailed": "రీసెట్ కోడ్‌ని పంపడం సాధ్యపడలేదు. మళ్లీ ప్రయత్నించండి.",
+  "snackPasswordUpdated": "పాస్‌వర్డ్ నవీకరించబడింది",
+  "snackPasswordUpdatedBody": "మీ కొత్త పాస్‌వర్డ్‌తో సైన్ ఇన్ చేయండి.",
+  "snackPasswordResetInvalid": "చెల్లని లేదా గడువు ముగిసిన రీసెట్ కోడ్.",
+  "otpDigitLabel": "6-అంకెల కోడ్",
+  "receiveMoreFiles": "+<<PH0>> మరిన్ని ఫైల్‌లు"
+}

@@ -1,0 +1,466 @@
+{
+  "@@locale": "mn",
+  "@verifyEmailCheckSpamHint": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@upToTotal": {
+    "placeholders": {
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "@filesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesCount": "{count, plural, =1{1 file} other{{count} files}}",
+  "@mbLeft": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@transferLoadFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@storePricesPartialBody": {
+    "placeholders": {
+      "loaded": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "priceUnavailable": "—",
+  "@effectiveMonthlyPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "@otpSentTo": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@snackDownloadSaved": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "emailExampleHint": "you@example.com",
+  "otpSixDigitHint": "000000",
+  "verifyFourDigitHint": "0000",
+  "transferLinkHint": "https://… or paste ID",
+  "@filesReady": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesReady": "{count, plural, =1{1 file ready} other{{count} files ready}}",
+  "@transferIdLabel": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadMetaSummary": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "@todayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@yesterdayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@daysAgoAt": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@dateAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@mbAmount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@uploadProgressSummary": {
+    "placeholders": {
+      "sent": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      },
+      "remaining": {
+        "type": "String"
+      }
+    }
+  },
+  "@historyFilesSize": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "historyFilesSize": "{count, plural, =1{1 file} other{{count} files}} · {size}",
+  "@receiveMoreFiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appTitle": "Том хэмжээний видео файлуудыг хуваалцах",
+  "heroAccent": "тэр даруй.",
+  "heroTitle": "Хүнд файл илгээх",
+  "splashLoading": "Ачааж байна…",
+  "navSend": "Хяналтын самбар",
+  "navHome": "Гэр",
+  "navHistory": "Түүх",
+  "navReceive": "Хүлээн авах",
+  "navPlans": "Төлөвлөгөө",
+  "navDownload": "Татаж авах",
+  "navSettings": "Тохиргоо",
+  "modeLink": "Холбоос авах",
+  "modeEmail": "Имэйлээр илгээнэ үү",
+  "pickFiles": "Файлуудыг сонгоно уу",
+  "pickFolder": "Фолдер сонгоно уу",
+  "emailFrom": "Таны имэйл",
+  "mailFromUsesAccount": "Таны нэвтэрсэн имэйлийг ашигладаг.",
+  "recipientEmailsHelper": "Олон хүлээн авагч: таслал, цэгтэй таслал эсвэл хоосон зайгаар тусгаарлана.",
+  "emailTo": "Хүлээн авагчийн имэйл",
+  "messageOptional": "Зурвас (заавал биш)",
+  "passwordOptional": "Нууц үг (заавал биш)",
+  "destructAfterDownload": "Татаж авсны дараа устгана уу",
+  "destructNo": "Боломжтой байлгах",
+  "sendButton": "Илгээх",
+  "uploading": "Байршуулж байна...",
+  "uploadComplete": "Дууслаа",
+  "shareLinkTitle": "Таны холбоос",
+  "copyLink": "Холбоосыг хуулах",
+  "share": "Хуваалцах",
+  "shareQrCode": "QR кодыг хуваалцах",
+  "uploadMore": "Өөрийг илгээ",
+  "emailSentTitle": "Имэйл илгээсэн",
+  "verifyEmailTitle": "Имэйлээ баталгаажуулна уу",
+  "verifyCodeHint": "Имэйлийнхээ кодыг оруулна уу",
+  "verifySubmit": "Баталгаажуулах",
+  "verifyResendCode": "Кодыг дахин илгээх",
+  "verifyCodeSent": "Таны имэйл рүү шинэ баталгаажуулах код илгээгдсэн.",
+  "verifyEmailSmtpWarningTitle": "Баталгаажуулах имэйл илгээгдээгүй байж магадгүй",
+  "verifyEmailSmtpWarningBody": "Сервер хүргэлтийг баталгаажуулж чадсангүй (ихэвчлэн SMTP буруу тохируулагдсан байдаг). Сайтын админаас админ самбараас Мэйл тохиргоог шалгахыг хүсээд Код дахин илгээхийг товшино уу.",
+  "verifyEmailCheckSpamHint": "Хэрэв ирэхгүй бол: \"Хог/Спам\" болон \"Урамшуулал\"-ыг шалгаад, түр хүлээнэ үү, <<PH0>>-д алдаа байхгүй гэдгийг баталгаажуулаад Дахин илгээхийг товшино уу.",
+  "loginTitle": "Нэвтрэх",
+  "signupHint": "Сайтын бүртгэлийн имэйл болон нууц үгээ ашиглана уу.",
+  "emailHint": "Имэйл",
+  "passwordHint": "Нууц үг",
+  "cancel": "Цуцлах",
+  "signIn": "Нэвтрэх",
+  "downloadIdHint": "Дамжуулах ID",
+  "privateIdHint": "Хувийн ID (заавал биш)",
+  "fetchTransfer": "Нээлттэй шилжүүлэг",
+  "downloadFile": "Татаж авах",
+  "unlockDownload": "Татаж авах түгжээг тайлах",
+  "downloadSaved": "Татаж авсан файлд хадгалсан",
+  "errorGeneric": "Ямар нэг алдаа гарлаа",
+  "errorNetwork": "Сүлжээний алдаа",
+  "errorBadResponse": "Серверийн гэнэтийн хариу үйлдэл",
+  "termsAccept": "Би болзолыг зөвшөөрч байна",
+  "settingsApiUrl": "Олон нийтийн сайтын URL",
+  "settingsAccount": "Данс",
+  "settingsAppearance": "Гадаад төрх",
+  "settingsTheme": "Сэдэв",
+  "themeSystem": "Систем",
+  "themeLight": "Гэрэл",
+  "themeDark": "Харанхуй",
+  "settingsSignedIn": "Та нэвтэрсэн байна.",
+  "settingsSignedOut": "Та нэвтрээгүй байна.",
+  "settingsOpenWebsite": "Вэбсайт нээх",
+  "signUp": "Бүртгүүлэх",
+  "settingsLinks": "Холбоосууд",
+  "privacyPolicy": "Нууцлалын бодлого",
+  "termsOfService": "Үйлчилгээний нөхцөл",
+  "about": "тухай",
+  "moreApps": "Бусад програмууд",
+  "settingsLanguage": "Хэл",
+  "languageEnglish": "Англи",
+  "languageHindi": "Хинди",
+  "logout": "Гарах",
+  "deleteAccount": "Бүртгэл устгах",
+  "deleteAccountConfirmTitle": "Бүртгэлээ устгах уу?",
+  "deleteAccountConfirmBody": "Энэ нь таны бүртгэлийг бүрмөсөн устгаж, таныг гаргана. Таны шилжүүлгийн холбоосууд ажилласаар байх боловч таны түүхэнд харагдахгүй.",
+  "deleteAccountSuccess": "Бүртгэлийг устгасан",
+  "deleteAccountSuccessBody": "Таны бүртгэл устгагдсан байна.",
+  "deleteAccountFailed": "Бүртгэлийг устгаж чадсангүй",
+  "deleteAccountFailedBody": "Дахин оролдох эсвэл дэмжлэгтэй холбогдоно уу.",
+  "maxFilesReached": "Хэт олон файл",
+  "fileTooLarge": "Файл хэт том байна",
+  "ipLimit": "Энэ сүлжээнээс хэт олон байршуулалт",
+  "fillFields": "Шаардлагатай талбаруудыг бөглөнө үү",
+  "invalidEmail": "Буруу имэйл",
+  "maxRecipientsReached": "Хэт олон хүлээн авагч",
+  "loginRequiredTitle": "Нэвтрэх шаардлагатай",
+  "loginRequiredBody": "Энэ сервер байршуулах эсвэл татаж авахын тулд бүртгэл шаарддаг.",
+  "settingsSubtitle": "Апп тохиргоо болон бүртгэл.",
+  "dropHeavyFile": "Хүнд файлыг энд оруулаарай.",
+  "upToTotal": "Нийт <<PH0>> хүртэл",
+  "removeAll": "Бүгдийг устга",
+  "addFiles": "Файл нэмэх",
+  "adding": "Нэмэж байна...",
+  "options": "Сонголтууд",
+  "selfDestruct": "Татаж авсны дараа өөрийгөө устгах",
+  "expiry": "Хугацаа дуусах",
+  "cancelUpload": "Байршуулахыг цуцлах",
+  "transferReady": "Шилжүүлэх бэлэн боллоо!",
+  "emailSentReady": "Имэйл илгээсэн!",
+  "shareRecipientHint": "Энэ холбоосыг хүлээн авагчтайгаа хуваалцаарай.",
+  "emailSentBody": "Бид таны хүлээн авагчид мэдэгдлээ.",
+  "scanQr": "Дамжуулах холбоосыг нээхийн тулд сканнердах.",
+  "shareLinkButton": "Холбоосыг SHARE",
+  "verifyFourDigit": "Илгээгчийн имэйл рүү илгээсэн 4 оронтой кодыг оруулна уу.",
+  "starting": "Эхэлж байна...",
+  "mbLeft": "<<PH0>> МБ үлдсэн",
+  "fillField": "Энэ талбарыг бөглөнө үү.",
+  "enterValidEmail": "Хүчинтэй имэйл оруулна уу.",
+  "message": "Мессеж",
+  "recipientEmail": "Хүлээн авагчийн имэйл",
+  "active": "Идэвхтэй",
+  "expired": "Хугацаа дууссан",
+  "historyTitle": "Миний шилжүүлэг",
+  "signInToSeeTransfers": "Шилжүүлгээ харахын тулд нэвтэрнэ үү",
+  "signInTransfersBody": "Бид таны имэйлийг таны данс руу шилжүүлгийг холбохын тулд ашигладаг - нууц үг шаардлагагүй.",
+  "couldNotLoadTransfers": "Шилжүүлгийг ачаалж чадсангүй",
+  "retry": "Дахин оролдоно уу",
+  "noTransfersYet": "Одоогоор шилжүүлэг байхгүй",
+  "noTransfersBody": "Файл илгээсний дараа энэ нь энд харагдах болно.",
+  "transferDetails": "Шилжүүлгийн дэлгэрэнгүй мэдээлэл",
+  "filesSection": "Файлууд",
+  "receiveTitle": "Файлуудыг хүлээн авах",
+  "receiveSubtitle": "Файл татаж авахын тулд дамжуулах холбоосыг буулгана уу.",
+  "pasteTooltip": "Буулгах",
+  "findTransfer": "Шилжүүлгийг олох",
+  "receiveScanQr": "QR сканнердах",
+  "receiveScanQrTitle": "QR дамжуулалтыг сканнердах",
+  "receiveScanQrHint": "Хүрээн доторх QR кодыг зэрэгцүүлнэ.",
+  "receiveScanQrInvalid": "Энэ QR код нь шилжүүлэх холбоос биш байна.",
+  "receiveScanQrCameraDenied": "QR кодыг скан хийхийн тулд камерт хандах шаардлагатай.",
+  "receiveStepGetLink": "Холбоосыг аваарай",
+  "receiveStepGetLinkBody": "Илгээгчээс шилжүүлгийн холбоосыг тантай хуваалцахыг хүс.",
+  "receiveStepPaste": "Буулгаж олоорой",
+  "receiveStepPasteBody": "Дээрх холбоосыг буулгаад \"Шилжүүлгийг олох\" дээр дарна уу.",
+  "receiveStepDownload": "Файлуудыг татаж авах",
+  "receiveStepDownloadBody": "Файлын дэлгэрэнгүйг харж, бүгдийг нэг дор татаж аваарай.",
+  "lookingUpTransfer": "Шилжүүлгийг хайж байна...",
+  "transferNotFound": "Шилжилт олдсонгүй. Холбоосыг шалгаад дахин оролдоно уу.",
+  "transferExpired": "Энэ шилжүүлгийн хугацаа дууссан бөгөөд цаашид боломжгүй.",
+  "transferLoginRequired": "Энэ шилжүүлгийг авахын тулд нэвтрэх шаардлагатай.",
+  "transferBadResponse": "Серверийн гэнэтийн хариу үйлдэл. Холболтоо шалгана уу.",
+  "transferNetworkError": "Сүлжээний алдаа. Интернет холболтоо шалгана уу.",
+  "transferLoadFailed": "Дамжуулалтыг ачаалж чадсангүй: <<PH0>>",
+  "passwordProtected": "Нууц үгээр хамгаалагдсан",
+  "enterPassword": "Нууц үгээ оруулна уу",
+  "unlock": "Түгжээг тайлах",
+  "downloading": "Татаж авч байна…",
+  "downloadAllFiles": "Бүх файлыг татаж авах",
+  "downloadSingleFile": "Файл татаж авах",
+  "receiveAnother": "Өөр шилжүүлгийг хүлээн авна уу",
+  "plansTitle": "Төлөвлөгөө",
+  "plansSubtitle": "Зарыг устгаж, илүү том файл илгээхийн тулд шинэчилнэ үү.",
+  "storeUnavailable": "Дэлгүүр ашиглах боломжгүй",
+  "storeUnavailableBody": "Апп доторх худалдан авалтыг одоогоор хийх боломжгүй.",
+  "storeLoadingPrices": "App Store-оос үнийг ачаалж байна...",
+  "storePricesUnavailable": "Үнэ боломжгүй",
+  "storePricesPartial": "Зарим үнийг ачаалж чадсангүй",
+  "storePricesPartialBody": "<<PH1>> захиалгын бүтээгдэхүүний <<PH0>>-г ачааллаа.",
+  "storeSetupHint": "Жинхэнэ iPhone (Симулятор биш) дээр туршиж үзээрэй, Apple ID-г ашиглан хамгаалагдсан хязгаарлагдмал хайрцаг ашиглан бүх 6 захиалгыг энэ аппын багцын ID-ийн дагуу App Store Connect-т бий болгосон эсэхийг шалгаарай.",
+  "effectiveMonthlyPrice": "<<PH0>>/сар",
+  "freeVersionAds": "Одоогоор та манай үнэгүй хувилбарыг зар сурталчилгаатай ашиглаж байна",
+  "restorePurchases": "Худалдан авалтыг сэргээх",
+  "plansContinue": "Үргэлжлүүлэх",
+  "planLinkRestore": "Сэргээх",
+  "termsAndConditions": "Нөхцөл, нөхцөл",
+  "createAccountTitle": "Бүртгэл үүсгэх",
+  "signUpSubtitle": "Имэйл болон нууц үгээр бүртгүүлнэ үү.",
+  "confirmPassword": "Нууц үгээ баталгаажуулна уу",
+  "passwordMin8": "Нууц үг (хамгийн багадаа 8 тэмдэгт)",
+  "alreadyHaveAccount": "Бүртгэлтэй юу?",
+  "checkEmailTitle": "Таныг шалгана уу\nимэйл",
+  "otpSentTo": "Бид 6 оронтой код илгээсэн\n<<PH0>>",
+  "verifyAndSignIn": "Баталгаажуулж, нэвтэрнэ үү",
+  "didntReceiveCode": "Хүлээн аваагүй юу?",
+  "tryAgain": "Дахин оролдоно уу",
+  "otpExpiresHint": "Кодын хугацаа 5 минутын дараа дуусна. Хэрэв танд харагдахгүй бол спам хавтасаа шалгана уу.",
+  "snackError": "Алдаа",
+  "snackCopied": "Хуулсан",
+  "snackCopiedBody": "Холбоосыг санах ой руу хуулсан",
+  "snackWelcome": "Тавтай морил",
+  "snackAccountCreated": "Бүртгэл үүсгэсэн",
+  "snackEnterEmail": "Имэйлээ оруулна уу",
+  "snackEnterPassword": "Нууц үгээ оруулна уу",
+  "snackInvalidEmail": "Буруу имэйл хаяг",
+  "snackInvalidCredentials": "Буруу имэйл эсвэл нууц үг",
+  "snackPasswordMin8": "Нууц үг хамгийн багадаа 8 тэмдэгттэй байх ёстой",
+  "snackPasswordMismatch": "Нууц үг таарахгүй байна.",
+  "snackAccountExists": "Бүртгэл аль хэдийн байна. Та нэвтэрнэ үү.",
+  "snackSignupFailed": "Бүртгэл үүсгэж чадсангүй. Дахин оролдоно уу.",
+  "snackEnterOtp": "6 оронтой кодыг оруулна уу",
+  "snackOtpExpired": "Кодын хугацаа дууссан",
+  "snackOtpExpiredBody": "Шинэ код авах хүсэлт гаргана уу.",
+  "snackInvalidCode": "Буруу код",
+  "snackInvalidCodeBody": "Код буруу байна. Дахин оролдоно уу.",
+  "snackSendCodeFailed": "Код илгээж чадсангүй. Холболтоо шалгаад дахин оролдоно уу.",
+  "snackEmptyFolder": "Хоосон хавтас",
+  "snackEmptyFolderBody": "Сонгосон фолдерт файл олдсонгүй.",
+  "snackFolderUnsupported": "Дэмжигдээгүй",
+  "snackFolderUnsupportedBody": "Энэ платформ дээр хавтас байршуулах боломжгүй.",
+  "snackFolderReadError": "Сонгосон фолдерыг уншиж чадсангүй.",
+  "snackLimitReached": "Хязгаарт хүрсэн",
+  "snackLimitFilesBody": "Хэмжээ эсвэл файлын тоо хязгаартай тул зарим файлыг нэмээгүй.",
+  "snackFreePlanLimit": "Үнэгүй багц нь шилжүүлэг бүрт 5 ГБ хүртэлх боломжийг олгодог. Зарим файлыг устгаж эсвэл шинэчилнэ үү.",
+  "snackSignInEmail": "Имэйлээр илгээхийн тулд нэвтэрнэ үү.",
+  "snackUploadStartFailed": "Байршуулж эхлүүлж чадсангүй.",
+  "snackVerifyEnterCode": "Имэйлээсээ 4 оронтой кодыг оруулна уу.",
+  "snackVerifyInvalid": "Буруу эсвэл хугацаа нь дууссан код. Имэйлийг шалгаад дахин оролдоно уу.",
+  "snackVerifyResendFailed": "Кодыг дахин илгээж чадсангүй. Дахин оролдоно уу.",
+  "snackDownloadComplete": "Татаж дууссан",
+  "snackDownloadSaved": "\"<<PH0>>\"-г Татаж авсан файлд хадгалсан",
+  "snackDownloadFailed": "Татаж чадсангүй",
+  "snackSaved": "Хадгалсан",
+  "snackServerUrlUpdated": "Серверийн URL шинэчлэгдсэн. Өргөдөл гаргахын тулд програмыг дахин эхлүүлнэ үү.",
+  "snackStoreError": "Дэлгүүрийн алдаа",
+  "snackMissingProducts": "Дутуу бүтээгдэхүүн",
+  "snackStoreUnavailable": "Дэлгүүр ашиглах боломжгүй",
+  "snackStoreUnavailableBody": "Энэ төхөөрөмж дээр апп доторх худалдан авалт хийх боломжгүй.",
+  "snackProductNotLoaded": "Бүтээгдэхүүн хараахан ачаалагдаагүй байна.",
+  "snackRestoreStarted": "Сэргээх ажил эхэлсэн",
+  "snackRestoreStartedBody": "Бид таны худалдан авалтыг шалгаж байна.",
+  "snackRestoreFailed": "Сэргээх амжилтгүй боллоо",
+  "snackProcessing": "Боловсруулж байна",
+  "snackPleaseWait": "Хүлээгээрэй...",
+  "snackSuccess": "Амжилт",
+  "snackPurchaseCompleted": "Худалдан авалт дууссан.",
+  "snackPurchaseError": "Худалдан авалтын алдаа",
+  "snackPurchaseFailed": "Худалдан авалт амжилтгүй боллоо.",
+  "snackCanceled": "Цуцлагдсан",
+  "snackPurchaseCanceled": "Худалдан авалтыг цуцалсан.",
+  "snackUpload": "Байршуулах",
+  "snackVerify": "Баталгаажуулах",
+  "doNotExpire": "Хугацаа бүү дуусга",
+  "hourSingular": "цаг",
+  "hourPlural": "цаг",
+  "daySingular": "өдөр",
+  "dayPlural": "өдрүүд",
+  "emailAddressLabel": "И-мэйл ХАЯГ",
+  "passwordLabelCaps": "НУУЦ ҮГ",
+  "confirmPasswordLabelCaps": "НУУЦ ҮГ БАТАЛГААХ",
+  "transferLinkOrId": "ШИЛЖҮҮЛЭХ ХОЛБООС БУЮУ ID",
+  "howToReceive": "ХЭРХЭН ХҮЛЭЭН АВАХ ВЭ",
+  "planAdsTitle": "Зар сурталчилгааны төлөвлөгөө",
+  "planAdsBullet1": "Зар сурталчилгаагүй програм руу нэвтрэх",
+  "planAdsBullet2": "Бүх зарыг устгана уу",
+  "planProTitle": "Pro төлөвлөгөө",
+  "planProBullet1": "20 ГБ хүртэлх файл илгээх",
+  "planProBullet2": "Хурдан байршуулах",
+  "planPremiumTitle": "Дээд зэрэглэлийн төлөвлөгөө",
+  "planPremiumBullet1": "100 ГБ хүртэлх хэмжээтэй файл илгээх",
+  "planPremiumBullet2": "Супер хурдан байршуулах",
+  "planSubscriptionDisclaimer": "Туршилтын хугацаа байхгүй - нэмэлт програмын функцийг ашиглахын тулд захиалга шаардлагатай. Танд шууд төлбөр ногдуулна. Та хүссэн үедээ цуцалж болно.",
+  "perMonth": "/ сар",
+  "perYear": "/ жил",
+  "snackConnectionProblem": "Холболтын асуудал. Дахин оролдоно уу.",
+  "networkTitle": "Сүлжээ",
+  "transferIdLabel": "ID: <<PH0>>",
+  "downloadMetaSummary": "Файлууд: <<PH0>> · <<PH1>> байт",
+  "todayAt": "Өнөөдөр · <<PH0>>",
+  "yesterdayAt": "Өчигдөр · <<PH0>>",
+  "daysAgoAt": "<<PH0>> өдрийн өмнө · <<PH1>>",
+  "dateAt": "<<PH0>> · <<PH1>>",
+  "mbAmount": "<<PH0>> МБ",
+  "uploadProgressSummary": "<<PH0>> / <<PH1>> • <<PH2>> зүүн",
+  "loadingShort": "Ачааж байна…",
+  "colorPaletteTitle": "Өнгөт палитр",
+  "colorPaletteSectionBackgrounds": "Арын дэвсгэр (бэхний хэмжээ)",
+  "colorPaletteSectionAccent": "Өргөлт / Үндсэн",
+  "colorPaletteSectionText": "Текст",
+  "colorPaletteSectionBorders": "Хил ба шил",
+  "colorPaletteSectionSemantic": "Семантик",
+  "colorPaletteSectionLive": "Шууд загвар (одоогийн)",
+  "colorPaletteActiveHint": "★ = дэлгэцэнд идэвхтэй ашигладаг",
+  "colorPaletteCopyHint": "Зургаан өнцөгт утгыг нь хуулахын тулд дурын загвар дээр удаан дарна уу.",
+  "settingsAppBrand": "Томоор хуваалцах\nВидео файлууд",
+  "loginEmailPasswordPrompt": "Нэвтрэхийн тулд имэйл болон нууц үгээ оруулна уу.",
+  "forgotPassword": "Нууц үгээ мартсан уу?",
+  "forgotPasswordTitle": "Нууц үгийг дахин тохируулах",
+  "forgotPasswordBody": "Бүртгэлийнхээ имэйлийг оруулна уу, бид дахин тохируулах код илгээх болно.",
+  "forgotPasswordSubmit": "Дахин тохируулах код илгээнэ үү",
+  "resetPasswordTitle": "Шинэ нууц үг үүсгэх",
+  "resetPasswordBody": "Имэйлээсээ 6 оронтой кодыг оруулаад шинэ нууц үгээ сонгоно уу.",
+  "resetPasswordSubmit": "Нууц үгийг шинэчлэх",
+  "snackPasswordResetSent": "Дахин тохируулах кодыг илгээсэн",
+  "snackPasswordResetSentBody": "6 оронтой дахин тохируулах код байгаа эсэхийг имэйлээ шалгана уу.",
+  "snackPasswordResetFailed": "Дахин тохируулах кодыг илгээж чадсангүй. Дахин оролдоно уу.",
+  "snackPasswordUpdated": "Нууц үг шинэчлэгдсэн",
+  "snackPasswordUpdatedBody": "Шинэ нууц үгээрээ нэвтэрнэ үү.",
+  "snackPasswordResetInvalid": "Буруу эсвэл хугацаа нь дууссан дахин тохируулах код.",
+  "otpDigitLabel": "6 оронтой код",
+  "receiveMoreFiles": "+<<PH0>> өөр файлууд"
+}

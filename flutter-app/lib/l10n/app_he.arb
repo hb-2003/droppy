@@ -1,0 +1,466 @@
+{
+  "@@locale": "he",
+  "@verifyEmailCheckSpamHint": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@upToTotal": {
+    "placeholders": {
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "@filesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesCount": "{count, plural, =1{1 file} other{{count} files}}",
+  "@mbLeft": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@transferLoadFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@storePricesPartialBody": {
+    "placeholders": {
+      "loaded": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "priceUnavailable": "—",
+  "@effectiveMonthlyPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "@otpSentTo": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@snackDownloadSaved": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "emailExampleHint": "you@example.com",
+  "otpSixDigitHint": "000000",
+  "verifyFourDigitHint": "0000",
+  "transferLinkHint": "https://… or paste ID",
+  "@filesReady": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesReady": "{count, plural, =1{1 file ready} other{{count} files ready}}",
+  "@transferIdLabel": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadMetaSummary": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "@todayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@yesterdayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@daysAgoAt": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@dateAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@mbAmount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@uploadProgressSummary": {
+    "placeholders": {
+      "sent": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      },
+      "remaining": {
+        "type": "String"
+      }
+    }
+  },
+  "@historyFilesSize": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "historyFilesSize": "{count, plural, =1{1 file} other{{count} files}} · {size}",
+  "@receiveMoreFiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appTitle": "שתף קבצי וידאו גדולים",
+  "heroAccent": "מִיָד.",
+  "heroTitle": "שלח קבצים כבדים",
+  "splashLoading": "טְעִינָה…",
+  "navSend": "לוּחַ מַחווָנִים",
+  "navHome": "בַּיִת",
+  "navHistory": "הִיסטוֹרִיָה",
+  "navReceive": "לְקַבֵּל",
+  "navPlans": "תוכניות",
+  "navDownload": "הורד",
+  "navSettings": "הגדרות",
+  "modeLink": "קבל קישור",
+  "modeEmail": "שלח במייל",
+  "pickFiles": "בחר קבצים",
+  "pickFolder": "בחר תיקיה",
+  "emailFrom": "המייל שלך",
+  "mailFromUsesAccount": "משתמש באימייל המחובר שלך.",
+  "recipientEmailsHelper": "נמענים מרובים: נפרדים באמצעות פסיקים, נקודות פסיק או רווחים.",
+  "emailTo": "אימייל של הנמען",
+  "messageOptional": "הודעה (אופציונלי)",
+  "passwordOptional": "סיסמא (אופציונלי)",
+  "destructAfterDownload": "מחק לאחר ההורדה",
+  "destructNo": "שמור זמין",
+  "sendButton": "לִשְׁלוֹחַ",
+  "uploading": "מעלה...",
+  "uploadComplete": "נַעֲשָׂה",
+  "shareLinkTitle": "הקישור שלך",
+  "copyLink": "העתק קישור",
+  "share": "לַחֲלוֹק",
+  "shareQrCode": "שתף קוד QR",
+  "uploadMore": "שלח אחר",
+  "emailSentTitle": "מיילים נשלחו",
+  "verifyEmailTitle": "אמת את האימייל שלך",
+  "verifyCodeHint": "הזן את הקוד מהמייל שלך",
+  "verifySubmit": "לְאַמֵת",
+  "verifyResendCode": "שלח שוב קוד",
+  "verifyCodeSent": "קוד אימות חדש נשלח לאימייל שלך.",
+  "verifyEmailSmtpWarningTitle": "ייתכן שלא נשלח אימייל אימות",
+  "verifyEmailSmtpWarningBody": "השרת לא הצליח לאשר מסירה (לעתים קרובות SMTP מוגדר בצורה שגויה). בקש ממנהל האתר שלך לבדוק את הגדרות הדואר בלוח הניהול ולאחר מכן הקש על שלח שוב קוד.",
+  "verifyEmailCheckSpamHint": "אם הוא לא מגיע: בדוק את זבל/דואר זבל ומבצעים, המתן דקה, ודא של<PH1>> אין שגיאות הקלדה ולאחר מכן הקש על שלח מחדש.",
+  "loginTitle": "היכנס",
+  "signupHint": "השתמש באימייל ובסיסמה של חשבון האתר שלך.",
+  "emailHint": "אֶלֶקטרוֹנִי",
+  "passwordHint": "סִיסמָה",
+  "cancel": "לְבַטֵל",
+  "signIn": "היכנס",
+  "downloadIdHint": "זיהוי העברה",
+  "privateIdHint": "זיהוי פרטי (אופציונלי)",
+  "fetchTransfer": "העברה פתוחה",
+  "downloadFile": "הורד",
+  "unlockDownload": "בטל נעילת הורדה",
+  "downloadSaved": "נשמר להורדות",
+  "errorGeneric": "משהו השתבש",
+  "errorNetwork": "שגיאת רשת",
+  "errorBadResponse": "תגובת שרת לא צפויה",
+  "termsAccept": "אני מסכים לתנאים",
+  "settingsApiUrl": "כתובת אתר ציבורית",
+  "settingsAccount": "חֶשְׁבּוֹן",
+  "settingsAppearance": "הוֹפָעָה",
+  "settingsTheme": "נוֹשֵׂא",
+  "themeSystem": "מַעֲרֶכֶת",
+  "themeLight": "אוֹר",
+  "themeDark": "כֵּהֶה",
+  "settingsSignedIn": "אתה מחובר.",
+  "settingsSignedOut": "אתה לא מחובר.",
+  "settingsOpenWebsite": "פתח אתר",
+  "signUp": "הירשם",
+  "settingsLinks": "קישורים",
+  "privacyPolicy": "מדיניות הפרטיות",
+  "termsOfService": "תנאי שירות",
+  "about": "אוֹדוֹת",
+  "moreApps": "עוד אפליקציות",
+  "settingsLanguage": "שָׂפָה",
+  "languageEnglish": "אַנגְלִית",
+  "languageHindi": "הינדי",
+  "logout": "התנתק",
+  "deleteAccount": "מחק חשבון",
+  "deleteAccountConfirmTitle": "למחוק את החשבון שלך?",
+  "deleteAccountConfirmBody": "זה מוחק לצמיתות את חשבונך ומוציא אותך מהחשבון. קישורי ההעברה שלך ימשיכו לעבוד, אך הם לא יופיעו עוד בהיסטוריה שלך.",
+  "deleteAccountSuccess": "החשבון נמחק",
+  "deleteAccountSuccessBody": "החשבון שלך הוסר.",
+  "deleteAccountFailed": "לא ניתן למחוק את החשבון",
+  "deleteAccountFailedBody": "אנא נסה שוב או פנה לתמיכה.",
+  "maxFilesReached": "יותר מדי קבצים",
+  "fileTooLarge": "הקובץ גדול מדי",
+  "ipLimit": "יותר מדי העלאות מהרשת הזו",
+  "fillFields": "אנא מלא שדות חובה",
+  "invalidEmail": "אימייל לא חוקי",
+  "maxRecipientsReached": "יותר מדי נמענים",
+  "loginRequiredTitle": "נדרשת כניסה",
+  "loginRequiredBody": "שרת זה דורש חשבון כדי להעלות או להוריד.",
+  "settingsSubtitle": "העדפות אפליקציה וחשבון.",
+  "dropHeavyFile": "זרוק כאן קובץ כבד.",
+  "upToTotal": "עד <<PH0>> סך הכל",
+  "removeAll": "הסר הכל",
+  "addFiles": "הוסף קבצים",
+  "adding": "מוֹסִיף…",
+  "options": "אפשרויות",
+  "selfDestruct": "השמדה עצמית לאחר ההורדה",
+  "expiry": "תְפוּגָה",
+  "cancelUpload": "בטל העלאה",
+  "transferReady": "העברה מוכנה!",
+  "emailSentReady": "מייל נשלח!",
+  "shareRecipientHint": "שתף את הקישור הזה עם הנמען שלך.",
+  "emailSentBody": "הודענו לנמענים שלך.",
+  "scanQr": "סרוק כדי לפתוח את קישור ההעברה.",
+  "shareLinkButton": "שתף את הקישור",
+  "verifyFourDigit": "הזן את הקוד בן 4 הספרות שנשלח לאימייל השולח שלך.",
+  "starting": "מתחיל...",
+  "mbLeft": "<<PH0>> נותרו MB",
+  "fillField": "נא למלא שדה זה.",
+  "enterValidEmail": "הזן אימייל חוקי.",
+  "message": "הוֹדָעָה",
+  "recipientEmail": "אימייל של הנמען",
+  "active": "פָּעִיל",
+  "expired": "פג תוקף",
+  "historyTitle": "ההעברות שלי",
+  "signInToSeeTransfers": "היכנס כדי לראות את ההעברות שלך",
+  "signInTransfersBody": "אנו משתמשים בדוא\"ל שלך כדי לקשר העברות לחשבון שלך - אין צורך בסיסמה.",
+  "couldNotLoadTransfers": "לא ניתן לטעון העברות",
+  "retry": "נסה שוב",
+  "noTransfersYet": "עדיין אין העברות",
+  "noTransfersBody": "לאחר שתשלח קובץ, הוא יופיע כאן.",
+  "transferDetails": "פרטי העברה",
+  "filesSection": "קבצים",
+  "receiveTitle": "קבלת קבצים",
+  "receiveSubtitle": "הדבק קישור העברה להורדת קבצים.",
+  "pasteTooltip": "לְהַדבִּיק",
+  "findTransfer": "מצא העברה",
+  "receiveScanQr": "סרוק QR",
+  "receiveScanQrTitle": "העברת QR לסריקה",
+  "receiveScanQrHint": "יישר את קוד ה-QR בתוך המסגרת.",
+  "receiveScanQrInvalid": "קוד QR זה אינו קישור העברה חוקי.",
+  "receiveScanQrCameraDenied": "נדרשת גישה למצלמה כדי לסרוק קודי QR.",
+  "receiveStepGetLink": "קבל את הקישור",
+  "receiveStepGetLinkBody": "בקש מהשולח לשתף איתך את קישור ההעברה.",
+  "receiveStepPaste": "הדבק ומצא",
+  "receiveStepPasteBody": "הדבק את הקישור למעלה והקש על \"מצא העברה\".",
+  "receiveStepDownload": "הורד קבצים",
+  "receiveStepDownloadBody": "ראה פרטי קובץ והורד הכל בבת אחת.",
+  "lookingUpTransfer": "מחפש העברה...",
+  "transferNotFound": "ההעברה לא נמצאה. בדוק את הקישור ונסה שוב.",
+  "transferExpired": "פג תוקף ההעברה הזו ואינה זמינה עוד.",
+  "transferLoginRequired": "נדרשת כניסה כדי לגשת להעברה זו.",
+  "transferBadResponse": "תגובת שרת לא צפויה. בדוק את החיבור שלך.",
+  "transferNetworkError": "שגיאת רשת. בדוק את חיבור האינטרנט שלך.",
+  "transferLoadFailed": "לא ניתן היה לטעון את ההעברה: <<PH0>>",
+  "passwordProtected": "מוגן באמצעות סיסמה",
+  "enterPassword": "הזן סיסמה",
+  "unlock": "לִפְתוֹחַ",
+  "downloading": "מוריד...",
+  "downloadAllFiles": "הורד את כל הקבצים",
+  "downloadSingleFile": "הורד קובץ",
+  "receiveAnother": "קבל העברה נוספת",
+  "plansTitle": "תוכניות",
+  "plansSubtitle": "שדרג כדי להסיר מודעות ולשלוח קבצים גדולים יותר.",
+  "storeUnavailable": "החנות לא זמינה",
+  "storeUnavailableBody": "רכישות מתוך האפליקציה אינן זמינות כעת.",
+  "storeLoadingPrices": "טוען מחירים מ-App Store...",
+  "storePricesUnavailable": "המחירים לא זמינים",
+  "storePricesPartial": "לא ניתן היה לטעון חלק מהמחירים",
+  "storePricesPartialBody": "<<PH0>> מתוך <<PH1>> מוצרי מנוי נטענו.",
+  "storeSetupHint": "בדוק באייפון אמיתי (לא בסימולטור), השתמש ב-Sandbox Apple ID, וודא שכל 6 המינויים נוצרו תחת מזהה החבילה של האפליקציה הזו ב-App Store Connect with ערכת תמחור.",
+  "effectiveMonthlyPrice": "<<PH0>>/חודש",
+  "freeVersionAds": "כרגע אתה משתמש בגרסה החינמית שלנו עם מודעות",
+  "restorePurchases": "שחזור רכישות",
+  "plansContinue": "לְהַמשִׁיך",
+  "planLinkRestore": "לְשַׁחְזֵר",
+  "termsAndConditions": "תנאים והגבלות",
+  "createAccountTitle": "צור חשבון",
+  "signUpSubtitle": "הירשם עם מייל וסיסמה.",
+  "confirmPassword": "אשר את הסיסמה",
+  "passwordMin8": "סיסמה (מינימום 8 תווים)",
+  "alreadyHaveAccount": "כבר יש לך חשבון?",
+  "checkEmailTitle": "בדוק את שלך\nדוא\"ל",
+  "otpSentTo": "שלחנו קוד בן 6 ספרות ל\n<<PH0>>",
+  "verifyAndSignIn": "אמת והיכנס",
+  "didntReceiveCode": "לא קיבלת?",
+  "tryAgain": "נסה שוב",
+  "otpExpiresHint": "הקוד יפוג בעוד 5 דקות. בדוק את תיקיית הספאם שלך אם אינך רואה אותה.",
+  "snackError": "שְׁגִיאָה",
+  "snackCopied": "מוּעֲתָק",
+  "snackCopiedBody": "הקישור הועתק ללוח",
+  "snackWelcome": "קַבָּלַת פָּנִים",
+  "snackAccountCreated": "חשבון נוצר",
+  "snackEnterEmail": "נא להזין את המייל שלך",
+  "snackEnterPassword": "נא להזין את הסיסמה שלך",
+  "snackInvalidEmail": "כתובת אימייל לא חוקית",
+  "snackInvalidCredentials": "אימייל או סיסמה שגויים",
+  "snackPasswordMin8": "הסיסמה חייבת להיות לפחות 8 תווים",
+  "snackPasswordMismatch": "הסיסמאות אינן תואמות.",
+  "snackAccountExists": "החשבון כבר קיים. נא להיכנס.",
+  "snackSignupFailed": "לא ניתן ליצור חשבון. נסה שוב.",
+  "snackEnterOtp": "נא להזין את הקוד בן 6 הספרות",
+  "snackOtpExpired": "פג תוקף הקוד",
+  "snackOtpExpiredBody": "בבקשה בקש קוד חדש.",
+  "snackInvalidCode": "קוד לא חוקי",
+  "snackInvalidCodeBody": "הקוד שגוי. אנא נסה שוב.",
+  "snackSendCodeFailed": "לא ניתן לשלוח קוד. בדוק את החיבור שלך ונסה שוב.",
+  "snackEmptyFolder": "תיקיה ריקה",
+  "snackEmptyFolderBody": "לא נמצאו קבצים בתיקייה שנבחרה.",
+  "snackFolderUnsupported": "לא נתמך",
+  "snackFolderUnsupportedBody": "העלאת תיקיות אינה זמינה בפלטפורמה זו.",
+  "snackFolderReadError": "לא ניתן היה לקרוא את התיקיה שנבחרה.",
+  "snackLimitReached": "הגבול הגיע",
+  "snackLimitFilesBody": "חלק מהקבצים לא נוספו בגלל מגבלות גודל או ספירת קבצים.",
+  "snackFreePlanLimit": "תוכנית חינם מאפשרת עד 5GB לכל העברה. אנא הסר כמה קבצים או שדרג.",
+  "snackSignInEmail": "נא להיכנס כדי לשלוח בדוא\"ל.",
+  "snackUploadStartFailed": "לא ניתן היה להתחיל להעלות.",
+  "snackVerifyEnterCode": "הזן את הקוד בן 4 הספרות מהמייל שלך.",
+  "snackVerifyInvalid": "קוד לא חוקי או שפג תוקפו. בדוק את המייל ונסה שוב.",
+  "snackVerifyResendFailed": "לא ניתן לשלוח שוב את הקוד. נסה שוב.",
+  "snackDownloadComplete": "ההורדה הושלמה",
+  "snackDownloadSaved": "\"<<PH0>>\" נשמר בהורדות",
+  "snackDownloadFailed": "ההורדה נכשלה",
+  "snackSaved": "נשמר",
+  "snackServerUrlUpdated": "כתובת האתר של השרת עודכנה. הפעל מחדש את האפליקציה כדי להגיש בקשה.",
+  "snackStoreError": "שגיאת חנות",
+  "snackMissingProducts": "חסרים מוצרים",
+  "snackStoreUnavailable": "החנות לא זמינה",
+  "snackStoreUnavailableBody": "רכישות מתוך האפליקציה אינן זמינות במכשיר זה.",
+  "snackProductNotLoaded": "המוצר עדיין לא נטען.",
+  "snackRestoreStarted": "השחזור התחיל",
+  "snackRestoreStartedBody": "אנחנו בודקים את הרכישות שלך.",
+  "snackRestoreFailed": "השחזור נכשל",
+  "snackProcessing": "עיבוד",
+  "snackPleaseWait": "אנא המתן...",
+  "snackSuccess": "הַצלָחָה",
+  "snackPurchaseCompleted": "הרכישה הושלמה.",
+  "snackPurchaseError": "טעות ברכישה",
+  "snackPurchaseFailed": "הרכישה נכשלה.",
+  "snackCanceled": "בּוּטלָה",
+  "snackPurchaseCanceled": "הרכישה בוטלה.",
+  "snackUpload": "העלה",
+  "snackVerify": "לְאַמֵת",
+  "doNotExpire": "אין לפוג",
+  "hourSingular": "שָׁעָה",
+  "hourPlural": "שעות",
+  "daySingular": "יְוֹם",
+  "dayPlural": "ימים",
+  "emailAddressLabel": "כתובת דוא\"ל",
+  "passwordLabelCaps": "סִיסמָה",
+  "confirmPasswordLabelCaps": "אשר את הסיסמה",
+  "transferLinkOrId": "קישור העברה או תעודה מזהה",
+  "howToReceive": "איך לקבל",
+  "planAdsTitle": "תוכנית מודעות",
+  "planAdsBullet1": "גישה לאפליקציה ללא פרסומות",
+  "planAdsBullet2": "הסר את כל המודעות",
+  "planProTitle": "תוכנית פרו",
+  "planProBullet1": "שלח קבצים עד 20GB",
+  "planProBullet2": "העלאה מהירה",
+  "planPremiumTitle": "תוכנית פרימיום",
+  "planPremiumBullet1": "שלח קבצים עד 100GB",
+  "planPremiumBullet2": "העלאה מהירה במיוחד",
+  "planSubscriptionDisclaimer": "אין תקופת ניסיון - נדרש מנוי כדי להשתמש בפונקציונליות האפליקציה הנוספת. תחויב מיד. אתה יכול לבטל בכל עת.",
+  "perMonth": "/ חודש",
+  "perYear": "/ שנה",
+  "snackConnectionProblem": "בעיית חיבור. אנא נסה שוב.",
+  "networkTitle": "רֶשֶׁת",
+  "transferIdLabel": "מזהה: <<PH0>>",
+  "downloadMetaSummary": "קבצים: <<PH0>> · <<PH1>> בתים",
+  "todayAt": "היום · <<PH0>>",
+  "yesterdayAt": "אתמול · <<PH0>>",
+  "daysAgoAt": "<<PH0>>לפני יום · <<PH1>>",
+  "dateAt": "<<PH0>> · <<PH1>>",
+  "mbAmount": "<<PH0>> MB",
+  "uploadProgressSummary": "<<PH0>> / <<PH1>> • <<PH2>> שמאל",
+  "loadingShort": "טְעִינָה…",
+  "colorPaletteTitle": "פלטת צבעים",
+  "colorPaletteSectionBackgrounds": "רקעים (סולם דיו)",
+  "colorPaletteSectionAccent": "מבטא / ראשוני",
+  "colorPaletteSectionText": "טֶקסט",
+  "colorPaletteSectionBorders": "גבולות וזכוכית",
+  "colorPaletteSectionSemantic": "סֵמַנטִי",
+  "colorPaletteSectionLive": "נושא חי (נוכחי)",
+  "colorPaletteActiveHint": "★ = בשימוש פעיל במסכים",
+  "colorPaletteCopyHint": "לחץ לחיצה ארוכה על כל דוגמית כדי להעתיק את הערך הקבוע שלה.",
+  "settingsAppBrand": "שתף בגדול\nקבצי וידאו",
+  "loginEmailPasswordPrompt": "הזן את האימייל והסיסמה שלך כדי להיכנס.",
+  "forgotPassword": "שכחת סיסמה?",
+  "forgotPasswordTitle": "אפס סיסמה",
+  "forgotPasswordBody": "הזן את כתובת הדוא\"ל של החשבון שלך ואנו נשלח קוד איפוס.",
+  "forgotPasswordSubmit": "שלח קוד איפוס",
+  "resetPasswordTitle": "צור סיסמה חדשה",
+  "resetPasswordBody": "הזן את הקוד בן 6 הספרות מהמייל שלך ובחר סיסמה חדשה.",
+  "resetPasswordSubmit": "עדכן סיסמה",
+  "snackPasswordResetSent": "קוד איפוס נשלח",
+  "snackPasswordResetSentBody": "בדוק באימייל שלך קוד איפוס בן 6 ספרות.",
+  "snackPasswordResetFailed": "לא ניתן לשלוח קוד איפוס. נסה שוב.",
+  "snackPasswordUpdated": "הסיסמה עודכנה",
+  "snackPasswordUpdatedBody": "היכנס עם הסיסמה החדשה שלך.",
+  "snackPasswordResetInvalid": "קוד איפוס לא חוקי או שפג תוקפו.",
+  "otpDigitLabel": "קוד בן 6 ספרות",
+  "receiveMoreFiles": "+<<PH0>> קבצים נוספים"
+}

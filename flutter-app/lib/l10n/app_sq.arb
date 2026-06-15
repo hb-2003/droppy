@@ -1,0 +1,466 @@
+{
+  "@@locale": "sq",
+  "@verifyEmailCheckSpamHint": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@upToTotal": {
+    "placeholders": {
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "@filesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesCount": "{count, plural, =1{1 file} other{{count} files}}",
+  "@mbLeft": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@transferLoadFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@storePricesPartialBody": {
+    "placeholders": {
+      "loaded": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "priceUnavailable": "—",
+  "@effectiveMonthlyPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "@otpSentTo": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@snackDownloadSaved": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "emailExampleHint": "you@example.com",
+  "otpSixDigitHint": "000000",
+  "verifyFourDigitHint": "0000",
+  "transferLinkHint": "https://… or paste ID",
+  "@filesReady": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesReady": "{count, plural, =1{1 file ready} other{{count} files ready}}",
+  "@transferIdLabel": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadMetaSummary": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "@todayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@yesterdayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@daysAgoAt": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@dateAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@mbAmount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@uploadProgressSummary": {
+    "placeholders": {
+      "sent": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      },
+      "remaining": {
+        "type": "String"
+      }
+    }
+  },
+  "@historyFilesSize": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "historyFilesSize": "{count, plural, =1{1 file} other{{count} files}} · {size}",
+  "@receiveMoreFiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appTitle": "Ndani skedarë të mëdhenj video",
+  "heroAccent": "në çast.",
+  "heroTitle": "Dërgoni skedarë të rëndë",
+  "splashLoading": "Po ngarkohet…",
+  "navSend": "Paneli",
+  "navHome": "Shtëpi",
+  "navHistory": "Historia",
+  "navReceive": "Merrni",
+  "navPlans": "Planet",
+  "navDownload": "Shkarkoni",
+  "navSettings": "Cilësimet",
+  "modeLink": "Merrni një lidhje",
+  "modeEmail": "Dërgo me email",
+  "pickFiles": "Zgjidhni skedarët",
+  "pickFolder": "Zgjidhni dosjen",
+  "emailFrom": "Email-i juaj",
+  "mailFromUsesAccount": "Përdor email-in tuaj të identifikuar.",
+  "recipientEmailsHelper": "Marrës të shumëfishtë: ndani me presje, pikëpresje ose hapësira.",
+  "emailTo": "Email i marrësit",
+  "messageOptional": "Mesazh (opsionale)",
+  "passwordOptional": "Fjalëkalimi (opsionale)",
+  "destructAfterDownload": "Fshij pas shkarkimit",
+  "destructNo": "Mbajeni në dispozicion",
+  "sendButton": "Dërgo",
+  "uploading": "Po ngarkohet…",
+  "uploadComplete": "U krye",
+  "shareLinkTitle": "Lidhja juaj",
+  "copyLink": "Kopjo lidhjen",
+  "share": "Shpërndaje",
+  "shareQrCode": "Ndani kodin QR",
+  "uploadMore": "Dërgo një tjetër",
+  "emailSentTitle": "Email-et e dërguara",
+  "verifyEmailTitle": "Verifikoni emailin tuaj",
+  "verifyCodeHint": "Futni kodin nga emaili juaj",
+  "verifySubmit": "Verifiko",
+  "verifyResendCode": "Ridërgo kodin",
+  "verifyCodeSent": "Një kod i ri verifikimi është dërguar në emailin tuaj.",
+  "verifyEmailSmtpWarningTitle": "Email-i i verifikimit mund të mos jetë dërguar",
+  "verifyEmailSmtpWarningBody": "Serveri nuk mund të konfirmonte dorëzimin (shpesh SMTP konfigurohet gabimisht). Kërkojini administratorit të faqes tuaj të kontrollojë cilësimet e postës në panelin e administratorit, më pas trokitni lehtë mbi Ridërgo kodin.",
+  "verifyEmailCheckSpamHint": "Nëse nuk arrin: kontrolloni Junk/Spam dhe Promocione, prisni një minutë, konfirmoni se <<PH0>> nuk ka gabime shtypi dhe më pas prekni Ridërgo.",
+  "loginTitle": "Identifikohu",
+  "signupHint": "Përdorni emailin dhe fjalëkalimin e llogarisë tuaj të faqes.",
+  "emailHint": "Email",
+  "passwordHint": "Fjalëkalimi",
+  "cancel": "Anulo",
+  "signIn": "Identifikohu",
+  "downloadIdHint": "ID-ja e transferimit",
+  "privateIdHint": "ID private (opsionale)",
+  "fetchTransfer": "Transferimi i hapur",
+  "downloadFile": "Shkarkoni",
+  "unlockDownload": "Zhblloko shkarkimin",
+  "downloadSaved": "Ruajtur te Shkarkimet",
+  "errorGeneric": "Diçka shkoi keq",
+  "errorNetwork": "Gabim rrjeti",
+  "errorBadResponse": "Përgjigje e papritur e serverit",
+  "termsAccept": "Jam dakord me kushtet",
+  "settingsApiUrl": "URL e faqes publike",
+  "settingsAccount": "Llogaria",
+  "settingsAppearance": "Pamja e jashtme",
+  "settingsTheme": "Tema",
+  "themeSystem": "Sistemi",
+  "themeLight": "Drita",
+  "themeDark": "E errët",
+  "settingsSignedIn": "Ju jeni identifikuar.",
+  "settingsSignedOut": "Nuk jeni identifikuar.",
+  "settingsOpenWebsite": "Hap faqen e internetit",
+  "signUp": "Regjistrohu",
+  "settingsLinks": "Lidhjet",
+  "privacyPolicy": "Politika e privatësisë",
+  "termsOfService": "Kushtet e shërbimit",
+  "about": "Rreth",
+  "moreApps": "Më shumë aplikacione",
+  "settingsLanguage": "Gjuha",
+  "languageEnglish": "anglisht",
+  "languageHindi": "Hindi",
+  "logout": "Dilni",
+  "deleteAccount": "Fshi llogarinë",
+  "deleteAccountConfirmTitle": "Të fshihet llogaria juaj?",
+  "deleteAccountConfirmBody": "Kjo fshin përgjithmonë llogarinë tuaj dhe ju nxjerr jashtë. Lidhjet tuaja të transferimit do të vazhdojnë të funksionojnë, por ato nuk do të shfaqen më në historikun tuaj.",
+  "deleteAccountSuccess": "Llogaria u fshi",
+  "deleteAccountSuccessBody": "Llogaria juaj është hequr.",
+  "deleteAccountFailed": "Llogaria nuk mund të fshihej",
+  "deleteAccountFailedBody": "Ju lutemi provoni përsëri ose kontaktoni mbështetjen.",
+  "maxFilesReached": "Shumë skedarë",
+  "fileTooLarge": "Skedari shumë i madh",
+  "ipLimit": "Shumë ngarkime nga ky rrjet",
+  "fillFields": "Ju lutemi plotësoni fushat e kërkuara",
+  "invalidEmail": "Email i pavlefshëm",
+  "maxRecipientsReached": "Shumë marrës",
+  "loginRequiredTitle": "Kërkohet identifikimi",
+  "loginRequiredBody": "Ky server kërkon një llogari për të ngarkuar ose shkarkuar.",
+  "settingsSubtitle": "Preferencat dhe llogaria e aplikacionit.",
+  "dropHeavyFile": "Hidhni një skedar të rëndë këtu.",
+  "upToTotal": "Deri në <<PH0>> total",
+  "removeAll": "Hiq të gjitha",
+  "addFiles": "Shtoni skedarë",
+  "adding": "Po shtohet…",
+  "options": "Opsionet",
+  "selfDestruct": "Vetë-shkatërrohet pas shkarkimit",
+  "expiry": "Skadimi",
+  "cancelUpload": "Anulo ngarkimin",
+  "transferReady": "Transferta gati!",
+  "emailSentReady": "Email u dërgua!",
+  "shareRecipientHint": "Ndani këtë lidhje me marrësin tuaj.",
+  "emailSentBody": "Ne kemi njoftuar marrësit tuaj.",
+  "scanQr": "Skanoni për të hapur lidhjen e transferimit.",
+  "shareLinkButton": "SHARE LINK",
+  "verifyFourDigit": "Futni kodin 4-shifror të dërguar në emailin e dërguesit tuaj.",
+  "starting": "Duke filluar…",
+  "mbLeft": "<<PH0>> MB të mbetura",
+  "fillField": "Ju lutemi plotësoni këtë fushë.",
+  "enterValidEmail": "Fut një email të vlefshëm.",
+  "message": "Mesazh",
+  "recipientEmail": "Email i marrësit",
+  "active": "Aktiv",
+  "expired": "I skaduar",
+  "historyTitle": "Transfertat e mia",
+  "signInToSeeTransfers": "Hyni për të parë transferimet tuaja",
+  "signInTransfersBody": "Ne përdorim emailin tuaj për të lidhur transferimet me llogarinë tuaj - nuk nevojitet fjalëkalim.",
+  "couldNotLoadTransfers": "Transferimet nuk mund të ngarkoheshin",
+  "retry": "Provo sërish",
+  "noTransfersYet": "Nuk ka transferime ende",
+  "noTransfersBody": "Pasi të dërgoni një skedar, ai do të shfaqet këtu.",
+  "transferDetails": "Detajet e transferimit",
+  "filesSection": "Skedarët",
+  "receiveTitle": "Merrni skedarë",
+  "receiveSubtitle": "Ngjit një lidhje transferimi për të shkarkuar skedarë.",
+  "pasteTooltip": "Paste",
+  "findTransfer": "Gjeni Transferimin",
+  "receiveScanQr": "Skanoni QR",
+  "receiveScanQrTitle": "Skano QR-në e transferimit",
+  "receiveScanQrHint": "Rreshtoni kodin QR brenda kornizës.",
+  "receiveScanQrInvalid": "Ky kod QR nuk është një lidhje e vlefshme transferimi.",
+  "receiveScanQrCameraDenied": "Kërkohet qasja në kamerë për të skanuar kodet QR.",
+  "receiveStepGetLink": "Merrni lidhjen",
+  "receiveStepGetLinkBody": "Kërkojini dërguesit të ndajë lidhjen e transferimit me ju.",
+  "receiveStepPaste": "Ngjit dhe gjej",
+  "receiveStepPasteBody": "Ngjitni lidhjen e mësipërme dhe trokitni lehtë mbi \"Gjeni transferimin\".",
+  "receiveStepDownload": "Shkarko skedarët",
+  "receiveStepDownloadBody": "Shikoni detajet e skedarit dhe shkarkoni gjithçka menjëherë.",
+  "lookingUpTransfer": "Po kërkon transferim…",
+  "transferNotFound": "Transferimi nuk u gjet. Kontrollo lidhjen dhe provo sërish.",
+  "transferExpired": "Ky transferim ka skaduar dhe nuk është më i disponueshëm.",
+  "transferLoginRequired": "Kërkohet identifikimi për të hyrë në këtë transferim.",
+  "transferBadResponse": "Përgjigje e papritur e serverit. Kontrolloni lidhjen tuaj.",
+  "transferNetworkError": "Gabim rrjeti. Kontrolloni lidhjen tuaj të internetit.",
+  "transferLoadFailed": "Transferimi nuk mund të ngarkohej: <<PH0>>",
+  "passwordProtected": "E mbrojtur me fjalëkalim",
+  "enterPassword": "Fut fjalëkalimin",
+  "unlock": "Zhblloko",
+  "downloading": "Po shkarkohet…",
+  "downloadAllFiles": "Shkarkoni të gjithë skedarët",
+  "downloadSingleFile": "Shkarko skedarin",
+  "receiveAnother": "Merrni një transferim tjetër",
+  "plansTitle": "Planet",
+  "plansSubtitle": "Përmirësojeni për të hequr reklamat dhe për të dërguar skedarë më të mëdhenj.",
+  "storeUnavailable": "Dyqani i padisponueshëm",
+  "storeUnavailableBody": "Blerjet përmes aplikacionit nuk ofrohen për momentin.",
+  "storeLoadingPrices": "Çmimet po ngarkohen nga App Store…",
+  "storePricesUnavailable": "Çmimet nuk ofrohen",
+  "storePricesPartial": "Disa çmime nuk mund të ngarkoheshin",
+  "storePricesPartialBody": "<<PH0>> e produkteve të abonimit <<PH1>> u ngarkuan.",
+  "storeSetupHint": "Testoni në një iPhone të vërtetë (jo Simulator), përdorni një ID Apple Sandbox dhe sigurohuni që të 6 abonimet të jenë krijuar nën ID-në e paketës së këtij aplikacioni në App Store Connect me grupin e çmimeve.",
+  "effectiveMonthlyPrice": "<<PH0>>/muaj",
+  "freeVersionAds": "Aktualisht po përdorni versionin tonë falas me reklama",
+  "restorePurchases": "Rivendos blerjet",
+  "plansContinue": "Vazhdoni",
+  "planLinkRestore": "Rivendos",
+  "termsAndConditions": "Termat dhe kushtet",
+  "createAccountTitle": "Krijo llogari",
+  "signUpSubtitle": "Regjistrohu me email dhe fjalëkalim.",
+  "confirmPassword": "Konfirmo fjalëkalimin",
+  "passwordMin8": "Fjalëkalimi (min 8 karaktere)",
+  "alreadyHaveAccount": "Keni tashmë një llogari?",
+  "checkEmailTitle": "Kontrolloni tuajin\nemail",
+  "otpSentTo": "Ne dërguam një kod 6-shifror te\n<<PH0>>",
+  "verifyAndSignIn": "Verifiko & Identifikohu",
+  "didntReceiveCode": "Nuk e morët?",
+  "tryAgain": "Provo sërish",
+  "otpExpiresHint": "Kodi skadon për 5 minuta. Kontrolloni dosjen tuaj të postës së padëshiruar nëse nuk e shihni atë.",
+  "snackError": "Gabim",
+  "snackCopied": "E kopjuar",
+  "snackCopiedBody": "Lidhja u kopjua në kujtesën e fragmenteve",
+  "snackWelcome": "Mirë se vini",
+  "snackAccountCreated": "Llogaria u krijua",
+  "snackEnterEmail": "Ju lutemi shkruani emailin tuaj",
+  "snackEnterPassword": "Ju lutemi shkruani fjalëkalimin tuaj",
+  "snackInvalidEmail": "Adresë e pavlefshme emaili",
+  "snackInvalidCredentials": "Email ose fjalëkalim i pasaktë",
+  "snackPasswordMin8": "Fjalëkalimi duhet të jetë së paku 8 karaktere",
+  "snackPasswordMismatch": "Fjalëkalimet nuk përputhen.",
+  "snackAccountExists": "Llogaria ekziston tashmë. Ju lutemi identifikohuni.",
+  "snackSignupFailed": "Llogaria nuk mund të krijohej. Provo sërish.",
+  "snackEnterOtp": "Ju lutemi shkruani kodin 6-shifror",
+  "snackOtpExpired": "Kodi ka skaduar",
+  "snackOtpExpiredBody": "Kërkoni një kod të ri.",
+  "snackInvalidCode": "Kodi i pavlefshëm",
+  "snackInvalidCodeBody": "Kodi është i pasaktë. Ju lutemi provoni përsëri.",
+  "snackSendCodeFailed": "Kodi nuk mund të dërgohej. Kontrollo lidhjen tënde dhe provo sërish.",
+  "snackEmptyFolder": "Dosja bosh",
+  "snackEmptyFolderBody": "Nuk u gjet asnjë skedar në dosjen e zgjedhur.",
+  "snackFolderUnsupported": "Nuk mbështetet",
+  "snackFolderUnsupportedBody": "Ngarkimi i dosjeve nuk ofrohet në këtë platformë.",
+  "snackFolderReadError": "Dosja e zgjedhur nuk mund të lexohej.",
+  "snackLimitReached": "U arrit kufiri",
+  "snackLimitFilesBody": "Disa skedarë nuk u shtuan për shkak të kufizimeve të madhësisë ose numrit të skedarëve.",
+  "snackFreePlanLimit": "Plani falas lejon deri në 5 GB për transferim. Ju lutemi hiqni disa skedarë ose përmirësoni.",
+  "snackSignInEmail": "Ju lutemi identifikohuni për ta dërguar me email.",
+  "snackUploadStartFailed": "Ngarkimi nuk mund të fillonte.",
+  "snackVerifyEnterCode": "Futni kodin 4-shifror nga emaili juaj.",
+  "snackVerifyInvalid": "Kodi i pavlefshëm ose i skaduar. Kontrollo emailin dhe provo sërish.",
+  "snackVerifyResendFailed": "Kodi nuk mund të ridërgohej. Provo sërish.",
+  "snackDownloadComplete": "Shkarkimi përfundoi",
+  "snackDownloadSaved": "\"<<PH0>>\" u ruajt te Shkarkimet",
+  "snackDownloadFailed": "Shkarkimi dështoi",
+  "snackSaved": "U ruajt",
+  "snackServerUrlUpdated": "URL-ja e serverit u përditësua. Rinisni aplikacionin për të aplikuar.",
+  "snackStoreError": "Gabim në dyqan",
+  "snackMissingProducts": "Produktet që mungojnë",
+  "snackStoreUnavailable": "Dyqani i padisponueshëm",
+  "snackStoreUnavailableBody": "Blerjet përmes aplikacionit nuk ofrohen në këtë pajisje.",
+  "snackProductNotLoaded": "Produkti nuk është ngarkuar ende.",
+  "snackRestoreStarted": "Rivendosja filloi",
+  "snackRestoreStartedBody": "Ne po kontrollojmë blerjet tuaja.",
+  "snackRestoreFailed": "Rivendosja dështoi",
+  "snackProcessing": "Përpunimi",
+  "snackPleaseWait": "Ju lutemi prisni…",
+  "snackSuccess": "Suksese",
+  "snackPurchaseCompleted": "Blerja përfundoi.",
+  "snackPurchaseError": "Gabim në blerje",
+  "snackPurchaseFailed": "Blerja dështoi.",
+  "snackCanceled": "Anuluar",
+  "snackPurchaseCanceled": "Blerja u anulua.",
+  "snackUpload": "Ngarko",
+  "snackVerify": "Verifiko",
+  "doNotExpire": "Mos skadon",
+  "hourSingular": "orë",
+  "hourPlural": "orë",
+  "daySingular": "ditë",
+  "dayPlural": "ditë",
+  "emailAddressLabel": "ADRESA E EMAIL",
+  "passwordLabelCaps": "FJALËKALIMI",
+  "confirmPasswordLabelCaps": "KONFIRMO FALËkalimin",
+  "transferLinkOrId": "LIDHJA OSE ID e TRANSFERIMIT",
+  "howToReceive": "SI TË MARRNI",
+  "planAdsTitle": "Plani i reklamave",
+  "planAdsBullet1": "Qasje në aplikacion pa reklama",
+  "planAdsBullet2": "Hiq të gjitha reklamat",
+  "planProTitle": "Plani Pro",
+  "planProBullet1": "Dërgoni skedarë deri në 20 GB",
+  "planProBullet2": "Ngarkimi i shpejtë",
+  "planPremiumTitle": "Plani Premium",
+  "planPremiumBullet1": "Dërgoni skedarë deri në 100 GB",
+  "planPremiumBullet2": "Ngarkimi super i shpejtë",
+  "planSubscriptionDisclaimer": "Nuk ka periudhë prove - kërkohet abonim për të përdorur funksionalitetin shtesë të aplikacionit. Do të tarifoheni menjëherë. Mund ta anuloni në çdo kohë.",
+  "perMonth": "/ muaj",
+  "perYear": "/ vit",
+  "snackConnectionProblem": "Problemi i lidhjes. Ju lutemi provoni përsëri.",
+  "networkTitle": "Rrjeti",
+  "transferIdLabel": "ID: <<PH0>>",
+  "downloadMetaSummary": "Skedarët: <<PH0>> · <<PH1>> bajt",
+  "todayAt": "Sot · <<PH0>>",
+  "yesterdayAt": "Dje · <<PH0>>",
+  "daysAgoAt": "<<PH0>>d më parë · <<PH1>>",
+  "dateAt": "<<PH0>> · <<PH1>>",
+  "mbAmount": "<<PH0>> MB",
+  "uploadProgressSummary": "<<PH0>> / <<PH1>> • <<PH2>> majtas",
+  "loadingShort": "Po ngarkohet…",
+  "colorPaletteTitle": "Paleta e ngjyrave",
+  "colorPaletteSectionBackgrounds": "Sfondet (shkalla e bojës)",
+  "colorPaletteSectionAccent": "Theks / Primar",
+  "colorPaletteSectionText": "Teksti",
+  "colorPaletteSectionBorders": "Kufij & Xham",
+  "colorPaletteSectionSemantic": "Semantike",
+  "colorPaletteSectionLive": "Tema e drejtpërdrejtë (aktualisht)",
+  "colorPaletteActiveHint": "★ = përdoret në mënyrë aktive në ekrane",
+  "colorPaletteCopyHint": "Shtypni gjatë çdo swatch për të kopjuar vlerën e tij heks.",
+  "settingsAppBrand": "Ndani të mëdha\nSkedarët Video",
+  "loginEmailPasswordPrompt": "Futni emailin dhe fjalëkalimin tuaj për t'u identifikuar.",
+  "forgotPassword": "Keni harruar fjalëkalimin?",
+  "forgotPasswordTitle": "Rivendos fjalëkalimin",
+  "forgotPasswordBody": "Futni emailin e llogarisë tuaj dhe ne do të dërgojmë një kod rivendosjeje.",
+  "forgotPasswordSubmit": "Dërgo kodin e rivendosjes",
+  "resetPasswordTitle": "Krijo fjalëkalim të ri",
+  "resetPasswordBody": "Futni kodin 6-shifror nga emaili juaj dhe zgjidhni një fjalëkalim të ri.",
+  "resetPasswordSubmit": "Përditëso fjalëkalimin",
+  "snackPasswordResetSent": "Rivendos kodin u dërgua",
+  "snackPasswordResetSentBody": "Kontrolloni emailin tuaj për një kod rivendosjeje 6-shifrore.",
+  "snackPasswordResetFailed": "Kodi i rivendosjes nuk mund të dërgohej. Provo sërish.",
+  "snackPasswordUpdated": "Fjalëkalimi u përditësua",
+  "snackPasswordUpdatedBody": "Hyni me fjalëkalimin tuaj të ri.",
+  "snackPasswordResetInvalid": "Kodi i rivendosjes i pavlefshëm ose i skaduar.",
+  "otpDigitLabel": "KODI 6-SHIFOR",
+  "receiveMoreFiles": "+<<PH0>> skedarë të tjerë"
+}

@@ -1,0 +1,466 @@
+{
+  "@@locale": "ar",
+  "@verifyEmailCheckSpamHint": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@upToTotal": {
+    "placeholders": {
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "@filesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesCount": "{count, plural, =1{1 file} other{{count} files}}",
+  "@mbLeft": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@transferLoadFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@storePricesPartialBody": {
+    "placeholders": {
+      "loaded": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "priceUnavailable": "—",
+  "@effectiveMonthlyPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "@otpSentTo": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@snackDownloadSaved": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "emailExampleHint": "you@example.com",
+  "otpSixDigitHint": "000000",
+  "verifyFourDigitHint": "0000",
+  "transferLinkHint": "https://… or paste ID",
+  "@filesReady": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesReady": "{count, plural, =1{1 file ready} other{{count} files ready}}",
+  "@transferIdLabel": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadMetaSummary": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "@todayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@yesterdayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@daysAgoAt": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@dateAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@mbAmount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@uploadProgressSummary": {
+    "placeholders": {
+      "sent": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      },
+      "remaining": {
+        "type": "String"
+      }
+    }
+  },
+  "@historyFilesSize": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "historyFilesSize": "{count, plural, =1{1 file} other{{count} files}} · {size}",
+  "@receiveMoreFiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appTitle": "مشاركة ملفات الفيديو الكبيرة",
+  "heroAccent": "على الفور.",
+  "heroTitle": "إرسال ثقيل الملفات",
+  "splashLoading": "تحميل…",
+  "navSend": "لوحة المعلومات",
+  "navHome": "الصفحة الرئيسية",
+  "navHistory": "التاريخ",
+  "navReceive": "تلقي",
+  "navPlans": "الخطط",
+  "navDownload": "تنزيل",
+  "navSettings": "الإعدادات",
+  "modeLink": "Get رابط",
+  "modeEmail": "إرسال عبر البريد الإلكتروني",
+  "pickFiles": "اختر الملفات",
+  "pickFolder": "اختر مجلد",
+  "emailFrom": "بريدك الإلكتروني",
+  "mailFromUsesAccount": "يستخدم بريدك الإلكتروني الذي تم تسجيل الدخول إليه.",
+  "recipientEmailsHelper": "مستلمون متعددون: منفصلون بفواصل أو فواصل منقوطة أو مسافات.",
+  "emailTo": "البريد الإلكتروني للمستلم",
+  "messageOptional": "الرسالة (اختيارية)",
+  "passwordOptional": "كلمة المرور (اختيارية)",
+  "destructAfterDownload": "الحذف بعد التنزيل",
+  "destructNo": "الاحتفاظ متاح",
+  "sendButton": "إرسال",
+  "uploading": "تحميل...",
+  "uploadComplete": "تم",
+  "shareLinkTitle": "الرابط الخاص بك",
+  "copyLink": "انسخ الرابط",
+  "share": "مشاركة",
+  "shareQrCode": "مشاركة رمز QR",
+  "uploadMore": "إرسال آخر",
+  "emailSentTitle": "رسائل البريد الإلكتروني المرسلة",
+  "verifyEmailTitle": "التحقق من بريدك الإلكتروني",
+  "verifyCodeHint": "أدخل الرمز من بريدك الإلكتروني",
+  "verifySubmit": "التحقق",
+  "verifyResendCode": "إعادة إرسال الرمز",
+  "verifyCodeSent": "تم إرسال رمز تحقق جديد إلى بريدك الإلكتروني.",
+  "verifyEmailSmtpWarningTitle": "ربما لم يكن هناك بريد إلكتروني للتحقق تم الإرسال",
+  "verifyEmailSmtpWarningBody": "تعذر على الخادم تأكيد التسليم (غالبًا ما يتم تكوين SMTP بشكل خاطئ). اطلب من مسؤول موقعك التحقق من إعدادات البريد في لوحة الإدارة، ثم انقر فوق \"إعادة إرسال الرمز\".",
+  "verifyEmailCheckSpamHint": "إذا لم يصل: تحقق من الرسائل غير المرغوب فيها/البريد العشوائي والعروض الترويجية، انتظر دقيقة، وتأكد من أن <<PH0>> لا يحتوي على أخطاء مطبعية، ثم انقر فوق \"إعادة إرسال\".",
+  "loginTitle": "تسجيل الدخول",
+  "signupHint": "استخدم البريد الإلكتروني لحساب موقعك و كلمة المرور.",
+  "emailHint": "البريد الإلكتروني",
+  "passwordHint": "كلمة المرور",
+  "cancel": "إلغاء",
+  "signIn": "تسجيل الدخول",
+  "downloadIdHint": "معرف النقل",
+  "privateIdHint": "معرف خاص (اختياري)",
+  "fetchTransfer": "فتح النقل",
+  "downloadFile": "تحميل",
+  "unlockDownload": "فتح التنزيل",
+  "downloadSaved": "تم الحفظ في التنزيلات",
+  "errorGeneric": "حدث خطأ ما",
+  "errorNetwork": "خطأ في الشبكة",
+  "errorBadResponse": "استجابة الخادم غير متوقعة",
+  "termsAccept": "أوافق على الشروط",
+  "settingsApiUrl": "موقع عام URL",
+  "settingsAccount": "الحساب",
+  "settingsAppearance": "المظهر",
+  "settingsTheme": "الموضوع",
+  "themeSystem": "النظام",
+  "themeLight": "Light",
+  "themeDark": "Dark",
+  "settingsSignedIn": "لقد قمت بتسجيل الدخول.",
+  "settingsSignedOut": "لم تقم بتسجيل الدخول in.",
+  "settingsOpenWebsite": "افتح موقع الويب",
+  "signUp": "التسجيل",
+  "settingsLinks": "الروابط",
+  "privacyPolicy": "سياسة الخصوصية",
+  "termsOfService": "شروط الخدمة",
+  "about": "حول",
+  "moreApps": "المزيد apps",
+  "settingsLanguage": "اللغة",
+  "languageEnglish": "الإنجليزية",
+  "languageHindi": "الهندية",
+  "logout": "تسجيل الخروج",
+  "deleteAccount": "حذف الحساب",
+  "deleteAccountConfirmTitle": "هل تريد حذف حسابك؟",
+  "deleteAccountConfirmBody": "يؤدي هذا إلى حذف حسابك نهائيًا وتسجيل خروجك. ستستمر روابط النقل الخاصة بك في العمل، لكنها لن تظهر بعد الآن في السجل الخاص بك.",
+  "deleteAccountSuccess": "تم حذف الحساب",
+  "deleteAccountSuccessBody": "لقد تمت إزالة حسابك.",
+  "deleteAccountFailed": "تعذر حذف الحساب",
+  "deleteAccountFailedBody": "يرجى المحاولة مرة أخرى أو الاتصال بالدعم.",
+  "maxFilesReached": "ملفات كثيرة جدًا",
+  "fileTooLarge": "ملف أيضًا كبير",
+  "ipLimit": "عدد كبير جدًا من التحميلات من هذه الشبكة",
+  "fillFields": "يرجى ملء الحقول المطلوبة",
+  "invalidEmail": "بريد إلكتروني غير صالح",
+  "maxRecipientsReached": "عدد كبير جدًا من المستلمين",
+  "loginRequiredTitle": "تسجيل الدخول مطلوب",
+  "loginRequiredBody": "يتطلب هذا الخادم حسابًا للتحميل أو التنزيل.",
+  "settingsSubtitle": "تفضيلات التطبيق و حساب.",
+  "dropHeavyFile": "أسقط ملفًا ثقيلًا هنا.",
+  "upToTotal": "ما يصل إلى <<PH0>> إجمالي",
+  "removeAll": "إزالة الكل",
+  "addFiles": "إضافة ملفات",
+  "adding": "إضافة...",
+  "options": "خيارات",
+  "selfDestruct": "التدمير الذاتي بعد تنزيل",
+  "expiry": "انتهاء الصلاحية",
+  "cancelUpload": "إلغاء التحميل",
+  "transferReady": "التحويل جاهز!",
+  "emailSentReady": "تم إرسال البريد الإلكتروني!",
+  "shareRecipientHint": "شارك هذا الرابط مع المستلم.",
+  "emailSentBody": "لقد أبلغنا المستلم (المستلمين).",
+  "scanQr": "امسح ضوئيًا لفتح رابط النقل.",
+  "shareLinkButton": "SHARE LINK",
+  "verifyFourDigit": "أدخل الرمز المكون من 4 أرقام المرسل إلى البريد الإلكتروني للمرسل.",
+  "starting": "بدءًا...",
+  "mbLeft": "<<PH0>> ميغابايت متبقية",
+  "fillField": "يرجى ملء هذا الحقل.",
+  "enterValidEmail": "أدخل صالحًا البريد الإلكتروني.",
+  "message": "رسالة",
+  "recipientEmail": "البريد الإلكتروني للمستلم",
+  "active": "نشط",
+  "expired": "منتهية الصلاحية",
+  "historyTitle": "تحويلاتي",
+  "signInToSeeTransfers": "تسجيل الدخول لرؤية تحويلاتك",
+  "signInTransfersBody": "نحن نستخدم بريدك الإلكتروني لربط التحويلات بحسابك - لا حاجة إلى كلمة مرور.",
+  "couldNotLoadTransfers": "تعذر تحميل عمليات النقل",
+  "retry": "إعادة المحاولة",
+  "noTransfersYet": "لا توجد عمليات نقل بعد",
+  "noTransfersBody": "بمجرد إرسال ملف، سيظهر هنا.",
+  "transferDetails": "تفاصيل النقل",
+  "filesSection": "ملفات",
+  "receiveTitle": "استلام الملفات",
+  "receiveSubtitle": "الصق رابط النقل للتنزيل الملفات.",
+  "pasteTooltip": "لصق",
+  "findTransfer": "بحث عن نقل",
+  "receiveScanQr": "مسح QR",
+  "receiveScanQrTitle": "مسح نقل QR",
+  "receiveScanQrHint": "قم بمحاذاة رمز QR داخل الإطار.",
+  "receiveScanQrInvalid": "رمز QR هذا ليس رابط نقل صالح.",
+  "receiveScanQrCameraDenied": "يتطلب الوصول إلى الكاميرا لإجراء المسح الضوئي رموز QR.",
+  "receiveStepGetLink": "احصل على الرابط",
+  "receiveStepGetLinkBody": "اطلب من المرسل مشاركة رابط النقل معك.",
+  "receiveStepPaste": "الصق وابحث",
+  "receiveStepPasteBody": "الصق الرابط أعلاه وانقر على \"بحث عن نقل\".",
+  "receiveStepDownload": "تنزيل الملفات",
+  "receiveStepDownloadBody": "راجع تفاصيل الملف وقم بتنزيل كل شيء على مرة واحدة.",
+  "lookingUpTransfer": "البحث عن النقل...",
+  "transferNotFound": "لم يتم العثور على النقل. تحقق من الرابط وحاول مرة أخرى.",
+  "transferExpired": "لقد انتهت صلاحية عملية النقل هذه ولم تعد متوفرة.",
+  "transferLoginRequired": "يلزم تسجيل الدخول للوصول إلى عملية النقل هذه.",
+  "transferBadResponse": "استجابة خادم غير متوقعة. تحقق من اتصالك.",
+  "transferNetworkError": "خطأ في الشبكة. تحقق من اتصالك بالإنترنت.",
+  "transferLoadFailed": "تعذر تحميل النقل: <<PH0>>",
+  "passwordProtected": "كلمة المرور محمية",
+  "enterPassword": "أدخل كلمة المرور",
+  "unlock": "فتح",
+  "downloading": "التنزيل…",
+  "downloadAllFiles": "تنزيل جميع الملفات",
+  "downloadSingleFile": "تنزيل الملف",
+  "receiveAnother": "تلقي نقل آخر",
+  "plansTitle": "الخطط",
+  "plansSubtitle": "الترقية لإزالة الإعلانات وإرسال ملفات أكبر حجمًا.",
+  "storeUnavailable": "التخزين غير متاح",
+  "storeUnavailableBody": "عمليات الشراء داخل التطبيق غير متاحة بشكل صحيح الآن.",
+  "storeLoadingPrices": "جارٍ تحميل الأسعار من متجر التطبيقات...",
+  "storePricesUnavailable": "الأسعار غير متاحة",
+  "storePricesPartial": "لا يمكن تحميل بعض الأسعار",
+  "storePricesPartialBody": "<<PH0>> من منتجات الاشتراك <<PH1>> تم تحميلها.",
+  "storeSetupHint": "اختبر على جهاز iPhone حقيقي (وليس جهاز محاكاة)، واستخدم Sandbox Apple ID، وتأكد من إنشاء جميع الاشتراكات الستة ضمن معرف حزمة هذا التطبيق في متجر التطبيقات، تواصل مع مجموعة الأسعار.",
+  "effectiveMonthlyPrice": "<<PH0>>/الشهر",
+  "freeVersionAds": "أنت تستخدم حاليًا نسختنا المجانية مع الإعلانات",
+  "restorePurchases": "استعادة المشتريات",
+  "plansContinue": "متابعة",
+  "planLinkRestore": "Restore",
+  "termsAndConditions": "الشروط و الشروط",
+  "createAccountTitle": "إنشاء حساب",
+  "signUpSubtitle": "التسجيل باستخدام البريد الإلكتروني وكلمة المرور.",
+  "confirmPassword": "تأكيد كلمة المرور",
+  "passwordMin8": "كلمة المرور (8 أحرف على الأقل)",
+  "alreadyHaveAccount": "هل لديك حساب بالفعل؟",
+  "checkEmailTitle": "تحقق من حسابك\nemail",
+  "otpSentTo": " لقد أرسلنا رمزًا مكونًا من 6 أرقام إلى\n<<PH0>>",
+  "verifyAndSignIn": "التحقق وتسجيل الدخول",
+  "didntReceiveCode": "ألم تستلمه؟",
+  "tryAgain": "حاول مرة أخرى",
+  "otpExpiresHint": "تنتهي صلاحية الرمز خلال 5 دقائق. تحقق من مجلد الرسائل غير المرغوب فيها إذا كنت لا تراه.",
+  "snackError": "خطأ",
+  "snackCopied": "تم النسخ",
+  "snackCopiedBody": "تم نسخ الرابط إلى الحافظة",
+  "snackWelcome": "مرحبًا",
+  "snackAccountCreated": "تم إنشاء الحساب",
+  "snackEnterEmail": "الرجاء إدخال بريدك الإلكتروني",
+  "snackEnterPassword": "الرجاء إدخال بريدك الإلكتروني كلمة المرور",
+  "snackInvalidEmail": "عنوان بريد إلكتروني غير صالح",
+  "snackInvalidCredentials": "بريد إلكتروني أو كلمة مرور غير صحيحة",
+  "snackPasswordMin8": "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل",
+  "snackPasswordMismatch": "كلمات المرور غير متطابقة.",
+  "snackAccountExists": "الحساب موجود بالفعل. الرجاء تسجيل الدخول.",
+  "snackSignupFailed": "تعذر إنشاء حساب. حاول مرة أخرى.",
+  "snackEnterOtp": "الرجاء إدخال الرمز المكون من 6 أرقام",
+  "snackOtpExpired": "الرمز منتهي الصلاحية",
+  "snackOtpExpiredBody": "الرجاء طلب رمز جديد.",
+  "snackInvalidCode": "الرمز غير صالح",
+  "snackInvalidCodeBody": "الرمز غير صحيح. الرجاء المحاولة مرة أخرى.",
+  "snackSendCodeFailed": "تعذر إرسال الرمز. تحقق من اتصالك وحاول مرة أخرى.",
+  "snackEmptyFolder": "مجلد فارغ",
+  "snackEmptyFolderBody": "لم يتم العثور على ملفات في المجلد المحدد.",
+  "snackFolderUnsupported": "غير مدعوم",
+  "snackFolderUnsupportedBody": "تحميل المجلد غير متاح على هذا النظام الأساسي.",
+  "snackFolderReadError": "تعذر قراءة المجلد المحدد.",
+  "snackLimitReached": "تم الوصول إلى الحد",
+  "snackLimitFilesBody": "لم تتم إضافة بعض الملفات بسبب حدود الحجم أو عدد الملفات.",
+  "snackFreePlanLimit": "خطة مجانية يسمح بما يصل إلى 5 جيجابايت لكل عملية نقل. يرجى إزالة بعض الملفات أو الترقية.",
+  "snackSignInEmail": "يرجى تسجيل الدخول للإرسال عبر البريد الإلكتروني.",
+  "snackUploadStartFailed": "تعذر بدء التحميل.",
+  "snackVerifyEnterCode": "أدخل الرمز المكون من 4 أرقام من بريدك الإلكتروني.",
+  "snackVerifyInvalid": "الرمز غير صالح أو منتهي الصلاحية. تحقق من البريد الإلكتروني وحاول مرة أخرى.",
+  "snackVerifyResendFailed": "تعذر إعادة إرسال الرمز. حاول مرة أخرى.",
+  "snackDownloadComplete": "اكتمل التنزيل",
+  "snackDownloadSaved": "\"<<PH0>>\" تم حفظه في التنزيلات",
+  "snackDownloadFailed": "فشل التنزيل",
+  "snackSaved": "تم الحفظ",
+  "snackServerUrlUpdated": "تم تحديث عنوان URL للخادم. أعد تشغيل التطبيق لتطبيقه.",
+  "snackStoreError": "خطأ في المتجر",
+  "snackMissingProducts": "المنتجات المفقودة",
+  "snackStoreUnavailable": "التخزين غير متاح",
+  "snackStoreUnavailableBody": "عمليات الشراء داخل التطبيق غير متوفرة على هذا الجهاز.",
+  "snackProductNotLoaded": "لم يتم تحميل المنتج بعد.",
+  "snackRestoreStarted": "بدأت الاستعادة",
+  "snackRestoreStartedBody": "نحن نتحقق من المشتريات.",
+  "snackRestoreFailed": "فشلت الاستعادة",
+  "snackProcessing": "المعالجة",
+  "snackPleaseWait": "الرجاء الانتظار...",
+  "snackSuccess": "النجاح",
+  "snackPurchaseCompleted": "اكتملت عملية الشراء.",
+  "snackPurchaseError": "خطأ في الشراء",
+  "snackPurchaseFailed": "الشراء فشل.",
+  "snackCanceled": "تم الإلغاء",
+  "snackPurchaseCanceled": "تم إلغاء الشراء.",
+  "snackUpload": "تحميل",
+  "snackVerify": "التحقق",
+  "doNotExpire": "لا تفعل ذلك تنتهي",
+  "hourSingular": "ساعة",
+  "hourPlural": "ساعة",
+  "daySingular": "يوم",
+  "dayPlural": "يوم",
+  "emailAddressLabel": "عنوان البريد الإلكتروني",
+  "passwordLabelCaps": "كلمة المرور",
+  "confirmPasswordLabelCaps": "تأكيد كلمة المرور",
+  "transferLinkOrId": "رابط النقل أو ID",
+  "howToReceive": "كيفية تلقي",
+  "planAdsTitle": "خطة الإعلانات",
+  "planAdsBullet1": "الوصول إلى تطبيق الإعلانات المجاني",
+  "planAdsBullet2": "إزالة جميع الإعلانات",
+  "planProTitle": "Pro Plan",
+  "planProBullet1": "أرسل ملفات يصل حجمها إلى 20 جيجابايت",
+  "planProBullet2": "تحميل سريع",
+  "planPremiumTitle": "الخطة المميزة",
+  "planPremiumBullet1": "أرسل ملفات يصل حجمها إلى 100 جيجابايت",
+  "planPremiumBullet2": "تحميل فائق السرعة",
+  "planSubscriptionDisclaimer": "لا توجد فترة تجريبية - الاشتراك مطلوب لاستخدام وظائف التطبيق الإضافية. سيتم محاسبتك على الفور. يمكنك الإلغاء في أي وقت.",
+  "perMonth": "/ شهر",
+  "perYear": "/ سنة",
+  "snackConnectionProblem": "مشكلة في الاتصال. الرجاء المحاولة مرة أخرى.",
+  "networkTitle": "الشبكة",
+  "transferIdLabel": "ID: <<PH0>>",
+  "downloadMetaSummary": "الملفات: <<PH0>> · <<PH1>> بايت",
+  "todayAt": "اليوم · <<PH0>>",
+  "yesterdayAt": "أمس · <<PH0>>",
+  "daysAgoAt": "<<PH0>>منذ · <<PH1>>",
+  "dateAt": "<<PH0>> · <<PH1>>",
+  "mbAmount": "<<PH0>> MB",
+  "uploadProgressSummary": "<<PH0>> / <<PH1>> • <<PH2>> يسار",
+  "loadingShort": "تحميل…",
+  "colorPaletteTitle": "لوحة الألوان",
+  "colorPaletteSectionBackgrounds": "الخلفيات (مقياس الحبر)",
+  "colorPaletteSectionAccent": "لكنة / أساسي",
+  "colorPaletteSectionText": "نص",
+  "colorPaletteSectionBorders": "الحدود والزجاج",
+  "colorPaletteSectionSemantic": "دلالي",
+  "colorPaletteSectionLive": "موضوع مباشر (الحالي) ",
+  "colorPaletteActiveHint": "★ = يُستخدم بشكل نشط في الشاشات",
+  "colorPaletteCopyHint": "اضغط لفترة طويلة على أي عينة لنسخ قيمتها السداسية.",
+  "settingsAppBrand": "Share Large\nملفات الفيديو",
+  "loginEmailPasswordPrompt": "أدخل بريدك الإلكتروني وكلمة المرور لتسجيل الدخول.",
+  "forgotPassword": "هل نسيت كلمة المرور؟",
+  "forgotPasswordTitle": "إعادة تعيين كلمة المرور",
+  "forgotPasswordBody": "أدخل البريد الإلكتروني لحسابك وسنرسل رمز إعادة التعيين.",
+  "forgotPasswordSubmit": "أرسل رمز إعادة التعيين",
+  "resetPasswordTitle": "إنشاء جديد كلمة المرور",
+  "resetPasswordBody": "أدخل الرمز المكون من 6 أرقام من بريدك الإلكتروني واختر كلمة مرور جديدة.",
+  "resetPasswordSubmit": "تحديث كلمة المرور",
+  "snackPasswordResetSent": "تم إرسال رمز إعادة التعيين",
+  "snackPasswordResetSentBody": "تحقق من بريدك الإلكتروني بحثًا عن رمز إعادة تعيين مكون من 6 أرقام.",
+  "snackPasswordResetFailed": "تعذر إرسال رمز إعادة التعيين. حاول مرة أخرى.",
+  "snackPasswordUpdated": "تم تحديث كلمة المرور",
+  "snackPasswordUpdatedBody": "قم بتسجيل الدخول باستخدام كلمة المرور الجديدة.",
+  "snackPasswordResetInvalid": "رمز إعادة تعيين غير صالح أو منتهي الصلاحية.",
+  "otpDigitLabel": "6-DIGIT CODE",
+  "receiveMoreFiles": "+<<PH0>> المزيد من الملفات"
+}

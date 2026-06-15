@@ -1,0 +1,466 @@
+{
+  "@@locale": "et",
+  "@verifyEmailCheckSpamHint": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@upToTotal": {
+    "placeholders": {
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "@filesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesCount": "{count, plural, =1{1 file} other{{count} files}}",
+  "@mbLeft": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@transferLoadFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@storePricesPartialBody": {
+    "placeholders": {
+      "loaded": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "priceUnavailable": "—",
+  "@effectiveMonthlyPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "@otpSentTo": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@snackDownloadSaved": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "emailExampleHint": "you@example.com",
+  "otpSixDigitHint": "000000",
+  "verifyFourDigitHint": "0000",
+  "transferLinkHint": "https://… or paste ID",
+  "@filesReady": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesReady": "{count, plural, =1{1 file ready} other{{count} files ready}}",
+  "@transferIdLabel": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadMetaSummary": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "@todayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@yesterdayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@daysAgoAt": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@dateAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@mbAmount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@uploadProgressSummary": {
+    "placeholders": {
+      "sent": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      },
+      "remaining": {
+        "type": "String"
+      }
+    }
+  },
+  "@historyFilesSize": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "historyFilesSize": "{count, plural, =1{1 file} other{{count} files}} · {size}",
+  "@receiveMoreFiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appTitle": "Jagage suuri videofaile",
+  "heroAccent": "koheselt.",
+  "heroTitle": "Saatke raskeid faile",
+  "splashLoading": "Laadimine…",
+  "navSend": "Armatuurlaud",
+  "navHome": "Kodu",
+  "navHistory": "Ajalugu",
+  "navReceive": "Vastu võtta",
+  "navPlans": "Plaanid",
+  "navDownload": "Laadi alla",
+  "navSettings": "Seaded",
+  "modeLink": "Hankige link",
+  "modeEmail": "Saada meili teel",
+  "pickFiles": "Valige failid",
+  "pickFolder": "Valige kaust",
+  "emailFrom": "Teie meiliaadress",
+  "mailFromUsesAccount": "Kasutab teie sisselogitud e-posti.",
+  "recipientEmailsHelper": "Mitu adressaati: eraldage koma, semikooloni või tühikutega.",
+  "emailTo": "Saaja meiliaadress",
+  "messageOptional": "Sõnum (valikuline)",
+  "passwordOptional": "Parool (valikuline)",
+  "destructAfterDownload": "Kustuta pärast allalaadimist",
+  "destructNo": "Hoidke saadaval",
+  "sendButton": "Saada",
+  "uploading": "Üleslaadimine…",
+  "uploadComplete": "Valmis",
+  "shareLinkTitle": "Sinu link",
+  "copyLink": "Kopeeri link",
+  "share": "Jaga",
+  "shareQrCode": "Jagage QR-koodi",
+  "uploadMore": "Saada teine",
+  "emailSentTitle": "E-kirjad saadetud",
+  "verifyEmailTitle": "Kinnitage oma e-posti aadress",
+  "verifyCodeHint": "Sisestage oma meilist saadud kood",
+  "verifySubmit": "Kinnitage",
+  "verifyResendCode": "Saada kood uuesti",
+  "verifyCodeSent": "Teie meilile saadeti uus kinnituskood.",
+  "verifyEmailSmtpWarningTitle": "Võimalik, et kinnitusmeili ei saadetud",
+  "verifyEmailSmtpWarningBody": "Server ei saanud kohaletoimetamist kinnitada (sageli on SMTP valesti konfigureeritud). Paluge saidi administraatoril kontrollida administraatoripaneelil meiliseadeid, seejärel puudutage nuppu Saada kood uuesti.",
+  "verifyEmailCheckSpamHint": "Kui see ei saabu: kontrollige Rämpspost/Rämpspost ja Pakkumised, oodake minut, veenduge, et <<PH0>> pole kirjavigu, seejärel puudutage Saada uuesti.",
+  "loginTitle": "Logi sisse",
+  "signupHint": "Kasutage oma saidi konto e-posti aadressi ja parooli.",
+  "emailHint": "Meil",
+  "passwordHint": "Parool",
+  "cancel": "Tühista",
+  "signIn": "Logi sisse",
+  "downloadIdHint": "Ülekande ID",
+  "privateIdHint": "Isiklik ID (valikuline)",
+  "fetchTransfer": "Avage ülekanne",
+  "downloadFile": "Laadi alla",
+  "unlockDownload": "Avage allalaadimine",
+  "downloadSaved": "Salvestatud allalaadimiste alla",
+  "errorGeneric": "Midagi läks valesti",
+  "errorNetwork": "Võrgu viga",
+  "errorBadResponse": "Ootamatu serveri vastus",
+  "termsAccept": "Nõustun tingimustega",
+  "settingsApiUrl": "Avaliku saidi URL",
+  "settingsAccount": "konto",
+  "settingsAppearance": "Välimus",
+  "settingsTheme": "Teema",
+  "themeSystem": "Süsteem",
+  "themeLight": "Valgus",
+  "themeDark": "Tume",
+  "settingsSignedIn": "Olete sisse logitud.",
+  "settingsSignedOut": "Te pole sisse logitud.",
+  "settingsOpenWebsite": "Ava veebisait",
+  "signUp": "Registreeruge",
+  "settingsLinks": "Lingid",
+  "privacyPolicy": "Privaatsuspoliitika",
+  "termsOfService": "Kasutustingimused",
+  "about": "Umbes",
+  "moreApps": "Rohkem rakendusi",
+  "settingsLanguage": "Keel",
+  "languageEnglish": "inglise keel",
+  "languageHindi": "hindi",
+  "logout": "Logi välja",
+  "deleteAccount": "Kustuta konto",
+  "deleteAccountConfirmTitle": "Kas kustutada oma konto?",
+  "deleteAccountConfirmBody": "See kustutab teie konto jäädavalt ja logib teid välja. Teie edastuslingid töötavad edasi, kuid neid ei kuvata enam teie ajaloos.",
+  "deleteAccountSuccess": "Konto kustutatud",
+  "deleteAccountSuccessBody": "Teie konto on eemaldatud.",
+  "deleteAccountFailed": "Kontot ei saanud kustutada",
+  "deleteAccountFailedBody": "Proovige uuesti või võtke ühendust toega.",
+  "maxFilesReached": "Liiga palju faile",
+  "fileTooLarge": "Fail on liiga suur",
+  "ipLimit": "Liiga palju üleslaadimisi sellest võrgust",
+  "fillFields": "Palun täitke nõutud väljad",
+  "invalidEmail": "Kehtetu e-posti aadress",
+  "maxRecipientsReached": "Liiga palju saajaid",
+  "loginRequiredTitle": "Sisselogimine on vajalik",
+  "loginRequiredBody": "See server nõuab üles- või allalaadimiseks kontot.",
+  "settingsSubtitle": "Rakenduse eelistused ja konto.",
+  "dropHeavyFile": "Pukseerige siia raske fail.",
+  "upToTotal": "Kokku kuni <<PH0>>",
+  "removeAll": "Eemalda kõik",
+  "addFiles": "Lisa faile",
+  "adding": "Lisamine…",
+  "options": "Valikud",
+  "selfDestruct": "Enesehävitus pärast allalaadimist",
+  "expiry": "Aegumine",
+  "cancelUpload": "Tühista üleslaadimine",
+  "transferReady": "Ülekanne valmis!",
+  "emailSentReady": "Meil saadetud!",
+  "shareRecipientHint": "Jagage seda linki oma adressaadiga.",
+  "emailSentBody": "Teavitasime teie adressaate.",
+  "scanQr": "Edastuslingi avamiseks skannige.",
+  "shareLinkButton": "JAGA LINKI",
+  "verifyFourDigit": "Sisestage saatja meilile saadetud 4-kohaline kood.",
+  "starting": "Alustatakse…",
+  "mbLeft": "<<PH0>> MB jäänud",
+  "fillField": "Palun täitke see väli.",
+  "enterValidEmail": "Sisestage kehtiv e-posti aadress.",
+  "message": "Sõnum",
+  "recipientEmail": "Saaja meiliaadress",
+  "active": "Aktiivne",
+  "expired": "Aegunud",
+  "historyTitle": "Minu ülekanded",
+  "signInToSeeTransfers": "Ülekannete nägemiseks logige sisse",
+  "signInTransfersBody": "Kasutame teie e-posti, et linkida ülekanne teie kontoga – parooli pole vaja.",
+  "couldNotLoadTransfers": "Edastusi ei saanud laadida",
+  "retry": "Proovi uuesti",
+  "noTransfersYet": "Ülekannet pole veel",
+  "noTransfersBody": "Kui olete faili saatnud, kuvatakse see siin.",
+  "transferDetails": "Ülekande üksikasjad",
+  "filesSection": "Failid",
+  "receiveTitle": "Failide vastuvõtmine",
+  "receiveSubtitle": "Failide allalaadimiseks kleepige edastuslink.",
+  "pasteTooltip": "Kleebi",
+  "findTransfer": "Otsige ülekanne",
+  "receiveScanQr": "Skaneeri QR",
+  "receiveScanQrTitle": "Skanni ülekande QR",
+  "receiveScanQrHint": "Joondage QR-kood raami sees.",
+  "receiveScanQrInvalid": "See QR-kood ei ole kehtiv edastuslink.",
+  "receiveScanQrCameraDenied": "QR-koodide skannimiseks on vajalik juurdepääs kaamerale.",
+  "receiveStepGetLink": "Hangi link",
+  "receiveStepGetLinkBody": "Paluge saatjal edastuslinki teiega jagada.",
+  "receiveStepPaste": "Kleebi ja otsi",
+  "receiveStepPasteBody": "Kleepige ülalolev link ja puudutage \"Leia ülekanne\".",
+  "receiveStepDownload": "Laadige alla failid",
+  "receiveStepDownloadBody": "Vaadake faili üksikasju ja laadige kõik korraga alla.",
+  "lookingUpTransfer": "Ülekande otsimine…",
+  "transferNotFound": "Ülekannet ei leitud. Kontrollige linki ja proovige uuesti.",
+  "transferExpired": "See ülekanne on aegunud ja pole enam saadaval.",
+  "transferLoginRequired": "Sellele ülekandele juurdepääsuks on vaja sisse logida.",
+  "transferBadResponse": "Ootamatu serveri vastus. Kontrollige ühendust.",
+  "transferNetworkError": "Võrgu viga. Kontrollige oma Interneti-ühendust.",
+  "transferLoadFailed": "Ülekannet ei saanud laadida: <<PH0>>",
+  "passwordProtected": "Parooliga kaitstud",
+  "enterPassword": "Sisestage parool",
+  "unlock": "Avage lukustus",
+  "downloading": "Allalaadimine…",
+  "downloadAllFiles": "Laadige alla kõik failid",
+  "downloadSingleFile": "Laadige fail alla",
+  "receiveAnother": "Saate uue ülekande",
+  "plansTitle": "Plaanid",
+  "plansSubtitle": "Uuendage reklaamide eemaldamiseks ja suuremate failide saatmiseks.",
+  "storeUnavailable": "Kauplus pole saadaval",
+  "storeUnavailableBody": "Rakendusesisesed ostud pole praegu saadaval.",
+  "storeLoadingPrices": "Hindade laadimine App Store'ist…",
+  "storePricesUnavailable": "Hinnad pole saadaval",
+  "storePricesPartial": "Mõnda hinda ei saanud laadida",
+  "storePricesPartialBody": "<<PH0>> / <<PH1>> tellimustoodetest on laaditud.",
+  "storeSetupHint": "Testige tõelises iPhone'is (mitte Simulaatoris), kasutage liivakasti Apple ID-d ja veenduge, et kõik 6 tellimust luuakse selle rakenduse komplekti ID all App Store Connectis koos hinnakujundusega.",
+  "effectiveMonthlyPrice": "<<PH0>>/kuus",
+  "freeVersionAds": "Praegu kasutate meie tasuta versiooni koos reklaamidega",
+  "restorePurchases": "Taasta ostud",
+  "plansContinue": "Jätka",
+  "planLinkRestore": "Taasta",
+  "termsAndConditions": "Tingimused",
+  "createAccountTitle": "Loo konto",
+  "signUpSubtitle": "Registreeruge e-posti ja parooliga.",
+  "confirmPassword": "Kinnitage parool",
+  "passwordMin8": "Parool (vähemalt 8 tähemärki)",
+  "alreadyHaveAccount": "Kas teil on juba konto?",
+  "checkEmailTitle": "Kontrollige oma\nemail",
+  "otpSentTo": "Saatsime 6-kohalise koodi aadressile\n<<PH0>>",
+  "verifyAndSignIn": "Kinnitage ja logige sisse",
+  "didntReceiveCode": "Ei saanud kätte?",
+  "tryAgain": "Proovi uuesti",
+  "otpExpiresHint": "Kood aegub 5 minuti pärast. Kontrollige oma rämpsposti kausta, kui te seda ei näe.",
+  "snackError": "Viga",
+  "snackCopied": "Kopeeritud",
+  "snackCopiedBody": "Link on lõikelauale kopeeritud",
+  "snackWelcome": "Tere tulemast",
+  "snackAccountCreated": "Konto loodud",
+  "snackEnterEmail": "Palun sisesta oma email",
+  "snackEnterPassword": "Palun sisesta oma parool",
+  "snackInvalidEmail": "Vale e-posti aadress",
+  "snackInvalidCredentials": "Vale e-posti aadress või parool",
+  "snackPasswordMin8": "Parool peab koosnema vähemalt 8 tähemärgist",
+  "snackPasswordMismatch": "Paroolid ei ühti.",
+  "snackAccountExists": "Konto on juba olemas. Palun logi sisse.",
+  "snackSignupFailed": "Kontot ei saanud luua. Proovi uuesti.",
+  "snackEnterOtp": "Sisestage 6-kohaline kood",
+  "snackOtpExpired": "Kood aegunud",
+  "snackOtpExpiredBody": "Taotlege uut koodi.",
+  "snackInvalidCode": "Vale kood",
+  "snackInvalidCodeBody": "Kood on vale. Palun proovi uuesti.",
+  "snackSendCodeFailed": "Koodi ei saanud saata. Kontrollige ühendust ja proovige uuesti.",
+  "snackEmptyFolder": "Tühi kaust",
+  "snackEmptyFolderBody": "Valitud kaustast ei leitud ühtegi faili.",
+  "snackFolderUnsupported": "Ei toetata",
+  "snackFolderUnsupportedBody": "Kausta üleslaadimine pole sellel platvormil saadaval.",
+  "snackFolderReadError": "Valitud kausta ei õnnestunud lugeda.",
+  "snackLimitReached": "Limiit saavutatud",
+  "snackLimitFilesBody": "Mõnda faili ei lisatud suuruse või failide arvu piirangute tõttu.",
+  "snackFreePlanLimit": "Tasuta pakett võimaldab kuni 5 GB ülekande kohta. Palun eemaldage mõned failid või uuendage.",
+  "snackSignInEmail": "Meili teel saatmiseks logige sisse.",
+  "snackUploadStartFailed": "Üleslaadimist ei saanud alustada.",
+  "snackVerifyEnterCode": "Sisestage oma meilist saadud 4-kohaline kood.",
+  "snackVerifyInvalid": "Kehtetu või aegunud kood. Kontrollige meili ja proovige uuesti.",
+  "snackVerifyResendFailed": "Koodi ei saanud uuesti saata. Proovi uuesti.",
+  "snackDownloadComplete": "Allalaadimine on lõpetatud",
+  "snackDownloadSaved": "\"<<PH0>>\" salvestati allalaadimiste alla",
+  "snackDownloadFailed": "Allalaadimine ebaõnnestus",
+  "snackSaved": "Salvestatud",
+  "snackServerUrlUpdated": "Serveri URL-i värskendati. Rakendamiseks taaskäivitage rakendus.",
+  "snackStoreError": "Poe viga",
+  "snackMissingProducts": "Puuduvad tooted",
+  "snackStoreUnavailable": "Kauplus pole saadaval",
+  "snackStoreUnavailableBody": "Rakendusesisesed ostud pole selles seadmes saadaval.",
+  "snackProductNotLoaded": "Toode pole veel laaditud.",
+  "snackRestoreStarted": "Taastamine algas",
+  "snackRestoreStartedBody": "Kontrollime teie oste.",
+  "snackRestoreFailed": "Taastamine ebaõnnestus",
+  "snackProcessing": "Töötlemine",
+  "snackPleaseWait": "Palun oota…",
+  "snackSuccess": "Edu",
+  "snackPurchaseCompleted": "Ost sooritatud.",
+  "snackPurchaseError": "Ostu viga",
+  "snackPurchaseFailed": "Ost ebaõnnestus.",
+  "snackCanceled": "Tühistatud",
+  "snackPurchaseCanceled": "Ost tühistatud.",
+  "snackUpload": "Laadi üles",
+  "snackVerify": "Kinnitage",
+  "doNotExpire": "Mitte aeguda",
+  "hourSingular": "tund",
+  "hourPlural": "tundi",
+  "daySingular": "päeval",
+  "dayPlural": "päevadel",
+  "emailAddressLabel": "MEILIAADRESS",
+  "passwordLabelCaps": "PAROOL",
+  "confirmPasswordLabelCaps": "KINNITA PAROOL",
+  "transferLinkOrId": "ÜLEKANDE LINK VÕI ID",
+  "howToReceive": "KUIDAS SAADA",
+  "planAdsTitle": "Reklaamiplaan",
+  "planAdsBullet1": "Juurdepääs reklaamivabale rakendusele",
+  "planAdsBullet2": "Eemalda kõik reklaamid",
+  "planProTitle": "Pro plaan",
+  "planProBullet1": "Saatke kuni 20 GB faile",
+  "planProBullet2": "Kiire üleslaadimine",
+  "planPremiumTitle": "Premium-pakett",
+  "planPremiumBullet1": "Saatke kuni 100 GB faile",
+  "planPremiumBullet2": "Super kiire üleslaadimine",
+  "planSubscriptionDisclaimer": "Prooviperioodi pole – rakenduse lisafunktsioonide kasutamiseks on vajalik tellimus. Teilt võetakse kohe tasu. Saate igal ajal tühistada.",
+  "perMonth": "/ kuus",
+  "perYear": "/ aasta",
+  "snackConnectionProblem": "Ühenduse probleem. Palun proovi uuesti.",
+  "networkTitle": "Võrk",
+  "transferIdLabel": "ID: <<PH0>>",
+  "downloadMetaSummary": "Failid: <<PH0>> · <<PH1>> baiti",
+  "todayAt": "Täna · <<PH0>>",
+  "yesterdayAt": "Eile · <<PH0>>",
+  "daysAgoAt": "<<PH0>>p tagasi · <<PH1>>",
+  "dateAt": "<<PH0>> · <<PH1>>",
+  "mbAmount": "<<PH0>> MB",
+  "uploadProgressSummary": "<<PH0>> / <<PH1>> • <<PH2>> vasakule",
+  "loadingShort": "Laadimine…",
+  "colorPaletteTitle": "Värvipalett",
+  "colorPaletteSectionBackgrounds": "Taustad (tindi skaala)",
+  "colorPaletteSectionAccent": "Aktsent / Esmane",
+  "colorPaletteSectionText": "Tekst",
+  "colorPaletteSectionBorders": "Äärised ja klaas",
+  "colorPaletteSectionSemantic": "Semantiline",
+  "colorPaletteSectionLive": "Reaalajas teema (praegune)",
+  "colorPaletteActiveHint": "★ = kasutatakse aktiivselt ekraanidel",
+  "colorPaletteCopyHint": "Vajutage pikalt mis tahes proovi, et kopeerida selle kuueteistkümnendväärtust.",
+  "settingsAppBrand": "Jaga suur\nVideofailid",
+  "loginEmailPasswordPrompt": "Sisselogimiseks sisestage oma e-posti aadress ja parool.",
+  "forgotPassword": "Unustasid parooli?",
+  "forgotPasswordTitle": "Lähtestage parool",
+  "forgotPasswordBody": "Sisestage oma konto meiliaadress ja me saadame lähtestuskoodi.",
+  "forgotPasswordSubmit": "Saada lähtestamiskood",
+  "resetPasswordTitle": "Loo uus parool",
+  "resetPasswordBody": "Sisestage oma meilist saadud 6-kohaline kood ja valige uus parool.",
+  "resetPasswordSubmit": "Uuenda parooli",
+  "snackPasswordResetSent": "Lähtestamiskood saadeti",
+  "snackPasswordResetSentBody": "Kontrollige oma e-kirjast 6-kohalist lähtestuskoodi.",
+  "snackPasswordResetFailed": "Lähtestamiskoodi ei saanud saata. Proovi uuesti.",
+  "snackPasswordUpdated": "Parool uuendatud",
+  "snackPasswordUpdatedBody": "Logige sisse oma uue parooliga.",
+  "snackPasswordResetInvalid": "Vale või aegunud lähtestamiskood.",
+  "otpDigitLabel": "6-KOGiline KOOD",
+  "receiveMoreFiles": "+<<PH0>> rohkem faile"
+}

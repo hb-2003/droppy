@@ -1,0 +1,466 @@
+{
+  "@@locale": "eu",
+  "@verifyEmailCheckSpamHint": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@upToTotal": {
+    "placeholders": {
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "@filesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesCount": "{count, plural, =1{1 file} other{{count} files}}",
+  "@mbLeft": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@transferLoadFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@storePricesPartialBody": {
+    "placeholders": {
+      "loaded": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "priceUnavailable": "—",
+  "@effectiveMonthlyPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "@otpSentTo": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@snackDownloadSaved": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "emailExampleHint": "you@example.com",
+  "otpSixDigitHint": "000000",
+  "verifyFourDigitHint": "0000",
+  "transferLinkHint": "https://… or paste ID",
+  "@filesReady": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesReady": "{count, plural, =1{1 file ready} other{{count} files ready}}",
+  "@transferIdLabel": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadMetaSummary": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "@todayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@yesterdayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@daysAgoAt": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@dateAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@mbAmount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@uploadProgressSummary": {
+    "placeholders": {
+      "sent": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      },
+      "remaining": {
+        "type": "String"
+      }
+    }
+  },
+  "@historyFilesSize": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "historyFilesSize": "{count, plural, =1{1 file} other{{count} files}} · {size}",
+  "@receiveMoreFiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appTitle": "Partekatu bideo-fitxategi handiak",
+  "heroAccent": "berehala.",
+  "heroTitle": "Bidali fitxategi astunak",
+  "splashLoading": "Kargatzen…",
+  "navSend": "Aginte-panela",
+  "navHome": "Hasiera",
+  "navHistory": "Historia",
+  "navReceive": "Jaso",
+  "navPlans": "Planoak",
+  "navDownload": "Deskargatu",
+  "navSettings": "Ezarpenak",
+  "modeLink": "Lortu esteka",
+  "modeEmail": "Bidali posta elektronikoz",
+  "pickFiles": "Aukeratu fitxategiak",
+  "pickFolder": "Aukeratu karpeta",
+  "emailFrom": "Zure posta elektronikoa",
+  "mailFromUsesAccount": "Saioa hasitako helbide elektronikoa erabiltzen du.",
+  "recipientEmailsHelper": "Hartzaile anitz: bereiz ezazu koma, puntu eta koma edo zuriuneekin.",
+  "emailTo": "Hartzailearen posta elektronikoa",
+  "messageOptional": "Mezua (aukerakoa)",
+  "passwordOptional": "Pasahitza (aukerakoa)",
+  "destructAfterDownload": "Ezabatu deskargatu ondoren",
+  "destructNo": "Mantendu eskuragarri",
+  "sendButton": "Bidali",
+  "uploading": "Kargatzen…",
+  "uploadComplete": "Eginda",
+  "shareLinkTitle": "Zure esteka",
+  "copyLink": "Kopiatu esteka",
+  "share": "Partekatu",
+  "shareQrCode": "Partekatu QR kodea",
+  "uploadMore": "Beste bat bidali",
+  "emailSentTitle": "Bidalitako mezu elektronikoak",
+  "verifyEmailTitle": "Egiaztatu posta elektronikoa",
+  "verifyCodeHint": "Sartu zure posta elektronikoko kodea",
+  "verifySubmit": "Egiaztatu",
+  "verifyResendCode": "Birbidali kodea",
+  "verifyCodeSent": "Egiaztapen-kode berri bat bidali da zure posta elektronikora.",
+  "verifyEmailSmtpWarningTitle": "Baliteke egiaztapen-mezu elektronikoa ez bidali izana",
+  "verifyEmailSmtpWarningBody": "Zerbitzariak ezin izan du bidalketa baieztatu (askotan SMTP gaizki konfiguratuta dago). Eskatu zure guneko administratzaileari posta-ezarpenak egiaztatzeko administrazio-panelean, eta, ondoren, sakatu berriro bidali kodea.",
+  "verifyEmailCheckSpamHint": "Ez bada iristen: egiaztatu Zabor/Spam eta Promozioak, itxaron minutu bat, berretsi <<PH0>>k ez duela akatsik eta, ondoren, sakatu Bidali berriro.",
+  "loginTitle": "Hasi saioa",
+  "signupHint": "Erabili zure guneko kontuko helbide elektronikoa eta pasahitza.",
+  "emailHint": "Posta elektronikoa",
+  "passwordHint": "Pasahitza",
+  "cancel": "Utzi",
+  "signIn": "Hasi saioa",
+  "downloadIdHint": "Transferitu ID",
+  "privateIdHint": "NAN pribatua (aukerakoa)",
+  "fetchTransfer": "Ireki transferentzia",
+  "downloadFile": "Deskargatu",
+  "unlockDownload": "Desblokeatu deskarga",
+  "downloadSaved": "Deskargan gordeta",
+  "errorGeneric": "Zerbait gaizki joan da",
+  "errorNetwork": "Sareko errorea",
+  "errorBadResponse": "Ezusteko zerbitzariaren erantzuna",
+  "termsAccept": "Baldintzak onartzen ditut",
+  "settingsApiUrl": "Gune publikoaren URLa",
+  "settingsAccount": "Kontua",
+  "settingsAppearance": "Itxura",
+  "settingsTheme": "Gaia",
+  "themeSystem": "Sistema",
+  "themeLight": "Argia",
+  "themeDark": "Iluna",
+  "settingsSignedIn": "Saioa hasi duzu.",
+  "settingsSignedOut": "Ez duzu saioa hasita.",
+  "settingsOpenWebsite": "Ireki webgunea",
+  "signUp": "Izena eman",
+  "settingsLinks": "Estekak",
+  "privacyPolicy": "Pribatutasun politika",
+  "termsOfService": "Zerbitzu-baldintzak",
+  "about": "Buruz",
+  "moreApps": "Aplikazio gehiago",
+  "settingsLanguage": "Hizkuntza",
+  "languageEnglish": "ingelesa",
+  "languageHindi": "Hindia",
+  "logout": "Amaitu saioa",
+  "deleteAccount": "Ezabatu kontua",
+  "deleteAccountConfirmTitle": "Zure kontua ezabatu?",
+  "deleteAccountConfirmBody": "Honek betiko ezabatzen du zure kontua eta saioa amaitzen zaitu. Zure transferentzia-estekek funtzionatzen jarraituko dute, baina ez dira gehiago zure historian agertuko.",
+  "deleteAccountSuccess": "Kontua ezabatu da",
+  "deleteAccountSuccessBody": "Zure kontua kendu da.",
+  "deleteAccountFailed": "Ezin izan da kontua ezabatu",
+  "deleteAccountFailedBody": "Saiatu berriro edo jarri laguntzarekin harremanetan.",
+  "maxFilesReached": "Fitxategi gehiegi",
+  "fileTooLarge": "Fitxategi handiegia",
+  "ipLimit": "Kargatze gehiegi sare honetatik",
+  "fillFields": "Mesedez, bete beharrezko eremuak",
+  "invalidEmail": "Helbide elektroniko baliogabea",
+  "maxRecipientsReached": "Hartzaile gehiegi",
+  "loginRequiredTitle": "Saioa hasi behar da",
+  "loginRequiredBody": "Zerbitzari honek kontu bat behar du kargatzeko edo deskargatzeko.",
+  "settingsSubtitle": "Aplikazioaren hobespenak eta kontua.",
+  "dropHeavyFile": "Jaregin fitxategi astun bat hemen.",
+  "upToTotal": "Guztira <<PH0>> arte",
+  "removeAll": "Kendu guztiak",
+  "addFiles": "Gehitu fitxategiak",
+  "adding": "Gehitzen…",
+  "options": "Aukerak",
+  "selfDestruct": "Deskargatu ondoren autosuntsitu",
+  "expiry": "Iraungitzea",
+  "cancelUpload": "Utzi kargatzea",
+  "transferReady": "Transferentzia prest!",
+  "emailSentReady": "Bidali da mezu elektronikoa!",
+  "shareRecipientHint": "Partekatu esteka hau zure hartzailearekin.",
+  "emailSentBody": "Zure hartzaileei jakinarazi diegu.",
+  "scanQr": "Eskaneatu transferentzia esteka irekitzeko.",
+  "shareLinkButton": "PARTEKATU LOTURA",
+  "verifyFourDigit": "Sartu zure igorlearen posta elektronikora bidalitako lau digituko kodea.",
+  "starting": "Abiatzen…",
+  "mbLeft": "<<PH0>> MB geratzen dira",
+  "fillField": "Mesedez, bete eremu hau.",
+  "enterValidEmail": "Sartu baliozko posta elektroniko bat.",
+  "message": "Mezua",
+  "recipientEmail": "Hartzailearen posta elektronikoa",
+  "active": "Aktiboa",
+  "expired": "Iraungi egin da",
+  "historyTitle": "Nire transferentziak",
+  "signInToSeeTransfers": "Hasi saioa zure transferentziak ikusteko",
+  "signInTransfersBody": "Zure posta elektronikoa erabiltzen dugu transferentziak zure kontuarekin lotzeko, ez da pasahitzik behar.",
+  "couldNotLoadTransfers": "Ezin izan dira kargatu transferentziak",
+  "retry": "Saiatu berriro",
+  "noTransfersYet": "Oraindik ez dago transferentziarik",
+  "noTransfersBody": "Fitxategi bat bidali ondoren, hemen agertuko da.",
+  "transferDetails": "Transferitzeko xehetasunak",
+  "filesSection": "Fitxategiak",
+  "receiveTitle": "Fitxategiak jaso",
+  "receiveSubtitle": "Itsatsi transferentzia-esteka fitxategiak deskargatzeko.",
+  "pasteTooltip": "Itsatsi",
+  "findTransfer": "Bilatu Transfer",
+  "receiveScanQr": "Eskaneatu QR",
+  "receiveScanQrTitle": "Eskaneatu transferentzia QR",
+  "receiveScanQrHint": "Lerrokatu QR kodea markoaren barruan.",
+  "receiveScanQrInvalid": "QR kode hau ez da baliozko transferentzia-esteka bat.",
+  "receiveScanQrCameraDenied": "Kamera sarbidea behar da QR kodeak eskaneatzeko.",
+  "receiveStepGetLink": "Lortu esteka",
+  "receiveStepGetLinkBody": "Eskatu igorleari transferentzia-esteka zurekin partekatzeko.",
+  "receiveStepPaste": "Itsatsi eta aurkitu",
+  "receiveStepPasteBody": "Itsatsi goiko esteka eta sakatu \"Bilatu transferentzia\".",
+  "receiveStepDownload": "Deskargatu fitxategiak",
+  "receiveStepDownloadBody": "Ikusi fitxategiaren xehetasunak eta deskargatu guztia aldi berean.",
+  "lookingUpTransfer": "Transferentzia bilatzen…",
+  "transferNotFound": "Ez da transferentzia aurkitu. Egiaztatu esteka eta saiatu berriro.",
+  "transferExpired": "Transferentzia hau iraungi da eta jada ez dago erabilgarri.",
+  "transferLoginRequired": "Transferentzia honetara atzitzeko, saioa hasi behar da.",
+  "transferBadResponse": "Ezusteko zerbitzariaren erantzuna. Egiaztatu zure konexioa.",
+  "transferNetworkError": "Sareko errorea. Egiaztatu Interneteko konexioa.",
+  "transferLoadFailed": "Ezin izan da transferentzia kargatu: <<PH0>>",
+  "passwordProtected": "Pasahitz babestuta",
+  "enterPassword": "Sartu pasahitza",
+  "unlock": "Desblokeatu",
+  "downloading": "Deskargatzen…",
+  "downloadAllFiles": "Deskargatu fitxategi guztiak",
+  "downloadSingleFile": "Deskargatu fitxategia",
+  "receiveAnother": "Jaso beste transferentzia bat",
+  "plansTitle": "Planoak",
+  "plansSubtitle": "Berritu iragarkiak kentzeko eta fitxategi handiagoak bidaltzeko.",
+  "storeUnavailable": "Denda ez dago erabilgarri",
+  "storeUnavailableBody": "Aplikazio barruko erosketak ez daude eskuragarri une honetan.",
+  "storeLoadingPrices": "App Store-tik prezioak kargatzen…",
+  "storePricesUnavailable": "Prezioak ez daude eskuragarri",
+  "storePricesPartial": "Prezio batzuk ezin izan dira kargatu",
+  "storePricesPartialBody": "Harpidetza-produktuen <<PH0>> kargatu da.",
+  "storeSetupHint": "Probatu benetako iPhone batean (ez Simulator), erabili Sandbox Apple ID bat eta ziurtatu 6 harpidetza guztiak aplikazio honen sortaren IDarekin sortu direla App Store Connect-en prezioak ezarrita.",
+  "effectiveMonthlyPrice": "<<PH0>>/hilabete",
+  "freeVersionAds": "Une honetan gure doako bertsioa erabiltzen ari zara iragarkiekin",
+  "restorePurchases": "Berrezarri erosketak",
+  "plansContinue": "Jarraitu",
+  "planLinkRestore": "Berreskuratu",
+  "termsAndConditions": "Baldintzak",
+  "createAccountTitle": "Sortu kontua",
+  "signUpSubtitle": "Eman izena e-posta eta pasahitzarekin.",
+  "confirmPassword": "Berretsi pasahitza",
+  "passwordMin8": "Pasahitza (gutxienez 8 karaktere)",
+  "alreadyHaveAccount": "Kontu bat al duzu dagoeneko?",
+  "checkEmailTitle": "Egiaztatu zure\nposta elektronikoa",
+  "otpSentTo": "6 digituko kodea bidali genion\n<<PH0>>",
+  "verifyAndSignIn": "Egiaztatu eta hasi saioa",
+  "didntReceiveCode": "Ez al duzu jaso?",
+  "tryAgain": "Saiatu berriro",
+  "otpExpiresHint": "Kodea 5 minutu barru iraungiko da. Begiratu spam karpeta ez baduzu ikusten.",
+  "snackError": "Errorea",
+  "snackCopied": "Kopiatua",
+  "snackCopiedBody": "Esteka arbelean kopiatu da",
+  "snackWelcome": "Ongi etorri",
+  "snackAccountCreated": "Kontua sortu da",
+  "snackEnterEmail": "Mesedez, sartu zure helbide elektronikoa",
+  "snackEnterPassword": "Mesedez, sartu zure pasahitza",
+  "snackInvalidEmail": "Helbide elektroniko baliogabea",
+  "snackInvalidCredentials": "Helbide elektronikoa edo pasahitza okerra",
+  "snackPasswordMin8": "Pasahitzak 8 karaktere izan behar ditu gutxienez",
+  "snackPasswordMismatch": "Pasahitzak ez datoz bat.",
+  "snackAccountExists": "Kontua badago jada. Mesedez, hasi saioa.",
+  "snackSignupFailed": "Ezin izan da kontua sortu. Saiatu berriro.",
+  "snackEnterOtp": "Mesedez, sartu 6 digituko kodea",
+  "snackOtpExpired": "Kodea iraungi da",
+  "snackOtpExpiredBody": "Mesedez, eskatu kode berri bat.",
+  "snackInvalidCode": "Kode baliogabea",
+  "snackInvalidCodeBody": "Kodea okerra da. Mesedez, saiatu berriro.",
+  "snackSendCodeFailed": "Ezin izan da kodea bidali. Egiaztatu konexioa eta saiatu berriro.",
+  "snackEmptyFolder": "Karpeta hutsa",
+  "snackEmptyFolderBody": "Ez da fitxategirik aurkitu hautatutako karpetan.",
+  "snackFolderUnsupported": "Ez da onartzen",
+  "snackFolderUnsupportedBody": "Karpetak kargatzea ez dago erabilgarri plataforma honetan.",
+  "snackFolderReadError": "Ezin izan da hautatutako karpeta irakurri.",
+  "snackLimitReached": "Muga iritsi da",
+  "snackLimitFilesBody": "Fitxategi batzuk ez dira gehitu tamaina edo fitxategi kopuruaren mugengatik.",
+  "snackFreePlanLimit": "Doako planak transferentzia bakoitzeko 5 GB gehienez onartzen ditu. Mesedez, kendu fitxategi batzuk edo berritu.",
+  "snackSignInEmail": "Mesedez, hasi saioa e-postaz bidaltzeko.",
+  "snackUploadStartFailed": "Ezin izan da kargatzen hasi.",
+  "snackVerifyEnterCode": "Sartu zure posta elektronikoko 4 digituko kodea.",
+  "snackVerifyInvalid": "Kode baliogabea edo iraungita. Egiaztatu posta elektronikoa eta saiatu berriro.",
+  "snackVerifyResendFailed": "Ezin izan da kodea berriro bidali. Saiatu berriro.",
+  "snackDownloadComplete": "Deskarga osatuta",
+  "snackDownloadSaved": "\"<<PH0>>\" Deskargak atalean gorde da",
+  "snackDownloadFailed": "Deskargatu huts egin du",
+  "snackSaved": "Gorde",
+  "snackServerUrlUpdated": "Zerbitzariaren URLa eguneratu da. Berrabiarazi aplikazioa aplikatzeko.",
+  "snackStoreError": "Gorde-errorea",
+  "snackMissingProducts": "Produktuak falta dira",
+  "snackStoreUnavailable": "Denda ez dago erabilgarri",
+  "snackStoreUnavailableBody": "Aplikazio barruko erosketak ez daude erabilgarri gailu honetan.",
+  "snackProductNotLoaded": "Produktua ez dago oraindik kargatu.",
+  "snackRestoreStarted": "Berreskuratzea hasi da",
+  "snackRestoreStartedBody": "Zure erosketak egiaztatzen ari gara.",
+  "snackRestoreFailed": "Berreskuratu huts egin du",
+  "snackProcessing": "Tramitazioa",
+  "snackPleaseWait": "Mesedez, itxaron...",
+  "snackSuccess": "Arrakasta",
+  "snackPurchaseCompleted": "Erosketa amaitu da.",
+  "snackPurchaseError": "Erosketa errorea",
+  "snackPurchaseFailed": "Erosketak huts egin du.",
+  "snackCanceled": "Bertan behera utzita",
+  "snackPurchaseCanceled": "Erosketa bertan behera utzi da.",
+  "snackUpload": "Kargatu",
+  "snackVerify": "Egiaztatu",
+  "doNotExpire": "Ez iraungi",
+  "hourSingular": "ordua",
+  "hourPlural": "orduak",
+  "daySingular": "eguna",
+  "dayPlural": "egunak",
+  "emailAddressLabel": "HELBIDE POSTUA",
+  "passwordLabelCaps": "PASAHITZA",
+  "confirmPasswordLabelCaps": "BAIRMEZTU PASAHITZA",
+  "transferLinkOrId": "TRANSFERENTZIA LOTURA EDO ID",
+  "howToReceive": "NOLA JASO",
+  "planAdsTitle": "Iragarkien plana",
+  "planAdsBullet1": "Iragarkiak doan aplikaziorako sarbidea",
+  "planAdsBullet2": "Kendu iragarki guztiak",
+  "planProTitle": "Pro Plana",
+  "planProBullet1": "Bidali 20 GB arteko fitxategiak",
+  "planProBullet2": "Karga azkarra",
+  "planPremiumTitle": "Premium Plana",
+  "planPremiumBullet1": "Bidali 100 GB arteko fitxategiak",
+  "planPremiumBullet2": "Kargatze oso azkarra",
+  "planSubscriptionDisclaimer": "Ez dago probaldirik — harpidetza behar da aplikazioaren funtzionalitate gehigarria erabiltzeko. Berehala kobratuko zaizu. Edonoiz bertan behera utzi dezakezu.",
+  "perMonth": "/ hilabete",
+  "perYear": "/ urtea",
+  "snackConnectionProblem": "Konexio arazoa. Mesedez, saiatu berriro.",
+  "networkTitle": "Sarea",
+  "transferIdLabel": "ID: <<PH0>>",
+  "downloadMetaSummary": "Fitxategiak: <<PH0>> · <<PH1>> byte",
+  "todayAt": "Gaur · <<PH0>>",
+  "yesterdayAt": "Atzo · <<PH0>>",
+  "daysAgoAt": "Duela <<PH0>>d · <<PH1>>",
+  "dateAt": "<<PH0>> · <<PH1>>",
+  "mbAmount": "<<PH0>> MB",
+  "uploadProgressSummary": "<<PH0>> / <<PH1>> • <<PH2>> ezkerrean",
+  "loadingShort": "Kargatzen…",
+  "colorPaletteTitle": "Kolore Paleta",
+  "colorPaletteSectionBackgrounds": "Atzeko planoak (tinta eskala)",
+  "colorPaletteSectionAccent": "Azentua / Lehen mailakoa",
+  "colorPaletteSectionText": "Testua",
+  "colorPaletteSectionBorders": "Ertzak eta beira",
+  "colorPaletteSectionSemantic": "Semantikoa",
+  "colorPaletteSectionLive": "Zuzeneko gaia (unekoa)",
+  "colorPaletteActiveHint": "★ = Pantailetan aktiboki erabiltzen da",
+  "colorPaletteCopyHint": "Luze sakatu edozein lagin bere balio hexadezimala kopiatzeko.",
+  "settingsAppBrand": "Partekatu Handia\nBideo Fitxategiak",
+  "loginEmailPasswordPrompt": "Sartu zure helbide elektronikoa eta pasahitza saioa hasteko.",
+  "forgotPassword": "Pasahitza ahaztu duzu?",
+  "forgotPasswordTitle": "Berrezarri pasahitza",
+  "forgotPasswordBody": "Sartu zure kontuko helbide elektronikoa eta berrezarri kodea bidaliko dizugu.",
+  "forgotPasswordSubmit": "Bidali berrezartzeko kodea",
+  "resetPasswordTitle": "Sortu pasahitz berria",
+  "resetPasswordBody": "Sartu zure posta elektronikoko 6 digituko kodea eta aukeratu pasahitz berri bat.",
+  "resetPasswordSubmit": "Eguneratu pasahitza",
+  "snackPasswordResetSent": "Berrezarri kodea bidali da",
+  "snackPasswordResetSentBody": "Begiratu zure posta elektronikoa 6 digituko berrezartzeko kodea ikusteko.",
+  "snackPasswordResetFailed": "Ezin izan da berrezarri kodea bidali. Saiatu berriro.",
+  "snackPasswordUpdated": "Pasahitza eguneratu da",
+  "snackPasswordUpdatedBody": "Hasi saioa pasahitz berriarekin.",
+  "snackPasswordResetInvalid": "Berrezartzeko kodea baliogabea edo iraungi da.",
+  "otpDigitLabel": "6 ZIFFREN KODEA",
+  "receiveMoreFiles": "+<<PH0>> fitxategi gehiago"
+}

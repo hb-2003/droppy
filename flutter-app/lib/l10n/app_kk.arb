@@ -1,0 +1,466 @@
+{
+  "@@locale": "kk",
+  "@verifyEmailCheckSpamHint": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@upToTotal": {
+    "placeholders": {
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "@filesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesCount": "{count, plural, =1{1 file} other{{count} files}}",
+  "@mbLeft": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@transferLoadFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@storePricesPartialBody": {
+    "placeholders": {
+      "loaded": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "priceUnavailable": "—",
+  "@effectiveMonthlyPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "@otpSentTo": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@snackDownloadSaved": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "emailExampleHint": "you@example.com",
+  "otpSixDigitHint": "000000",
+  "verifyFourDigitHint": "0000",
+  "transferLinkHint": "https://… or paste ID",
+  "@filesReady": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesReady": "{count, plural, =1{1 file ready} other{{count} files ready}}",
+  "@transferIdLabel": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadMetaSummary": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "@todayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@yesterdayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@daysAgoAt": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@dateAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@mbAmount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@uploadProgressSummary": {
+    "placeholders": {
+      "sent": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      },
+      "remaining": {
+        "type": "String"
+      }
+    }
+  },
+  "@historyFilesSize": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "historyFilesSize": "{count, plural, =1{1 file} other{{count} files}} · {size}",
+  "@receiveMoreFiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appTitle": "Үлкен бейне файлдарын бөлісіңіз",
+  "heroAccent": "бірден.",
+  "heroTitle": "Ауыр файлдарды жіберіңіз",
+  "splashLoading": "Жүктелуде…",
+  "navSend": "Бақылау тақтасы",
+  "navHome": "Үй",
+  "navHistory": "Тарих",
+  "navReceive": "Қабылдау",
+  "navPlans": "Жоспарлар",
+  "navDownload": "Жүктеп алу",
+  "navSettings": "Параметрлер",
+  "modeLink": "Сілтеме алыңыз",
+  "modeEmail": "Электрондық пошта арқылы жіберу",
+  "pickFiles": "Файлдарды таңдаңыз",
+  "pickFolder": "Қалтаны таңдаңыз",
+  "emailFrom": "Сіздің электрондық поштаңыз",
+  "mailFromUsesAccount": "Жүйеге кірген электрондық поштаңызды пайдаланады.",
+  "recipientEmailsHelper": "Бірнеше алушы: үтірмен, нүктелі үтірмен немесе бос орындармен бөліңіз.",
+  "emailTo": "Алушының электрондық поштасы",
+  "messageOptional": "Хабарлама (міндетті емес)",
+  "passwordOptional": "Құпия сөз (міндетті емес)",
+  "destructAfterDownload": "Жүктеп алғаннан кейін жою",
+  "destructNo": "Қол жетімді қалдырыңыз",
+  "sendButton": "Жіберу",
+  "uploading": "Жүктеп салынуда…",
+  "uploadComplete": "Дайын",
+  "shareLinkTitle": "Сіздің сілтемеңіз",
+  "copyLink": "Сілтемені көшіру",
+  "share": "Бөлісу",
+  "shareQrCode": "QR кодын бөлісіңіз",
+  "uploadMore": "Басқасын жібер",
+  "emailSentTitle": "Электрондық хаттар жіберілді",
+  "verifyEmailTitle": "Электрондық поштаңызды растаңыз",
+  "verifyCodeHint": "Электрондық поштаңыздан кодты енгізіңіз",
+  "verifySubmit": "Тексеру",
+  "verifyResendCode": "Кодты қайта жіберу",
+  "verifyCodeSent": "Электрондық поштаңызға жаңа растау коды жіберілді.",
+  "verifyEmailSmtpWarningTitle": "Растау электрондық поштасы жіберілмеген болуы мүмкін",
+  "verifyEmailSmtpWarningBody": "Сервер жеткізуді растай алмады (көбінесе SMTP қате конфигурацияланады). Сайт әкімшісінен әкімші панелінде Пошта параметрлерін тексеруді сұраңыз, содан кейін Кодты қайта жіберу түймесін түртіңіз.",
+  "verifyEmailCheckSpamHint": "Егер ол келмесе: Қалаусыз/Спам және Жарнамаларды тексеріңіз, бір минут күтіңіз, <<PH0>> қатесі жоқ екенін растаңыз, содан кейін Қайта жіберу түймесін түртіңіз.",
+  "loginTitle": "Кіру",
+  "signupHint": "Сайт тіркелгісінің электрондық поштасы мен құпия сөзін пайдаланыңыз.",
+  "emailHint": "Электрондық пошта",
+  "passwordHint": "Құпия сөз",
+  "cancel": "Бас тарту",
+  "signIn": "Кіру",
+  "downloadIdHint": "Тасымалдау идентификаторы",
+  "privateIdHint": "Жеке идентификатор (міндетті емес)",
+  "fetchTransfer": "Ашық трансфер",
+  "downloadFile": "Жүктеп алу",
+  "unlockDownload": "Жүктеп алу құлпын ашу",
+  "downloadSaved": "Жүктеп алынғандар ішіне сақталды",
+  "errorGeneric": "Бірдеңе дұрыс болмады",
+  "errorNetwork": "Желі қатесі",
+  "errorBadResponse": "Күтпеген сервер жауабы",
+  "termsAccept": "Мен шарттармен келісемін",
+  "settingsApiUrl": "Қоғамдық сайт URL мекенжайы",
+  "settingsAccount": "Есептік жазба",
+  "settingsAppearance": "Сыртқы түрі",
+  "settingsTheme": "Тақырып",
+  "themeSystem": "Жүйе",
+  "themeLight": "Жарық",
+  "themeDark": "Қараңғы",
+  "settingsSignedIn": "Сіз жүйеге кірдіңіз.",
+  "settingsSignedOut": "Сіз жүйеге кірген жоқсыз.",
+  "settingsOpenWebsite": "Веб-сайтты ашу",
+  "signUp": "Тіркелу",
+  "settingsLinks": "Сілтемелер",
+  "privacyPolicy": "Құпиялылық саясаты",
+  "termsOfService": "Қызмет көрсету шарттары",
+  "about": "туралы",
+  "moreApps": "Қосымша қолданбалар",
+  "settingsLanguage": "Тіл",
+  "languageEnglish": "Ағылшын",
+  "languageHindi": "хинди",
+  "logout": "Шығу",
+  "deleteAccount": "Есептік жазбаны жою",
+  "deleteAccountConfirmTitle": "Есептік жазбаңызды жою керек пе?",
+  "deleteAccountConfirmBody": "Бұл есептік жазбаңызды біржола жояды және сізді жүйеден шығарады. Тасымалдау сілтемелері жұмысын жалғастырады, бірақ олар енді сіздің тарихыңызда көрсетілмейді.",
+  "deleteAccountSuccess": "Есептік жазба жойылды",
+  "deleteAccountSuccessBody": "Есептік жазбаңыз жойылды.",
+  "deleteAccountFailed": "Есептік жазба жойылмады",
+  "deleteAccountFailedBody": "Қайталап көріңіз немесе қолдау қызметіне хабарласыңыз.",
+  "maxFilesReached": "Тым көп файлдар",
+  "fileTooLarge": "Файл тым үлкен",
+  "ipLimit": "Бұл желіден жүктеп салулар тым көп",
+  "fillFields": "Міндетті өрістерді толтырыңыз",
+  "invalidEmail": "Жарамсыз электрондық пошта",
+  "maxRecipientsReached": "Алушылар тым көп",
+  "loginRequiredTitle": "Жүйеге кіру қажет",
+  "loginRequiredBody": "Бұл сервер жүктеп салу немесе жүктеп алу үшін тіркелгіні қажет етеді.",
+  "settingsSubtitle": "Қолданба теңшелімдері және есептік жазба.",
+  "dropHeavyFile": "Ауыр файлды осы жерге тастаңыз.",
+  "upToTotal": "Барлығы <<PH0>> дейін",
+  "removeAll": "Барлығын жою",
+  "addFiles": "Файлдарды қосыңыз",
+  "adding": "Қосылуда…",
+  "options": "Параметрлер",
+  "selfDestruct": "Жүктеп алғаннан кейін өзін-өзі жою",
+  "expiry": "Жарамдылық мерзімі",
+  "cancelUpload": "Жүктеп салудан бас тарту",
+  "transferReady": "Тасымалдау дайын!",
+  "emailSentReady": "Электрондық пошта жіберілді!",
+  "shareRecipientHint": "Осы сілтемені алушымен бөлісіңіз.",
+  "emailSentBody": "Біз сіздің алушы(ларыңызды) хабардар еттік.",
+  "scanQr": "Аударманы ашуға болады. сілтеме.",
+  "shareLinkButton": "SHARE LINK",
+  "verifyFourDigit": "Жіберушінің электрондық поштасына жіберілген 4 таңбалы кодты енгізіңіз.",
+  "starting": "Басталуда…",
+  "mbLeft": "<<PH0>> МБ қалды",
+  "fillField": "Осы өрісті дұрыс толтырыңыз.",
+  "enterValidEmail": "тер. email.",
+  "message": "Хабар",
+  "recipientEmail": "Алушының электрондық поштасы",
+  "active": "Белсенді",
+  "expired": "Мерзімі бітті",
+  "historyTitle": "Менің аударымдарым",
+  "signInToSeeTransfers": "Аударымдарыңызды көру үшін жүйеге кіріңіз",
+  "signInTransfersBody": "Біз электрондық поштаңызды пайдаланамыз",
+  "couldNotLoadTransfers": "Трансферттерді байланыстыру үшін тіркелгіңізді пайдаланамыз␐Co19␝Құпия сөзді байланыстыру қажет емес. тасымалдауларды жүктеме",
+  "retry": "Қайталау",
+  "noTransfersYet": "Тасымалдау әлі жоқ",
+  "noTransfersBody": "Файлды жібергеннен кейін ол осы жерде пайда болады.",
+  "transferDetails": "Тасымалдау мәліметтері",
+  "filesSection": "Файлдар",
+  "receiveTitle": "Файлдарды тасымалдауға",
+  "receiveSubtitle": "25␝6 Қайта жіберу сілтемесі файлдарды жүктеп алыңыз.",
+  "pasteTooltip": "Қою",
+  "findTransfer": "Тасымалдауды табу",
+  "receiveScanQr": "QR сканерлеу",
+  "receiveScanQrTitle": "Трансфертті сканерлеу QR",
+  "receiveScanQrHint": "ҚР кодын кадрдың ішіне туралаңыз.",
+  "receiveScanQrInvalid": "Бұл жарамды QR коды емес. сілтеме.",
+  "receiveScanQrCameraDenied": "QR кодтарын сканерлеу үшін камераға кіру қажет.",
+  "receiveStepGetLink": "Сілтемені алу",
+  "receiveStepGetLinkBody": "Жіберушіден тасымалдау сілтемесін сізбен бөлісуін сұраңыз.",
+  "receiveStepPaste": "Қою және табу",
+  "receiveStepPasteBody": "Жоғарыдағы сілтемені қою",
+  "receiveStepDownload": "«Жоғарыдағы сілтемені қою␐8» түймесін түртіңіз. файлдар",
+  "receiveStepDownloadBody": "Файл мәліметтерін қараңыз және барлығын бірден жүктеп алыңыз.",
+  "lookingUpTransfer": "Трансферт іздеуде…",
+  "transferNotFound": "Тасымалдау табылмады. Сілтемені тексеріп, әрекетті қайталаңыз.",
+  "transferExpired": "Бұл тасымалдаудың мерзімі аяқталды және енді қолжетімсіз.",
+  "transferLoginRequired": "Бұл тасымалдауға қол жеткізу үшін жүйеге кіру қажет.",
+  "transferBadResponse": "Күтпеген сервер жауабы. Байланысты тексеріңіз.",
+  "transferNetworkError": "Желі қатесі. Интернет байланысын тексеріңіз.",
+  "transferLoadFailed": "Тасымалдау жүктелмеді: <<PH0>>",
+  "passwordProtected": "Парольмен қорғалған",
+  "enterPassword": "Құпия сөзді енгізіңіз",
+  "unlock": "Құлыпты ашу",
+  "downloading": "Жүктеп алынуда…",
+  "downloadAllFiles": "Барлық файлдарды жүктеп алыңыз",
+  "downloadSingleFile": "Файлды жүктеп алу",
+  "receiveAnother": "Басқа аударымды алыңыз",
+  "plansTitle": "Жоспарлар",
+  "plansSubtitle": "Жарнаманы жою және үлкенірек файлдарды жіберу үшін жаңартыңыз.",
+  "storeUnavailable": "Дүкен қолжетімсіз",
+  "storeUnavailableBody": "Қолданба арқылы сатып алулар дәл қазір қолжетімді емес.",
+  "storeLoadingPrices": "App Store дүкенінен бағалар жүктелуде…",
+  "storePricesUnavailable": "Бағалар қолжетімді емес",
+  "storePricesPartial": "Кейбір бағаларды жүктеу мүмкін болмады",
+  "storePricesPartialBody": "<<PH1>> жазылым өнімдерінің <<PH0>> жүктелді.",
+  "storeSetupHint": "Нақты iPhone құрылғысында (Симулятор емес) сынақтан өткізіңіз, Apple ID идентификаторын пайдаланыңыз және барлық 6 жазылым осы қолданбаның бума идентификаторы астында App Store Connect бағалар жиынтығымен жасалғанына көз жеткізіңіз.",
+  "effectiveMonthlyPrice": "<<PH0>>/ай",
+  "freeVersionAds": "Қазіргі уақытта сіз жарнамалары бар тегін нұсқамызды пайдаланып жатырсыз",
+  "restorePurchases": "Сатып алуларды қалпына келтіріңіз",
+  "plansContinue": "Жалғастыру",
+  "planLinkRestore": "Қалпына келтіру",
+  "termsAndConditions": "Шарттар мен шарттар",
+  "createAccountTitle": "Аккаунт ашу",
+  "signUpSubtitle": "Электрондық пошта мен құпия сөзбен тіркеліңіз.",
+  "confirmPassword": "Құпия сөзді Растау",
+  "passwordMin8": "Құпия сөз (кем дегенде 8 таңба)",
+  "alreadyHaveAccount": "Есептік жазбаңыз бар ма?",
+  "checkEmailTitle": "Өзіңізді тексеріңіз\nэлектрондық пошта",
+  "otpSentTo": "Біз 6 таңбалы кодты жібердік\n<<PH0>>",
+  "verifyAndSignIn": "Тексеру және кіру",
+  "didntReceiveCode": "Оны алмадыңыз ба?",
+  "tryAgain": "Қайтадан байқап көріңіз",
+  "otpExpiresHint": "Кодтың мерзімі 5 минутта аяқталады. Егер сіз оны көрмесеңіз, спам қалтаңызды тексеріңіз.",
+  "snackError": "Қате",
+  "snackCopied": "Көшірілген",
+  "snackCopiedBody": "Сілтеме алмасу буферіне көшірілді",
+  "snackWelcome": "Қош келдіңіз",
+  "snackAccountCreated": "Тіркелгі жасалды",
+  "snackEnterEmail": "Электрондық поштаңызды енгізіңіз",
+  "snackEnterPassword": "Құпия сөзіңізді енгізіңіз",
+  "snackInvalidEmail": "Жарамсыз электрондық пошта мекенжайы",
+  "snackInvalidCredentials": "Қате электрондық пошта немесе құпия сөз",
+  "snackPasswordMin8": "Құпия сөз кемінде 8 таңбадан тұруы керек",
+  "snackPasswordMismatch": "Құпия сөздер сәйкес келмейді.",
+  "snackAccountExists": "Есептік жазба бұрыннан бар. Жүйеге кіріңіз.",
+  "snackSignupFailed": "Есептік жазба жасау мүмкін емес. Қайтадан байқап көріңіз.",
+  "snackEnterOtp": "6 таңбалы кодты енгізіңіз",
+  "snackOtpExpired": "Кодтың мерзімі аяқталды",
+  "snackOtpExpiredBody": "Жаңа кодты сұраңыз.",
+  "snackInvalidCode": "Жарамсыз код",
+  "snackInvalidCodeBody": "Код дұрыс емес. Қайталап көріңіз.",
+  "snackSendCodeFailed": "Код жіберілмеді. Байланысты тексеріп, әрекетті қайталаңыз.",
+  "snackEmptyFolder": "Бос қалта",
+  "snackEmptyFolderBody": "Таңдалған қалтада файлдар табылмады.",
+  "snackFolderUnsupported": "Қолдау көрсетілмейді",
+  "snackFolderUnsupportedBody": "Бұл платформада қалтаны жүктеп салу мүмкін емес.",
+  "snackFolderReadError": "Таңдалған қалтаны оқу мүмкін емес.",
+  "snackLimitReached": "Шектеуге жетті",
+  "snackLimitFilesBody": "Кейбір файлдар өлшемі немесе файлдар саны шектеулеріне байланысты қосылмады.",
+  "snackFreePlanLimit": "Тегін жоспар бір аударым үшін 5 ГБ дейін мүмкіндік береді. Кейбір файлдарды жойыңыз немесе жаңартыңыз.",
+  "snackSignInEmail": "Электрондық пошта арқылы жіберу үшін жүйеге кіріңіз.",
+  "snackUploadStartFailed": "Жүктеп салуды бастау мүмкін болмады.",
+  "snackVerifyEnterCode": "Электрондық поштаңыздан 4 таңбалы кодты енгізіңіз.",
+  "snackVerifyInvalid": "Жарамсыз немесе мерзімі өтіп кеткен код. Электрондық поштаны тексеріп, әрекетті қайталаңыз.",
+  "snackVerifyResendFailed": "Кодты қайта жіберу мүмкін болмады. Қайтадан байқап көріңіз.",
+  "snackDownloadComplete": "Жүктеп алу аяқталды",
+  "snackDownloadSaved": "\"<<PH0>>\" Жүктеулер ішіне сақталды",
+  "snackDownloadFailed": "Жүктеп алу сәтсіз аяқталды",
+  "snackSaved": "Сақталды",
+  "snackServerUrlUpdated": "Сервер URL мекенжайы жаңартылды. Қолдану үшін қолданбаны қайта іске қосыңыз.",
+  "snackStoreError": "Дүкен қатесі",
+  "snackMissingProducts": "Жетіспейтін өнімдер",
+  "snackStoreUnavailable": "Дүкен қолжетімсіз",
+  "snackStoreUnavailableBody": "Бұл құрылғыда қолданба арқылы сатып алу мүмкін емес.",
+  "snackProductNotLoaded": "Өнім әлі жүктелмеген.",
+  "snackRestoreStarted": "Қалпына келтіру басталды",
+  "snackRestoreStartedBody": "Сатып алуларыңызды тексеріп жатырмыз.",
+  "snackRestoreFailed": "Қалпына келтіру сәтсіз аяқталды",
+  "snackProcessing": "Өңдеу",
+  "snackPleaseWait": "Күте тұрыңыз…",
+  "snackSuccess": "Сәттілік",
+  "snackPurchaseCompleted": "Сатып алу аяқталды.",
+  "snackPurchaseError": "Сатып алу қатесі",
+  "snackPurchaseFailed": "Сатып алу сәтсіз аяқталды.",
+  "snackCanceled": "Бас тартылды",
+  "snackPurchaseCanceled": "Сатып алудан бас тартылды.",
+  "snackUpload": "Жүктеп салу",
+  "snackVerify": "Тексеру",
+  "doNotExpire": "Мерзімі аяқталмайды",
+  "hourSingular": "сағат",
+  "hourPlural": "сағат",
+  "daySingular": "күні",
+  "dayPlural": "күндер",
+  "emailAddressLabel": "ЭЛЕКТРОНДЫҚ ПОШТАНЫҢ АДРЕСІ",
+  "passwordLabelCaps": "ҚҰПИЯ СӨЗ",
+  "confirmPasswordLabelCaps": "ҚҰПИЯ СӨЗДІ РАСТАУ",
+  "transferLinkOrId": "ТАСЫМАЛУ СІЛТЕМЕСІ НЕМЕСЕ ИД",
+  "howToReceive": "ҚАЛАЙ ҚАБЫЛДАУ КЕРЕК",
+  "planAdsTitle": "Жарнамалар жоспары",
+  "planAdsBullet1": "Жарнамасыз қолданбаға қол жеткізу",
+  "planAdsBullet2": "Барлық жарнамаларды алып тастаңыз",
+  "planProTitle": "Pro жоспары",
+  "planProBullet1": "20 ГБ дейінгі файлдарды жіберіңіз",
+  "planProBullet2": "Жылдам жүктеп салу",
+  "planPremiumTitle": "Премиум жоспар",
+  "planPremiumBullet1": "100 ГБ дейінгі файлдарды жіберіңіз",
+  "planPremiumBullet2": "Өте жылдам жүктеп салу",
+  "planSubscriptionDisclaimer": "Сынақ мерзімі жоқ — қолданбаның қосымша мүмкіндіктерін пайдалану үшін жазылым қажет. Сізден бірден ақы алынады. Кез келген уақытта бас тарта аласыз.",
+  "perMonth": "/ай",
+  "perYear": "/ жыл",
+  "snackConnectionProblem": "Қосылым мәселесі. Қайталап көріңіз.",
+  "networkTitle": "Желі",
+  "transferIdLabel": "ID: <<PH0>>",
+  "downloadMetaSummary": "Файлдар: <<PH0>> · <<PH1>> байт",
+  "todayAt": "Бүгін · <<PH0>>",
+  "yesterdayAt": "Кеше · <<PH0>>",
+  "daysAgoAt": "<<PH0>>күн бұрын · <<PH1>>",
+  "dateAt": "<<PH0>> · <<PH1>>",
+  "mbAmount": "<<PH0>> МБ",
+  "uploadProgressSummary": "<<PH0>> / <<PH1>> • <<PH2>> солға",
+  "loadingShort": "Жүктелуде…",
+  "colorPaletteTitle": "Түс палитрасы",
+  "colorPaletteSectionBackgrounds": "Фондар (сия масштабы)",
+  "colorPaletteSectionAccent": "Екпін/Негізгі",
+  "colorPaletteSectionText": "Мәтін",
+  "colorPaletteSectionBorders": "Жиектер және шыны",
+  "colorPaletteSectionSemantic": "Семантикалық",
+  "colorPaletteSectionLive": "Тікелей тақырып (ағымдағы)",
+  "colorPaletteActiveHint": "★ = экрандарда белсенді қолданылады",
+  "colorPaletteCopyHint": "Он алтылық мәнін көшіру үшін кез келген үлгіні ұзақ басып тұрыңыз.",
+  "settingsAppBrand": "Үлкен бөлісіңіз\nБейне файлдар",
+  "loginEmailPasswordPrompt": "Жүйеге кіру үшін электрондық пошта мен құпия сөзді енгізіңіз.",
+  "forgotPassword": "Құпия сөзді ұмыттыңыз ба?",
+  "forgotPasswordTitle": "Құпия сөзді қалпына келтіру",
+  "forgotPasswordBody": "Тіркелгі электрондық поштаңызды енгізіңіз, біз қалпына келтіру кодын жібереміз.",
+  "forgotPasswordSubmit": "Қалпына келтіру кодын жіберіңіз",
+  "resetPasswordTitle": "Жаңа құпия сөз жасаңыз",
+  "resetPasswordBody": "Электрондық поштаңыздан 6 таңбалы кодты енгізіп, жаңа құпия сөзді таңдаңыз.",
+  "resetPasswordSubmit": "Құпия сөзді жаңарту",
+  "snackPasswordResetSent": "Қалпына келтіру коды жіберілді",
+  "snackPasswordResetSentBody": "Электрондық поштаңызды 6 таңбалы қалпына келтіру кодын тексеріңіз.",
+  "snackPasswordResetFailed": "Қалпына келтіру кодын жіберу мүмкін болмады. Қайтадан байқап көріңіз.",
+  "snackPasswordUpdated": "Құпия сөз жаңартылды",
+  "snackPasswordUpdatedBody": "Жаңа құпия сөзбен жүйеге кіріңіз.",
+  "snackPasswordResetInvalid": "Жарамсыз немесе мерзімі өткен қалпына келтіру коды.",
+  "otpDigitLabel": "6-САНДЫҚ КОД",
+  "receiveMoreFiles": "+<<PH0>> қосымша файлдар"
+}

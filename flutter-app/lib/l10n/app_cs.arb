@@ -1,0 +1,466 @@
+{
+  "@@locale": "cs",
+  "@verifyEmailCheckSpamHint": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@upToTotal": {
+    "placeholders": {
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "@filesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesCount": "{count, plural, =1{1 file} other{{count} files}}",
+  "@mbLeft": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@transferLoadFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@storePricesPartialBody": {
+    "placeholders": {
+      "loaded": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "priceUnavailable": "—",
+  "@effectiveMonthlyPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "@otpSentTo": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@snackDownloadSaved": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "emailExampleHint": "you@example.com",
+  "otpSixDigitHint": "000000",
+  "verifyFourDigitHint": "0000",
+  "transferLinkHint": "https://… or paste ID",
+  "@filesReady": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesReady": "{count, plural, =1{1 file ready} other{{count} files ready}}",
+  "@transferIdLabel": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadMetaSummary": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "@todayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@yesterdayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@daysAgoAt": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@dateAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@mbAmount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@uploadProgressSummary": {
+    "placeholders": {
+      "sent": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      },
+      "remaining": {
+        "type": "String"
+      }
+    }
+  },
+  "@historyFilesSize": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "historyFilesSize": "{count, plural, =1{1 file} other{{count} files}} · {size}",
+  "@receiveMoreFiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appTitle": "Sdílejte velké video soubory",
+  "heroAccent": "okamžitě.",
+  "heroTitle": "Odesílejte těžké soubory",
+  "splashLoading": "Načítání…",
+  "navSend": "Dashboard",
+  "navHome": "Domov",
+  "navHistory": "Dějiny",
+  "navReceive": "Dostávat",
+  "navPlans": "Plány",
+  "navDownload": "Stáhnout",
+  "navSettings": "Nastavení",
+  "modeLink": "Získejte odkaz",
+  "modeEmail": "Odeslat emailem",
+  "pickFiles": "Vyberte soubory",
+  "pickFolder": "Vyberte složku",
+  "emailFrom": "Váš email",
+  "mailFromUsesAccount": "Používá váš přihlášený e-mail.",
+  "recipientEmailsHelper": "Více příjemců: oddělte je čárkami, středníky nebo mezerami.",
+  "emailTo": "E-mail příjemce",
+  "messageOptional": "Zpráva (volitelné)",
+  "passwordOptional": "Heslo (volitelné)",
+  "destructAfterDownload": "Po stažení smazat",
+  "destructNo": "Mějte k dispozici",
+  "sendButton": "Poslat",
+  "uploading": "Nahrávání…",
+  "uploadComplete": "Hotovo",
+  "shareLinkTitle": "Váš odkaz",
+  "copyLink": "Zkopírujte odkaz",
+  "share": "Podíl",
+  "shareQrCode": "Sdílejte QR kód",
+  "uploadMore": "Pošlete další",
+  "emailSentTitle": "E-maily odeslány",
+  "verifyEmailTitle": "Ověřte svůj e-mail",
+  "verifyCodeHint": "Zadejte kód z vašeho e-mailu",
+  "verifySubmit": "Ověřte",
+  "verifyResendCode": "Znovu odeslat kód",
+  "verifyCodeSent": "Na váš e-mail byl zaslán nový ověřovací kód.",
+  "verifyEmailSmtpWarningTitle": "Ověřovací e-mail možná nebyl odeslán",
+  "verifyEmailSmtpWarningBody": "Server nemohl potvrdit doručení (SMTP je často špatně nakonfigurován). Požádejte svého správce webu, aby zkontroloval nastavení pošty na panelu správce, a potom klepněte na Znovu odeslat kód.",
+  "verifyEmailCheckSpamHint": "Pokud nedorazí: zkontrolujte Nevyžádanou poštu/Spam a Propagace, počkejte minutu, potvrďte, že <<PH0>> neobsahuje překlepy, a potom klepněte na Znovu odeslat.",
+  "loginTitle": "Přihlaste se",
+  "signupHint": "Použijte svůj e-mail a heslo k účtu webu.",
+  "emailHint": "E-mail",
+  "passwordHint": "Heslo",
+  "cancel": "Zrušit",
+  "signIn": "Přihlaste se",
+  "downloadIdHint": "ID převodu",
+  "privateIdHint": "Soukromé ID (volitelné)",
+  "fetchTransfer": "Otevřený převod",
+  "downloadFile": "Stáhnout",
+  "unlockDownload": "Odemknout stahování",
+  "downloadSaved": "Uloženo do složky Stažené soubory",
+  "errorGeneric": "Něco se pokazilo",
+  "errorNetwork": "Chyba sítě",
+  "errorBadResponse": "Neočekávaná odpověď serveru",
+  "termsAccept": "Souhlasím s podmínkami",
+  "settingsApiUrl": "URL veřejné stránky",
+  "settingsAccount": "Účet",
+  "settingsAppearance": "Vzhled",
+  "settingsTheme": "Téma",
+  "themeSystem": "Systém",
+  "themeLight": "Světlo",
+  "themeDark": "Tmavý",
+  "settingsSignedIn": "Jste přihlášeni.",
+  "settingsSignedOut": "Nejste přihlášeni.",
+  "settingsOpenWebsite": "Otevřete webovou stránku",
+  "signUp": "Zaregistrujte se",
+  "settingsLinks": "Odkazy",
+  "privacyPolicy": "Zásady ochrany osobních údajů",
+  "termsOfService": "Podmínky služby",
+  "about": "O",
+  "moreApps": "Další aplikace",
+  "settingsLanguage": "Jazyk",
+  "languageEnglish": "angličtina",
+  "languageHindi": "hindština",
+  "logout": "Odhlaste se",
+  "deleteAccount": "Smazat účet",
+  "deleteAccountConfirmTitle": "Smazat svůj účet?",
+  "deleteAccountConfirmBody": "Tím trvale smažete svůj účet a odhlásíte se. Odkazy na převod budou nadále fungovat, ale již se nebudou zobrazovat ve vaší historii.",
+  "deleteAccountSuccess": "Účet smazán",
+  "deleteAccountSuccessBody": "Váš účet byl odstraněn.",
+  "deleteAccountFailed": "Účet se nepodařilo smazat",
+  "deleteAccountFailedBody": "Zkuste to znovu nebo kontaktujte podporu.",
+  "maxFilesReached": "Příliš mnoho souborů",
+  "fileTooLarge": "Soubor je příliš velký",
+  "ipLimit": "Příliš mnoho nahrávání z této sítě",
+  "fillFields": "Vyplňte prosím povinná pole",
+  "invalidEmail": "Neplatný email",
+  "maxRecipientsReached": "Příliš mnoho příjemců",
+  "loginRequiredTitle": "Je vyžadováno přihlášení",
+  "loginRequiredBody": "Tento server vyžaduje účet pro nahrávání nebo stahování.",
+  "settingsSubtitle": "Předvolby aplikace a účet.",
+  "dropHeavyFile": "Sem vložte těžký soubor.",
+  "upToTotal": "Celkem až <<PH0>>",
+  "removeAll": "Odebrat vše",
+  "addFiles": "Přidat soubory",
+  "adding": "Přidávání…",
+  "options": "Možnosti",
+  "selfDestruct": "Sebedestrukce po stažení",
+  "expiry": "Uplynutí",
+  "cancelUpload": "Zrušit nahrávání",
+  "transferReady": "Převod připraven!",
+  "emailSentReady": "Email odeslán!",
+  "shareRecipientHint": "Sdílejte tento odkaz se svým příjemcem.",
+  "emailSentBody": "Informovali jsme vaše příjemce.",
+  "scanQr": "Skenováním otevřete odkaz pro přenos.",
+  "shareLinkButton": "SDÍLET ODKAZ",
+  "verifyFourDigit": "Zadejte 4místný kód odeslaný na váš e-mail odesílatele.",
+  "starting": "Spouštění…",
+  "mbLeft": "Zbývá <<PH0>> MB",
+  "fillField": "Vyplňte prosím toto pole.",
+  "enterValidEmail": "Zadejte platný e-mail.",
+  "message": "Zpráva",
+  "recipientEmail": "E-mail příjemce",
+  "active": "Aktivní",
+  "expired": "Platnost vypršela",
+  "historyTitle": "Moje převody",
+  "signInToSeeTransfers": "Chcete-li zobrazit své převody, přihlaste se",
+  "signInTransfersBody": "Váš e-mail používáme k propojení převodů s vaším účtem – není potřeba žádné heslo.",
+  "couldNotLoadTransfers": "Nelze načíst převody",
+  "retry": "Zkuste to znovu",
+  "noTransfersYet": "Zatím žádné převody",
+  "noTransfersBody": "Jakmile soubor odešlete, zobrazí se zde.",
+  "transferDetails": "Podrobnosti převodu",
+  "filesSection": "Soubory",
+  "receiveTitle": "Přijímat soubory",
+  "receiveSubtitle": "Vložte odkaz na přenos ke stažení souborů.",
+  "pasteTooltip": "Pasta",
+  "findTransfer": "Najděte Převod",
+  "receiveScanQr": "Naskenujte QR",
+  "receiveScanQrTitle": "Skenování přenosu QR",
+  "receiveScanQrHint": "Zarovnejte QR kód uvnitř rámečku.",
+  "receiveScanQrInvalid": "Tento QR kód není platný přenosový odkaz.",
+  "receiveScanQrCameraDenied": "Ke skenování QR kódů je vyžadován přístup k fotoaparátu.",
+  "receiveStepGetLink": "Získejte odkaz",
+  "receiveStepGetLinkBody": "Požádejte odesílatele, aby s vámi sdílel odkaz na přenos.",
+  "receiveStepPaste": "Vložit a najít",
+  "receiveStepPasteBody": "Vložte výše uvedený odkaz a klepněte na „Najít přenos“.",
+  "receiveStepDownload": "Stáhnout soubory",
+  "receiveStepDownloadBody": "Podívejte se na podrobnosti o souboru a stáhněte si vše najednou.",
+  "lookingUpTransfer": "Vyhledávání převodu…",
+  "transferNotFound": "Převod nenalezen. Zkontrolujte odkaz a zkuste to znovu.",
+  "transferExpired": "Platnost tohoto převodu vypršela a již není k dispozici.",
+  "transferLoginRequired": "Pro přístup k tomuto převodu je vyžadováno přihlášení.",
+  "transferBadResponse": "Neočekávaná odpověď serveru. Zkontrolujte připojení.",
+  "transferNetworkError": "Chyba sítě. Zkontrolujte připojení k internetu.",
+  "transferLoadFailed": "Nelze načíst přenos: <<PH0>>",
+  "passwordProtected": "Chráněno heslem",
+  "enterPassword": "Zadejte heslo",
+  "unlock": "Odemknout",
+  "downloading": "Stahování…",
+  "downloadAllFiles": "Stáhnout všechny soubory",
+  "downloadSingleFile": "Stáhnout soubor",
+  "receiveAnother": "Přijmout další převod",
+  "plansTitle": "Plány",
+  "plansSubtitle": "Upgradujte a odstraňte reklamy a posílejte větší soubory.",
+  "storeUnavailable": "Obchod nedostupný",
+  "storeUnavailableBody": "Nákupy v aplikaci nejsou momentálně dostupné.",
+  "storeLoadingPrices": "Načítání cen z App Store…",
+  "storePricesUnavailable": "Ceny nejsou k dispozici",
+  "storePricesPartial": "Některé ceny se nepodařilo načíst",
+  "storePricesPartialBody": "Načteno předplatné <<PH0>> z <<PH1>>.",
+  "storeSetupHint": "Otestujte na skutečném iPhonu (nikoli na simulátoru), použijte Sandbox Apple ID a ujistěte se, že všech 6 předplatných je vytvořeno pod ID balíčku této aplikace v App Store Connect s nastavenou cenou.",
+  "effectiveMonthlyPrice": "<<PH0>>/měsíc",
+  "freeVersionAds": "V současné době používáte naši bezplatnou verzi s reklamami",
+  "restorePurchases": "Obnovit nákupy",
+  "plansContinue": "Pokračovat",
+  "planLinkRestore": "Obnovit",
+  "termsAndConditions": "Smluvní podmínky",
+  "createAccountTitle": "Vytvořit účet",
+  "signUpSubtitle": "Zaregistrujte se pomocí e-mailu a hesla.",
+  "confirmPassword": "Potvrďte heslo",
+  "passwordMin8": "Heslo (min. 8 znaků)",
+  "alreadyHaveAccount": "Už máte účet?",
+  "checkEmailTitle": "Zkontrolujte svůj\nemail",
+  "otpSentTo": "Poslali jsme 6místný kód na\n<<PH0>>",
+  "verifyAndSignIn": "Ověřit a přihlásit se",
+  "didntReceiveCode": "Nedostali jste to?",
+  "tryAgain": "Zkuste to znovu",
+  "otpExpiresHint": "Platnost kódu vyprší za 5 minut. Pokud ji nevidíte, zkontrolujte složku se spamem.",
+  "snackError": "Chyba",
+  "snackCopied": "Zkopírováno",
+  "snackCopiedBody": "Odkaz zkopírován do schránky",
+  "snackWelcome": "Vítejte",
+  "snackAccountCreated": "Účet vytvořen",
+  "snackEnterEmail": "Zadejte prosím svůj email",
+  "snackEnterPassword": "Zadejte prosím své heslo",
+  "snackInvalidEmail": "Neplatná e-mailová adresa",
+  "snackInvalidCredentials": "Nesprávný e-mail nebo heslo",
+  "snackPasswordMin8": "Heslo musí mít alespoň 8 znaků",
+  "snackPasswordMismatch": "Hesla se neshodují.",
+  "snackAccountExists": "Účet již existuje. Přihlaste se prosím.",
+  "snackSignupFailed": "Účet nelze vytvořit. Zkuste to znovu.",
+  "snackEnterOtp": "Zadejte 6místný kód",
+  "snackOtpExpired": "Platnost kódu vypršela",
+  "snackOtpExpiredBody": "Požádejte o nový kód.",
+  "snackInvalidCode": "Neplatný kód",
+  "snackInvalidCodeBody": "Kód je nesprávný. Zkuste to prosím znovu.",
+  "snackSendCodeFailed": "Kód nelze odeslat. Zkontrolujte připojení a zkuste to znovu.",
+  "snackEmptyFolder": "Prázdná složka",
+  "snackEmptyFolderBody": "Ve vybrané složce nebyly nalezeny žádné soubory.",
+  "snackFolderUnsupported": "Není podporováno",
+  "snackFolderUnsupportedBody": "Nahrání složky není na této platformě dostupné.",
+  "snackFolderReadError": "Vybranou složku nelze přečíst.",
+  "snackLimitReached": "Limit dosažen",
+  "snackLimitFilesBody": "Některé soubory nebyly přidány z důvodu omezení velikosti nebo počtu souborů.",
+  "snackFreePlanLimit": "Bezplatný plán umožňuje až 5 GB na přenos. Odstraňte některé soubory nebo upgradujte.",
+  "snackSignInEmail": "Chcete-li odeslat e-mailem, přihlaste se.",
+  "snackUploadStartFailed": "Nelze zahájit nahrávání.",
+  "snackVerifyEnterCode": "Zadejte 4místný kód z vašeho e-mailu.",
+  "snackVerifyInvalid": "Neplatný kód nebo kód, jehož platnost vypršela. Zkontrolujte e-mail a zkuste to znovu.",
+  "snackVerifyResendFailed": "Kód se nepodařilo znovu odeslat. Zkuste to znovu.",
+  "snackDownloadComplete": "Stahování dokončeno",
+  "snackDownloadSaved": "„<<PH0>>“ uloženo do složky Stažené soubory",
+  "snackDownloadFailed": "Stahování se nezdařilo",
+  "snackSaved": "Uloženo",
+  "snackServerUrlUpdated": "Adresa URL serveru aktualizována. Chcete-li aplikaci použít, restartujte aplikaci.",
+  "snackStoreError": "Chyba obchodu",
+  "snackMissingProducts": "Chybějící produkty",
+  "snackStoreUnavailable": "Obchod nedostupný",
+  "snackStoreUnavailableBody": "Nákupy v aplikaci nejsou na tomto zařízení k dispozici.",
+  "snackProductNotLoaded": "Produkt ještě není načten.",
+  "snackRestoreStarted": "Obnovení zahájeno",
+  "snackRestoreStartedBody": "Kontrolujeme vaše nákupy.",
+  "snackRestoreFailed": "Obnovení se nezdařilo",
+  "snackProcessing": "Zpracování",
+  "snackPleaseWait": "Čekejte prosím…",
+  "snackSuccess": "Úspěch",
+  "snackPurchaseCompleted": "Nákup dokončen.",
+  "snackPurchaseError": "Chyba nákupu",
+  "snackPurchaseFailed": "Nákup se nezdařil.",
+  "snackCanceled": "Zrušeno",
+  "snackPurchaseCanceled": "Nákup zrušen.",
+  "snackUpload": "Nahrát",
+  "snackVerify": "Ověřte",
+  "doNotExpire": "Nevyprší platnost",
+  "hourSingular": "hodina",
+  "hourPlural": "hodin",
+  "daySingular": "den",
+  "dayPlural": "dní",
+  "emailAddressLabel": "E-MAILOVÁ ADRESA",
+  "passwordLabelCaps": "HESLO",
+  "confirmPasswordLabelCaps": "POTVRĎTE HESLO",
+  "transferLinkOrId": "PŘEVODOVÝ ODKAZ NEBO ID",
+  "howToReceive": "JAK PŘIJÍMAT",
+  "planAdsTitle": "Plán reklam",
+  "planAdsBullet1": "Přístup k aplikaci bez reklam",
+  "planAdsBullet2": "Odstraňte všechny reklamy",
+  "planProTitle": "Pro plán",
+  "planProBullet1": "Odesílejte soubory až do velikosti 20 GB",
+  "planProBullet2": "Rychlé nahrávání",
+  "planPremiumTitle": "Prémiový plán",
+  "planPremiumBullet1": "Odesílejte soubory až do velikosti 100 GB",
+  "planPremiumBullet2": "Super rychlé nahrávání",
+  "planSubscriptionDisclaimer": "Žádná zkušební doba – k používání dalších funkcí aplikace je vyžadováno předplatné. Okamžitě vám bude účtován poplatek. Zrušit můžete kdykoli.",
+  "perMonth": "/ měsíc",
+  "perYear": "/ rok",
+  "snackConnectionProblem": "Problém s připojením. Zkuste to prosím znovu.",
+  "networkTitle": "Síť",
+  "transferIdLabel": "ID: <<PH0>>",
+  "downloadMetaSummary": "Soubory: <<PH0>> · <<PH1>> bajtů",
+  "todayAt": "Dnes · <<PH0>>",
+  "yesterdayAt": "Včera · <<PH0>>",
+  "daysAgoAt": "<<PH0>>d před · <<PH1>>",
+  "dateAt": "<<PH0>> · <<PH1>>",
+  "mbAmount": "<<PH0>> MB",
+  "uploadProgressSummary": "<<PH0>> / <<PH1>> • <<PH2>> vlevo",
+  "loadingShort": "Načítání…",
+  "colorPaletteTitle": "Paleta barev",
+  "colorPaletteSectionBackgrounds": "Pozadí (škála inkoustu)",
+  "colorPaletteSectionAccent": "Přízvuk / Primární",
+  "colorPaletteSectionText": "Text",
+  "colorPaletteSectionBorders": "Borders & Glass",
+  "colorPaletteSectionSemantic": "Sémantický",
+  "colorPaletteSectionLive": "Živé téma (aktuální)",
+  "colorPaletteActiveHint": "★ = aktivně používané na obrazovkách",
+  "colorPaletteCopyHint": "Dlouhým stisknutím libovolného políčka zkopírujte jeho hexadecimální hodnotu.",
+  "settingsAppBrand": "Sdílet velké\nVideo soubory",
+  "loginEmailPasswordPrompt": "Pro přihlášení zadejte svůj e-mail a heslo.",
+  "forgotPassword": "Zapomněli jste heslo?",
+  "forgotPasswordTitle": "Obnovit heslo",
+  "forgotPasswordBody": "Zadejte e-mail svého účtu a my vám zašleme resetovací kód.",
+  "forgotPasswordSubmit": "Odeslat resetovací kód",
+  "resetPasswordTitle": "Vytvořte nové heslo",
+  "resetPasswordBody": "Zadejte 6místný kód z vašeho e-mailu a zvolte si nové heslo.",
+  "resetPasswordSubmit": "Aktualizujte heslo",
+  "snackPasswordResetSent": "Resetovací kód odeslán",
+  "snackPasswordResetSentBody": "Zkontrolujte svůj e-mail, kde najdete 6místný resetovací kód.",
+  "snackPasswordResetFailed": "Nelze odeslat resetovací kód. Zkuste to znovu.",
+  "snackPasswordUpdated": "Heslo aktualizováno",
+  "snackPasswordUpdatedBody": "Přihlaste se pomocí svého nového hesla.",
+  "snackPasswordResetInvalid": "Neplatný nebo vypršela platnost resetovacího kódu.",
+  "otpDigitLabel": "6- ČÍSELNÝ KÓD",
+  "receiveMoreFiles": "+<<PH0>> další soubory"
+}

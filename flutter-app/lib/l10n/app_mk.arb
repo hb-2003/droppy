@@ -1,0 +1,466 @@
+{
+  "@@locale": "mk",
+  "@verifyEmailCheckSpamHint": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@upToTotal": {
+    "placeholders": {
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "@filesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesCount": "{count, plural, =1{1 file} other{{count} files}}",
+  "@mbLeft": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@transferLoadFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@storePricesPartialBody": {
+    "placeholders": {
+      "loaded": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "priceUnavailable": "—",
+  "@effectiveMonthlyPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "@otpSentTo": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@snackDownloadSaved": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "emailExampleHint": "you@example.com",
+  "otpSixDigitHint": "000000",
+  "verifyFourDigitHint": "0000",
+  "transferLinkHint": "https://… or paste ID",
+  "@filesReady": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesReady": "{count, plural, =1{1 file ready} other{{count} files ready}}",
+  "@transferIdLabel": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadMetaSummary": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "@todayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@yesterdayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@daysAgoAt": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@dateAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@mbAmount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@uploadProgressSummary": {
+    "placeholders": {
+      "sent": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      },
+      "remaining": {
+        "type": "String"
+      }
+    }
+  },
+  "@historyFilesSize": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "historyFilesSize": "{count, plural, =1{1 file} other{{count} files}} · {size}",
+  "@receiveMoreFiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appTitle": "Споделете големи видео датотеки",
+  "heroAccent": "веднаш.",
+  "heroTitle": "Испратете тешки датотеки",
+  "splashLoading": "Се вчитува…",
+  "navSend": "Контролна табла",
+  "navHome": "Дома",
+  "navHistory": "Историја",
+  "navReceive": "Примање",
+  "navPlans": "Планови",
+  "navDownload": "Преземи",
+  "navSettings": "Поставки",
+  "modeLink": "Добијте врска",
+  "modeEmail": "Испрати по е-пошта",
+  "pickFiles": "Изберете датотеки",
+  "pickFolder": "Изберете папка",
+  "emailFrom": "Вашата е-пошта",
+  "mailFromUsesAccount": "Ја користи вашата најавена е-пошта.",
+  "recipientEmailsHelper": "Повеќе примачи: одделете ги со запирки, точки запирки или празни места.",
+  "emailTo": "Е-пошта на примачот",
+  "messageOptional": "Порака (изборно)",
+  "passwordOptional": "Лозинка (изборно)",
+  "destructAfterDownload": "Избришете по преземањето",
+  "destructNo": "Чувајте го на располагање",
+  "sendButton": "Испрати",
+  "uploading": "Се поставува…",
+  "uploadComplete": "Готово",
+  "shareLinkTitle": "Вашата врска",
+  "copyLink": "Копирај ја врската",
+  "share": "Споделете",
+  "shareQrCode": "Споделете QR код",
+  "uploadMore": "Испрати друга",
+  "emailSentTitle": "Испратени е-пошта",
+  "verifyEmailTitle": "Потврдете ја вашата е-пошта",
+  "verifyCodeHint": "Внесете го кодот од вашата е-пошта",
+  "verifySubmit": "Потврди",
+  "verifyResendCode": "Повторно испратете го кодот",
+  "verifyCodeSent": "На вашата е-пошта е испратен нов код за потврда.",
+  "verifyEmailSmtpWarningTitle": "Е-поштата за потврда можеби не е испратена",
+  "verifyEmailSmtpWarningBody": "Серверот не може да ја потврди испораката (често SMTP е погрешно конфигуриран). Побарајте од администраторот на вашиот сајт да ги провери поставките за пошта во административниот панел, па допрете Повторно испратете го кодот.",
+  "verifyEmailCheckSpamHint": "Ако не пристигне: проверете ги Несакани/Спам и Промоции, почекајте малку, потврдете дека <<PH0>> нема печатни грешки, па допрете Повторно прати.",
+  "loginTitle": "Пријавете се",
+  "signupHint": "Користете ја е-поштата и лозинката на вашата сметка на страницата.",
+  "emailHint": "Е-пошта",
+  "passwordHint": "Лозинка",
+  "cancel": "Откажи",
+  "signIn": "Пријавете се",
+  "downloadIdHint": "ИД за трансфер",
+  "privateIdHint": "Приватен ID (изборно)",
+  "fetchTransfer": "Отвори трансфер",
+  "downloadFile": "Преземи",
+  "unlockDownload": "Отклучете го преземањето",
+  "downloadSaved": "Зачувано во Преземања",
+  "errorGeneric": "Нешто тргна наопаку",
+  "errorNetwork": "Мрежна грешка",
+  "errorBadResponse": "Неочекуван одговор на серверот",
+  "termsAccept": "Се согласувам со условите",
+  "settingsApiUrl": "URL на јавна страница",
+  "settingsAccount": "Сметка",
+  "settingsAppearance": "Изглед",
+  "settingsTheme": "Тема",
+  "themeSystem": "Систем",
+  "themeLight": "Светлина",
+  "themeDark": "Темно",
+  "settingsSignedIn": "Најавени сте.",
+  "settingsSignedOut": "Не сте најавени.",
+  "settingsOpenWebsite": "Отворете ја веб-локацијата",
+  "signUp": "Пријавете се",
+  "settingsLinks": "Врски",
+  "privacyPolicy": "Политика за приватност",
+  "termsOfService": "Услови за користење",
+  "about": "За",
+  "moreApps": "Повеќе апликации",
+  "settingsLanguage": "Јазик",
+  "languageEnglish": "англиски јазик",
+  "languageHindi": "хинди",
+  "logout": "Одјави се",
+  "deleteAccount": "Избришете ја сметката",
+  "deleteAccountConfirmTitle": "Да се ​​избрише вашата сметка?",
+  "deleteAccountConfirmBody": "Ова трајно ја брише вашата сметка и ве одјавува. Врските за пренос ќе продолжат да работат, но веќе нема да се појавуваат во вашата историја.",
+  "deleteAccountSuccess": "Сметката е избришана",
+  "deleteAccountSuccessBody": "Вашата сметка е отстранета.",
+  "deleteAccountFailed": "Не може да се избрише сметката",
+  "deleteAccountFailedBody": "Обидете се повторно или контактирајте со поддршката.",
+  "maxFilesReached": "Премногу датотеки",
+  "fileTooLarge": "Датотеката е преголема",
+  "ipLimit": "Премногу прикачувања од оваа мрежа",
+  "fillFields": "Ве молиме пополнете ги задолжителните полиња",
+  "invalidEmail": "Неважечка е-пошта",
+  "maxRecipientsReached": "Премногу примачи",
+  "loginRequiredTitle": "Потребно е да се најавите",
+  "loginRequiredBody": "Овој сервер бара сметка за прикачување или преземање.",
+  "settingsSubtitle": "Поставки за апликација и сметка.",
+  "dropHeavyFile": "Спуштете тешка датотека овде.",
+  "upToTotal": "Вкупно до <<PH0>>",
+  "removeAll": "Отстранете ги сите",
+  "addFiles": "Додадете датотеки",
+  "adding": "Се додава…",
+  "options": "Опции",
+  "selfDestruct": "Самоуништување по преземањето",
+  "expiry": "Истекување",
+  "cancelUpload": "Откажете го прикачувањето",
+  "transferReady": "Трансферот е подготвен!",
+  "emailSentReady": "Испратена е-пошта!",
+  "shareRecipientHint": "Споделете ја оваа врска со вашиот примач.",
+  "emailSentBody": "Ги известивме вашите примачи.",
+  "scanQr": "Скенирајте за да ја отворите врската за пренос.",
+  "shareLinkButton": "СПОДЕЛИ ЛИНК",
+  "verifyFourDigit": "Внесете го 4-цифрениот код испратен до е-поштата на вашиот испраќач.",
+  "starting": "Почнува…",
+  "mbLeft": "<<PH0>> MB преостанати",
+  "fillField": "Ве молиме пополнете го ова поле.",
+  "enterValidEmail": "Внесете валидна е-пошта.",
+  "message": "Порака",
+  "recipientEmail": "Е-пошта на примачот",
+  "active": "Активен",
+  "expired": "Истечен",
+  "historyTitle": "Мои трансфери",
+  "signInToSeeTransfers": "Најавете се за да ги видите вашите трансфери",
+  "signInTransfersBody": "Ја користиме вашата е-пошта за поврзување на трансфери со вашата сметка - не е потребна лозинка.",
+  "couldNotLoadTransfers": "Не може да се вчитаат трансферите",
+  "retry": "Обидете се повторно",
+  "noTransfersYet": "Сè уште нема трансфери",
+  "noTransfersBody": "Откако ќе испратите датотека, таа ќе се појави овде.",
+  "transferDetails": "Детали за трансфер",
+  "filesSection": "Датотеки",
+  "receiveTitle": "Примање датотеки",
+  "receiveSubtitle": "Залепете врска за пренос за преземање датотеки.",
+  "pasteTooltip": "Вметни",
+  "findTransfer": "Најдете трансфер",
+  "receiveScanQr": "Скенирајте QR",
+  "receiveScanQrTitle": "Скенирај пренос QR",
+  "receiveScanQrHint": "Порамнете го QR-кодот во рамката.",
+  "receiveScanQrInvalid": "Овој QR-код не е валидна врска за пренос.",
+  "receiveScanQrCameraDenied": "Потребен е пристап до камерата за скенирање QR-кодови.",
+  "receiveStepGetLink": "Добијте ја врската",
+  "receiveStepGetLinkBody": "Побарајте од испраќачот да ја сподели врската за пренос со вас.",
+  "receiveStepPaste": "Залепете и пронајдете",
+  "receiveStepPasteBody": "Залепете ја врската погоре и допрете „Најди трансфер“.",
+  "receiveStepDownload": "Преземете датотеки",
+  "receiveStepDownloadBody": "Погледнете ги деталите за датотеката и преземете сè одеднаш.",
+  "lookingUpTransfer": "Се бара трансфер…",
+  "transferNotFound": "Трансферот не е пронајден. Проверете ја врската и обидете се повторно.",
+  "transferExpired": "Овој трансфер е истечен и повеќе не е достапен.",
+  "transferLoginRequired": "Најавете се за да пристапите до овој пренос.",
+  "transferBadResponse": "Неочекуван одговор на серверот. Проверете ја вашата врска.",
+  "transferNetworkError": "Мрежна грешка. Проверете ја вашата интернет конекција.",
+  "transferLoadFailed": "Не може да се вчита преносот: <<PH0>>",
+  "passwordProtected": "Заштитено со лозинка",
+  "enterPassword": "Внесете лозинка",
+  "unlock": "Отклучи",
+  "downloading": "Се презема…",
+  "downloadAllFiles": "Преземете ги сите датотеки",
+  "downloadSingleFile": "Преземете ја датотеката",
+  "receiveAnother": "Добијте уште еден трансфер",
+  "plansTitle": "Планови",
+  "plansSubtitle": "Надградете за да отстраните реклами и да испраќате поголеми датотеки.",
+  "storeUnavailable": "Продавницата е недостапна",
+  "storeUnavailableBody": "Купувањата во апликација не се достапни во моментов.",
+  "storeLoadingPrices": "Се вчитуваат цените од App Store…",
+  "storePricesUnavailable": "Цените се недостапни",
+  "storePricesPartial": "Некои цени не може да се вчитаат",
+  "storePricesPartialBody": "Вчитани се <<PH0>> од <<PH1>> претплатни производи.",
+  "storeSetupHint": "Тестирајте на вистински iPhone (не Симулатор), користете Sandbox Apple ID и уверете се дека сите 6 претплати се создадени според ID на пакетот на оваа апликација во App Store Connect со ценовно сет.",
+  "effectiveMonthlyPrice": "<<PH0>>/месец",
+  "freeVersionAds": "Во моментов ја користите нашата бесплатна верзија со реклами",
+  "restorePurchases": "Вратете ги купувањата",
+  "plansContinue": "Продолжи",
+  "planLinkRestore": "Врати",
+  "termsAndConditions": "Услови и правила",
+  "createAccountTitle": "Креирај сметка",
+  "signUpSubtitle": "Пријавете се со е-пошта и лозинка.",
+  "confirmPassword": "Потврдете ја лозинката",
+  "passwordMin8": "Лозинка (мин. 8 знаци)",
+  "alreadyHaveAccount": "Веќе имате сметка?",
+  "checkEmailTitle": "Проверете го вашиот\nе-пошта",
+  "otpSentTo": "Испративме 6-цифрена шифра до\n<<PH0>>",
+  "verifyAndSignIn": "Потврдете и најавете се",
+  "didntReceiveCode": "Не го примивте?",
+  "tryAgain": "Обидете се повторно",
+  "otpExpiresHint": "Кодот истекува за 5 минути. Проверете ја папката со спам ако не ја гледате.",
+  "snackError": "Грешка",
+  "snackCopied": "Копирано",
+  "snackCopiedBody": "Врската е копирана во таблата со исечоци",
+  "snackWelcome": "Добредојдовте",
+  "snackAccountCreated": "Создадена е сметка",
+  "snackEnterEmail": "Ве молиме внесете ја вашата е-пошта",
+  "snackEnterPassword": "Ве молиме внесете ја вашата лозинка",
+  "snackInvalidEmail": "Неважечка адреса на е-пошта",
+  "snackInvalidCredentials": "Неточна е-пошта или лозинка",
+  "snackPasswordMin8": "Лозинката мора да има најмалку 8 знаци",
+  "snackPasswordMismatch": "Лозинките не се совпаѓаат.",
+  "snackAccountExists": "Сметката веќе постои. Ве молиме најавете се.",
+  "snackSignupFailed": "Не може да се создаде сметка. Обидете се повторно.",
+  "snackEnterOtp": "Ве молиме внесете го 6-цифрениот код",
+  "snackOtpExpired": "Кодот е истечен",
+  "snackOtpExpiredBody": "Ве молиме побарајте нов код.",
+  "snackInvalidCode": "Неважечки код",
+  "snackInvalidCodeBody": "Кодот е неточен. Ве молиме обидете се повторно.",
+  "snackSendCodeFailed": "Не може да се испрати код. Проверете ја врската и обидете се повторно.",
+  "snackEmptyFolder": "Празна папка",
+  "snackEmptyFolderBody": "Не се пронајдени датотеки во избраната папка.",
+  "snackFolderUnsupported": "Не е поддржано",
+  "snackFolderUnsupportedBody": "Поставувањето на папката не е достапно на оваа платформа.",
+  "snackFolderReadError": "Не можев да ја прочитам избраната папка.",
+  "snackLimitReached": "Достигнато е ограничувањето",
+  "snackLimitFilesBody": "Некои датотеки не беа додадени поради ограничувањата на големината или бројот на датотеки.",
+  "snackFreePlanLimit": "Бесплатниот план дозволува до 5 GB по трансфер. Ве молиме отстранете некои датотеки или надградете.",
+  "snackSignInEmail": "Ве молиме најавете се за да испратите по е-пошта.",
+  "snackUploadStartFailed": "Не може да започне поставувањето.",
+  "snackVerifyEnterCode": "Внесете го 4-цифрениот код од вашата е-пошта.",
+  "snackVerifyInvalid": "Неважечки или истечен код. Проверете ја е-поштата и обидете се повторно.",
+  "snackVerifyResendFailed": "Кодот не може повторно да се испрати. Обидете се повторно.",
+  "snackDownloadComplete": "Преземањето е завршено",
+  "snackDownloadSaved": "„<<PH0>>“ е зачувана во „Преземања“.",
+  "snackDownloadFailed": "Преземањето не успеа",
+  "snackSaved": "Зачувано",
+  "snackServerUrlUpdated": "URL-адресата на серверот е ажурирана. Рестартирајте ја апликацијата за да аплицирате.",
+  "snackStoreError": "Грешка за складирање",
+  "snackMissingProducts": "Производи што недостасуваат",
+  "snackStoreUnavailable": "Продавницата е недостапна",
+  "snackStoreUnavailableBody": "Купувањата во апликација не се достапни на овој уред.",
+  "snackProductNotLoaded": "Производот сè уште не е вчитан.",
+  "snackRestoreStarted": "Враќањето започна",
+  "snackRestoreStartedBody": "Ги проверуваме вашите набавки.",
+  "snackRestoreFailed": "Враќањето не успеа",
+  "snackProcessing": "Обработка",
+  "snackPleaseWait": "Ве молиме почекајте…",
+  "snackSuccess": "Успех",
+  "snackPurchaseCompleted": "Купувањето е завршено.",
+  "snackPurchaseError": "Грешка при купувањето",
+  "snackPurchaseFailed": "Купувањето не успеа.",
+  "snackCanceled": "Откажано",
+  "snackPurchaseCanceled": "Купувањето е откажано.",
+  "snackUpload": "Поставете",
+  "snackVerify": "Потврди",
+  "doNotExpire": "Не истекувајте",
+  "hourSingular": "час",
+  "hourPlural": "часови",
+  "daySingular": "ден",
+  "dayPlural": "денови",
+  "emailAddressLabel": "Адреса на е-пошта",
+  "passwordLabelCaps": "ЛОЗИНКА",
+  "confirmPasswordLabelCaps": "ПОТВРДИ ЛОЗИНКА",
+  "transferLinkOrId": "ЛИНК ЗА ТРАНСФЕР ИЛИ ИД",
+  "howToReceive": "КАКО ДА ДОБИЕТЕ",
+  "planAdsTitle": "План за реклами",
+  "planAdsBullet1": "Пристап до бесплатна апликација за реклами",
+  "planAdsBullet2": "Отстранете ги сите реклами",
+  "planProTitle": "Про план",
+  "planProBullet1": "Испраќајте датотеки до 20 GB",
+  "planProBullet2": "Брзо прикачување",
+  "planPremiumTitle": "Премиум план",
+  "planPremiumBullet1": "Испраќајте датотеки до 100 GB",
+  "planPremiumBullet2": "Супер брзо прикачување",
+  "planSubscriptionDisclaimer": "Нема пробен период - потребна е претплата за користење на дополнителната функционалност на апликацијата. Ќе ви биде наплатено веднаш. Можете да откажете во секое време.",
+  "perMonth": "/ месец",
+  "perYear": "/ година",
+  "snackConnectionProblem": "Проблем со поврзување. Ве молиме обидете се повторно.",
+  "networkTitle": "Мрежа",
+  "transferIdLabel": "ID: <<PH0>>",
+  "downloadMetaSummary": "Датотеки: <<PH0>> · <<PH1>> бајти",
+  "todayAt": "Денес · <<PH0>>",
+  "yesterdayAt": "Вчера · <<PH0>>",
+  "daysAgoAt": "<<PH0>>д пред · <<PH1>>",
+  "dateAt": "<<PH0>> · <<PH1>>",
+  "mbAmount": "<<PH0>> MB",
+  "uploadProgressSummary": "<<PH0>> / <<PH1>> • <<PH2>> лево",
+  "loadingShort": "Се вчитува…",
+  "colorPaletteTitle": "Палета на бои",
+  "colorPaletteSectionBackgrounds": "Позадини (скала на мастило)",
+  "colorPaletteSectionAccent": "Акцент / Примарен",
+  "colorPaletteSectionText": "Текст",
+  "colorPaletteSectionBorders": "Граници и стакло",
+  "colorPaletteSectionSemantic": "Семантички",
+  "colorPaletteSectionLive": "Тема во живо (тековно)",
+  "colorPaletteActiveHint": "★ = активно се користи во екраните",
+  "colorPaletteCopyHint": "Долго притискајте на кој било примерок за да ја копирате неговата хексадетична вредност.",
+  "settingsAppBrand": "Сподели големи\nВидео датотеки",
+  "loginEmailPasswordPrompt": "Внесете ја вашата е-пошта и лозинка за да се најавите.",
+  "forgotPassword": "Ја заборавивте лозинката?",
+  "forgotPasswordTitle": "Ресетирајте ја лозинката",
+  "forgotPasswordBody": "Внесете ја е-поштата на вашата сметка и ние ќе испратиме код за ресетирање.",
+  "forgotPasswordSubmit": "Испрати код за ресетирање",
+  "resetPasswordTitle": "Направете нова лозинка",
+  "resetPasswordBody": "Внесете го 6-цифрениот код од вашата е-пошта и изберете нова лозинка.",
+  "resetPasswordSubmit": "Ажурирајте ја лозинката",
+  "snackPasswordResetSent": "Испратен е кодот за ресетирање",
+  "snackPasswordResetSentBody": "Проверете ја вашата е-пошта за 6-цифрен код за ресетирање.",
+  "snackPasswordResetFailed": "Не може да се испрати кодот за ресетирање. Обидете се повторно.",
+  "snackPasswordUpdated": "Лозинката е ажурирана",
+  "snackPasswordUpdatedBody": "Пријавете се со вашата нова лозинка.",
+  "snackPasswordResetInvalid": "Неважечки или истечен код за ресетирање.",
+  "otpDigitLabel": "6-цифрен КОД",
+  "receiveMoreFiles": "+<<PH0>> повеќе датотеки"
+}

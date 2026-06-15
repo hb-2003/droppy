@@ -1,0 +1,466 @@
+{
+  "@@locale": "hr",
+  "@verifyEmailCheckSpamHint": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@upToTotal": {
+    "placeholders": {
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "@filesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesCount": "{count, plural, =1{1 file} other{{count} files}}",
+  "@mbLeft": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@transferLoadFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@storePricesPartialBody": {
+    "placeholders": {
+      "loaded": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "priceUnavailable": "—",
+  "@effectiveMonthlyPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "@otpSentTo": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@snackDownloadSaved": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "emailExampleHint": "you@example.com",
+  "otpSixDigitHint": "000000",
+  "verifyFourDigitHint": "0000",
+  "transferLinkHint": "https://… or paste ID",
+  "@filesReady": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesReady": "{count, plural, =1{1 file ready} other{{count} files ready}}",
+  "@transferIdLabel": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadMetaSummary": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "@todayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@yesterdayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@daysAgoAt": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@dateAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@mbAmount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@uploadProgressSummary": {
+    "placeholders": {
+      "sent": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      },
+      "remaining": {
+        "type": "String"
+      }
+    }
+  },
+  "@historyFilesSize": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "historyFilesSize": "{count, plural, =1{1 file} other{{count} files}} · {size}",
+  "@receiveMoreFiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appTitle": "Podijelite velike video datoteke",
+  "heroAccent": "odmah.",
+  "heroTitle": "Pošalji teške datoteke",
+  "splashLoading": "učitavanje...",
+  "navSend": "Nadzorna ploča",
+  "navHome": "Dom",
+  "navHistory": "Povijest",
+  "navReceive": "primiti",
+  "navPlans": "Planovi",
+  "navDownload": "preuzimanje",
+  "navSettings": "postavke",
+  "modeLink": "Nabavite vezu",
+  "modeEmail": "Pošalji e-poštom",
+  "pickFiles": "Odaberite datoteke",
+  "pickFolder": "Odaberite mapu",
+  "emailFrom": "Vaš email",
+  "mailFromUsesAccount": "Koristi vašu e-poštu na koju ste prijavljeni.",
+  "recipientEmailsHelper": "Više primatelja: odvojite ih zarezima, točkom i zarezom ili razmacima.",
+  "emailTo": "E-pošta primatelja",
+  "messageOptional": "Poruka (nije obavezno)",
+  "passwordOptional": "Lozinka (nije obavezno)",
+  "destructAfterDownload": "Izbriši nakon preuzimanja",
+  "destructNo": "Držite na raspolaganju",
+  "sendButton": "Poslati",
+  "uploading": "Prijenos…",
+  "uploadComplete": "Gotovo",
+  "shareLinkTitle": "Vaš link",
+  "copyLink": "Kopiraj vezu",
+  "share": "Udio",
+  "shareQrCode": "Podijelite QR kod",
+  "uploadMore": "Pošalji drugu",
+  "emailSentTitle": "E-poruke su poslane",
+  "verifyEmailTitle": "Potvrdite svoju e-poštu",
+  "verifyCodeHint": "Unesite kod iz svoje e-pošte",
+  "verifySubmit": "Potvrdi",
+  "verifyResendCode": "Ponovno pošalji kod",
+  "verifyCodeSent": "Novi kontrolni kod poslan je na vašu e-poštu.",
+  "verifyEmailSmtpWarningTitle": "E-pošta za potvrdu možda nije poslana",
+  "verifyEmailSmtpWarningBody": "Poslužitelj nije mogao potvrditi isporuku (SMTP je često krivo konfiguriran). Zamolite administratora web-mjesta da provjeri postavke pošte u administratorskoj ploči, zatim dodirnite Ponovno pošalji kod.",
+  "verifyEmailCheckSpamHint": "Ako ne stigne: provjerite Junk/Spam i Promocije, pričekajte minutu, potvrdite da <<PH0>> nema pogrešaka pri upisu, zatim dodirnite Ponovno pošalji.",
+  "loginTitle": "Prijavite se",
+  "signupHint": "Upotrijebite e-poštu i zaporku računa svoje web-lokacije.",
+  "emailHint": "E-mail",
+  "passwordHint": "Lozinka",
+  "cancel": "Otkazati",
+  "signIn": "Prijavite se",
+  "downloadIdHint": "ID prijenosa",
+  "privateIdHint": "Privatni ID (nije obavezno)",
+  "fetchTransfer": "Otvoreni prijenos",
+  "downloadFile": "preuzimanje",
+  "unlockDownload": "Otključaj preuzimanje",
+  "downloadSaved": "Spremljeno u Preuzimanja",
+  "errorGeneric": "Nešto nije u redu",
+  "errorNetwork": "Mrežna pogreška",
+  "errorBadResponse": "Neočekivani odgovor poslužitelja",
+  "termsAccept": "Slažem se s uvjetima",
+  "settingsApiUrl": "Javna stranica URL",
+  "settingsAccount": "Račun",
+  "settingsAppearance": "Izgled",
+  "settingsTheme": "Tema",
+  "themeSystem": "Sustav",
+  "themeLight": "Svijetlo",
+  "themeDark": "Tamno",
+  "settingsSignedIn": "Prijavljeni ste.",
+  "settingsSignedOut": "Niste prijavljeni u.",
+  "settingsOpenWebsite": "Otvori web stranicu",
+  "signUp": "Prijavi se",
+  "settingsLinks": "Veze",
+  "privacyPolicy": "Pravila o privatnosti",
+  "termsOfService": "Uvjeti usluge",
+  "about": "O",
+  "moreApps": "Više apps",
+  "settingsLanguage": "Language",
+  "languageEnglish": "English",
+  "languageHindi": "Hindi",
+  "logout": "Log out",
+  "deleteAccount": "Delete account",
+  "deleteAccountConfirmTitle": "Delete your account?",
+  "deleteAccountConfirmBody": "This permanently deletes your account and signs you out. Vaše veze za prijenos nastavit će raditi, ali se više neće pojavljivati u vašoj povijesti.",
+  "deleteAccountSuccess": "Račun izbrisan",
+  "deleteAccountSuccessBody": "Vaš račun je uklonjen.",
+  "deleteAccountFailed": "Nije moguće izbrisati račun",
+  "deleteAccountFailedBody": "Pokušajte ponovo ili kontaktirajte podršku.",
+  "maxFilesReached": "Previše datoteka",
+  "fileTooLarge": "Datoteka također veliki",
+  "ipLimit": "Previše prijenosa s ove mreže",
+  "fillFields": "Molimo ispunite obavezna polja",
+  "invalidEmail": "Nevažeća e-pošta",
+  "maxRecipientsReached": "Previše primatelja",
+  "loginRequiredTitle": "Potrebna je prijava",
+  "loginRequiredBody": "Ovaj poslužitelj zahtijeva račun za prijenos ili preuzimanje.",
+  "settingsSubtitle": "Postavke aplikacije i račun.",
+  "dropHeavyFile": "Ovdje ispustite tešku datoteku.",
+  "upToTotal": "Do <<PH0>> ukupno",
+  "removeAll": "Ukloni sve",
+  "addFiles": "Dodaj datoteke",
+  "adding": "Dodavanje…",
+  "options": "Opcije",
+  "selfDestruct": "Samouništenje nakon preuzimanja",
+  "expiry": "Istek",
+  "cancelUpload": "Otkaži prijenos",
+  "transferReady": "Prijenos spreman!",
+  "emailSentReady": "E-pošta poslana!",
+  "shareRecipientHint": "Podijelite ovu vezu sa svojim primateljem.",
+  "emailSentBody": "Obavijestili smo vaše primatelje(e).",
+  "scanQr": "Skenirajte da biste otvorili vezu za prijenos.",
+  "shareLinkButton": "DIJELI LINK",
+  "verifyFourDigit": "Unesite 4-znamenkasti kod poslan na vašu e-poštu pošiljatelja.",
+  "starting": "Početak…",
+  "mbLeft": "<<PH0>> MB preostalo",
+  "fillField": "Molimo ispunite ovo polje.",
+  "enterValidEmail": "Unesite važeći e-pošta.",
+  "message": "Poruka",
+  "recipientEmail": "E-pošta primatelja",
+  "active": "Aktivna",
+  "expired": "Istekla",
+  "historyTitle": "Moji transferi",
+  "signInToSeeTransfers": "Prijavite se da biste vidjeli svoje transfere",
+  "signInTransfersBody": "Koristimo vašu e-poštu za povezivanje transfera s vašim računom — nije potrebna lozinka.",
+  "couldNotLoadTransfers": "Nije moguće učitati prijenosi",
+  "retry": "Pokušaj ponovo",
+  "noTransfersYet": "Još nema prijenosa",
+  "noTransfersBody": "Kada pošaljete datoteku, ona će se pojaviti ovdje.",
+  "transferDetails": "Pojedinosti o prijenosu",
+  "filesSection": "Datoteke",
+  "receiveTitle": "Primi datoteke",
+  "receiveSubtitle": "Zalijepite vezu za prijenos za preuzimanje datoteke.",
+  "pasteTooltip": "Zalijepi",
+  "findTransfer": "Pronađi prijenos",
+  "receiveScanQr": "Skeniraj QR",
+  "receiveScanQrTitle": "Skeniraj QR prijenos",
+  "receiveScanQrHint": "Poravnaj QR kod unutar okvira.",
+  "receiveScanQrInvalid": "Ovaj QR kod nije valjana veza za prijenos.",
+  "receiveScanQrCameraDenied": "Kamera potreban je pristup za skeniranje QR kodova.",
+  "receiveStepGetLink": "Preuzmite vezu",
+  "receiveStepGetLinkBody": "Zamolite pošiljatelja da s vama podijeli vezu za prijenos.",
+  "receiveStepPaste": "Zalijepi i pronađi",
+  "receiveStepPasteBody": "Zalijepi gornju vezu i dodirnite \"Pronađi prijenos\".",
+  "receiveStepDownload": "Preuzmi datoteke",
+  "receiveStepDownloadBody": "Pogledaj detalje datoteke i preuzmite sve odjednom.",
+  "lookingUpTransfer": "Traženje prijenosa...",
+  "transferNotFound": "Prijenos nije pronađen. Provjerite vezu i pokušajte ponovo.",
+  "transferExpired": "Ovaj prijenos je istekao i više nije dostupan.",
+  "transferLoginRequired": "Za pristup ovom prijenosu potrebna je prijava.",
+  "transferBadResponse": "Neočekivani odgovor poslužitelja. Provjerite vezu.",
+  "transferNetworkError": "Mrežna pogreška. Provjerite internetsku vezu.",
+  "transferLoadFailed": "Nije moguće učitati prijenos: <<PH0>>",
+  "passwordProtected": "Zaporka zaštićena",
+  "enterPassword": "Unesite lozinku",
+  "unlock": "Otključaj",
+  "downloading": "Preuzimanje…",
+  "downloadAllFiles": "Preuzmi sve datoteke",
+  "downloadSingleFile": "Preuzmi datoteku",
+  "receiveAnother": "Primi još jedan prijenos",
+  "plansTitle": "Planovi",
+  "plansSubtitle": "Nadogradite za uklanjanje oglasa i slanje većih datoteka.",
+  "storeUnavailable": "Trgovina nije dostupna",
+  "storeUnavailableBody": "Kupnje unutar aplikacije nisu dostupne točno sada.",
+  "storeLoadingPrices": "Učitavanje cijena iz App Storea…",
+  "storePricesUnavailable": "Cijene nedostupne",
+  "storePricesPartial": "Neke cijene nisu mogle biti učitane",
+  "storePricesPartialBody": "<<PH0>> od <<PH1>> proizvoda za pretplatu su učitani.",
+  "storeSetupHint": "Testirajte na stvarnom iPhoneu (ne na Simulatoru), koristite Sandbox Apple ID i osigurajte sve 6 pretplata stvoreno je pod ID-om paketa ove aplikacije u App Store Connectu s postavljenim cijenama.",
+  "effectiveMonthlyPrice": "<<PH0>>/mjesečno",
+  "freeVersionAds": "Trenutno koristite našu besplatnu verziju s oglasima",
+  "restorePurchases": "Vrati kupovine",
+  "plansContinue": "Nastavi",
+  "planLinkRestore": "Vrati",
+  "termsAndConditions": "Uvjeti i odredbe",
+  "createAccountTitle": "Izradi račun",
+  "signUpSubtitle": "Prijavi se e-poštom i lozinkom.",
+  "confirmPassword": "Potvrdi lozinku",
+  "passwordMin8": "Lozinka (min. 8 chars)",
+  "alreadyHaveAccount": "Već imate račun?",
+  "checkEmailTitle": "Provjerite svoj\nemail",
+  "otpSentTo": "Poslali smo 6-znamenkasti kod na\n<<PH0>>",
+  "verifyAndSignIn": "Potvrdi i prijavi se",
+  "didntReceiveCode": "Niste ga primili?",
+  "tryAgain": "Pokušajte ponovo",
+  "otpExpiresHint": "Kôd ističe za 5 minuta. Provjerite mapu neželjene pošte ako je ne vidite.",
+  "snackError": "Pogreška",
+  "snackCopied": "Kopirano",
+  "snackCopiedBody": "Veza je kopirana u međuspremnik",
+  "snackWelcome": "Dobro došli",
+  "snackAccountCreated": "Račun stvoren",
+  "snackEnterEmail": "Unesite svoj email",
+  "snackEnterPassword": "Unesite svoju lozinku",
+  "snackInvalidEmail": "Nevažeća adresa e-pošte",
+  "snackInvalidCredentials": "Netočna adresa e-pošte ili lozinka",
+  "snackPasswordMin8": "Lozinka mora imati najmanje 8 znakova",
+  "snackPasswordMismatch": "Lozinke se ne podudaraju.",
+  "snackAccountExists": "Račun već postoji. Prijavite se.",
+  "snackSignupFailed": "Nije moguće stvoriti račun. Pokušajte ponovno.",
+  "snackEnterOtp": "Unesite 6-znamenkasti kod",
+  "snackOtpExpired": "Kôd je istekao",
+  "snackOtpExpiredBody": "Zatražite novi kod.",
+  "snackInvalidCode": "Kôd nevažeći",
+  "snackInvalidCodeBody": "Kôd je netočan. Pokušajte ponovno.",
+  "snackSendCodeFailed": "Nije moguće poslati kod. Provjerite vezu i pokušajte ponovo.",
+  "snackEmptyFolder": "Prazna mapa",
+  "snackEmptyFolderBody": "U odabranoj mapi nisu pronađene datoteke.",
+  "snackFolderUnsupported": "Nije podržano",
+  "snackFolderUnsupportedBody": "Prijenos mape nije dostupan na ovoj platformi.",
+  "snackFolderReadError": "Nije moguće pročitati odabranu mapu.",
+  "snackLimitReached": "Ograničenje je dosegnuto",
+  "snackLimitFilesBody": "Neke datoteke nisu dodane zbog veličine ili broja datoteka ograničenja.",
+  "snackFreePlanLimit": "Besplatni plan dopušta do 5 GB po prijenosu. Uklonite neke datoteke ili nadogradite.",
+  "snackSignInEmail": "Prijavite se za slanje e-poštom.",
+  "snackUploadStartFailed": "Nije moguće pokrenuti prijenos.",
+  "snackVerifyEnterCode": "Unesite 4-znamenkasti kod iz svoje e-pošte.",
+  "snackVerifyInvalid": "Kôd je nevažeći ili istekao. Provjerite e-poštu i pokušajte ponovno.",
+  "snackVerifyResendFailed": "Nije moguće ponovno poslati kôd. Pokušajte ponovo.",
+  "snackDownloadComplete": "Preuzimanje dovršeno",
+  "snackDownloadSaved": "\"<<PH0>>\" spremljeno u Preuzimanja",
+  "snackDownloadFailed": "Preuzimanje nije uspjelo",
+  "snackSaved": "Spremljeno",
+  "snackServerUrlUpdated": "URL poslužitelja ažuriran. Ponovno pokrenite aplikaciju za primjenu.",
+  "snackStoreError": "Pogreška trgovine",
+  "snackMissingProducts": "Proizvodi koji nedostaju",
+  "snackStoreUnavailable": "Trgovina nije dostupna",
+  "snackStoreUnavailableBody": "Kupnje unutar aplikacije nisu dostupne na ovom uređaju.",
+  "snackProductNotLoaded": "Proizvod još nije učitan.",
+  "snackRestoreStarted": "Pokrenuto vraćanje",
+  "snackRestoreStartedBody": "Provjeravamo vaš kupnje.",
+  "snackRestoreFailed": "Vraćanje nije uspjelo",
+  "snackProcessing": "Obrada",
+  "snackPleaseWait": "Pričekajte...",
+  "snackSuccess": "Uspjeh",
+  "snackPurchaseCompleted": "Kupnja dovršena.",
+  "snackPurchaseError": "Pogreška pri kupnji",
+  "snackPurchaseFailed": "Kupnja nije uspjelo.",
+  "snackCanceled": "Otkazano",
+  "snackPurchaseCanceled": "Kupnja otkazana.",
+  "snackUpload": "Prenesi",
+  "snackVerify": "Potvrdi",
+  "doNotExpire": "Nemoj ističe",
+  "hourSingular": "sat",
+  "hourPlural": "sati",
+  "daySingular": "dan",
+  "dayPlural": "dana",
+  "emailAddressLabel": "ADRESA E-POŠTE",
+  "passwordLabelCaps": "LOZINKA",
+  "confirmPasswordLabelCaps": "POTVRDI LOZINKU",
+  "transferLinkOrId": "LINK ZA PRIJENOS ILI ID",
+  "howToReceive": "KAKO PRIMITI",
+  "planAdsTitle": "Ads Plan",
+  "planAdsBullet1": "Pristup aplikaciji bez oglasa",
+  "planAdsBullet2": "Ukloni sve oglase",
+  "planProTitle": "Pro Plan",
+  "planProBullet1": "Pošalji datoteke do 20 GB",
+  "planProBullet2": "Brzo slanje",
+  "planPremiumTitle": "Premium plan",
+  "planPremiumBullet1": "Šaljite datoteke do 100 GB",
+  "planPremiumBullet2": "Super brzo slanje",
+  "planSubscriptionDisclaimer": "Nema probnog razdoblja — potrebna je pretplata za korištenje dodatne funkcije aplikacije. Bit će vam odmah naplaćeno. Možete otkazati bilo kada.",
+  "perMonth": "/ mjesec",
+  "perYear": "/ godina",
+  "snackConnectionProblem": "Problem s vezom. Pokušajte ponovno.",
+  "networkTitle": "Mreža",
+  "transferIdLabel": "ID: <<PH0>>",
+  "downloadMetaSummary": "Datoteke: <<PH0>> · <<PH1>> bajtovi",
+  "todayAt": "Danas · <<PH0>>",
+  "yesterdayAt": "Jučer · <<PH0>>",
+  "daysAgoAt": "<<PH0>>prije d · <<PH1>>",
+  "dateAt": "<<PH0>> · <<PH1>>",
+  "mbAmount": "<<PH0>> MB",
+  "uploadProgressSummary": "<<PH0>> / <<PH1>> • <<PH2>> lijevo",
+  "loadingShort": "učitavanje...",
+  "colorPaletteTitle": "Paleta boja",
+  "colorPaletteSectionBackgrounds": "Pozadine (tinta skala)",
+  "colorPaletteSectionAccent": "Akcent / Primarni",
+  "colorPaletteSectionText": "Tekst",
+  "colorPaletteSectionBorders": "Rubnice i staklo",
+  "colorPaletteSectionSemantic": "Semantika",
+  "colorPaletteSectionLive": "Tema uživo (trenutačno)",
+  "colorPaletteActiveHint": "★ = aktivno se koristi u zasloni",
+  "colorPaletteCopyHint": "Dugo pritisnite bilo koji uzorak da kopirate njegovu heksadecimalnu vrijednost.",
+  "settingsAppBrand": "Podijeli veliko\nVideo datoteke",
+  "loginEmailPasswordPrompt": "Unesite svoju e-poštu i lozinku za prijavu.",
+  "forgotPassword": "Zaboravili ste lozinku?",
+  "forgotPasswordTitle": "Poništite lozinku",
+  "forgotPasswordBody": "Unesite e-poštu svog računa i poslat ćemo vam kod za poništavanje.",
+  "forgotPasswordSubmit": "Pošaljite kod za poništavanje",
+  "resetPasswordTitle": "Kreiraj novi lozinka",
+  "resetPasswordBody": "Unesite 6-znamenkasti kod iz svoje e-pošte i odaberite novu lozinku.",
+  "resetPasswordSubmit": "Ažuriraj lozinku",
+  "snackPasswordResetSent": "Kôd za poništavanje poslan",
+  "snackPasswordResetSentBody": "Provjerite e-poštu za 6-znamenkasti kod za poništavanje.",
+  "snackPasswordResetFailed": "Nije moguće poslati kod za poništavanje. Pokušajte ponovo.",
+  "snackPasswordUpdated": "Zaporka je ažurirana",
+  "snackPasswordUpdatedBody": "Prijavite se sa svojom novom zaporkom.",
+  "snackPasswordResetInvalid": "Kôd za poništavanje nije valjan ili je istekao.",
+  "otpDigitLabel": "ŠESTEROZNAMENKI KOD",
+  "receiveMoreFiles": "+<<PH0>> više datoteka"
+}

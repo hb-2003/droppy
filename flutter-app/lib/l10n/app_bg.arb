@@ -1,0 +1,466 @@
+{
+  "@@locale": "bg",
+  "@verifyEmailCheckSpamHint": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@upToTotal": {
+    "placeholders": {
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "@filesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesCount": "{count, plural, =1{1 file} other{{count} files}}",
+  "@mbLeft": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@transferLoadFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@storePricesPartialBody": {
+    "placeholders": {
+      "loaded": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "priceUnavailable": "—",
+  "@effectiveMonthlyPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "@otpSentTo": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@snackDownloadSaved": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "emailExampleHint": "you@example.com",
+  "otpSixDigitHint": "000000",
+  "verifyFourDigitHint": "0000",
+  "transferLinkHint": "https://… or paste ID",
+  "@filesReady": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesReady": "{count, plural, =1{1 file ready} other{{count} files ready}}",
+  "@transferIdLabel": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadMetaSummary": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "@todayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@yesterdayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@daysAgoAt": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@dateAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@mbAmount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@uploadProgressSummary": {
+    "placeholders": {
+      "sent": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      },
+      "remaining": {
+        "type": "String"
+      }
+    }
+  },
+  "@historyFilesSize": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "historyFilesSize": "{count, plural, =1{1 file} other{{count} files}} · {size}",
+  "@receiveMoreFiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appTitle": "Споделяйте големи видео файлове",
+  "heroAccent": "моментално.",
+  "heroTitle": "Изпращайте тежки файлове",
+  "splashLoading": "Зарежда се...",
+  "navSend": "Табло за управление",
+  "navHome": "Начало",
+  "navHistory": "История",
+  "navReceive": "Получете",
+  "navPlans": "Планове",
+  "navDownload": "Изтегляне",
+  "navSettings": "Настройки",
+  "modeLink": "Вземете линк",
+  "modeEmail": "Изпращане по имейл",
+  "pickFiles": "Изберете файлове",
+  "pickFolder": "Изберете папка",
+  "emailFrom": "Вашият имейл",
+  "mailFromUsesAccount": "Използва вашия имейл адрес, в който сте влезли.",
+  "recipientEmailsHelper": "Множество получатели: разделете със запетаи, точка и запетая или интервали.",
+  "emailTo": "Имейл на получателя",
+  "messageOptional": "Съобщение (по избор)",
+  "passwordOptional": "Парола (по избор)",
+  "destructAfterDownload": "Изтриване след изтегляне",
+  "destructNo": "Дръжте на разположение",
+  "sendButton": "Изпратете",
+  "uploading": "Качване...",
+  "uploadComplete": "Готово",
+  "shareLinkTitle": "Вашата връзка",
+  "copyLink": "Копиране на връзката",
+  "share": "Споделете",
+  "shareQrCode": "Споделяне на QR код",
+  "uploadMore": "Изпратете друг",
+  "emailSentTitle": "Изпратени имейли",
+  "verifyEmailTitle": "Потвърдете своя имейл",
+  "verifyCodeHint": "Въведете кода от вашия имейл",
+  "verifySubmit": "Проверете",
+  "verifyResendCode": "Повторно изпращане на кода",
+  "verifyCodeSent": "На вашия имейл беше изпратен нов код за потвърждение.",
+  "verifyEmailSmtpWarningTitle": "Имейлът за потвърждение може да не е изпратен",
+  "verifyEmailSmtpWarningBody": "Сървърът не можа да потвърди доставката (често SMTP е неправилно конфигуриран). Помолете администратора на вашия сайт да провери настройките за поща в административния панел, след което докоснете Повторно изпращане на код.",
+  "verifyEmailCheckSpamHint": "Ако не пристигне: проверете Junk/Spam и Promotions, изчакайте малко, потвърдете, че <<PH0>> няма правописни грешки, след което докоснете Повторно изпращане.",
+  "loginTitle": "влезте",
+  "signupHint": "Използвайте имейла и паролата за вашия акаунт в сайта.",
+  "emailHint": "Имейл",
+  "passwordHint": "Парола",
+  "cancel": "Отказ",
+  "signIn": "влезте",
+  "downloadIdHint": "ID за прехвърляне",
+  "privateIdHint": "Личен документ за самоличност (по избор)",
+  "fetchTransfer": "Отворен трансфер",
+  "downloadFile": "Изтегляне",
+  "unlockDownload": "Отключване на изтегляне",
+  "downloadSaved": "Запазено в Изтегляния",
+  "errorGeneric": "Нещо се обърка",
+  "errorNetwork": "Грешка в мрежата",
+  "errorBadResponse": "Неочакван отговор на сървъра",
+  "termsAccept": "Съгласен съм с условията",
+  "settingsApiUrl": "Публичен сайт URL",
+  "settingsAccount": "Акаунт",
+  "settingsAppearance": "Външен вид",
+  "settingsTheme": "Тема",
+  "themeSystem": "Система",
+  "themeLight": "Светъл",
+  "themeDark": "Тъмен",
+  "settingsSignedIn": "Влезли сте.",
+  "settingsSignedOut": "Не сте влезли в.",
+  "settingsOpenWebsite": "Отворете уебсайт",
+  "signUp": "Регистрация",
+  "settingsLinks": "Връзки",
+  "privacyPolicy": "Политика за поверителност",
+  "termsOfService": "Условия за ползване",
+  "about": "Относно",
+  "moreApps": "Още apps",
+  "settingsLanguage": "Language",
+  "languageEnglish": "English",
+  "languageHindi": "Hindi",
+  "logout": "Log out",
+  "deleteAccount": "Delete account",
+  "deleteAccountConfirmTitle": "Delete your account?",
+  "deleteAccountConfirmBody": "This permanently deletes your account and signs you out. Вашите връзки за прехвърляне ще продължат да работят, но повече няма да се показват в историята ви.",
+  "deleteAccountSuccess": "Акаунтът е изтрит",
+  "deleteAccountSuccessBody": "Акаунтът ви е премахнат.",
+  "deleteAccountFailed": "Акаунтът не можа да бъде изтрит",
+  "deleteAccountFailedBody": "Моля, опитайте отново или се свържете с екипа за поддръжка.",
+  "maxFilesReached": "Твърде много файлове",
+  "fileTooLarge": "Файлът също голям",
+  "ipLimit": "Твърде много качвания от тази мрежа",
+  "fillFields": "Моля, попълнете задължителните полета",
+  "invalidEmail": "Невалиден имейл",
+  "maxRecipientsReached": "Твърде много получатели",
+  "loginRequiredTitle": "Изисква се влизане",
+  "loginRequiredBody": "Този сървър изисква акаунт за качване или изтегляне.",
+  "settingsSubtitle": "Предпочитания за приложението и акаунт.",
+  "dropHeavyFile": "Пуснете тежък файл тук.",
+  "upToTotal": "До <<PH0>> общо",
+  "removeAll": "Премахване на всички",
+  "addFiles": "Добавяне файлове",
+  "adding": "Добавяне...",
+  "options": "Опции",
+  "selfDestruct": "Самоунищожаване след изтегляне",
+  "expiry": "Изтичане",
+  "cancelUpload": "Отказ от качването",
+  "transferReady": "Прехвърлянето е готово!",
+  "emailSentReady": "Имейлът е изпратен!",
+  "shareRecipientHint": "Споделете тази връзка с вашия получател.",
+  "emailSentBody": "Уведомихме вашия получател(и).",
+  "scanQr": "Сканирайте, за да отворите връзката за прехвърляне.",
+  "shareLinkButton": "СПОДЕЛЕТЕ ВРЪЗКА",
+  "verifyFourDigit": "Въведете 4-цифрения код, изпратен на вашия имейл на изпращача.",
+  "starting": "Започване…",
+  "mbLeft": "<<PH0>> MB остават",
+  "fillField": "Моля, попълнете това поле.",
+  "enterValidEmail": "Въведете валиден имейл.",
+  "message": "Съобщение",
+  "recipientEmail": "Имейл на получателя",
+  "active": "Активно",
+  "expired": "Изтекло",
+  "historyTitle": "Моите преводи",
+  "signInToSeeTransfers": "Влезте, за да видите вашите преводи",
+  "signInTransfersBody": "Ние използваме вашия имейл, за да свържем преводите към вашия акаунт — не е необходима парола.",
+  "couldNotLoadTransfers": "Не можахме да заредим трансфери",
+  "retry": "Повторен опит",
+  "noTransfersYet": "Все още няма трансфери",
+  "noTransfersBody": "След като изпратите файл, той ще се появи тук.",
+  "transferDetails": "Подробности за трансфер",
+  "filesSection": "Файлове",
+  "receiveTitle": "Получаване на файлове",
+  "receiveSubtitle": "Поставете връзка за трансфер за изтегляне файлове.",
+  "pasteTooltip": "Поставяне",
+  "findTransfer": "Намиране на прехвърляне",
+  "receiveScanQr": "Сканиране на QR",
+  "receiveScanQrTitle": "Сканиране на прехвърляне на QR",
+  "receiveScanQrHint": "Подравнете QR кода в рамката.",
+  "receiveScanQrInvalid": "Този QR код не е валидна връзка за прехвърляне.",
+  "receiveScanQrCameraDenied": "Камера необходим е достъп за сканиране на QR кодове.",
+  "receiveStepGetLink": "Получете връзката",
+  "receiveStepGetLinkBody": "Помолете подателя да сподели връзката за прехвърляне с вас.",
+  "receiveStepPaste": "Поставете и намерете",
+  "receiveStepPasteBody": "Поставете връзката по-горе и докоснете „Намиране на превод“.",
+  "receiveStepDownload": "Изтегляне на файлове",
+  "receiveStepDownloadBody": "Вижте подробности за файла и изтеглете всичко наведнъж.",
+  "lookingUpTransfer": "Търсене на превод...",
+  "transferNotFound": "Прехвърлянето не е намерено. Проверете връзката и опитайте отново.",
+  "transferExpired": "Този трансфер е изтекъл и вече не е наличен.",
+  "transferLoginRequired": "Изисква се влизане за достъп до този трансфер.",
+  "transferBadResponse": "Неочакван отговор на сървъра. Проверете връзката си.",
+  "transferNetworkError": "Грешка в мрежата. Проверете връзката си с интернет.",
+  "transferLoadFailed": "Прехвърлянето не можа да се зареди: <<PH0>>",
+  "passwordProtected": "Защитена с парола",
+  "enterPassword": "Въведете парола",
+  "unlock": "Отключване",
+  "downloading": "Изтегляне…",
+  "downloadAllFiles": "Изтегляне на всички файлове",
+  "downloadSingleFile": "Изтегляне на файл",
+  "receiveAnother": "Получаване на нов трансфер",
+  "plansTitle": "Планове",
+  "plansSubtitle": "Надстройте, за да премахнете реклами и да изпратите по-големи файлове.",
+  "storeUnavailable": "Магазинът не е наличен",
+  "storeUnavailableBody": "Покупките в приложението не са налични правилно сега.",
+  "storeLoadingPrices": "Цените се зареждат от App Store…",
+  "storePricesUnavailable": "Цените не са налични",
+  "storePricesPartial": "Някои цени не можаха да бъдат заредени",
+  "storePricesPartialBody": "<<PH0>> от <<PH1>> абонаментни продукти са заредени.",
+  "storeSetupHint": "Тествайте на истински iPhone (не Simulator), използвайте Sandbox Apple ID и се уверете, че всички 6 абонамента са създадени под идентификатора на пакета на това приложение в App Store Connect със зададени цени.",
+  "effectiveMonthlyPrice": "<<PH0>>/месец",
+  "freeVersionAds": "В момента използвате нашата безплатна версия с реклами",
+  "restorePurchases": "Възстановяване покупки",
+  "plansContinue": "Продължи",
+  "planLinkRestore": "Възстановяване",
+  "termsAndConditions": "Правила и условия",
+  "createAccountTitle": "Създаване на акаунт",
+  "signUpSubtitle": "Регистрирайте се с имейл и парола.",
+  "confirmPassword": "Потвърдете парола",
+  "passwordMin8": "Парола (мин. 8 chars)",
+  "alreadyHaveAccount": "Вече имате акаунт?",
+  "checkEmailTitle": "Проверете вашия\nимейл",
+  "otpSentTo": "Изпратихме 6-цифрен код на\n<<PH0>>",
+  "verifyAndSignIn": "Потвърдете и влезте",
+  "didntReceiveCode": "Не сте го получили?",
+  "tryAgain": "Опитайте отново",
+  "otpExpiresHint": "Кодът изтича след 5 минути. Проверете папката си със спам, ако не я виждате.",
+  "snackError": "Грешка",
+  "snackCopied": "Копирано",
+  "snackCopiedBody": "Връзката е копирана в клипборда",
+  "snackWelcome": "Добре дошли",
+  "snackAccountCreated": "Акаунтът е създаден",
+  "snackEnterEmail": "Моля, въведете вашия имейл",
+  "snackEnterPassword": "Моля, въведете вашата парола",
+  "snackInvalidEmail": "Невалиден имейл адрес",
+  "snackInvalidCredentials": "Неправилен имейл или парола",
+  "snackPasswordMin8": "Паролата трябва да е поне 8 знака",
+  "snackPasswordMismatch": "Паролите не съвпадат.",
+  "snackAccountExists": "Акаунтът вече съществува. Моля, влезте.",
+  "snackSignupFailed": "Не може да се създаде акаунт. Опитайте отново.",
+  "snackEnterOtp": "Моля, въведете 6-цифрения код",
+  "snackOtpExpired": "Кодът е изтекъл",
+  "snackOtpExpiredBody": "Моля, поискайте нов код.",
+  "snackInvalidCode": "Невалиден код",
+  "snackInvalidCodeBody": "Кодът е неправилен. Моля, опитайте отново.",
+  "snackSendCodeFailed": "Кодът не можа да бъде изпратен. Проверете връзката си и опитайте отново.",
+  "snackEmptyFolder": "Празна папка",
+  "snackEmptyFolderBody": "В избраната папка няма намерени файлове.",
+  "snackFolderUnsupported": "Не се поддържа",
+  "snackFolderUnsupportedBody": "Качването на папки не е налично на тази платформа.",
+  "snackFolderReadError": "Избраната папка не може да бъде прочетена.",
+  "snackLimitReached": "Достигнат е лимитът",
+  "snackLimitFilesBody": "Някои файлове не са добавени поради размера или броя на файловете ограничения.",
+  "snackFreePlanLimit": "Безплатният план позволява до 5GB на трансфер. Моля, премахнете някои файлове или надстройте.",
+  "snackSignInEmail": "Моля, влезте, за да изпратите по имейл.",
+  "snackUploadStartFailed": "Качването не може да започне.",
+  "snackVerifyEnterCode": "Въведете 4-цифрения код от вашия имейл.",
+  "snackVerifyInvalid": "Невалиден или изтекъл код. Проверете имейла и опитайте отново.",
+  "snackVerifyResendFailed": "Кодът не можа да бъде изпратен повторно. Опитайте отново.",
+  "snackDownloadComplete": "Изтеглянето е завършено",
+  "snackDownloadSaved": "„<<PH0>>“ е запазено в Изтегляния",
+  "snackDownloadFailed": "Изтеглянето е неуспешно",
+  "snackSaved": "Запазено",
+  "snackServerUrlUpdated": "URL адресът на сървъра е актуализиран. Рестартирайте приложението, за да приложите.",
+  "snackStoreError": "Грешка в магазина",
+  "snackMissingProducts": "Липсващи продукти",
+  "snackStoreUnavailable": "Магазинът не е наличен",
+  "snackStoreUnavailableBody": "Покупките в приложението не са налични на това устройство.",
+  "snackProductNotLoaded": "Продуктът все още не е зареден.",
+  "snackRestoreStarted": "Възстановяването е започнало",
+  "snackRestoreStartedBody": "Проверяваме вашето покупки.",
+  "snackRestoreFailed": "Неуспешно възстановяване",
+  "snackProcessing": "Обработка",
+  "snackPleaseWait": "Моля, изчакайте...",
+  "snackSuccess": "Успех",
+  "snackPurchaseCompleted": "Покупката е завършена.",
+  "snackPurchaseError": "Грешка при покупка",
+  "snackPurchaseFailed": "Покупка неуспешно.",
+  "snackCanceled": "Отменено",
+  "snackPurchaseCanceled": "Покупката е анулирана.",
+  "snackUpload": "Качване",
+  "snackVerify": "Проверете",
+  "doNotExpire": "Не изтича",
+  "hourSingular": "час",
+  "hourPlural": "часа",
+  "daySingular": "ден",
+  "dayPlural": "дни",
+  "emailAddressLabel": "ИМЕЙЛ АДРЕС",
+  "passwordLabelCaps": "ПАРОЛА",
+  "confirmPasswordLabelCaps": "ПОТВЪРДЕТЕ ПАРОЛА",
+  "transferLinkOrId": "ПРЕХВЪРЛЯЕТЕ ВРЪЗКА ИЛИ ID",
+  "howToReceive": "КАК ДА ПОЛУЧИТЕ",
+  "planAdsTitle": "План за реклами",
+  "planAdsBullet1": "Достъп до безплатно приложение за реклами",
+  "planAdsBullet2": "Премахване на всички реклами",
+  "planProTitle": "Професионален план",
+  "planProBullet1": "Изпращайте файлове до 20 GB",
+  "planProBullet2": "Бързо качване",
+  "planPremiumTitle": "Премиум план",
+  "planPremiumBullet1": "Изпращайте файлове до 100GB",
+  "planPremiumBullet2": "Супер бързо качване",
+  "planSubscriptionDisclaimer": "Без пробен период — изисква се абонамент за използване на допълнителната функционалност на приложението. Ще бъдете таксувани веднага. Можете да анулирате по всяко време.",
+  "perMonth": "/ месец",
+  "perYear": "/ година",
+  "snackConnectionProblem": "Проблем с връзката. Моля, опитайте отново.",
+  "networkTitle": "Мрежа",
+  "transferIdLabel": "ID: <<PH0>>",
+  "downloadMetaSummary": "Файлове: <<PH0>> · <<PH1>> байтове",
+  "todayAt": "Днес · <<PH0>>",
+  "yesterdayAt": "Вчера · <<PH0>>",
+  "daysAgoAt": "<<PH0>>преди ден · <<PH1>>",
+  "dateAt": "<<PH0>> · <<PH1>>",
+  "mbAmount": "<<PH0>> MB",
+  "uploadProgressSummary": "<<PH0>> / <<PH1>> • <<PH2>> вляво",
+  "loadingShort": "Зарежда се...",
+  "colorPaletteTitle": "Цветна палитра",
+  "colorPaletteSectionBackgrounds": "Фонове (мастило мащаб)",
+  "colorPaletteSectionAccent": "Акцент / Основен",
+  "colorPaletteSectionText": "Текст",
+  "colorPaletteSectionBorders": "Граници и стъкло",
+  "colorPaletteSectionSemantic": "Семантичен",
+  "colorPaletteSectionLive": "Тема на живо (текуща)",
+  "colorPaletteActiveHint": "★ = използва се активно в екрани",
+  "colorPaletteCopyHint": "Натиснете продължително произволен образец, за да копирате неговата шестнадесетична стойност.",
+  "settingsAppBrand": "Споделяне на голям\nВидео файлове",
+  "loginEmailPasswordPrompt": "Въведете своя имейл и парола, за да влезете.",
+  "forgotPassword": "Забравена парола?",
+  "forgotPasswordTitle": "Нулиране на парола",
+  "forgotPasswordBody": "Въведете имейла на вашия акаунт и ние ще изпратим код за нулиране.",
+  "forgotPasswordSubmit": "Изпратете код за нулиране",
+  "resetPasswordTitle": "Създаване на нов парола",
+  "resetPasswordBody": "Въведете 6-цифрения код от вашия имейл и изберете нова парола.",
+  "resetPasswordSubmit": "Актуализирайте паролата",
+  "snackPasswordResetSent": "Кодът за нулиране е изпратен",
+  "snackPasswordResetSentBody": "Проверете имейла си за 6-цифрен код за нулиране.",
+  "snackPasswordResetFailed": "Кодът за нулиране не можа да бъде изпратен. Опитайте отново.",
+  "snackPasswordUpdated": "Паролата е актуализирана",
+  "snackPasswordUpdatedBody": "Влезте с новата си парола.",
+  "snackPasswordResetInvalid": "Невалиден или изтекъл код за нулиране.",
+  "otpDigitLabel": "6-ЦИФРЕН КОД",
+  "receiveMoreFiles": "+<<PH0>> още файлове"
+}

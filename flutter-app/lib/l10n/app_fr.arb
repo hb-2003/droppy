@@ -1,0 +1,466 @@
+{
+  "@@locale": "fr",
+  "appTitle": "Partager des fichiers vidéo volumineux",
+  "heroAccent": "immédiatement.",
+  "heroTitle": "Envoyer des fichiers lourds",
+  "splashLoading": "Chargement…",
+  "navSend": "Tableau de bord",
+  "navHome": "Maison",
+  "navHistory": "Histoire",
+  "navReceive": "Recevoir",
+  "navPlans": "Forfaits",
+  "navDownload": "Télécharger",
+  "navSettings": "Paramètres",
+  "modeLink": "Obtenez un lien",
+  "modeEmail": "Envoyer par email",
+  "pickFiles": "Choisir des fichiers",
+  "pickFolder": "Choisir un dossier",
+  "emailFrom": "Votre email",
+  "mailFromUsesAccount": "Utilise votre adresse e-mail de connexion.",
+  "recipientEmailsHelper": "Destinataires multiples : séparez-les par des virgules, des points-virgules ou des espaces.",
+  "emailTo": "E-mail du destinataire",
+  "messageOptional": "Message (facultatif)",
+  "passwordOptional": "Mot de passe (facultatif)",
+  "destructAfterDownload": "Supprimer après le téléchargement",
+  "destructNo": "Rester disponible",
+  "sendButton": "Envoyer",
+  "uploading": "Téléchargement…",
+  "uploadComplete": "Fait",
+  "shareLinkTitle": "Votre lien",
+  "copyLink": "Copier le lien",
+  "share": "Partager",
+  "shareQrCode": "Partager le code QR",
+  "uploadMore": "En envoyer un autre",
+  "emailSentTitle": "E-mails envoyés",
+  "verifyEmailTitle": "Vérifiez votre email",
+  "verifyCodeHint": "Entrez le code de votre email",
+  "verifySubmit": "Vérifier",
+  "verifyResendCode": "Renvoyer le code",
+  "verifyCodeSent": "Un nouveau code de vérification a été envoyé à votre adresse e-mail.",
+  "verifyEmailSmtpWarningTitle": "L'e-mail de vérification n'a peut-être pas été envoyé",
+  "verifyEmailSmtpWarningBody": "Le serveur n'a pas pu confirmer la livraison (souvent SMTP est mal configuré). Demandez à l'administrateur de votre site de vérifier les paramètres de messagerie dans le panneau d'administration, puis appuyez sur Renvoyer le code.",
+  "@verifyEmailCheckSpamHint": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "verifyEmailCheckSpamHint": "S'il n'arrive pas : vérifiez les courriers indésirables/spam et les promotions, attendez une minute, confirmez que << PH1>> n'a pas de fautes de frappe, puis appuyez sur Renvoyer.",
+  "loginTitle": "Se connecter",
+  "signupHint": "Utilisez l'e-mail et le mot de passe de votre compte de site.",
+  "emailHint": "E-mail",
+  "passwordHint": "Mot de passe",
+  "cancel": "Annuler",
+  "signIn": "Se connecter",
+  "downloadIdHint": "ID de transfert",
+  "privateIdHint": "ID privé (facultatif)",
+  "fetchTransfer": "Transfert ouvert",
+  "downloadFile": "Télécharger",
+  "unlockDownload": "Déverrouiller le téléchargement",
+  "downloadSaved": "Enregistré dans les téléchargements",
+  "errorGeneric": "Quelque chose s'est mal passé",
+  "errorNetwork": "Erreur réseau",
+  "errorBadResponse": "Réponse inattendue du serveur",
+  "termsAccept": "J'accepte les conditions",
+  "settingsApiUrl": "URL du site public",
+  "settingsAccount": "Compte",
+  "settingsAppearance": "Apparence",
+  "settingsTheme": "Thème",
+  "themeSystem": "Système",
+  "themeLight": "Lumière",
+  "themeDark": "Sombre",
+  "settingsSignedIn": "Vous êtes connecté.",
+  "settingsSignedOut": "Vous n'êtes pas connecté.",
+  "settingsOpenWebsite": "Ouvrir le site Web",
+  "signUp": "S'inscrire",
+  "settingsLinks": "Links",
+  "privacyPolicy": "Politique de confidentialité",
+  "termsOfService": "Conditions d'utilisation",
+  "about": "À propos",
+  "moreApps": "Plus d'applications",
+  "settingsLanguage": "Langue",
+  "languageEnglish": "Anglais",
+  "languageHindi": "hindi",
+  "logout": "Se déconnecter",
+  "deleteAccount": "Supprimer le compte",
+  "deleteAccountConfirmTitle": "Supprimer votre compte ?",
+  "deleteAccountConfirmBody": "Cela supprime définitivement votre compte et vous déconnecte. Vos liens de transfert continueront de fonctionner, mais ils n'apparaîtront plus dans votre historique.",
+  "deleteAccountSuccess": "Compte supprimé",
+  "deleteAccountSuccessBody": "Votre compte a été supprimé.",
+  "deleteAccountFailed": "Impossible de supprimer le compte",
+  "deleteAccountFailedBody": "Veuillez réessayer ou contacter l'assistance.",
+  "maxFilesReached": "Trop de fichiers",
+  "fileTooLarge": "Fichier trop volumineux",
+  "ipLimit": "Trop de téléchargements depuis ce réseau",
+  "fillFields": "Veuillez remplir les champs obligatoires",
+  "invalidEmail": "E-mail invalide",
+  "maxRecipientsReached": "Trop de destinataires",
+  "loginRequiredTitle": "Connexion requise",
+  "loginRequiredBody": "Ce serveur nécessite un compte pour télécharger ou télécharger.",
+  "settingsSubtitle": "Préférences et compte de l'application.",
+  "dropHeavyFile": "Déposez un gros fichier ici.",
+  "@upToTotal": {
+    "placeholders": {
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "upToTotal": "Jusqu'à <<PH0>> total",
+  "removeAll": "Supprimer tout",
+  "addFiles": "Ajouter des fichiers",
+  "adding": "Ajout…",
+  "options": "Possibilités",
+  "selfDestruct": "Autodestruction après téléchargement",
+  "expiry": "Expiration",
+  "cancelUpload": "Annuler le téléchargement",
+  "transferReady": "Transfert prêt !",
+  "emailSentReady": "E-mail envoyé !",
+  "shareRecipientHint": "Partagez ce lien avec votre destinataire.",
+  "emailSentBody": "Nous avons informé votre(vos) destinataire(s).",
+  "scanQr": "Scannez pour ouvrir le lien de transfert.",
+  "shareLinkButton": "PARTAGER LE LIEN",
+  "verifyFourDigit": "Saisissez le code à 4 chiffres envoyé à l'adresse e-mail de votre expéditeur.",
+  "starting": "Départ…",
+  "@filesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesCount": "{count, plural, =1{1 file} other{{count} files}}",
+  "@mbLeft": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "mbLeft": "<<PH0>> Mo restants",
+  "fillField": "Merci de remplir ce champ.",
+  "enterValidEmail": "Entrez un email valide.",
+  "message": "Message",
+  "recipientEmail": "E-mail du destinataire",
+  "active": "Actif",
+  "expired": "Expiré",
+  "historyTitle": "Mes transferts",
+  "signInToSeeTransfers": "Connectez-vous pour voir vos transferts",
+  "signInTransfersBody": "Nous utilisons votre adresse e-mail pour lier les transferts à votre compte – aucun mot de passe n'est requis.",
+  "couldNotLoadTransfers": "Impossible de charger les transferts",
+  "retry": "Réessayer",
+  "noTransfersYet": "Aucun transfert pour l'instant",
+  "noTransfersBody": "Une fois que vous aurez envoyé un fichier, il apparaîtra ici.",
+  "transferDetails": "Détails du transfert",
+  "filesSection": "Fichiers",
+  "receiveTitle": "Recevoir des fichiers",
+  "receiveSubtitle": "Collez un lien de transfert pour télécharger des fichiers.",
+  "pasteTooltip": "Coller",
+  "findTransfer": "Trouver un transfert",
+  "receiveScanQr": "Scanner le QR",
+  "receiveScanQrTitle": "Scanner le transfert QR",
+  "receiveScanQrHint": "Alignez le code QR à l'intérieur du cadre.",
+  "receiveScanQrInvalid": "Ce code QR n'est pas un lien de transfert valide.",
+  "receiveScanQrCameraDenied": "L'accès à la caméra est requis pour scanner les codes QR.",
+  "receiveStepGetLink": "Obtenez le lien",
+  "receiveStepGetLinkBody": "Demandez à l'expéditeur de partager le lien de transfert avec vous.",
+  "receiveStepPaste": "Coller et trouver",
+  "receiveStepPasteBody": "Collez le lien ci-dessus et appuyez sur « Rechercher un transfert ».",
+  "receiveStepDownload": "Télécharger des fichiers",
+  "receiveStepDownloadBody": "Consultez les détails du fichier et téléchargez tout en même temps.",
+  "lookingUpTransfer": "Recherche de transfert…",
+  "transferNotFound": "Transfert introuvable. Vérifiez le lien et réessayez.",
+  "transferExpired": "Ce transfert a expiré et n'est plus disponible.",
+  "transferLoginRequired": "Une connexion est requise pour accéder à ce transfert.",
+  "transferBadResponse": "Réponse inattendue du serveur. Vérifiez votre connexion.",
+  "transferNetworkError": "Erreur réseau. Vérifiez votre connexion Internet.",
+  "@transferLoadFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "transferLoadFailed": "Impossible de charger le transfert : <<PH0>>",
+  "passwordProtected": "Protégé par mot de passe",
+  "enterPassword": "Entrez le mot de passe",
+  "unlock": "Ouvrir",
+  "downloading": "Téléchargement…",
+  "downloadAllFiles": "Téléchargez tous les fichiers",
+  "downloadSingleFile": "Télécharger le fichier",
+  "receiveAnother": "Recevoir un autre transfert",
+  "plansTitle": "Forfaits",
+  "plansSubtitle": "Mettez à niveau pour supprimer les publicités et envoyer des fichiers plus volumineux.",
+  "storeUnavailable": "Magasin indisponible",
+  "storeUnavailableBody": "Les achats intégrés ne sont pas disponibles pour le moment.",
+  "storeLoadingPrices": "Chargement des prix depuis l’App Store…",
+  "storePricesUnavailable": "Prix ​​indisponibles",
+  "storePricesPartial": "Certains prix n'ont pas pu être chargés",
+  "@storePricesPartialBody": {
+    "placeholders": {
+      "loaded": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "storePricesPartialBody": "<<PH0>> des produits d'abonnement <<PH1>> chargés.",
+  "storeSetupHint": "Testez sur un vrai iPhone (pas sur un simulateur), utilisez un identifiant Apple Sandbox et assurez-vous que les 6 abonnements sont créés sous l'ID de bundle de cette application dans App Store Connect avec la tarification définie.",
+  "priceUnavailable": "—",
+  "@effectiveMonthlyPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "effectiveMonthlyPrice": "<<PH0>>/mois",
+  "freeVersionAds": "Vous utilisez actuellement notre version gratuite avec des publicités",
+  "restorePurchases": "Restaurer les achats",
+  "plansContinue": "Continuer",
+  "planLinkRestore": "Restaurer",
+  "termsAndConditions": "Termes et conditions",
+  "createAccountTitle": "Créer un compte",
+  "signUpSubtitle": "Inscrivez-vous avec email et mot de passe.",
+  "confirmPassword": "Confirmez le mot de passe",
+  "passwordMin8": "Mot de passe (min 8 caractères)",
+  "alreadyHaveAccount": "Vous avez déjà un compte ?",
+  "checkEmailTitle": "Vérifiez votre\nemail",
+  "@otpSentTo": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "otpSentTo": "Nous avons envoyé un code à 6 chiffres à\n<<PH0>>",
+  "verifyAndSignIn": "Vérifier et se connecter",
+  "didntReceiveCode": "Vous ne l'avez pas reçu ?",
+  "tryAgain": "Essayer à nouveau",
+  "otpExpiresHint": "Le code expire dans 5 minutes. Vérifiez votre dossier spam si vous ne le voyez pas.",
+  "snackError": "Erreur",
+  "snackCopied": "Copié",
+  "snackCopiedBody": "Lien copié dans le presse-papier",
+  "snackWelcome": "Accueillir",
+  "snackAccountCreated": "Compte créé",
+  "snackEnterEmail": "Veuillez entrer votre email",
+  "snackEnterPassword": "Veuillez entrer votre mot de passe",
+  "snackInvalidEmail": "Adresse e-mail invalide",
+  "snackInvalidCredentials": "Email ou mot de passe incorrect",
+  "snackPasswordMin8": "Le mot de passe doit contenir au moins 8 caractères",
+  "snackPasswordMismatch": "Les mots de passe ne correspondent pas.",
+  "snackAccountExists": "Le compte existe déjà. Veuillez vous connecter.",
+  "snackSignupFailed": "Impossible de créer un compte. Essayer à nouveau.",
+  "snackEnterOtp": "Veuillez saisir le code à 6 chiffres",
+  "snackOtpExpired": "Code expiré",
+  "snackOtpExpiredBody": "Veuillez demander un nouveau code.",
+  "snackInvalidCode": "Code invalide",
+  "snackInvalidCodeBody": "Le code est incorrect. Veuillez réessayer.",
+  "snackSendCodeFailed": "Impossible d'envoyer le code. Vérifiez votre connexion et réessayez.",
+  "snackEmptyFolder": "Dossier vide",
+  "snackEmptyFolderBody": "Aucun fichier trouvé dans le dossier sélectionné.",
+  "snackFolderUnsupported": "Non pris en charge",
+  "snackFolderUnsupportedBody": "Le téléchargement de dossiers n'est pas disponible sur cette plateforme.",
+  "snackFolderReadError": "Impossible de lire le dossier sélectionné.",
+  "snackLimitReached": "Limite atteinte",
+  "snackLimitFilesBody": "Certains fichiers n'ont pas été ajoutés en raison de limites de taille ou de nombre de fichiers.",
+  "snackFreePlanLimit": "Le forfait gratuit permet jusqu'à 5 Go par transfert. Veuillez supprimer certains fichiers ou effectuer une mise à niveau.",
+  "snackSignInEmail": "Veuillez vous connecter pour envoyer par email.",
+  "snackUploadStartFailed": "Impossible de démarrer le téléchargement.",
+  "snackVerifyEnterCode": "Saisissez le code à 4 chiffres de votre email.",
+  "snackVerifyInvalid": "Code invalide ou expiré. Vérifiez l'e-mail et réessayez.",
+  "snackVerifyResendFailed": "Impossible de renvoyer le code. Essayer à nouveau.",
+  "snackDownloadComplete": "Téléchargement terminé",
+  "@snackDownloadSaved": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "snackDownloadSaved": "\"<<PH0>>\" enregistré dans les téléchargements",
+  "snackDownloadFailed": "Le téléchargement a échoué",
+  "snackSaved": "Enregistré",
+  "snackServerUrlUpdated": "URL du serveur mise à jour. Redémarrez l'application pour postuler.",
+  "snackStoreError": "Erreur de stockage",
+  "snackMissingProducts": "Produits manquants",
+  "snackStoreUnavailable": "Magasin indisponible",
+  "snackStoreUnavailableBody": "Les achats intégrés ne sont pas disponibles sur cet appareil.",
+  "snackProductNotLoaded": "Le produit n'est pas encore chargé.",
+  "snackRestoreStarted": "Restauration démarrée",
+  "snackRestoreStartedBody": "Nous vérifions vos achats.",
+  "snackRestoreFailed": "La restauration a échoué",
+  "snackProcessing": "Traitement",
+  "snackPleaseWait": "S'il vous plaît, attendez…",
+  "snackSuccess": "Succès",
+  "snackPurchaseCompleted": "Achat terminé.",
+  "snackPurchaseError": "Erreur d'achat",
+  "snackPurchaseFailed": "L'achat a échoué.",
+  "snackCanceled": "Annulé",
+  "snackPurchaseCanceled": "Achat annulé.",
+  "snackUpload": "Télécharger",
+  "snackVerify": "Vérifier",
+  "doNotExpire": "N'expire pas",
+  "hourSingular": "heure",
+  "hourPlural": "heures",
+  "daySingular": "jour",
+  "dayPlural": "jours",
+  "emailAddressLabel": "ADRESSE EMAIL",
+  "passwordLabelCaps": "MOT DE PASSE",
+  "confirmPasswordLabelCaps": "CONFIRMEZ LE MOT DE PASSE",
+  "emailExampleHint": "you@example.com",
+  "otpSixDigitHint": "000000",
+  "verifyFourDigitHint": "0000",
+  "transferLinkOrId": "LIEN DE TRANSFERT OU ID",
+  "howToReceive": "COMMENT RECEVOIR",
+  "transferLinkHint": "https://… or paste ID",
+  "@filesReady": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesReady": "{count, plural, =1{1 file ready} other{{count} files ready}}",
+  "planAdsTitle": "Plan publicitaire",
+  "planAdsBullet1": "Accès à l'application gratuite de publicité",
+  "planAdsBullet2": "Supprimer toutes les annonces",
+  "planProTitle": "Forfait Pro",
+  "planProBullet1": "Envoyez des fichiers jusqu'à 20 Go",
+  "planProBullet2": "Téléchargement rapide",
+  "planPremiumTitle": "Forfait Premium",
+  "planPremiumBullet1": "Envoyez des fichiers jusqu'à 100 Go",
+  "planPremiumBullet2": "Téléchargement ultra rapide",
+  "planSubscriptionDisclaimer": "Aucune période d'essai : un abonnement est requis pour utiliser les fonctionnalités supplémentaires de l'application. Vous serez facturé immédiatement. Vous pouvez annuler à tout moment.",
+  "perMonth": "/ mois",
+  "perYear": "/ année",
+  "snackConnectionProblem": "Problème de connexion. Veuillez réessayer.",
+  "networkTitle": "Réseau",
+  "@transferIdLabel": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "transferIdLabel": "Identifiant : <<PH0>>",
+  "@downloadMetaSummary": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "downloadMetaSummary": "Fichiers : <<PH0>> · <<PH1>> octets",
+  "@todayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "todayAt": "Aujourd'hui · <<PH0>>",
+  "@yesterdayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "yesterdayAt": "Hier · <<PH0>>",
+  "@daysAgoAt": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "daysAgoAt": "Il y a <<PH0>>j · <<PH1>>",
+  "@dateAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "dateAt": "<<PH0>> · <<PH1>>",
+  "@mbAmount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "mbAmount": "<<PH0>> Mo",
+  "@uploadProgressSummary": {
+    "placeholders": {
+      "sent": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      },
+      "remaining": {
+        "type": "String"
+      }
+    }
+  },
+  "uploadProgressSummary": "<<PH0>> / <<PH1>> • <<PH2>> gauche",
+  "loadingShort": "Chargement…",
+  "colorPaletteTitle": "Palette de couleurs",
+  "colorPaletteSectionBackgrounds": "Arrière-plans (échelle d'encre)",
+  "colorPaletteSectionAccent": "Accent / Primaire",
+  "colorPaletteSectionText": "Texte",
+  "colorPaletteSectionBorders": "Bordures et verre",
+  "colorPaletteSectionSemantic": "Sémantique",
+  "colorPaletteSectionLive": "Thème en direct (actuel)",
+  "colorPaletteActiveHint": "★ = activement utilisé dans les écrans",
+  "colorPaletteCopyHint": "Appuyez longuement sur n’importe quel échantillon pour copier sa valeur hexadécimale.",
+  "@historyFilesSize": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "historyFilesSize": "{count, plural, =1{1 file} other{{count} files}} · {size}",
+  "settingsAppBrand": "Partager en grand\nFichiers vidéo",
+  "loginEmailPasswordPrompt": "Entrez votre email et votre mot de passe pour vous connecter.",
+  "forgotPassword": "Mot de passe oublié ?",
+  "forgotPasswordTitle": "Réinitialiser le mot de passe",
+  "forgotPasswordBody": "Entrez l'e-mail de votre compte et nous vous enverrons un code de réinitialisation.",
+  "forgotPasswordSubmit": "Envoyer le code de réinitialisation",
+  "resetPasswordTitle": "Créer un nouveau mot de passe",
+  "resetPasswordBody": "Saisissez le code à 6 chiffres de votre email et choisissez un nouveau mot de passe.",
+  "resetPasswordSubmit": "Mettre à jour le mot de passe",
+  "snackPasswordResetSent": "Code de réinitialisation envoyé",
+  "snackPasswordResetSentBody": "Vérifiez votre courrier électronique pour un code de réinitialisation à 6 chiffres.",
+  "snackPasswordResetFailed": "Impossible d'envoyer le code de réinitialisation. Essayer à nouveau.",
+  "snackPasswordUpdated": "Mot de passe mis à jour",
+  "snackPasswordUpdatedBody": "Connectez-vous avec votre nouveau mot de passe.",
+  "snackPasswordResetInvalid": "Code de réinitialisation invalide ou expiré.",
+  "otpDigitLabel": "CODE À 6 CHIFFRES",
+  "@receiveMoreFiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "receiveMoreFiles": "+<<PH0>> plus de fichiers"
+}

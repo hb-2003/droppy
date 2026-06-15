@@ -1,0 +1,466 @@
+{
+  "@@locale": "el",
+  "@verifyEmailCheckSpamHint": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@upToTotal": {
+    "placeholders": {
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "@filesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesCount": "{count, plural, =1{1 file} other{{count} files}}",
+  "@mbLeft": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@transferLoadFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@storePricesPartialBody": {
+    "placeholders": {
+      "loaded": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "priceUnavailable": "—",
+  "@effectiveMonthlyPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "@otpSentTo": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@snackDownloadSaved": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "emailExampleHint": "you@example.com",
+  "otpSixDigitHint": "000000",
+  "verifyFourDigitHint": "0000",
+  "transferLinkHint": "https://… or paste ID",
+  "@filesReady": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesReady": "{count, plural, =1{1 file ready} other{{count} files ready}}",
+  "@transferIdLabel": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadMetaSummary": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "@todayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@yesterdayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@daysAgoAt": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@dateAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@mbAmount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@uploadProgressSummary": {
+    "placeholders": {
+      "sent": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      },
+      "remaining": {
+        "type": "String"
+      }
+    }
+  },
+  "@historyFilesSize": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "historyFilesSize": "{count, plural, =1{1 file} other{{count} files}} · {size}",
+  "@receiveMoreFiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appTitle": "Μοιραστείτε μεγάλα αρχεία βίντεο",
+  "heroAccent": "στη στιγμή.",
+  "heroTitle": "Στείλτε βαριά αρχεία",
+  "splashLoading": "Φόρτωση…",
+  "navSend": "Ταμπλό",
+  "navHome": "Σπίτι",
+  "navHistory": "Ιστορία",
+  "navReceive": "Λαμβάνω",
+  "navPlans": "Σχέδια",
+  "navDownload": "Λήψη",
+  "navSettings": "Ρυθμίσεις",
+  "modeLink": "Λάβετε έναν σύνδεσμο",
+  "modeEmail": "Αποστολή με email",
+  "pickFiles": "Επιλέξτε αρχεία",
+  "pickFolder": "Επιλέξτε φάκελο",
+  "emailFrom": "Το email σας",
+  "mailFromUsesAccount": "Χρησιμοποιεί το συνδεδεμένο email σας.",
+  "recipientEmailsHelper": "Πολλαπλοί παραλήπτες: διαχωρίστε με κόμματα, ερωτηματικά ή κενά.",
+  "emailTo": "Email παραλήπτη",
+  "messageOptional": "Μήνυμα (προαιρετικό)",
+  "passwordOptional": "Κωδικός πρόσβασης (προαιρετικό)",
+  "destructAfterDownload": "Διαγραφή μετά τη λήψη",
+  "destructNo": "Διατηρήστε διαθέσιμο",
+  "sendButton": "Στέλνω",
+  "uploading": "Μεταφόρτωση…",
+  "uploadComplete": "Γινώμενος",
+  "shareLinkTitle": "Ο σύνδεσμός σας",
+  "copyLink": "Αντιγραφή συνδέσμου",
+  "share": "Μερίδιο",
+  "shareQrCode": "Κοινή χρήση κωδικού QR",
+  "uploadMore": "Στείλε άλλο",
+  "emailSentTitle": "Αποστέλλονται email",
+  "verifyEmailTitle": "Επαληθεύστε το email σας",
+  "verifyCodeHint": "Εισαγάγετε τον κωδικό από το email σας",
+  "verifySubmit": "Επαληθεύω",
+  "verifyResendCode": "Επανάληψη αποστολής κωδικού",
+  "verifyCodeSent": "Ένας νέος κωδικός επαλήθευσης στάλθηκε στο email σας.",
+  "verifyEmailSmtpWarningTitle": "Το email επαλήθευσης ενδέχεται να μην έχει σταλεί",
+  "verifyEmailSmtpWarningBody": "Ο διακομιστής δεν μπόρεσε να επιβεβαιώσει την παράδοση (συχνά το SMTP δεν έχει ρυθμιστεί σωστά). Ζητήστε από τον διαχειριστή του ιστότοπού σας να ελέγξει τις ρυθμίσεις αλληλογραφίας στον πίνακα διαχείρισης και, στη συνέχεια, πατήστε Επανάληψη αποστολής κώδικα.",
+  "verifyEmailCheckSpamHint": "Εάν δεν φτάσει: ελέγξτε Ανεπιθύμητα/Ανεπιθύμητα και Προσφορές, περιμένετε ένα λεπτό, επιβεβαιώστε ότι το <<PH0>> δεν έχει τυπογραφικά λάθη και, στη συνέχεια, πατήστε Επανάληψη αποστολής.",
+  "loginTitle": "Συνδεθείτε",
+  "signupHint": "Χρησιμοποιήστε τη διεύθυνση ηλεκτρονικού ταχυδρομείου και τον κωδικό πρόσβασης του λογαριασμού σας στον ιστότοπο.",
+  "emailHint": "E-mail",
+  "passwordHint": "Σύνθημα",
+  "cancel": "Ματαίωση",
+  "signIn": "Συνδεθείτε",
+  "downloadIdHint": "Ταυτότητα μεταφοράς",
+  "privateIdHint": "Ιδιωτικό αναγνωριστικό (προαιρετικό)",
+  "fetchTransfer": "Άνοιγμα μεταφοράς",
+  "downloadFile": "Λήψη",
+  "unlockDownload": "Ξεκλείδωμα λήψης",
+  "downloadSaved": "Αποθηκεύτηκε στις Λήψεις",
+  "errorGeneric": "Κάτι πήγε στραβά",
+  "errorNetwork": "Σφάλμα δικτύου",
+  "errorBadResponse": "Απροσδόκητη απόκριση διακομιστή",
+  "termsAccept": "Συμφωνώ με τους όρους",
+  "settingsApiUrl": "Δημόσια διεύθυνση URL ιστότοπου",
+  "settingsAccount": "Λογαριασμός",
+  "settingsAppearance": "Εμφάνιση",
+  "settingsTheme": "Θέμα",
+  "themeSystem": "Σύστημα",
+  "themeLight": "Φως",
+  "themeDark": "Σκοτάδι",
+  "settingsSignedIn": "Είστε συνδεδεμένοι.",
+  "settingsSignedOut": "Δεν είστε συνδεδεμένοι.",
+  "settingsOpenWebsite": "Άνοιγμα ιστότοπου",
+  "signUp": "Εγγραφείτε",
+  "settingsLinks": "Εδαφος διά παιγνίδι γκολφ",
+  "privacyPolicy": "Πολιτική απορρήτου",
+  "termsOfService": "Όροι παροχής υπηρεσιών",
+  "about": "Για",
+  "moreApps": "Περισσότερες εφαρμογές",
+  "settingsLanguage": "Γλώσσα",
+  "languageEnglish": "αγγλικός",
+  "languageHindi": "Χίντι",
+  "logout": "Αποσυνδεθείτε",
+  "deleteAccount": "Διαγραφή λογαριασμού",
+  "deleteAccountConfirmTitle": "Διαγραφή του λογαριασμού σας;",
+  "deleteAccountConfirmBody": "Αυτό διαγράφει οριστικά τον λογαριασμό σας και σας αποσυνδέει. Οι σύνδεσμοι μεταφοράς σας θα συνεχίσουν να λειτουργούν, αλλά δεν θα εμφανίζονται πλέον στο ιστορικό σας.",
+  "deleteAccountSuccess": "Ο λογαριασμός διαγράφηκε",
+  "deleteAccountSuccessBody": "Ο λογαριασμός σας έχει αφαιρεθεί.",
+  "deleteAccountFailed": "Δεν ήταν δυνατή η διαγραφή του λογαριασμού",
+  "deleteAccountFailedBody": "Δοκιμάστε ξανά ή επικοινωνήστε με την υποστήριξη.",
+  "maxFilesReached": "Πάρα πολλά αρχεία",
+  "fileTooLarge": "Το αρχείο είναι πολύ μεγάλο",
+  "ipLimit": "Πάρα πολλές μεταφορτώσεις από αυτό το δίκτυο",
+  "fillFields": "Συμπληρώστε τα υποχρεωτικά πεδία",
+  "invalidEmail": "Μη έγκυρο email",
+  "maxRecipientsReached": "Πάρα πολλοί παραλήπτες",
+  "loginRequiredTitle": "Απαιτείται σύνδεση",
+  "loginRequiredBody": "Αυτός ο διακομιστής απαιτεί λογαριασμό για μεταφόρτωση ή λήψη.",
+  "settingsSubtitle": "Προτιμήσεις εφαρμογής και λογαριασμός.",
+  "dropHeavyFile": "Ρίξτε ένα βαρύ αρχείο εδώ.",
+  "upToTotal": "Έως <<PH0>> σύνολο",
+  "removeAll": "Κατάργηση όλων",
+  "addFiles": "Προσθήκη αρχείων",
+  "adding": "Αθροιση…",
+  "options": "Επιλογές",
+  "selfDestruct": "Αυτοκαταστροφή μετά τη λήψη",
+  "expiry": "Λήξη",
+  "cancelUpload": "Ακύρωση μεταφόρτωσης",
+  "transferReady": "Έτοιμη η μεταφορά!",
+  "emailSentReady": "Το email στάλθηκε!",
+  "shareRecipientHint": "Μοιραστείτε αυτόν τον σύνδεσμο με τον παραλήπτη σας.",
+  "emailSentBody": "Έχουμε ειδοποιήσει τους παραλήπτες σας.",
+  "scanQr": "Σάρωση για να ανοίξει ο σύνδεσμος μεταφοράς.",
+  "shareLinkButton": "ΚΟΙΝΟΠΟΙΗΣΗ ΣΥΝΔΕΣΜΟΥ",
+  "verifyFourDigit": "Εισαγάγετε τον 4ψήφιο κωδικό που στάλθηκε στο email του αποστολέα σας.",
+  "starting": "Εκκίνηση…",
+  "mbLeft": "<<PH0>> MB απομένουν",
+  "fillField": "Παρακαλούμε συμπληρώστε αυτό το πεδίο.",
+  "enterValidEmail": "Εισαγάγετε ένα έγκυρο email.",
+  "message": "Μήνυμα",
+  "recipientEmail": "Email παραλήπτη",
+  "active": "Ενεργός",
+  "expired": "Λήξη",
+  "historyTitle": "Οι μεταγραφές μου",
+  "signInToSeeTransfers": "Συνδεθείτε για να δείτε τις μεταφορές σας",
+  "signInTransfersBody": "Χρησιμοποιούμε το email σας για να συνδέσουμε μεταφορές με τον λογαριασμό σας — δεν απαιτείται κωδικός πρόσβασης.",
+  "couldNotLoadTransfers": "Δεν ήταν δυνατή η φόρτωση των μεταφορών",
+  "retry": "Δοκιμάζω πάλι",
+  "noTransfersYet": "Δεν υπάρχουν ακόμη μεταγραφές",
+  "noTransfersBody": "Μόλις στείλετε ένα αρχείο, θα εμφανιστεί εδώ.",
+  "transferDetails": "Στοιχεία μεταφοράς",
+  "filesSection": "Αρχεία",
+  "receiveTitle": "Λήψη Αρχείων",
+  "receiveSubtitle": "Επικολλήστε έναν σύνδεσμο μεταφοράς για λήψη αρχείων.",
+  "pasteTooltip": "Πάστα",
+  "findTransfer": "Εύρεση Μεταφοράς",
+  "receiveScanQr": "Σάρωση QR",
+  "receiveScanQrTitle": "Σάρωση QR μεταφοράς",
+  "receiveScanQrHint": "Ευθυγραμμίστε τον κωδικό QR μέσα στο πλαίσιο.",
+  "receiveScanQrInvalid": "Αυτός ο κωδικός QR δεν είναι έγκυρος σύνδεσμος μεταφοράς.",
+  "receiveScanQrCameraDenied": "Απαιτείται πρόσβαση στην κάμερα για τη σάρωση κωδικών QR.",
+  "receiveStepGetLink": "Λάβετε το σύνδεσμο",
+  "receiveStepGetLinkBody": "Ζητήστε από τον αποστολέα να μοιραστεί τον σύνδεσμο μεταφοράς μαζί σας.",
+  "receiveStepPaste": "Επικόλληση και εύρεση",
+  "receiveStepPasteBody": "Επικολλήστε τον παραπάνω σύνδεσμο και πατήστε \"Εύρεση μεταφοράς\".",
+  "receiveStepDownload": "Λήψη αρχείων",
+  "receiveStepDownloadBody": "Δείτε τις λεπτομέρειες του αρχείου και κατεβάστε τα πάντα ταυτόχρονα.",
+  "lookingUpTransfer": "Αναζήτηση μεταφοράς…",
+  "transferNotFound": "Η μεταφορά δεν βρέθηκε. Ελέγξτε τον σύνδεσμο και δοκιμάστε ξανά.",
+  "transferExpired": "Αυτή η μεταφορά έχει λήξει και δεν είναι πλέον διαθέσιμη.",
+  "transferLoginRequired": "Απαιτείται σύνδεση για πρόσβαση σε αυτήν τη μεταφορά.",
+  "transferBadResponse": "Απροσδόκητη απόκριση διακομιστή. Ελέγξτε τη σύνδεσή σας.",
+  "transferNetworkError": "Σφάλμα δικτύου. Ελέγξτε τη σύνδεσή σας στο διαδίκτυο.",
+  "transferLoadFailed": "Δεν ήταν δυνατή η φόρτωση της μεταφοράς: <<PH0>>",
+  "passwordProtected": "Προστατεύεται με κωδικό πρόσβασης",
+  "enterPassword": "Εισαγάγετε κωδικό πρόσβασης",
+  "unlock": "Ξεκλειδώνω",
+  "downloading": "Λήψη…",
+  "downloadAllFiles": "Λήψη όλων των αρχείων",
+  "downloadSingleFile": "Λήψη αρχείου",
+  "receiveAnother": "Λάβετε άλλη μεταφορά",
+  "plansTitle": "Σχέδια",
+  "plansSubtitle": "Κάντε αναβάθμιση για να αφαιρέσετε διαφημίσεις και να στείλετε μεγαλύτερα αρχεία.",
+  "storeUnavailable": "Το κατάστημα δεν είναι διαθέσιμο",
+  "storeUnavailableBody": "Οι αγορές εντός εφαρμογής δεν είναι διαθέσιμες αυτήν τη στιγμή.",
+  "storeLoadingPrices": "Φόρτωση τιμών από το App Store…",
+  "storePricesUnavailable": "Οι τιμές δεν είναι διαθέσιμες",
+  "storePricesPartial": "Δεν ήταν δυνατή η φόρτωση ορισμένων τιμών",
+  "storePricesPartialBody": "Φορτώθηκαν <<PH0>> από <<PH1>> συνδρομητικά προϊόντα.",
+  "storeSetupHint": "Δοκιμάστε σε πραγματικό iPhone (όχι Simulator), χρησιμοποιήστε ένα Sandbox Apple ID και βεβαιωθείτε ότι και οι 6 συνδρομές έχουν δημιουργηθεί με το αναγνωριστικό πακέτου αυτής της εφαρμογής στο App Store Connect με σύνολο τιμών.",
+  "effectiveMonthlyPrice": "<<PH0>>/μήνα",
+  "freeVersionAds": "Αυτήν τη στιγμή χρησιμοποιείτε τη δωρεάν έκδοση μας με διαφημίσεις",
+  "restorePurchases": "Επαναφορά αγορών",
+  "plansContinue": "Συνεχίζω",
+  "planLinkRestore": "Επαναφέρω",
+  "termsAndConditions": "Όροι και προϋποθέσεις",
+  "createAccountTitle": "Δημιουργία λογαριασμού",
+  "signUpSubtitle": "Εγγραφείτε με email και κωδικό πρόσβασης.",
+  "confirmPassword": "Επιβεβαίωση κωδικού πρόσβασης",
+  "passwordMin8": "Κωδικός πρόσβασης (ελάχ. 8 χαρακτήρες)",
+  "alreadyHaveAccount": "Έχετε ήδη λογαριασμό;",
+  "checkEmailTitle": "Ελέγξτε το δικό σας\nemail",
+  "otpSentTo": "Στείλαμε έναν 6ψήφιο κωδικό στο\n<<PH0>>",
+  "verifyAndSignIn": "Επαλήθευση και είσοδος",
+  "didntReceiveCode": "Δεν το έλαβες;",
+  "tryAgain": "Προσπαθήστε ξανά",
+  "otpExpiresHint": "Ο κωδικός λήγει σε 5 λεπτά. Ελέγξτε το φάκελο ανεπιθύμητης αλληλογραφίας σας εάν δεν τον βλέπετε.",
+  "snackError": "Σφάλμα",
+  "snackCopied": "Αντιγράφηκε",
+  "snackCopiedBody": "Ο σύνδεσμος αντιγράφηκε στο πρόχειρο",
+  "snackWelcome": "Καλωσόρισμα",
+  "snackAccountCreated": "Ο λογαριασμός δημιουργήθηκε",
+  "snackEnterEmail": "Παρακαλώ εισάγετε το email σας",
+  "snackEnterPassword": "Εισαγάγετε τον κωδικό πρόσβασής σας",
+  "snackInvalidEmail": "Μη έγκυρη διεύθυνση email",
+  "snackInvalidCredentials": "Λάθος email ή κωδικός πρόσβασης",
+  "snackPasswordMin8": "Ο κωδικός πρόσβασης πρέπει να αποτελείται από τουλάχιστον 8 χαρακτήρες",
+  "snackPasswordMismatch": "Οι κωδικοί πρόσβασης δεν ταιριάζουν.",
+  "snackAccountExists": "Ο λογαριασμός υπάρχει ήδη. Παρακαλώ συνδεθείτε.",
+  "snackSignupFailed": "Δεν ήταν δυνατή η δημιουργία λογαριασμού. Προσπαθήστε ξανά.",
+  "snackEnterOtp": "Εισαγάγετε τον 6ψήφιο κωδικό",
+  "snackOtpExpired": "Ο κωδικός έληξε",
+  "snackOtpExpiredBody": "Ζητήστε νέο κωδικό.",
+  "snackInvalidCode": "Μη έγκυρος κωδικός",
+  "snackInvalidCodeBody": "Ο κωδικός είναι λάθος. Δοκιμάστε ξανά.",
+  "snackSendCodeFailed": "Δεν ήταν δυνατή η αποστολή κωδικού. Ελέγξτε τη σύνδεσή σας και δοκιμάστε ξανά.",
+  "snackEmptyFolder": "Κενός φάκελος",
+  "snackEmptyFolderBody": "Δεν βρέθηκαν αρχεία στον επιλεγμένο φάκελο.",
+  "snackFolderUnsupported": "Δεν υποστηρίζεται",
+  "snackFolderUnsupportedBody": "Η μεταφόρτωση φακέλου δεν είναι διαθέσιμη σε αυτήν την πλατφόρμα.",
+  "snackFolderReadError": "Δεν ήταν δυνατή η ανάγνωση του επιλεγμένου φακέλου.",
+  "snackLimitReached": "Συμπληρώθηκε το όριο",
+  "snackLimitFilesBody": "Ορισμένα αρχεία δεν προστέθηκαν λόγω περιορισμών μεγέθους ή αριθμού αρχείων.",
+  "snackFreePlanLimit": "Το δωρεάν πρόγραμμα επιτρέπει έως και 5 GB ανά μεταφορά. Αφαιρέστε ορισμένα αρχεία ή αναβαθμίστε.",
+  "snackSignInEmail": "Παρακαλούμε συνδεθείτε για αποστολή μέσω email.",
+  "snackUploadStartFailed": "Δεν ήταν δυνατή η έναρξη της μεταφόρτωσης.",
+  "snackVerifyEnterCode": "Εισαγάγετε τον 4ψήφιο κωδικό από το email σας.",
+  "snackVerifyInvalid": "Μη έγκυρος ή ληγμένος κωδικός. Ελέγξτε το email και δοκιμάστε ξανά.",
+  "snackVerifyResendFailed": "Δεν ήταν δυνατή η εκ νέου αποστολή του κωδικού. Προσπαθήστε ξανά.",
+  "snackDownloadComplete": "Η λήψη ολοκληρώθηκε",
+  "snackDownloadSaved": "Το \"<<PH0>>\" αποθηκεύτηκε στις Λήψεις",
+  "snackDownloadFailed": "Η λήψη απέτυχε",
+  "snackSaved": "Αποθηκεύτηκε",
+  "snackServerUrlUpdated": "Η διεύθυνση URL του διακομιστή ενημερώθηκε. Επανεκκινήστε την εφαρμογή για εφαρμογή.",
+  "snackStoreError": "Σφάλμα αποθήκευσης",
+  "snackMissingProducts": "Λείπουν προϊόντα",
+  "snackStoreUnavailable": "Το κατάστημα δεν είναι διαθέσιμο",
+  "snackStoreUnavailableBody": "Οι αγορές εντός εφαρμογής δεν είναι διαθέσιμες σε αυτήν τη συσκευή.",
+  "snackProductNotLoaded": "Το προϊόν δεν έχει φορτωθεί ακόμα.",
+  "snackRestoreStarted": "Η επαναφορά ξεκίνησε",
+  "snackRestoreStartedBody": "Ελέγχουμε τις αγορές σας.",
+  "snackRestoreFailed": "Η επαναφορά απέτυχε",
+  "snackProcessing": "Επεξεργασία",
+  "snackPleaseWait": "Παρακαλώ περιμένετε…",
+  "snackSuccess": "Επιτυχία",
+  "snackPurchaseCompleted": "Η αγορά ολοκληρώθηκε.",
+  "snackPurchaseError": "Σφάλμα αγοράς",
+  "snackPurchaseFailed": "Η αγορά απέτυχε.",
+  "snackCanceled": "Ακυρώθηκε",
+  "snackPurchaseCanceled": "Η αγορά ακυρώθηκε.",
+  "snackUpload": "Μεταφόρτωση",
+  "snackVerify": "Επαληθεύω",
+  "doNotExpire": "Να μην λήξει",
+  "hourSingular": "ώρα",
+  "hourPlural": "ώρες",
+  "daySingular": "ημέρα",
+  "dayPlural": "ημέρες",
+  "emailAddressLabel": "ΔΙΕΥΘΥΝΣΗ EMAIL",
+  "passwordLabelCaps": "ΣΥΝΘΗΜΑ",
+  "confirmPasswordLabelCaps": "ΕΠΙΒΕΒΑΙΩΣΗ ΚΩΔΙΚΟΥ",
+  "transferLinkOrId": "ΣΥΝΔΕΣΜΟΣ Ή ΤΑΥΤΟΤΗΤΑ ΜΕΤΑΦΟΡΑΣ",
+  "howToReceive": "ΠΩΣ ΝΑ ΛΑΒΕΤΕ",
+  "planAdsTitle": "Σχέδιο διαφημίσεων",
+  "planAdsBullet1": "Πρόσβαση στην εφαρμογή χωρίς διαφημίσεις",
+  "planAdsBullet2": "Καταργήστε όλες τις διαφημίσεις",
+  "planProTitle": "Pro Plan",
+  "planProBullet1": "Αποστολή αρχείων έως 20 GB",
+  "planProBullet2": "Γρήγορη μεταφόρτωση",
+  "planPremiumTitle": "Πρόγραμμα Premium",
+  "planPremiumBullet1": "Αποστολή αρχείων έως 100 GB",
+  "planPremiumBullet2": "Σούπερ γρήγορη μεταφόρτωση",
+  "planSubscriptionDisclaimer": "Δεν υπάρχει δοκιμαστική περίοδος — απαιτείται συνδρομή για τη χρήση της πρόσθετης λειτουργικότητας της εφαρμογής. Θα χρεωθείτε αμέσως. Μπορείτε να ακυρώσετε οποιαδήποτε στιγμή.",
+  "perMonth": "/ μήνα",
+  "perYear": "/ έτος",
+  "snackConnectionProblem": "Πρόβλημα σύνδεσης. Δοκιμάστε ξανά.",
+  "networkTitle": "Δίκτυο",
+  "transferIdLabel": "ID: <<PH0>>",
+  "downloadMetaSummary": "Αρχεία: <<PH0>> · <<PH1>> byte",
+  "todayAt": "Σήμερα · <<PH0>>",
+  "yesterdayAt": "Χθες · <<PH0>>",
+  "daysAgoAt": "<<PH0>>d πριν · <<PH1>>",
+  "dateAt": "<<PH0>> · <<PH1>>",
+  "mbAmount": "<<PH0>> MB",
+  "uploadProgressSummary": "<<PH0>> / <<PH1>> • <<PH2>> αριστερά",
+  "loadingShort": "Φόρτωση…",
+  "colorPaletteTitle": "Παλέτα χρωμάτων",
+  "colorPaletteSectionBackgrounds": "Φόντο (κλίμακα μελανιού)",
+  "colorPaletteSectionAccent": "Προφορά / Δημοτικό",
+  "colorPaletteSectionText": "Κείμενο",
+  "colorPaletteSectionBorders": "Borders & Glass",
+  "colorPaletteSectionSemantic": "Σημασιολογικός",
+  "colorPaletteSectionLive": "Ζωντανό θέμα (τρέχον)",
+  "colorPaletteActiveHint": "★ = χρησιμοποιείται ενεργά σε οθόνες",
+  "colorPaletteCopyHint": "Πατήστε παρατεταμένα οποιοδήποτε δείγμα για να αντιγράψετε την εξαγωνική του τιμή.",
+  "settingsAppBrand": "Μοιραστείτε το μεγάλο\nΑρχεία βίντεο",
+  "loginEmailPasswordPrompt": "Εισαγάγετε το email και τον κωδικό πρόσβασής σας για να συνδεθείτε.",
+  "forgotPassword": "Ξεχάσατε τον κωδικό πρόσβασης;",
+  "forgotPasswordTitle": "Επαναφορά κωδικού πρόσβασης",
+  "forgotPasswordBody": "Εισαγάγετε το email του λογαριασμού σας και θα σας στείλουμε έναν κωδικό επαναφοράς.",
+  "forgotPasswordSubmit": "Αποστολή κωδικού επαναφοράς",
+  "resetPasswordTitle": "Δημιουργία νέου κωδικού πρόσβασης",
+  "resetPasswordBody": "Εισαγάγετε τον 6ψήφιο κωδικό από το email σας και επιλέξτε νέο κωδικό πρόσβασης.",
+  "resetPasswordSubmit": "Ενημέρωση κωδικού πρόσβασης",
+  "snackPasswordResetSent": "Ο κωδικός επαναφοράς στάλθηκε",
+  "snackPasswordResetSentBody": "Ελέγξτε το email σας για έναν 6ψήφιο κωδικό επαναφοράς.",
+  "snackPasswordResetFailed": "Δεν ήταν δυνατή η αποστολή του κωδικού επαναφοράς. Προσπαθήστε ξανά.",
+  "snackPasswordUpdated": "Ο κωδικός ενημερώθηκε",
+  "snackPasswordUpdatedBody": "Συνδεθείτε με τον νέο σας κωδικό πρόσβασης.",
+  "snackPasswordResetInvalid": "Μη έγκυρος ή ληγμένος κωδικός επαναφοράς.",
+  "otpDigitLabel": "6-ΨΗΦΙΟΣ ΚΩΔ",
+  "receiveMoreFiles": "+<<PH0>> περισσότερα αρχεία"
+}

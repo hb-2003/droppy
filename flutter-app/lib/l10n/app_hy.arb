@@ -1,0 +1,466 @@
+{
+  "@@locale": "hy",
+  "@verifyEmailCheckSpamHint": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@upToTotal": {
+    "placeholders": {
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "@filesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesCount": "{count, plural, =1{1 file} other{{count} files}}",
+  "@mbLeft": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@transferLoadFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@storePricesPartialBody": {
+    "placeholders": {
+      "loaded": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "priceUnavailable": "—",
+  "@effectiveMonthlyPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "@otpSentTo": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@snackDownloadSaved": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "emailExampleHint": "you@example.com",
+  "otpSixDigitHint": "000000",
+  "verifyFourDigitHint": "0000",
+  "transferLinkHint": "https://… or paste ID",
+  "@filesReady": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesReady": "{count, plural, =1{1 file ready} other{{count} files ready}}",
+  "@transferIdLabel": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadMetaSummary": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "@todayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@yesterdayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@daysAgoAt": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@dateAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@mbAmount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@uploadProgressSummary": {
+    "placeholders": {
+      "sent": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      },
+      "remaining": {
+        "type": "String"
+      }
+    }
+  },
+  "@historyFilesSize": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "historyFilesSize": "{count, plural, =1{1 file} other{{count} files}} · {size}",
+  "@receiveMoreFiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appTitle": "Կիսվեք մեծ վիդեո ֆայլերով",
+  "heroAccent": "ակնթարթորեն.",
+  "heroTitle": "Ուղարկեք ծանր ֆայլեր",
+  "splashLoading": "Բեռնվում է…",
+  "navSend": "Վահանակ",
+  "navHome": "Տուն",
+  "navHistory": "Պատմություն",
+  "navReceive": "Ստանալ",
+  "navPlans": "Պլաններ",
+  "navDownload": "Բեռնել",
+  "navSettings": "Կարգավորումներ",
+  "modeLink": "Ստացեք հղում",
+  "modeEmail": "Ուղարկել էլփոստով",
+  "pickFiles": "Ընտրեք ֆայլեր",
+  "pickFolder": "Ընտրեք թղթապանակ",
+  "emailFrom": "Ձեր էլ",
+  "mailFromUsesAccount": "Օգտագործում է ձեր մուտքագրված էլ․ հասցեն։",
+  "recipientEmailsHelper": "Բազմաթիվ ստացողներ՝ առանձնացրե՛ք ստորակետերով, ստորակետերով կամ բացատներով:",
+  "emailTo": "Ստացողի էլ",
+  "messageOptional": "Հաղորդագրություն (ըստ ցանկության)",
+  "passwordOptional": "Գաղտնաբառ (ըստ ցանկության)",
+  "destructAfterDownload": "Ջնջել ներբեռնումից հետո",
+  "destructNo": "Մատչելի պահել",
+  "sendButton": "Ուղարկել",
+  "uploading": "Վերբեռնվում է…",
+  "uploadComplete": "Կատարված է",
+  "shareLinkTitle": "Ձեր հղումը",
+  "copyLink": "Պատճենել հղումը",
+  "share": "Կիսվել",
+  "shareQrCode": "Կիսվեք QR կոդը",
+  "uploadMore": "Ուղարկեք մեկ ուրիշը",
+  "emailSentTitle": "Ուղարկված նամակներ",
+  "verifyEmailTitle": "Ստուգեք ձեր էլ",
+  "verifyCodeHint": "Մուտքագրեք կոդը ձեր էլ.փոստից",
+  "verifySubmit": "Ստուգեք",
+  "verifyResendCode": "Կրկին ուղարկել կոդը",
+  "verifyCodeSent": "Նոր հաստատման կոդ է ուղարկվել ձեր էլ.",
+  "verifyEmailSmtpWarningTitle": "Հաստատման նամակը կարող է չուղարկվել",
+  "verifyEmailSmtpWarningBody": "Սերվերը չկարողացավ հաստատել առաքումը (հաճախ SMTP-ն սխալ կազմաձևված է): Խնդրեք ձեր կայքի ադմինիստրատորին ստուգել Փոստի կարգավորումները ադմինիստրատորի վահանակում, այնուհետև հպեք «Վերուղարկեք կոդը»:",
+  "verifyEmailCheckSpamHint": "Եթե ​​այն չհասնի. ստուգեք անպետք/Սպամ և առաջխաղացումները, սպասեք մի րոպե, հաստատեք, որ <<PH0>>-ը տառասխալներ չունի, այնուհետև սեղմեք Կրկին ուղարկել:",
+  "loginTitle": "Մուտք գործեք",
+  "signupHint": "Օգտագործեք ձեր կայքի հաշվի էլ.փոստը և գաղտնաբառը:",
+  "emailHint": "Էլ",
+  "passwordHint": "Գաղտնաբառ",
+  "cancel": "Չեղարկել",
+  "signIn": "Մուտք գործեք",
+  "downloadIdHint": "Փոխանցման ID",
+  "privateIdHint": "Անձնական ID (ըստ ցանկության)",
+  "fetchTransfer": "Բաց փոխանցում",
+  "downloadFile": "Բեռնել",
+  "unlockDownload": "Բացել ներբեռնումը",
+  "downloadSaved": "Պահված է Ներբեռնումներ",
+  "errorGeneric": "Սխալ առաջացավ",
+  "errorNetwork": "Ցանցի սխալ",
+  "errorBadResponse": "Սերվերի անսպասելի պատասխան",
+  "termsAccept": "Ես համաձայն եմ պայմաններին",
+  "settingsApiUrl": "Հանրային կայքի URL",
+  "settingsAccount": "Հաշիվ",
+  "settingsAppearance": "Արտաքին տեսք",
+  "settingsTheme": "Թեմա",
+  "themeSystem": "Համակարգ",
+  "themeLight": "Լույս",
+  "themeDark": "Մութ",
+  "settingsSignedIn": "Դուք մուտք եք գործել:",
+  "settingsSignedOut": "Դուք մուտք չեք գործել:",
+  "settingsOpenWebsite": "Բացել կայքը",
+  "signUp": "Գրանցվեք",
+  "settingsLinks": "Հղումներ",
+  "privacyPolicy": "Գաղտնիության քաղաքականություն",
+  "termsOfService": "Ծառայության պայմանները",
+  "about": "Մոտ",
+  "moreApps": "Ավելի շատ հավելվածներ",
+  "settingsLanguage": "Լեզու",
+  "languageEnglish": "Անգլերեն",
+  "languageHindi": "հինդի",
+  "logout": "Դուրս գալ",
+  "deleteAccount": "Ջնջել հաշիվը",
+  "deleteAccountConfirmTitle": "Ջնջե՞լ ձեր հաշիվը",
+  "deleteAccountConfirmBody": "Սա ընդմիշտ կջնջի ձեր հաշիվը և դուրս կբերի ձեզ: Ձեր փոխանցման հղումները կշարունակեն աշխատել, բայց դրանք այլևս չեն հայտնվի ձեր պատմության մեջ:",
+  "deleteAccountSuccess": "Հաշիվը ջնջված է",
+  "deleteAccountSuccessBody": "Ձեր հաշիվը հեռացվել է:",
+  "deleteAccountFailed": "Չհաջողվեց ջնջել հաշիվը",
+  "deleteAccountFailedBody": "Խնդրում ենք կրկին փորձել կամ կապվել աջակցման ծառայության հետ:",
+  "maxFilesReached": "Չափազանց շատ ֆայլեր",
+  "fileTooLarge": "Ֆայլը չափազանց մեծ է",
+  "ipLimit": "Չափից շատ վերբեռնումներ այս ցանցից",
+  "fillFields": "Խնդրում ենք լրացնել պարտադիր դաշտերը",
+  "invalidEmail": "Անվավեր էլ",
+  "maxRecipientsReached": "Չափազանց շատ ստացողներ",
+  "loginRequiredTitle": "Մուտք գործեք պարտադիր",
+  "loginRequiredBody": "Այս սերվերը վերբեռնելու կամ ներբեռնելու համար հաշիվ է պահանջում:",
+  "settingsSubtitle": "Հավելվածի նախապատվությունները և հաշիվը:",
+  "dropHeavyFile": "Ծանր ֆայլ գցեք այստեղ:",
+  "upToTotal": "Ընդամենը մինչև <<PH0>>",
+  "removeAll": "Հեռացնել բոլորը",
+  "addFiles": "Ավելացնել ֆայլեր",
+  "adding": "Ավելացվում է…",
+  "options": "Ընտրանքներ",
+  "selfDestruct": "Ներբեռնումից հետո ինքնաոչնչացում",
+  "expiry": "Ժամկետը",
+  "cancelUpload": "Չեղարկել վերբեռնումը",
+  "transferReady": "Փոխանցումը պատրաստ է:",
+  "emailSentReady": "Նամակ ուղարկվեց:",
+  "shareRecipientHint": "Կիսվեք այս հղումով ձեր ստացողի հետ:",
+  "emailSentBody": "Մենք ծանուցել ենք ձեր ստացող(ներին):",
+  "scanQr": "Սկանավորեք՝ փոխանցման հղումը բացելու համար:",
+  "shareLinkButton": "ԿԻՍՎԵԼ ՀՂՈՒՄԸ",
+  "verifyFourDigit": "Մուտքագրեք ձեր ուղարկողի էլ.փոստին ուղարկված 4 նիշանոց կոդը:",
+  "starting": "Սկսվում է…",
+  "mbLeft": "<<PH0>> ՄԲ է մնացել",
+  "fillField": "Խնդրում ենք լրացնել այս դաշտը։",
+  "enterValidEmail": "Մուտքագրեք վավեր էլ.",
+  "message": "Հաղորդագրություն",
+  "recipientEmail": "Ստացողի էլ",
+  "active": "Ակտիվ",
+  "expired": "Ժամկետանց",
+  "historyTitle": "Իմ տրանսֆերները",
+  "signInToSeeTransfers": "Մուտք գործեք՝ ձեր փոխանցումները տեսնելու համար",
+  "signInTransfersBody": "Մենք օգտագործում ենք ձեր էլ.փոստը՝ փոխանցումները ձեր հաշվին կապելու համար. գաղտնաբառի կարիք չկա:",
+  "couldNotLoadTransfers": "Չհաջողվեց բեռնել փոխանցումները",
+  "retry": "Կրկին փորձեք",
+  "noTransfersYet": "Տրանսֆերներ դեռ չկան",
+  "noTransfersBody": "Ֆայլ ուղարկելուց հետո այն կհայտնվի այստեղ:",
+  "transferDetails": "Տեղափոխման մանրամասները",
+  "filesSection": "Ֆայլեր",
+  "receiveTitle": "Ստացեք ֆայլեր",
+  "receiveSubtitle": "Տեղադրեք փոխանցման հղումը ֆայլեր ներբեռնելու համար:",
+  "pasteTooltip": "Կպցնել",
+  "findTransfer": "Գտեք փոխանցում",
+  "receiveScanQr": "Scan QR",
+  "receiveScanQrTitle": "Սկանավորեք փոխանցման QR-ն",
+  "receiveScanQrHint": "Հավասարեցրեք QR կոդը շրջանակի ներսում:",
+  "receiveScanQrInvalid": "Այս QR կոդը վավեր փոխանցման հղում չէ:",
+  "receiveScanQrCameraDenied": "QR կոդերը սկանավորելու համար պահանջվում է տեսախցիկի հասանելիություն:",
+  "receiveStepGetLink": "Ստացեք հղումը",
+  "receiveStepGetLinkBody": "Խնդրեք ուղարկողին փոխանցել ձեզ հետ փոխանցման հղումը:",
+  "receiveStepPaste": "Կպցնել և գտնել",
+  "receiveStepPasteBody": "Տեղադրեք վերը նշված հղումը և կտտացրեք «Գտնել փոխանցումը»:",
+  "receiveStepDownload": "Ներբեռնեք ֆայլեր",
+  "receiveStepDownloadBody": "Տեսեք ֆայլի մանրամասները և ներբեռնեք ամեն ինչ միանգամից:",
+  "lookingUpTransfer": "Փնտրվում է փոխանցում…",
+  "transferNotFound": "Փոխանցումը չի գտնվել: Ստուգեք հղումը և նորից փորձեք:",
+  "transferExpired": "Այս փոխանցման ժամկետը սպառվել է և այլևս հասանելի չէ:",
+  "transferLoginRequired": "Այս փոխանցումը մուտք գործելու համար անհրաժեշտ է մուտք գործել:",
+  "transferBadResponse": "Սերվերի անսպասելի պատասխան: Ստուգեք ձեր կապը:",
+  "transferNetworkError": "Ցանցի սխալ. Ստուգեք ձեր ինտերնետային կապը:",
+  "transferLoadFailed": "Չհաջողվեց բեռնել փոխանցումը՝ <<PH0>>",
+  "passwordProtected": "Պաշտպանված է գաղտնաբառով",
+  "enterPassword": "Մուտքագրեք գաղտնաբառը",
+  "unlock": "Ապակողպել",
+  "downloading": "Ներբեռնվում է…",
+  "downloadAllFiles": "Ներբեռնեք բոլոր ֆայլերը",
+  "downloadSingleFile": "Ներբեռնեք ֆայլը",
+  "receiveAnother": "Ստացեք ևս մեկ փոխանցում",
+  "plansTitle": "Պլաններ",
+  "plansSubtitle": "Թարմացրեք՝ գովազդները հեռացնելու և ավելի մեծ ֆայլեր ուղարկելու համար:",
+  "storeUnavailable": "Խանութն անհասանելի է",
+  "storeUnavailableBody": "Ներծրագրային գնումներն այս պահին հասանելի չեն:",
+  "storeLoadingPrices": "Գները բեռնվում են App Store-ից…",
+  "storePricesUnavailable": "Գները անհասանելի են",
+  "storePricesPartial": "Որոշ գներ չհաջողվեց բեռնել",
+  "storePricesPartialBody": "<<PH0>> <<PH1>> բաժանորդագրության ապրանքները բեռնված են:",
+  "storeSetupHint": "Փորձեք իրական iPhone-ով (ոչ սիմուլյատորով), օգտագործեք Sandbox Apple ID-ն և համոզվեք, որ բոլոր 6 բաժանորդագրությունները ստեղծվել են այս հավելվածի փաթեթի ID-ի ներքո App Store Connect-ում՝ գնագոյացման համար:",
+  "effectiveMonthlyPrice": "<<PH0>>/ամիս",
+  "freeVersionAds": "Ներկայումս դուք օգտագործում եք մեր անվճար տարբերակը՝ գովազդով",
+  "restorePurchases": "Վերականգնել գնումները",
+  "plansContinue": "Շարունակեք",
+  "planLinkRestore": "Վերականգնել",
+  "termsAndConditions": "Պայմաններ և պայմաններ",
+  "createAccountTitle": "Ստեղծել հաշիվ",
+  "signUpSubtitle": "Գրանցվեք էլեկտրոնային փոստով և գաղտնաբառով:",
+  "confirmPassword": "Հաստատեք գաղտնաբառը",
+  "passwordMin8": "Գաղտնաբառ (նվազագույնը 8 նիշ)",
+  "alreadyHaveAccount": "Արդեն ունե՞ք հաշիվ:",
+  "checkEmailTitle": "Ստուգեք ձեր\nէլ",
+  "otpSentTo": "Մենք ուղարկել ենք 6 նիշանոց կոդը\n<<PH0>>",
+  "verifyAndSignIn": "Ստուգեք և մուտք գործեք",
+  "didntReceiveCode": "Չե՞ք ստացել:",
+  "tryAgain": "Նորից փորձեք",
+  "otpExpiresHint": "Կոդը սպառվում է 5 րոպեից: Ստուգեք ձեր սպամի թղթապանակը, եթե այն չեք տեսնում:",
+  "snackError": "Սխալ",
+  "snackCopied": "Պատճենվել է",
+  "snackCopiedBody": "Հղումը պատճենվեց սեղմատախտակին",
+  "snackWelcome": "Բարի գալուստ",
+  "snackAccountCreated": "Ստեղծվել է հաշիվ",
+  "snackEnterEmail": "Խնդրում ենք մուտքագրել ձեր էլ",
+  "snackEnterPassword": "Խնդրում ենք մուտքագրել ձեր գաղտնաբառը",
+  "snackInvalidEmail": "Անվավեր էլ․ հասցե",
+  "snackInvalidCredentials": "Սխալ էլփոստ կամ գաղտնաբառ",
+  "snackPasswordMin8": "Գաղտնաբառը պետք է լինի առնվազն 8 նիշ",
+  "snackPasswordMismatch": "Գաղտնաբառերը չեն համընկնում:",
+  "snackAccountExists": "Հաշիվն արդեն գոյություն ունի: Խնդրում ենք մուտք գործել:",
+  "snackSignupFailed": "Չհաջողվեց ստեղծել հաշիվ: Կրկին փորձեք:",
+  "snackEnterOtp": "Խնդրում ենք մուտքագրել 6 նիշանոց կոդը",
+  "snackOtpExpired": "Կոդը ժամկետանց է",
+  "snackOtpExpiredBody": "Խնդրում ենք նոր կոդ խնդրել:",
+  "snackInvalidCode": "Անվավեր կոդը",
+  "snackInvalidCodeBody": "Կոդը սխալ է։ Խնդրում ենք կրկին փորձել:",
+  "snackSendCodeFailed": "Չհաջողվեց ուղարկել կոդը: Ստուգեք ձեր կապը և նորից փորձեք:",
+  "snackEmptyFolder": "Դատարկ թղթապանակ",
+  "snackEmptyFolderBody": "Ընտրված պանակում ֆայլեր չեն գտնվել:",
+  "snackFolderUnsupported": "Չի աջակցվում",
+  "snackFolderUnsupportedBody": "Թղթապանակի վերբեռնումը հասանելի չէ այս հարթակում:",
+  "snackFolderReadError": "Չհաջողվեց կարդալ ընտրված թղթապանակը:",
+  "snackLimitReached": "Սահմանաչափը հասել է",
+  "snackLimitFilesBody": "Որոշ ֆայլեր չեն ավելացվել չափի կամ ֆայլերի քանակի սահմանափակումների պատճառով:",
+  "snackFreePlanLimit": "Անվճար պլանը թույլ է տալիս մինչև 5 ԳԲ մեկ փոխանցման համար: Խնդրում ենք հեռացնել որոշ ֆայլեր կամ թարմացնել:",
+  "snackSignInEmail": "Խնդրում ենք մուտք գործել՝ էլփոստով ուղարկելու համար:",
+  "snackUploadStartFailed": "Չհաջողվեց սկսել վերբեռնումը:",
+  "snackVerifyEnterCode": "Մուտքագրեք 4 նիշանոց կոդը ձեր էլ.",
+  "snackVerifyInvalid": "Անվավեր կամ ժամկետանց ծածկագիր: Ստուգեք էլփոստը և նորից փորձեք:",
+  "snackVerifyResendFailed": "Չհաջողվեց նորից ուղարկել կոդը: Կրկին փորձեք:",
+  "snackDownloadComplete": "Ներբեռնումն ավարտված է",
+  "snackDownloadSaved": "«<<PH0>>»-ը պահված է Ներբեռնումներ",
+  "snackDownloadFailed": "Ներբեռնումը ձախողվեց",
+  "snackSaved": "Պահպանված է",
+  "snackServerUrlUpdated": "Սերվերի URL-ը թարմացվել է: Վերագործարկեք հավելվածը՝ կիրառելու համար:",
+  "snackStoreError": "Պահպանման սխալ",
+  "snackMissingProducts": "Բացակայող ապրանքներ",
+  "snackStoreUnavailable": "Խանութն անհասանելի է",
+  "snackStoreUnavailableBody": "Ներծրագրային գնումները հասանելի չեն այս սարքում:",
+  "snackProductNotLoaded": "Ապրանքը դեռ բեռնված չէ:",
+  "snackRestoreStarted": "Վերականգնումը սկսվեց",
+  "snackRestoreStartedBody": "Մենք ստուգում ենք ձեր գնումները:",
+  "snackRestoreFailed": "Վերականգնումը ձախողվեց",
+  "snackProcessing": "Մշակում",
+  "snackPleaseWait": "Խնդրում ենք սպասել…",
+  "snackSuccess": "Հաջողություն",
+  "snackPurchaseCompleted": "Գնումը ավարտված է:",
+  "snackPurchaseError": "Գնման սխալ",
+  "snackPurchaseFailed": "Գնումը ձախողվեց:",
+  "snackCanceled": "Չեղարկված է",
+  "snackPurchaseCanceled": "Գնումը չեղարկվել է:",
+  "snackUpload": "Վերբեռնել",
+  "snackVerify": "Ստուգեք",
+  "doNotExpire": "Ժամկետը մի՛ լրանա",
+  "hourSingular": "ժամ",
+  "hourPlural": "ժամեր",
+  "daySingular": "օր",
+  "dayPlural": "օրեր",
+  "emailAddressLabel": "ՓՈՍՏԻ ՀԱՍՑԵ",
+  "passwordLabelCaps": "գաղտնաբառ",
+  "confirmPasswordLabelCaps": "ՀԱՍՏԱՏԵՔ գաղտնաբառը",
+  "transferLinkOrId": "ՏՐԱՆՍՖԵՐՏԻ ՀՂՈՒՄԸ ԿԱՄ ID",
+  "howToReceive": "ԻՆՉՊԵՍ ՍՏԱՆԵԼ",
+  "planAdsTitle": "Գովազդային պլան",
+  "planAdsBullet1": "Մուտք դեպի գովազդ անվճար հավելված",
+  "planAdsBullet2": "Հեռացրեք բոլոր գովազդները",
+  "planProTitle": "Pro Plan",
+  "planProBullet1": "Ուղարկեք ֆայլեր մինչև 20 ԳԲ",
+  "planProBullet2": "Արագ վերբեռնում",
+  "planPremiumTitle": "Պրեմիում պլան",
+  "planPremiumBullet1": "Ուղարկեք ֆայլեր մինչև 100 ԳԲ",
+  "planPremiumBullet2": "Սուպեր արագ վերբեռնում",
+  "planSubscriptionDisclaimer": "Փորձաշրջան չկա. հավելվածի լրացուցիչ գործառույթն օգտագործելու համար բաժանորդագրություն է պահանջվում: Ձեզանից անմիջապես կգանձվի: Դուք կարող եք ցանկացած պահի չեղարկել:",
+  "perMonth": "/ ամիս",
+  "perYear": "/ տարի",
+  "snackConnectionProblem": "Միացման խնդիր. Խնդրում ենք կրկին փորձել:",
+  "networkTitle": "Ցանց",
+  "transferIdLabel": "ID՝ <<PH0>>",
+  "downloadMetaSummary": "Ֆայլեր՝ <<PH0>> · <<PH1>> բայթ",
+  "todayAt": "Այսօր · <<PH0>>",
+  "yesterdayAt": "Երեկ · <<PH0>>",
+  "daysAgoAt": "<<PH0>>d առաջ · <<PH1>>",
+  "dateAt": "<<PH0>> · <<PH1>>",
+  "mbAmount": "<<PH0>> ՄԲ",
+  "uploadProgressSummary": "<<PH0>> / <<PH1>> • <<PH2>> մնացել է",
+  "loadingShort": "Բեռնվում է…",
+  "colorPaletteTitle": "Գունավոր գունապնակ",
+  "colorPaletteSectionBackgrounds": "Ֆոնային (թանաքի սանդղակ)",
+  "colorPaletteSectionAccent": "Առոգանություն / Առաջնային",
+  "colorPaletteSectionText": "Տեքստ",
+  "colorPaletteSectionBorders": "Սահմաններ և ապակիներ",
+  "colorPaletteSectionSemantic": "Իմաստային",
+  "colorPaletteSectionLive": "Կենդանի թեմա (ներկայիս)",
+  "colorPaletteActiveHint": "★ = ակտիվորեն օգտագործվում է էկրաններում",
+  "colorPaletteCopyHint": "Երկար սեղմեք ցանկացած նմուշ՝ դրա վեցանկյուն արժեքը պատճենելու համար:",
+  "settingsAppBrand": "Տարածել մեծ\nՎիդեո ֆայլեր",
+  "loginEmailPasswordPrompt": "Մուտք գործելու համար մուտքագրեք ձեր էլ․ հասցեն և գաղտնաբառը։",
+  "forgotPassword": "Մոռացել եք գաղտնաբառը",
+  "forgotPasswordTitle": "Վերականգնել գաղտնաբառը",
+  "forgotPasswordBody": "Մուտքագրեք ձեր հաշվի էլ.փոստը և մենք կուղարկենք վերակայման կոդը:",
+  "forgotPasswordSubmit": "Ուղարկեք վերակայման կոդը",
+  "resetPasswordTitle": "Ստեղծեք նոր գաղտնաբառ",
+  "resetPasswordBody": "Մուտքագրեք ձեր էլ.փոստի 6 նիշանոց կոդը և ընտրեք նոր գաղտնաբառ:",
+  "resetPasswordSubmit": "Թարմացրեք գաղտնաբառը",
+  "snackPasswordResetSent": "Վերակայման կոդը ուղարկվեց",
+  "snackPasswordResetSentBody": "Ստուգեք ձեր էլ.",
+  "snackPasswordResetFailed": "Չհաջողվեց ուղարկել վերակայման կոդը: Կրկին փորձեք:",
+  "snackPasswordUpdated": "Գաղտնաբառը թարմացվել է",
+  "snackPasswordUpdatedBody": "Մուտք գործեք ձեր նոր գաղտնաբառով:",
+  "snackPasswordResetInvalid": "Անվավեր կամ ժամկետանց վերակայման կոդը:",
+  "otpDigitLabel": "6-ՆԻՇ ԿՈԴ",
+  "receiveMoreFiles": "+<<PH0>> ավելի շատ ֆայլեր"
+}

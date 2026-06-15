@@ -1,0 +1,466 @@
+{
+  "@@locale": "ka",
+  "@verifyEmailCheckSpamHint": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@upToTotal": {
+    "placeholders": {
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "@filesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesCount": "{count, plural, =1{1 file} other{{count} files}}",
+  "@mbLeft": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@transferLoadFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@storePricesPartialBody": {
+    "placeholders": {
+      "loaded": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "priceUnavailable": "—",
+  "@effectiveMonthlyPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "@otpSentTo": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@snackDownloadSaved": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "emailExampleHint": "you@example.com",
+  "otpSixDigitHint": "000000",
+  "verifyFourDigitHint": "0000",
+  "transferLinkHint": "https://… or paste ID",
+  "@filesReady": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesReady": "{count, plural, =1{1 file ready} other{{count} files ready}}",
+  "@transferIdLabel": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadMetaSummary": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "@todayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@yesterdayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@daysAgoAt": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@dateAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@mbAmount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@uploadProgressSummary": {
+    "placeholders": {
+      "sent": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      },
+      "remaining": {
+        "type": "String"
+      }
+    }
+  },
+  "@historyFilesSize": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "historyFilesSize": "{count, plural, =1{1 file} other{{count} files}} · {size}",
+  "@receiveMoreFiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appTitle": "გააზიარეთ დიდი ვიდეო ფაილები",
+  "heroAccent": "მყისიერად.",
+  "heroTitle": "მძიმე ფაილების გაგზავნა",
+  "splashLoading": "იტვირთება…",
+  "navSend": "დაფა",
+  "navHome": "მთავარი",
+  "navHistory": "ისტორია",
+  "navReceive": "მიღება",
+  "navPlans": "გეგმები",
+  "navDownload": "ჩამოტვირთვა",
+  "navSettings": "პარამეტრები",
+  "modeLink": "მიიღეთ ბმული",
+  "modeEmail": "გაგზავნეთ ელექტრონული ფოსტით",
+  "pickFiles": "აირჩიეთ ფაილები",
+  "pickFolder": "აირჩიეთ საქაღალდე",
+  "emailFrom": "თქვენი ელ",
+  "mailFromUsesAccount": "იყენებს თქვენს სისტემაში შესულ ელფოსტას.",
+  "recipientEmailsHelper": "მრავალი მიმღები: გამოყავით მძიმეებით, მძიმით ან ინტერვალით.",
+  "emailTo": "მიმღების ელ.წერილი",
+  "messageOptional": "შეტყობინება (სურვილისამებრ)",
+  "passwordOptional": "პაროლი (სურვილისამებრ)",
+  "destructAfterDownload": "წაშალეთ ჩამოტვირთვის შემდეგ",
+  "destructNo": "ხელმისაწვდომობის შენარჩუნება",
+  "sendButton": "გაგზავნა",
+  "uploading": "მიმდინარეობს ატვირთვა…",
+  "uploadComplete": "შესრულებულია",
+  "shareLinkTitle": "შენი ბმული",
+  "copyLink": "დააკოპირეთ ბმული",
+  "share": "გააზიარეთ",
+  "shareQrCode": "გააზიარეთ QR კოდი",
+  "uploadMore": "სხვა გაგზავნა",
+  "emailSentTitle": "გაგზავნილი ელ.წერილები",
+  "verifyEmailTitle": "დაადასტურეთ თქვენი ელფოსტა",
+  "verifyCodeHint": "შეიყვანეთ კოდი თქვენი ელფოსტიდან",
+  "verifySubmit": "გადაამოწმეთ",
+  "verifyResendCode": "კოდის ხელახლა გაგზავნა",
+  "verifyCodeSent": "ახალი დამადასტურებელი კოდი გაიგზავნა თქვენს ელფოსტაზე.",
+  "verifyEmailSmtpWarningTitle": "დამადასტურებელი ელფოსტა შეიძლება არ იყო გაგზავნილი",
+  "verifyEmailSmtpWarningBody": "სერვერმა ვერ დაადასტურა მიწოდება (ხშირად SMTP არასწორად არის კონფიგურირებული). სთხოვეთ თქვენი საიტის ადმინისტრატორს, შეამოწმოს ფოსტის პარამეტრები ადმინისტრაციულ პანელში, შემდეგ შეეხეთ კოდის ხელახლა გაგზავნას.",
+  "verifyEmailCheckSpamHint": "თუ ის არ ჩამოვიდა: შეამოწმეთ უსარგებლო/სპამი და აქციები, დაელოდეთ ერთი წუთით, დაადასტურეთ, რომ <<PH0>>-ს არ აქვს ბეჭდვითი შეცდომები, შემდეგ შეეხეთ ხელახლა გაგზავნას.",
+  "loginTitle": "შესვლა",
+  "signupHint": "გამოიყენეთ თქვენი საიტის ანგარიშის ელფოსტა და პაროლი.",
+  "emailHint": "ელფოსტა",
+  "passwordHint": "პაროლი",
+  "cancel": "გაუქმება",
+  "signIn": "შესვლა",
+  "downloadIdHint": "გადარიცხვის ID",
+  "privateIdHint": "პირადი ID (არასავალდებულო)",
+  "fetchTransfer": "გახსენით გადაცემა",
+  "downloadFile": "ჩამოტვირთვა",
+  "unlockDownload": "ჩამოტვირთვის განბლოკვა",
+  "downloadSaved": "შენახულია ჩამოტვირთვებში",
+  "errorGeneric": "რაღაც შეფერხდა",
+  "errorNetwork": "ქსელის შეცდომა",
+  "errorBadResponse": "სერვერის მოულოდნელი პასუხი",
+  "termsAccept": "ვეთანხმები პირობებს",
+  "settingsApiUrl": "საჯარო საიტის URL",
+  "settingsAccount": "ანგარიში",
+  "settingsAppearance": "გარეგნობა",
+  "settingsTheme": "თემა",
+  "themeSystem": "სისტემა",
+  "themeLight": "სინათლე",
+  "themeDark": "ბნელი",
+  "settingsSignedIn": "თქვენ შესული ხართ.",
+  "settingsSignedOut": "თქვენ არ ხართ შესული.",
+  "settingsOpenWebsite": "საიტის გახსნა",
+  "signUp": "დარეგისტრირდით",
+  "settingsLinks": "ბმულები",
+  "privacyPolicy": "კონფიდენციალურობის პოლიტიკა",
+  "termsOfService": "მომსახურების პირობები",
+  "about": "შესახებ",
+  "moreApps": "მეტი აპი",
+  "settingsLanguage": "ენა",
+  "languageEnglish": "ინგლისური",
+  "languageHindi": "ჰინდი",
+  "logout": "გასვლა",
+  "deleteAccount": "ანგარიშის წაშლა",
+  "deleteAccountConfirmTitle": "წაშალოთ თქვენი ანგარიში?",
+  "deleteAccountConfirmBody": "ეს სამუდამოდ წაშლის თქვენს ანგარიშს და გამოგიყვანთ სისტემიდან. თქვენი გადაცემის ბმულები იმუშავებს, მაგრამ ისინი აღარ გამოჩნდება თქვენს ისტორიაში.",
+  "deleteAccountSuccess": "ანგარიში წაიშალა",
+  "deleteAccountSuccessBody": "თქვენი ანგარიში წაიშალა.",
+  "deleteAccountFailed": "ანგარიშის წაშლა ვერ მოხერხდა",
+  "deleteAccountFailedBody": "გთხოვთ, სცადოთ ხელახლა ან დაუკავშირდით მხარდაჭერას.",
+  "maxFilesReached": "ძალიან ბევრი ფაილი",
+  "fileTooLarge": "ფაილი ძალიან დიდია",
+  "ipLimit": "ძალიან ბევრი ატვირთვა ამ ქსელიდან",
+  "fillFields": "გთხოვთ შეავსოთ აუცილებელი ველები",
+  "invalidEmail": "არასწორი ელფოსტა",
+  "maxRecipientsReached": "ძალიან ბევრი მიმღები",
+  "loginRequiredTitle": "საჭიროა შესვლა",
+  "loginRequiredBody": "ეს სერვერი საჭიროებს ანგარიშს ატვირთვის ან ჩამოსატვირთად.",
+  "settingsSubtitle": "აპის პარამეტრები და ანგარიში.",
+  "dropHeavyFile": "ჩამოაგდეთ მძიმე ფაილი აქ.",
+  "upToTotal": "სულ <<PH0>>-მდე",
+  "removeAll": "წაშალე ყველა",
+  "addFiles": "ფაილების დამატება",
+  "adding": "ემატება…",
+  "options": "ოფციები",
+  "selfDestruct": "თვითგანადგურება ჩამოტვირთვის შემდეგ",
+  "expiry": "ვადის გასვლა",
+  "cancelUpload": "ატვირთვის გაუქმება",
+  "transferReady": "ტრანსფერი მზადაა!",
+  "emailSentReady": "ელფოსტა გაიგზავნა!",
+  "shareRecipientHint": "გაუზიარეთ ეს ბმული თქვენს მიმღებს.",
+  "emailSentBody": "ჩვენ ვაცნობეთ თქვენს მიმღებ(ებ)ს.",
+  "scanQr": "სკანირება გადარიცხვის ბმულის გასახსნელად.",
+  "shareLinkButton": "გააზიარე ლინკი",
+  "verifyFourDigit": "შეიყვანეთ 4-ნიშნა კოდი, რომელიც გამოგზავნილია თქვენს გამომგზავნ ელფოსტაზე.",
+  "starting": "იწყება…",
+  "mbLeft": "<<PH0>> MB დარჩა",
+  "fillField": "გთხოვთ შეავსოთ ეს ველი.",
+  "enterValidEmail": "შეიყვანეთ სწორი ელფოსტა.",
+  "message": "შეტყობინება",
+  "recipientEmail": "მიმღების ელ.წერილი",
+  "active": "აქტიური",
+  "expired": "ვადა გაუვიდა",
+  "historyTitle": "ჩემი ტრანსფერები",
+  "signInToSeeTransfers": "შედით თქვენი გადარიცხვების სანახავად",
+  "signInTransfersBody": "ჩვენ ვიყენებთ თქვენს ელფოსტას გადარიცხვების თქვენს ანგარიშთან დასაკავშირებლად — პაროლი არ არის საჭირო.",
+  "couldNotLoadTransfers": "გადარიცხვები ვერ ჩაიტვირთა",
+  "retry": "ხელახლა სცადეთ",
+  "noTransfersYet": "ჯერ არ არის ტრანსფერი",
+  "noTransfersBody": "ფაილის გაგზავნის შემდეგ ის აქ გამოჩნდება.",
+  "transferDetails": "გადაცემის დეტალები",
+  "filesSection": "ფაილები",
+  "receiveTitle": "ფაილების მიღება",
+  "receiveSubtitle": "ჩასვით გადაცემის ბმული ფაილების ჩამოსატვირთად.",
+  "pasteTooltip": "პასტა",
+  "findTransfer": "იპოვნეთ ტრანსფერი",
+  "receiveScanQr": "QR-ის სკანირება",
+  "receiveScanQrTitle": "გადაცემის QR სკანირება",
+  "receiveScanQrHint": "გაასწორეთ QR კოდი ჩარჩოს შიგნით.",
+  "receiveScanQrInvalid": "ეს QR კოდი არ არის სწორი გადაცემის ბმული.",
+  "receiveScanQrCameraDenied": "QR კოდების სკანირებისთვის საჭიროა კამერაზე წვდომა.",
+  "receiveStepGetLink": "მიიღეთ ბმული",
+  "receiveStepGetLinkBody": "სთხოვეთ გამგზავნს გაგიზიაროთ გადარიცხვის ბმული.",
+  "receiveStepPaste": "ჩასვით და იპოვეთ",
+  "receiveStepPasteBody": "ჩასვით ზემოთ მოცემული ბმული და შეეხეთ \"იპოვეთ გადარიცხვა\".",
+  "receiveStepDownload": "ფაილების ჩამოტვირთვა",
+  "receiveStepDownloadBody": "იხილეთ ფაილის დეტალები და ჩამოტვირთეთ ყველაფერი ერთდროულად.",
+  "lookingUpTransfer": "მიმდინარეობს გადაცემის ძიება…",
+  "transferNotFound": "ტრანსფერი ვერ მოიძებნა. შეამოწმეთ ბმული და სცადეთ ხელახლა.",
+  "transferExpired": "ამ ტრანსფერს ვადა გაუვიდა და აღარ არის ხელმისაწვდომი.",
+  "transferLoginRequired": "ამ ტრანსფერზე წვდომისთვის საჭიროა შესვლა.",
+  "transferBadResponse": "სერვერის მოულოდნელი პასუხი. შეამოწმეთ თქვენი კავშირი.",
+  "transferNetworkError": "ქსელის შეცდომა. შეამოწმეთ თქვენი ინტერნეტ კავშირი.",
+  "transferLoadFailed": "გადაცემის ჩატვირთვა ვერ მოხერხდა: <<PH0>>",
+  "passwordProtected": "პაროლით დაცული",
+  "enterPassword": "შეიყვანეთ პაროლი",
+  "unlock": "განბლოკვა",
+  "downloading": "მიმდინარეობს ჩამოტვირთვა…",
+  "downloadAllFiles": "ჩამოტვირთეთ ყველა ფაილი",
+  "downloadSingleFile": "ფაილის ჩამოტვირთვა",
+  "receiveAnother": "მიიღეთ კიდევ ერთი გადარიცხვა",
+  "plansTitle": "გეგმები",
+  "plansSubtitle": "განაახლეთ რეკლამების წასაშლელად და უფრო დიდი ფაილების გასაგზავნად.",
+  "storeUnavailable": "მაღაზია მიუწვდომელია",
+  "storeUnavailableBody": "აპს-შიდა შესყიდვები ამჟამად მიუწვდომელია.",
+  "storeLoadingPrices": "იტვირთება ფასები App Store-იდან…",
+  "storePricesUnavailable": "ფასები მიუწვდომელია",
+  "storePricesPartial": "ზოგიერთი ფასი ვერ ჩაიტვირთა",
+  "storePricesPartialBody": "<PH2>> <PH3>> სააბონენტო პროდუქტებიდან დატვირთულია.",
+  "storeSetupHint": "გამოცადეთ რეალურ iPhone-ზე (არა სიმულატორი), გამოიყენეთ Sandbox Apple ID და დარწმუნდით, რომ ექვსივე გამოწერა შექმნილია ამ აპლიკაციის პაკეტის ID-ით App Store Connect-ში ფასების ნაკრებით.",
+  "effectiveMonthlyPrice": "<<PH0>>/თვეში",
+  "freeVersionAds": "ამჟამად თქვენ იყენებთ ჩვენს უფასო ვერსიას რეკლამებით",
+  "restorePurchases": "შესყიდვების აღდგენა",
+  "plansContinue": "განაგრძეთ",
+  "planLinkRestore": "აღდგენა",
+  "termsAndConditions": "ვადები და პირობები",
+  "createAccountTitle": "ანგარიშის შექმნა",
+  "signUpSubtitle": "დარეგისტრირდით ელექტრონული ფოსტით და პაროლით.",
+  "confirmPassword": "დაადასტურეთ პაროლი",
+  "passwordMin8": "პაროლი (მინიმუმ 8 სიმბოლო)",
+  "alreadyHaveAccount": "უკვე გაქვთ ანგარიში?",
+  "checkEmailTitle": "შეამოწმეთ თქვენი\nელ",
+  "otpSentTo": "ჩვენ გავგზავნეთ 6-ნიშნა კოდი\n<<PH0>>",
+  "verifyAndSignIn": "გადაამოწმეთ და შედით",
+  "didntReceiveCode": "არ მიგიღიათ?",
+  "tryAgain": "სცადეთ ხელახლა",
+  "otpExpiresHint": "კოდი იწურება 5 წუთში. შეამოწმეთ თქვენი სპამის საქაღალდე, თუ მას არ ხედავთ.",
+  "snackError": "შეცდომა",
+  "snackCopied": "კოპირებულია",
+  "snackCopiedBody": "ბმული კოპირებულია ბუფერში",
+  "snackWelcome": "მოგესალმებით",
+  "snackAccountCreated": "ანგარიში შეიქმნა",
+  "snackEnterEmail": "გთხოვთ შეიყვანოთ თქვენი ელფოსტა",
+  "snackEnterPassword": "გთხოვთ შეიყვანოთ თქვენი პაროლი",
+  "snackInvalidEmail": "ელფოსტის მისამართი არასწორია",
+  "snackInvalidCredentials": "არასწორი ელფოსტა ან პაროლი",
+  "snackPasswordMin8": "პაროლი უნდა შედგებოდეს მინიმუმ 8 სიმბოლოსგან",
+  "snackPasswordMismatch": "პაროლები არ ემთხვევა.",
+  "snackAccountExists": "ანგარიში უკვე არსებობს. გთხოვთ შეხვიდეთ.",
+  "snackSignupFailed": "ანგარიშის შექმნა ვერ მოხერხდა. სცადეთ ხელახლა.",
+  "snackEnterOtp": "გთხოვთ შეიყვანოთ 6-ნიშნა კოდი",
+  "snackOtpExpired": "კოდს ვადა გაუვიდა",
+  "snackOtpExpiredBody": "გთხოვთ მოითხოვოთ ახალი კოდი.",
+  "snackInvalidCode": "არასწორი კოდი",
+  "snackInvalidCodeBody": "კოდი არასწორია. გთხოვთ, სცადოთ ხელახლა.",
+  "snackSendCodeFailed": "კოდის გაგზავნა ვერ მოხერხდა. შეამოწმეთ თქვენი კავშირი და სცადეთ ხელახლა.",
+  "snackEmptyFolder": "ცარიელი საქაღალდე",
+  "snackEmptyFolderBody": "არჩეულ საქაღალდეში ფაილები ვერ მოიძებნა.",
+  "snackFolderUnsupported": "არ არის მხარდაჭერილი",
+  "snackFolderUnsupportedBody": "საქაღალდის ატვირთვა მიუწვდომელია ამ პლატფორმაზე.",
+  "snackFolderReadError": "არჩეული საქაღალდის წაკითხვა ვერ მოხერხდა.",
+  "snackLimitReached": "ლიმიტი მიღწეულია",
+  "snackLimitFilesBody": "ზოგიერთი ფაილი არ დაემატა ზომის ან ფაილების რაოდენობის შეზღუდვის გამო.",
+  "snackFreePlanLimit": "უფასო გეგმა იძლევა 5 გბ-მდე გადარიცხვის საშუალებას. გთხოვთ, წაშალოთ რამდენიმე ფაილი ან განაახლოთ.",
+  "snackSignInEmail": "გთხოვთ შეხვიდეთ ელფოსტით გასაგზავნად.",
+  "snackUploadStartFailed": "ატვირთვის დაწყება ვერ მოხერხდა.",
+  "snackVerifyEnterCode": "შეიყვანეთ 4-ნიშნა კოდი თქვენი ელფოსტიდან.",
+  "snackVerifyInvalid": "არასწორი ან ვადაგასული კოდი. შეამოწმეთ ელფოსტა და სცადეთ ხელახლა.",
+  "snackVerifyResendFailed": "კოდის ხელახლა გაგზავნა ვერ მოხერხდა. სცადეთ ხელახლა.",
+  "snackDownloadComplete": "ჩამოტვირთვა დასრულდა",
+  "snackDownloadSaved": "„<<PH0>>“ შენახულია ჩამოტვირთვებში",
+  "snackDownloadFailed": "ჩამოტვირთვა ვერ მოხერხდა",
+  "snackSaved": "შენახულია",
+  "snackServerUrlUpdated": "სერვერის URL განახლებულია. გადატვირთეთ აპლიკაცია განაცხადისთვის.",
+  "snackStoreError": "შენახვის შეცდომა",
+  "snackMissingProducts": "დაკარგული პროდუქტები",
+  "snackStoreUnavailable": "მაღაზია მიუწვდომელია",
+  "snackStoreUnavailableBody": "აპს-შიდა შესყიდვები მიუწვდომელია ამ მოწყობილობაზე.",
+  "snackProductNotLoaded": "პროდუქტი ჯერ არ არის დატვირთული.",
+  "snackRestoreStarted": "აღდგენა დაიწყო",
+  "snackRestoreStartedBody": "ჩვენ ვამოწმებთ თქვენს შესყიდვებს.",
+  "snackRestoreFailed": "აღდგენა ვერ მოხერხდა",
+  "snackProcessing": "დამუშავება",
+  "snackPleaseWait": "გთხოვთ დაელოდოთ…",
+  "snackSuccess": "წარმატებები",
+  "snackPurchaseCompleted": "შესყიდვა დასრულებულია.",
+  "snackPurchaseError": "შეძენის შეცდომა",
+  "snackPurchaseFailed": "შესყიდვა ვერ მოხერხდა.",
+  "snackCanceled": "გაუქმდა",
+  "snackPurchaseCanceled": "შესყიდვა გაუქმდა.",
+  "snackUpload": "ატვირთვა",
+  "snackVerify": "გადაამოწმეთ",
+  "doNotExpire": "არ იწუროს",
+  "hourSingular": "საათი",
+  "hourPlural": "საათები",
+  "daySingular": "დღე",
+  "dayPlural": "დღეები",
+  "emailAddressLabel": "ელფოსტის მისამართი",
+  "passwordLabelCaps": "პაროლი",
+  "confirmPasswordLabelCaps": "პაროლის დადასტურება",
+  "transferLinkOrId": "გადარიცხვის ბმული ან ID",
+  "howToReceive": "როგორ მივიღოთ",
+  "planAdsTitle": "რეკლამის გეგმა",
+  "planAdsBullet1": "წვდომა რეკლამის უფასო აპლიკაციაზე",
+  "planAdsBullet2": "წაშალეთ ყველა რეკლამა",
+  "planProTitle": "პრო გეგმა",
+  "planProBullet1": "გაგზავნეთ ფაილები 20 გბ-მდე",
+  "planProBullet2": "სწრაფი ატვირთვა",
+  "planPremiumTitle": "პრემიუმ გეგმა",
+  "planPremiumBullet1": "გაგზავნეთ ფაილები 100 გბ-მდე",
+  "planPremiumBullet2": "სუპერ სწრაფი ატვირთვა",
+  "planSubscriptionDisclaimer": "საცდელი პერიოდი არ არის — გამოწერა საჭიროა დამატებითი აპლიკაციის ფუნქციონირების გამოსაყენებლად. თქვენ დაუყოვნებლივ ჩამოგეჭრებათ თანხა. ნებისმიერ დროს შეგიძლიათ გააუქმოთ.",
+  "perMonth": "/ თვე",
+  "perYear": "/ წელი",
+  "snackConnectionProblem": "კავშირის პრობლემა. გთხოვთ, სცადოთ ხელახლა.",
+  "networkTitle": "ქსელი",
+  "transferIdLabel": "ID: <<PH0>>",
+  "downloadMetaSummary": "ფაილები: <<PH0>> · <<PH1>> ბაიტი",
+  "todayAt": "დღეს · <<PH0>>",
+  "yesterdayAt": "გუშინ · <<PH0>>",
+  "daysAgoAt": "<<PH0>>დღის წინ · <<PH1>>",
+  "dateAt": "<<PH0>> · <<PH1>>",
+  "mbAmount": "<<PH0>> მბ",
+  "uploadProgressSummary": "<<PH0>> / <<PH1>> • <<PH2>> დარჩა",
+  "loadingShort": "იტვირთება…",
+  "colorPaletteTitle": "ფერის პალიტრა",
+  "colorPaletteSectionBackgrounds": "ფონი (მელნის მასშტაბი)",
+  "colorPaletteSectionAccent": "აქცენტი / პირველადი",
+  "colorPaletteSectionText": "ტექსტი",
+  "colorPaletteSectionBorders": "საზღვრები და მინა",
+  "colorPaletteSectionSemantic": "სემანტიკური",
+  "colorPaletteSectionLive": "ცოცხალი თემა (მიმდინარე)",
+  "colorPaletteActiveHint": "★ = აქტიურად გამოიყენება ეკრანებზე",
+  "colorPaletteCopyHint": "ხანგრძლივად დააჭირეთ ნებისმიერ სვოჩს, რომ დააკოპიროთ მისი თექვსმეტობითი მნიშვნელობა.",
+  "settingsAppBrand": "გააზიარე დიდი\nვიდეო ფაილები",
+  "loginEmailPasswordPrompt": "შესასვლელად შეიყვანეთ თქვენი ელფოსტა და პაროლი.",
+  "forgotPassword": "დაგავიწყდათ პაროლი?",
+  "forgotPasswordTitle": "პაროლის გადატვირთვა",
+  "forgotPasswordBody": "შეიყვანეთ თქვენი ანგარიშის ელფოსტა და ჩვენ გამოგიგზავნით გადატვირთვის კოდს.",
+  "forgotPasswordSubmit": "გადატვირთვის კოდის გაგზავნა",
+  "resetPasswordTitle": "შექმენით ახალი პაროლი",
+  "resetPasswordBody": "შეიყვანეთ 6-ნიშნა კოდი თქვენი ელფოსტადან და აირჩიეთ ახალი პაროლი.",
+  "resetPasswordSubmit": "პაროლის განახლება",
+  "snackPasswordResetSent": "გადატვირთვის კოდი გაგზავნილია",
+  "snackPasswordResetSentBody": "შეამოწმეთ თქვენი ელფოსტა 6-ნიშნა გადატვირთვის კოდისთვის.",
+  "snackPasswordResetFailed": "გადატვირთვის კოდის გაგზავნა ვერ მოხერხდა. სცადეთ ხელახლა.",
+  "snackPasswordUpdated": "პაროლი განახლებულია",
+  "snackPasswordUpdatedBody": "შედით თქვენი ახალი პაროლით.",
+  "snackPasswordResetInvalid": "არასწორი ან ვადაგასული გადატვირთვის კოდი.",
+  "otpDigitLabel": "6-ნიშნა კოდი",
+  "receiveMoreFiles": "+<<PH0>> მეტი ფაილი"
+}

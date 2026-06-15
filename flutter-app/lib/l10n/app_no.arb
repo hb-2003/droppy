@@ -1,0 +1,466 @@
+{
+  "@@locale": "no",
+  "@verifyEmailCheckSpamHint": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@upToTotal": {
+    "placeholders": {
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "@filesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesCount": "{count, plural, =1{1 file} other{{count} files}}",
+  "@mbLeft": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@transferLoadFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@storePricesPartialBody": {
+    "placeholders": {
+      "loaded": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "priceUnavailable": "—",
+  "@effectiveMonthlyPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "@otpSentTo": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@snackDownloadSaved": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "emailExampleHint": "you@example.com",
+  "otpSixDigitHint": "000000",
+  "verifyFourDigitHint": "0000",
+  "transferLinkHint": "https://… or paste ID",
+  "@filesReady": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesReady": "{count, plural, =1{1 file ready} other{{count} files ready}}",
+  "@transferIdLabel": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadMetaSummary": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "@todayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@yesterdayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@daysAgoAt": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@dateAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@mbAmount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@uploadProgressSummary": {
+    "placeholders": {
+      "sent": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      },
+      "remaining": {
+        "type": "String"
+      }
+    }
+  },
+  "@historyFilesSize": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "historyFilesSize": "{count, plural, =1{1 file} other{{count} files}} · {size}",
+  "@receiveMoreFiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appTitle": "Del store videofiler",
+  "heroAccent": "umiddelbart.",
+  "heroTitle": "Send tunge filer",
+  "splashLoading": "Laster inn …",
+  "navSend": "Dashbord",
+  "navHome": "Hjem",
+  "navHistory": "Historie",
+  "navReceive": "Motta",
+  "navPlans": "Planer",
+  "navDownload": "Last ned",
+  "navSettings": "Innstillinger",
+  "modeLink": "Få en link",
+  "modeEmail": "Send på e-post",
+  "pickFiles": "Velg filer",
+  "pickFolder": "Velg mappe",
+  "emailFrom": "Din e-post",
+  "mailFromUsesAccount": "Bruker den påloggede e-postadressen din.",
+  "recipientEmailsHelper": "Flere mottakere: Separer med komma, semikolon eller mellomrom.",
+  "emailTo": "Mottakers e-post",
+  "messageOptional": "Melding (valgfritt)",
+  "passwordOptional": "Passord (valgfritt)",
+  "destructAfterDownload": "Slett etter nedlasting",
+  "destructNo": "Hold tilgjengelig",
+  "sendButton": "Sende",
+  "uploading": "Laster opp …",
+  "uploadComplete": "Ferdig",
+  "shareLinkTitle": "Linken din",
+  "copyLink": "Kopier lenken",
+  "share": "Dele",
+  "shareQrCode": "Del QR-kode",
+  "uploadMore": "Send en annen",
+  "emailSentTitle": "E-poster sendt",
+  "verifyEmailTitle": "Bekreft e-posten din",
+  "verifyCodeHint": "Skriv inn koden fra e-posten din",
+  "verifySubmit": "Verifisere",
+  "verifyResendCode": "Send kode på nytt",
+  "verifyCodeSent": "En ny bekreftelseskode ble sendt til e-posten din.",
+  "verifyEmailSmtpWarningTitle": "Bekreftelses-e-post kan ikke ha blitt sendt",
+  "verifyEmailSmtpWarningBody": "Serveren kunne ikke bekrefte levering (ofte er SMTP feilkonfigurert). Be nettstedadministratoren om å sjekke e-postinnstillingene i administrasjonspanelet, og trykk deretter på Send kode på nytt.",
+  "verifyEmailCheckSpamHint": "Hvis den ikke kommer: sjekk søppelpost/søppelpost og kampanjer, vent et minutt, bekreft at <<PH0>> ikke har noen skrivefeil, og trykk deretter på Send på nytt.",
+  "loginTitle": "Logg på",
+  "signupHint": "Bruk e-postadressen og passordet for nettstedets konto.",
+  "emailHint": "E-post",
+  "passwordHint": "Passord",
+  "cancel": "Kansellere",
+  "signIn": "Logg på",
+  "downloadIdHint": "Overfør ID",
+  "privateIdHint": "Privat ID (valgfritt)",
+  "fetchTransfer": "Åpen overføring",
+  "downloadFile": "Last ned",
+  "unlockDownload": "Lås opp nedlasting",
+  "downloadSaved": "Lagret i Nedlastinger",
+  "errorGeneric": "Noe gikk galt",
+  "errorNetwork": "Nettverksfeil",
+  "errorBadResponse": "Uventet serverrespons",
+  "termsAccept": "Jeg godtar vilkårene",
+  "settingsApiUrl": "URL til offentlig nettsted",
+  "settingsAccount": "Konto",
+  "settingsAppearance": "Utseende",
+  "settingsTheme": "Tema",
+  "themeSystem": "System",
+  "themeLight": "Lys",
+  "themeDark": "Mørk",
+  "settingsSignedIn": "Du er logget på.",
+  "settingsSignedOut": "Du er ikke logget på.",
+  "settingsOpenWebsite": "Åpne nettsiden",
+  "signUp": "Registrer deg",
+  "settingsLinks": "Lenker",
+  "privacyPolicy": "Personvernerklæring",
+  "termsOfService": "Vilkår for bruk",
+  "about": "Om",
+  "moreApps": "Flere apper",
+  "settingsLanguage": "Språk",
+  "languageEnglish": "engelsk",
+  "languageHindi": "Hindi",
+  "logout": "Logg ut",
+  "deleteAccount": "Slett konto",
+  "deleteAccountConfirmTitle": "Vil du slette kontoen din?",
+  "deleteAccountConfirmBody": "Dette sletter kontoen din permanent og logger deg av. Overføringskoblingene vil fortsette å fungere, men de vil ikke lenger vises i loggen din.",
+  "deleteAccountSuccess": "Konto slettet",
+  "deleteAccountSuccessBody": "Kontoen din er fjernet.",
+  "deleteAccountFailed": "Kunne ikke slette kontoen",
+  "deleteAccountFailedBody": "Prøv igjen eller kontakt brukerstøtten.",
+  "maxFilesReached": "For mange filer",
+  "fileTooLarge": "Filen er for stor",
+  "ipLimit": "For mange opplastinger fra dette nettverket",
+  "fillFields": "Fyll ut obligatoriske felt",
+  "invalidEmail": "Ugyldig e-post",
+  "maxRecipientsReached": "For mange mottakere",
+  "loginRequiredTitle": "Pålogging kreves",
+  "loginRequiredBody": "Denne serveren krever en konto for å laste opp eller ned.",
+  "settingsSubtitle": "App-preferanser og konto.",
+  "dropHeavyFile": "Slipp en tung fil her.",
+  "upToTotal": "Opptil <<PH0>> totalt",
+  "removeAll": "Fjern alle",
+  "addFiles": "Legg til filer",
+  "adding": "Legger til …",
+  "options": "Alternativer",
+  "selfDestruct": "Selvdestruksjon etter nedlasting",
+  "expiry": "Utløp",
+  "cancelUpload": "Avbryt opplasting",
+  "transferReady": "Overføring klar!",
+  "emailSentReady": "E-post sendt!",
+  "shareRecipientHint": "Del denne lenken med mottakeren din.",
+  "emailSentBody": "Vi har varslet mottakeren(e).",
+  "scanQr": "Skann for å åpne overføringskoblingen.",
+  "shareLinkButton": "DEL LINK",
+  "verifyFourDigit": "Skriv inn den 4-sifrede koden sendt til avsenderens e-post.",
+  "starting": "Starter …",
+  "mbLeft": "<<PH0>> MB igjen",
+  "fillField": "Vennligst fyll ut dette feltet.",
+  "enterValidEmail": "Skriv inn en gyldig e-post.",
+  "message": "Beskjed",
+  "recipientEmail": "Mottakers e-post",
+  "active": "Aktiv",
+  "expired": "Utløpt",
+  "historyTitle": "Mine overføringer",
+  "signInToSeeTransfers": "Logg på for å se overføringene dine",
+  "signInTransfersBody": "Vi bruker e-posten din til å koble overføringer til kontoen din – du trenger ikke passord.",
+  "couldNotLoadTransfers": "Kunne ikke laste overføringer",
+  "retry": "Prøv på nytt",
+  "noTransfersYet": "Ingen overføringer ennå",
+  "noTransfersBody": "Når du har sendt en fil, vil den vises her.",
+  "transferDetails": "Overføringsdetaljer",
+  "filesSection": "Filer",
+  "receiveTitle": "Motta filer",
+  "receiveSubtitle": "Lim inn en overføringskobling for å laste ned filer.",
+  "pasteTooltip": "Lim inn",
+  "findTransfer": "Finn Transfer",
+  "receiveScanQr": "Skann QR",
+  "receiveScanQrTitle": "Skann overføring QR",
+  "receiveScanQrHint": "Juster QR-koden inne i rammen.",
+  "receiveScanQrInvalid": "Denne QR-koden er ikke en gyldig overføringslenke.",
+  "receiveScanQrCameraDenied": "Kameratilgang er nødvendig for å skanne QR-koder.",
+  "receiveStepGetLink": "Få lenken",
+  "receiveStepGetLinkBody": "Be avsenderen dele overføringslenken med deg.",
+  "receiveStepPaste": "Lim inn og finn",
+  "receiveStepPasteBody": "Lim inn lenken ovenfor og trykk på \"Finn overføring\".",
+  "receiveStepDownload": "Last ned filer",
+  "receiveStepDownloadBody": "Se fildetaljer og last ned alt på en gang.",
+  "lookingUpTransfer": "Slår opp overføring …",
+  "transferNotFound": "Overføringen ble ikke funnet. Sjekk linken og prøv igjen.",
+  "transferExpired": "Denne overføringen er utløpt og er ikke lenger tilgjengelig.",
+  "transferLoginRequired": "Pålogging kreves for å få tilgang til denne overføringen.",
+  "transferBadResponse": "Uventet serverrespons. Sjekk tilkoblingen din.",
+  "transferNetworkError": "Nettverksfeil. Sjekk internettforbindelsen din.",
+  "transferLoadFailed": "Kunne ikke laste overføring: <<PH0>>",
+  "passwordProtected": "Passordbeskyttet",
+  "enterPassword": "Skriv inn passord",
+  "unlock": "Låse opp",
+  "downloading": "Laster ned …",
+  "downloadAllFiles": "Last ned alle filer",
+  "downloadSingleFile": "Last ned fil",
+  "receiveAnother": "Motta en annen overføring",
+  "plansTitle": "Planer",
+  "plansSubtitle": "Oppgrader for å fjerne annonser og sende større filer.",
+  "storeUnavailable": "Butikken er utilgjengelig",
+  "storeUnavailableBody": "Kjøp i app er ikke tilgjengelig akkurat nå.",
+  "storeLoadingPrices": "Laster priser fra App Store …",
+  "storePricesUnavailable": "Prisene er ikke tilgjengelige",
+  "storePricesPartial": "Noen priser kunne ikke lastes",
+  "storePricesPartialBody": "<<PH0>> av <<PH1>> abonnementsprodukter lastet.",
+  "storeSetupHint": "Test på en ekte iPhone (ikke Simulator), bruk en Sandbox Apple ID, og ​​sørg for at alle 6 abonnementene er opprettet under denne appens pakke-ID i App Store Connect med prissett.",
+  "effectiveMonthlyPrice": "<<PH0>>/måned",
+  "freeVersionAds": "For øyeblikket bruker du vår gratisversjon med annonser",
+  "restorePurchases": "Gjenopprett kjøp",
+  "plansContinue": "Fortsette",
+  "planLinkRestore": "Restaurere",
+  "termsAndConditions": "Vilkår og betingelser",
+  "createAccountTitle": "Opprett konto",
+  "signUpSubtitle": "Registrer deg med e-post og passord.",
+  "confirmPassword": "Bekreft passord",
+  "passwordMin8": "Passord (minst 8 tegn)",
+  "alreadyHaveAccount": "Har du allerede en konto?",
+  "checkEmailTitle": "Sjekk din\ne-post",
+  "otpSentTo": "Vi sendte en 6-sifret kode til\n<<PH0>>",
+  "verifyAndSignIn": "Bekreft og logg på",
+  "didntReceiveCode": "Ikke mottatt den?",
+  "tryAgain": "Prøv igjen",
+  "otpExpiresHint": "Koden utløper om 5 minutter. Sjekk søppelpostmappen din hvis du ikke ser den.",
+  "snackError": "Feil",
+  "snackCopied": "Kopiert",
+  "snackCopiedBody": "Linken er kopiert til utklippstavlen",
+  "snackWelcome": "Velkomst",
+  "snackAccountCreated": "Konto opprettet",
+  "snackEnterEmail": "Vennligst skriv inn e-postadressen din",
+  "snackEnterPassword": "Vennligst skriv inn passordet ditt",
+  "snackInvalidEmail": "Ugyldig e-postadresse",
+  "snackInvalidCredentials": "Feil e-post eller passord",
+  "snackPasswordMin8": "Passordet må være på minst 8 tegn",
+  "snackPasswordMismatch": "Passord stemmer ikke.",
+  "snackAccountExists": "Kontoen eksisterer allerede. Logg på.",
+  "snackSignupFailed": "Kunne ikke opprette konto. Prøv igjen.",
+  "snackEnterOtp": "Vennligst skriv inn den 6-sifrede koden",
+  "snackOtpExpired": "Koden er utløpt",
+  "snackOtpExpiredBody": "Vennligst be om en ny kode.",
+  "snackInvalidCode": "Ugyldig kode",
+  "snackInvalidCodeBody": "Koden er feil. Vennligst prøv igjen.",
+  "snackSendCodeFailed": "Kunne ikke sende koden. Sjekk tilkoblingen og prøv igjen.",
+  "snackEmptyFolder": "Tom mappe",
+  "snackEmptyFolderBody": "Ingen filer funnet i den valgte mappen.",
+  "snackFolderUnsupported": "Støttes ikke",
+  "snackFolderUnsupportedBody": "Mappeopplasting er ikke tilgjengelig på denne plattformen.",
+  "snackFolderReadError": "Kunne ikke lese den valgte mappen.",
+  "snackLimitReached": "Grensen nådd",
+  "snackLimitFilesBody": "Noen filer ble ikke lagt til på grunn av størrelses- eller filantallsgrenser.",
+  "snackFreePlanLimit": "Gratis plan tillater opptil 5 GB per overføring. Vennligst fjern noen filer eller oppgrader.",
+  "snackSignInEmail": "Logg på for å sende via e-post.",
+  "snackUploadStartFailed": "Kunne ikke starte opplastingen.",
+  "snackVerifyEnterCode": "Skriv inn den 4-sifrede koden fra e-posten din.",
+  "snackVerifyInvalid": "Ugyldig eller utløpt kode. Sjekk e-posten og prøv igjen.",
+  "snackVerifyResendFailed": "Kunne ikke sende koden på nytt. Prøv igjen.",
+  "snackDownloadComplete": "Nedlasting fullført",
+  "snackDownloadSaved": "«<<PH0>>» lagret i Nedlastinger",
+  "snackDownloadFailed": "Nedlasting mislyktes",
+  "snackSaved": "Lagret",
+  "snackServerUrlUpdated": "Server URL oppdatert. Start appen på nytt for å søke.",
+  "snackStoreError": "Butikkfeil",
+  "snackMissingProducts": "Mangler produkter",
+  "snackStoreUnavailable": "Butikken er utilgjengelig",
+  "snackStoreUnavailableBody": "Kjøp i appen er ikke tilgjengelig på denne enheten.",
+  "snackProductNotLoaded": "Produktet er ikke lastet inn ennå.",
+  "snackRestoreStarted": "Gjenoppretting startet",
+  "snackRestoreStartedBody": "Vi sjekker kjøpene dine.",
+  "snackRestoreFailed": "Gjenoppretting mislyktes",
+  "snackProcessing": "Behandling",
+  "snackPleaseWait": "Vennligst vent...",
+  "snackSuccess": "Suksess",
+  "snackPurchaseCompleted": "Kjøp fullført.",
+  "snackPurchaseError": "Kjøpsfeil",
+  "snackPurchaseFailed": "Kjøpet mislyktes.",
+  "snackCanceled": "Kansellert",
+  "snackPurchaseCanceled": "Kjøp kansellert.",
+  "snackUpload": "Last opp",
+  "snackVerify": "Verifisere",
+  "doNotExpire": "Ikke utløp",
+  "hourSingular": "time",
+  "hourPlural": "timer",
+  "daySingular": "dag",
+  "dayPlural": "dager",
+  "emailAddressLabel": "EMAILADRESSE",
+  "passwordLabelCaps": "PASSORD",
+  "confirmPasswordLabelCaps": "BEKREFT PASSORD",
+  "transferLinkOrId": "OVERFØRSELENKE ELLER ID",
+  "howToReceive": "HVORDAN MOTTA",
+  "planAdsTitle": "Annonseplan",
+  "planAdsBullet1": "Tilgang til annonsefri app",
+  "planAdsBullet2": "Fjern alle annonser",
+  "planProTitle": "Pro Plan",
+  "planProBullet1": "Send filer på opptil 20 GB",
+  "planProBullet2": "Rask opplasting",
+  "planPremiumTitle": "Premium-plan",
+  "planPremiumBullet1": "Send filer på opptil 100 GB",
+  "planPremiumBullet2": "Superrask opplasting",
+  "planSubscriptionDisclaimer": "Ingen prøveperiode – abonnement kreves for å bruke tilleggsfunksjonaliteten i appen. Du vil bli belastet umiddelbart. Du kan avbryte når som helst.",
+  "perMonth": "/ måned",
+  "perYear": "/ år",
+  "snackConnectionProblem": "Tilkoblingsproblem. Vennligst prøv igjen.",
+  "networkTitle": "Nettverk",
+  "transferIdLabel": "ID: <<PH0>>",
+  "downloadMetaSummary": "Filer: <<PH0>> · <<PH1>> byte",
+  "todayAt": "I dag · <<PH0>>",
+  "yesterdayAt": "I går · <<PH0>>",
+  "daysAgoAt": "<<PH0>>d siden · <<PH1>>",
+  "dateAt": "<<PH0>> · <<PH1>>",
+  "mbAmount": "<<PH0>> MB",
+  "uploadProgressSummary": "<<PH0>> / <<PH1>> • <<PH2>> venstre",
+  "loadingShort": "Laster inn …",
+  "colorPaletteTitle": "Fargepalett",
+  "colorPaletteSectionBackgrounds": "Bakgrunner (blekkskala)",
+  "colorPaletteSectionAccent": "Aksent / Primær",
+  "colorPaletteSectionText": "Tekst",
+  "colorPaletteSectionBorders": "Border & Glass",
+  "colorPaletteSectionSemantic": "Semantisk",
+  "colorPaletteSectionLive": "Live-tema (nåværende)",
+  "colorPaletteActiveHint": "★ = brukes aktivt i skjermer",
+  "colorPaletteCopyHint": "Trykk lenge på hvilken som helst fargeprøve for å kopiere hex-verdien.",
+  "settingsAppBrand": "Del Large\nVideofiler",
+  "loginEmailPasswordPrompt": "Skriv inn e-post og passord for å logge på.",
+  "forgotPassword": "Glemt passord?",
+  "forgotPasswordTitle": "Tilbakestill passord",
+  "forgotPasswordBody": "Skriv inn e-postadressen for kontoen din, så sender vi en tilbakestillingskode.",
+  "forgotPasswordSubmit": "Send tilbakestillingskode",
+  "resetPasswordTitle": "Opprett nytt passord",
+  "resetPasswordBody": "Skriv inn den 6-sifrede koden fra e-posten din og velg et nytt passord.",
+  "resetPasswordSubmit": "Oppdater passord",
+  "snackPasswordResetSent": "Tilbakestill kode sendt",
+  "snackPasswordResetSentBody": "Sjekk e-posten din for en 6-sifret tilbakestillingskode.",
+  "snackPasswordResetFailed": "Kunne ikke sende tilbakestillingskode. Prøv igjen.",
+  "snackPasswordUpdated": "Passord oppdatert",
+  "snackPasswordUpdatedBody": "Logg på med ditt nye passord.",
+  "snackPasswordResetInvalid": "Ugyldig eller utløpt tilbakestillingskode.",
+  "otpDigitLabel": "6-SIFFERT KODE",
+  "receiveMoreFiles": "+<<PH0>> flere filer"
+}

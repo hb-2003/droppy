@@ -1,0 +1,466 @@
+{
+  "@@locale": "fa",
+  "@verifyEmailCheckSpamHint": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@upToTotal": {
+    "placeholders": {
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "@filesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesCount": "{count, plural, =1{1 file} other{{count} files}}",
+  "@mbLeft": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@transferLoadFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@storePricesPartialBody": {
+    "placeholders": {
+      "loaded": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "priceUnavailable": "—",
+  "@effectiveMonthlyPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "@otpSentTo": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@snackDownloadSaved": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "emailExampleHint": "you@example.com",
+  "otpSixDigitHint": "000000",
+  "verifyFourDigitHint": "0000",
+  "transferLinkHint": "https://… or paste ID",
+  "@filesReady": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesReady": "{count, plural, =1{1 file ready} other{{count} files ready}}",
+  "@transferIdLabel": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadMetaSummary": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "@todayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@yesterdayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@daysAgoAt": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@dateAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@mbAmount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@uploadProgressSummary": {
+    "placeholders": {
+      "sent": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      },
+      "remaining": {
+        "type": "String"
+      }
+    }
+  },
+  "@historyFilesSize": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "historyFilesSize": "{count, plural, =1{1 file} other{{count} files}} · {size}",
+  "@receiveMoreFiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appTitle": "فایل های ویدیویی بزرگ را به اشتراک بگذارید",
+  "heroAccent": "فورا",
+  "heroTitle": "ارسال فایل های سنگین",
+  "splashLoading": "در حال بارگیری…",
+  "navSend": "داشبورد",
+  "navHome": "صفحه اصلی",
+  "navHistory": "تاریخچه",
+  "navReceive": "دریافت کنید",
+  "navPlans": "طرح ها",
+  "navDownload": "دانلود کنید",
+  "navSettings": "تنظیمات",
+  "modeLink": "یک لینک دریافت کنید",
+  "modeEmail": "ارسال از طریق ایمیل",
+  "pickFiles": "فایل ها را انتخاب کنید",
+  "pickFolder": "پوشه را انتخاب کنید",
+  "emailFrom": "ایمیل شما",
+  "mailFromUsesAccount": "از ایمیل وارد شده شما استفاده می کند.",
+  "recipientEmailsHelper": "گیرندگان چندگانه: با کاما، نقطه ویرگول یا فاصله از هم جدا شوند.",
+  "emailTo": "ایمیل گیرنده",
+  "messageOptional": "پیام (اختیاری)",
+  "passwordOptional": "رمز عبور (اختیاری)",
+  "destructAfterDownload": "بعد از دانلود حذف کنید",
+  "destructNo": "در دسترس نگه دارید",
+  "sendButton": "ارسال کنید",
+  "uploading": "در حال آپلود…",
+  "uploadComplete": "انجام شد",
+  "shareLinkTitle": "لینک شما",
+  "copyLink": "لینک را کپی کنید",
+  "share": "به اشتراک بگذارید",
+  "shareQrCode": "کد QR را به اشتراک بگذارید",
+  "uploadMore": "دیگری بفرست",
+  "emailSentTitle": "ایمیل ها ارسال شد",
+  "verifyEmailTitle": "ایمیل خود را تایید کنید",
+  "verifyCodeHint": "کد را از ایمیل خود وارد کنید",
+  "verifySubmit": "تأیید کنید",
+  "verifyResendCode": "ارسال مجدد کد",
+  "verifyCodeSent": "یک کد تأیید جدید به ایمیل شما ارسال شد.",
+  "verifyEmailSmtpWarningTitle": "ممکن است ایمیل تأیید ارسال نشده باشد",
+  "verifyEmailSmtpWarningBody": "سرور نمی تواند تحویل را تأیید کند (اغلب SMTP به اشتباه پیکربندی می شود). از سرپرست سایت خود بخواهید تنظیمات ایمیل را در پنل مدیریت بررسی کند، سپس روی ارسال مجدد کد ضربه بزنید.",
+  "verifyEmailCheckSpamHint": "اگر دریافت نشد: ناخواسته/هرزنامه و تبلیغات را بررسی کنید، یک دقیقه صبر کنید، تأیید کنید <<PH0>> اشتباه تایپی ندارد، سپس روی ارسال مجدد ضربه بزنید.",
+  "loginTitle": "وارد شوید",
+  "signupHint": "از ایمیل و رمز عبور حساب سایت خود استفاده کنید.",
+  "emailHint": "ایمیل",
+  "passwordHint": "رمز عبور",
+  "cancel": "لغو کنید",
+  "signIn": "وارد شوید",
+  "downloadIdHint": "شناسه انتقال",
+  "privateIdHint": "شناسه خصوصی (اختیاری)",
+  "fetchTransfer": "انتقال را باز کنید",
+  "downloadFile": "دانلود کنید",
+  "unlockDownload": "قفل دانلود را باز کنید",
+  "downloadSaved": "در دانلودها ذخیره شد",
+  "errorGeneric": "مشکلی پیش آمد",
+  "errorNetwork": "خطای شبکه",
+  "errorBadResponse": "پاسخ غیرمنتظره سرور",
+  "termsAccept": "من با شرایط موافقم",
+  "settingsApiUrl": "آدرس سایت عمومی",
+  "settingsAccount": "حساب",
+  "settingsAppearance": "ظاهر",
+  "settingsTheme": "موضوع",
+  "themeSystem": "سیستم",
+  "themeLight": "نور",
+  "themeDark": "تاریک",
+  "settingsSignedIn": "شما وارد سیستم شده اید.",
+  "settingsSignedOut": "شما وارد سیستم نشده اید.",
+  "settingsOpenWebsite": "وب سایت را باز کنید",
+  "signUp": "ثبت نام کنید",
+  "settingsLinks": "پیوندها",
+  "privacyPolicy": "سیاست حفظ حریم خصوصی",
+  "termsOfService": "شرایط خدمات",
+  "about": "درباره",
+  "moreApps": "برنامه های بیشتر",
+  "settingsLanguage": "زبان",
+  "languageEnglish": "انگلیسی",
+  "languageHindi": "هندی",
+  "logout": "از سیستم خارج شوید",
+  "deleteAccount": "حذف اکانت",
+  "deleteAccountConfirmTitle": "حساب کاربری خود را حذف کنید؟",
+  "deleteAccountConfirmBody": "این کار حساب شما را برای همیشه حذف می کند و شما را از سیستم خارج می کند. پیوندهای انتقال شما به کار خود ادامه می دهند، اما دیگر در سابقه شما ظاهر نمی شوند.",
+  "deleteAccountSuccess": "اکانت حذف شد",
+  "deleteAccountSuccessBody": "حساب شما حذف شده است.",
+  "deleteAccountFailed": "اکانت حذف نشد",
+  "deleteAccountFailedBody": "لطفا دوباره امتحان کنید یا با پشتیبانی تماس بگیرید.",
+  "maxFilesReached": "فایل های خیلی زیاد",
+  "fileTooLarge": "فایل خیلی بزرگ است",
+  "ipLimit": "تعداد زیادی آپلود از این شبکه",
+  "fillFields": "لطفا فیلدهای الزامی را پر کنید",
+  "invalidEmail": "ایمیل نامعتبر",
+  "maxRecipientsReached": "گیرندگان بسیار زیاد",
+  "loginRequiredTitle": "ورود به سیستم الزامی است",
+  "loginRequiredBody": "این سرور برای آپلود یا دانلود نیاز به یک حساب کاربری دارد.",
+  "settingsSubtitle": "تنظیمات برگزیده برنامه و حساب.",
+  "dropHeavyFile": "یک فایل سنگین را اینجا رها کنید.",
+  "upToTotal": "تا <<PH0>> در مجموع",
+  "removeAll": "همه را حذف کنید",
+  "addFiles": "فایل ها را اضافه کنید",
+  "adding": "در حال افزودن…",
+  "options": "گزینه ها",
+  "selfDestruct": "پس از دانلود خود تخریب می شود",
+  "expiry": "انقضا",
+  "cancelUpload": "لغو آپلود",
+  "transferReady": "انتقال آماده است!",
+  "emailSentReady": "ایمیل ارسال شد!",
+  "shareRecipientHint": "این پیوند را با گیرنده خود به اشتراک بگذارید.",
+  "emailSentBody": "ما به گیرنده(های) شما اطلاع داده ایم.",
+  "scanQr": "برای باز کردن پیوند انتقال، اسکن کنید.",
+  "shareLinkButton": "لینک را به اشتراک بگذارید",
+  "verifyFourDigit": "کد 4 رقمی ارسال شده به ایمیل فرستنده خود را وارد کنید.",
+  "starting": "شروع…",
+  "mbLeft": "<<PH0>> مگابایت باقی مانده است",
+  "fillField": "لطفا این فیلد را پر کنید.",
+  "enterValidEmail": "یک ایمیل معتبر وارد کنید.",
+  "message": "پیام",
+  "recipientEmail": "ایمیل گیرنده",
+  "active": "فعال",
+  "expired": "منقضی شده است",
+  "historyTitle": "نقل و انتقالات من",
+  "signInToSeeTransfers": "برای مشاهده نقل و انتقالات خود وارد شوید",
+  "signInTransfersBody": "ما از ایمیل شما برای پیوند دادن نقل و انتقالات به حساب شما استفاده می کنیم — بدون نیاز به رمز عبور.",
+  "couldNotLoadTransfers": "نقل و انتقالات بارگیری نشد",
+  "retry": "دوباره امتحان کنید",
+  "noTransfersYet": "هنوز نقل و انتقالاتی وجود ندارد",
+  "noTransfersBody": "پس از ارسال فایل، در اینجا ظاهر می شود.",
+  "transferDetails": "جزئیات انتقال",
+  "filesSection": "فایل ها",
+  "receiveTitle": "دریافت فایل ها",
+  "receiveSubtitle": "پیوند انتقال را برای دانلود فایل ها جایگذاری کنید.",
+  "pasteTooltip": "چسباندن",
+  "findTransfer": "انتقال را پیدا کنید",
+  "receiveScanQr": "اسکن QR",
+  "receiveScanQrTitle": "اسکن QR انتقال",
+  "receiveScanQrHint": "کد QR را در داخل قاب تراز کنید.",
+  "receiveScanQrInvalid": "این کد QR یک پیوند انتقال معتبر نیست.",
+  "receiveScanQrCameraDenied": "دسترسی به دوربین برای اسکن کدهای QR لازم است.",
+  "receiveStepGetLink": "لینک را دریافت کنید",
+  "receiveStepGetLinkBody": "از فرستنده بخواهید پیوند انتقال را با شما به اشتراک بگذارد.",
+  "receiveStepPaste": "چسباندن و پیدا کردن",
+  "receiveStepPasteBody": "پیوند بالا را جای‌گذاری کنید و روی «پیدا کردن انتقال» ضربه بزنید.",
+  "receiveStepDownload": "دانلود فایل ها",
+  "receiveStepDownloadBody": "جزئیات فایل را ببینید و همه چیز را به یکباره دانلود کنید.",
+  "lookingUpTransfer": "در حال جستجوی انتقال…",
+  "transferNotFound": "انتقال یافت نشد پیوند را بررسی کنید و دوباره امتحان کنید.",
+  "transferExpired": "این انتقال منقضی شده است و دیگر در دسترس نیست.",
+  "transferLoginRequired": "برای دسترسی به این انتقال، وارد سیستم شوید.",
+  "transferBadResponse": "پاسخ غیرمنتظره سرور اتصال خود را بررسی کنید.",
+  "transferNetworkError": "خطای شبکه اتصال اینترنت خود را بررسی کنید.",
+  "transferLoadFailed": "انتقال بارگیری نشد: <<PH0>>",
+  "passwordProtected": "رمز عبور محافظت شده است",
+  "enterPassword": "رمز عبور را وارد کنید",
+  "unlock": "باز کردن قفل",
+  "downloading": "در حال دانلود…",
+  "downloadAllFiles": "دانلود تمامی فایل ها",
+  "downloadSingleFile": "دانلود فایل",
+  "receiveAnother": "انتقال دیگری دریافت کنید",
+  "plansTitle": "طرح ها",
+  "plansSubtitle": "برای حذف تبلیغات و ارسال فایل های بزرگتر ارتقا دهید.",
+  "storeUnavailable": "فروشگاه در دسترس نیست",
+  "storeUnavailableBody": "خریدهای درون برنامه ای در حال حاضر در دسترس نیستند.",
+  "storeLoadingPrices": "در حال بارگیری قیمت ها از اپ استور…",
+  "storePricesUnavailable": "قیمت ها در دسترس نیست",
+  "storePricesPartial": "برخی از قیمت ها بارگیری نشدند",
+  "storePricesPartialBody": "<<PH0>> از محصولات اشتراک <<PH1>> بارگیری شد.",
+  "storeSetupHint": "روی یک آیفون واقعی (نه شبیه ساز) تست کنید، از Sandbox Apple ID استفاده کنید و مطمئن شوید که همه 6 اشتراک تحت شناسه بسته این برنامه در App Store Connect با مجموعه قیمت ایجاد شده اند.",
+  "effectiveMonthlyPrice": "<<PH0>>/ماه",
+  "freeVersionAds": "در حال حاضر شما از نسخه رایگان ما با تبلیغات استفاده می کنید",
+  "restorePurchases": "بازیابی خریدها",
+  "plansContinue": "ادامه دهید",
+  "planLinkRestore": "بازیابی کنید",
+  "termsAndConditions": "شرایط و ضوابط",
+  "createAccountTitle": "ایجاد حساب کاربری",
+  "signUpSubtitle": "با ایمیل و رمز عبور ثبت نام کنید.",
+  "confirmPassword": "رمز عبور را تایید کنید",
+  "passwordMin8": "رمز عبور (حداقل 8 نویسه)",
+  "alreadyHaveAccount": "از قبل حساب کاربری دارید؟",
+  "checkEmailTitle": "خود را بررسی کنید\nایمیل",
+  "otpSentTo": "ما یک کد 6 رقمی ارسال کردیم\n<<PH0>>",
+  "verifyAndSignIn": "تأیید و وارد شوید",
+  "didntReceiveCode": "آن را دریافت نکردید؟",
+  "tryAgain": "دوباره امتحان کنید",
+  "otpExpiresHint": "کد 5 دقیقه دیگر منقضی می شود. اگر پوشه اسپم خود را نمی بینید بررسی کنید.",
+  "snackError": "خطا",
+  "snackCopied": "کپی شده است",
+  "snackCopiedBody": "پیوند در کلیپ بورد کپی شد",
+  "snackWelcome": "خوش آمدید",
+  "snackAccountCreated": "حساب ایجاد شد",
+  "snackEnterEmail": "لطفا ایمیل خود را وارد کنید",
+  "snackEnterPassword": "لطفا رمز عبور خود را وارد کنید",
+  "snackInvalidEmail": "آدرس ایمیل نامعتبر است",
+  "snackInvalidCredentials": "ایمیل یا رمز عبور نادرست",
+  "snackPasswordMin8": "رمز عبور باید حداقل 8 کاراکتر باشد",
+  "snackPasswordMismatch": "گذرواژه ها مطابقت ندارند.",
+  "snackAccountExists": "حساب از قبل وجود دارد. لطفا وارد شوید",
+  "snackSignupFailed": "ایجاد حساب امکان پذیر نیست. دوباره امتحان کنید.",
+  "snackEnterOtp": "لطفا کد 6 رقمی را وارد کنید",
+  "snackOtpExpired": "کد منقضی شده است",
+  "snackOtpExpiredBody": "لطفا یک کد جدید درخواست کنید.",
+  "snackInvalidCode": "کد نامعتبر",
+  "snackInvalidCodeBody": "کد نادرست است. لطفا دوباره امتحان کنید.",
+  "snackSendCodeFailed": "کد ارسال نشد. اتصال خود را بررسی کنید و دوباره امتحان کنید.",
+  "snackEmptyFolder": "پوشه خالی",
+  "snackEmptyFolderBody": "هیچ فایلی در پوشه انتخاب شده یافت نشد.",
+  "snackFolderUnsupported": "پشتیبانی نمی شود",
+  "snackFolderUnsupportedBody": "آپلود پوشه در این پلتفرم در دسترس نیست.",
+  "snackFolderReadError": "نمی توان پوشه انتخاب شده را خواند.",
+  "snackLimitReached": "به حد مجاز رسیده است",
+  "snackLimitFilesBody": "برخی از فایل‌ها به دلیل محدودیت اندازه یا تعداد فایل اضافه نشدند.",
+  "snackFreePlanLimit": "طرح رایگان حداکثر 5 گیگابایت در هر انتقال را امکان پذیر می کند. لطفاً برخی از فایل ها را حذف یا ارتقا دهید.",
+  "snackSignInEmail": "لطفا برای ارسال از طریق ایمیل وارد شوید.",
+  "snackUploadStartFailed": "آپلود شروع نشد.",
+  "snackVerifyEnterCode": "کد 4 رقمی را از ایمیل خود وارد کنید.",
+  "snackVerifyInvalid": "کد نامعتبر یا منقضی شده است. ایمیل را بررسی کنید و دوباره امتحان کنید.",
+  "snackVerifyResendFailed": "امکان ارسال مجدد کد وجود ندارد. دوباره امتحان کنید.",
+  "snackDownloadComplete": "دانلود کامل شد",
+  "snackDownloadSaved": "\"<<PH0>>\" در دانلودها ذخیره شد",
+  "snackDownloadFailed": "دانلود انجام نشد",
+  "snackSaved": "ذخیره شد",
+  "snackServerUrlUpdated": "URL سرور به روز شد. برای اعمال، برنامه را مجددا راه اندازی کنید.",
+  "snackStoreError": "خطای فروشگاه",
+  "snackMissingProducts": "محصولات گم شده",
+  "snackStoreUnavailable": "فروشگاه در دسترس نیست",
+  "snackStoreUnavailableBody": "خریدهای درون برنامه ای در این دستگاه در دسترس نیستند.",
+  "snackProductNotLoaded": "محصول هنوز بارگذاری نشده است.",
+  "snackRestoreStarted": "بازیابی شروع شد",
+  "snackRestoreStartedBody": "ما در حال بررسی خریدهای شما هستیم.",
+  "snackRestoreFailed": "بازیابی انجام نشد",
+  "snackProcessing": "پردازش",
+  "snackPleaseWait": "لطفا صبر کنید…",
+  "snackSuccess": "موفقیت",
+  "snackPurchaseCompleted": "خرید تکمیل شد",
+  "snackPurchaseError": "خطای خرید",
+  "snackPurchaseFailed": "خرید ناموفق بود.",
+  "snackCanceled": "لغو شد",
+  "snackPurchaseCanceled": "خرید لغو شد.",
+  "snackUpload": "آپلود کنید",
+  "snackVerify": "تأیید کنید",
+  "doNotExpire": "منقضی نشود",
+  "hourSingular": "ساعت",
+  "hourPlural": "ساعت",
+  "daySingular": "روز",
+  "dayPlural": "روز",
+  "emailAddressLabel": "آدرس ایمیل",
+  "passwordLabelCaps": "رمز عبور",
+  "confirmPasswordLabelCaps": "رمز عبور را تأیید کنید",
+  "transferLinkOrId": "پیوند یا شناسه انتقال",
+  "howToReceive": "نحوه دریافت",
+  "planAdsTitle": "طرح تبلیغات",
+  "planAdsBullet1": "دسترسی به برنامه رایگان تبلیغات",
+  "planAdsBullet2": "تمام تبلیغات را حذف کنید",
+  "planProTitle": "طرح حرفه ای",
+  "planProBullet1": "ارسال فایل تا 20 گیگابایت",
+  "planProBullet2": "آپلود سریع",
+  "planPremiumTitle": "طرح حق بیمه",
+  "planPremiumBullet1": "ارسال فایل تا 100 گیگابایت",
+  "planPremiumBullet2": "آپلود فوق العاده سریع",
+  "planSubscriptionDisclaimer": "بدون دوره آزمایشی - برای استفاده از عملکرد اضافی برنامه، اشتراک لازم است. بلافاصله از شما شارژ می شود. هر زمان که بخواهید می توانید لغو کنید.",
+  "perMonth": "/ ماه",
+  "perYear": "/ سال",
+  "snackConnectionProblem": "مشکل اتصال لطفا دوباره امتحان کنید.",
+  "networkTitle": "شبکه",
+  "transferIdLabel": "شناسه: <<PH0>>",
+  "downloadMetaSummary": "فایل ها: <<PH0>> · <<PH1>> بایت",
+  "todayAt": "امروز · <<PH0>>",
+  "yesterdayAt": "دیروز · <<PH0>>",
+  "daysAgoAt": "<<PH0>>روز پیش · <<PH1>>",
+  "dateAt": "<<PH0>> · <<PH1>>",
+  "mbAmount": "<<PH0>> مگابایت",
+  "uploadProgressSummary": "<<PH0>> / <<PH1>> • <<PH2>> باقی مانده است",
+  "loadingShort": "در حال بارگیری…",
+  "colorPaletteTitle": "پالت رنگ",
+  "colorPaletteSectionBackgrounds": "پس زمینه (مقیاس جوهر)",
+  "colorPaletteSectionAccent": "لهجه / اولیه",
+  "colorPaletteSectionText": "متن",
+  "colorPaletteSectionBorders": "حاشیه و شیشه",
+  "colorPaletteSectionSemantic": "معنایی",
+  "colorPaletteSectionLive": "طرح زمینه زنده (جاری)",
+  "colorPaletteActiveHint": "★ = به طور فعال در صفحه نمایش استفاده می شود",
+  "colorPaletteCopyHint": "برای کپی کردن مقدار هگز، هر نمونه را به مدت طولانی فشار دهید.",
+  "settingsAppBrand": "بزرگ را به اشتراک بگذارید\nفایل های ویدیویی",
+  "loginEmailPasswordPrompt": "برای ورود ایمیل و رمز عبور خود را وارد کنید.",
+  "forgotPassword": "رمز عبور را فراموش کرده اید؟",
+  "forgotPasswordTitle": "بازنشانی رمز عبور",
+  "forgotPasswordBody": "ایمیل حساب خود را وارد کنید و ما یک کد بازنشانی ارسال می کنیم.",
+  "forgotPasswordSubmit": "ارسال کد ریست",
+  "resetPasswordTitle": "رمز عبور جدید ایجاد کنید",
+  "resetPasswordBody": "کد 6 رقمی را از ایمیل خود وارد کرده و رمز عبور جدید را انتخاب کنید.",
+  "resetPasswordSubmit": "رمز عبور را به روز کنید",
+  "snackPasswordResetSent": "بازنشانی کد ارسال شد",
+  "snackPasswordResetSentBody": "ایمیل خود را برای یک کد بازنشانی 6 رقمی بررسی کنید.",
+  "snackPasswordResetFailed": "کد بازنشانی ارسال نشد. دوباره امتحان کنید.",
+  "snackPasswordUpdated": "رمز به روز شد",
+  "snackPasswordUpdatedBody": "با رمز عبور جدید خود وارد شوید.",
+  "snackPasswordResetInvalid": "کد بازنشانی نامعتبر یا منقضی شده است.",
+  "otpDigitLabel": "کد 6 رقمی",
+  "receiveMoreFiles": "+<<PH0>> فایل های بیشتر"
+}
