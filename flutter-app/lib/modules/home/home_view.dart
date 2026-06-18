@@ -45,6 +45,10 @@ class HomeView extends GetView<HomeController> {
             if (controller.awaitingVerify.value) {
               return _VerifyPane(controller: controller, t: t);
             }
+            if (controller.wifiSharing.value &&
+                controller.wifiShareUrl.value.isNotEmpty) {
+              return _WifiSuccessPane(controller: controller, t: t);
+            }
             if (controller.finishedLink.value.isNotEmpty ||
                 controller.mailFinished.value) {
               return _SuccessPane(controller: controller, t: t);
@@ -96,7 +100,18 @@ class _MainForm extends StatelessWidget {
                       }
                       return _MailShareForm(controller: controller);
                     }),
-                    _OptionsPanel(controller: controller, t: t),
+                    Obx(() {
+                      if (controller.shareMode.value != 'wifi') {
+                        return const SizedBox.shrink();
+                      }
+                      return _WifiHintBanner(t: t);
+                    }),
+                    Obx(() {
+                      if (controller.shareMode.value == 'wifi') {
+                        return const SizedBox.shrink();
+                      }
+                      return _OptionsPanel(controller: controller, t: t);
+                    }),
                     const SizedBox(height: 16),
                   ],
                 ),
@@ -250,7 +265,6 @@ class _TabSwitcher extends StatelessWidget {
         child: Row(
           children: [
             Expanded(
-              flex: 9,
               child: _TabBtn(
                 label: t.modeLink,
                 selected: mode == 'link',
@@ -258,11 +272,17 @@ class _TabSwitcher extends StatelessWidget {
               ),
             ),
             Expanded(
-              flex: 11,
               child: _TabBtn(
                 label: t.modeEmail,
                 selected: mode == 'mail',
                 onTap: () => controller.setShareMode('mail'),
+              ),
+            ),
+            Expanded(
+              child: _TabBtn(
+                label: t.modeWifi,
+                selected: mode == 'wifi',
+                onTap: () => controller.setShareMode('wifi'),
               ),
             ),
           ],
@@ -1062,6 +1082,221 @@ class _ProgressPane extends StatelessWidget {
   }
 }
 
+// ── Wi‑Fi hint ────────────────────────────────────────────────────────────────
+
+class _WifiHintBanner extends StatelessWidget {
+  const _WifiHintBanner({required this.t});
+  final AppLocalizations t;
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 12),
+      child: Container(
+        padding: const EdgeInsets.all(14),
+        decoration: BoxDecoration(
+          color: _accent(context).withValues(alpha: 0.08),
+          borderRadius: BorderRadius.circular(14),
+          border: Border.all(color: _accent(context).withValues(alpha: 0.22)),
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Icon(Icons.wifi_rounded, color: _accent(context), size: 20),
+            const SizedBox(width: 10),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    t.wifiShareHint,
+                    style: TextStyle(
+                      color: scheme.onSurface,
+                      fontSize: 13,
+                      fontWeight: FontWeight.w600,
+                      height: 1.35,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    t.wifiSameNetworkHint,
+                    style: TextStyle(
+                      color: scheme.onSurface.withValues(alpha: 0.55),
+                      fontSize: 12,
+                      height: 1.4,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// ── Wi‑Fi success pane ────────────────────────────────────────────────────────
+
+class _WifiSuccessPane extends StatelessWidget {
+  const _WifiSuccessPane({required this.controller, required this.t});
+  final HomeController controller;
+  final AppLocalizations t;
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    final bottomPad = MediaQuery.of(context).padding.bottom + 84;
+    final url = controller.wifiShareUrl.value;
+    return ListView(
+      padding: EdgeInsets.fromLTRB(24, 40, 24, 32 + bottomPad),
+      children: [
+        Center(
+          child: Container(
+            width: 80,
+            height: 80,
+            decoration: BoxDecoration(
+              color: _accent(context).withValues(alpha: 0.12),
+              shape: BoxShape.circle,
+              border: Border.all(
+                color: _accent(context).withValues(alpha: 0.4),
+                width: 1.5,
+              ),
+              boxShadow: const [
+                BoxShadow(color: _accentGlow, blurRadius: 40, spreadRadius: 0),
+              ],
+            ),
+            child: Icon(Icons.wifi_rounded, color: _accent(context), size: 38),
+          ),
+        ),
+        const SizedBox(height: 24),
+        Text(
+          t.wifiShareReady,
+          style: TextStyle(
+            color: scheme.onSurface,
+            fontSize: 26,
+            fontWeight: FontWeight.w800,
+            letterSpacing: -0.5,
+          ),
+          textAlign: TextAlign.center,
+        ),
+        const SizedBox(height: 8),
+        Text(
+          t.wifiShareReadyBody,
+          style: TextStyle(
+            color: scheme.onSurface.withValues(alpha: 0.55),
+            fontSize: 14,
+          ),
+          textAlign: TextAlign.center,
+        ),
+        const SizedBox(height: 28),
+        Center(
+          child: Container(
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(16),
+              border: Border.all(color: _line(context)),
+            ),
+            child: QrImageView(
+              data: url,
+              size: 196,
+              backgroundColor: Colors.white,
+              eyeStyle: const QrEyeStyle(
+                eyeShape: QrEyeShape.square,
+                color: Color(0xFF0A0C14),
+              ),
+              dataModuleStyle: const QrDataModuleStyle(
+                color: Color(0xFF0A0C14),
+              ),
+            ),
+          ),
+        ),
+        const SizedBox(height: 10),
+        Text(
+          t.scanQr,
+          style: TextStyle(
+            color: scheme.onSurface.withValues(alpha: 0.55),
+            fontSize: 13,
+          ),
+          textAlign: TextAlign.center,
+        ),
+        const SizedBox(height: 20),
+        Container(
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: _cardBg(context),
+            borderRadius: BorderRadius.circular(14),
+            border: Border.all(color: _line(context)),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                t.receiveWifiUrlLabel,
+                style: TextStyle(
+                  color: scheme.onSurface.withValues(alpha: 0.45),
+                  fontSize: 11,
+                  fontWeight: FontWeight.w600,
+                  letterSpacing: 1.2,
+                ),
+              ),
+              const SizedBox(height: 8),
+              Row(
+                children: [
+                  Expanded(
+                    child: SelectableText(
+                      url,
+                      style: TextStyle(
+                        color: _accent(context),
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Clipboard.setData(ClipboardData(text: url));
+                      AppSnack.success(t.snackCopied, t.snackCopiedBody);
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        color: scheme.surfaceContainerLow,
+                        borderRadius: BorderRadius.circular(8),
+                        border: Border.all(color: _line(context)),
+                      ),
+                      child: Icon(
+                        Icons.copy_rounded,
+                        color: scheme.onSurface.withValues(alpha: 0.55),
+                        size: 16,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(height: 12),
+        _AccentButton(
+          label: t.share,
+          icon: Icons.share_rounded,
+          onTap: controller.shareResult,
+        ),
+        const SizedBox(height: 10),
+        _OutlineButton(label: t.shareQrCode, onTap: controller.shareQrCode),
+        const SizedBox(height: 10),
+        _OutlineButton(
+          label: t.uploadMore,
+          onTap: controller.resetForNewTransfer,
+        ),
+      ],
+    );
+  }
+}
+
 // ── Success pane ──────────────────────────────────────────────────────────────
 
 class _SuccessPane extends StatelessWidget {
@@ -1478,7 +1713,11 @@ class _UploadBar extends StatelessWidget {
                 ],
                 const SizedBox(width: 8),
                 Text(
-                  controller.uploading.value ? 'Starting…' : t.sendButton,
+                  controller.pickingFiles.value
+                      ? 'Starting…'
+                      : (controller.shareMode.value == 'wifi'
+                          ? t.wifiStartSharing
+                          : t.sendButton),
                   style: const TextStyle(fontSize: 15),
                 ),
               ],

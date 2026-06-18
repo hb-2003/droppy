@@ -462,5 +462,52 @@
   "snackPasswordUpdatedBody": "Zaloguj się przy użyciu nowego hasła.",
   "snackPasswordResetInvalid": "Nieprawidłowy lub wygasły kod resetowania.",
   "otpDigitLabel": "6-CYFROWY KOD",
-  "receiveMoreFiles": "+{count} więcej plików"
+  "receiveMoreFiles": "+{count} więcej plików",
+  "modeWifi": "Wi‑Fi",
+  "wifiShareHint": "Share files directly with a nearby device on the same Wi‑Fi network.",
+  "wifiSameNetworkHint": "Both devices must be on the same Wi‑Fi network.",
+  "wifiStartSharing": "Start sharing",
+  "wifiShareReady": "Ready to receive",
+  "wifiShareReadyBody": "Ask the receiver to scan the QR code or open the address below on the same Wi‑Fi network.",
+  "snackWifiNoNetwork": "No Wi‑Fi connection",
+  "snackWifiNoNetworkBody": "Connect to Wi‑Fi to share files locally.",
+  "snackWifiShareFailed": "Could not start Wi‑Fi sharing",
+  "snackWifiShareFailedBody": "Check your Wi‑Fi connection and try again.",
+  "receiveWifiTitle": "Receive via Wi‑Fi",
+  "receiveWifiUrlLabel": "Sender address",
+  "receiveWifiUrlHint": "http://192.168.1.5:12345/wifi/...",
+  "receiveWifiFind": "Find files",
+  "receiveWifiScanQr": "Scan Wi‑Fi QR",
+  "receiveWifiInvalidUrl": "This is not a valid Wi‑Fi share address.",
+  "receiveWifiConnectFailed": "Could not reach the sender. Make sure both devices are on the same Wi‑Fi.",
+  "receiveWifiHowTo1": "Start sharing on the sender",
+  "receiveWifiHowTo1Body": "On Send, choose Wi‑Fi and tap Start sharing.",
+  "receiveWifiHowTo2": "Scan or paste the address",
+  "receiveWifiHowTo2Body": "Use the scanner or paste the http:// address from the sender.",
+  "receiveWifiHowTo3": "Download the files",
+  "receiveWifiHowTo3Body": "Files are saved to your Downloads folder.",
+  "wifiDownloadAll": "Download all",
+  "wifiDownloadedFiles": "Saved {count} files to Downloads",
+  "@wifiDownloadedFiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "wifiDownloadingProgress": "Downloading {current} of {total}…",
+  "@wifiDownloadingProgress": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "historyWifiSent": "Wi‑Fi",
+  "historyWifiReceived": "Received",
+  "historyWifiSessionEnded": "This Wi‑Fi session has ended. Start a new share on Send to transfer again.",
+  "historyWifiReceivedNote": "Files were saved to Downloads on this device."
 }

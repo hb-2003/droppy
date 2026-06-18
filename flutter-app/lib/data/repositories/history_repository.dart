@@ -41,6 +41,7 @@ class HistoryTransfer {
     required this.timeExpire,
     required this.destruct,
     required this.files,
+    this.wifiUrl = '',
   });
 
   final String uploadId;
@@ -52,8 +53,20 @@ class HistoryTransfer {
   final String destruct;
   final List<HistoryTransferFile> files;
 
-  bool get isExpired =>
-      timeExpire > 0 && timeExpire < DateTime.now().millisecondsSinceEpoch ~/ 1000;
+  /// Full `http://…/wifi/{sessionId}` URL for local Wi‑Fi transfers.
+  final String wifiUrl;
+
+  bool get isWifiShare => share == 'wifi';
+
+  bool get isWifiReceive => share == 'wifi_in';
+
+  bool get isWifi => isWifiShare || isWifiReceive;
+
+  bool get isExpired {
+    if (isWifi) return false;
+    return timeExpire > 0 &&
+        timeExpire < DateTime.now().millisecondsSinceEpoch ~/ 1000;
+  }
 
   factory HistoryTransfer.fromJson(Map<String, dynamic> m) {
     final rawFiles = (m['files'] as List<dynamic>?) ?? [];
@@ -65,6 +78,7 @@ class HistoryTransfer {
       time: (m['time'] as int?) ?? 0,
       timeExpire: (m['time_expire'] as int?) ?? 0,
       destruct: (m['destruct'] as String?) ?? 'no',
+      wifiUrl: (m['wifi_url'] as String?) ?? '',
       files: rawFiles
           .whereType<Map<String, dynamic>>()
           .map(HistoryTransferFile.fromJson)
@@ -80,6 +94,7 @@ class HistoryTransfer {
         'time': time,
         'time_expire': timeExpire,
         'destruct': destruct,
+        if (wifiUrl.isNotEmpty) 'wifi_url': wifiUrl,
         'files': files.map((f) => f.toJson()).toList(),
       };
 }
@@ -143,8 +158,8 @@ class HistoryRepository extends GetxService {
     if (local.isEmpty) return true;
 
     final ids = local
+        .where((t) => !t.isWifi && t.uploadId.isNotEmpty)
         .map((t) => t.uploadId)
-        .where((id) => id.isNotEmpty)
         .toList();
     if (ids.isEmpty) {
       await clearLocalTransfers();

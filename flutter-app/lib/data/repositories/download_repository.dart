@@ -230,9 +230,10 @@ class DownloadRepository extends GetxService {
     return DownloadResult(file: out, filename: filename);
   }
 
-  /// Returns the best available Downloads directory.
-  ///
-  /// Priority:
+  /// Returns the best available Downloads directory (public Downloads when possible).
+  static Future<Directory> resolveDownloadsDirectory() => _resolveDownloadsDir();
+
+  /// Priority for [_resolveDownloadsDir]:
   ///   1. Public `/storage/emulated/0/Download` (visible in Files app)
   ///      — requests storage permission on Android ≤ 12.
   ///   2. App-specific external storage (`/sdcard/Android/data/{pkg}/files`)

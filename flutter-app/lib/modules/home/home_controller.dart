@@ -23,6 +23,7 @@ import 'package:sendlargefiles/l10n/app_localizations.dart';
 import 'package:sendlargefiles/modules/history/history_controller.dart';
 import 'package:sendlargefiles/modules/shell/app_shell_controller.dart';
 import 'package:sendlargefiles/services/ios_security_scoped_folder.dart';
+import 'package:sendlargefiles/services/wifi_transfer/wifi_transfer_server.dart';
 import 'package:sendlargefiles/widgets/app_snackbar.dart';
 
 class HomeController extends GetxController {
@@ -39,6 +40,8 @@ class HomeController extends GetxController {
   final uploadTotalBytes = 0.obs;
   final finishedLink = ''.obs;
   final mailFinished = false.obs;
+  final wifiSharing = false.obs;
+  final wifiShareUrl = ''.obs;
   final awaitingVerify = false.obs;
   final resendVerifyBusy = false.obs;
   final verifyController = TextEditingController();
@@ -49,6 +52,7 @@ class HomeController extends GetxController {
   final expireSec = 604800.obs;
   int _uidCounter = 0;
   CancelToken? _cancelToken;
+  final WifiTransferServer _wifiServer = WifiTransferServer();
 
   final FocusNode emailFromFocus = FocusNode();
   final FocusNode emailToFocus = FocusNode();
@@ -133,10 +137,14 @@ class HomeController extends GetxController {
   void onClose() {
     _authMailLoggedWorker?.dispose();
     _authMailSessionWorker?.dispose();
+    unawaited(_wifiServer.stop());
     super.onClose();
   }
 
   void setShareMode(String m) {
+    if (m != 'wifi' && wifiSharing.value) {
+      unawaited(stopWifiSharing());
+    }
     shareMode.value = m;
     if (m == 'mail') {
       _syncMailFromWithAccount();
@@ -248,6 +256,11 @@ class HomeController extends GetxController {
     if (totalBytesNow > cfgMax) {
       final t = appL10n();
       AppSnack.error(t.snackLimitReached, t.snackFreePlanLimit);
+      return;
+    }
+
+    if (shareMode.value == 'wifi') {
+      await startWifiSharing();
       return;
     }
 
@@ -521,7 +534,53 @@ class HomeController extends GetxController {
     uploading.value = false;
   }
 
+  Future<void> startWifiSharing() async {
+    try {
+      final picked = files.toList();
+      final url = await _wifiServer.start(picked);
+      wifiShareUrl.value = url;
+      wifiSharing.value = true;
+
+      final nowSec = DateTime.now().millisecondsSinceEpoch ~/ 1000;
+      final sessionId = _wifiServer.sessionId ?? 'wifi_$nowSec';
+      await Get.find<HistoryRepository>().saveLocalTransfer(
+        HistoryTransfer(
+          uploadId: sessionId,
+          share: 'wifi',
+          count: picked.length,
+          size: picked.fold<int>(0, (sum, f) => sum + f.size),
+          time: nowSec,
+          timeExpire: 0,
+          destruct: 'no',
+          wifiUrl: url,
+          files: picked
+              .map((f) => HistoryTransferFile(name: f.name, size: f.size))
+              .toList(),
+        ),
+      );
+      if (Get.isRegistered<HistoryController>()) {
+        await Get.find<HistoryController>().load(force: true);
+      }
+    } on StateError catch (e) {
+      final t = appL10n();
+      if ('$e'.contains('no_network')) {
+        AppSnack.error(t.snackWifiNoNetwork, t.snackWifiNoNetworkBody);
+      } else {
+        AppSnack.error(t.snackWifiShareFailed, t.snackWifiShareFailedBody);
+      }
+    } catch (e) {
+      AppSnack.showDynamic(appL10n().snackWifiShareFailed, '$e', type: AppSnackType.error);
+    }
+  }
+
+  Future<void> stopWifiSharing() async {
+    await _wifiServer.stop();
+    wifiSharing.value = false;
+    wifiShareUrl.value = '';
+  }
+
   void resetForNewTransfer() {
+    unawaited(stopWifiSharing());
     files.clear();
     files.refresh();
     unawaited(IosSecurityScopedFolder.releaseActive());
@@ -608,13 +667,13 @@ class HomeController extends GetxController {
   }
 
   Future<void> shareResult() async {
-    final link = finishedLink.value;
+    final link = wifiSharing.value ? wifiShareUrl.value : finishedLink.value;
     if (link.isEmpty) return;
     await SharePlus.instance.share(ShareParams(text: link));
   }
 
   Future<void> shareQrCode() async {
-    final link = finishedLink.value;
+    final link = wifiSharing.value ? wifiShareUrl.value : finishedLink.value;
     if (link.isEmpty) return;
 
     final painter = QrPainter(

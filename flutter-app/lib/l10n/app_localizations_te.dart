@@ -48,6 +48,112 @@ class AppLocalizationsTe extends AppLocalizations {
   String get modeEmail => 'ఇమెయిల్ ద్వారా పంపండి';
 
   @override
+  String get modeWifi => 'Wi‑Fi';
+
+  @override
+  String get wifiShareHint =>
+      'Share files directly with a nearby device on the same Wi‑Fi network.';
+
+  @override
+  String get wifiSameNetworkHint =>
+      'Both devices must be on the same Wi‑Fi network.';
+
+  @override
+  String get wifiStartSharing => 'Start sharing';
+
+  @override
+  String get wifiShareReady => 'Ready to receive';
+
+  @override
+  String get wifiShareReadyBody =>
+      'Ask the receiver to scan the QR code or open the address below on the same Wi‑Fi network.';
+
+  @override
+  String get snackWifiNoNetwork => 'No Wi‑Fi connection';
+
+  @override
+  String get snackWifiNoNetworkBody =>
+      'Connect to Wi‑Fi to share files locally.';
+
+  @override
+  String get snackWifiShareFailed => 'Could not start Wi‑Fi sharing';
+
+  @override
+  String get snackWifiShareFailedBody =>
+      'Check your Wi‑Fi connection and try again.';
+
+  @override
+  String get receiveWifiTitle => 'Receive via Wi‑Fi';
+
+  @override
+  String get receiveWifiUrlLabel => 'Sender address';
+
+  @override
+  String get receiveWifiUrlHint => 'http://192.168.1.5:12345/wifi/...';
+
+  @override
+  String get receiveWifiFind => 'Find files';
+
+  @override
+  String get receiveWifiScanQr => 'Scan Wi‑Fi QR';
+
+  @override
+  String get receiveWifiInvalidUrl =>
+      'This is not a valid Wi‑Fi share address.';
+
+  @override
+  String get receiveWifiConnectFailed =>
+      'Could not reach the sender. Make sure both devices are on the same Wi‑Fi.';
+
+  @override
+  String get receiveWifiHowTo1 => 'Start sharing on the sender';
+
+  @override
+  String get receiveWifiHowTo1Body =>
+      'On Send, choose Wi‑Fi and tap Start sharing.';
+
+  @override
+  String get receiveWifiHowTo2 => 'Scan or paste the address';
+
+  @override
+  String get receiveWifiHowTo2Body =>
+      'Use the scanner or paste the http:// address from the sender.';
+
+  @override
+  String get receiveWifiHowTo3 => 'Download the files';
+
+  @override
+  String get receiveWifiHowTo3Body =>
+      'Files are saved to your Downloads folder.';
+
+  @override
+  String get wifiDownloadAll => 'Download all';
+
+  @override
+  String wifiDownloadedFiles(int count) {
+    return 'Saved $count files to Downloads';
+  }
+
+  @override
+  String wifiDownloadingProgress(int current, int total) {
+    return 'Downloading $current of $total…';
+  }
+
+  @override
+  String get historyWifiSent => 'Wi‑Fi';
+
+  @override
+  String get historyWifiReceived => 'Received';
+
+  @override
+  String get historyWifiSessionEnded =>
+      'This Wi‑Fi session has ended. Start a new share on Send to transfer again.';
+
+  @override
+  String get historyWifiReceivedNote =>
+      'Files were saved to Downloads on this device.';
+
+  @override
   String get pickFiles => 'ఫైల్‌లను ఎంచుకోండి';
 
   @override

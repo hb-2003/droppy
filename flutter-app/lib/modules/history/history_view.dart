@@ -314,8 +314,10 @@ class _TransferCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Icon(
-                  transfer.share == 'mail' ? Icons.mail_outline_rounded : Icons.link_rounded,
-                  color: expired ? scheme.onSurface.withValues(alpha: 0.35) : scheme.primary,
+                  _shareIcon(transfer),
+                  color: expired && !transfer.isWifi
+                      ? scheme.onSurface.withValues(alpha: 0.35)
+                      : scheme.primary,
                   size: 20,
                 ),
               ),
@@ -340,7 +342,39 @@ class _TransferCard extends StatelessWidget {
                   ],
                 ),
               ),
-              if (expired)
+              if (transfer.isWifiReceive)
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                  decoration: BoxDecoration(
+                    color: scheme.secondaryContainer.withValues(alpha: 0.55),
+                    borderRadius: BorderRadius.circular(6),
+                  ),
+                  child: Text(
+                    t.historyWifiReceived,
+                    style: TextStyle(
+                      color: scheme.onSecondaryContainer,
+                      fontSize: 11,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                )
+              else if (transfer.isWifiShare)
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                  decoration: BoxDecoration(
+                    color: scheme.primary.withValues(alpha: 0.12),
+                    borderRadius: BorderRadius.circular(6),
+                  ),
+                  child: Text(
+                    t.historyWifiSent,
+                    style: TextStyle(
+                      color: scheme.primary,
+                      fontSize: 11,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                )
+              else if (expired)
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                   decoration: BoxDecoration(
@@ -365,6 +399,12 @@ class _TransferCard extends StatelessWidget {
       ),
     ));
   }
+
+  static IconData _shareIcon(HistoryTransfer transfer) {
+    if (transfer.isWifi) return Icons.wifi_rounded;
+    if (transfer.share == 'mail') return Icons.mail_outline_rounded;
+    return Icons.link_rounded;
+  }
 }
 
 class _TransferDetailsSheet extends StatelessWidget {
@@ -377,8 +417,11 @@ class _TransferDetailsSheet extends StatelessWidget {
     final scheme = Theme.of(context).colorScheme;
     final t = AppLocalizations.of(context)!;
     final base = resolveBaseUrl();
-    final link = base.isEmpty ? transfer.uploadId : '$base${transfer.uploadId}';
+    final link = transfer.isWifi && transfer.wifiUrl.isNotEmpty
+        ? transfer.wifiUrl
+        : (base.isEmpty ? transfer.uploadId : '$base${transfer.uploadId}');
     final expired = transfer.isExpired;
+    final isWifi = transfer.isWifi;
 
     String fallbackName() {
       if (transfer.count > 1) return '${transfer.uploadId}.zip';
@@ -406,6 +449,7 @@ class _TransferDetailsSheet extends StatelessWidget {
             }
 
             Future<void> download() async {
+              if (isWifi) return;
               if (expired) {
                 AppSnack.error(appL10n().expired, appL10n().transferExpired);
                 return;
@@ -496,6 +540,28 @@ class _TransferDetailsSheet extends StatelessWidget {
                     ],
                   ),
                 ),
+                if (transfer.isWifiShare) ...[
+                  const SizedBox(height: 10),
+                  Text(
+                    t.historyWifiSessionEnded,
+                    style: TextStyle(
+                      color: scheme.onSurface.withValues(alpha: 0.55),
+                      fontSize: 12,
+                      height: 1.45,
+                    ),
+                  ),
+                ],
+                if (transfer.isWifiReceive) ...[
+                  const SizedBox(height: 10),
+                  Text(
+                    t.historyWifiReceivedNote,
+                    style: TextStyle(
+                      color: scheme.onSurface.withValues(alpha: 0.55),
+                      fontSize: 12,
+                      height: 1.45,
+                    ),
+                  ),
+                ],
                 const SizedBox(height: 12),
                 if (transfer.files.isNotEmpty) ...[
                   Text(
@@ -543,17 +609,18 @@ class _TransferDetailsSheet extends StatelessWidget {
                   ),
                   const SizedBox(height: 12),
                 ],
-                FilledButton.icon(
-                  onPressed: downloading ? null : download,
-                  icon: downloading
-                      ? SizedBox(
-                          width: 16,
-                          height: 16,
-                          child: CircularProgressIndicator(strokeWidth: 2, color: scheme.onPrimary),
-                        )
-                      : const Icon(Icons.download_rounded, size: 18),
-                  label: Text(downloading ? t.downloading : (expired ? t.expired : t.downloadFile)),
-                ),
+                if (!isWifi)
+                  FilledButton.icon(
+                    onPressed: downloading ? null : download,
+                    icon: downloading
+                        ? SizedBox(
+                            width: 16,
+                            height: 16,
+                            child: CircularProgressIndicator(strokeWidth: 2, color: scheme.onPrimary),
+                          )
+                        : const Icon(Icons.download_rounded, size: 18),
+                    label: Text(downloading ? t.downloading : (expired ? t.expired : t.downloadFile)),
+                  ),
               ],
             );
           },

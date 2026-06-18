@@ -30,6 +30,8 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>8</string>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>Used to send and receive files with nearby devices on the same Wi‑Fi network.</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>LSSupportsOpeningDocumentsInPlace</key>

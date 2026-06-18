@@ -284,6 +284,186 @@ abstract class AppLocalizations {
   /// **'Send by email'**
   String get modeEmail;
 
+  /// No description provided for @modeWifi.
+  ///
+  /// In en, this message translates to:
+  /// **'Wi‑Fi'**
+  String get modeWifi;
+
+  /// No description provided for @wifiShareHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Share files directly with a nearby device on the same Wi‑Fi network.'**
+  String get wifiShareHint;
+
+  /// No description provided for @wifiSameNetworkHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Both devices must be on the same Wi‑Fi network.'**
+  String get wifiSameNetworkHint;
+
+  /// No description provided for @wifiStartSharing.
+  ///
+  /// In en, this message translates to:
+  /// **'Start sharing'**
+  String get wifiStartSharing;
+
+  /// No description provided for @wifiShareReady.
+  ///
+  /// In en, this message translates to:
+  /// **'Ready to receive'**
+  String get wifiShareReady;
+
+  /// No description provided for @wifiShareReadyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Ask the receiver to scan the QR code or open the address below on the same Wi‑Fi network.'**
+  String get wifiShareReadyBody;
+
+  /// No description provided for @snackWifiNoNetwork.
+  ///
+  /// In en, this message translates to:
+  /// **'No Wi‑Fi connection'**
+  String get snackWifiNoNetwork;
+
+  /// No description provided for @snackWifiNoNetworkBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Connect to Wi‑Fi to share files locally.'**
+  String get snackWifiNoNetworkBody;
+
+  /// No description provided for @snackWifiShareFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not start Wi‑Fi sharing'**
+  String get snackWifiShareFailed;
+
+  /// No description provided for @snackWifiShareFailedBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Check your Wi‑Fi connection and try again.'**
+  String get snackWifiShareFailedBody;
+
+  /// No description provided for @receiveWifiTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Receive via Wi‑Fi'**
+  String get receiveWifiTitle;
+
+  /// No description provided for @receiveWifiUrlLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Sender address'**
+  String get receiveWifiUrlLabel;
+
+  /// No description provided for @receiveWifiUrlHint.
+  ///
+  /// In en, this message translates to:
+  /// **'http://192.168.1.5:12345/wifi/...'**
+  String get receiveWifiUrlHint;
+
+  /// No description provided for @receiveWifiFind.
+  ///
+  /// In en, this message translates to:
+  /// **'Find files'**
+  String get receiveWifiFind;
+
+  /// No description provided for @receiveWifiScanQr.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan Wi‑Fi QR'**
+  String get receiveWifiScanQr;
+
+  /// No description provided for @receiveWifiInvalidUrl.
+  ///
+  /// In en, this message translates to:
+  /// **'This is not a valid Wi‑Fi share address.'**
+  String get receiveWifiInvalidUrl;
+
+  /// No description provided for @receiveWifiConnectFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not reach the sender. Make sure both devices are on the same Wi‑Fi.'**
+  String get receiveWifiConnectFailed;
+
+  /// No description provided for @receiveWifiHowTo1.
+  ///
+  /// In en, this message translates to:
+  /// **'Start sharing on the sender'**
+  String get receiveWifiHowTo1;
+
+  /// No description provided for @receiveWifiHowTo1Body.
+  ///
+  /// In en, this message translates to:
+  /// **'On Send, choose Wi‑Fi and tap Start sharing.'**
+  String get receiveWifiHowTo1Body;
+
+  /// No description provided for @receiveWifiHowTo2.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan or paste the address'**
+  String get receiveWifiHowTo2;
+
+  /// No description provided for @receiveWifiHowTo2Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Use the scanner or paste the http:// address from the sender.'**
+  String get receiveWifiHowTo2Body;
+
+  /// No description provided for @receiveWifiHowTo3.
+  ///
+  /// In en, this message translates to:
+  /// **'Download the files'**
+  String get receiveWifiHowTo3;
+
+  /// No description provided for @receiveWifiHowTo3Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Files are saved to your Downloads folder.'**
+  String get receiveWifiHowTo3Body;
+
+  /// No description provided for @wifiDownloadAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Download all'**
+  String get wifiDownloadAll;
+
+  /// No description provided for @wifiDownloadedFiles.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved {count} files to Downloads'**
+  String wifiDownloadedFiles(int count);
+
+  /// No description provided for @wifiDownloadingProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'Downloading {current} of {total}…'**
+  String wifiDownloadingProgress(int current, int total);
+
+  /// No description provided for @historyWifiSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Wi‑Fi'**
+  String get historyWifiSent;
+
+  /// No description provided for @historyWifiReceived.
+  ///
+  /// In en, this message translates to:
+  /// **'Received'**
+  String get historyWifiReceived;
+
+  /// No description provided for @historyWifiSessionEnded.
+  ///
+  /// In en, this message translates to:
+  /// **'This Wi‑Fi session has ended. Start a new share on Send to transfer again.'**
+  String get historyWifiSessionEnded;
+
+  /// No description provided for @historyWifiReceivedNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Files were saved to Downloads on this device.'**
+  String get historyWifiReceivedNote;
+
   /// No description provided for @pickFiles.
   ///
   /// In en, this message translates to:

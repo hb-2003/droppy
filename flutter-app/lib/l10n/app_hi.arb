@@ -172,8 +172,12 @@
   "storePricesPartialBody": "{total} में से {loaded} सदस्यता उत्पाद लोड हुए।",
   "@storePricesPartialBody": {
     "placeholders": {
-      "loaded": { "type": "int" },
-      "total": { "type": "int" }
+      "loaded": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
     }
   },
   "storeSetupHint": "वास्तविक iPhone पर टेस्ट करें (सिम्युलेटर नहीं), Sandbox Apple ID का उपयोग करें, और App Store Connect में इस ऐप के bundle ID के तहत सभी 6 सदस्यताएँ और कीमत सेट करें।",
@@ -181,7 +185,9 @@
   "effectiveMonthlyPrice": "{price}/माह",
   "@effectiveMonthlyPrice": {
     "placeholders": {
-      "price": { "type": "String" }
+      "price": {
+        "type": "String"
+      }
     }
   },
   "freeVersionAds": "आप अभी विज्ञापनों वाला मुफ़्त संस्करण उपयोग कर रहे हैं",
@@ -210,7 +216,7 @@
   "snackInvalidEmail": "अमान्य ईमेल पता",
   "snackInvalidCredentials": "गलत ईमेल या पासवर्ड",
   "snackPasswordMin8": "पासवर्ड कम से कम 8 अक्षर का होना चाहिए",
-  "snackPasswordMismatch": "पासवर्ड मेल नहीं खाते",
+  "snackPasswordMismatch": "पासवर्ड मेल नहीं खाते।",
   "snackAccountExists": "खाता पहले से मौजूद है। कृपया साइन इन करें।",
   "snackSignupFailed": "खाता नहीं बन सका। फिर कोशिश करें।",
   "snackEnterOtp": "कृपया 6-अंकीय कोड दर्ज करें",
@@ -318,7 +324,53 @@
   "snackPasswordUpdated": "पासवर्ड अपडेट हो गया",
   "snackPasswordUpdatedBody": "नए पासवर्ड से साइन इन करें।",
   "snackPasswordResetInvalid": "अमान्य या समाप्त रीसेट कोड।",
-  "snackPasswordMismatch": "पासवर्ड मेल नहीं खाते।",
   "otpDigitLabel": "6-अंकीय कोड",
-  "receiveMoreFiles": "+{count} और फ़ाइलें"
+  "receiveMoreFiles": "+{count} और फ़ाइलें",
+  "modeWifi": "Wi‑Fi",
+  "wifiShareHint": "Share files directly with a nearby device on the same Wi‑Fi network.",
+  "wifiSameNetworkHint": "Both devices must be on the same Wi‑Fi network.",
+  "wifiStartSharing": "Start sharing",
+  "wifiShareReady": "Ready to receive",
+  "wifiShareReadyBody": "Ask the receiver to scan the QR code or open the address below on the same Wi‑Fi network.",
+  "snackWifiNoNetwork": "No Wi‑Fi connection",
+  "snackWifiNoNetworkBody": "Connect to Wi‑Fi to share files locally.",
+  "snackWifiShareFailed": "Could not start Wi‑Fi sharing",
+  "snackWifiShareFailedBody": "Check your Wi‑Fi connection and try again.",
+  "receiveWifiTitle": "Receive via Wi‑Fi",
+  "receiveWifiUrlLabel": "Sender address",
+  "receiveWifiUrlHint": "http://192.168.1.5:12345/wifi/...",
+  "receiveWifiFind": "Find files",
+  "receiveWifiScanQr": "Scan Wi‑Fi QR",
+  "receiveWifiInvalidUrl": "This is not a valid Wi‑Fi share address.",
+  "receiveWifiConnectFailed": "Could not reach the sender. Make sure both devices are on the same Wi‑Fi.",
+  "receiveWifiHowTo1": "Start sharing on the sender",
+  "receiveWifiHowTo1Body": "On Send, choose Wi‑Fi and tap Start sharing.",
+  "receiveWifiHowTo2": "Scan or paste the address",
+  "receiveWifiHowTo2Body": "Use the scanner or paste the http:// address from the sender.",
+  "receiveWifiHowTo3": "Download the files",
+  "receiveWifiHowTo3Body": "Files are saved to your Downloads folder.",
+  "wifiDownloadAll": "Download all",
+  "wifiDownloadedFiles": "Saved {count} files to Downloads",
+  "@wifiDownloadedFiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "wifiDownloadingProgress": "Downloading {current} of {total}…",
+  "@wifiDownloadingProgress": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "historyWifiSent": "Wi‑Fi",
+  "historyWifiReceived": "Received",
+  "historyWifiSessionEnded": "This Wi‑Fi session has ended. Start a new share on Send to transfer again.",
+  "historyWifiReceivedNote": "Files were saved to Downloads on this device."
 }

@@ -48,16 +48,44 @@ class ReceiveView extends GetView<ReceiveController> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        _LinkInputCard(controller: controller),
+                        _ReceiveModeSwitcher(controller: controller),
                         const SizedBox(height: 16),
                         Obx(() {
-                          if (controller.loading.value) {
-                            return _LoadingCard();
+                          if (controller.receiveMode.value == 'wifi') {
+                            return Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                _WifiInputCard(controller: controller),
+                                const SizedBox(height: 16),
+                                Obx(() {
+                                  if (controller.wifiLoading.value) {
+                                    return _LoadingCard();
+                                  }
+                                  final manifest = controller.wifiManifest.value;
+                                  if (manifest == null) {
+                                    return _WifiHowItWorksCard();
+                                  }
+                                  return _WifiTransferCard(controller: controller);
+                                }),
+                              ],
+                            );
                           }
-                          final m = controller.meta.value;
-                          if (m == null) return _HowItWorksCard();
-                          if (!m.ok) return _ErrorCard(error: m.error ?? 'error');
-                          return _TransferDetailsCard(controller: controller);
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              _LinkInputCard(controller: controller),
+                              const SizedBox(height: 16),
+                              Obx(() {
+                                if (controller.loading.value) {
+                                  return _LoadingCard();
+                                }
+                                final m = controller.meta.value;
+                                if (m == null) return _HowItWorksCard();
+                                if (!m.ok) return _ErrorCard(error: m.error ?? 'error');
+                                return _TransferDetailsCard(controller: controller);
+                              }),
+                            ],
+                          );
                         }),
                       ],
                     ),
@@ -655,6 +683,424 @@ class _TransferDetailsCard extends StatelessWidget {
             ),
           ),
         ],
+      ],
+    );
+  }
+}
+
+// ── Receive mode switcher ─────────────────────────────────────────────────────
+
+class _ReceiveModeSwitcher extends StatelessWidget {
+  const _ReceiveModeSwitcher({required this.controller});
+  final ReceiveController controller;
+
+  @override
+  Widget build(BuildContext context) {
+    final t = AppLocalizations.of(context)!;
+    return Obx(() {
+      final mode = controller.receiveMode.value;
+      return Container(
+        height: 48,
+        decoration: BoxDecoration(
+          color: _card(context),
+          borderRadius: BorderRadius.circular(50),
+          border: Border.all(color: _line(context)),
+        ),
+        child: Row(
+          children: [
+            Expanded(
+              child: _ModeChip(
+                label: t.modeLink,
+                selected: mode == 'cloud',
+                onTap: () => controller.setReceiveMode('cloud'),
+              ),
+            ),
+            Expanded(
+              child: _ModeChip(
+                label: t.modeWifi,
+                selected: mode == 'wifi',
+                onTap: () => controller.setReceiveMode('wifi'),
+              ),
+            ),
+          ],
+        ),
+      );
+    });
+  }
+}
+
+class _ModeChip extends StatelessWidget {
+  const _ModeChip({
+    required this.label,
+    required this.selected,
+    required this.onTap,
+  });
+  final String label;
+  final bool selected;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final accent = _accent(context);
+    return GestureDetector(
+      onTap: onTap,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 180),
+        margin: const EdgeInsets.all(4),
+        decoration: BoxDecoration(
+          color: selected ? accent : Colors.transparent,
+          borderRadius: BorderRadius.circular(50),
+        ),
+        alignment: Alignment.center,
+        child: Text(
+          label,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          style: TextStyle(
+            color: selected ? _accentInk(context) : _dim(context),
+            fontSize: 12,
+            fontWeight: selected ? FontWeight.w700 : FontWeight.w500,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+// ── Wi‑Fi Input Card ──────────────────────────────────────────────────────────
+
+class _WifiInputCard extends StatelessWidget {
+  const _WifiInputCard({required this.controller});
+  final ReceiveController controller;
+
+  @override
+  Widget build(BuildContext context) {
+    final t = AppLocalizations.of(context)!;
+    final scheme = Theme.of(context).colorScheme;
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: _card(context),
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: _line(context)),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Row(
+            children: [
+              Icon(Icons.wifi_rounded, color: _accent(context), size: 16),
+              const SizedBox(width: 6),
+              Text(
+                t.receiveWifiUrlLabel,
+                style: TextStyle(
+                  color: _dim(context),
+                  fontSize: 11,
+                  fontWeight: FontWeight.w600,
+                  letterSpacing: 1.2,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 10),
+          TextField(
+            controller: controller.wifiUrlCtrl,
+            onChanged: controller.setFromPastedWifiUrl,
+            style: TextStyle(color: _onSurface(context), fontSize: 14, fontWeight: FontWeight.w500),
+            decoration: InputDecoration(
+              hintText: t.receiveWifiUrlHint,
+              hintStyle: TextStyle(color: _dim2(context), fontSize: 14),
+              filled: true,
+              fillColor: scheme.surface,
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+                borderSide: BorderSide(color: _line(context)),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+                borderSide: BorderSide(color: _line(context)),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+                borderSide: BorderSide(color: _accent(context), width: 1.5),
+              ),
+              contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
+              suffixIcon: IconButton(
+                icon: Icon(Icons.content_paste_rounded, size: 18, color: _dim(context)),
+                onPressed: () async {
+                  final data = await Clipboard.getData(Clipboard.kTextPlain);
+                  final text = data?.text ?? '';
+                  if (text.isNotEmpty) {
+                    controller.wifiUrlCtrl.text = text;
+                    controller.setFromPastedWifiUrl(text);
+                  }
+                },
+                tooltip: t.pasteTooltip,
+              ),
+            ),
+            textInputAction: TextInputAction.search,
+            onSubmitted: (_) => controller.loadWifiManifest(),
+          ),
+          const SizedBox(height: 12),
+          OutlinedButton.icon(
+            onPressed: controller.wifiLoading.value || controller.wifiDownloading.value
+                ? null
+                : () => _openWifiQrScanner(context),
+            style: OutlinedButton.styleFrom(
+              foregroundColor: _accent(context),
+              side: BorderSide(color: _line(context)),
+              padding: const EdgeInsets.symmetric(vertical: 14),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+            ),
+            icon: const Icon(Icons.qr_code_scanner_rounded, size: 20),
+            label: Text(
+              t.receiveWifiScanQr,
+              style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
+            ),
+          ),
+          const SizedBox(height: 12),
+          Obx(() => GestureDetector(
+            onTap: controller.wifiLoading.value ? null : controller.loadWifiManifest,
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 150),
+              height: 50,
+              decoration: BoxDecoration(
+                color: controller.wifiLoading.value
+                    ? _onSurface(context).withValues(alpha: 0.08)
+                    : _accent(context),
+                borderRadius: BorderRadius.circular(50),
+                boxShadow: controller.wifiLoading.value
+                    ? null
+                    : [BoxShadow(color: _accent(context).withValues(alpha: 0.22), blurRadius: 20, offset: const Offset(0, 6))],
+              ),
+              alignment: Alignment.center,
+              child: controller.wifiLoading.value
+                  ? SizedBox(
+                      width: 20, height: 20,
+                      child: CircularProgressIndicator(color: _accentInk(context), strokeWidth: 2.5),
+                    )
+                  : Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.search_rounded, color: _accentInk(context), size: 18),
+                        const SizedBox(width: 8),
+                        Text(
+                          t.receiveWifiFind,
+                          style: TextStyle(color: _accentInk(context), fontSize: 15, fontWeight: FontWeight.w700),
+                        ),
+                      ],
+                    ),
+            ),
+          )),
+        ],
+      ),
+    );
+  }
+
+  Future<void> _openWifiQrScanner(BuildContext context) async {
+    final t = AppLocalizations.of(context)!;
+    final status = await Permission.camera.request();
+    if (!status.isGranted) {
+      AppSnack.error(t.snackError, t.receiveScanQrCameraDenied);
+      return;
+    }
+    if (!context.mounted) return;
+
+    final scanned = await Navigator.of(context).push<String>(
+      MaterialPageRoute(builder: (_) => const TransferQrScannerPage()),
+    );
+    if (scanned == null || scanned.trim().isEmpty) return;
+    await controller.receiveWifiFromScanned(scanned);
+  }
+}
+
+class _WifiHowItWorksCard extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final t = AppLocalizations.of(context)!;
+    final accent = _accent(context);
+    return Container(
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: _card(context),
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: _line(context)),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            t.receiveWifiTitle,
+            style: TextStyle(color: _dim(context), fontSize: 11, fontWeight: FontWeight.w600, letterSpacing: 1.2),
+          ),
+          const SizedBox(height: 16),
+          _Step(accent: accent, number: '1', title: t.receiveWifiHowTo1, subtitle: t.receiveWifiHowTo1Body),
+          const SizedBox(height: 14),
+          _Step(accent: accent, number: '2', title: t.receiveWifiHowTo2, subtitle: t.receiveWifiHowTo2Body),
+          const SizedBox(height: 14),
+          _Step(accent: accent, number: '3', title: t.receiveWifiHowTo3, subtitle: t.receiveWifiHowTo3Body),
+        ],
+      ),
+    );
+  }
+}
+
+class _WifiTransferCard extends StatelessWidget {
+  const _WifiTransferCard({required this.controller});
+  final ReceiveController controller;
+
+  String _fmtSize(int bytes) {
+    if (bytes >= 1073741824) return '${(bytes / 1073741824).toStringAsFixed(2)} GB';
+    if (bytes >= 1048576) return '${(bytes / 1048576).toStringAsFixed(1)} MB';
+    if (bytes >= 1024) return '${(bytes / 1024).toStringAsFixed(0)} KB';
+    return '$bytes B';
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final t = AppLocalizations.of(context)!;
+    final manifest = controller.wifiManifest.value!;
+    final accent = _accent(context);
+    final totalBytes = manifest.files.fold<int>(0, (s, f) => s + f.size);
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Container(
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: _card(context),
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(color: _line(context)),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Container(
+                    width: 44, height: 44,
+                    decoration: BoxDecoration(
+                      color: accent.withValues(alpha: 0.10),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Icon(Icons.wifi_rounded, color: accent, size: 22),
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          t.filesReady(manifest.files.length),
+                          style: TextStyle(color: _onSurface(context), fontSize: 16, fontWeight: FontWeight.w700),
+                        ),
+                        if (totalBytes > 0)
+                          Text(_fmtSize(totalBytes), style: TextStyle(color: _dim(context), fontSize: 12)),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              if (manifest.files.isNotEmpty) ...[
+                const SizedBox(height: 14),
+                Divider(height: 1, color: _line(context)),
+                const SizedBox(height: 12),
+                ...manifest.files.take(5).map((f) => Padding(
+                  padding: const EdgeInsets.only(bottom: 8),
+                  child: Row(
+                    children: [
+                      Icon(Icons.insert_drive_file_outlined, color: _dim(context), size: 15),
+                      const SizedBox(width: 10),
+                      Expanded(
+                        child: Text(
+                          f.name,
+                          style: TextStyle(color: _onSurface(context), fontSize: 12, fontWeight: FontWeight.w500),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      Text(
+                        f.size > 0 ? _fmtSize(f.size) : '',
+                        style: TextStyle(color: _dim(context), fontSize: 11),
+                      ),
+                    ],
+                  ),
+                )),
+                if (manifest.files.length > 5)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 2, bottom: 4),
+                    child: Text(
+                      t.receiveMoreFiles(manifest.files.length - 5),
+                      style: TextStyle(color: _dim2(context), fontSize: 11),
+                    ),
+                  ),
+              ],
+            ],
+          ),
+        ),
+        const SizedBox(height: 12),
+        Obx(() {
+          final busy = controller.wifiDownloading.value;
+          final idx = controller.wifiDownloadIndex.value;
+          final total = manifest.files.length;
+          return GestureDetector(
+            onTap: busy ? null : controller.startWifiDownload,
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 150),
+              height: 54,
+              decoration: BoxDecoration(
+                color: busy ? _onSurface(context).withValues(alpha: 0.08) : accent,
+                borderRadius: BorderRadius.circular(50),
+                boxShadow: busy ? null : [BoxShadow(color: accent.withValues(alpha: 0.25), blurRadius: 24, offset: const Offset(0, 8))],
+              ),
+              alignment: Alignment.center,
+              child: busy
+                  ? Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          width: 20, height: 20,
+                          child: CircularProgressIndicator(color: _accentInk(context), strokeWidth: 2.5),
+                        ),
+                        const SizedBox(width: 12),
+                        Text(
+                          t.wifiDownloadingProgress(idx, total),
+                          style: TextStyle(color: _dim(context), fontSize: 15, fontWeight: FontWeight.w600),
+                        ),
+                      ],
+                    )
+                  : Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.download_rounded, color: _accentInk(context), size: 20),
+                        const SizedBox(width: 8),
+                        Text(
+                          total > 1 ? t.wifiDownloadAll : t.downloadSingleFile,
+                          style: TextStyle(color: _accentInk(context), fontSize: 16, fontWeight: FontWeight.w700),
+                        ),
+                      ],
+                    ),
+            ),
+          );
+        }),
+        const SizedBox(height: 10),
+        GestureDetector(
+          onTap: controller.clearWifi,
+          child: Container(
+            height: 46,
+            decoration: BoxDecoration(
+              border: Border.all(color: _line(context)),
+              borderRadius: BorderRadius.circular(50),
+            ),
+            alignment: Alignment.center,
+            child: Text(
+              t.receiveAnother,
+              style: TextStyle(color: _dim(context), fontSize: 13, fontWeight: FontWeight.w500),
+            ),
+          ),
+        ),
       ],
     );
   }
