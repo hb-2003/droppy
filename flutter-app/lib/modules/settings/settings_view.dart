@@ -249,33 +249,30 @@ class SettingsView extends GetView<SettingsController> {
                           borderRadius: BorderRadius.circular(16),
                           border: Border.all(color: line),
                         ),
-                        child: Column(
-                          children: [
-                            ListTile(
-                              leading: Icon(Icons.privacy_tip_outlined, color: scheme.onSurface.withValues(alpha: 0.6)),
-                              title: Text(t.privacyPolicy, style: TextStyle(color: scheme.onSurface.withValues(alpha: 0.85))),
-                              onTap: controller.openPrivacy,
-                            ),
-                            Divider(height: 1, color: line.withValues(alpha: 0.6)),
-                            ListTile(
-                              leading: Icon(Icons.description_outlined, color: scheme.onSurface.withValues(alpha: 0.6)),
-                              title: Text(t.termsOfService, style: TextStyle(color: scheme.onSurface.withValues(alpha: 0.85))),
-                              onTap: controller.openTerms,
-                            ),
-                            Divider(height: 1, color: line.withValues(alpha: 0.6)),
-                            ListTile(
-                              leading: Icon(Icons.info_outline_rounded, color: scheme.onSurface.withValues(alpha: 0.6)),
-                              title: Text(t.about, style: TextStyle(color: scheme.onSurface.withValues(alpha: 0.85))),
-                              onTap: controller.openAbout,
-                            ),
-                            // More apps link hidden for this release.
-                            // Divider(height: 1, color: line.withValues(alpha: 0.6)),
-                            // ListTile(
-                            //   leading: Icon(Icons.apps_outlined, color: scheme.onSurface.withValues(alpha: 0.6)),
-                            //   title: Text(t.moreApps, style: TextStyle(color: scheme.onSurface.withValues(alpha: 0.85))),
-                            //   onTap: controller.openMoreApps,
-                            // ),
-                          ],
+                        clipBehavior: Clip.antiAlias,
+                        child: Material(
+                          color: Colors.transparent,
+                          child: Column(
+                            children: [
+                              ListTile(
+                                leading: Icon(Icons.privacy_tip_outlined, color: scheme.onSurface.withValues(alpha: 0.6)),
+                                title: Text(t.privacyPolicy, style: TextStyle(color: scheme.onSurface.withValues(alpha: 0.85))),
+                                onTap: controller.openPrivacy,
+                              ),
+                              Divider(height: 1, color: line.withValues(alpha: 0.6)),
+                              ListTile(
+                                leading: Icon(Icons.description_outlined, color: scheme.onSurface.withValues(alpha: 0.6)),
+                                title: Text(t.termsOfService, style: TextStyle(color: scheme.onSurface.withValues(alpha: 0.85))),
+                                onTap: controller.openTerms,
+                              ),
+                              Divider(height: 1, color: line.withValues(alpha: 0.6)),
+                              ListTile(
+                                leading: Icon(Icons.info_outline_rounded, color: scheme.onSurface.withValues(alpha: 0.6)),
+                                title: Text(t.about, style: TextStyle(color: scheme.onSurface.withValues(alpha: 0.85))),
+                                onTap: controller.openAbout,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                       const SizedBox(height: 24),
@@ -285,21 +282,24 @@ class SettingsView extends GetView<SettingsController> {
                         final lc = Get.find<LocaleController>().locale.value;
                         final option = AppLocaleCatalog.findByCode(lc.languageCode);
                         final label = option?.nativeLabel ?? lc.languageCode;
-                        return ListTile(
-                          contentPadding: EdgeInsets.zero,
-                          title: Text(label, style: TextStyle(color: scheme.onSurface)),
-                          trailing: Icon(
-                            Icons.language,
-                            color: scheme.onSurface.withValues(alpha: 0.6),
-                          ),
+                        return Material(
+                          color: scheme.surface,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12),
                             side: BorderSide(color: line),
                           ),
-                          tileColor: scheme.surface,
-                          onTap: () => showLanguagePickerSheet(
-                            context: context,
-                            onSelected: controller.setLocale,
+                          clipBehavior: Clip.antiAlias,
+                          child: ListTile(
+                            contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+                            title: Text(label, style: TextStyle(color: scheme.onSurface)),
+                            trailing: Icon(
+                              Icons.language,
+                              color: scheme.onSurface.withValues(alpha: 0.6),
+                            ),
+                            onTap: () => showLanguagePickerSheet(
+                              context: context,
+                              onSelected: controller.setLocale,
+                            ),
                           ),
                         );
                       }),

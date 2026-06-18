@@ -160,9 +160,11 @@ class PlansView extends GetView<PlansController> {
                   state != IapStoreState.unavailable &&
                   !(state == IapStoreState.failed && controller.loadedCount == 0);
               if (!showPlans) return const SizedBox.shrink();
+              controller.selectedProductId.value;
+              final busy = controller.isPurchasing;
               return _PlansContinueBar(
                 enabled: controller.canContinue,
-                busy: controller.isPurchasing,
+                busy: busy,
                 onContinue: controller.continuePurchase,
               );
             }),
@@ -376,89 +378,114 @@ class _PlanCard extends StatelessWidget {
     final card = scheme.surfaceContainerHighest;
     final primary = scheme.primary;
 
-    final monthPrice = controller.priceFor(tier.monthlyProductId);
-    final yearPrice = controller.priceFor(tier.yearlyProductId);
-    final effectiveMonthly = controller.effectiveMonthlyForYearly(tier.yearlyProductId);
-    final tierSelected = controller.isSelected(tier.monthlyProductId) ||
-        controller.isSelected(tier.yearlyProductId);
+    return Obx(() {
+      controller.selectedProductId.value;
+      controller.loadedCount;
+      final monthPrice = controller.priceFor(tier.monthlyProductId);
+      final yearPrice = controller.priceFor(tier.yearlyProductId);
+      final effectiveMonthly = controller.effectiveMonthlyForYearly(tier.yearlyProductId);
+      final tierSelected = controller.isSelected(tier.monthlyProductId) ||
+          controller.isSelected(tier.yearlyProductId);
+      final busy = controller.isPurchasing;
 
-    return Container(
-      decoration: BoxDecoration(
-        color: card,
+      void selectDefaultTier() {
+        if (busy) return;
+        if (monthPrice != null) {
+          controller.selectProduct(tier.monthlyProductId);
+        } else if (yearPrice != null) {
+          controller.selectProduct(tier.yearlyProductId);
+        }
+      }
+
+      return Material(
+      color: card,
+      elevation: 0,
+      shadowColor: Colors.transparent,
+      shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(18),
-        border: Border.all(
+        side: BorderSide(
           color: tierSelected ? primary.withValues(alpha: 0.55) : line,
           width: tierSelected ? 1.4 : 1,
         ),
-        boxShadow: tierSelected
-            ? [
-                BoxShadow(
-                  color: primary.withValues(alpha: 0.12),
-                  blurRadius: 18,
-                  offset: const Offset(0, 8),
-                ),
-              ]
-            : null,
       ),
-      padding: const EdgeInsets.all(16),
-      child: Row(
-        children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(title, style: TextStyle(color: scheme.onSurface, fontSize: 18, fontWeight: FontWeight.w900)),
-                const SizedBox(height: 10),
-                ...bullets.map(
-                  (b) => Padding(
-                    padding: const EdgeInsets.only(bottom: 6),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Icon(Icons.check_circle_rounded, size: 16, color: primary.withValues(alpha: 0.85)),
-                        const SizedBox(width: 8),
-                        Expanded(
-                          child: Text(
-                            b,
-                            style: TextStyle(
-                              color: scheme.onSurface.withValues(alpha: 0.72),
-                              fontSize: 12.8,
-                              height: 1.25,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
-                      ],
+      child: InkWell(
+        onTap: selectDefaultTier,
+        borderRadius: BorderRadius.circular(18),
+        child: Container(
+          decoration: tierSelected
+              ? BoxDecoration(
+                  borderRadius: BorderRadius.circular(18),
+                  boxShadow: [
+                    BoxShadow(
+                      color: primary.withValues(alpha: 0.12),
+                      blurRadius: 18,
+                      offset: const Offset(0, 8),
                     ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(width: 12),
-          Column(
+                  ],
+                )
+              : null,
+          padding: const EdgeInsets.all(16),
+          child: Row(
             children: [
-              _SelectablePriceOption(
-                price: monthPrice ?? t.priceUnavailable,
-                subtitle: t.perMonth,
-                selected: controller.isSelected(tier.monthlyProductId),
-                enabled: !controller.isPurchasing && monthPrice != null,
-                onTap: () => controller.selectProduct(tier.monthlyProductId),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(title, style: TextStyle(color: scheme.onSurface, fontSize: 18, fontWeight: FontWeight.w900)),
+                    const SizedBox(height: 10),
+                    ...bullets.map(
+                      (b) => Padding(
+                        padding: const EdgeInsets.only(bottom: 6),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Icon(Icons.check_circle_rounded, size: 16, color: primary.withValues(alpha: 0.85)),
+                            const SizedBox(width: 8),
+                            Expanded(
+                              child: Text(
+                                b,
+                                style: TextStyle(
+                                  color: scheme.onSurface.withValues(alpha: 0.72),
+                                  fontSize: 12.8,
+                                  height: 1.25,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              const SizedBox(height: 10),
-              _SelectablePriceOption(
-                price: yearPrice ?? t.priceUnavailable,
-                subtitle: t.perYear,
-                tertiary: effectiveMonthly != null ? t.effectiveMonthlyPrice(effectiveMonthly) : null,
-                selected: controller.isSelected(tier.yearlyProductId),
-                enabled: !controller.isPurchasing && yearPrice != null,
-                onTap: () => controller.selectProduct(tier.yearlyProductId),
+              const SizedBox(width: 12),
+              Column(
+                children: [
+                  _SelectablePriceOption(
+                    price: monthPrice ?? t.priceUnavailable,
+                    subtitle: t.perMonth,
+                    selected: controller.isSelected(tier.monthlyProductId),
+                    enabled: !busy && monthPrice != null,
+                    onTap: () => controller.selectProduct(tier.monthlyProductId),
+                  ),
+                  const SizedBox(height: 10),
+                  _SelectablePriceOption(
+                    price: yearPrice ?? t.priceUnavailable,
+                    subtitle: t.perYear,
+                    tertiary: effectiveMonthly != null ? t.effectiveMonthlyPrice(effectiveMonthly) : null,
+                    selected: controller.isSelected(tier.yearlyProductId),
+                    enabled: !busy && yearPrice != null,
+                    onTap: () => controller.selectProduct(tier.yearlyProductId),
+                  ),
+                ],
               ),
             ],
           ),
-        ],
+        ),
       ),
     );
+    });
   }
 }
 
@@ -490,43 +517,47 @@ class _SelectablePriceOption extends StatelessWidget {
     final subFg = selected ? scheme.onPrimary.withValues(alpha: 0.85) : scheme.onSurface.withValues(alpha: 0.55);
     final tertiaryFg = selected ? scheme.onPrimary.withValues(alpha: 0.9) : primary.withValues(alpha: 0.85);
 
-    return GestureDetector(
-      onTap: enabled ? onTap : null,
-      child: Opacity(
-        opacity: enabled ? 1 : 0.45,
-        child: Container(
-          width: 96,
-          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-          decoration: BoxDecoration(
-            color: bg,
-            borderRadius: BorderRadius.circular(selected ? 20 : 16),
-            border: Border.all(color: selected ? primary : line, width: selected ? 1.2 : 1),
-            boxShadow: selected
-                ? [BoxShadow(color: primary.withValues(alpha: 0.28), blurRadius: 14, offset: const Offset(0, 8))]
-                : null,
-          ),
-          child: Column(
-            children: [
-              Text(
-                price,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(color: fg, fontWeight: FontWeight.w900, fontSize: 13),
-              ),
-              Text(
-                subtitle,
-                style: TextStyle(color: subFg, fontWeight: FontWeight.w700, fontSize: 10),
-              ),
-              if (tertiary != null) ...[
-                const SizedBox(height: 4),
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: enabled ? onTap : null,
+        borderRadius: BorderRadius.circular(selected ? 20 : 16),
+        child: Opacity(
+          opacity: enabled ? 1 : 0.45,
+          child: Ink(
+            width: 96,
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+            decoration: BoxDecoration(
+              color: bg,
+              borderRadius: BorderRadius.circular(selected ? 20 : 16),
+              border: Border.all(color: selected ? primary : line, width: selected ? 1.2 : 1),
+              boxShadow: selected
+                  ? [BoxShadow(color: primary.withValues(alpha: 0.28), blurRadius: 14, offset: const Offset(0, 8))]
+                  : null,
+            ),
+            child: Column(
+              children: [
                 Text(
-                  tertiary!,
+                  price,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(color: tertiaryFg, fontWeight: FontWeight.w800, fontSize: 9),
+                  style: TextStyle(color: fg, fontWeight: FontWeight.w900, fontSize: 13),
                 ),
+                Text(
+                  subtitle,
+                  style: TextStyle(color: subFg, fontWeight: FontWeight.w700, fontSize: 10),
+                ),
+                if (tertiary != null) ...[
+                  const SizedBox(height: 4),
+                  Text(
+                    tertiary!,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(color: tertiaryFg, fontWeight: FontWeight.w800, fontSize: 9),
+                  ),
+                ],
               ],
-            ],
+            ),
           ),
         ),
       ),

@@ -128,7 +128,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String verifyEmailCheckSpamHint(String email) {
-    return 'コードが届かない場合: ジャンク/スパムとプロモーションを確認し、少し待ってから、<<PH1> にタイプミスがないことを確認して、[再送信] をタップします。';
+    return 'コードが届かない場合: ジャンク/スパムとプロモーションを確認し、少し待ってから、$email にタイプミスがないことを確認して、[再送信] をタップします。';
   }
 
   @override

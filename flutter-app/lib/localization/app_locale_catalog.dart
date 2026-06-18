@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:ui' as ui;
 
 class AppLocaleOption {
   const AppLocaleOption({
@@ -79,5 +80,34 @@ abstract final class AppLocaleCatalog {
       if (o.code == code) return o;
     }
     return null;
+  }
+
+  static bool isSupported(Locale locale) => findByCode(locale.languageCode) != null;
+
+  /// Maps the device locale to a supported app locale (falls back to English).
+  static Locale resolveLocale(Locale deviceLocale) {
+    final code = _normalizeLanguageCode(deviceLocale.languageCode);
+    if (findByCode(code) != null) return Locale(code);
+    return const Locale('en');
+  }
+
+  /// Current OS language mapped to a supported app locale.
+  static Locale systemLocale() =>
+      resolveLocale(ui.PlatformDispatcher.instance.locale);
+
+  static String _normalizeLanguageCode(String code) {
+    switch (code) {
+      case 'tl':
+        return 'fil';
+      case 'iw':
+        return 'he';
+      case 'nb':
+      case 'nn':
+        return 'no';
+      case 'in':
+        return 'id';
+      default:
+        return code;
+    }
   }
 }

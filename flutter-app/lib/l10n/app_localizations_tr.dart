@@ -536,7 +536,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String storePricesPartialBody(int loaded, int total) {
-    return '<<PH2> / $total abonelik ürünleri yüklendi.';
+    return '$loaded / $total abonelik ürünleri yüklendi.';
   }
 
   @override

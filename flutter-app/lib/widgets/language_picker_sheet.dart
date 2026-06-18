@@ -12,6 +12,7 @@ Future<void> showLanguagePickerSheet({
     context: context,
     isScrollControlled: true,
     showDragHandle: true,
+    backgroundColor: Theme.of(context).colorScheme.surface,
     builder: (ctx) => _LanguagePickerSheet(onSelected: onSelected),
   );
 }
@@ -52,44 +53,52 @@ class _LanguagePickerSheetState extends State<_LanguagePickerSheet> {
     final current = Get.find<LocaleController>().locale.value.languageCode;
     final maxHeight = MediaQuery.sizeOf(context).height * 0.75;
 
-    return SafeArea(
-      child: SizedBox(
-        height: maxHeight,
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
-              child: TextField(
-                controller: _searchCtrl,
-                decoration: InputDecoration(
-                  hintText: t.settingsLanguage,
-                  prefixIcon: const Icon(Icons.search),
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+    return Material(
+      color: scheme.surface,
+      child: SafeArea(
+        child: SizedBox(
+          height: maxHeight,
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
+                child: TextField(
+                  controller: _searchCtrl,
+                  decoration: InputDecoration(
+                    hintText: t.settingsLanguage,
+                    prefixIcon: const Icon(Icons.search),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                  ),
+                  onChanged: (v) => setState(() => _query = v),
                 ),
-                onChanged: (v) => setState(() => _query = v),
               ),
-            ),
-            Expanded(
-              child: ListView.builder(
-                itemCount: _filtered.length,
-                itemBuilder: (context, index) {
-                  final option = _filtered[index];
-                  final selected = option.code == current;
-                  return ListTile(
-                    title: Text(option.nativeLabel),
-                    subtitle: Text(option.label),
-                    trailing: selected
-                        ? Icon(Icons.check_circle, color: scheme.primary)
-                        : null,
-                    onTap: () {
-                      widget.onSelected(option.locale);
-                      Navigator.of(context).pop();
-                    },
-                  );
-                },
+              Expanded(
+                child: ListView.builder(
+                  itemCount: _filtered.length,
+                  itemBuilder: (context, index) {
+                    final option = _filtered[index];
+                    final selected = option.code == current;
+                    return Material(
+                      color: selected
+                          ? scheme.primaryContainer.withValues(alpha: 0.25)
+                          : Colors.transparent,
+                      child: ListTile(
+                        title: Text(option.nativeLabel),
+                        subtitle: Text(option.label),
+                        trailing: selected
+                            ? Icon(Icons.check_circle, color: scheme.primary)
+                            : null,
+                        onTap: () {
+                          widget.onSelected(option.locale);
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                    );
+                  },
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
