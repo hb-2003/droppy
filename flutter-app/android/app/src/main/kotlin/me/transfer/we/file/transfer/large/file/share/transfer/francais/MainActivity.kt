@@ -1,4 +1,4 @@
-package share.large.video.files.free.online.envoyer.des.fichiers.de.transfert.videos
+package me.transfer.we.file.transfer.large.file.share.transfer.francais
 
 import io.flutter.embedding.android.FlutterActivity
 
