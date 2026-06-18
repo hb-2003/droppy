@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:sendlargefiles/app/app_branding.dart';
 import 'package:sendlargefiles/app/routes/app_pages.dart';
 import 'package:sendlargefiles/app/routes/app_routes.dart';
 import 'package:sendlargefiles/app/theme/app_theme.dart';
@@ -47,7 +48,7 @@ class SendLargeFilesApp extends StatelessWidget {
       final loc = Get.find<LocaleController>().locale.value;
       final mode = Get.find<ThemeController>().themeMode.value;
       return GetMaterialApp(
-        title: lookupAppLocalizations(loc).appTitle,
+        title: AppBranding.appTitle(lookupAppLocalizations(loc)),
         theme: AppTheme.lightFromConfig(cfg),
         darkTheme: AppTheme.darkFromConfig(cfg),
         themeMode: mode,

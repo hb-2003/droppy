@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:sendlargefiles/l10n/app_localizations.dart';
+import 'package:sendlargefiles/app/app_branding.dart';
 import 'package:sendlargefiles/app/theme/app_theme.dart';
 import 'package:sendlargefiles/data/repositories/auth_repository.dart';
 import 'package:sendlargefiles/modules/home/home_controller.dart';
@@ -226,7 +227,7 @@ class _HeroText extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          t.heroTitle,
+          AppBranding.heroTitle(t),
           style: TextStyle(
             color: scheme.onSurface,
             fontSize: 26,
@@ -236,7 +237,7 @@ class _HeroText extends StatelessWidget {
           ),
         ),
         Text(
-          t.heroAccent,
+          AppBranding.heroAccent(t),
           style: AppTheme.heroAccent(color: scheme.primary, fontSize: 26),
         ),
       ],
