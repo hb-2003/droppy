@@ -241,7 +241,7 @@ class _TabSwitcher extends StatelessWidget {
     return Obx(() {
       final mode = controller.shareMode.value;
       return Container(
-        height: 46,
+        height: 52,
         decoration: BoxDecoration(
           color: _tabBg(context),
           borderRadius: BorderRadius.circular(50),
@@ -295,14 +295,19 @@ class _TabBtn extends StatelessWidget {
           borderRadius: BorderRadius.circular(50),
         ),
         alignment: Alignment.center,
+        padding: const EdgeInsets.symmetric(horizontal: 6),
         child: Text(
           label,
+          maxLines: 2,
+          textAlign: TextAlign.center,
+          overflow: TextOverflow.ellipsis,
           style: TextStyle(
             color: selected
                 ? scheme.onPrimary
                 : scheme.onSurface.withValues(alpha: 0.6),
-            fontSize: 13,
+            fontSize: 12,
             fontWeight: selected ? FontWeight.w700 : FontWeight.w400,
+            height: 1.15,
           ),
         ),
       ),
@@ -376,8 +381,11 @@ class _DropZoneEmpty extends StatelessWidget {
                   const SizedBox(height: 12),
                   _FiletypeChips(),
                   const SizedBox(height: 14),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                  Wrap(
+                    alignment: WrapAlignment.center,
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    spacing: 8,
+                    runSpacing: 8,
                     children: [
                       TextButton.icon(
                         onPressed: busy ? null : onPick,
@@ -404,9 +412,11 @@ class _DropZoneEmpty extends StatelessWidget {
                                 Icons.insert_drive_file_outlined,
                                 size: 18,
                               ),
-                        label: Text(busy ? t.loadingShort : t.pickFiles),
+                        label: Text(
+                          busy ? t.loadingShort : t.pickFiles,
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       ),
-                      const SizedBox(width: 8),
                       TextButton.icon(
                         onPressed: busy ? null : controller.pickFolder,
                         style: TextButton.styleFrom(
@@ -421,7 +431,10 @@ class _DropZoneEmpty extends StatelessWidget {
                           ),
                         ),
                         icon: const Icon(Icons.folder_open_rounded, size: 18),
-                        label: Text(t.pickFolder),
+                        label: Text(
+                          t.pickFolder,
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       ),
                     ],
                   ),

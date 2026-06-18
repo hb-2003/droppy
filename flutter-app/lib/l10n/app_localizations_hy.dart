@@ -130,7 +130,7 @@ class AppLocalizationsHy extends AppLocalizations {
 
   @override
   String verifyEmailCheckSpamHint(String email) {
-    return 'Եթե ​​այն չհասնի. ստուգեք անպետք/Սպամ և առաջխաղացումները, սպասեք մի րոպե, հաստատեք, որ <<PH0>>-ը տառասխալներ չունի, այնուհետև սեղմեք Կրկին ուղարկել:';
+    return 'Եթե ​​այն չհասնի. ստուգեք անպետք/Սպամ և առաջխաղացումները, սպասեք մի րոպե, հաստատեք, որ $email-ը տառասխալներ չունի, այնուհետև սեղմեք Կրկին ուղարկել:';
   }
 
   @override
@@ -297,7 +297,7 @@ class AppLocalizationsHy extends AppLocalizations {
 
   @override
   String upToTotal(String max) {
-    return 'Ընդամենը մինչև <<PH0>>';
+    return 'Ընդամենը մինչև $max';
   }
 
   @override
@@ -359,7 +359,7 @@ class AppLocalizationsHy extends AppLocalizations {
 
   @override
   String mbLeft(String amount) {
-    return '<<PH0>> ՄԲ է մնացել';
+    return '$amount ՄԲ է մնացել';
   }
 
   @override
@@ -484,7 +484,7 @@ class AppLocalizationsHy extends AppLocalizations {
 
   @override
   String transferLoadFailed(String error) {
-    return 'Չհաջողվեց բեռնել փոխանցումը՝ <<PH0>>';
+    return 'Չհաջողվեց բեռնել փոխանցումը՝ $error';
   }
 
   @override
@@ -533,7 +533,7 @@ class AppLocalizationsHy extends AppLocalizations {
 
   @override
   String storePricesPartialBody(int loaded, int total) {
-    return '<<PH0>> <<PH1>> բաժանորդագրության ապրանքները բեռնված են:';
+    return '$loaded $total բաժանորդագրության ապրանքները բեռնված են:';
   }
 
   @override
@@ -545,7 +545,7 @@ class AppLocalizationsHy extends AppLocalizations {
 
   @override
   String effectiveMonthlyPrice(String price) {
-    return '<<PH0>>/ամիս';
+    return '$price/ամիս';
   }
 
   @override
@@ -584,7 +584,7 @@ class AppLocalizationsHy extends AppLocalizations {
 
   @override
   String otpSentTo(String email) {
-    return 'Մենք ուղարկել ենք 6 նիշանոց կոդը\n<<PH0>>';
+    return 'Մենք ուղարկել ենք 6 նիշանոց կոդը\n$email';
   }
 
   @override
@@ -709,7 +709,7 @@ class AppLocalizationsHy extends AppLocalizations {
 
   @override
   String snackDownloadSaved(String filename) {
-    return '«<<PH0>>»-ը պահված է Ներբեռնումներ';
+    return '«$filename»-ը պահված է Ներբեռնումներ';
   }
 
   @override
@@ -876,42 +876,42 @@ class AppLocalizationsHy extends AppLocalizations {
 
   @override
   String transferIdLabel(String id) {
-    return 'ID՝ <<PH0>>';
+    return 'ID՝ $id';
   }
 
   @override
   String downloadMetaSummary(String count, String size) {
-    return 'Ֆայլեր՝ <<PH0>> · <<PH1>> բայթ';
+    return 'Ֆայլեր՝ $count · $size բայթ';
   }
 
   @override
   String todayAt(String time) {
-    return 'Այսօր · <<PH0>>';
+    return 'Այսօր · $time';
   }
 
   @override
   String yesterdayAt(String time) {
-    return 'Երեկ · <<PH0>>';
+    return 'Երեկ · $time';
   }
 
   @override
   String daysAgoAt(int days, String time) {
-    return '<<PH0>>d առաջ · <<PH1>>';
+    return '${days}d առաջ · $time';
   }
 
   @override
   String dateAt(String date, String time) {
-    return '<<PH0>> · <<PH1>>';
+    return '$date · $time';
   }
 
   @override
   String mbAmount(String amount) {
-    return '<<PH0>> ՄԲ';
+    return '$amount ՄԲ';
   }
 
   @override
   String uploadProgressSummary(String sent, String total, String remaining) {
-    return '<<PH0>> / <<PH1>> • <<PH2>> մնացել է';
+    return '$sent / $total • $remaining մնացել է';
   }
 
   @override
@@ -1012,6 +1012,6 @@ class AppLocalizationsHy extends AppLocalizations {
 
   @override
   String receiveMoreFiles(int count) {
-    return '+<<PH0>> ավելի շատ ֆայլեր';
+    return '+$count ավելի շատ ֆայլեր';
   }
 }

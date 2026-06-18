@@ -130,7 +130,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String verifyEmailCheckSpamHint(String email) {
-    return 'Nếu mã không đến: kiểm tra Thư rác/Thư rác và Quảng cáo, đợi một phút, xác nhận <<PH0>> không có lỗi chính tả, sau đó nhấn Gửi lại.';
+    return 'Nếu mã không đến: kiểm tra Thư rác/Thư rác và Quảng cáo, đợi một phút, xác nhận $email không có lỗi chính tả, sau đó nhấn Gửi lại.';
   }
 
   @override
@@ -298,7 +298,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String upToTotal(String max) {
-    return 'Tối đa <<PH0>> tổng';
+    return 'Tối đa $max tổng';
   }
 
   @override
@@ -362,7 +362,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String mbLeft(String amount) {
-    return '<<PH0>> MB left';
+    return '$amount MB left';
   }
 
   @override
@@ -488,7 +488,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String transferLoadFailed(String error) {
-    return 'Không thể tải chuyển: <<PH0>>';
+    return 'Không thể tải chuyển: $error';
   }
 
   @override
@@ -537,7 +537,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String storePricesPartialBody(int loaded, int total) {
-    return '<<PH0>> trong số <<PH1>> sản phẩm đăng ký đã tải.';
+    return '$loaded trong số $total sản phẩm đăng ký đã tải.';
   }
 
   @override
@@ -549,7 +549,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String effectiveMonthlyPrice(String price) {
-    return '<<PH0>>/tháng';
+    return '$price/tháng';
   }
 
   @override
@@ -588,7 +588,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String otpSentTo(String email) {
-    return 'Chúng tôi đã gửi mã gồm 6 chữ số tới\n<<PH0>>';
+    return 'Chúng tôi đã gửi mã gồm 6 chữ số tới\n$email';
   }
 
   @override
@@ -711,7 +711,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String snackDownloadSaved(String filename) {
-    return '\"<<PH0>>\" đã lưu vào Tải xuống';
+    return '\"$filename\" đã lưu vào Tải xuống';
   }
 
   @override
@@ -878,42 +878,42 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String transferIdLabel(String id) {
-    return 'ID: <<PH0>>';
+    return 'ID: $id';
   }
 
   @override
   String downloadMetaSummary(String count, String size) {
-    return 'Tệp: <<PH0>> · <<PH1>> bytes';
+    return 'Tệp: $count · $size bytes';
   }
 
   @override
   String todayAt(String time) {
-    return 'Hôm nay · <<PH0>>';
+    return 'Hôm nay · $time';
   }
 
   @override
   String yesterdayAt(String time) {
-    return 'Hôm qua · <<PH0>>';
+    return 'Hôm qua · $time';
   }
 
   @override
   String daysAgoAt(int days, String time) {
-    return '<<PH0>>ngày trước · <<PH1>>';
+    return '${days}ngày trước · $time';
   }
 
   @override
   String dateAt(String date, String time) {
-    return '<<PH0>> · <<PH1>>';
+    return '$date · $time';
   }
 
   @override
   String mbAmount(String amount) {
-    return '<<PH0>> MB';
+    return '$amount MB';
   }
 
   @override
   String uploadProgressSummary(String sent, String total, String remaining) {
-    return '<<PH0>> / <<PH1>> • <<PH2>> left';
+    return '$sent / $total • $remaining left';
   }
 
   @override
@@ -1015,6 +1015,6 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String receiveMoreFiles(int count) {
-    return '+<<PH0>> thêm tệp';
+    return '+$count thêm tệp';
   }
 }

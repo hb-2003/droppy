@@ -131,7 +131,7 @@ class AppLocalizationsKn extends AppLocalizations {
 
   @override
   String verifyEmailCheckSpamHint(String email) {
-    return 'ಅದು ಬರದಿದ್ದರೆ: ಜಂಕ್/ಸ್ಪ್ಯಾಮ್ ಮತ್ತು ಪ್ರಚಾರಗಳನ್ನು ಪರಿಶೀಲಿಸಿ, ಒಂದು ನಿಮಿಷ ನಿರೀಕ್ಷಿಸಿ, <<PH0>> ಯಾವುದೇ ಮುದ್ರಣದೋಷಗಳಿಲ್ಲ ಎಂದು ಖಚಿತಪಡಿಸಿ, ನಂತರ ಮರುಕಳುಹಿಸಿ ಟ್ಯಾಪ್ ಮಾಡಿ.';
+    return 'ಅದು ಬರದಿದ್ದರೆ: ಜಂಕ್/ಸ್ಪ್ಯಾಮ್ ಮತ್ತು ಪ್ರಚಾರಗಳನ್ನು ಪರಿಶೀಲಿಸಿ, ಒಂದು ನಿಮಿಷ ನಿರೀಕ್ಷಿಸಿ, $email ಯಾವುದೇ ಮುದ್ರಣದೋಷಗಳಿಲ್ಲ ಎಂದು ಖಚಿತಪಡಿಸಿ, ನಂತರ ಮರುಕಳುಹಿಸಿ ಟ್ಯಾಪ್ ಮಾಡಿ.';
   }
 
   @override
@@ -298,7 +298,7 @@ class AppLocalizationsKn extends AppLocalizations {
 
   @override
   String upToTotal(String max) {
-    return 'ಒಟ್ಟು <<PH0>> ವರೆಗೆ';
+    return 'ಒಟ್ಟು $max ವರೆಗೆ';
   }
 
   @override
@@ -361,7 +361,7 @@ class AppLocalizationsKn extends AppLocalizations {
 
   @override
   String mbLeft(String amount) {
-    return '<<PH0>> MB ಉಳಿದಿದೆ';
+    return '$amount MB ಉಳಿದಿದೆ';
   }
 
   @override
@@ -486,7 +486,7 @@ class AppLocalizationsKn extends AppLocalizations {
 
   @override
   String transferLoadFailed(String error) {
-    return 'ವರ್ಗಾವಣೆಯನ್ನು ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ: <<PH0>>';
+    return 'ವರ್ಗಾವಣೆಯನ್ನು ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ: $error';
   }
 
   @override
@@ -536,7 +536,7 @@ class AppLocalizationsKn extends AppLocalizations {
 
   @override
   String storePricesPartialBody(int loaded, int total) {
-    return '<<PH1>> ಚಂದಾದಾರಿಕೆ ಉತ್ಪನ್ನಗಳ <<PH0>> ಅನ್ನು ಲೋಡ್ ಮಾಡಲಾಗಿದೆ.';
+    return '$total ಚಂದಾದಾರಿಕೆ ಉತ್ಪನ್ನಗಳ $loaded ಅನ್ನು ಲೋಡ್ ಮಾಡಲಾಗಿದೆ.';
   }
 
   @override
@@ -548,7 +548,7 @@ class AppLocalizationsKn extends AppLocalizations {
 
   @override
   String effectiveMonthlyPrice(String price) {
-    return '<<PH0>>/ತಿಂಗಳು';
+    return '$price/ತಿಂಗಳು';
   }
 
   @override
@@ -587,7 +587,7 @@ class AppLocalizationsKn extends AppLocalizations {
 
   @override
   String otpSentTo(String email) {
-    return 'ನಾವು 6-ಅಂಕಿಯ ಕೋಡ್ ಅನ್ನು ಕಳುಹಿಸಿದ್ದೇವೆ\n<<PH0>>';
+    return 'ನಾವು 6-ಅಂಕಿಯ ಕೋಡ್ ಅನ್ನು ಕಳುಹಿಸಿದ್ದೇವೆ\n$email';
   }
 
   @override
@@ -715,7 +715,7 @@ class AppLocalizationsKn extends AppLocalizations {
 
   @override
   String snackDownloadSaved(String filename) {
-    return '\"<<PH0>>\" ಅನ್ನು ಡೌನ್‌ಲೋಡ್‌ಗಳಿಗೆ ಉಳಿಸಲಾಗಿದೆ';
+    return '\"$filename\" ಅನ್ನು ಡೌನ್‌ಲೋಡ್‌ಗಳಿಗೆ ಉಳಿಸಲಾಗಿದೆ';
   }
 
   @override
@@ -883,42 +883,42 @@ class AppLocalizationsKn extends AppLocalizations {
 
   @override
   String transferIdLabel(String id) {
-    return 'ID: <<PH0>>';
+    return 'ID: $id';
   }
 
   @override
   String downloadMetaSummary(String count, String size) {
-    return 'ಫೈಲ್‌ಗಳು: <<PH0>> · <<PH1>> ಬೈಟ್‌ಗಳು';
+    return 'ಫೈಲ್‌ಗಳು: $count · $size ಬೈಟ್‌ಗಳು';
   }
 
   @override
   String todayAt(String time) {
-    return 'ಇಂದು · <<PH0>>';
+    return 'ಇಂದು · $time';
   }
 
   @override
   String yesterdayAt(String time) {
-    return 'ನಿನ್ನೆ · <<PH0>>';
+    return 'ನಿನ್ನೆ · $time';
   }
 
   @override
   String daysAgoAt(int days, String time) {
-    return '<<PH0>>ದಿನ ಹಿಂದೆ · <<PH1>>';
+    return '$daysದಿನ ಹಿಂದೆ · $time';
   }
 
   @override
   String dateAt(String date, String time) {
-    return '<<PH0>> · <<PH1>>';
+    return '$date · $time';
   }
 
   @override
   String mbAmount(String amount) {
-    return '<<PH0>> MB';
+    return '$amount MB';
   }
 
   @override
   String uploadProgressSummary(String sent, String total, String remaining) {
-    return '<<PH0>> / <<PH1>> • <<PH2>> ಉಳಿದಿದೆ';
+    return '$sent / $total • $remaining ಉಳಿದಿದೆ';
   }
 
   @override
@@ -1020,6 +1020,6 @@ class AppLocalizationsKn extends AppLocalizations {
 
   @override
   String receiveMoreFiles(int count) {
-    return '+<<PH0>> ಹೆಚ್ಚಿನ ಫೈಲ್‌ಗಳು';
+    return '+$count ಹೆಚ್ಚಿನ ಫೈಲ್‌ಗಳು';
   }
 }

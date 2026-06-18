@@ -130,7 +130,7 @@ class AppLocalizationsCs extends AppLocalizations {
 
   @override
   String verifyEmailCheckSpamHint(String email) {
-    return 'Pokud nedorazí: zkontrolujte Nevyžádanou poštu/Spam a Propagace, počkejte minutu, potvrďte, že <<PH0>> neobsahuje překlepy, a potom klepněte na Znovu odeslat.';
+    return 'Pokud nedorazí: zkontrolujte Nevyžádanou poštu/Spam a Propagace, počkejte minutu, potvrďte, že $email neobsahuje překlepy, a potom klepněte na Znovu odeslat.';
   }
 
   @override
@@ -297,7 +297,7 @@ class AppLocalizationsCs extends AppLocalizations {
 
   @override
   String upToTotal(String max) {
-    return 'Celkem až <<PH0>>';
+    return 'Celkem až $max';
   }
 
   @override
@@ -359,7 +359,7 @@ class AppLocalizationsCs extends AppLocalizations {
 
   @override
   String mbLeft(String amount) {
-    return 'Zbývá <<PH0>> MB';
+    return 'Zbývá $amount MB';
   }
 
   @override
@@ -484,7 +484,7 @@ class AppLocalizationsCs extends AppLocalizations {
 
   @override
   String transferLoadFailed(String error) {
-    return 'Nelze načíst přenos: <<PH0>>';
+    return 'Nelze načíst přenos: $error';
   }
 
   @override
@@ -533,7 +533,7 @@ class AppLocalizationsCs extends AppLocalizations {
 
   @override
   String storePricesPartialBody(int loaded, int total) {
-    return 'Načteno předplatné <<PH0>> z <<PH1>>.';
+    return 'Načteno předplatné $loaded z $total.';
   }
 
   @override
@@ -545,7 +545,7 @@ class AppLocalizationsCs extends AppLocalizations {
 
   @override
   String effectiveMonthlyPrice(String price) {
-    return '<<PH0>>/měsíc';
+    return '$price/měsíc';
   }
 
   @override
@@ -584,7 +584,7 @@ class AppLocalizationsCs extends AppLocalizations {
 
   @override
   String otpSentTo(String email) {
-    return 'Poslali jsme 6místný kód na\n<<PH0>>';
+    return 'Poslali jsme 6místný kód na\n$email';
   }
 
   @override
@@ -709,7 +709,7 @@ class AppLocalizationsCs extends AppLocalizations {
 
   @override
   String snackDownloadSaved(String filename) {
-    return '„<<PH0>>“ uloženo do složky Stažené soubory';
+    return '„$filename“ uloženo do složky Stažené soubory';
   }
 
   @override
@@ -876,42 +876,42 @@ class AppLocalizationsCs extends AppLocalizations {
 
   @override
   String transferIdLabel(String id) {
-    return 'ID: <<PH0>>';
+    return 'ID: $id';
   }
 
   @override
   String downloadMetaSummary(String count, String size) {
-    return 'Soubory: <<PH0>> · <<PH1>> bajtů';
+    return 'Soubory: $count · $size bajtů';
   }
 
   @override
   String todayAt(String time) {
-    return 'Dnes · <<PH0>>';
+    return 'Dnes · $time';
   }
 
   @override
   String yesterdayAt(String time) {
-    return 'Včera · <<PH0>>';
+    return 'Včera · $time';
   }
 
   @override
   String daysAgoAt(int days, String time) {
-    return '<<PH0>>d před · <<PH1>>';
+    return '${days}d před · $time';
   }
 
   @override
   String dateAt(String date, String time) {
-    return '<<PH0>> · <<PH1>>';
+    return '$date · $time';
   }
 
   @override
   String mbAmount(String amount) {
-    return '<<PH0>> MB';
+    return '$amount MB';
   }
 
   @override
   String uploadProgressSummary(String sent, String total, String remaining) {
-    return '<<PH0>> / <<PH1>> • <<PH2>> vlevo';
+    return '$sent / $total • $remaining vlevo';
   }
 
   @override
@@ -1013,6 +1013,6 @@ class AppLocalizationsCs extends AppLocalizations {
 
   @override
   String receiveMoreFiles(int count) {
-    return '+<<PH0>> další soubory';
+    return '+$count další soubory';
   }
 }

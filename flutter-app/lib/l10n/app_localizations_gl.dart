@@ -132,7 +132,7 @@ class AppLocalizationsGl extends AppLocalizations {
 
   @override
   String verifyEmailCheckSpamHint(String email) {
-    return 'Se non chega: comproba Correo lixo/Spam e Promocións, agarda un minuto, confirma que <<PH0>> non ten erros tipográficos e, a continuación, toca Reenviar.';
+    return 'Se non chega: comproba Correo lixo/Spam e Promocións, agarda un minuto, confirma que $email non ten erros tipográficos e, a continuación, toca Reenviar.';
   }
 
   @override
@@ -300,7 +300,7 @@ class AppLocalizationsGl extends AppLocalizations {
 
   @override
   String upToTotal(String max) {
-    return 'Ata <<PH0>> total';
+    return 'Ata $max total';
   }
 
   @override
@@ -362,7 +362,7 @@ class AppLocalizationsGl extends AppLocalizations {
 
   @override
   String mbLeft(String amount) {
-    return '<<PH0>> MB restantes';
+    return '$amount MB restantes';
   }
 
   @override
@@ -490,7 +490,7 @@ class AppLocalizationsGl extends AppLocalizations {
 
   @override
   String transferLoadFailed(String error) {
-    return 'Non se puido cargar a transferencia: <<PH0>>';
+    return 'Non se puido cargar a transferencia: $error';
   }
 
   @override
@@ -539,7 +539,7 @@ class AppLocalizationsGl extends AppLocalizations {
 
   @override
   String storePricesPartialBody(int loaded, int total) {
-    return '<<PH0>> dos produtos de subscrición <<PH1>> cargados.';
+    return '$loaded dos produtos de subscrición $total cargados.';
   }
 
   @override
@@ -551,7 +551,7 @@ class AppLocalizationsGl extends AppLocalizations {
 
   @override
   String effectiveMonthlyPrice(String price) {
-    return '<<PH0>>/mes';
+    return '$price/mes';
   }
 
   @override
@@ -591,7 +591,7 @@ class AppLocalizationsGl extends AppLocalizations {
 
   @override
   String otpSentTo(String email) {
-    return 'Enviamos un código de 6 díxitos a\n<<PH0>>';
+    return 'Enviamos un código de 6 díxitos a\n$email';
   }
 
   @override
@@ -720,7 +720,7 @@ class AppLocalizationsGl extends AppLocalizations {
 
   @override
   String snackDownloadSaved(String filename) {
-    return '\"<<PH0>>\" gardouse en Descargas';
+    return '\"$filename\" gardouse en Descargas';
   }
 
   @override
@@ -886,42 +886,42 @@ class AppLocalizationsGl extends AppLocalizations {
 
   @override
   String transferIdLabel(String id) {
-    return 'ID: <<PH0>>';
+    return 'ID: $id';
   }
 
   @override
   String downloadMetaSummary(String count, String size) {
-    return 'Ficheiros: <<PH0>> · <<PH1>> bytes';
+    return 'Ficheiros: $count · $size bytes';
   }
 
   @override
   String todayAt(String time) {
-    return 'Hoxe · <<PH0>>';
+    return 'Hoxe · $time';
   }
 
   @override
   String yesterdayAt(String time) {
-    return 'Onte · <<PH0>>';
+    return 'Onte · $time';
   }
 
   @override
   String daysAgoAt(int days, String time) {
-    return 'Hai <<PH0>>d · <<PH1>>';
+    return 'Hai ${days}d · $time';
   }
 
   @override
   String dateAt(String date, String time) {
-    return '<<PH0>> · <<PH1>>';
+    return '$date · $time';
   }
 
   @override
   String mbAmount(String amount) {
-    return '<<PH0>> MB';
+    return '$amount MB';
   }
 
   @override
   String uploadProgressSummary(String sent, String total, String remaining) {
-    return '<<PH0>> / <<PH1>> • <<PH2>> á esquerda';
+    return '$sent / $total • $remaining á esquerda';
   }
 
   @override
@@ -1023,6 +1023,6 @@ class AppLocalizationsGl extends AppLocalizations {
 
   @override
   String receiveMoreFiles(int count) {
-    return '+<<PH0>> máis ficheiros';
+    return '+$count máis ficheiros';
   }
 }

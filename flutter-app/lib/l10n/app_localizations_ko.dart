@@ -128,7 +128,7 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String verifyEmailCheckSpamHint(String email) {
-    return '코드가 도착하지 않는 경우: 정크/스팸 및 프로모션을 확인하고 잠시 기다린 후 <<PH0>>에 오타가 없는지 확인한 후 재전송을 탭하세요.';
+    return '코드가 도착하지 않는 경우: 정크/스팸 및 프로모션을 확인하고 잠시 기다린 후 $email에 오타가 없는지 확인한 후 재전송을 탭하세요.';
   }
 
   @override
@@ -293,7 +293,7 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String upToTotal(String max) {
-    return '최대 <<PH0>>개';
+    return '최대 $max개';
   }
 
   @override
@@ -354,7 +354,7 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String mbLeft(String amount) {
-    return '<<PH0>>MB 남음';
+    return '${amount}MB 남음';
   }
 
   @override
@@ -469,7 +469,7 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String transferLoadFailed(String error) {
-    return '이체를 로드할 수 없습니다: <<PH0>>';
+    return '이체를 로드할 수 없습니다: $error';
   }
 
   @override
@@ -516,7 +516,7 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String storePricesPartialBody(int loaded, int total) {
-    return '<<PH0>> of <<PH1>>개의 구독 제품이 로드되었습니다.';
+    return '$loaded of $total개의 구독 제품이 로드되었습니다.';
   }
 
   @override
@@ -528,7 +528,7 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String effectiveMonthlyPrice(String price) {
-    return '<<PH0>>/월';
+    return '$price/월';
   }
 
   @override
@@ -566,7 +566,7 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String otpSentTo(String email) {
-    return '다음으로 6자리 코드를 보냈습니다.\n<<PH0>>';
+    return '다음으로 6자리 코드를 보냈습니다.\n$email';
   }
 
   @override
@@ -683,7 +683,7 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String snackDownloadSaved(String filename) {
-    return '\"<<PH0>>\"가 다운로드에 저장됨';
+    return '\"$filename\"가 다운로드에 저장됨';
   }
 
   @override
@@ -847,42 +847,42 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String transferIdLabel(String id) {
-    return 'ID: <<PH0>>';
+    return 'ID: $id';
   }
 
   @override
   String downloadMetaSummary(String count, String size) {
-    return '파일: <<PH0>> · <<PH1>> bytes';
+    return '파일: $count · $size bytes';
   }
 
   @override
   String todayAt(String time) {
-    return '오늘 · <<PH0>>';
+    return '오늘 · $time';
   }
 
   @override
   String yesterdayAt(String time) {
-    return '어제 · <<PH0>>';
+    return '어제 · $time';
   }
 
   @override
   String daysAgoAt(int days, String time) {
-    return '<<PH0>>일 전 · <<PH1>>';
+    return '$days일 전 · $time';
   }
 
   @override
   String dateAt(String date, String time) {
-    return '<<PH0>> · <<PH1>>';
+    return '$date · $time';
   }
 
   @override
   String mbAmount(String amount) {
-    return '<<PH0>> MB';
+    return '$amount MB';
   }
 
   @override
   String uploadProgressSummary(String sent, String total, String remaining) {
-    return '<<PH0>> / <<PH1>> • <<PH2>> 왼쪽';
+    return '$sent / $total • $remaining 왼쪽';
   }
 
   @override
@@ -977,6 +977,6 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String receiveMoreFiles(int count) {
-    return '+<<PH0>>개 파일 더보기';
+    return '+$count개 파일 더보기';
   }
 }

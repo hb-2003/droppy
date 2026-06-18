@@ -107,7 +107,7 @@
       }
     }
   },
-  "upToTotal": "Jusqu'à <<PH0>> total",
+  "upToTotal": "Jusqu'à {max} total",
   "removeAll": "Supprimer tout",
   "addFiles": "Ajouter des fichiers",
   "adding": "Ajout…",
@@ -138,7 +138,7 @@
       }
     }
   },
-  "mbLeft": "<<PH0>> Mo restants",
+  "mbLeft": "{amount} Mo restants",
   "fillField": "Merci de remplir ce champ.",
   "enterValidEmail": "Entrez un email valide.",
   "message": "Message",
@@ -182,7 +182,7 @@
       }
     }
   },
-  "transferLoadFailed": "Impossible de charger le transfert : <<PH0>>",
+  "transferLoadFailed": "Impossible de charger le transfert : {error}",
   "passwordProtected": "Protégé par mot de passe",
   "enterPassword": "Entrez le mot de passe",
   "unlock": "Ouvrir",
@@ -207,7 +207,7 @@
       }
     }
   },
-  "storePricesPartialBody": "<<PH0>> des produits d'abonnement <<PH1>> chargés.",
+  "storePricesPartialBody": "{loaded} des produits d'abonnement {total} chargés.",
   "storeSetupHint": "Testez sur un vrai iPhone (pas sur un simulateur), utilisez un identifiant Apple Sandbox et assurez-vous que les 6 abonnements sont créés sous l'ID de bundle de cette application dans App Store Connect avec la tarification définie.",
   "priceUnavailable": "—",
   "@effectiveMonthlyPrice": {
@@ -217,7 +217,7 @@
       }
     }
   },
-  "effectiveMonthlyPrice": "<<PH0>>/mois",
+  "effectiveMonthlyPrice": "{price}/mois",
   "freeVersionAds": "Vous utilisez actuellement notre version gratuite avec des publicités",
   "restorePurchases": "Restaurer les achats",
   "plansContinue": "Continuer",
@@ -236,7 +236,7 @@
       }
     }
   },
-  "otpSentTo": "Nous avons envoyé un code à 6 chiffres à\n<<PH0>>",
+  "otpSentTo": "Nous avons envoyé un code à 6 chiffres à\n{email}",
   "verifyAndSignIn": "Vérifier et se connecter",
   "didntReceiveCode": "Vous ne l'avez pas reçu ?",
   "tryAgain": "Essayer à nouveau",
@@ -281,7 +281,7 @@
       }
     }
   },
-  "snackDownloadSaved": "\"<<PH0>>\" enregistré dans les téléchargements",
+  "snackDownloadSaved": "\"{filename}\" enregistré dans les téléchargements",
   "snackDownloadFailed": "Le téléchargement a échoué",
   "snackSaved": "Enregistré",
   "snackServerUrlUpdated": "URL du serveur mise à jour. Redémarrez l'application pour postuler.",
@@ -346,7 +346,7 @@
       }
     }
   },
-  "transferIdLabel": "Identifiant : <<PH0>>",
+  "transferIdLabel": "Identifiant : {id}",
   "@downloadMetaSummary": {
     "placeholders": {
       "count": {
@@ -357,7 +357,7 @@
       }
     }
   },
-  "downloadMetaSummary": "Fichiers : <<PH0>> · <<PH1>> octets",
+  "downloadMetaSummary": "Fichiers : {count} · {size} octets",
   "@todayAt": {
     "placeholders": {
       "time": {
@@ -365,7 +365,7 @@
       }
     }
   },
-  "todayAt": "Aujourd'hui · <<PH0>>",
+  "todayAt": "Aujourd'hui · {time}",
   "@yesterdayAt": {
     "placeholders": {
       "time": {
@@ -373,7 +373,7 @@
       }
     }
   },
-  "yesterdayAt": "Hier · <<PH0>>",
+  "yesterdayAt": "Hier · {time}",
   "@daysAgoAt": {
     "placeholders": {
       "days": {
@@ -384,7 +384,7 @@
       }
     }
   },
-  "daysAgoAt": "Il y a <<PH0>>j · <<PH1>>",
+  "daysAgoAt": "Il y a {days}j · {time}",
   "@dateAt": {
     "placeholders": {
       "date": {
@@ -395,7 +395,7 @@
       }
     }
   },
-  "dateAt": "<<PH0>> · <<PH1>>",
+  "dateAt": "{date} · {time}",
   "@mbAmount": {
     "placeholders": {
       "amount": {
@@ -403,7 +403,7 @@
       }
     }
   },
-  "mbAmount": "<<PH0>> Mo",
+  "mbAmount": "{amount} Mo",
   "@uploadProgressSummary": {
     "placeholders": {
       "sent": {
@@ -417,7 +417,7 @@
       }
     }
   },
-  "uploadProgressSummary": "<<PH0>> / <<PH1>> • <<PH2>> gauche",
+  "uploadProgressSummary": "{sent} / {total} • {remaining} gauche",
   "loadingShort": "Chargement…",
   "colorPaletteTitle": "Palette de couleurs",
   "colorPaletteSectionBackgrounds": "Arrière-plans (échelle d'encre)",
@@ -462,5 +462,5 @@
       }
     }
   },
-  "receiveMoreFiles": "+<<PH0>> plus de fichiers"
+  "receiveMoreFiles": "+{count} plus de fichiers"
 }

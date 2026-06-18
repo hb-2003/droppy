@@ -132,7 +132,7 @@ class AppLocalizationsEu extends AppLocalizations {
 
   @override
   String verifyEmailCheckSpamHint(String email) {
-    return 'Ez bada iristen: egiaztatu Zabor/Spam eta Promozioak, itxaron minutu bat, berretsi <<PH0>>k ez duela akatsik eta, ondoren, sakatu Bidali berriro.';
+    return 'Ez bada iristen: egiaztatu Zabor/Spam eta Promozioak, itxaron minutu bat, berretsi ${email}k ez duela akatsik eta, ondoren, sakatu Bidali berriro.';
   }
 
   @override
@@ -300,7 +300,7 @@ class AppLocalizationsEu extends AppLocalizations {
 
   @override
   String upToTotal(String max) {
-    return 'Guztira <<PH0>> arte';
+    return 'Guztira $max arte';
   }
 
   @override
@@ -362,7 +362,7 @@ class AppLocalizationsEu extends AppLocalizations {
 
   @override
   String mbLeft(String amount) {
-    return '<<PH0>> MB geratzen dira';
+    return '$amount MB geratzen dira';
   }
 
   @override
@@ -488,7 +488,7 @@ class AppLocalizationsEu extends AppLocalizations {
 
   @override
   String transferLoadFailed(String error) {
-    return 'Ezin izan da transferentzia kargatu: <<PH0>>';
+    return 'Ezin izan da transferentzia kargatu: $error';
   }
 
   @override
@@ -537,7 +537,7 @@ class AppLocalizationsEu extends AppLocalizations {
 
   @override
   String storePricesPartialBody(int loaded, int total) {
-    return 'Harpidetza-produktuen <<PH0>> kargatu da.';
+    return 'Harpidetza-produktuen $loaded kargatu da.';
   }
 
   @override
@@ -549,7 +549,7 @@ class AppLocalizationsEu extends AppLocalizations {
 
   @override
   String effectiveMonthlyPrice(String price) {
-    return '<<PH0>>/hilabete';
+    return '$price/hilabete';
   }
 
   @override
@@ -588,7 +588,7 @@ class AppLocalizationsEu extends AppLocalizations {
 
   @override
   String otpSentTo(String email) {
-    return '6 digituko kodea bidali genion\n<<PH0>>';
+    return '6 digituko kodea bidali genion\n$email';
   }
 
   @override
@@ -717,7 +717,7 @@ class AppLocalizationsEu extends AppLocalizations {
 
   @override
   String snackDownloadSaved(String filename) {
-    return '\"<<PH0>>\" Deskargak atalean gorde da';
+    return '\"$filename\" Deskargak atalean gorde da';
   }
 
   @override
@@ -884,42 +884,42 @@ class AppLocalizationsEu extends AppLocalizations {
 
   @override
   String transferIdLabel(String id) {
-    return 'ID: <<PH0>>';
+    return 'ID: $id';
   }
 
   @override
   String downloadMetaSummary(String count, String size) {
-    return 'Fitxategiak: <<PH0>> · <<PH1>> byte';
+    return 'Fitxategiak: $count · $size byte';
   }
 
   @override
   String todayAt(String time) {
-    return 'Gaur · <<PH0>>';
+    return 'Gaur · $time';
   }
 
   @override
   String yesterdayAt(String time) {
-    return 'Atzo · <<PH0>>';
+    return 'Atzo · $time';
   }
 
   @override
   String daysAgoAt(int days, String time) {
-    return 'Duela <<PH0>>d · <<PH1>>';
+    return 'Duela ${days}d · $time';
   }
 
   @override
   String dateAt(String date, String time) {
-    return '<<PH0>> · <<PH1>>';
+    return '$date · $time';
   }
 
   @override
   String mbAmount(String amount) {
-    return '<<PH0>> MB';
+    return '$amount MB';
   }
 
   @override
   String uploadProgressSummary(String sent, String total, String remaining) {
-    return '<<PH0>> / <<PH1>> • <<PH2>> ezkerrean';
+    return '$sent / $total • $remaining ezkerrean';
   }
 
   @override
@@ -1020,6 +1020,6 @@ class AppLocalizationsEu extends AppLocalizations {
 
   @override
   String receiveMoreFiles(int count) {
-    return '+<<PH0>> fitxategi gehiago';
+    return '+$count fitxategi gehiago';
   }
 }

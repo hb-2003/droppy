@@ -132,7 +132,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String verifyEmailCheckSpamHint(String email) {
-    return 'Jika tidak sampai: periksa Sampah/Spam dan Promosi, tunggu sebentar, konfirmasi <<PH0>> tidak ada kesalahan ketik, lalu ketuk Kirim Ulang.';
+    return 'Jika tidak sampai: periksa Sampah/Spam dan Promosi, tunggu sebentar, konfirmasi $email tidak ada kesalahan ketik, lalu ketuk Kirim Ulang.';
   }
 
   @override
@@ -299,7 +299,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String upToTotal(String max) {
-    return 'Hingga <<PH0>> total';
+    return 'Hingga $max total';
   }
 
   @override
@@ -361,7 +361,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String mbLeft(String amount) {
-    return '<<PH0>> MB tersisa';
+    return '$amount MB tersisa';
   }
 
   @override
@@ -486,7 +486,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String transferLoadFailed(String error) {
-    return 'Tidak dapat memuat transfer: <<PH0>>';
+    return 'Tidak dapat memuat transfer: $error';
   }
 
   @override
@@ -535,7 +535,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String storePricesPartialBody(int loaded, int total) {
-    return '<<PH0>> dari <<PH1>> produk langganan dimuat.';
+    return '$loaded dari $total produk langganan dimuat.';
   }
 
   @override
@@ -547,7 +547,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String effectiveMonthlyPrice(String price) {
-    return '<<PH0>>/bulan';
+    return '$price/bulan';
   }
 
   @override
@@ -586,7 +586,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String otpSentTo(String email) {
-    return 'Kami mengirimkan kode 6 digit ke\n<<PH0>>';
+    return 'Kami mengirimkan kode 6 digit ke\n$email';
   }
 
   @override
@@ -710,7 +710,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String snackDownloadSaved(String filename) {
-    return '\"<<PH0>>\" disimpan ke Unduhan';
+    return '\"$filename\" disimpan ke Unduhan';
   }
 
   @override
@@ -876,42 +876,42 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String transferIdLabel(String id) {
-    return 'ID: <<PH0>>';
+    return 'ID: $id';
   }
 
   @override
   String downloadMetaSummary(String count, String size) {
-    return 'File: <<PH0>> · <<PH1>> bytes';
+    return 'File: $count · $size bytes';
   }
 
   @override
   String todayAt(String time) {
-    return 'Hari ini · <<PH0>>';
+    return 'Hari ini · $time';
   }
 
   @override
   String yesterdayAt(String time) {
-    return 'Kemarin · <<PH0>>';
+    return 'Kemarin · $time';
   }
 
   @override
   String daysAgoAt(int days, String time) {
-    return '<<PH0>>d lalu · <<PH1>>';
+    return '${days}d lalu · $time';
   }
 
   @override
   String dateAt(String date, String time) {
-    return '<<PH0>> · <<PH1>>';
+    return '$date · $time';
   }
 
   @override
   String mbAmount(String amount) {
-    return '<<PH0>> MB';
+    return '$amount MB';
   }
 
   @override
   String uploadProgressSummary(String sent, String total, String remaining) {
-    return '<<PH0>> / <<PH1>> • <<PH2>> kiri';
+    return '$sent / $total • $remaining kiri';
   }
 
   @override
@@ -1012,6 +1012,6 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String receiveMoreFiles(int count) {
-    return '+<<PH0>> file lainnya';
+    return '+$count file lainnya';
   }
 }

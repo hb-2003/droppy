@@ -294,7 +294,7 @@ class AppLocalizationsHe extends AppLocalizations {
 
   @override
   String upToTotal(String max) {
-    return 'עד <<PH0>> סך הכל';
+    return 'עד $max סך הכל';
   }
 
   @override
@@ -356,7 +356,7 @@ class AppLocalizationsHe extends AppLocalizations {
 
   @override
   String mbLeft(String amount) {
-    return '<<PH0>> נותרו MB';
+    return '$amount נותרו MB';
   }
 
   @override
@@ -472,7 +472,7 @@ class AppLocalizationsHe extends AppLocalizations {
 
   @override
   String transferLoadFailed(String error) {
-    return 'לא ניתן היה לטעון את ההעברה: <<PH0>>';
+    return 'לא ניתן היה לטעון את ההעברה: $error';
   }
 
   @override
@@ -519,7 +519,7 @@ class AppLocalizationsHe extends AppLocalizations {
 
   @override
   String storePricesPartialBody(int loaded, int total) {
-    return '<<PH0>> מתוך <<PH1>> מוצרי מנוי נטענו.';
+    return '$loaded מתוך $total מוצרי מנוי נטענו.';
   }
 
   @override
@@ -531,7 +531,7 @@ class AppLocalizationsHe extends AppLocalizations {
 
   @override
   String effectiveMonthlyPrice(String price) {
-    return '<<PH0>>/חודש';
+    return '$price/חודש';
   }
 
   @override
@@ -569,7 +569,7 @@ class AppLocalizationsHe extends AppLocalizations {
 
   @override
   String otpSentTo(String email) {
-    return 'שלחנו קוד בן 6 ספרות ל\n<<PH0>>';
+    return 'שלחנו קוד בן 6 ספרות ל\n$email';
   }
 
   @override
@@ -691,7 +691,7 @@ class AppLocalizationsHe extends AppLocalizations {
 
   @override
   String snackDownloadSaved(String filename) {
-    return '\"<<PH0>>\" נשמר בהורדות';
+    return '\"$filename\" נשמר בהורדות';
   }
 
   @override
@@ -857,42 +857,42 @@ class AppLocalizationsHe extends AppLocalizations {
 
   @override
   String transferIdLabel(String id) {
-    return 'מזהה: <<PH0>>';
+    return 'מזהה: $id';
   }
 
   @override
   String downloadMetaSummary(String count, String size) {
-    return 'קבצים: <<PH0>> · <<PH1>> בתים';
+    return 'קבצים: $count · $size בתים';
   }
 
   @override
   String todayAt(String time) {
-    return 'היום · <<PH0>>';
+    return 'היום · $time';
   }
 
   @override
   String yesterdayAt(String time) {
-    return 'אתמול · <<PH0>>';
+    return 'אתמול · $time';
   }
 
   @override
   String daysAgoAt(int days, String time) {
-    return '<<PH0>>לפני יום · <<PH1>>';
+    return '$daysלפני יום · $time';
   }
 
   @override
   String dateAt(String date, String time) {
-    return '<<PH0>> · <<PH1>>';
+    return '$date · $time';
   }
 
   @override
   String mbAmount(String amount) {
-    return '<<PH0>> MB';
+    return '$amount MB';
   }
 
   @override
   String uploadProgressSummary(String sent, String total, String remaining) {
-    return '<<PH0>> / <<PH1>> • <<PH2>> שמאל';
+    return '$sent / $total • $remaining שמאל';
   }
 
   @override
@@ -991,6 +991,6 @@ class AppLocalizationsHe extends AppLocalizations {
 
   @override
   String receiveMoreFiles(int count) {
-    return '+<<PH0>> קבצים נוספים';
+    return '+$count קבצים נוספים';
   }
 }

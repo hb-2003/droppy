@@ -129,7 +129,7 @@ class AppLocalizationsLo extends AppLocalizations {
 
   @override
   String verifyEmailCheckSpamHint(String email) {
-    return 'ຖ້າມັນບໍ່ມາຮອດ: ກວດເບິ່ງ Junk/Spam ແລະ Promotions, ລໍຖ້ານາທີ, ຢືນຢັນວ່າ <<PH0>> ບໍ່ມີການພິມຜິດ, ຈາກນັ້ນແຕະ Resend.';
+    return 'ຖ້າມັນບໍ່ມາຮອດ: ກວດເບິ່ງ Junk/Spam ແລະ Promotions, ລໍຖ້ານາທີ, ຢືນຢັນວ່າ $email ບໍ່ມີການພິມຜິດ, ຈາກນັ້ນແຕະ Resend.';
   }
 
   @override
@@ -296,7 +296,7 @@ class AppLocalizationsLo extends AppLocalizations {
 
   @override
   String upToTotal(String max) {
-    return 'ສູງສຸດ <<PH0>> ທັງໝົດ';
+    return 'ສູງສຸດ $max ທັງໝົດ';
   }
 
   @override
@@ -358,7 +358,7 @@ class AppLocalizationsLo extends AppLocalizations {
 
   @override
   String mbLeft(String amount) {
-    return '<<PH0>> MB ຍັງເຫຼືອ';
+    return '$amount MB ຍັງເຫຼືອ';
   }
 
   @override
@@ -482,7 +482,7 @@ class AppLocalizationsLo extends AppLocalizations {
 
   @override
   String transferLoadFailed(String error) {
-    return 'ບໍ່ສາມາດໂຫຼດການໂອນຍ້າຍໄດ້: <<PH0>>';
+    return 'ບໍ່ສາມາດໂຫຼດການໂອນຍ້າຍໄດ້: $error';
   }
 
   @override
@@ -529,7 +529,7 @@ class AppLocalizationsLo extends AppLocalizations {
 
   @override
   String storePricesPartialBody(int loaded, int total) {
-    return '<<PH0>> ຂອງ <<PH1>> ຜະລິດຕະພັນການສະໝັກໃຊ້ຖືກໂຫຼດແລ້ວ.';
+    return '$loaded ຂອງ $total ຜະລິດຕະພັນການສະໝັກໃຊ້ຖືກໂຫຼດແລ້ວ.';
   }
 
   @override
@@ -541,7 +541,7 @@ class AppLocalizationsLo extends AppLocalizations {
 
   @override
   String effectiveMonthlyPrice(String price) {
-    return '<<PH0>>/ເດືອນ';
+    return '$price/ເດືອນ';
   }
 
   @override
@@ -580,7 +580,7 @@ class AppLocalizationsLo extends AppLocalizations {
 
   @override
   String otpSentTo(String email) {
-    return 'ພວກເຮົາໄດ້ສົ່ງລະຫັດ 6 ຕົວເລກໄປໃຫ້\n<<PH0>>';
+    return 'ພວກເຮົາໄດ້ສົ່ງລະຫັດ 6 ຕົວເລກໄປໃຫ້\n$email';
   }
 
   @override
@@ -703,7 +703,7 @@ class AppLocalizationsLo extends AppLocalizations {
 
   @override
   String snackDownloadSaved(String filename) {
-    return '\"<<PH0>>\" ຖືກບັນທຶກໃສ່ການດາວໂຫຼດແລ້ວ';
+    return '\"$filename\" ຖືກບັນທຶກໃສ່ການດາວໂຫຼດແລ້ວ';
   }
 
   @override
@@ -869,42 +869,42 @@ class AppLocalizationsLo extends AppLocalizations {
 
   @override
   String transferIdLabel(String id) {
-    return 'ID: <<PH0>>';
+    return 'ID: $id';
   }
 
   @override
   String downloadMetaSummary(String count, String size) {
-    return 'ໄຟລ໌: <<PH0>> · <<PH1>> bytes';
+    return 'ໄຟລ໌: $count · $size bytes';
   }
 
   @override
   String todayAt(String time) {
-    return 'ມື້ນີ້ · <<PH0>>';
+    return 'ມື້ນີ້ · $time';
   }
 
   @override
   String yesterdayAt(String time) {
-    return 'ມື້ວານນີ້ · <<PH0>>';
+    return 'ມື້ວານນີ້ · $time';
   }
 
   @override
   String daysAgoAt(int days, String time) {
-    return '<<PH0>>ມື້ກ່ອນ · <<PH1>>';
+    return '$daysມື້ກ່ອນ · $time';
   }
 
   @override
   String dateAt(String date, String time) {
-    return '<<PH0>> · <<PH1>>';
+    return '$date · $time';
   }
 
   @override
   String mbAmount(String amount) {
-    return '<<PH0>> MB';
+    return '$amount MB';
   }
 
   @override
   String uploadProgressSummary(String sent, String total, String remaining) {
-    return '<<PH0>> / <<PH1>> • <<PH2>> ຊ້າຍ';
+    return '$sent / $total • $remaining ຊ້າຍ';
   }
 
   @override
@@ -1005,6 +1005,6 @@ class AppLocalizationsLo extends AppLocalizations {
 
   @override
   String receiveMoreFiles(int count) {
-    return '+<<PH0>> ໄຟລ໌ເພີ່ມເຕີມ';
+    return '+$count ໄຟລ໌ເພີ່ມເຕີມ';
   }
 }

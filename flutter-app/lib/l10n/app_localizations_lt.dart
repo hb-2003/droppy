@@ -131,7 +131,7 @@ class AppLocalizationsLt extends AppLocalizations {
 
   @override
   String verifyEmailCheckSpamHint(String email) {
-    return 'Jei jis negaunamas: pažymėkite Šlamštas / Šlamštas ir Reklamos, palaukite minutę, patvirtinkite, kad <<PH0>> nėra rašybos klaidų, tada bakstelėkite Siųsti iš naujo.';
+    return 'Jei jis negaunamas: pažymėkite Šlamštas / Šlamštas ir Reklamos, palaukite minutę, patvirtinkite, kad $email nėra rašybos klaidų, tada bakstelėkite Siųsti iš naujo.';
   }
 
   @override
@@ -299,7 +299,7 @@ class AppLocalizationsLt extends AppLocalizations {
 
   @override
   String upToTotal(String max) {
-    return 'Iš viso iki <<PH0>>';
+    return 'Iš viso iki $max';
   }
 
   @override
@@ -361,7 +361,7 @@ class AppLocalizationsLt extends AppLocalizations {
 
   @override
   String mbLeft(String amount) {
-    return 'Liko <<PH0>> MB';
+    return 'Liko $amount MB';
   }
 
   @override
@@ -487,7 +487,7 @@ class AppLocalizationsLt extends AppLocalizations {
 
   @override
   String transferLoadFailed(String error) {
-    return 'Nepavyko įkelti perdavimo: <<PH0>>';
+    return 'Nepavyko įkelti perdavimo: $error';
   }
 
   @override
@@ -536,7 +536,7 @@ class AppLocalizationsLt extends AppLocalizations {
 
   @override
   String storePricesPartialBody(int loaded, int total) {
-    return 'Įkelta <<PH0>> iš <<PH1>> prenumeratos produktų.';
+    return 'Įkelta $loaded iš $total prenumeratos produktų.';
   }
 
   @override
@@ -548,7 +548,7 @@ class AppLocalizationsLt extends AppLocalizations {
 
   @override
   String effectiveMonthlyPrice(String price) {
-    return '<<PH0>>/mėn';
+    return '$price/mėn';
   }
 
   @override
@@ -588,7 +588,7 @@ class AppLocalizationsLt extends AppLocalizations {
 
   @override
   String otpSentTo(String email) {
-    return 'Išsiuntėme 6 skaitmenų kodą\n<<PH0>>';
+    return 'Išsiuntėme 6 skaitmenų kodą\n$email';
   }
 
   @override
@@ -713,7 +713,7 @@ class AppLocalizationsLt extends AppLocalizations {
 
   @override
   String snackDownloadSaved(String filename) {
-    return '„<<PH0>>“ išsaugotas aplanke „Atsisiuntimai“.';
+    return '„$filename“ išsaugotas aplanke „Atsisiuntimai“.';
   }
 
   @override
@@ -879,42 +879,42 @@ class AppLocalizationsLt extends AppLocalizations {
 
   @override
   String transferIdLabel(String id) {
-    return 'ID: <<PH0>>';
+    return 'ID: $id';
   }
 
   @override
   String downloadMetaSummary(String count, String size) {
-    return 'Failai: <<PH0>> · <<PH1>> baitai';
+    return 'Failai: $count · $size baitai';
   }
 
   @override
   String todayAt(String time) {
-    return 'Šiandien · <<PH0>>';
+    return 'Šiandien · $time';
   }
 
   @override
   String yesterdayAt(String time) {
-    return 'Vakar · <<PH0>>';
+    return 'Vakar · $time';
   }
 
   @override
   String daysAgoAt(int days, String time) {
-    return 'Prieš <<PH0>>d · <<PH1>>';
+    return 'Prieš ${days}d · $time';
   }
 
   @override
   String dateAt(String date, String time) {
-    return '<<PH0>> · <<PH1>>';
+    return '$date · $time';
   }
 
   @override
   String mbAmount(String amount) {
-    return '<<PH0>> MB';
+    return '$amount MB';
   }
 
   @override
   String uploadProgressSummary(String sent, String total, String remaining) {
-    return '<<PH0>> / <<PH1>> • <<PH2>> liko';
+    return '$sent / $total • $remaining liko';
   }
 
   @override
@@ -1016,6 +1016,6 @@ class AppLocalizationsLt extends AppLocalizations {
 
   @override
   String receiveMoreFiles(int count) {
-    return '+<<PH0>> daugiau failų';
+    return '+$count daugiau failų';
   }
 }

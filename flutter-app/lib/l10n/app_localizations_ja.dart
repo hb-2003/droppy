@@ -293,7 +293,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String upToTotal(String max) {
-    return '合計<<PH0>>まで';
+    return '合計$maxまで';
   }
 
   @override
@@ -354,7 +354,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String mbLeft(String amount) {
-    return '<<PH0>> 残り MB';
+    return '$amount 残り MB';
   }
 
   @override
@@ -467,7 +467,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String transferLoadFailed(String error) {
-    return '転送を読み込めませんでした: <<PH0>>';
+    return '転送を読み込めませんでした: $error';
   }
 
   @override
@@ -514,7 +514,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String storePricesPartialBody(int loaded, int total) {
-    return '<<PH0>>/<<PH1>> サブスクリプション製品が読み込まれました。';
+    return '$loaded/$total サブスクリプション製品が読み込まれました。';
   }
 
   @override
@@ -526,7 +526,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String effectiveMonthlyPrice(String price) {
-    return '<<PH0>>/月';
+    return '$price/月';
   }
 
   @override
@@ -564,7 +564,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String otpSentTo(String email) {
-    return '6桁のコードを送信しました\n<<PH0>>';
+    return '6桁のコードを送信しました\n$email';
   }
 
   @override
@@ -682,7 +682,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String snackDownloadSaved(String filename) {
-    return '「<<PH0>>」がダウンロードに保存されました';
+    return '「$filename」がダウンロードに保存されました';
   }
 
   @override
@@ -846,27 +846,27 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String transferIdLabel(String id) {
-    return 'ID: <<PH0>>';
+    return 'ID: $id';
   }
 
   @override
   String downloadMetaSummary(String count, String size) {
-    return 'ファイル: <<PH0>> · <<PH1>> バイト';
+    return 'ファイル: $count · $size バイト';
   }
 
   @override
   String todayAt(String time) {
-    return '今日 · <<PH0>>';
+    return '今日 · $time';
   }
 
   @override
   String yesterdayAt(String time) {
-    return '昨日 · <<PH0>>';
+    return '昨日 · $time';
   }
 
   @override
   String daysAgoAt(int days, String time) {
-    return '<<PH0>>日前 · 《PH3》';
+    return '$days日前 · 《PH3》';
   }
 
   @override
@@ -975,6 +975,6 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String receiveMoreFiles(int count) {
-    return '+<<PH0>> その他のファイル';
+    return '+$count その他のファイル';
   }
 }

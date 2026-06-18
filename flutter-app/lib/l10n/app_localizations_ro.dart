@@ -131,7 +131,7 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String verifyEmailCheckSpamHint(String email) {
-    return 'Dacă nu ajunge: verificați Junk/Spam și Promoții, așteptați un minut, confirmați că <<PH0>> nu are greșeli de scriere, apoi atingeți Retrimiteți.';
+    return 'Dacă nu ajunge: verificați Junk/Spam și Promoții, așteptați un minut, confirmați că $email nu are greșeli de scriere, apoi atingeți Retrimiteți.';
   }
 
   @override
@@ -299,7 +299,7 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String upToTotal(String max) {
-    return 'Până la <<PH0>> total';
+    return 'Până la $max total';
   }
 
   @override
@@ -362,7 +362,7 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String mbLeft(String amount) {
-    return '<<PH0>> MB rămas';
+    return '$amount MB rămas';
   }
 
   @override
@@ -489,7 +489,7 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String transferLoadFailed(String error) {
-    return 'Transferul nu a putut fi încărcat: <<PH0>>';
+    return 'Transferul nu a putut fi încărcat: $error';
   }
 
   @override
@@ -538,7 +538,7 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String storePricesPartialBody(int loaded, int total) {
-    return '<<PH0>> din produsele cu abonament <<PH1>> încărcate.';
+    return '$loaded din produsele cu abonament $total încărcate.';
   }
 
   @override
@@ -550,7 +550,7 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String effectiveMonthlyPrice(String price) {
-    return '<<PH0>>/lună';
+    return '$price/lună';
   }
 
   @override
@@ -589,7 +589,7 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String otpSentTo(String email) {
-    return 'Am trimis un cod din 6 cifre către\n<<PH0>>';
+    return 'Am trimis un cod din 6 cifre către\n$email';
   }
 
   @override
@@ -718,7 +718,7 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String snackDownloadSaved(String filename) {
-    return '„<<PH0>>” a fost salvat în Descărcări';
+    return '„$filename” a fost salvat în Descărcări';
   }
 
   @override
@@ -885,42 +885,42 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String transferIdLabel(String id) {
-    return 'ID: <<PH0>>';
+    return 'ID: $id';
   }
 
   @override
   String downloadMetaSummary(String count, String size) {
-    return 'Fișiere: <<PH0>> · <<PH1>> octeți';
+    return 'Fișiere: $count · $size octeți';
   }
 
   @override
   String todayAt(String time) {
-    return 'Astăzi · <<PH0>>';
+    return 'Astăzi · $time';
   }
 
   @override
   String yesterdayAt(String time) {
-    return 'Ieri · <<PH0>>';
+    return 'Ieri · $time';
   }
 
   @override
   String daysAgoAt(int days, String time) {
-    return '<<PH0>> cu zi în urmă · <<PH1>>';
+    return '$days cu zi în urmă · $time';
   }
 
   @override
   String dateAt(String date, String time) {
-    return '<<PH0>> · <<PH1>>';
+    return '$date · $time';
   }
 
   @override
   String mbAmount(String amount) {
-    return '<<PH0>> MB';
+    return '$amount MB';
   }
 
   @override
   String uploadProgressSummary(String sent, String total, String remaining) {
-    return '<<PH0>> / <<PH1>> • <<PH2>> stânga';
+    return '$sent / $total • $remaining stânga';
   }
 
   @override
@@ -1021,6 +1021,6 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String receiveMoreFiles(int count) {
-    return '+<<PH0>> mai multe fișiere';
+    return '+$count mai multe fișiere';
   }
 }

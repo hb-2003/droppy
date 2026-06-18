@@ -130,7 +130,7 @@ class AppLocalizationsTe extends AppLocalizations {
 
   @override
   String verifyEmailCheckSpamHint(String email) {
-    return 'అది రాకపోతే: జంక్/స్పామ్ మరియు ప్రమోషన్‌లను తనిఖీ చేయండి, ఒక నిమిషం వేచి ఉండండి, <<PH0>> అక్షరదోషాలు లేవని నిర్ధారించి, ఆపై మళ్లీ పంపు నొక్కండి.';
+    return 'అది రాకపోతే: జంక్/స్పామ్ మరియు ప్రమోషన్‌లను తనిఖీ చేయండి, ఒక నిమిషం వేచి ఉండండి, $email అక్షరదోషాలు లేవని నిర్ధారించి, ఆపై మళ్లీ పంపు నొక్కండి.';
   }
 
   @override
@@ -298,7 +298,7 @@ class AppLocalizationsTe extends AppLocalizations {
 
   @override
   String upToTotal(String max) {
-    return 'మొత్తం <<PH0>> వరకు';
+    return 'మొత్తం $max వరకు';
   }
 
   @override
@@ -360,7 +360,7 @@ class AppLocalizationsTe extends AppLocalizations {
 
   @override
   String mbLeft(String amount) {
-    return '<<PH0>> MB మిగిలి ఉంది';
+    return '$amount MB మిగిలి ఉంది';
   }
 
   @override
@@ -486,7 +486,7 @@ class AppLocalizationsTe extends AppLocalizations {
 
   @override
   String transferLoadFailed(String error) {
-    return 'బదిలీని లోడ్ చేయడం సాధ్యపడలేదు: <<PH0>>';
+    return 'బదిలీని లోడ్ చేయడం సాధ్యపడలేదు: $error';
   }
 
   @override
@@ -535,7 +535,7 @@ class AppLocalizationsTe extends AppLocalizations {
 
   @override
   String storePricesPartialBody(int loaded, int total) {
-    return '<<PH1>> యొక్క <<PH0>> సబ్‌స్క్రిప్షన్ ఉత్పత్తులు లోడ్ చేయబడ్డాయి.';
+    return '$total యొక్క $loaded సబ్‌స్క్రిప్షన్ ఉత్పత్తులు లోడ్ చేయబడ్డాయి.';
   }
 
   @override
@@ -547,7 +547,7 @@ class AppLocalizationsTe extends AppLocalizations {
 
   @override
   String effectiveMonthlyPrice(String price) {
-    return '<<PH0>>/నెల';
+    return '$price/నెల';
   }
 
   @override
@@ -586,7 +586,7 @@ class AppLocalizationsTe extends AppLocalizations {
 
   @override
   String otpSentTo(String email) {
-    return 'మేము 6 అంకెల కోడ్‌ని పంపాము\n<<PH0>>';
+    return 'మేము 6 అంకెల కోడ్‌ని పంపాము\n$email';
   }
 
   @override
@@ -715,7 +715,7 @@ class AppLocalizationsTe extends AppLocalizations {
 
   @override
   String snackDownloadSaved(String filename) {
-    return '\"<<PH0>>\" డౌన్‌లోడ్‌లకు సేవ్ చేయబడింది';
+    return '\"$filename\" డౌన్‌లోడ్‌లకు సేవ్ చేయబడింది';
   }
 
   @override
@@ -883,42 +883,42 @@ class AppLocalizationsTe extends AppLocalizations {
 
   @override
   String transferIdLabel(String id) {
-    return 'ID: <<PH0>>';
+    return 'ID: $id';
   }
 
   @override
   String downloadMetaSummary(String count, String size) {
-    return 'ఫైల్‌లు: <<PH0>> · <<PH1>> బైట్‌లు';
+    return 'ఫైల్‌లు: $count · $size బైట్‌లు';
   }
 
   @override
   String todayAt(String time) {
-    return 'ఈరోజు · <<PH0>>';
+    return 'ఈరోజు · $time';
   }
 
   @override
   String yesterdayAt(String time) {
-    return 'నిన్న · <<PH0>>';
+    return 'నిన్న · $time';
   }
 
   @override
   String daysAgoAt(int days, String time) {
-    return '<<PH0>>రోజు క్రితం · <<PH1>>';
+    return '$daysరోజు క్రితం · $time';
   }
 
   @override
   String dateAt(String date, String time) {
-    return '<<PH0>> · <<PH1>>';
+    return '$date · $time';
   }
 
   @override
   String mbAmount(String amount) {
-    return '<<PH0>> MB';
+    return '$amount MB';
   }
 
   @override
   String uploadProgressSummary(String sent, String total, String remaining) {
-    return '<<PH0>> / <<PH1>> • <<PH2>> మిగిలి ఉంది';
+    return '$sent / $total • $remaining మిగిలి ఉంది';
   }
 
   @override
@@ -1021,6 +1021,6 @@ class AppLocalizationsTe extends AppLocalizations {
 
   @override
   String receiveMoreFiles(int count) {
-    return '+<<PH0>> మరిన్ని ఫైల్‌లు';
+    return '+$count మరిన్ని ఫైల్‌లు';
   }
 }

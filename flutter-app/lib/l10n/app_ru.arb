@@ -46,7 +46,7 @@
       }
     }
   },
-  "verifyEmailCheckSpamHint": "Если письмо не пришло: проверьте «Нежелательная почта/Спам» и «Промоакции», подождите минуту, убедитесь, что на <<PH0>> нет опечаток, затем нажмите «Отправить повторно».",
+  "verifyEmailCheckSpamHint": "Если письмо не пришло: проверьте «Нежелательная почта/Спам» и «Промоакции», подождите минуту, убедитесь, что на {email} нет опечаток, затем нажмите «Отправить повторно».",
   "loginTitle": "Войти",
   "signupHint": "Используйте адрес электронной почты и пароль своей учетной записи на сайте.",
   "emailHint": "Электронная почта",
@@ -107,7 +107,7 @@
       }
     }
   },
-  "upToTotal": "Всего до <<PH0>>",
+  "upToTotal": "Всего до {max}",
   "removeAll": "Удалить все",
   "addFiles": "Добавить файлы",
   "adding": "Добавление…",
@@ -138,7 +138,7 @@
       }
     }
   },
-  "mbLeft": "<<PH0>> осталось МБ",
+  "mbLeft": "{amount} осталось МБ",
   "fillField": "Пожалуйста, заполните это поле.",
   "enterValidEmail": "Введите действительный адрес электронной почты.",
   "message": "Сообщение",
@@ -182,7 +182,7 @@
       }
     }
   },
-  "transferLoadFailed": "Не удалось загрузить передачу: <<PH0>>",
+  "transferLoadFailed": "Не удалось загрузить передачу: {error}",
   "passwordProtected": "Защищено паролем",
   "enterPassword": "Введите пароль",
   "unlock": "Разблокировать",
@@ -207,7 +207,7 @@
       }
     }
   },
-  "storePricesPartialBody": "Загружены продукты по подписке <<PH0>> из <<PH1>>.",
+  "storePricesPartialBody": "Загружены продукты по подписке {loaded} из {total}.",
   "storeSetupHint": "Протестируйте на реальном iPhone (не в симуляторе), используйте Apple ID в песочнице и убедитесь, что все 6 подписок созданы под идентификатором пакета этого приложения в App Store Connect с установленными ценами.",
   "priceUnavailable": "—",
   "@effectiveMonthlyPrice": {
@@ -217,7 +217,7 @@
       }
     }
   },
-  "effectiveMonthlyPrice": "<<PH0>>/месяц",
+  "effectiveMonthlyPrice": "{price}/месяц",
   "freeVersionAds": "В настоящее время вы используете нашу бесплатную версию с рекламой",
   "restorePurchases": "Восстановление покупок",
   "plansContinue": "Продолжать",
@@ -236,7 +236,7 @@
       }
     }
   },
-  "otpSentTo": "Мы отправили 6-значный код на\n<<PH0>>",
+  "otpSentTo": "Мы отправили 6-значный код на\n{email}",
   "verifyAndSignIn": "Подтвердить и войти",
   "didntReceiveCode": "Не получили?",
   "tryAgain": "Попробуйте еще раз",
@@ -281,7 +281,7 @@
       }
     }
   },
-  "snackDownloadSaved": "«<<PH0>>» сохранен в папке «Загрузки».",
+  "snackDownloadSaved": "«{filename}» сохранен в папке «Загрузки».",
   "snackDownloadFailed": "Загрузка не удалась",
   "snackSaved": "Сохранено",
   "snackServerUrlUpdated": "URL-адрес сервера обновлен. Перезапустите приложение, чтобы применить.",
@@ -346,7 +346,7 @@
       }
     }
   },
-  "transferIdLabel": "Идентификатор: <<PH0>>",
+  "transferIdLabel": "Идентификатор: {id}",
   "@downloadMetaSummary": {
     "placeholders": {
       "count": {
@@ -357,7 +357,7 @@
       }
     }
   },
-  "downloadMetaSummary": "Файлы: <<PH0>> · <<PH1>> байт",
+  "downloadMetaSummary": "Файлы: {count} · {size} байт",
   "@todayAt": {
     "placeholders": {
       "time": {
@@ -365,7 +365,7 @@
       }
     }
   },
-  "todayAt": "Сегодня · <<PH0>>",
+  "todayAt": "Сегодня · {time}",
   "@yesterdayAt": {
     "placeholders": {
       "time": {
@@ -373,7 +373,7 @@
       }
     }
   },
-  "yesterdayAt": "Вчера · <<PH0>>",
+  "yesterdayAt": "Вчера · {time}",
   "@daysAgoAt": {
     "placeholders": {
       "days": {
@@ -384,7 +384,7 @@
       }
     }
   },
-  "daysAgoAt": "<<PH0>>д назад · <<PH1>>",
+  "daysAgoAt": "{days}д назад · {time}",
   "@dateAt": {
     "placeholders": {
       "date": {
@@ -395,7 +395,7 @@
       }
     }
   },
-  "dateAt": "<<PH0>> · <<PH1>>",
+  "dateAt": "{date} · {time}",
   "@mbAmount": {
     "placeholders": {
       "amount": {
@@ -403,7 +403,7 @@
       }
     }
   },
-  "mbAmount": "<<PH0>> МБ",
+  "mbAmount": "{amount} МБ",
   "@uploadProgressSummary": {
     "placeholders": {
       "sent": {
@@ -417,7 +417,7 @@
       }
     }
   },
-  "uploadProgressSummary": "<<PH0>> / <<PH1>> • <<PH2>> слева",
+  "uploadProgressSummary": "{sent} / {total} • {remaining} слева",
   "loadingShort": "Загрузка…",
   "colorPaletteTitle": "Цветовая палитра",
   "colorPaletteSectionBackgrounds": "Фоны (шкала чернил)",
@@ -462,5 +462,5 @@
       }
     }
   },
-  "receiveMoreFiles": "+<<PH0>> еще файлы"
+  "receiveMoreFiles": "+{count} еще файлы"
 }

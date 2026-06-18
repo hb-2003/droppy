@@ -130,7 +130,7 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String verifyEmailCheckSpamHint(String email) {
-    return 'Ha nem érkezik meg: jelölje be a Levélszemét/Spam és Promóciók elemet, várjon egy percet, ellenőrizze, hogy a <<PH0>> nem tartalmaz-e elírást, majd érintse meg az Újraküldés gombot.';
+    return 'Ha nem érkezik meg: jelölje be a Levélszemét/Spam és Promóciók elemet, várjon egy percet, ellenőrizze, hogy a $email nem tartalmaz-e elírást, majd érintse meg az Újraküldés gombot.';
   }
 
   @override
@@ -297,7 +297,7 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String upToTotal(String max) {
-    return 'Összesen legfeljebb <<PH0>>';
+    return 'Összesen legfeljebb $max';
   }
 
   @override
@@ -359,7 +359,7 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String mbLeft(String amount) {
-    return '<<PH0>> MB maradt';
+    return '$amount MB maradt';
   }
 
   @override
@@ -483,7 +483,7 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String transferLoadFailed(String error) {
-    return 'Nem sikerült betölteni az átvitelt: <<PH0>>';
+    return 'Nem sikerült betölteni az átvitelt: $error';
   }
 
   @override
@@ -532,7 +532,7 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String storePricesPartialBody(int loaded, int total) {
-    return '<<PH0>> / <<PH1>> előfizetéses termék betöltve.';
+    return '$loaded / $total előfizetéses termék betöltve.';
   }
 
   @override
@@ -544,7 +544,7 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String effectiveMonthlyPrice(String price) {
-    return '<<PH0>>/hónap';
+    return '$price/hónap';
   }
 
   @override
@@ -583,7 +583,7 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String otpSentTo(String email) {
-    return '6 számjegyű kódot küldtünk a címre\n<<PH0>>';
+    return '6 számjegyű kódot küldtünk a címre\n$email';
   }
 
   @override
@@ -713,7 +713,7 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String snackDownloadSaved(String filename) {
-    return '\"<<PH0>>\" mentve a Letöltések közé';
+    return '\"$filename\" mentve a Letöltések közé';
   }
 
   @override
@@ -880,42 +880,42 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String transferIdLabel(String id) {
-    return 'ID: <<PH0>>';
+    return 'ID: $id';
   }
 
   @override
   String downloadMetaSummary(String count, String size) {
-    return 'Fájlok: <<PH0>> · <<PH1>> bájt';
+    return 'Fájlok: $count · $size bájt';
   }
 
   @override
   String todayAt(String time) {
-    return 'Ma · <<PH0>>';
+    return 'Ma · $time';
   }
 
   @override
   String yesterdayAt(String time) {
-    return 'Tegnap · <<PH0>>';
+    return 'Tegnap · $time';
   }
 
   @override
   String daysAgoAt(int days, String time) {
-    return '<<PH0>>napja · <<PH1>>';
+    return '${days}napja · $time';
   }
 
   @override
   String dateAt(String date, String time) {
-    return '<<PH0>> · <<PH1>>';
+    return '$date · $time';
   }
 
   @override
   String mbAmount(String amount) {
-    return '<<PH0>> MB';
+    return '$amount MB';
   }
 
   @override
   String uploadProgressSummary(String sent, String total, String remaining) {
-    return '<<PH0>> / <<PH1>> • <<PH2>> balra';
+    return '$sent / $total • $remaining balra';
   }
 
   @override
@@ -1016,6 +1016,6 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String receiveMoreFiles(int count) {
-    return '+<<PH0>> további fájlok';
+    return '+$count további fájlok';
   }
 }

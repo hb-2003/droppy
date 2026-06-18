@@ -46,7 +46,7 @@
       }
     }
   },
-  "verifyEmailCheckSpamHint": "Wenn es nicht ankommt: Überprüfen Sie Junk/Spam und Werbung, warten Sie eine Minute, stellen Sie sicher, dass <<PH0>> keine Tippfehler enthält, und tippen Sie dann auf Erneut senden.",
+  "verifyEmailCheckSpamHint": "Wenn es nicht ankommt: Überprüfen Sie Junk/Spam und Werbung, warten Sie eine Minute, stellen Sie sicher, dass {email} keine Tippfehler enthält, und tippen Sie dann auf Erneut senden.",
   "loginTitle": "anmelden",
   "signupHint": "Verwenden Sie die E-Mail-Adresse und das Passwort Ihres Site-Kontos.",
   "emailHint": "E-Mail",
@@ -107,7 +107,7 @@
       }
     }
   },
-  "upToTotal": "Bis zu <<PH0>> insgesamt",
+  "upToTotal": "Bis zu {max} insgesamt",
   "removeAll": "Alles entfernen",
   "addFiles": "Dateien hinzufügen",
   "adding": "Hinzufügen…",
@@ -138,7 +138,7 @@
       }
     }
   },
-  "mbLeft": "<<PH0>> MB übrig",
+  "mbLeft": "{amount} MB übrig",
   "fillField": "Bitte füllen Sie dieses Feld aus.",
   "enterValidEmail": "Geben Sie eine gültige E-Mail-Adresse ein.",
   "message": "Nachricht",
@@ -182,7 +182,7 @@
       }
     }
   },
-  "transferLoadFailed": "Übertragung konnte nicht geladen werden: <<PH0>>",
+  "transferLoadFailed": "Übertragung konnte nicht geladen werden: {error}",
   "passwordProtected": "Passwortgeschützt",
   "enterPassword": "Passwort eingeben",
   "unlock": "Entsperren",
@@ -207,7 +207,7 @@
       }
     }
   },
-  "storePricesPartialBody": "<<PH0>> von <<PH1>> Abonnementprodukten geladen.",
+  "storePricesPartialBody": "{loaded} von {total} Abonnementprodukten geladen.",
   "storeSetupHint": "Testen Sie auf einem echten iPhone (nicht auf dem Simulator), verwenden Sie eine Sandbox-Apple-ID und stellen Sie sicher, dass alle 6 Abonnements unter der Bundle-ID dieser App im App Store Connect mit festgelegten Preisen erstellt werden.",
   "priceUnavailable": "—",
   "@effectiveMonthlyPrice": {
@@ -217,7 +217,7 @@
       }
     }
   },
-  "effectiveMonthlyPrice": "<<PH0>>/Monat",
+  "effectiveMonthlyPrice": "{price}/Monat",
   "freeVersionAds": "Derzeit nutzen Sie unsere kostenlose Version mit Werbung",
   "restorePurchases": "Einkäufe wiederherstellen",
   "plansContinue": "Weitermachen",
@@ -236,7 +236,7 @@
       }
     }
   },
-  "otpSentTo": "Wir haben einen 6-stelligen Code an gesendet\n<<PH0>>",
+  "otpSentTo": "Wir haben einen 6-stelligen Code an gesendet\n{email}",
   "verifyAndSignIn": "Bestätigen und anmelden",
   "didntReceiveCode": "Sie haben es nicht erhalten?",
   "tryAgain": "Versuchen Sie es erneut",
@@ -281,7 +281,7 @@
       }
     }
   },
-  "snackDownloadSaved": "„<<PH0>>“ wurde unter „Downloads“ gespeichert",
+  "snackDownloadSaved": "„{filename}“ wurde unter „Downloads“ gespeichert",
   "snackDownloadFailed": "Der Download ist fehlgeschlagen",
   "snackSaved": "Gespeichert",
   "snackServerUrlUpdated": "Server-URL aktualisiert. Starten Sie die App neu, um sie anzuwenden.",
@@ -346,7 +346,7 @@
       }
     }
   },
-  "transferIdLabel": "ID: <<PH0>>",
+  "transferIdLabel": "ID: {id}",
   "@downloadMetaSummary": {
     "placeholders": {
       "count": {
@@ -357,7 +357,7 @@
       }
     }
   },
-  "downloadMetaSummary": "Dateien: <<PH0>> · <<PH1>> Bytes",
+  "downloadMetaSummary": "Dateien: {count} · {size} Bytes",
   "@todayAt": {
     "placeholders": {
       "time": {
@@ -365,7 +365,7 @@
       }
     }
   },
-  "todayAt": "Heute · <<PH0>>",
+  "todayAt": "Heute · {time}",
   "@yesterdayAt": {
     "placeholders": {
       "time": {
@@ -373,7 +373,7 @@
       }
     }
   },
-  "yesterdayAt": "Gestern · <<PH0>>",
+  "yesterdayAt": "Gestern · {time}",
   "@daysAgoAt": {
     "placeholders": {
       "days": {
@@ -384,7 +384,7 @@
       }
     }
   },
-  "daysAgoAt": "Vor <<PH0>>d · <<PH1>>",
+  "daysAgoAt": "Vor {days}d · {time}",
   "@dateAt": {
     "placeholders": {
       "date": {
@@ -395,7 +395,7 @@
       }
     }
   },
-  "dateAt": "<<PH0>> · <<PH1>>",
+  "dateAt": "{date} · {time}",
   "@mbAmount": {
     "placeholders": {
       "amount": {
@@ -403,7 +403,7 @@
       }
     }
   },
-  "mbAmount": "<<PH0>> MB",
+  "mbAmount": "{amount} MB",
   "@uploadProgressSummary": {
     "placeholders": {
       "sent": {
@@ -417,7 +417,7 @@
       }
     }
   },
-  "uploadProgressSummary": "<<PH0>> / <<PH1>> • <<PH2>> links",
+  "uploadProgressSummary": "{sent} / {total} • {remaining} links",
   "loadingShort": "Laden…",
   "colorPaletteTitle": "Farbpalette",
   "colorPaletteSectionBackgrounds": "Hintergründe (Tintenskala)",
@@ -462,5 +462,5 @@
       }
     }
   },
-  "receiveMoreFiles": "+<<PH0>> weitere Dateien"
+  "receiveMoreFiles": "+{count} weitere Dateien"
 }

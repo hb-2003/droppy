@@ -130,7 +130,7 @@ class AppLocalizationsSk extends AppLocalizations {
 
   @override
   String verifyEmailCheckSpamHint(String email) {
-    return 'Ak nepríde: skontrolujte Nevyžiadanú poštu/Spam a propagácie, počkajte minútu, uistite sa, že <<PH0>> neobsahuje preklepy, a potom klepnite na Znova odoslať.';
+    return 'Ak nepríde: skontrolujte Nevyžiadanú poštu/Spam a propagácie, počkajte minútu, uistite sa, že $email neobsahuje preklepy, a potom klepnite na Znova odoslať.';
   }
 
   @override
@@ -297,7 +297,7 @@ class AppLocalizationsSk extends AppLocalizations {
 
   @override
   String upToTotal(String max) {
-    return 'Celkovo až do <<PH0>>';
+    return 'Celkovo až do $max';
   }
 
   @override
@@ -359,7 +359,7 @@ class AppLocalizationsSk extends AppLocalizations {
 
   @override
   String mbLeft(String amount) {
-    return 'Zostáva <<PH0>> MB';
+    return 'Zostáva $amount MB';
   }
 
   @override
@@ -485,7 +485,7 @@ class AppLocalizationsSk extends AppLocalizations {
 
   @override
   String transferLoadFailed(String error) {
-    return 'Nepodarilo sa načítať prenos: <<PH0>>';
+    return 'Nepodarilo sa načítať prenos: $error';
   }
 
   @override
@@ -534,7 +534,7 @@ class AppLocalizationsSk extends AppLocalizations {
 
   @override
   String storePricesPartialBody(int loaded, int total) {
-    return 'Načítané produkty s odberom <<PH0>> z <<PH1>>.';
+    return 'Načítané produkty s odberom $loaded z $total.';
   }
 
   @override
@@ -546,7 +546,7 @@ class AppLocalizationsSk extends AppLocalizations {
 
   @override
   String effectiveMonthlyPrice(String price) {
-    return '<<PH0>>/mesiac';
+    return '$price/mesiac';
   }
 
   @override
@@ -585,7 +585,7 @@ class AppLocalizationsSk extends AppLocalizations {
 
   @override
   String otpSentTo(String email) {
-    return 'Poslali sme 6-miestny kód na\n<<PH0>>';
+    return 'Poslali sme 6-miestny kód na\n$email';
   }
 
   @override
@@ -711,7 +711,7 @@ class AppLocalizationsSk extends AppLocalizations {
 
   @override
   String snackDownloadSaved(String filename) {
-    return '\"<<PH0>>\" bola uložená do prevzatých súborov';
+    return '\"$filename\" bola uložená do prevzatých súborov';
   }
 
   @override
@@ -877,42 +877,42 @@ class AppLocalizationsSk extends AppLocalizations {
 
   @override
   String transferIdLabel(String id) {
-    return 'ID: <<PH0>>';
+    return 'ID: $id';
   }
 
   @override
   String downloadMetaSummary(String count, String size) {
-    return 'Súbory: <<PH0>> · <<PH1>> bajtov';
+    return 'Súbory: $count · $size bajtov';
   }
 
   @override
   String todayAt(String time) {
-    return 'Dnes · <<PH0>>';
+    return 'Dnes · $time';
   }
 
   @override
   String yesterdayAt(String time) {
-    return 'Včera · <<PH0>>';
+    return 'Včera · $time';
   }
 
   @override
   String daysAgoAt(int days, String time) {
-    return '<<PH0>>d pred · <<PH1>>';
+    return '${days}d pred · $time';
   }
 
   @override
   String dateAt(String date, String time) {
-    return '<<PH0>> · <<PH1>>';
+    return '$date · $time';
   }
 
   @override
   String mbAmount(String amount) {
-    return '<<PH0>> MB';
+    return '$amount MB';
   }
 
   @override
   String uploadProgressSummary(String sent, String total, String remaining) {
-    return '<<PH0>> / <<PH1>> • <<PH2>> vľavo';
+    return '$sent / $total • $remaining vľavo';
   }
 
   @override
@@ -1013,6 +1013,6 @@ class AppLocalizationsSk extends AppLocalizations {
 
   @override
   String receiveMoreFiles(int count) {
-    return '+<<PH0>> ďalšie súbory';
+    return '+$count ďalšie súbory';
   }
 }

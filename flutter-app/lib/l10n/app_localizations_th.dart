@@ -129,7 +129,7 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String verifyEmailCheckSpamHint(String email) {
-    return 'หากมาไม่ถึง: ตรวจสอบขยะ/สแปมและโปรโมชัน รอสักครู่ ยืนยันว่า <<PH0>> ไม่มีการพิมพ์ผิด จากนั้นแตะส่งอีกครั้ง';
+    return 'หากมาไม่ถึง: ตรวจสอบขยะ/สแปมและโปรโมชัน รอสักครู่ ยืนยันว่า $email ไม่มีการพิมพ์ผิด จากนั้นแตะส่งอีกครั้ง';
   }
 
   @override
@@ -295,7 +295,7 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String upToTotal(String max) {
-    return 'สูงสุด <<PH0>> ทั้งหมด';
+    return 'สูงสุด $max ทั้งหมด';
   }
 
   @override
@@ -356,7 +356,7 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String mbLeft(String amount) {
-    return '<<PH0>> MB เหลือ';
+    return '$amount MB เหลือ';
   }
 
   @override
@@ -476,7 +476,7 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String transferLoadFailed(String error) {
-    return 'ไม่สามารถโหลดการถ่ายโอน: <<PH0>>';
+    return 'ไม่สามารถโหลดการถ่ายโอน: $error';
   }
 
   @override
@@ -523,7 +523,7 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String storePricesPartialBody(int loaded, int total) {
-    return '<<PH0>> ของ <<PH1>> ผลิตภัณฑ์ที่สมัครสมาชิกโหลดแล้ว';
+    return '$loaded ของ $total ผลิตภัณฑ์ที่สมัครสมาชิกโหลดแล้ว';
   }
 
   @override
@@ -535,7 +535,7 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String effectiveMonthlyPrice(String price) {
-    return '<<PH0>>/เดือน';
+    return '$price/เดือน';
   }
 
   @override
@@ -573,7 +573,7 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String otpSentTo(String email) {
-    return 'เราได้ส่งรหัส 6 หลักไปที่\n<<PH0>>';
+    return 'เราได้ส่งรหัส 6 หลักไปที่\n$email';
   }
 
   @override
@@ -696,7 +696,7 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String snackDownloadSaved(String filename) {
-    return '\"<<PH0>>\" บันทึกไปยังการดาวน์โหลด';
+    return '\"$filename\" บันทึกไปยังการดาวน์โหลด';
   }
 
   @override
@@ -861,42 +861,42 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String transferIdLabel(String id) {
-    return 'ID: <<PH0>>';
+    return 'ID: $id';
   }
 
   @override
   String downloadMetaSummary(String count, String size) {
-    return 'ไฟล์: <<PH0>> · <<PH1>> ไบต์';
+    return 'ไฟล์: $count · $size ไบต์';
   }
 
   @override
   String todayAt(String time) {
-    return 'วันนี้ · <<PH0>>';
+    return 'วันนี้ · $time';
   }
 
   @override
   String yesterdayAt(String time) {
-    return 'เมื่อวาน · <<PH0>>';
+    return 'เมื่อวาน · $time';
   }
 
   @override
   String daysAgoAt(int days, String time) {
-    return '<<PH0>>d ที่แล้ว · <<PH1>>';
+    return '${days}d ที่แล้ว · $time';
   }
 
   @override
   String dateAt(String date, String time) {
-    return '<<PH0>> · <<PH1>>';
+    return '$date · $time';
   }
 
   @override
   String mbAmount(String amount) {
-    return '<<PH0>> MB';
+    return '$amount MB';
   }
 
   @override
   String uploadProgressSummary(String sent, String total, String remaining) {
-    return '<<PH0>> / <<PH1>> • <<PH2>> ซ้าย';
+    return '$sent / $total • $remaining ซ้าย';
   }
 
   @override
@@ -995,6 +995,6 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String receiveMoreFiles(int count) {
-    return '+<<PH0>> ไฟล์เพิ่มเติม';
+    return '+$count ไฟล์เพิ่มเติม';
   }
 }

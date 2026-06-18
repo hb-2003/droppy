@@ -131,7 +131,7 @@ class AppLocalizationsHr extends AppLocalizations {
 
   @override
   String verifyEmailCheckSpamHint(String email) {
-    return 'Ako ne stigne: provjerite Junk/Spam i Promocije, pričekajte minutu, potvrdite da <<PH0>> nema pogrešaka pri upisu, zatim dodirnite Ponovno pošalji.';
+    return 'Ako ne stigne: provjerite Junk/Spam i Promocije, pričekajte minutu, potvrdite da $email nema pogrešaka pri upisu, zatim dodirnite Ponovno pošalji.';
   }
 
   @override
@@ -299,7 +299,7 @@ class AppLocalizationsHr extends AppLocalizations {
 
   @override
   String upToTotal(String max) {
-    return 'Do <<PH0>> ukupno';
+    return 'Do $max ukupno';
   }
 
   @override
@@ -361,7 +361,7 @@ class AppLocalizationsHr extends AppLocalizations {
 
   @override
   String mbLeft(String amount) {
-    return '<<PH0>> MB preostalo';
+    return '$amount MB preostalo';
   }
 
   @override
@@ -488,7 +488,7 @@ class AppLocalizationsHr extends AppLocalizations {
 
   @override
   String transferLoadFailed(String error) {
-    return 'Nije moguće učitati prijenos: <<PH0>>';
+    return 'Nije moguće učitati prijenos: $error';
   }
 
   @override
@@ -537,7 +537,7 @@ class AppLocalizationsHr extends AppLocalizations {
 
   @override
   String storePricesPartialBody(int loaded, int total) {
-    return '<<PH0>> od <<PH1>> proizvoda za pretplatu su učitani.';
+    return '$loaded od $total proizvoda za pretplatu su učitani.';
   }
 
   @override
@@ -549,7 +549,7 @@ class AppLocalizationsHr extends AppLocalizations {
 
   @override
   String effectiveMonthlyPrice(String price) {
-    return '<<PH0>>/mjesečno';
+    return '$price/mjesečno';
   }
 
   @override
@@ -588,7 +588,7 @@ class AppLocalizationsHr extends AppLocalizations {
 
   @override
   String otpSentTo(String email) {
-    return 'Poslali smo 6-znamenkasti kod na\n<<PH0>>';
+    return 'Poslali smo 6-znamenkasti kod na\n$email';
   }
 
   @override
@@ -714,7 +714,7 @@ class AppLocalizationsHr extends AppLocalizations {
 
   @override
   String snackDownloadSaved(String filename) {
-    return '\"<<PH0>>\" spremljeno u Preuzimanja';
+    return '\"$filename\" spremljeno u Preuzimanja';
   }
 
   @override
@@ -880,42 +880,42 @@ class AppLocalizationsHr extends AppLocalizations {
 
   @override
   String transferIdLabel(String id) {
-    return 'ID: <<PH0>>';
+    return 'ID: $id';
   }
 
   @override
   String downloadMetaSummary(String count, String size) {
-    return 'Datoteke: <<PH0>> · <<PH1>> bajtovi';
+    return 'Datoteke: $count · $size bajtovi';
   }
 
   @override
   String todayAt(String time) {
-    return 'Danas · <<PH0>>';
+    return 'Danas · $time';
   }
 
   @override
   String yesterdayAt(String time) {
-    return 'Jučer · <<PH0>>';
+    return 'Jučer · $time';
   }
 
   @override
   String daysAgoAt(int days, String time) {
-    return '<<PH0>>prije d · <<PH1>>';
+    return '${days}prije d · $time';
   }
 
   @override
   String dateAt(String date, String time) {
-    return '<<PH0>> · <<PH1>>';
+    return '$date · $time';
   }
 
   @override
   String mbAmount(String amount) {
-    return '<<PH0>> MB';
+    return '$amount MB';
   }
 
   @override
   String uploadProgressSummary(String sent, String total, String remaining) {
-    return '<<PH0>> / <<PH1>> • <<PH2>> lijevo';
+    return '$sent / $total • $remaining lijevo';
   }
 
   @override
@@ -1017,6 +1017,6 @@ class AppLocalizationsHr extends AppLocalizations {
 
   @override
   String receiveMoreFiles(int count) {
-    return '+<<PH0>> više datoteka';
+    return '+$count više datoteka';
   }
 }

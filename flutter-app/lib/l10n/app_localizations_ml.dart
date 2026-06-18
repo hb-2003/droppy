@@ -132,7 +132,7 @@ class AppLocalizationsMl extends AppLocalizations {
 
   @override
   String verifyEmailCheckSpamHint(String email) {
-    return 'അത് എത്തിയില്ലെങ്കിൽ: ജങ്ക്/സ്പാം, പ്രമോഷനുകൾ എന്നിവ പരിശോധിക്കുക, ഒരു മിനിറ്റ് കാത്തിരിക്കുക, <<PH0>> എന്നതിന് അക്ഷരത്തെറ്റുകൾ ഇല്ലെന്ന് സ്ഥിരീകരിക്കുക, തുടർന്ന് വീണ്ടും അയയ്‌ക്കുക ടാപ്പ് ചെയ്യുക.';
+    return 'അത് എത്തിയില്ലെങ്കിൽ: ജങ്ക്/സ്പാം, പ്രമോഷനുകൾ എന്നിവ പരിശോധിക്കുക, ഒരു മിനിറ്റ് കാത്തിരിക്കുക, $email എന്നതിന് അക്ഷരത്തെറ്റുകൾ ഇല്ലെന്ന് സ്ഥിരീകരിക്കുക, തുടർന്ന് വീണ്ടും അയയ്‌ക്കുക ടാപ്പ് ചെയ്യുക.';
   }
 
   @override
@@ -300,7 +300,7 @@ class AppLocalizationsMl extends AppLocalizations {
 
   @override
   String upToTotal(String max) {
-    return 'മൊത്തം <<PH0>> വരെ';
+    return 'മൊത്തം $max വരെ';
   }
 
   @override
@@ -364,7 +364,7 @@ class AppLocalizationsMl extends AppLocalizations {
 
   @override
   String mbLeft(String amount) {
-    return '<<PH0>> MB ശേഷിക്കുന്നു';
+    return '$amount MB ശേഷിക്കുന്നു';
   }
 
   @override
@@ -490,7 +490,7 @@ class AppLocalizationsMl extends AppLocalizations {
 
   @override
   String transferLoadFailed(String error) {
-    return 'കൈമാറ്റം ലോഡ് ചെയ്യാനായില്ല: <<PH0>>';
+    return 'കൈമാറ്റം ലോഡ് ചെയ്യാനായില്ല: $error';
   }
 
   @override
@@ -539,7 +539,7 @@ class AppLocalizationsMl extends AppLocalizations {
 
   @override
   String storePricesPartialBody(int loaded, int total) {
-    return '<<PH1>> സബ്‌സ്‌ക്രിപ്‌ഷൻ ഉൽപ്പന്നങ്ങളുടെ <<PH0>> ലോഡ് ചെയ്തു.';
+    return '$total സബ്‌സ്‌ക്രിപ്‌ഷൻ ഉൽപ്പന്നങ്ങളുടെ $loaded ലോഡ് ചെയ്തു.';
   }
 
   @override
@@ -551,7 +551,7 @@ class AppLocalizationsMl extends AppLocalizations {
 
   @override
   String effectiveMonthlyPrice(String price) {
-    return '<<PH0>>/മാസം';
+    return '$price/മാസം';
   }
 
   @override
@@ -591,7 +591,7 @@ class AppLocalizationsMl extends AppLocalizations {
 
   @override
   String otpSentTo(String email) {
-    return 'ഞങ്ങൾ ഒരു 6 അക്ക കോഡ് അയച്ചു\n<<PH0>>';
+    return 'ഞങ്ങൾ ഒരു 6 അക്ക കോഡ് അയച്ചു\n$email';
   }
 
   @override
@@ -720,7 +720,7 @@ class AppLocalizationsMl extends AppLocalizations {
 
   @override
   String snackDownloadSaved(String filename) {
-    return '\"<<PH0>>\" ഡൗൺലോഡുകളിലേക്ക് സംരക്ഷിച്ചു';
+    return '\"$filename\" ഡൗൺലോഡുകളിലേക്ക് സംരക്ഷിച്ചു';
   }
 
   @override
@@ -888,42 +888,42 @@ class AppLocalizationsMl extends AppLocalizations {
 
   @override
   String transferIdLabel(String id) {
-    return 'ഐഡി: <<PH0>>';
+    return 'ഐഡി: $id';
   }
 
   @override
   String downloadMetaSummary(String count, String size) {
-    return 'ഫയലുകൾ: <<PH0>> · <<PH1>> ബൈറ്റുകൾ';
+    return 'ഫയലുകൾ: $count · $size ബൈറ്റുകൾ';
   }
 
   @override
   String todayAt(String time) {
-    return 'ഇന്ന് · <<PH0>>';
+    return 'ഇന്ന് · $time';
   }
 
   @override
   String yesterdayAt(String time) {
-    return 'ഇന്നലെ · <<PH0>>';
+    return 'ഇന്നലെ · $time';
   }
 
   @override
   String daysAgoAt(int days, String time) {
-    return '<<PH0>>ദിവസം മുമ്പ് · <<PH1>>';
+    return '$daysദിവസം മുമ്പ് · $time';
   }
 
   @override
   String dateAt(String date, String time) {
-    return '<<PH0>> · <<PH1>>';
+    return '$date · $time';
   }
 
   @override
   String mbAmount(String amount) {
-    return '<<PH0>> MB';
+    return '$amount MB';
   }
 
   @override
   String uploadProgressSummary(String sent, String total, String remaining) {
-    return '<<PH0>> / <<PH1>> • <<PH2>> അവശേഷിക്കുന്നു';
+    return '$sent / $total • $remaining അവശേഷിക്കുന്നു';
   }
 
   @override
@@ -1026,6 +1026,6 @@ class AppLocalizationsMl extends AppLocalizations {
 
   @override
   String receiveMoreFiles(int count) {
-    return '+<<PH0>> കൂടുതൽ ഫയലുകൾ';
+    return '+$count കൂടുതൽ ഫയലുകൾ';
   }
 }

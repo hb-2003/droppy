@@ -46,7 +46,7 @@
       }
     }
   },
-  "verifyEmailCheckSpamHint": "Se não chegar: verifique Lixo/Spam e Promoções, espere um minuto, confirme que <<PH0>> não contém erros de digitação e toque em Reenviar.",
+  "verifyEmailCheckSpamHint": "Se não chegar: verifique Lixo/Spam e Promoções, espere um minuto, confirme que {email} não contém erros de digitação e toque em Reenviar.",
   "loginTitle": "Entrar",
   "signupHint": "Use o e-mail e a senha da sua conta do site.",
   "emailHint": "E-mail",
@@ -107,7 +107,7 @@
       }
     }
   },
-  "upToTotal": "Até <<PH0>> total",
+  "upToTotal": "Até {max} total",
   "removeAll": "Remover tudo",
   "addFiles": "Adicionar arquivos",
   "adding": "Adicionando…",
@@ -138,7 +138,7 @@
       }
     }
   },
-  "mbLeft": "<<PH0>> MB restantes",
+  "mbLeft": "{amount} MB restantes",
   "fillField": "Por favor preencha este campo.",
   "enterValidEmail": "Insira um e-mail válido.",
   "message": "Mensagem",
@@ -182,7 +182,7 @@
       }
     }
   },
-  "transferLoadFailed": "Não foi possível carregar a transferência: <<PH0>>",
+  "transferLoadFailed": "Não foi possível carregar a transferência: {error}",
   "passwordProtected": "Protegido por senha",
   "enterPassword": "Digite a senha",
   "unlock": "Desbloquear",
@@ -207,7 +207,7 @@
       }
     }
   },
-  "storePricesPartialBody": "<<PH0>> de produtos de assinatura <<PH1>> carregados.",
+  "storePricesPartialBody": "{loaded} de produtos de assinatura {total} carregados.",
   "storeSetupHint": "Teste em um iPhone real (não no simulador), use um ID Apple Sandbox e certifique-se de que todas as 6 assinaturas sejam criadas sob o ID do pacote deste aplicativo no App Store Connect com preço definido.",
   "priceUnavailable": "—",
   "@effectiveMonthlyPrice": {
@@ -217,7 +217,7 @@
       }
     }
   },
-  "effectiveMonthlyPrice": "<<PH0>>/mês",
+  "effectiveMonthlyPrice": "{price}/mês",
   "freeVersionAds": "Atualmente você está usando nossa versão gratuita com anúncios",
   "restorePurchases": "Restaurar compras",
   "plansContinue": "Continuar",
@@ -236,7 +236,7 @@
       }
     }
   },
-  "otpSentTo": "Enviamos um código de 6 dígitos para\n<<PH0>>",
+  "otpSentTo": "Enviamos um código de 6 dígitos para\n{email}",
   "verifyAndSignIn": "Verifique e faça login",
   "didntReceiveCode": "Não recebeu?",
   "tryAgain": "Tente novamente",
@@ -281,7 +281,7 @@
       }
     }
   },
-  "snackDownloadSaved": "\"<<PH0>>\" salvo em Downloads",
+  "snackDownloadSaved": "\"{filename}\" salvo em Downloads",
   "snackDownloadFailed": "Falha no download",
   "snackSaved": "Salvo",
   "snackServerUrlUpdated": "URL do servidor atualizado. Reinicie o aplicativo para aplicar.",
@@ -346,7 +346,7 @@
       }
     }
   },
-  "transferIdLabel": "ID: <<PH0>>",
+  "transferIdLabel": "ID: {id}",
   "@downloadMetaSummary": {
     "placeholders": {
       "count": {
@@ -357,7 +357,7 @@
       }
     }
   },
-  "downloadMetaSummary": "Arquivos: <<PH0>> · <<PH1>> bytes",
+  "downloadMetaSummary": "Arquivos: {count} · {size} bytes",
   "@todayAt": {
     "placeholders": {
       "time": {
@@ -365,7 +365,7 @@
       }
     }
   },
-  "todayAt": "Hoje · <<PH0>>",
+  "todayAt": "Hoje · {time}",
   "@yesterdayAt": {
     "placeholders": {
       "time": {
@@ -373,7 +373,7 @@
       }
     }
   },
-  "yesterdayAt": "Ontem · <<PH0>>",
+  "yesterdayAt": "Ontem · {time}",
   "@daysAgoAt": {
     "placeholders": {
       "days": {
@@ -384,7 +384,7 @@
       }
     }
   },
-  "daysAgoAt": "<<PH0>>d atrás · <<PH1>>",
+  "daysAgoAt": "{days}d atrás · {time}",
   "@dateAt": {
     "placeholders": {
       "date": {
@@ -395,7 +395,7 @@
       }
     }
   },
-  "dateAt": "<<PH0>> · <<PH1>>",
+  "dateAt": "{date} · {time}",
   "@mbAmount": {
     "placeholders": {
       "amount": {
@@ -403,7 +403,7 @@
       }
     }
   },
-  "mbAmount": "<<PH0>>MB",
+  "mbAmount": "{amount}MB",
   "@uploadProgressSummary": {
     "placeholders": {
       "sent": {
@@ -417,7 +417,7 @@
       }
     }
   },
-  "uploadProgressSummary": "<<PH0>> / <<PH1>> • <<PH2>> esquerda",
+  "uploadProgressSummary": "{sent} / {total} • {remaining} esquerda",
   "loadingShort": "Carregando…",
   "colorPaletteTitle": "Paleta de cores",
   "colorPaletteSectionBackgrounds": "Planos de fundo (escala de tinta)",
@@ -462,5 +462,5 @@
       }
     }
   },
-  "receiveMoreFiles": "+<<PH0>> mais arquivos"
+  "receiveMoreFiles": "+{count} mais arquivos"
 }

@@ -46,7 +46,7 @@
       }
     }
   },
-  "verifyEmailCheckSpamHint": "Als het niet aankomt: controleer Junk/Spam en Promoties, wacht een minuut, controleer of <<PH0>> geen typefouten bevat en tik vervolgens op Opnieuw verzenden.",
+  "verifyEmailCheckSpamHint": "Als het niet aankomt: controleer Junk/Spam en Promoties, wacht een minuut, controleer of {email} geen typefouten bevat en tik vervolgens op Opnieuw verzenden.",
   "loginTitle": "Log in",
   "signupHint": "Gebruik het e-mailadres en wachtwoord van uw siteaccount.",
   "emailHint": "E-mail",
@@ -107,7 +107,7 @@
       }
     }
   },
-  "upToTotal": "Tot <<PH0>> totaal",
+  "upToTotal": "Tot {max} totaal",
   "removeAll": "Verwijder alles",
   "addFiles": "Bestanden toevoegen",
   "adding": "Toevoegen…",
@@ -138,7 +138,7 @@
       }
     }
   },
-  "mbLeft": "<<PH0>> MB over",
+  "mbLeft": "{amount} MB over",
   "fillField": "Vul dit veld in.",
   "enterValidEmail": "Voer een geldig e-mailadres in.",
   "message": "Bericht",
@@ -182,7 +182,7 @@
       }
     }
   },
-  "transferLoadFailed": "Kan overdracht niet laden: <<PH0>>",
+  "transferLoadFailed": "Kan overdracht niet laden: {error}",
   "passwordProtected": "Wachtwoord beveiligd",
   "enterPassword": "Voer wachtwoord in",
   "unlock": "Ontgrendelen",
@@ -207,7 +207,7 @@
       }
     }
   },
-  "storePricesPartialBody": "<<PH0>> van <<PH1>> abonnementsproducten geladen.",
+  "storePricesPartialBody": "{loaded} van {total} abonnementsproducten geladen.",
   "storeSetupHint": "Test op een echte iPhone (geen Simulator), gebruik een Sandbox Apple ID en zorg ervoor dat alle zes de abonnementen worden aangemaakt onder de bundel-ID van deze app in App Store Connect met de ingestelde prijzen.",
   "priceUnavailable": "—",
   "@effectiveMonthlyPrice": {
@@ -217,7 +217,7 @@
       }
     }
   },
-  "effectiveMonthlyPrice": "<<PH0>>/maand",
+  "effectiveMonthlyPrice": "{price}/maand",
   "freeVersionAds": "Momenteel gebruikt u onze gratis versie met advertenties",
   "restorePurchases": "Aankopen herstellen",
   "plansContinue": "Doorgaan",
@@ -236,7 +236,7 @@
       }
     }
   },
-  "otpSentTo": "We hebben een 6-cijferige code gestuurd naar\n<<PH0>>",
+  "otpSentTo": "We hebben een 6-cijferige code gestuurd naar\n{email}",
   "verifyAndSignIn": "Verifiëren en inloggen",
   "didntReceiveCode": "Niet ontvangen?",
   "tryAgain": "Probeer het opnieuw",
@@ -281,7 +281,7 @@
       }
     }
   },
-  "snackDownloadSaved": "\"<<PH0>>\" opgeslagen in Downloads",
+  "snackDownloadSaved": "\"{filename}\" opgeslagen in Downloads",
   "snackDownloadFailed": "Downloaden mislukt",
   "snackSaved": "Opgeslagen",
   "snackServerUrlUpdated": "Server-URL bijgewerkt. Start de app opnieuw om te solliciteren.",
@@ -346,7 +346,7 @@
       }
     }
   },
-  "transferIdLabel": "ID: <<PH0>>",
+  "transferIdLabel": "ID: {id}",
   "@downloadMetaSummary": {
     "placeholders": {
       "count": {
@@ -357,7 +357,7 @@
       }
     }
   },
-  "downloadMetaSummary": "Bestanden: <<PH0>> · <<PH1>> bytes",
+  "downloadMetaSummary": "Bestanden: {count} · {size} bytes",
   "@todayAt": {
     "placeholders": {
       "time": {
@@ -365,7 +365,7 @@
       }
     }
   },
-  "todayAt": "Vandaag · <<PH0>>",
+  "todayAt": "Vandaag · {time}",
   "@yesterdayAt": {
     "placeholders": {
       "time": {
@@ -373,7 +373,7 @@
       }
     }
   },
-  "yesterdayAt": "Gisteren · <<PH0>>",
+  "yesterdayAt": "Gisteren · {time}",
   "@daysAgoAt": {
     "placeholders": {
       "days": {
@@ -384,7 +384,7 @@
       }
     }
   },
-  "daysAgoAt": "<<PH0>>d geleden · <<PH1>>",
+  "daysAgoAt": "{days}d geleden · {time}",
   "@dateAt": {
     "placeholders": {
       "date": {
@@ -395,7 +395,7 @@
       }
     }
   },
-  "dateAt": "<<PH0>> · <<PH1>>",
+  "dateAt": "{date} · {time}",
   "@mbAmount": {
     "placeholders": {
       "amount": {
@@ -403,7 +403,7 @@
       }
     }
   },
-  "mbAmount": "<<PH0>>MB",
+  "mbAmount": "{amount}MB",
   "@uploadProgressSummary": {
     "placeholders": {
       "sent": {
@@ -417,7 +417,7 @@
       }
     }
   },
-  "uploadProgressSummary": "<<PH0>> / <<PH1>> • <<PH2>> links",
+  "uploadProgressSummary": "{sent} / {total} • {remaining} links",
   "loadingShort": "Laden...",
   "colorPaletteTitle": "Kleurenpalet",
   "colorPaletteSectionBackgrounds": "Achtergronden (inktschaal)",
@@ -462,5 +462,5 @@
       }
     }
   },
-  "receiveMoreFiles": "+<<PH0>> meer bestanden"
+  "receiveMoreFiles": "+{count} meer bestanden"
 }

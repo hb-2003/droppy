@@ -131,7 +131,7 @@ class AppLocalizationsIs extends AppLocalizations {
 
   @override
   String verifyEmailCheckSpamHint(String email) {
-    return 'Ef það berst ekki: athugaðu rusl/ruslpóst og kynningar, bíddu í eina mínútu, staðfestu að <<PH0>> hafi engar innsláttarvillur, pikkaðu síðan á Senda aftur.';
+    return 'Ef það berst ekki: athugaðu rusl/ruslpóst og kynningar, bíddu í eina mínútu, staðfestu að $email hafi engar innsláttarvillur, pikkaðu síðan á Senda aftur.';
   }
 
   @override
@@ -299,7 +299,7 @@ class AppLocalizationsIs extends AppLocalizations {
 
   @override
   String upToTotal(String max) {
-    return 'Allt að <<PH0>> samtals';
+    return 'Allt að $max samtals';
   }
 
   @override
@@ -361,7 +361,7 @@ class AppLocalizationsIs extends AppLocalizations {
 
   @override
   String mbLeft(String amount) {
-    return '<<PH0>> MB eftir';
+    return '$amount MB eftir';
   }
 
   @override
@@ -486,7 +486,7 @@ class AppLocalizationsIs extends AppLocalizations {
 
   @override
   String transferLoadFailed(String error) {
-    return 'Gat ekki hlaðið flutning: <<PH0>>';
+    return 'Gat ekki hlaðið flutning: $error';
   }
 
   @override
@@ -535,7 +535,7 @@ class AppLocalizationsIs extends AppLocalizations {
 
   @override
   String storePricesPartialBody(int loaded, int total) {
-    return '<<PH0>> af <<PH1>> áskriftarvörum hlaðnar.';
+    return '$loaded af $total áskriftarvörum hlaðnar.';
   }
 
   @override
@@ -547,7 +547,7 @@ class AppLocalizationsIs extends AppLocalizations {
 
   @override
   String effectiveMonthlyPrice(String price) {
-    return '<<PH0>>/mánuði';
+    return '$price/mánuði';
   }
 
   @override
@@ -586,7 +586,7 @@ class AppLocalizationsIs extends AppLocalizations {
 
   @override
   String otpSentTo(String email) {
-    return 'Við sendum 6 stafa kóða til\n<<PH0>>';
+    return 'Við sendum 6 stafa kóða til\n$email';
   }
 
   @override
@@ -714,7 +714,7 @@ class AppLocalizationsIs extends AppLocalizations {
 
   @override
   String snackDownloadSaved(String filename) {
-    return '\"<<PH0>>\" vistað í niðurhali';
+    return '\"$filename\" vistað í niðurhali';
   }
 
   @override
@@ -881,42 +881,42 @@ class AppLocalizationsIs extends AppLocalizations {
 
   @override
   String transferIdLabel(String id) {
-    return 'Auðkenni: <<PH0>>';
+    return 'Auðkenni: $id';
   }
 
   @override
   String downloadMetaSummary(String count, String size) {
-    return 'Skrár: <<PH0>> · <<PH1>> bæti';
+    return 'Skrár: $count · $size bæti';
   }
 
   @override
   String todayAt(String time) {
-    return 'Í dag · <<PH0>>';
+    return 'Í dag · $time';
   }
 
   @override
   String yesterdayAt(String time) {
-    return 'Í gær · <<PH0>>';
+    return 'Í gær · $time';
   }
 
   @override
   String daysAgoAt(int days, String time) {
-    return '<<PH0>>d. síðan · <<PH1>>';
+    return '${days}d. síðan · $time';
   }
 
   @override
   String dateAt(String date, String time) {
-    return '<<PH0>> · <<PH1>>';
+    return '$date · $time';
   }
 
   @override
   String mbAmount(String amount) {
-    return '<<PH0>> MB';
+    return '$amount MB';
   }
 
   @override
   String uploadProgressSummary(String sent, String total, String remaining) {
-    return '<<PH0>> / <<PH1>> • <<PH2>> vinstri';
+    return '$sent / $total • $remaining vinstri';
   }
 
   @override
@@ -1018,6 +1018,6 @@ class AppLocalizationsIs extends AppLocalizations {
 
   @override
   String receiveMoreFiles(int count) {
-    return '+<<PH0>> fleiri skrár';
+    return '+$count fleiri skrár';
   }
 }

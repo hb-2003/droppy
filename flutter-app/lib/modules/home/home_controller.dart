@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 import 'dart:ui' as ui;
 
@@ -21,6 +22,7 @@ import 'package:sendlargefiles/localization/app_locale.dart';
 import 'package:sendlargefiles/l10n/app_localizations.dart';
 import 'package:sendlargefiles/modules/history/history_controller.dart';
 import 'package:sendlargefiles/modules/shell/app_shell_controller.dart';
+import 'package:sendlargefiles/services/ios_security_scoped_folder.dart';
 import 'package:sendlargefiles/widgets/app_snackbar.dart';
 
 class HomeController extends GetxController {
@@ -192,6 +194,7 @@ class HomeController extends GetxController {
       AppSnack.error(t.snackFolderUnsupported, t.snackFolderUnsupportedBody);
     } catch (_) {
       final t = appL10n();
+      unawaited(IosSecurityScopedFolder.releaseActive());
       AppSnack.error(t.snackError, t.snackFolderReadError);
     } finally {
       pickingFiles.value = false;
@@ -234,6 +237,7 @@ class HomeController extends GetxController {
     if (files.isEmpty) return;
     files.clear();
     files.refresh();
+    unawaited(IosSecurityScopedFolder.releaseActive());
   }
 
   Future<void> startSend(BuildContext context) async {
@@ -503,6 +507,7 @@ class HomeController extends GetxController {
     // Once uploaded, clear the selected files (web resets the dropzone).
     files.clear();
     files.refresh();
+    unawaited(IosSecurityScopedFolder.releaseActive());
     progress.value = 0;
     uploadSentBytes.value = 0;
     uploadTotalBytes.value = 0;
@@ -519,6 +524,7 @@ class HomeController extends GetxController {
   void resetForNewTransfer() {
     files.clear();
     files.refresh();
+    unawaited(IosSecurityScopedFolder.releaseActive());
     progress.value = 0;
     uploadSentBytes.value = 0;
     uploadTotalBytes.value = 0;

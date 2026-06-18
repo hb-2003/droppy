@@ -300,7 +300,7 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String upToTotal(String max) {
-    return 'Усього до <<PH0>>';
+    return 'Усього до $max';
   }
 
   @override
@@ -362,7 +362,7 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String mbLeft(String amount) {
-    return '<<PH0>> Залишилося МБ';
+    return '$amount Залишилося МБ';
   }
 
   @override
@@ -487,7 +487,7 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String transferLoadFailed(String error) {
-    return 'Не вдалося завантажити передачу: <<PH0>>';
+    return 'Не вдалося завантажити передачу: $error';
   }
 
   @override
@@ -536,7 +536,7 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String storePricesPartialBody(int loaded, int total) {
-    return '<<PH0>> із <<PH1>> продуктів за підпискою завантажено.';
+    return '$loaded із $total продуктів за підпискою завантажено.';
   }
 
   @override
@@ -548,7 +548,7 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String effectiveMonthlyPrice(String price) {
-    return '<<PH0>>/місяць';
+    return '$price/місяць';
   }
 
   @override
@@ -588,7 +588,7 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String otpSentTo(String email) {
-    return 'Ми надіслали 6-значний код на адресу\n<<PH0>>';
+    return 'Ми надіслали 6-значний код на адресу\n$email';
   }
 
   @override
@@ -714,7 +714,7 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String snackDownloadSaved(String filename) {
-    return '\"<<PH0>>\" збережено в папці \"Завантаження\"';
+    return '\"$filename\" збережено в папці \"Завантаження\"';
   }
 
   @override
@@ -881,42 +881,42 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String transferIdLabel(String id) {
-    return 'ID: <<PH0>>';
+    return 'ID: $id';
   }
 
   @override
   String downloadMetaSummary(String count, String size) {
-    return 'Файли: <<PH0>> · <<PH1>> байт';
+    return 'Файли: $count · $size байт';
   }
 
   @override
   String todayAt(String time) {
-    return 'Сьогодні · <<PH0>>';
+    return 'Сьогодні · $time';
   }
 
   @override
   String yesterdayAt(String time) {
-    return 'Учора · <<PH0>>';
+    return 'Учора · $time';
   }
 
   @override
   String daysAgoAt(int days, String time) {
-    return '<<PH0>>дн. тому · <<PH1>>';
+    return '$daysдн. тому · $time';
   }
 
   @override
   String dateAt(String date, String time) {
-    return '<<PH0>> · <<PH1>>';
+    return '$date · $time';
   }
 
   @override
   String mbAmount(String amount) {
-    return '<<PH0>> MB';
+    return '$amount MB';
   }
 
   @override
   String uploadProgressSummary(String sent, String total, String remaining) {
-    return '<<PH0>> / <<PH1>> • <<PH2>> ліворуч';
+    return '$sent / $total • $remaining ліворуч';
   }
 
   @override
@@ -1016,6 +1016,6 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String receiveMoreFiles(int count) {
-    return '+<<PH0>> більше файлів';
+    return '+$count більше файлів';
   }
 }

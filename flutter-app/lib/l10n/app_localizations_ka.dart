@@ -131,7 +131,7 @@ class AppLocalizationsKa extends AppLocalizations {
 
   @override
   String verifyEmailCheckSpamHint(String email) {
-    return 'თუ ის არ ჩამოვიდა: შეამოწმეთ უსარგებლო/სპამი და აქციები, დაელოდეთ ერთი წუთით, დაადასტურეთ, რომ <<PH0>>-ს არ აქვს ბეჭდვითი შეცდომები, შემდეგ შეეხეთ ხელახლა გაგზავნას.';
+    return 'თუ ის არ ჩამოვიდა: შეამოწმეთ უსარგებლო/სპამი და აქციები, დაელოდეთ ერთი წუთით, დაადასტურეთ, რომ $email-ს არ აქვს ბეჭდვითი შეცდომები, შემდეგ შეეხეთ ხელახლა გაგზავნას.';
   }
 
   @override
@@ -299,7 +299,7 @@ class AppLocalizationsKa extends AppLocalizations {
 
   @override
   String upToTotal(String max) {
-    return 'სულ <<PH0>>-მდე';
+    return 'სულ $max-მდე';
   }
 
   @override
@@ -361,7 +361,7 @@ class AppLocalizationsKa extends AppLocalizations {
 
   @override
   String mbLeft(String amount) {
-    return '<<PH0>> MB დარჩა';
+    return '$amount MB დარჩა';
   }
 
   @override
@@ -486,7 +486,7 @@ class AppLocalizationsKa extends AppLocalizations {
 
   @override
   String transferLoadFailed(String error) {
-    return 'გადაცემის ჩატვირთვა ვერ მოხერხდა: <<PH0>>';
+    return 'გადაცემის ჩატვირთვა ვერ მოხერხდა: $error';
   }
 
   @override
@@ -547,7 +547,7 @@ class AppLocalizationsKa extends AppLocalizations {
 
   @override
   String effectiveMonthlyPrice(String price) {
-    return '<<PH0>>/თვეში';
+    return '$price/თვეში';
   }
 
   @override
@@ -586,7 +586,7 @@ class AppLocalizationsKa extends AppLocalizations {
 
   @override
   String otpSentTo(String email) {
-    return 'ჩვენ გავგზავნეთ 6-ნიშნა კოდი\n<<PH0>>';
+    return 'ჩვენ გავგზავნეთ 6-ნიშნა კოდი\n$email';
   }
 
   @override
@@ -713,7 +713,7 @@ class AppLocalizationsKa extends AppLocalizations {
 
   @override
   String snackDownloadSaved(String filename) {
-    return '„<<PH0>>“ შენახულია ჩამოტვირთვებში';
+    return '„$filename“ შენახულია ჩამოტვირთვებში';
   }
 
   @override
@@ -880,42 +880,42 @@ class AppLocalizationsKa extends AppLocalizations {
 
   @override
   String transferIdLabel(String id) {
-    return 'ID: <<PH0>>';
+    return 'ID: $id';
   }
 
   @override
   String downloadMetaSummary(String count, String size) {
-    return 'ფაილები: <<PH0>> · <<PH1>> ბაიტი';
+    return 'ფაილები: $count · $size ბაიტი';
   }
 
   @override
   String todayAt(String time) {
-    return 'დღეს · <<PH0>>';
+    return 'დღეს · $time';
   }
 
   @override
   String yesterdayAt(String time) {
-    return 'გუშინ · <<PH0>>';
+    return 'გუშინ · $time';
   }
 
   @override
   String daysAgoAt(int days, String time) {
-    return '<<PH0>>დღის წინ · <<PH1>>';
+    return '$daysდღის წინ · $time';
   }
 
   @override
   String dateAt(String date, String time) {
-    return '<<PH0>> · <<PH1>>';
+    return '$date · $time';
   }
 
   @override
   String mbAmount(String amount) {
-    return '<<PH0>> მბ';
+    return '$amount მბ';
   }
 
   @override
   String uploadProgressSummary(String sent, String total, String remaining) {
-    return '<<PH0>> / <<PH1>> • <<PH2>> დარჩა';
+    return '$sent / $total • $remaining დარჩა';
   }
 
   @override
@@ -1016,6 +1016,6 @@ class AppLocalizationsKa extends AppLocalizations {
 
   @override
   String receiveMoreFiles(int count) {
-    return '+<<PH0>> მეტი ფაილი';
+    return '+$count მეტი ფაილი';
   }
 }

@@ -132,7 +132,7 @@ class AppLocalizationsTa extends AppLocalizations {
 
   @override
   String verifyEmailCheckSpamHint(String email) {
-    return 'அது வரவில்லை என்றால்: குப்பை/ஸ்பேம் மற்றும் விளம்பரங்களைச் சரிபார்த்து, ஒரு நிமிடம் காத்திருந்து, <<PH0>> எழுத்துப் பிழைகள் இல்லை என்பதை உறுதிசெய்து, மீண்டும் அனுப்பு என்பதைத் தட்டவும்.';
+    return 'அது வரவில்லை என்றால்: குப்பை/ஸ்பேம் மற்றும் விளம்பரங்களைச் சரிபார்த்து, ஒரு நிமிடம் காத்திருந்து, $email எழுத்துப் பிழைகள் இல்லை என்பதை உறுதிசெய்து, மீண்டும் அனுப்பு என்பதைத் தட்டவும்.';
   }
 
   @override
@@ -301,7 +301,7 @@ class AppLocalizationsTa extends AppLocalizations {
 
   @override
   String upToTotal(String max) {
-    return 'மொத்தம் <<PH0>> வரை';
+    return 'மொத்தம் $max வரை';
   }
 
   @override
@@ -363,7 +363,7 @@ class AppLocalizationsTa extends AppLocalizations {
 
   @override
   String mbLeft(String amount) {
-    return '<<PH0>> MB மீதமுள்ளது';
+    return '$amount MB மீதமுள்ளது';
   }
 
   @override
@@ -490,7 +490,7 @@ class AppLocalizationsTa extends AppLocalizations {
 
   @override
   String transferLoadFailed(String error) {
-    return 'பரிமாற்றத்தை ஏற்ற முடியவில்லை: <<PH0>>';
+    return 'பரிமாற்றத்தை ஏற்ற முடியவில்லை: $error';
   }
 
   @override
@@ -539,7 +539,7 @@ class AppLocalizationsTa extends AppLocalizations {
 
   @override
   String storePricesPartialBody(int loaded, int total) {
-    return '<<PH1>> இல் <<PH0>> சந்தா தயாரிப்புகள் ஏற்றப்பட்டன.';
+    return '$total இல் $loaded சந்தா தயாரிப்புகள் ஏற்றப்பட்டன.';
   }
 
   @override
@@ -551,7 +551,7 @@ class AppLocalizationsTa extends AppLocalizations {
 
   @override
   String effectiveMonthlyPrice(String price) {
-    return '<<PH0>>/மாதம்';
+    return '$price/மாதம்';
   }
 
   @override
@@ -591,7 +591,7 @@ class AppLocalizationsTa extends AppLocalizations {
 
   @override
   String otpSentTo(String email) {
-    return '6 இலக்கக் குறியீட்டை அனுப்பினோம்\n<<PH0>>';
+    return '6 இலக்கக் குறியீட்டை அனுப்பினோம்\n$email';
   }
 
   @override
@@ -720,7 +720,7 @@ class AppLocalizationsTa extends AppLocalizations {
 
   @override
   String snackDownloadSaved(String filename) {
-    return '\"<<PH0>>\" பதிவிறக்கங்களில் சேமிக்கப்பட்டது';
+    return '\"$filename\" பதிவிறக்கங்களில் சேமிக்கப்பட்டது';
   }
 
   @override
@@ -888,42 +888,42 @@ class AppLocalizationsTa extends AppLocalizations {
 
   @override
   String transferIdLabel(String id) {
-    return 'ஐடி: <<PH0>>';
+    return 'ஐடி: $id';
   }
 
   @override
   String downloadMetaSummary(String count, String size) {
-    return 'கோப்புகள்: <<PH0>> · <<PH1>> பைட்டுகள்';
+    return 'கோப்புகள்: $count · $size பைட்டுகள்';
   }
 
   @override
   String todayAt(String time) {
-    return 'இன்று · <<PH0>>';
+    return 'இன்று · $time';
   }
 
   @override
   String yesterdayAt(String time) {
-    return 'நேற்று · <<PH0>>';
+    return 'நேற்று · $time';
   }
 
   @override
   String daysAgoAt(int days, String time) {
-    return '<<PH0>>நா முன்பு · <<PH1>>';
+    return '$daysநா முன்பு · $time';
   }
 
   @override
   String dateAt(String date, String time) {
-    return '<<PH0>> · <<PH1>>';
+    return '$date · $time';
   }
 
   @override
   String mbAmount(String amount) {
-    return '<<PH0>> MB';
+    return '$amount MB';
   }
 
   @override
   String uploadProgressSummary(String sent, String total, String remaining) {
-    return '<<PH0>> / <<PH1>> • <<PH2>> விட்டு';
+    return '$sent / $total • $remaining விட்டு';
   }
 
   @override
@@ -1026,6 +1026,6 @@ class AppLocalizationsTa extends AppLocalizations {
 
   @override
   String receiveMoreFiles(int count) {
-    return '+<<PH0>> மேலும் கோப்புகள்';
+    return '+$count மேலும் கோப்புகள்';
   }
 }

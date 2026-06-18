@@ -131,7 +131,7 @@ class AppLocalizationsEl extends AppLocalizations {
 
   @override
   String verifyEmailCheckSpamHint(String email) {
-    return 'Εάν δεν φτάσει: ελέγξτε Ανεπιθύμητα/Ανεπιθύμητα και Προσφορές, περιμένετε ένα λεπτό, επιβεβαιώστε ότι το <<PH0>> δεν έχει τυπογραφικά λάθη και, στη συνέχεια, πατήστε Επανάληψη αποστολής.';
+    return 'Εάν δεν φτάσει: ελέγξτε Ανεπιθύμητα/Ανεπιθύμητα και Προσφορές, περιμένετε ένα λεπτό, επιβεβαιώστε ότι το $email δεν έχει τυπογραφικά λάθη και, στη συνέχεια, πατήστε Επανάληψη αποστολής.';
   }
 
   @override
@@ -300,7 +300,7 @@ class AppLocalizationsEl extends AppLocalizations {
 
   @override
   String upToTotal(String max) {
-    return 'Έως <<PH0>> σύνολο';
+    return 'Έως $max σύνολο';
   }
 
   @override
@@ -363,7 +363,7 @@ class AppLocalizationsEl extends AppLocalizations {
 
   @override
   String mbLeft(String amount) {
-    return '<<PH0>> MB απομένουν';
+    return '$amount MB απομένουν';
   }
 
   @override
@@ -490,7 +490,7 @@ class AppLocalizationsEl extends AppLocalizations {
 
   @override
   String transferLoadFailed(String error) {
-    return 'Δεν ήταν δυνατή η φόρτωση της μεταφοράς: <<PH0>>';
+    return 'Δεν ήταν δυνατή η φόρτωση της μεταφοράς: $error';
   }
 
   @override
@@ -539,7 +539,7 @@ class AppLocalizationsEl extends AppLocalizations {
 
   @override
   String storePricesPartialBody(int loaded, int total) {
-    return 'Φορτώθηκαν <<PH0>> από <<PH1>> συνδρομητικά προϊόντα.';
+    return 'Φορτώθηκαν $loaded από $total συνδρομητικά προϊόντα.';
   }
 
   @override
@@ -551,7 +551,7 @@ class AppLocalizationsEl extends AppLocalizations {
 
   @override
   String effectiveMonthlyPrice(String price) {
-    return '<<PH0>>/μήνα';
+    return '$price/μήνα';
   }
 
   @override
@@ -590,7 +590,7 @@ class AppLocalizationsEl extends AppLocalizations {
 
   @override
   String otpSentTo(String email) {
-    return 'Στείλαμε έναν 6ψήφιο κωδικό στο\n<<PH0>>';
+    return 'Στείλαμε έναν 6ψήφιο κωδικό στο\n$email';
   }
 
   @override
@@ -721,7 +721,7 @@ class AppLocalizationsEl extends AppLocalizations {
 
   @override
   String snackDownloadSaved(String filename) {
-    return 'Το \"<<PH0>>\" αποθηκεύτηκε στις Λήψεις';
+    return 'Το \"$filename\" αποθηκεύτηκε στις Λήψεις';
   }
 
   @override
@@ -887,42 +887,42 @@ class AppLocalizationsEl extends AppLocalizations {
 
   @override
   String transferIdLabel(String id) {
-    return 'ID: <<PH0>>';
+    return 'ID: $id';
   }
 
   @override
   String downloadMetaSummary(String count, String size) {
-    return 'Αρχεία: <<PH0>> · <<PH1>> byte';
+    return 'Αρχεία: $count · $size byte';
   }
 
   @override
   String todayAt(String time) {
-    return 'Σήμερα · <<PH0>>';
+    return 'Σήμερα · $time';
   }
 
   @override
   String yesterdayAt(String time) {
-    return 'Χθες · <<PH0>>';
+    return 'Χθες · $time';
   }
 
   @override
   String daysAgoAt(int days, String time) {
-    return '<<PH0>>d πριν · <<PH1>>';
+    return '${days}d πριν · $time';
   }
 
   @override
   String dateAt(String date, String time) {
-    return '<<PH0>> · <<PH1>>';
+    return '$date · $time';
   }
 
   @override
   String mbAmount(String amount) {
-    return '<<PH0>> MB';
+    return '$amount MB';
   }
 
   @override
   String uploadProgressSummary(String sent, String total, String remaining) {
-    return '<<PH0>> / <<PH1>> • <<PH2>> αριστερά';
+    return '$sent / $total • $remaining αριστερά';
   }
 
   @override
@@ -1024,6 +1024,6 @@ class AppLocalizationsEl extends AppLocalizations {
 
   @override
   String receiveMoreFiles(int count) {
-    return '+<<PH0>> περισσότερα αρχεία';
+    return '+$count περισσότερα αρχεία';
   }
 }

@@ -132,7 +132,7 @@ class AppLocalizationsBe extends AppLocalizations {
 
   @override
   String verifyEmailCheckSpamHint(String email) {
-    return 'Калі ён не прыходзіць: праверце непажаданую пошту і акцыі, пачакайце хвілінку, пацвердзіце, што ў <<PH0>> няма памылак друку, затым націсніце «Адправіць паўторна».';
+    return 'Калі ён не прыходзіць: праверце непажаданую пошту і акцыі, пачакайце хвілінку, пацвердзіце, што ў $email няма памылак друку, затым націсніце «Адправіць паўторна».';
   }
 
   @override
@@ -300,7 +300,7 @@ class AppLocalizationsBe extends AppLocalizations {
 
   @override
   String upToTotal(String max) {
-    return 'Усяго да <<PH0>>';
+    return 'Усяго да $max';
   }
 
   @override
@@ -363,7 +363,7 @@ class AppLocalizationsBe extends AppLocalizations {
 
   @override
   String mbLeft(String amount) {
-    return '<<PH0>> МБ засталося';
+    return '$amount МБ засталося';
   }
 
   @override
@@ -488,7 +488,7 @@ class AppLocalizationsBe extends AppLocalizations {
 
   @override
   String transferLoadFailed(String error) {
-    return 'Не атрымалася загрузіць перадачу: <<PH0>>';
+    return 'Не атрымалася загрузіць перадачу: $error';
   }
 
   @override
@@ -536,7 +536,7 @@ class AppLocalizationsBe extends AppLocalizations {
 
   @override
   String storePricesPartialBody(int loaded, int total) {
-    return '<<PH0>> з <<PH1>> прадуктаў падпіскі загружаны.';
+    return '$loaded з $total прадуктаў падпіскі загружаны.';
   }
 
   @override
@@ -548,7 +548,7 @@ class AppLocalizationsBe extends AppLocalizations {
 
   @override
   String effectiveMonthlyPrice(String price) {
-    return '<<PH0>>/месяц';
+    return '$price/месяц';
   }
 
   @override
@@ -588,7 +588,7 @@ class AppLocalizationsBe extends AppLocalizations {
 
   @override
   String otpSentTo(String email) {
-    return 'Мы адправілі 6-значны код на\n<<PH0>>';
+    return 'Мы адправілі 6-значны код на\n$email';
   }
 
   @override
@@ -718,7 +718,7 @@ class AppLocalizationsBe extends AppLocalizations {
 
   @override
   String snackDownloadSaved(String filename) {
-    return '\"<<PH0>>\" захавана ў Спампоўкі';
+    return '\"$filename\" захавана ў Спампоўкі';
   }
 
   @override
@@ -885,42 +885,42 @@ class AppLocalizationsBe extends AppLocalizations {
 
   @override
   String transferIdLabel(String id) {
-    return 'ID: <<PH0>>';
+    return 'ID: $id';
   }
 
   @override
   String downloadMetaSummary(String count, String size) {
-    return 'Файлы: <<PH0>> · <<PH1>> байты';
+    return 'Файлы: $count · $size байты';
   }
 
   @override
   String todayAt(String time) {
-    return 'Сёння · <<PH0>>';
+    return 'Сёння · $time';
   }
 
   @override
   String yesterdayAt(String time) {
-    return 'Учора · <<PH0>>';
+    return 'Учора · $time';
   }
 
   @override
   String daysAgoAt(int days, String time) {
-    return '<<PH0>>дзён таму · <<PH1>>';
+    return '$daysдзён таму · $time';
   }
 
   @override
   String dateAt(String date, String time) {
-    return '<<PH0>> · <<PH1>>';
+    return '$date · $time';
   }
 
   @override
   String mbAmount(String amount) {
-    return '<<PH0>> MB';
+    return '$amount MB';
   }
 
   @override
   String uploadProgressSummary(String sent, String total, String remaining) {
-    return '<<PH0>> / <<PH1>> • <<PH2>> злева';
+    return '$sent / $total • $remaining злева';
   }
 
   @override
@@ -1021,6 +1021,6 @@ class AppLocalizationsBe extends AppLocalizations {
 
   @override
   String receiveMoreFiles(int count) {
-    return '+<<PH0>> іншыя файлы';
+    return '+$count іншыя файлы';
   }
 }

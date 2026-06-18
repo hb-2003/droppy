@@ -46,7 +46,7 @@
       }
     }
   },
-  "verifyEmailCheckSpamHint": "Se non arriva: controlla Posta indesiderata/Spam e Promozioni, attendi un minuto, conferma che <<PH0>> non contiene errori di battitura, quindi tocca Invia di nuovo.",
+  "verifyEmailCheckSpamHint": "Se non arriva: controlla Posta indesiderata/Spam e Promozioni, attendi un minuto, conferma che {email} non contiene errori di battitura, quindi tocca Invia di nuovo.",
   "loginTitle": "Registrazione",
   "signupHint": "Utilizza l'e-mail e la password dell'account del tuo sito.",
   "emailHint": "E-mail",
@@ -107,7 +107,7 @@
       }
     }
   },
-  "upToTotal": "Fino a <<PH0>> totale",
+  "upToTotal": "Fino a {max} totale",
   "removeAll": "Rimuovi tutto",
   "addFiles": "Aggiungi file",
   "adding": "Aggiunta…",
@@ -138,7 +138,7 @@
       }
     }
   },
-  "mbLeft": "<<PH0>> MB rimasti",
+  "mbLeft": "{amount} MB rimasti",
   "fillField": "Si prega di compilare questo campo.",
   "enterValidEmail": "Inserisci un'e-mail valida.",
   "message": "Messaggio",
@@ -182,7 +182,7 @@
       }
     }
   },
-  "transferLoadFailed": "Impossibile caricare il trasferimento: <<PH0>>",
+  "transferLoadFailed": "Impossibile caricare il trasferimento: {error}",
   "passwordProtected": "Protetto da password",
   "enterPassword": "Inserisci la password",
   "unlock": "Sbloccare",
@@ -207,7 +207,7 @@
       }
     }
   },
-  "storePricesPartialBody": "<<PH0>> di <<PH1>> prodotti in abbonamento caricati.",
+  "storePricesPartialBody": "{loaded} di {total} prodotti in abbonamento caricati.",
   "storeSetupHint": "Prova su un vero iPhone (non sul simulatore), utilizza un ID Apple Sandbox e assicurati che tutti e 6 gli abbonamenti vengano creati con l'ID bundle di questa app nell'App Store. Connettiti con i prezzi impostati.",
   "priceUnavailable": "—",
   "@effectiveMonthlyPrice": {
@@ -217,7 +217,7 @@
       }
     }
   },
-  "effectiveMonthlyPrice": "<<PH0>>/mese",
+  "effectiveMonthlyPrice": "{price}/mese",
   "freeVersionAds": "Attualmente stai utilizzando la nostra versione gratuita con annunci",
   "restorePurchases": "Ripristina gli acquisti",
   "plansContinue": "Continuare",
@@ -236,7 +236,7 @@
       }
     }
   },
-  "otpSentTo": "Abbiamo inviato un codice di 6 cifre a\n<<PH0>>",
+  "otpSentTo": "Abbiamo inviato un codice di 6 cifre a\n{email}",
   "verifyAndSignIn": "Verifica e accedi",
   "didntReceiveCode": "Non l'hai ricevuto?",
   "tryAgain": "Riprova",
@@ -281,7 +281,7 @@
       }
     }
   },
-  "snackDownloadSaved": "\"<<PH0>>\" salvato in Download",
+  "snackDownloadSaved": "\"{filename}\" salvato in Download",
   "snackDownloadFailed": "Download non riuscito",
   "snackSaved": "Salvato",
   "snackServerUrlUpdated": "URL del server aggiornato. Riavvia l'app per applicare.",
@@ -346,7 +346,7 @@
       }
     }
   },
-  "transferIdLabel": "ID: <<PH0>>",
+  "transferIdLabel": "ID: {id}",
   "@downloadMetaSummary": {
     "placeholders": {
       "count": {
@@ -357,7 +357,7 @@
       }
     }
   },
-  "downloadMetaSummary": "File: <<PH0>> · <<PH1>> byte",
+  "downloadMetaSummary": "File: {count} · {size} byte",
   "@todayAt": {
     "placeholders": {
       "time": {
@@ -365,7 +365,7 @@
       }
     }
   },
-  "todayAt": "Oggi · <<PH0>>",
+  "todayAt": "Oggi · {time}",
   "@yesterdayAt": {
     "placeholders": {
       "time": {
@@ -373,7 +373,7 @@
       }
     }
   },
-  "yesterdayAt": "Ieri · <<PH0>>",
+  "yesterdayAt": "Ieri · {time}",
   "@daysAgoAt": {
     "placeholders": {
       "days": {
@@ -384,7 +384,7 @@
       }
     }
   },
-  "daysAgoAt": "<<PH0>>d fa · <<PH1>>",
+  "daysAgoAt": "{days}d fa · {time}",
   "@dateAt": {
     "placeholders": {
       "date": {
@@ -395,7 +395,7 @@
       }
     }
   },
-  "dateAt": "<<PH0>> · <<PH1>>",
+  "dateAt": "{date} · {time}",
   "@mbAmount": {
     "placeholders": {
       "amount": {
@@ -403,7 +403,7 @@
       }
     }
   },
-  "mbAmount": "<<PH0>>MB",
+  "mbAmount": "{amount}MB",
   "@uploadProgressSummary": {
     "placeholders": {
       "sent": {
@@ -417,7 +417,7 @@
       }
     }
   },
-  "uploadProgressSummary": "<<PH0>> / <<PH1>> • <<PH2>> a sinistra",
+  "uploadProgressSummary": "{sent} / {total} • {remaining} a sinistra",
   "loadingShort": "Caricamento…",
   "colorPaletteTitle": "Tavolozza dei colori",
   "colorPaletteSectionBackgrounds": "Sfondi (scala dell'inchiostro)",
@@ -462,5 +462,5 @@
       }
     }
   },
-  "receiveMoreFiles": "+<<PH0>> altri file"
+  "receiveMoreFiles": "+{count} altri file"
 }

@@ -132,7 +132,7 @@ class AppLocalizationsKk extends AppLocalizations {
 
   @override
   String verifyEmailCheckSpamHint(String email) {
-    return 'Егер ол келмесе: Қалаусыз/Спам және Жарнамаларды тексеріңіз, бір минут күтіңіз, <<PH0>> қатесі жоқ екенін растаңыз, содан кейін Қайта жіберу түймесін түртіңіз.';
+    return 'Егер ол келмесе: Қалаусыз/Спам және Жарнамаларды тексеріңіз, бір минут күтіңіз, $email қатесі жоқ екенін растаңыз, содан кейін Қайта жіберу түймесін түртіңіз.';
   }
 
   @override
@@ -300,7 +300,7 @@ class AppLocalizationsKk extends AppLocalizations {
 
   @override
   String upToTotal(String max) {
-    return 'Барлығы <<PH0>> дейін';
+    return 'Барлығы $max дейін';
   }
 
   @override
@@ -362,7 +362,7 @@ class AppLocalizationsKk extends AppLocalizations {
 
   @override
   String mbLeft(String amount) {
-    return '<<PH0>> МБ қалды';
+    return '$amount МБ қалды';
   }
 
   @override
@@ -488,7 +488,7 @@ class AppLocalizationsKk extends AppLocalizations {
 
   @override
   String transferLoadFailed(String error) {
-    return 'Тасымалдау жүктелмеді: <<PH0>>';
+    return 'Тасымалдау жүктелмеді: $error';
   }
 
   @override
@@ -537,7 +537,7 @@ class AppLocalizationsKk extends AppLocalizations {
 
   @override
   String storePricesPartialBody(int loaded, int total) {
-    return '<<PH1>> жазылым өнімдерінің <<PH0>> жүктелді.';
+    return '$total жазылым өнімдерінің $loaded жүктелді.';
   }
 
   @override
@@ -549,7 +549,7 @@ class AppLocalizationsKk extends AppLocalizations {
 
   @override
   String effectiveMonthlyPrice(String price) {
-    return '<<PH0>>/ай';
+    return '$price/ай';
   }
 
   @override
@@ -588,7 +588,7 @@ class AppLocalizationsKk extends AppLocalizations {
 
   @override
   String otpSentTo(String email) {
-    return 'Біз 6 таңбалы кодты жібердік\n<<PH0>>';
+    return 'Біз 6 таңбалы кодты жібердік\n$email';
   }
 
   @override
@@ -716,7 +716,7 @@ class AppLocalizationsKk extends AppLocalizations {
 
   @override
   String snackDownloadSaved(String filename) {
-    return '\"<<PH0>>\" Жүктеулер ішіне сақталды';
+    return '\"$filename\" Жүктеулер ішіне сақталды';
   }
 
   @override
@@ -882,42 +882,42 @@ class AppLocalizationsKk extends AppLocalizations {
 
   @override
   String transferIdLabel(String id) {
-    return 'ID: <<PH0>>';
+    return 'ID: $id';
   }
 
   @override
   String downloadMetaSummary(String count, String size) {
-    return 'Файлдар: <<PH0>> · <<PH1>> байт';
+    return 'Файлдар: $count · $size байт';
   }
 
   @override
   String todayAt(String time) {
-    return 'Бүгін · <<PH0>>';
+    return 'Бүгін · $time';
   }
 
   @override
   String yesterdayAt(String time) {
-    return 'Кеше · <<PH0>>';
+    return 'Кеше · $time';
   }
 
   @override
   String daysAgoAt(int days, String time) {
-    return '<<PH0>>күн бұрын · <<PH1>>';
+    return '$daysкүн бұрын · $time';
   }
 
   @override
   String dateAt(String date, String time) {
-    return '<<PH0>> · <<PH1>>';
+    return '$date · $time';
   }
 
   @override
   String mbAmount(String amount) {
-    return '<<PH0>> МБ';
+    return '$amount МБ';
   }
 
   @override
   String uploadProgressSummary(String sent, String total, String remaining) {
-    return '<<PH0>> / <<PH1>> • <<PH2>> солға';
+    return '$sent / $total • $remaining солға';
   }
 
   @override
@@ -1018,6 +1018,6 @@ class AppLocalizationsKk extends AppLocalizations {
 
   @override
   String receiveMoreFiles(int count) {
-    return '+<<PH0>> қосымша файлдар';
+    return '+$count қосымша файлдар';
   }
 }

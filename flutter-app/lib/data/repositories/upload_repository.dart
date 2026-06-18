@@ -6,6 +6,7 @@ import 'package:path/path.dart' as p;
 import 'package:sendlargefiles/data/models/app_config.dart';
 import 'package:sendlargefiles/data/models/json_utils.dart';
 import 'package:sendlargefiles/data/providers/api_client.dart';
+import 'package:sendlargefiles/services/ios_security_scoped_folder.dart';
 
 class PickedFileItem {
   PickedFileItem({
@@ -282,6 +283,26 @@ class UploadRepository extends GetxService {
     String directoryPath,
     int Function() uidGen,
   ) async {
+    if (Platform.isIOS) {
+      final nativeFiles = await IosSecurityScopedFolder.listFiles(directoryPath);
+      if (nativeFiles == null) {
+        throw const FileSystemException('Could not access selected folder on iOS');
+      }
+      final out = nativeFiles
+          .map(
+            (f) => PickedFileItem(
+              path: f.path,
+              name: f.name,
+              size: f.size,
+              fileUid: _randomUid(uidGen),
+              originalPath: f.originalPath,
+            ),
+          )
+          .toList();
+      out.sort((a, b) => a.displayName.compareTo(b.displayName));
+      return out;
+    }
+
     final root = Directory(p.normalize(p.absolute(directoryPath)));
     if (!await root.exists()) return const [];
 

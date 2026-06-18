@@ -130,7 +130,7 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String verifyEmailCheckSpamHint(String email) {
-    return 'Kui see ei saabu: kontrollige Rämpspost/Rämpspost ja Pakkumised, oodake minut, veenduge, et <<PH0>> pole kirjavigu, seejärel puudutage Saada uuesti.';
+    return 'Kui see ei saabu: kontrollige Rämpspost/Rämpspost ja Pakkumised, oodake minut, veenduge, et $email pole kirjavigu, seejärel puudutage Saada uuesti.';
   }
 
   @override
@@ -298,7 +298,7 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String upToTotal(String max) {
-    return 'Kokku kuni <<PH0>>';
+    return 'Kokku kuni $max';
   }
 
   @override
@@ -360,7 +360,7 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String mbLeft(String amount) {
-    return '<<PH0>> MB jäänud';
+    return '$amount MB jäänud';
   }
 
   @override
@@ -483,7 +483,7 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String transferLoadFailed(String error) {
-    return 'Ülekannet ei saanud laadida: <<PH0>>';
+    return 'Ülekannet ei saanud laadida: $error';
   }
 
   @override
@@ -532,7 +532,7 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String storePricesPartialBody(int loaded, int total) {
-    return '<<PH0>> / <<PH1>> tellimustoodetest on laaditud.';
+    return '$loaded / $total tellimustoodetest on laaditud.';
   }
 
   @override
@@ -544,7 +544,7 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String effectiveMonthlyPrice(String price) {
-    return '<<PH0>>/kuus';
+    return '$price/kuus';
   }
 
   @override
@@ -583,7 +583,7 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String otpSentTo(String email) {
-    return 'Saatsime 6-kohalise koodi aadressile\n<<PH0>>';
+    return 'Saatsime 6-kohalise koodi aadressile\n$email';
   }
 
   @override
@@ -707,7 +707,7 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String snackDownloadSaved(String filename) {
-    return '\"<<PH0>>\" salvestati allalaadimiste alla';
+    return '\"$filename\" salvestati allalaadimiste alla';
   }
 
   @override
@@ -874,42 +874,42 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String transferIdLabel(String id) {
-    return 'ID: <<PH0>>';
+    return 'ID: $id';
   }
 
   @override
   String downloadMetaSummary(String count, String size) {
-    return 'Failid: <<PH0>> · <<PH1>> baiti';
+    return 'Failid: $count · $size baiti';
   }
 
   @override
   String todayAt(String time) {
-    return 'Täna · <<PH0>>';
+    return 'Täna · $time';
   }
 
   @override
   String yesterdayAt(String time) {
-    return 'Eile · <<PH0>>';
+    return 'Eile · $time';
   }
 
   @override
   String daysAgoAt(int days, String time) {
-    return '<<PH0>>p tagasi · <<PH1>>';
+    return '${days}p tagasi · $time';
   }
 
   @override
   String dateAt(String date, String time) {
-    return '<<PH0>> · <<PH1>>';
+    return '$date · $time';
   }
 
   @override
   String mbAmount(String amount) {
-    return '<<PH0>> MB';
+    return '$amount MB';
   }
 
   @override
   String uploadProgressSummary(String sent, String total, String remaining) {
-    return '<<PH0>> / <<PH1>> • <<PH2>> vasakule';
+    return '$sent / $total • $remaining vasakule';
   }
 
   @override
@@ -1009,6 +1009,6 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String receiveMoreFiles(int count) {
-    return '+<<PH0>> rohkem faile';
+    return '+$count rohkem faile';
   }
 }
