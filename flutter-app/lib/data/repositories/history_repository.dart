@@ -68,7 +68,13 @@ class HistoryTransfer {
 
   bool get isPc => isPcShare || isPcReceive;
 
-  bool get isLocalTransfer => isWifi || isPc;
+  bool get isNearbyShare => share == 'nearby';
+
+  bool get isNearbyReceive => share == 'nearby_in';
+
+  bool get isNearby => isNearbyShare || isNearbyReceive;
+
+  bool get isLocalTransfer => isWifi || isPc || isNearby;
 
   bool get isExpired {
     if (isLocalTransfer) return false;

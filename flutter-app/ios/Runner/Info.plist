@@ -32,6 +32,10 @@
 	<string>8</string>
 	<key>NSLocalNetworkUsageDescription</key>
 	<string>Used to send and receive files with nearby devices on the same Wi‑Fi network.</string>
+	<key>NSBonjourServices</key>
+	<array>
+		<string>_metransfer._tcp</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>LSSupportsOpeningDocumentsInPlace</key>

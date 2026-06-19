@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:qr_flutter/qr_flutter.dart';
+import 'package:sendlargefiles/app/routes/app_routes.dart';
+import 'package:sendlargefiles/app/theme/app_theme.dart';
 import 'package:sendlargefiles/l10n/app_localizations.dart';
 import 'package:sendlargefiles/modules/download/receive_controller.dart';
 import 'package:sendlargefiles/widgets/app_snackbar.dart';
@@ -19,6 +21,36 @@ Color _onSurface(BuildContext c) => Theme.of(c).colorScheme.onSurface;
 Color _dim(BuildContext c) => Theme.of(c).colorScheme.onSurface.withValues(alpha: 0.55);
 Color _dim2(BuildContext c) => Theme.of(c).colorScheme.onSurface.withValues(alpha: 0.38);
 Color _line(BuildContext c) => Theme.of(c).colorScheme.outlineVariant;
+bool _isDark(BuildContext c) => Theme.of(c).brightness == Brightness.dark;
+
+class _ReceiveShellCard extends StatelessWidget {
+  const _ReceiveShellCard({required this.child, this.padding = const EdgeInsets.all(16)});
+
+  final Widget child;
+  final EdgeInsets padding;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: padding,
+      decoration: BoxDecoration(
+        color: _isDark(context) ? DroppyWebColors.ink700 : Colors.white,
+        borderRadius: BorderRadius.circular(DroppyRadius.lg),
+        border: Border.all(color: _line(context)),
+        boxShadow: _isDark(context)
+            ? null
+            : const [
+                BoxShadow(
+                  color: Color(0x0A000000),
+                  blurRadius: 20,
+                  offset: Offset(0, 6),
+                ),
+              ],
+      ),
+      child: child,
+    );
+  }
+}
 
 class ReceiveView extends GetView<ReceiveController> {
   const ReceiveView({super.key});
@@ -26,7 +58,6 @@ class ReceiveView extends GetView<ReceiveController> {
   @override
   Widget build(BuildContext context) {
     final t = AppLocalizations.of(context)!;
-    final bottomPad = MediaQuery.of(context).padding.bottom + 84;
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: Theme.of(context).brightness == Brightness.dark
           ? SystemUiOverlayStyle.light
@@ -45,12 +76,12 @@ class ReceiveView extends GetView<ReceiveController> {
                 child: ScrollConfiguration(
                   behavior: const _NoOverscrollBehavior(),
                   child: SingleChildScrollView(
-                    padding: EdgeInsets.fromLTRB(16, 0, 16, 32 + bottomPad),
+                    padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        _ReceiveModeSwitcher(controller: controller),
-                        const SizedBox(height: 16),
+                        _ReceiveModeGrid(controller: controller),
+                        const SizedBox(height: 14),
                         Obx(() {
                           if (controller.receiveMode.value == 'pc') {
                             return _PcReceiveSection(controller: controller);
@@ -60,7 +91,7 @@ class ReceiveView extends GetView<ReceiveController> {
                               crossAxisAlignment: CrossAxisAlignment.stretch,
                               children: [
                                 _WifiInputCard(controller: controller),
-                                const SizedBox(height: 16),
+                                const SizedBox(height: 14),
                                 Obx(() {
                                   if (controller.wifiLoading.value) {
                                     return _LoadingCard();
@@ -78,7 +109,7 @@ class ReceiveView extends GetView<ReceiveController> {
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
                               _LinkInputCard(controller: controller),
-                              const SizedBox(height: 16),
+                              const SizedBox(height: 14),
                               Obx(() {
                                 if (controller.loading.value) {
                                   return _LoadingCard();
@@ -96,6 +127,7 @@ class ReceiveView extends GetView<ReceiveController> {
                   ),
                 ),
               ),
+              _ReceiveBottomBar(controller: controller, t: t),
             ],
           ),
         ),
@@ -113,13 +145,7 @@ class _LinkInputCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final t = AppLocalizations.of(context)!;
     final scheme = Theme.of(context).colorScheme;
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: _card(context),
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: _line(context)),
-      ),
+    return _ReceiveShellCard(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -202,41 +228,6 @@ class _LinkInputCard extends StatelessWidget {
               style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
             ),
           ),
-          const SizedBox(height: 12),
-          // Find button
-          Obx(() => GestureDetector(
-            onTap: controller.loading.value ? null : controller.loadMetadata,
-            child: AnimatedContainer(
-              duration: const Duration(milliseconds: 150),
-              height: 50,
-              decoration: BoxDecoration(
-                color: controller.loading.value
-                    ? _onSurface(context).withValues(alpha: 0.08)
-                    : _accent(context),
-                borderRadius: BorderRadius.circular(50),
-                boxShadow: controller.loading.value
-                    ? null
-                    : [BoxShadow(color: _accent(context).withValues(alpha: 0.22), blurRadius: 20, offset: const Offset(0, 6))],
-              ),
-              alignment: Alignment.center,
-              child: controller.loading.value
-                  ? SizedBox(
-                      width: 20, height: 20,
-                      child: CircularProgressIndicator(color: _accentInk(context), strokeWidth: 2.5),
-                    )
-                  : Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.search_rounded, color: _accentInk(context), size: 18),
-                        const SizedBox(width: 8),
-                        Text(
-                          t.findTransfer,
-                          style: TextStyle(color: _accentInk(context), fontSize: 15, fontWeight: FontWeight.w700),
-                        ),
-                      ],
-                    ),
-            ),
-          )),
         ],
       ),
     );
@@ -266,13 +257,8 @@ class _HowItWorksCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final t = AppLocalizations.of(context)!;
     final accent = _accent(context);
-    return Container(
+    return _ReceiveShellCard(
       padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        color: _card(context),
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: _line(context)),
-      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -461,14 +447,7 @@ class _TransferDetailsCard extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        // Summary card
-        Container(
-          padding: const EdgeInsets.all(16),
-          decoration: BoxDecoration(
-            color: _card(context),
-            borderRadius: BorderRadius.circular(20),
-            border: Border.all(color: _line(context)),
-          ),
+        _ReceiveShellCard(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -614,88 +593,15 @@ class _TransferDetailsCard extends StatelessWidget {
             ],
           ),
         ),
-
-        // Download button (only if unlocked)
-        if (!m.hasPassword || m.passwordUnlocked) ...[
-          const SizedBox(height: 12),
-          Obx(() {
-            return GestureDetector(
-              // startDownload() saves directly to the public Downloads folder.
-              onTap: controller.downloading.value
-                  ? null
-                  : controller.startDownload,
-              child: AnimatedContainer(
-                duration: const Duration(milliseconds: 150),
-                height: 54,
-                decoration: BoxDecoration(
-                  color: controller.downloading.value
-                      ? _onSurface(context).withValues(alpha: 0.08)
-                      : accent,
-                  borderRadius: BorderRadius.circular(50),
-                  boxShadow: controller.downloading.value
-                      ? null
-                      : [BoxShadow(color: accent.withValues(alpha: 0.25), blurRadius: 24, offset: const Offset(0, 8))],
-                ),
-                alignment: Alignment.center,
-                child: controller.downloading.value
-                    ? Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SizedBox(
-                            width: 20, height: 20,
-                            child: CircularProgressIndicator(
-                              color: _accentInk(context),
-                              strokeWidth: 2.5,
-                            ),
-                          ),
-                          const SizedBox(width: 12),
-                          Text(t.downloading,
-                              style: TextStyle(color: _dim(context), fontSize: 15, fontWeight: FontWeight.w600)),
-                        ],
-                      )
-                    : Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.download_rounded, color: _accentInk(context), size: 20),
-                          const SizedBox(width: 8),
-                          Text(
-                            (m.count ?? 0) > 1 ? t.downloadAllFiles : t.downloadSingleFile,
-                            style: TextStyle(color: _accentInk(context), fontSize: 16, fontWeight: FontWeight.w700),
-                          ),
-                        ],
-                      ),
-              ),
-            );
-          }),
-          const SizedBox(height: 10),
-          // Clear / new transfer button
-          GestureDetector(
-            onTap: () {
-              controller.clear();
-            },
-            child: Container(
-              height: 46,
-              decoration: BoxDecoration(
-                border: Border.all(color: _line(context)),
-                borderRadius: BorderRadius.circular(50),
-              ),
-              alignment: Alignment.center,
-              child: Text(
-                t.receiveAnother,
-                style: TextStyle(color: _dim(context), fontSize: 13, fontWeight: FontWeight.w500),
-              ),
-            ),
-          ),
-        ],
       ],
     );
   }
 }
 
-// ── Receive mode switcher ─────────────────────────────────────────────────────
+// ── Receive mode cards ────────────────────────────────────────────────────────
 
-class _ReceiveModeSwitcher extends StatelessWidget {
-  const _ReceiveModeSwitcher({required this.controller});
+class _ReceiveModeGrid extends StatelessWidget {
+  const _ReceiveModeGrid({required this.controller});
   final ReceiveController controller;
 
   @override
@@ -703,74 +609,206 @@ class _ReceiveModeSwitcher extends StatelessWidget {
     final t = AppLocalizations.of(context)!;
     return Obx(() {
       final mode = controller.receiveMode.value;
-      return Container(
-        padding: const EdgeInsets.all(4),
-        decoration: BoxDecoration(
-          color: _card(context),
-          borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: _line(context)),
-        ),
-        child: Row(
-          children: [
-            Expanded(
-              child: _ModeChip(
-                label: t.modeLink,
-                selected: mode == 'cloud',
-                onTap: () => controller.setReceiveMode('cloud'),
+      return Column(
+        children: [
+          Row(
+            children: [
+              Expanded(
+                child: _ReceiveModeCard(
+                  icon: Icons.cloud_download_outlined,
+                  pillLabel: t.navReceive,
+                  headline: t.modeLink,
+                  themeColor: _accent(context),
+                  selected: mode == 'cloud',
+                  onTap: () => controller.setReceiveMode('cloud'),
+                ),
               ),
-            ),
-            Expanded(
-              child: _ModeChip(
-                label: t.modeWifi,
-                selected: mode == 'wifi',
-                onTap: () => controller.setReceiveMode('wifi'),
+              const SizedBox(width: 12),
+              Expanded(
+                child: _ReceiveModeCard(
+                  icon: Icons.wifi_rounded,
+                  pillLabel: t.navReceive,
+                  headline: t.modeWifi,
+                  themeColor: DroppyWebColors.success,
+                  selected: mode == 'wifi',
+                  onTap: () => controller.setReceiveMode('wifi'),
+                ),
               ),
-            ),
-            Expanded(
-              child: _ModeChip(
-                label: t.modePc,
-                selected: mode == 'pc',
-                onTap: () => controller.setReceiveMode('pc'),
+            ],
+          ),
+          const SizedBox(height: 12),
+          Row(
+            children: [
+              Expanded(
+                child: _ReceiveModeCard(
+                  icon: Icons.computer_rounded,
+                  pillLabel: t.navReceive,
+                  headline: t.modePc,
+                  themeColor: DroppyWebColors.warm,
+                  selected: mode == 'pc',
+                  onTap: () => controller.setReceiveMode('pc'),
+                ),
               ),
-            ),
-          ],
-        ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: _ReceiveModeCard(
+                  icon: Icons.sensors_rounded,
+                  pillLabel: t.navReceive,
+                  headline: t.modeNearby,
+                  themeColor: DroppyWebColors.info,
+                  selected: false,
+                  onTap: () => Get.toNamed(AppRoutes.nearby),
+                ),
+              ),
+            ],
+          ),
+        ],
       );
     });
   }
 }
 
-class _ModeChip extends StatelessWidget {
-  const _ModeChip({
-    required this.label,
+class _ReceiveModeCard extends StatelessWidget {
+  const _ReceiveModeCard({
+    required this.icon,
+    required this.pillLabel,
+    required this.headline,
+    required this.themeColor,
     required this.selected,
     required this.onTap,
   });
-  final String label;
+
+  final IconData icon;
+  final String pillLabel;
+  final String headline;
+  final Color themeColor;
   final bool selected;
   final VoidCallback onTap;
 
+  Color _iconOnCircle(Color c) =>
+      c.computeLuminance() > 0.55 ? DroppyWebColors.accentInk : Colors.white;
+
   @override
   Widget build(BuildContext context) {
-    final accent = _accent(context);
-    return GestureDetector(
-      onTap: onTap,
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 180),
-        margin: const EdgeInsets.all(4),
-        decoration: BoxDecoration(
-          color: selected ? accent : Colors.transparent,
-          borderRadius: BorderRadius.circular(50),
-        ),
-        alignment: Alignment.center,
-        child: Text(
-          label,
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-          style: TextStyle(
-            color: selected ? _accentInk(context) : _dim(context),
-            fontSize: 12,
-            fontWeight: selected ? FontWeight.w700 : FontWeight.w500,
+    final isDark = _isDark(context);
+
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(26),
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 220),
+          curve: Curves.easeOutCubic,
+          height: 124,
+          decoration: BoxDecoration(
+            color: isDark ? DroppyWebColors.ink700 : Colors.white,
+            borderRadius: BorderRadius.circular(26),
+            border: Border.all(
+              color: selected
+                  ? themeColor.withValues(alpha: 0.65)
+                  : _line(context).withValues(alpha: isDark ? 1 : 0.7),
+              width: selected ? 2 : 1,
+            ),
+            boxShadow: [
+              if (!isDark)
+                BoxShadow(
+                  color: selected
+                      ? themeColor.withValues(alpha: 0.18)
+                      : const Color(0x0F000000),
+                  blurRadius: selected ? 22 : 16,
+                  offset: const Offset(0, 8),
+                ),
+              if (isDark && selected)
+                BoxShadow(
+                  color: themeColor.withValues(alpha: 0.14),
+                  blurRadius: 24,
+                  offset: const Offset(0, 8),
+                ),
+            ],
+          ),
+          clipBehavior: Clip.antiAlias,
+          child: Stack(
+            children: [
+              Positioned(
+                right: -28,
+                bottom: -28,
+                child: Container(
+                  width: 96,
+                  height: 96,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: themeColor.withValues(alpha: isDark ? 0.14 : 0.1),
+                  ),
+                ),
+              ),
+              Positioned(
+                right: 14,
+                bottom: 14,
+                child: Container(
+                  width: 38,
+                  height: 38,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: themeColor,
+                    boxShadow: [
+                      BoxShadow(
+                        color: themeColor.withValues(alpha: 0.35),
+                        blurRadius: 10,
+                        offset: const Offset(0, 4),
+                      ),
+                    ],
+                  ),
+                  child: Icon(
+                    icon,
+                    size: 18,
+                    color: _iconOnCircle(themeColor),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(14, 14, 52, 14),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 10,
+                        vertical: 5,
+                      ),
+                      decoration: BoxDecoration(
+                        color: themeColor.withValues(alpha: isDark ? 0.16 : 0.12),
+                        borderRadius: BorderRadius.circular(99),
+                      ),
+                      child: Text(
+                        pillLabel,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          color: themeColor,
+                          fontSize: 10,
+                          fontWeight: FontWeight.w600,
+                          height: 1.1,
+                        ),
+                      ),
+                    ),
+                    const Spacer(),
+                    Text(
+                      headline,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        color: _onSurface(context),
+                        fontSize: headline.length <= 4 ? 22 : 14,
+                        fontWeight: FontWeight.w800,
+                        letterSpacing: -0.4,
+                        height: 1.1,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
         ),
       ),
@@ -788,13 +826,7 @@ class _WifiInputCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final t = AppLocalizations.of(context)!;
     final scheme = Theme.of(context).colorScheme;
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: _card(context),
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: _line(context)),
-      ),
+    return _ReceiveShellCard(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -869,40 +901,6 @@ class _WifiInputCard extends StatelessWidget {
               style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
             ),
           ),
-          const SizedBox(height: 12),
-          Obx(() => GestureDetector(
-            onTap: controller.wifiLoading.value ? null : controller.loadWifiManifest,
-            child: AnimatedContainer(
-              duration: const Duration(milliseconds: 150),
-              height: 50,
-              decoration: BoxDecoration(
-                color: controller.wifiLoading.value
-                    ? _onSurface(context).withValues(alpha: 0.08)
-                    : _accent(context),
-                borderRadius: BorderRadius.circular(50),
-                boxShadow: controller.wifiLoading.value
-                    ? null
-                    : [BoxShadow(color: _accent(context).withValues(alpha: 0.22), blurRadius: 20, offset: const Offset(0, 6))],
-              ),
-              alignment: Alignment.center,
-              child: controller.wifiLoading.value
-                  ? SizedBox(
-                      width: 20, height: 20,
-                      child: CircularProgressIndicator(color: _accentInk(context), strokeWidth: 2.5),
-                    )
-                  : Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.search_rounded, color: _accentInk(context), size: 18),
-                        const SizedBox(width: 8),
-                        Text(
-                          t.receiveWifiFind,
-                          style: TextStyle(color: _accentInk(context), fontSize: 15, fontWeight: FontWeight.w700),
-                        ),
-                      ],
-                    ),
-            ),
-          )),
         ],
       ),
     );
@@ -930,13 +928,8 @@ class _WifiHowItWorksCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final t = AppLocalizations.of(context)!;
     final accent = _accent(context);
-    return Container(
+    return _ReceiveShellCard(
       padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        color: _card(context),
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: _line(context)),
-      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -974,145 +967,99 @@ class _WifiTransferCard extends StatelessWidget {
     final accent = _accent(context);
     final totalBytes = manifest.files.fold<int>(0, (s, f) => s + f.size);
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Container(
-          padding: const EdgeInsets.all(16),
-          decoration: BoxDecoration(
-            color: _card(context),
-            borderRadius: BorderRadius.circular(20),
-            border: Border.all(color: _line(context)),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+    return _ReceiveShellCard(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
             children: [
-              Row(
-                children: [
-                  Container(
-                    width: 44, height: 44,
-                    decoration: BoxDecoration(
-                      color: accent.withValues(alpha: 0.10),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Icon(Icons.wifi_rounded, color: accent, size: 22),
-                  ),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          t.filesReady(manifest.files.length),
-                          style: TextStyle(color: _onSurface(context), fontSize: 16, fontWeight: FontWeight.w700),
-                        ),
-                        if (totalBytes > 0)
-                          Text(_fmtSize(totalBytes), style: TextStyle(color: _dim(context), fontSize: 12)),
-                      ],
-                    ),
-                  ),
-                ],
+              Container(
+                width: 44,
+                height: 44,
+                decoration: BoxDecoration(
+                  color: accent.withValues(alpha: 0.10),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Icon(Icons.wifi_rounded, color: accent, size: 22),
               ),
-              if (manifest.files.isNotEmpty) ...[
-                const SizedBox(height: 14),
-                Divider(height: 1, color: _line(context)),
-                const SizedBox(height: 12),
-                ...manifest.files.take(5).map((f) => Padding(
-                  padding: const EdgeInsets.only(bottom: 8),
-                  child: Row(
-                    children: [
-                      Icon(Icons.insert_drive_file_outlined, color: _dim(context), size: 15),
-                      const SizedBox(width: 10),
-                      Expanded(
-                        child: Text(
-                          f.name,
-                          style: TextStyle(color: _onSurface(context), fontSize: 12, fontWeight: FontWeight.w500),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      t.filesReady(manifest.files.length),
+                      style: TextStyle(
+                        color: _onSurface(context),
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
                       ),
-                      const SizedBox(width: 8),
-                      Text(
-                        f.size > 0 ? _fmtSize(f.size) : '',
-                        style: TextStyle(color: _dim(context), fontSize: 11),
-                      ),
-                    ],
-                  ),
-                )),
-                if (manifest.files.length > 5)
-                  Padding(
-                    padding: const EdgeInsets.only(top: 2, bottom: 4),
-                    child: Text(
-                      t.receiveMoreFiles(manifest.files.length - 5),
-                      style: TextStyle(color: _dim2(context), fontSize: 11),
                     ),
-                  ),
-              ],
+                    if (totalBytes > 0)
+                      Text(
+                        _fmtSize(totalBytes),
+                        style: TextStyle(color: _dim(context), fontSize: 12),
+                      ),
+                  ],
+                ),
+              ),
             ],
           ),
-        ),
-        const SizedBox(height: 12),
-        Obx(() {
-          final busy = controller.wifiDownloading.value;
-          final idx = controller.wifiDownloadIndex.value;
-          final total = manifest.files.length;
-          return GestureDetector(
-            onTap: busy ? null : controller.startWifiDownload,
-            child: AnimatedContainer(
-              duration: const Duration(milliseconds: 150),
-              height: 54,
-              decoration: BoxDecoration(
-                color: busy ? _onSurface(context).withValues(alpha: 0.08) : accent,
-                borderRadius: BorderRadius.circular(50),
-                boxShadow: busy ? null : [BoxShadow(color: accent.withValues(alpha: 0.25), blurRadius: 24, offset: const Offset(0, 8))],
-              ),
-              alignment: Alignment.center,
-              child: busy
-                  ? Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SizedBox(
-                          width: 20, height: 20,
-                          child: CircularProgressIndicator(color: _accentInk(context), strokeWidth: 2.5),
-                        ),
-                        const SizedBox(width: 12),
-                        Text(
-                          t.wifiDownloadingProgress(idx, total),
-                          style: TextStyle(color: _dim(context), fontSize: 15, fontWeight: FontWeight.w600),
-                        ),
-                      ],
-                    )
-                  : Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.download_rounded, color: _accentInk(context), size: 20),
-                        const SizedBox(width: 8),
-                        Text(
-                          total > 1 ? t.wifiDownloadAll : t.downloadSingleFile,
-                          style: TextStyle(color: _accentInk(context), fontSize: 16, fontWeight: FontWeight.w700),
-                        ),
-                      ],
+          if (manifest.files.isNotEmpty) ...[
+            const SizedBox(height: 14),
+            Divider(height: 1, color: _line(context)),
+            const SizedBox(height: 12),
+            ...manifest.files.take(5).map(
+              (f) => Padding(
+                padding: const EdgeInsets.only(bottom: 8),
+                child: Row(
+                  children: [
+                    Container(
+                      width: 32,
+                      height: 32,
+                      decoration: BoxDecoration(
+                        color: _onSurface(context).withValues(alpha: 0.06),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Icon(
+                        Icons.insert_drive_file_outlined,
+                        color: _dim(context),
+                        size: 16,
+                      ),
                     ),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: Text(
+                        f.name,
+                        style: TextStyle(
+                          color: _onSurface(context),
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600,
+                        ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    Text(
+                      f.size > 0 ? _fmtSize(f.size) : '',
+                      style: TextStyle(color: _dim(context), fontSize: 11),
+                    ),
+                  ],
+                ),
+              ),
             ),
-          );
-        }),
-        const SizedBox(height: 10),
-        GestureDetector(
-          onTap: controller.clearWifi,
-          child: Container(
-            height: 46,
-            decoration: BoxDecoration(
-              border: Border.all(color: _line(context)),
-              borderRadius: BorderRadius.circular(50),
-            ),
-            alignment: Alignment.center,
-            child: Text(
-              t.receiveAnother,
-              style: TextStyle(color: _dim(context), fontSize: 13, fontWeight: FontWeight.w500),
-            ),
-          ),
-        ),
-      ],
+            if (manifest.files.length > 5)
+              Padding(
+                padding: const EdgeInsets.only(top: 2, bottom: 4),
+                child: Text(
+                  t.receiveMoreFiles(manifest.files.length - 5),
+                  style: TextStyle(color: _dim2(context), fontSize: 11),
+                ),
+              ),
+          ],
+        ],
+      ),
     );
   }
 }
@@ -1133,65 +1080,19 @@ class _PcReceiveSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final t = AppLocalizations.of(context)!;
-    final scheme = Theme.of(context).colorScheme;
     return Obx(() {
       final active = controller.pcReceiving.value;
       final url = controller.pcReceiveUrl.value;
       final files = controller.pcReceivedFiles;
 
       if (!active) {
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            _PcHowItWorksCard(),
-            const SizedBox(height: 16),
-            GestureDetector(
-              onTap: controller.startPcReceive,
-              child: Container(
-                height: 54,
-                decoration: BoxDecoration(
-                  color: _accent(context),
-                  borderRadius: BorderRadius.circular(50),
-                  boxShadow: [
-                    BoxShadow(
-                      color: _accent(context).withValues(alpha: 0.22),
-                      blurRadius: 20,
-                      offset: const Offset(0, 6),
-                    ),
-                  ],
-                ),
-                alignment: Alignment.center,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.computer_rounded, color: _accentInk(context), size: 20),
-                    const SizedBox(width: 8),
-                    Text(
-                      t.pcReceiveStart,
-                      style: TextStyle(
-                        color: _accentInk(context),
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        );
+        return _PcHowItWorksCard();
       }
 
       return Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Container(
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: _card(context),
-              borderRadius: BorderRadius.circular(20),
-              border: Border.all(color: _line(context)),
-            ),
+          _ReceiveShellCard(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
@@ -1228,7 +1129,7 @@ class _PcReceiveSection extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
-                    color: scheme.surface,
+                    color: Theme.of(context).colorScheme.surface,
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(color: _line(context)),
                   ),
@@ -1246,13 +1147,7 @@ class _PcReceiveSection extends StatelessWidget {
           ),
           if (files.isNotEmpty) ...[
             const SizedBox(height: 14),
-            Container(
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: _card(context),
-                borderRadius: BorderRadius.circular(20),
-                border: Border.all(color: _line(context)),
-              ),
+            _ReceiveShellCard(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -1289,17 +1184,6 @@ class _PcReceiveSection extends StatelessWidget {
               ),
             ),
           ],
-          const SizedBox(height: 12),
-          OutlinedButton.icon(
-            onPressed: controller.stopPcReceive,
-            icon: const Icon(Icons.stop_circle_outlined),
-            label: Text(t.pcReceiveStop),
-            style: OutlinedButton.styleFrom(
-              foregroundColor: scheme.error,
-              side: BorderSide(color: scheme.error.withValues(alpha: 0.5)),
-              padding: const EdgeInsets.symmetric(vertical: 14),
-            ),
-          ),
         ],
       );
     });
@@ -1311,13 +1195,8 @@ class _PcHowItWorksCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final t = AppLocalizations.of(context)!;
     final accent = _accent(context);
-    return Container(
+    return _ReceiveShellCard(
       padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        color: _card(context),
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: _line(context)),
-      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -1337,6 +1216,177 @@ class _PcHowItWorksCard extends StatelessWidget {
           const SizedBox(height: 14),
           _Step(accent: accent, number: '3', title: t.receivePcHowTo3, subtitle: t.receivePcHowTo3Body),
         ],
+      ),
+    );
+  }
+}
+
+// ── Receive bottom bar ────────────────────────────────────────────────────────
+
+class _ReceiveBottomBar extends StatelessWidget {
+  const _ReceiveBottomBar({required this.controller, required this.t});
+  final ReceiveController controller;
+  final AppLocalizations t;
+
+  @override
+  Widget build(BuildContext context) {
+    return Obx(() {
+      final mode = controller.receiveMode.value;
+
+      if (mode == 'cloud') {
+        final m = controller.meta.value;
+        if (m != null && m.ok && (!m.hasPassword || m.passwordUnlocked)) {
+          return _ReceiveBarShell(
+            primaryLabel: controller.downloading.value
+                ? t.downloading
+                : ((m.count ?? 0) > 1 ? t.downloadAllFiles : t.downloadSingleFile),
+            primaryIcon: Icons.download_rounded,
+            loading: controller.downloading.value,
+            onPrimary: controller.downloading.value ? null : controller.startDownload,
+            secondaryLabel: t.receiveAnother,
+            onSecondary: controller.clear,
+          );
+        }
+        return _ReceiveBarShell(
+          primaryLabel: t.findTransfer,
+          primaryIcon: Icons.search_rounded,
+          loading: controller.loading.value,
+          onPrimary: controller.loading.value ? null : controller.loadMetadata,
+        );
+      }
+
+      if (mode == 'wifi') {
+        final manifest = controller.wifiManifest.value;
+        if (manifest != null && manifest.files.isNotEmpty) {
+          final busy = controller.wifiDownloading.value;
+          final idx = controller.wifiDownloadIndex.value;
+          final total = manifest.files.length;
+          return _ReceiveBarShell(
+            primaryLabel: busy
+                ? t.wifiDownloadingProgress(idx, total)
+                : (total > 1 ? t.wifiDownloadAll : t.downloadSingleFile),
+            primaryIcon: Icons.download_rounded,
+            loading: busy,
+            onPrimary: busy ? null : controller.startWifiDownload,
+            secondaryLabel: t.receiveAnother,
+            onSecondary: controller.clearWifi,
+          );
+        }
+        return _ReceiveBarShell(
+          primaryLabel: t.receiveWifiFind,
+          primaryIcon: Icons.search_rounded,
+          loading: controller.wifiLoading.value,
+          onPrimary: controller.wifiLoading.value ? null : controller.loadWifiManifest,
+        );
+      }
+
+      if (mode == 'pc') {
+        if (controller.pcReceiving.value) {
+          return _ReceiveBarShell(
+            primaryLabel: t.pcReceiveStop,
+            primaryIcon: Icons.stop_circle_outlined,
+            destructive: true,
+            onPrimary: controller.stopPcReceive,
+          );
+        }
+        return _ReceiveBarShell(
+          primaryLabel: t.pcReceiveStart,
+          primaryIcon: Icons.computer_rounded,
+          onPrimary: controller.startPcReceive,
+        );
+      }
+
+      return const SizedBox.shrink();
+    });
+  }
+}
+
+class _ReceiveBarShell extends StatelessWidget {
+  const _ReceiveBarShell({
+    required this.primaryLabel,
+    required this.primaryIcon,
+    required this.onPrimary,
+    this.loading = false,
+    this.destructive = false,
+    this.secondaryLabel,
+    this.onSecondary,
+  });
+
+  final String primaryLabel;
+  final IconData primaryIcon;
+  final VoidCallback? onPrimary;
+  final bool loading;
+  final bool destructive;
+  final String? secondaryLabel;
+  final VoidCallback? onSecondary;
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    return Container(
+      padding: const EdgeInsets.fromLTRB(16, 12, 16, 16),
+      decoration: BoxDecoration(
+        color: _isDark(context) ? DroppyWebColors.ink700 : Colors.white,
+        border: Border(top: BorderSide(color: _line(context))),
+        boxShadow: _isDark(context)
+            ? null
+            : const [
+                BoxShadow(
+                  color: Color(0x12000000),
+                  blurRadius: 16,
+                  offset: Offset(0, -4),
+                ),
+              ],
+      ),
+      child: SafeArea(
+        top: false,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            FilledButton(
+              onPressed: onPrimary,
+              style: FilledButton.styleFrom(
+                minimumSize: const Size.fromHeight(54),
+                backgroundColor: destructive ? scheme.error : _accent(context),
+                foregroundColor: destructive ? Colors.white : _accentInk(context),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(999),
+                ),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  if (loading)
+                    SizedBox(
+                      width: 18,
+                      height: 18,
+                      child: CircularProgressIndicator(
+                        strokeWidth: 2,
+                        color: destructive ? Colors.white : _accentInk(context),
+                      ),
+                    )
+                  else
+                    Icon(primaryIcon, size: 18),
+                  const SizedBox(width: 8),
+                  Text(
+                    primaryLabel,
+                    style: const TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            if (secondaryLabel != null && onSecondary != null) ...[
+              const SizedBox(height: 8),
+              TextButton(
+                onPressed: onSecondary,
+                child: Text(secondaryLabel!),
+              ),
+            ],
+          ],
+        ),
       ),
     );
   }

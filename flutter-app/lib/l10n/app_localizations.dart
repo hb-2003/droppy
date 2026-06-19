@@ -296,6 +296,132 @@ abstract class AppLocalizations {
   /// **'PC'**
   String get modePc;
 
+  /// No description provided for @modeNearby.
+  ///
+  /// In en, this message translates to:
+  /// **'Nearby'**
+  String get modeNearby;
+
+  /// No description provided for @nearbyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Nearby share'**
+  String get nearbyTitle;
+
+  /// No description provided for @nearbySubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Send files to a device next to you on the same Wi‑Fi — no internet upload needed.'**
+  String get nearbySubtitle;
+
+  /// No description provided for @nearbySend.
+  ///
+  /// In en, this message translates to:
+  /// **'Send'**
+  String get nearbySend;
+
+  /// No description provided for @nearbyReceive.
+  ///
+  /// In en, this message translates to:
+  /// **'Receive'**
+  String get nearbyReceive;
+
+  /// No description provided for @nearbySendDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick files and wait for a nearby device to connect'**
+  String get nearbySendDesc;
+
+  /// No description provided for @nearbyReceiveDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Find nearby devices and download their files'**
+  String get nearbyReceiveDesc;
+
+  /// No description provided for @nearbyPickFiles.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose files to send'**
+  String get nearbyPickFiles;
+
+  /// No description provided for @nearbyStartSharing.
+  ///
+  /// In en, this message translates to:
+  /// **'Start sharing nearby'**
+  String get nearbyStartSharing;
+
+  /// No description provided for @nearbyWaitingForReceiver.
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting for nearby device…'**
+  String get nearbyWaitingForReceiver;
+
+  /// No description provided for @nearbyScanning.
+  ///
+  /// In en, this message translates to:
+  /// **'Looking for nearby devices…'**
+  String get nearbyScanning;
+
+  /// No description provided for @nearbyNoDevices.
+  ///
+  /// In en, this message translates to:
+  /// **'No nearby devices found'**
+  String get nearbyNoDevices;
+
+  /// No description provided for @nearbyNoDevicesHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Ask the sender to tap Send, choose files, and start sharing on the same Wi‑Fi.'**
+  String get nearbyNoDevicesHint;
+
+  /// No description provided for @nearbyFilesReady.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 file ready} other{{count} files ready}}'**
+  String nearbyFilesReady(int count);
+
+  /// No description provided for @nearbyDownloadAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Download all'**
+  String get nearbyDownloadAll;
+
+  /// No description provided for @nearbySharingActive.
+  ///
+  /// In en, this message translates to:
+  /// **'Ready to share'**
+  String get nearbySharingActive;
+
+  /// No description provided for @nearbyStopSharing.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop sharing'**
+  String get nearbyStopSharing;
+
+  /// No description provided for @nearbyConnectFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not connect to this device. Try again.'**
+  String get nearbyConnectFailed;
+
+  /// No description provided for @nearbyComplete.
+  ///
+  /// In en, this message translates to:
+  /// **'Transfer complete'**
+  String get nearbyComplete;
+
+  /// No description provided for @nearbyOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Share nearby'**
+  String get nearbyOpen;
+
+  /// No description provided for @nearbyOpenDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Auto-find devices — no QR or link needed'**
+  String get nearbyOpenDesc;
+
   /// No description provided for @pcShareHint.
   ///
   /// In en, this message translates to:

@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:sendlargefiles/l10n/app_localizations.dart';
+import 'package:sendlargefiles/app/routes/app_routes.dart';
 import 'package:sendlargefiles/app/app_branding.dart';
 import 'package:sendlargefiles/app/theme/app_theme.dart';
 import 'package:sendlargefiles/data/repositories/auth_repository.dart';
@@ -129,6 +130,8 @@ class _MainForm extends StatelessWidget {
                     _HomeHeader(),
                     const SizedBox(height: 20),
                     _ShareModeGrid(controller: controller),
+                    const SizedBox(height: 12),
+                    _NearbyEntryCard(t: t),
                     const SizedBox(height: 14),
                     Obx(() {
                       if (controller.shareMode.value == 'wifi') {
@@ -538,6 +541,106 @@ class _ModeFeatureCard extends StatelessWidget {
                         height: 1.1,
                       ),
                     ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+// ── Nearby entry ──────────────────────────────────────────────────────────────
+
+class _NearbyEntryCard extends StatelessWidget {
+  const _NearbyEntryCard({required this.t});
+  final AppLocalizations t;
+
+  @override
+  Widget build(BuildContext context) {
+    const themeColor = DroppyWebColors.success;
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: () => Get.toNamed(AppRoutes.nearby),
+        borderRadius: BorderRadius.circular(26),
+        child: Ink(
+          height: 88,
+          decoration: BoxDecoration(
+            color: _isDark(context) ? DroppyWebColors.ink700 : Colors.white,
+            borderRadius: BorderRadius.circular(26),
+            border: Border.all(color: _line(context)),
+            boxShadow: _isDark(context)
+                ? null
+                : const [
+                    BoxShadow(
+                      color: Color(0x0F000000),
+                      blurRadius: 16,
+                      offset: Offset(0, 6),
+                    ),
+                  ],
+          ),
+          child: Stack(
+            clipBehavior: Clip.hardEdge,
+            children: [
+              Positioned(
+                right: -20,
+                bottom: -20,
+                child: Container(
+                  width: 80,
+                  height: 80,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: themeColor.withValues(alpha: 0.1),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 18),
+                child: Row(
+                  children: [
+                    Container(
+                      width: 44,
+                      height: 44,
+                      decoration: BoxDecoration(
+                        color: themeColor.withValues(alpha: 0.14),
+                        borderRadius: BorderRadius.circular(14),
+                      ),
+                      child: const Icon(
+                        Icons.sensors_rounded,
+                        color: themeColor,
+                        size: 24,
+                      ),
+                    ),
+                    const SizedBox(width: 14),
+                    Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            t.nearbyOpen,
+                            style: TextStyle(
+                              color: Theme.of(context).colorScheme.onSurface,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w800,
+                            ),
+                          ),
+                          Text(
+                            t.nearbyOpenDesc,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              color: _textDim(context),
+                              fontSize: 12,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Icon(Icons.chevron_right_rounded, color: _textDim(context)),
                   ],
                 ),
               ),
@@ -2231,57 +2334,54 @@ class _UploadBar extends StatelessWidget {
       ),
       child: SafeArea(
         top: false,
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(16, 12, 16, 16),
-          child: Obx(() {
-            if (controller.files.isEmpty) {
-              return const SizedBox.shrink();
-            }
-
-            final disabled =
-                controller.uploading.value || controller.pickingFiles.value;
-            return FilledButton(
-              onPressed: disabled ? null : () => controller.startSend(context),
-              style: FilledButton.styleFrom(
-                minimumSize: const Size.fromHeight(54),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(DroppyRadius.pill),
-                ),
+        child: Obx(() {
+          if (controller.files.isEmpty) {
+            return const SizedBox.shrink();
+          }
+        
+          final disabled =
+              controller.uploading.value || controller.pickingFiles.value;
+          return FilledButton(
+            onPressed: disabled ? null : () => controller.startSend(context),
+            style: FilledButton.styleFrom(
+              minimumSize: const Size.fromHeight(54),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(DroppyRadius.pill),
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  if (controller.pickingFiles.value) ...[
-                    SizedBox(
-                      width: 18,
-                      height: 18,
-                      child: CircularProgressIndicator(
-                        strokeWidth: 2,
-                        color: _accentInk(context),
-                      ),
-                    ),
-                  ] else ...[
-                    const Icon(Icons.send_rounded, size: 18),
-                  ],
-                  const SizedBox(width: 8),
-                  Text(
-                    controller.pickingFiles.value
-                        ? 'Starting…'
-                        : (controller.shareMode.value == 'pc'
-                            ? t.pcStartSharing
-                            : controller.shareMode.value == 'wifi'
-                                ? t.wifiStartSharing
-                                : t.sendButton),
-                    style: const TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w700,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                if (controller.pickingFiles.value) ...[
+                  SizedBox(
+                    width: 18,
+                    height: 18,
+                    child: CircularProgressIndicator(
+                      strokeWidth: 2,
+                      color: _accentInk(context),
                     ),
                   ),
+                ] else ...[
+                  const Icon(Icons.send_rounded, size: 18),
                 ],
-              ),
-            );
-          }),
-        ),
+                const SizedBox(width: 8),
+                Text(
+                  controller.pickingFiles.value
+                      ? 'Starting…'
+                      : (controller.shareMode.value == 'pc'
+                          ? t.pcStartSharing
+                          : controller.shareMode.value == 'wifi'
+                              ? t.wifiStartSharing
+                              : t.sendButton),
+                  style: const TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ],
+            ),
+          );
+        }),
       ),
     );
   }

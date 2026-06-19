@@ -9,6 +9,8 @@ import 'package:sendlargefiles/modules/forgot_password/forgot_password_binding.d
 import 'package:sendlargefiles/modules/forgot_password/forgot_password_view.dart';
 import 'package:sendlargefiles/modules/login/login_binding.dart';
 import 'package:sendlargefiles/modules/login/login_view.dart';
+import 'package:sendlargefiles/modules/nearby/nearby_binding.dart';
+import 'package:sendlargefiles/modules/nearby/nearby_view.dart';
 import 'package:sendlargefiles/modules/plans/plans_binding.dart';
 import 'package:sendlargefiles/modules/signup/signup_binding.dart';
 import 'package:sendlargefiles/modules/signup/signup_view.dart';
@@ -68,6 +70,11 @@ class AppPages {
       name: AppRoutes.settings,
       page: SettingsView.new,
       binding: SettingsBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.nearby,
+      page: NearbyView.new,
+      binding: NearbyBinding(),
     ),
   ];
 }

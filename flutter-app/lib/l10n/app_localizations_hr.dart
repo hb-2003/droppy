@@ -54,6 +54,82 @@ class AppLocalizationsHr extends AppLocalizations {
   String get modePc => 'PC';
 
   @override
+  String get modeNearby => 'Nearby';
+
+  @override
+  String get nearbyTitle => 'Nearby share';
+
+  @override
+  String get nearbySubtitle =>
+      'Send files to a device next to you on the same Wi‑Fi — no internet upload needed.';
+
+  @override
+  String get nearbySend => 'Send';
+
+  @override
+  String get nearbyReceive => 'Receive';
+
+  @override
+  String get nearbySendDesc =>
+      'Pick files and wait for a nearby device to connect';
+
+  @override
+  String get nearbyReceiveDesc =>
+      'Find nearby devices and download their files';
+
+  @override
+  String get nearbyPickFiles => 'Choose files to send';
+
+  @override
+  String get nearbyStartSharing => 'Start sharing nearby';
+
+  @override
+  String get nearbyWaitingForReceiver => 'Waiting for nearby device…';
+
+  @override
+  String get nearbyScanning => 'Looking for nearby devices…';
+
+  @override
+  String get nearbyNoDevices => 'No nearby devices found';
+
+  @override
+  String get nearbyNoDevicesHint =>
+      'Ask the sender to tap Send, choose files, and start sharing on the same Wi‑Fi.';
+
+  @override
+  String nearbyFilesReady(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count files ready',
+      one: '1 file ready',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get nearbyDownloadAll => 'Download all';
+
+  @override
+  String get nearbySharingActive => 'Ready to share';
+
+  @override
+  String get nearbyStopSharing => 'Stop sharing';
+
+  @override
+  String get nearbyConnectFailed =>
+      'Could not connect to this device. Try again.';
+
+  @override
+  String get nearbyComplete => 'Transfer complete';
+
+  @override
+  String get nearbyOpen => 'Share nearby';
+
+  @override
+  String get nearbyOpenDesc => 'Auto-find devices — no QR or link needed';
+
+  @override
   String get pcShareHint =>
       'Share files with a computer on the same Wi‑Fi network.';
 

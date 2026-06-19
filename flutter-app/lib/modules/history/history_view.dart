@@ -433,6 +433,7 @@ class _TransferCard extends StatelessWidget {
   }
 
   static IconData _shareIcon(HistoryTransfer transfer) {
+    if (transfer.isNearby) return Icons.sensors_rounded;
     if (transfer.isPc) return Icons.computer_rounded;
     if (transfer.isWifi) return Icons.wifi_rounded;
     if (transfer.share == 'mail') return Icons.mail_outline_rounded;
