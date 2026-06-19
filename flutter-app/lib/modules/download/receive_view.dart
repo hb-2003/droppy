@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 import 'package:sendlargefiles/l10n/app_localizations.dart';
 import 'package:sendlargefiles/modules/download/receive_controller.dart';
 import 'package:sendlargefiles/widgets/app_snackbar.dart';
@@ -51,6 +52,9 @@ class ReceiveView extends GetView<ReceiveController> {
                         _ReceiveModeSwitcher(controller: controller),
                         const SizedBox(height: 16),
                         Obx(() {
+                          if (controller.receiveMode.value == 'pc') {
+                            return _PcReceiveSection(controller: controller);
+                          }
                           if (controller.receiveMode.value == 'wifi') {
                             return Column(
                               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -700,10 +704,10 @@ class _ReceiveModeSwitcher extends StatelessWidget {
     return Obx(() {
       final mode = controller.receiveMode.value;
       return Container(
-        height: 48,
+        padding: const EdgeInsets.all(4),
         decoration: BoxDecoration(
           color: _card(context),
-          borderRadius: BorderRadius.circular(50),
+          borderRadius: BorderRadius.circular(16),
           border: Border.all(color: _line(context)),
         ),
         child: Row(
@@ -720,6 +724,13 @@ class _ReceiveModeSwitcher extends StatelessWidget {
                 label: t.modeWifi,
                 selected: mode == 'wifi',
                 onTap: () => controller.setReceiveMode('wifi'),
+              ),
+            ),
+            Expanded(
+              child: _ModeChip(
+                label: t.modePc,
+                selected: mode == 'pc',
+                onTap: () => controller.setReceiveMode('pc'),
               ),
             ),
           ],
@@ -1102,6 +1113,231 @@ class _WifiTransferCard extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+// ── PC receive section ───────────────────────────────────────────────────────
+
+class _PcReceiveSection extends StatelessWidget {
+  const _PcReceiveSection({required this.controller});
+  final ReceiveController controller;
+
+  String _fmtSize(int bytes) {
+    if (bytes >= 1073741824) return '${(bytes / 1073741824).toStringAsFixed(2)} GB';
+    if (bytes >= 1048576) return '${(bytes / 1048576).toStringAsFixed(1)} MB';
+    if (bytes >= 1024) return '${(bytes / 1024).toStringAsFixed(0)} KB';
+    return '$bytes B';
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final t = AppLocalizations.of(context)!;
+    final scheme = Theme.of(context).colorScheme;
+    return Obx(() {
+      final active = controller.pcReceiving.value;
+      final url = controller.pcReceiveUrl.value;
+      final files = controller.pcReceivedFiles;
+
+      if (!active) {
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            _PcHowItWorksCard(),
+            const SizedBox(height: 16),
+            GestureDetector(
+              onTap: controller.startPcReceive,
+              child: Container(
+                height: 54,
+                decoration: BoxDecoration(
+                  color: _accent(context),
+                  borderRadius: BorderRadius.circular(50),
+                  boxShadow: [
+                    BoxShadow(
+                      color: _accent(context).withValues(alpha: 0.22),
+                      blurRadius: 20,
+                      offset: const Offset(0, 6),
+                    ),
+                  ],
+                ),
+                alignment: Alignment.center,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.computer_rounded, color: _accentInk(context), size: 20),
+                    const SizedBox(width: 8),
+                    Text(
+                      t.pcReceiveStart,
+                      style: TextStyle(
+                        color: _accentInk(context),
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        );
+      }
+
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Container(
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: _card(context),
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(color: _line(context)),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text(
+                  t.pcReceiveReady,
+                  style: TextStyle(
+                    color: _onSurface(context),
+                    fontSize: 16,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                const SizedBox(height: 6),
+                Text(
+                  t.pcReceiveHint,
+                  style: TextStyle(color: _dim(context), fontSize: 13, height: 1.45),
+                ),
+                const SizedBox(height: 16),
+                Center(
+                  child: Container(
+                    padding: const EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(color: _line(context)),
+                    ),
+                    child: QrImageView(
+                      data: url,
+                      size: 160,
+                      backgroundColor: Colors.white,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 12),
+                Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: scheme.surface,
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(color: _line(context)),
+                  ),
+                  child: SelectableText(
+                    url,
+                    style: TextStyle(
+                      color: _accent(context),
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          if (files.isNotEmpty) ...[
+            const SizedBox(height: 14),
+            Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: _card(context),
+                borderRadius: BorderRadius.circular(20),
+                border: Border.all(color: _line(context)),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    t.pcReceivedFiles(files.length),
+                    style: TextStyle(
+                      color: _onSurface(context),
+                      fontSize: 14,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  ...files.map(
+                    (f) => Padding(
+                      padding: const EdgeInsets.only(bottom: 8),
+                      child: Row(
+                        children: [
+                          Icon(Icons.insert_drive_file_outlined, size: 16, color: _dim(context)),
+                          const SizedBox(width: 8),
+                          Expanded(
+                            child: Text(
+                              f.name,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(color: _onSurface(context), fontSize: 12),
+                            ),
+                          ),
+                          Text(_fmtSize(f.size), style: TextStyle(color: _dim(context), fontSize: 11)),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+          const SizedBox(height: 12),
+          OutlinedButton.icon(
+            onPressed: controller.stopPcReceive,
+            icon: const Icon(Icons.stop_circle_outlined),
+            label: Text(t.pcReceiveStop),
+            style: OutlinedButton.styleFrom(
+              foregroundColor: scheme.error,
+              side: BorderSide(color: scheme.error.withValues(alpha: 0.5)),
+              padding: const EdgeInsets.symmetric(vertical: 14),
+            ),
+          ),
+        ],
+      );
+    });
+  }
+}
+
+class _PcHowItWorksCard extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final t = AppLocalizations.of(context)!;
+    final accent = _accent(context);
+    return Container(
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: _card(context),
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: _line(context)),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            t.receivePcTitle,
+            style: TextStyle(
+              color: _dim(context),
+              fontSize: 11,
+              fontWeight: FontWeight.w600,
+              letterSpacing: 1.2,
+            ),
+          ),
+          const SizedBox(height: 16),
+          _Step(accent: accent, number: '1', title: t.receivePcHowTo1, subtitle: t.receivePcHowTo1Body),
+          const SizedBox(height: 14),
+          _Step(accent: accent, number: '2', title: t.receivePcHowTo2, subtitle: t.receivePcHowTo2Body),
+          const SizedBox(height: 14),
+          _Step(accent: accent, number: '3', title: t.receivePcHowTo3, subtitle: t.receivePcHowTo3Body),
+        ],
+      ),
     );
   }
 }

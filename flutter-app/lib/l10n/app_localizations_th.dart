@@ -51,6 +51,100 @@ class AppLocalizationsTh extends AppLocalizations {
   String get modeWifi => 'Wi‑Fi';
 
   @override
+  String get modePc => 'PC';
+
+  @override
+  String get pcShareHint =>
+      'Share files with a computer on the same Wi‑Fi network.';
+
+  @override
+  String get pcStartSharing => 'Share with PC';
+
+  @override
+  String get pcShareReady => 'Open on your computer';
+
+  @override
+  String get pcShareReadyBody =>
+      'Open the link below in Chrome, Edge, or Safari on your computer to download the files.';
+
+  @override
+  String get pcOpenInBrowser => 'Scan the QR or open the link on your computer';
+
+  @override
+  String get pcBrowserUrlLabel => 'Computer link';
+
+  @override
+  String get snackPcNoNetwork => 'No network connection';
+
+  @override
+  String get snackPcShareFailed => 'Could not start PC sharing';
+
+  @override
+  String get snackPcShareFailedBody => 'Connect to Wi‑Fi and try again.';
+
+  @override
+  String get snackPcReceiveFailed => 'Could not start PC receive';
+
+  @override
+  String get snackPcReceiveFailedBody => 'Connect to Wi‑Fi and try again.';
+
+  @override
+  String get receivePcTitle => 'Receive from computer';
+
+  @override
+  String get pcReceiveStart => 'Start receiving';
+
+  @override
+  String get pcReceiveStop => 'Stop receiving';
+
+  @override
+  String get pcReceiveReady => 'Waiting for uploads';
+
+  @override
+  String get pcReceiveHint =>
+      'On your computer, open the link below and upload files.';
+
+  @override
+  String pcReceivedFiles(int count) {
+    return '$count files received';
+  }
+
+  @override
+  String get receivePcHowTo1 => 'Start receiving on your phone';
+
+  @override
+  String get receivePcHowTo1Body =>
+      'Tap Start receiving, then keep this screen open.';
+
+  @override
+  String get receivePcHowTo2 => 'Open the link on your computer';
+
+  @override
+  String get receivePcHowTo2Body =>
+      'Use the QR code or copy the http:// address into your browser.';
+
+  @override
+  String get receivePcHowTo3 => 'Upload from the browser';
+
+  @override
+  String get receivePcHowTo3Body =>
+      'Files are saved to Downloads on this phone.';
+
+  @override
+  String get historyPcSent => 'PC';
+
+  @override
+  String get historyPcReceived => 'From PC';
+
+  @override
+  String get historyPcSessionEnded =>
+      'This PC session has ended. Share again from Send to transfer files.';
+
+  @override
+  String get historyPcReceivedNote =>
+      'Files were saved to Downloads on this device.';
+
+  @override
   String get wifiShareHint =>
       'Share files directly with a nearby device on the same Wi‑Fi network.';
 

@@ -62,8 +62,16 @@ class HistoryTransfer {
 
   bool get isWifi => isWifiShare || isWifiReceive;
 
+  bool get isPcShare => share == 'pc' || share == 'pc_out';
+
+  bool get isPcReceive => share == 'pc_in';
+
+  bool get isPc => isPcShare || isPcReceive;
+
+  bool get isLocalTransfer => isWifi || isPc;
+
   bool get isExpired {
-    if (isWifi) return false;
+    if (isLocalTransfer) return false;
     return timeExpire > 0 &&
         timeExpire < DateTime.now().millisecondsSinceEpoch ~/ 1000;
   }
@@ -158,7 +166,7 @@ class HistoryRepository extends GetxService {
     if (local.isEmpty) return true;
 
     final ids = local
-        .where((t) => !t.isWifi && t.uploadId.isNotEmpty)
+        .where((t) => !t.isLocalTransfer && t.uploadId.isNotEmpty)
         .map((t) => t.uploadId)
         .toList();
     if (ids.isEmpty) {

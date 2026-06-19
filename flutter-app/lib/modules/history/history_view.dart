@@ -315,7 +315,7 @@ class _TransferCard extends StatelessWidget {
                 ),
                 child: Icon(
                   _shareIcon(transfer),
-                  color: expired && !transfer.isWifi
+                  color: expired && !transfer.isLocalTransfer
                       ? scheme.onSurface.withValues(alpha: 0.35)
                       : scheme.primary,
                   size: 20,
@@ -342,7 +342,39 @@ class _TransferCard extends StatelessWidget {
                   ],
                 ),
               ),
-              if (transfer.isWifiReceive)
+              if (transfer.isPcReceive)
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                  decoration: BoxDecoration(
+                    color: scheme.secondaryContainer.withValues(alpha: 0.55),
+                    borderRadius: BorderRadius.circular(6),
+                  ),
+                  child: Text(
+                    t.historyPcReceived,
+                    style: TextStyle(
+                      color: scheme.onSecondaryContainer,
+                      fontSize: 11,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                )
+              else if (transfer.isPcShare)
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                  decoration: BoxDecoration(
+                    color: scheme.primary.withValues(alpha: 0.12),
+                    borderRadius: BorderRadius.circular(6),
+                  ),
+                  child: Text(
+                    t.historyPcSent,
+                    style: TextStyle(
+                      color: scheme.primary,
+                      fontSize: 11,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                )
+              else if (transfer.isWifiReceive)
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                   decoration: BoxDecoration(
@@ -401,6 +433,7 @@ class _TransferCard extends StatelessWidget {
   }
 
   static IconData _shareIcon(HistoryTransfer transfer) {
+    if (transfer.isPc) return Icons.computer_rounded;
     if (transfer.isWifi) return Icons.wifi_rounded;
     if (transfer.share == 'mail') return Icons.mail_outline_rounded;
     return Icons.link_rounded;
@@ -417,11 +450,11 @@ class _TransferDetailsSheet extends StatelessWidget {
     final scheme = Theme.of(context).colorScheme;
     final t = AppLocalizations.of(context)!;
     final base = resolveBaseUrl();
-    final link = transfer.isWifi && transfer.wifiUrl.isNotEmpty
+    final link = transfer.isLocalTransfer && transfer.wifiUrl.isNotEmpty
         ? transfer.wifiUrl
         : (base.isEmpty ? transfer.uploadId : '$base${transfer.uploadId}');
     final expired = transfer.isExpired;
-    final isWifi = transfer.isWifi;
+    final isLocal = transfer.isLocalTransfer;
 
     String fallbackName() {
       if (transfer.count > 1) return '${transfer.uploadId}.zip';
@@ -449,7 +482,7 @@ class _TransferDetailsSheet extends StatelessWidget {
             }
 
             Future<void> download() async {
-              if (isWifi) return;
+              if (isLocal) return;
               if (expired) {
                 AppSnack.error(appL10n().expired, appL10n().transferExpired);
                 return;
@@ -540,6 +573,28 @@ class _TransferDetailsSheet extends StatelessWidget {
                     ],
                   ),
                 ),
+                if (transfer.isPcShare) ...[
+                  const SizedBox(height: 10),
+                  Text(
+                    t.historyPcSessionEnded,
+                    style: TextStyle(
+                      color: scheme.onSurface.withValues(alpha: 0.55),
+                      fontSize: 12,
+                      height: 1.45,
+                    ),
+                  ),
+                ],
+                if (transfer.isPcReceive) ...[
+                  const SizedBox(height: 10),
+                  Text(
+                    t.historyPcReceivedNote,
+                    style: TextStyle(
+                      color: scheme.onSurface.withValues(alpha: 0.55),
+                      fontSize: 12,
+                      height: 1.45,
+                    ),
+                  ),
+                ],
                 if (transfer.isWifiShare) ...[
                   const SizedBox(height: 10),
                   Text(
@@ -609,7 +664,7 @@ class _TransferDetailsSheet extends StatelessWidget {
                   ),
                   const SizedBox(height: 12),
                 ],
-                if (!isWifi)
+                if (!isLocal)
                   FilledButton.icon(
                     onPressed: downloading ? null : download,
                     icon: downloading

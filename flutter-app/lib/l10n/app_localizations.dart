@@ -290,6 +290,174 @@ abstract class AppLocalizations {
   /// **'Wi‑Fi'**
   String get modeWifi;
 
+  /// No description provided for @modePc.
+  ///
+  /// In en, this message translates to:
+  /// **'PC'**
+  String get modePc;
+
+  /// No description provided for @pcShareHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Share files with a computer on the same Wi‑Fi network.'**
+  String get pcShareHint;
+
+  /// No description provided for @pcStartSharing.
+  ///
+  /// In en, this message translates to:
+  /// **'Share with PC'**
+  String get pcStartSharing;
+
+  /// No description provided for @pcShareReady.
+  ///
+  /// In en, this message translates to:
+  /// **'Open on your computer'**
+  String get pcShareReady;
+
+  /// No description provided for @pcShareReadyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Open the link below in Chrome, Edge, or Safari on your computer to download the files.'**
+  String get pcShareReadyBody;
+
+  /// No description provided for @pcOpenInBrowser.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan the QR or open the link on your computer'**
+  String get pcOpenInBrowser;
+
+  /// No description provided for @pcBrowserUrlLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Computer link'**
+  String get pcBrowserUrlLabel;
+
+  /// No description provided for @snackPcNoNetwork.
+  ///
+  /// In en, this message translates to:
+  /// **'No network connection'**
+  String get snackPcNoNetwork;
+
+  /// No description provided for @snackPcShareFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not start PC sharing'**
+  String get snackPcShareFailed;
+
+  /// No description provided for @snackPcShareFailedBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Connect to Wi‑Fi and try again.'**
+  String get snackPcShareFailedBody;
+
+  /// No description provided for @snackPcReceiveFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not start PC receive'**
+  String get snackPcReceiveFailed;
+
+  /// No description provided for @snackPcReceiveFailedBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Connect to Wi‑Fi and try again.'**
+  String get snackPcReceiveFailedBody;
+
+  /// No description provided for @receivePcTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Receive from computer'**
+  String get receivePcTitle;
+
+  /// No description provided for @pcReceiveStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Start receiving'**
+  String get pcReceiveStart;
+
+  /// No description provided for @pcReceiveStop.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop receiving'**
+  String get pcReceiveStop;
+
+  /// No description provided for @pcReceiveReady.
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting for uploads'**
+  String get pcReceiveReady;
+
+  /// No description provided for @pcReceiveHint.
+  ///
+  /// In en, this message translates to:
+  /// **'On your computer, open the link below and upload files.'**
+  String get pcReceiveHint;
+
+  /// No description provided for @pcReceivedFiles.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} files received'**
+  String pcReceivedFiles(int count);
+
+  /// No description provided for @receivePcHowTo1.
+  ///
+  /// In en, this message translates to:
+  /// **'Start receiving on your phone'**
+  String get receivePcHowTo1;
+
+  /// No description provided for @receivePcHowTo1Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap Start receiving, then keep this screen open.'**
+  String get receivePcHowTo1Body;
+
+  /// No description provided for @receivePcHowTo2.
+  ///
+  /// In en, this message translates to:
+  /// **'Open the link on your computer'**
+  String get receivePcHowTo2;
+
+  /// No description provided for @receivePcHowTo2Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Use the QR code or copy the http:// address into your browser.'**
+  String get receivePcHowTo2Body;
+
+  /// No description provided for @receivePcHowTo3.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload from the browser'**
+  String get receivePcHowTo3;
+
+  /// No description provided for @receivePcHowTo3Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Files are saved to Downloads on this phone.'**
+  String get receivePcHowTo3Body;
+
+  /// No description provided for @historyPcSent.
+  ///
+  /// In en, this message translates to:
+  /// **'PC'**
+  String get historyPcSent;
+
+  /// No description provided for @historyPcReceived.
+  ///
+  /// In en, this message translates to:
+  /// **'From PC'**
+  String get historyPcReceived;
+
+  /// No description provided for @historyPcSessionEnded.
+  ///
+  /// In en, this message translates to:
+  /// **'This PC session has ended. Share again from Send to transfer files.'**
+  String get historyPcSessionEnded;
+
+  /// No description provided for @historyPcReceivedNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Files were saved to Downloads on this device.'**
+  String get historyPcReceivedNote;
+
   /// No description provided for @wifiShareHint.
   ///
   /// In en, this message translates to:

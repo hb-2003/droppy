@@ -372,5 +372,40 @@
   "historyWifiSent": "Wi‑Fi",
   "historyWifiReceived": "Received",
   "historyWifiSessionEnded": "This Wi‑Fi session has ended. Start a new share on Send to transfer again.",
-  "historyWifiReceivedNote": "Files were saved to Downloads on this device."
+  "historyWifiReceivedNote": "Files were saved to Downloads on this device.",
+  "modePc": "PC",
+  "pcShareHint": "Share files with a computer on the same Wi‑Fi network.",
+  "pcStartSharing": "Share with PC",
+  "pcShareReady": "Open on your computer",
+  "pcShareReadyBody": "Open the link below in Chrome, Edge, or Safari on your computer to download the files.",
+  "pcOpenInBrowser": "Scan the QR or open the link on your computer",
+  "pcBrowserUrlLabel": "Computer link",
+  "snackPcNoNetwork": "No network connection",
+  "snackPcShareFailed": "Could not start PC sharing",
+  "snackPcShareFailedBody": "Connect to Wi‑Fi and try again.",
+  "snackPcReceiveFailed": "Could not start PC receive",
+  "snackPcReceiveFailedBody": "Connect to Wi‑Fi and try again.",
+  "receivePcTitle": "Receive from computer",
+  "pcReceiveStart": "Start receiving",
+  "pcReceiveStop": "Stop receiving",
+  "pcReceiveReady": "Waiting for uploads",
+  "pcReceiveHint": "On your computer, open the link below and upload files.",
+  "pcReceivedFiles": "{count} files received",
+  "@pcReceivedFiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "receivePcHowTo1": "Start receiving on your phone",
+  "receivePcHowTo1Body": "Tap Start receiving, then keep this screen open.",
+  "receivePcHowTo2": "Open the link on your computer",
+  "receivePcHowTo2Body": "Use the QR code or copy the http:// address into your browser.",
+  "receivePcHowTo3": "Upload from the browser",
+  "receivePcHowTo3Body": "Files are saved to Downloads on this phone.",
+  "historyPcSent": "PC",
+  "historyPcReceived": "From PC",
+  "historyPcSessionEnded": "This PC session has ended. Share again from Send to transfer files.",
+  "historyPcReceivedNote": "Files were saved to Downloads on this device."
 }

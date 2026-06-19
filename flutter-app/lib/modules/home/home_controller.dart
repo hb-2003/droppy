@@ -24,6 +24,7 @@ import 'package:sendlargefiles/modules/history/history_controller.dart';
 import 'package:sendlargefiles/modules/shell/app_shell_controller.dart';
 import 'package:sendlargefiles/services/ios_security_scoped_folder.dart';
 import 'package:sendlargefiles/services/wifi_transfer/wifi_transfer_server.dart';
+import 'package:sendlargefiles/services/pc_transfer/pc_transfer_server.dart';
 import 'package:sendlargefiles/widgets/app_snackbar.dart';
 
 class HomeController extends GetxController {
@@ -42,6 +43,8 @@ class HomeController extends GetxController {
   final mailFinished = false.obs;
   final wifiSharing = false.obs;
   final wifiShareUrl = ''.obs;
+  final pcSharing = false.obs;
+  final pcShareUrl = ''.obs;
   final awaitingVerify = false.obs;
   final resendVerifyBusy = false.obs;
   final verifyController = TextEditingController();
@@ -53,6 +56,7 @@ class HomeController extends GetxController {
   int _uidCounter = 0;
   CancelToken? _cancelToken;
   final WifiTransferServer _wifiServer = WifiTransferServer();
+  final PcTransferServer _pcServer = PcTransferServer();
 
   final FocusNode emailFromFocus = FocusNode();
   final FocusNode emailToFocus = FocusNode();
@@ -138,12 +142,16 @@ class HomeController extends GetxController {
     _authMailLoggedWorker?.dispose();
     _authMailSessionWorker?.dispose();
     unawaited(_wifiServer.stop());
+    unawaited(_pcServer.stop());
     super.onClose();
   }
 
   void setShareMode(String m) {
     if (m != 'wifi' && wifiSharing.value) {
       unawaited(stopWifiSharing());
+    }
+    if (m != 'pc' && pcSharing.value) {
+      unawaited(stopPcSharing());
     }
     shareMode.value = m;
     if (m == 'mail') {
@@ -261,6 +269,11 @@ class HomeController extends GetxController {
 
     if (shareMode.value == 'wifi') {
       await startWifiSharing();
+      return;
+    }
+
+    if (shareMode.value == 'pc') {
+      await startPcSharing();
       return;
     }
 
@@ -579,8 +592,54 @@ class HomeController extends GetxController {
     wifiShareUrl.value = '';
   }
 
+  Future<void> startPcSharing() async {
+    try {
+      final picked = files.toList();
+      final url = await _pcServer.startSend(picked);
+      pcShareUrl.value = url;
+      pcSharing.value = true;
+
+      final nowSec = DateTime.now().millisecondsSinceEpoch ~/ 1000;
+      final sessionId = _pcServer.sessionId ?? 'pc_$nowSec';
+      await Get.find<HistoryRepository>().saveLocalTransfer(
+        HistoryTransfer(
+          uploadId: sessionId,
+          share: 'pc_out',
+          count: picked.length,
+          size: picked.fold<int>(0, (sum, f) => sum + f.size),
+          time: nowSec,
+          timeExpire: 0,
+          destruct: 'no',
+          wifiUrl: url,
+          files: picked
+              .map((f) => HistoryTransferFile(name: f.name, size: f.size))
+              .toList(),
+        ),
+      );
+      if (Get.isRegistered<HistoryController>()) {
+        await Get.find<HistoryController>().load(force: true);
+      }
+    } on StateError catch (e) {
+      final t = appL10n();
+      if ('$e'.contains('no_network')) {
+        AppSnack.error(t.snackPcNoNetwork, t.snackWifiNoNetworkBody);
+      } else {
+        AppSnack.error(t.snackPcShareFailed, t.snackPcShareFailedBody);
+      }
+    } catch (e) {
+      AppSnack.showDynamic(appL10n().snackPcShareFailed, '$e', type: AppSnackType.error);
+    }
+  }
+
+  Future<void> stopPcSharing() async {
+    await _pcServer.stop();
+    pcSharing.value = false;
+    pcShareUrl.value = '';
+  }
+
   void resetForNewTransfer() {
     unawaited(stopWifiSharing());
+    unawaited(stopPcSharing());
     files.clear();
     files.refresh();
     unawaited(IosSecurityScopedFolder.releaseActive());
@@ -667,13 +726,17 @@ class HomeController extends GetxController {
   }
 
   Future<void> shareResult() async {
-    final link = wifiSharing.value ? wifiShareUrl.value : finishedLink.value;
+    final link = pcSharing.value
+        ? pcShareUrl.value
+        : (wifiSharing.value ? wifiShareUrl.value : finishedLink.value);
     if (link.isEmpty) return;
     await SharePlus.instance.share(ShareParams(text: link));
   }
 
   Future<void> shareQrCode() async {
-    final link = wifiSharing.value ? wifiShareUrl.value : finishedLink.value;
+    final link = pcSharing.value
+        ? pcShareUrl.value
+        : (wifiSharing.value ? wifiShareUrl.value : finishedLink.value);
     if (link.isEmpty) return;
 
     final painter = QrPainter(

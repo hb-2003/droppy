@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -11,6 +13,8 @@ import 'package:sendlargefiles/data/repositories/download_repository.dart';
 import 'package:sendlargefiles/data/repositories/history_repository.dart';
 import 'package:sendlargefiles/localization/app_locale.dart';
 import 'package:sendlargefiles/modules/history/history_controller.dart';
+import 'package:sendlargefiles/services/pc_transfer/pc_transfer_models.dart';
+import 'package:sendlargefiles/services/pc_transfer/pc_transfer_server.dart';
 import 'package:sendlargefiles/services/wifi_transfer/wifi_transfer_client.dart';
 import 'package:sendlargefiles/services/wifi_transfer/wifi_transfer_models.dart';
 import 'package:sendlargefiles/widgets/app_snackbar.dart';
@@ -27,15 +31,20 @@ class ReceiveController extends GetxController {
   final passwordCtrl  = TextEditingController();
   final wifiUrlCtrl   = TextEditingController();
 
-  final receiveMode    = 'cloud'.obs; // cloud | wifi
+  final receiveMode    = 'cloud'.obs; // cloud | wifi | pc
   final loading        = false.obs;
   final downloading    = false.obs;
   final wifiLoading    = false.obs;
   final wifiDownloading = false.obs;
   final wifiDownloadIndex = 0.obs;
+  final pcReceiving    = false.obs;
+  final pcReceiveUrl   = ''.obs;
+  final pcReceivedFiles = <PcReceivedFile>[].obs;
   final lastFilename   = ''.obs;
   final Rxn<TransferMetadata> meta = Rxn<TransferMetadata>();
   final Rxn<WifiTransferManifest> wifiManifest = Rxn<WifiTransferManifest>();
+
+  final PcTransferServer _pcServer = PcTransferServer();
 
   AppConfig get cfg => Get.find<ConfigRepository>().current;
 
@@ -45,15 +54,24 @@ class ReceiveController extends GetxController {
     privateIdCtrl.dispose();
     passwordCtrl.dispose();
     wifiUrlCtrl.dispose();
+    unawaited(_pcServer.stop());
     super.onClose();
   }
 
   void setReceiveMode(String mode) {
+    if (mode != 'pc' && pcReceiving.value) {
+      unawaited(stopPcReceive());
+    }
     receiveMode.value = mode;
     if (mode == 'cloud') {
       wifiManifest.value = null;
-    } else {
+      pcReceivedFiles.clear();
+    } else if (mode == 'wifi') {
       meta.value = null;
+      pcReceivedFiles.clear();
+    } else if (mode == 'pc') {
+      meta.value = null;
+      wifiManifest.value = null;
     }
   }
 
@@ -64,7 +82,76 @@ class ReceiveController extends GetxController {
     wifiUrlCtrl.clear();
     meta.value = null;
     wifiManifest.value = null;
+    pcReceivedFiles.clear();
     lastFilename.value = '';
+  }
+
+  void clearPc() {
+    unawaited(stopPcReceive());
+    pcReceivedFiles.clear();
+  }
+
+  Future<void> startPcReceive() async {
+    if (pcReceiving.value) return;
+    try {
+      final saveDir = await DownloadRepository.resolveDownloadsDirectory();
+      final url = await _pcServer.startReceive(
+        saveDir: saveDir,
+        onFile: _onPcFileReceived,
+      );
+      pcReceiveUrl.value = url;
+      pcReceiving.value = true;
+      pcReceivedFiles.assignAll(_pcServer.receivedFiles);
+    } on StateError catch (e) {
+      final t = appL10n();
+      if ('$e'.contains('no_network')) {
+        AppSnack.error(t.snackPcNoNetwork, t.snackWifiNoNetworkBody);
+      } else {
+        AppSnack.error(t.snackPcReceiveFailed, t.snackPcReceiveFailedBody);
+      }
+    } catch (e) {
+      AppSnack.showDynamic(appL10n().snackPcReceiveFailed, '$e', type: AppSnackType.error);
+    }
+  }
+
+  Future<void> stopPcReceive() async {
+    if (!pcReceiving.value && !_pcServer.isRunning) return;
+
+    final files = List<PcReceivedFile>.from(_pcServer.receivedFiles);
+    final savedUrl = pcReceiveUrl.value;
+    await _pcServer.stop();
+    pcReceiving.value = false;
+    pcReceiveUrl.value = '';
+
+    if (files.isEmpty) return;
+
+    final nowSec = DateTime.now().millisecondsSinceEpoch ~/ 1000;
+    final sessionId = 'pc_in_$nowSec';
+    await Get.find<HistoryRepository>().saveLocalTransfer(
+      HistoryTransfer(
+        uploadId: sessionId,
+        share: 'pc_in',
+        count: files.length,
+        size: files.fold<int>(0, (s, f) => s + f.size),
+        time: nowSec,
+        timeExpire: 0,
+        destruct: 'no',
+        wifiUrl: savedUrl,
+        files: files
+            .map((f) => HistoryTransferFile(name: f.name, size: f.size))
+            .toList(),
+      ),
+    );
+    if (Get.isRegistered<HistoryController>()) {
+      await Get.find<HistoryController>().load(force: true);
+    }
+  }
+
+  void _onPcFileReceived(PcReceivedFile file) {
+    pcReceivedFiles.assignAll(_pcServer.receivedFiles);
+    lastFilename.value = file.name;
+    final t = appL10n();
+    AppSnack.success(t.snackDownloadComplete, t.snackDownloadSaved(file.name));
   }
 
   void clearCloud() {
