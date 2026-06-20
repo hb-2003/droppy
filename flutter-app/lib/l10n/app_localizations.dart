@@ -422,6 +422,168 @@ abstract class AppLocalizations {
   /// **'Auto-find devices — no QR or link needed'**
   String get nearbyOpenDesc;
 
+  /// No description provided for @driveTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Google Drive'**
+  String get driveTitle;
+
+  /// No description provided for @driveSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Back up files to your Drive or download files you saved from this app.'**
+  String get driveSubtitle;
+
+  /// No description provided for @driveBackup.
+  ///
+  /// In en, this message translates to:
+  /// **'Back up to Drive'**
+  String get driveBackup;
+
+  /// No description provided for @driveBackupDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick files on this device and upload to your Google Drive'**
+  String get driveBackupDesc;
+
+  /// No description provided for @driveDownload.
+  ///
+  /// In en, this message translates to:
+  /// **'Download from Drive'**
+  String get driveDownload;
+
+  /// No description provided for @driveDownloadDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Download files you previously backed up with this app'**
+  String get driveDownloadDesc;
+
+  /// No description provided for @drivePickFilesHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose one or more files to back up to Google Drive.'**
+  String get drivePickFilesHint;
+
+  /// No description provided for @driveStartBackup.
+  ///
+  /// In en, this message translates to:
+  /// **'Back up now'**
+  String get driveStartBackup;
+
+  /// No description provided for @driveStartDownload.
+  ///
+  /// In en, this message translates to:
+  /// **'Download to device'**
+  String get driveStartDownload;
+
+  /// No description provided for @driveYourFiles.
+  ///
+  /// In en, this message translates to:
+  /// **'Your backed-up files'**
+  String get driveYourFiles;
+
+  /// No description provided for @driveNoFiles.
+  ///
+  /// In en, this message translates to:
+  /// **'No files in Drive yet. Back up some files first.'**
+  String get driveNoFiles;
+
+  /// No description provided for @driveBackingUp.
+  ///
+  /// In en, this message translates to:
+  /// **'Backing up…'**
+  String get driveBackingUp;
+
+  /// No description provided for @driveDownloading.
+  ///
+  /// In en, this message translates to:
+  /// **'Downloading…'**
+  String get driveDownloading;
+
+  /// No description provided for @driveUploadingFile.
+  ///
+  /// In en, this message translates to:
+  /// **'Uploading file {current} of {total}'**
+  String driveUploadingFile(int current, int total);
+
+  /// No description provided for @driveBackupDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Backed up'**
+  String get driveBackupDone;
+
+  /// No description provided for @driveBackupDoneBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Your files are saved to Google Drive.'**
+  String get driveBackupDoneBody;
+
+  /// No description provided for @driveUploadFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not upload to Google Drive. Try again.'**
+  String get driveUploadFailed;
+
+  /// No description provided for @driveListFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not load files from Google Drive.'**
+  String get driveListFailed;
+
+  /// No description provided for @driveDownloadFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not download from Google Drive.'**
+  String get driveDownloadFailed;
+
+  /// No description provided for @driveComplete.
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get driveComplete;
+
+  /// No description provided for @driveDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Back'**
+  String get driveDone;
+
+  /// No description provided for @driveSignOut.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign out of Google'**
+  String get driveSignOut;
+
+  /// No description provided for @driveSignedInAs.
+  ///
+  /// In en, this message translates to:
+  /// **'Signed in as {email}'**
+  String driveSignedInAs(String email);
+
+  /// No description provided for @driveSetupTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Google Drive not configured'**
+  String get driveSetupTitle;
+
+  /// No description provided for @driveSetupBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Google OAuth client IDs when building the app (see drive_config.dart).'**
+  String get driveSetupBody;
+
+  /// No description provided for @driveOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Google Drive'**
+  String get driveOpen;
+
+  /// No description provided for @driveOpenDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Back up or download your files'**
+  String get driveOpenDesc;
+
   /// No description provided for @pcShareHint.
   ///
   /// In en, this message translates to:

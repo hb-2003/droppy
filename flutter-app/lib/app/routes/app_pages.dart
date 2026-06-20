@@ -9,6 +9,8 @@ import 'package:sendlargefiles/modules/forgot_password/forgot_password_binding.d
 import 'package:sendlargefiles/modules/forgot_password/forgot_password_view.dart';
 import 'package:sendlargefiles/modules/login/login_binding.dart';
 import 'package:sendlargefiles/modules/login/login_view.dart';
+import 'package:sendlargefiles/modules/drive/drive_binding.dart';
+import 'package:sendlargefiles/modules/drive/drive_view.dart';
 import 'package:sendlargefiles/modules/nearby/nearby_binding.dart';
 import 'package:sendlargefiles/modules/nearby/nearby_view.dart';
 import 'package:sendlargefiles/modules/plans/plans_binding.dart';
@@ -75,6 +77,11 @@ class AppPages {
       name: AppRoutes.nearby,
       page: NearbyView.new,
       binding: NearbyBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.drive,
+      page: DriveView.new,
+      binding: DriveBinding(),
     ),
   ];
 }

@@ -132,6 +132,8 @@ class _MainForm extends StatelessWidget {
                     _ShareModeGrid(controller: controller),
                     const SizedBox(height: 12),
                     _NearbyEntryCard(t: t),
+                    // const SizedBox(height: 12),
+                    // _DriveEntryCard(t: t),
                     const SizedBox(height: 14),
                     Obx(() {
                       if (controller.shareMode.value == 'wifi') {
@@ -651,6 +653,107 @@ class _NearbyEntryCard extends StatelessWidget {
     );
   }
 }
+
+// ── Google Drive entry (hidden until OAuth is configured) ───────────────────
+/*
+class _DriveEntryCard extends StatelessWidget {
+  const _DriveEntryCard({required this.t});
+  final AppLocalizations t;
+
+  @override
+  Widget build(BuildContext context) {
+    const themeColor = DroppyWebColors.info;
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: () => Get.toNamed(AppRoutes.drive),
+        borderRadius: BorderRadius.circular(26),
+        child: Ink(
+          height: 88,
+          decoration: BoxDecoration(
+            color: _isDark(context) ? DroppyWebColors.ink700 : Colors.white,
+            borderRadius: BorderRadius.circular(26),
+            border: Border.all(color: _line(context)),
+            boxShadow: _isDark(context)
+                ? null
+                : const [
+                    BoxShadow(
+                      color: Color(0x0F000000),
+                      blurRadius: 16,
+                      offset: Offset(0, 6),
+                    ),
+                  ],
+          ),
+          child: Stack(
+            clipBehavior: Clip.hardEdge,
+            children: [
+              Positioned(
+                right: -20,
+                bottom: -20,
+                child: Container(
+                  width: 80,
+                  height: 80,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: themeColor.withValues(alpha: 0.1),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 18),
+                child: Row(
+                  children: [
+                    Container(
+                      width: 44,
+                      height: 44,
+                      decoration: BoxDecoration(
+                        color: themeColor.withValues(alpha: 0.14),
+                        borderRadius: BorderRadius.circular(14),
+                      ),
+                      child: const Icon(
+                        Icons.cloud_rounded,
+                        color: themeColor,
+                        size: 24,
+                      ),
+                    ),
+                    const SizedBox(width: 14),
+                    Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            t.driveOpen,
+                            style: TextStyle(
+                              color: Theme.of(context).colorScheme.onSurface,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w800,
+                            ),
+                          ),
+                          Text(
+                            t.driveOpenDesc,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              color: _textDim(context),
+                              fontSize: 12,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Icon(Icons.chevron_right_rounded, color: _textDim(context)),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+*/
 
 // ── Drop Zone ────────────────────────────────────────────────────────────────
 

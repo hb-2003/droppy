@@ -2,7 +2,7 @@ name: sendlargefiles
 description: "Share Large Video Files"
 publish_to: 'none'
 
-version: 1.5.0+9
+version: 1.6.1+1
 
 environment:
   sdk: ^3.11.3
@@ -38,6 +38,9 @@ dependencies:
   network_info_plus: ^6.1.4
   archive: ^4.0.9
   bonsoir: ^7.1.4
+  google_sign_in: ^6.3.0
+  googleapis: ^14.0.0
+  extension_google_sign_in_as_googleapis_auth: ^2.0.13
 
 dev_dependencies:
   flutter_test:

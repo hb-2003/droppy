@@ -16,6 +16,7 @@ import 'package:sendlargefiles/data/repositories/history_repository.dart';
 import 'package:sendlargefiles/data/repositories/upload_repository.dart';
 import 'package:sendlargefiles/l10n/app_localizations.dart';
 import 'package:sendlargefiles/localization/translation_service.dart';
+import 'package:sendlargefiles/services/drive/drive_service.dart';
 import 'package:sendlargefiles/services/iap/iap_service.dart';
 
 Future<void> main() async {
@@ -35,6 +36,7 @@ Future<void> main() async {
   Get.put(DownloadRepository());
   Get.put(HistoryRepository(), permanent: true);
   Get.put(AuthRepository());
+  Get.put(DriveService(), permanent: true);
   runApp(const SendLargeFilesApp());
 }
 

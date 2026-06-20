@@ -41,6 +41,44 @@
   "nearbyComplete": "Transfer complete",
   "nearbyOpen": "Share nearby",
   "nearbyOpenDesc": "Auto-find devices — no QR or link needed",
+  "driveTitle": "Google Drive",
+  "driveSubtitle": "Back up files to your Drive or download files you saved from this app.",
+  "driveBackup": "Back up to Drive",
+  "driveBackupDesc": "Pick files on this device and upload to your Google Drive",
+  "driveDownload": "Download from Drive",
+  "driveDownloadDesc": "Download files you previously backed up with this app",
+  "drivePickFilesHint": "Choose one or more files to back up to Google Drive.",
+  "driveStartBackup": "Back up now",
+  "driveStartDownload": "Download to device",
+  "driveYourFiles": "Your backed-up files",
+  "driveNoFiles": "No files in Drive yet. Back up some files first.",
+  "driveBackingUp": "Backing up…",
+  "driveDownloading": "Downloading…",
+  "driveUploadingFile": "Uploading file {current} of {total}",
+  "@driveUploadingFile": {
+    "placeholders": {
+      "current": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+  "driveBackupDone": "Backed up",
+  "driveBackupDoneBody": "Your files are saved to Google Drive.",
+  "driveUploadFailed": "Could not upload to Google Drive. Try again.",
+  "driveListFailed": "Could not load files from Google Drive.",
+  "driveDownloadFailed": "Could not download from Google Drive.",
+  "driveComplete": "Done",
+  "driveDone": "Back",
+  "driveSignOut": "Sign out of Google",
+  "driveSignedInAs": "Signed in as {email}",
+  "@driveSignedInAs": {
+    "placeholders": {
+      "email": { "type": "String" }
+    }
+  },
+  "driveSetupTitle": "Google Drive not configured",
+  "driveSetupBody": "Add Google OAuth client IDs when building the app (see drive_config.dart).",
+  "driveOpen": "Google Drive",
+  "driveOpenDesc": "Back up or download your files",
   "pcShareHint": "Share files with a computer on the same Wi‑Fi network.",
   "pcStartSharing": "Share with PC",
   "pcShareReady": "Open on your computer",

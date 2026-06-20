@@ -7,5 +7,6 @@ abstract class AppRoutes {
   static const forgotPassword = '/forgot-password';
   static const settings = '/settings';
   static const nearby = '/nearby';
+  static const drive = '/drive';
   static const shell = '/app';
 }

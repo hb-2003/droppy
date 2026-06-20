@@ -1,0 +1,13 @@
+class DriveRemoteFile {
+  const DriveRemoteFile({
+    required this.id,
+    required this.name,
+    required this.size,
+    required this.modifiedTime,
+  });
+
+  final String id;
+  final String name;
+  final int size;
+  final DateTime? modifiedTime;
+}

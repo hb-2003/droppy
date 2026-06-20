@@ -130,6 +130,97 @@ class AppLocalizationsUk extends AppLocalizations {
   String get nearbyOpenDesc => 'Auto-find devices — no QR or link needed';
 
   @override
+  String get driveTitle => 'Google Drive';
+
+  @override
+  String get driveSubtitle =>
+      'Back up files to your Drive or download files you saved from this app.';
+
+  @override
+  String get driveBackup => 'Back up to Drive';
+
+  @override
+  String get driveBackupDesc =>
+      'Pick files on this device and upload to your Google Drive';
+
+  @override
+  String get driveDownload => 'Download from Drive';
+
+  @override
+  String get driveDownloadDesc =>
+      'Download files you previously backed up with this app';
+
+  @override
+  String get drivePickFilesHint =>
+      'Choose one or more files to back up to Google Drive.';
+
+  @override
+  String get driveStartBackup => 'Back up now';
+
+  @override
+  String get driveStartDownload => 'Download to device';
+
+  @override
+  String get driveYourFiles => 'Your backed-up files';
+
+  @override
+  String get driveNoFiles => 'No files in Drive yet. Back up some files first.';
+
+  @override
+  String get driveBackingUp => 'Backing up…';
+
+  @override
+  String get driveDownloading => 'Downloading…';
+
+  @override
+  String driveUploadingFile(int current, int total) {
+    return 'Uploading file $current of $total';
+  }
+
+  @override
+  String get driveBackupDone => 'Backed up';
+
+  @override
+  String get driveBackupDoneBody => 'Your files are saved to Google Drive.';
+
+  @override
+  String get driveUploadFailed =>
+      'Could not upload to Google Drive. Try again.';
+
+  @override
+  String get driveListFailed => 'Could not load files from Google Drive.';
+
+  @override
+  String get driveDownloadFailed => 'Could not download from Google Drive.';
+
+  @override
+  String get driveComplete => 'Done';
+
+  @override
+  String get driveDone => 'Back';
+
+  @override
+  String get driveSignOut => 'Sign out of Google';
+
+  @override
+  String driveSignedInAs(String email) {
+    return 'Signed in as $email';
+  }
+
+  @override
+  String get driveSetupTitle => 'Google Drive not configured';
+
+  @override
+  String get driveSetupBody =>
+      'Add Google OAuth client IDs when building the app (see drive_config.dart).';
+
+  @override
+  String get driveOpen => 'Google Drive';
+
+  @override
+  String get driveOpenDesc => 'Back up or download your files';
+
+  @override
   String get pcShareHint =>
       'Share files with a computer on the same Wi‑Fi network.';
 
