@@ -89,14 +89,15 @@
                                         <?php echo strtoupper(lang('total_size') ?: 'TOTAL SIZE'); ?>
                                     </span>
                                     <?php if ($data['file_previews'] == 'true'): ?>
-                                        <a href="#" class="slvf-dl-files__preview-link"
-                                           onclick="Tabs.open('tab-files');return false;">
+                                        <a href="#slvf-dl-preview" class="slvf-dl-files__preview-link">
                                             <?php echo lang('preview_files') ?: 'Preview'; ?>
                                         </a>
                                     <?php endif; ?>
                                 </div>
 
-                                <?php if ($data['file_previews'] != 'true'): ?>
+                                <?php if ($data['file_previews'] == 'true'): ?>
+                                    <?php $this->load->view('themes/' . $settings['theme'] . '/_elem/download_file_previews', get_defined_vars()); ?>
+                                <?php else: ?>
                                     <ul class="slvf-dl-files__list">
                                         <?php foreach ($files as $file): ?>
                                             <li class="slvf-dl-files__item">

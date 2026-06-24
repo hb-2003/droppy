@@ -1046,6 +1046,7 @@ if ('loading' in HTMLImageElement.prototype) {
 function openVideoModal(videoUrl) {
     var modal = document.getElementById('videoModal');
     var videoPlayer = document.getElementById('videoPlayer');
+    if (!modal || !videoPlayer) return;
     videoPlayer.src = videoUrl;
     videoPlayer.type = 'video/mp4';
     videoPlayer.muted = false;
@@ -1054,13 +1055,14 @@ function openVideoModal(videoUrl) {
         this.load();
         this.play();
     });
-    modal.classList.add('is-active');
+    modal.classList.add('is-open');
 }
 
 function closeVideoModal() {
     var modal = document.getElementById('videoModal');
     var videoPlayer = document.getElementById('videoPlayer');
+    if (!modal || !videoPlayer) return;
     videojs(videoPlayer).pause();
-    videoPlayer.src = ''; // Clear the video source
-    modal.classList.remove('is-active');
+    videoPlayer.src = '';
+    modal.classList.remove('is-open');
 }

@@ -822,12 +822,34 @@
     };
 
     /* ----------------------------------------------------------------------
+       Download page — preview scroll + video play
+       ---------------------------------------------------------------------- */
+    var DownloadPreview = {
+        init: function () {
+            $(document).on('click', 'a[href="#slvf-dl-preview"]', function (e) {
+                var el = document.getElementById('slvf-dl-preview');
+                if (!el) return;
+                e.preventDefault();
+                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+            $(document).on('click', '.slvf-dl-preview-card__play', function (e) {
+                e.preventDefault();
+                var url = $(this).data('video-url');
+                if (url && typeof w.openVideoModal === 'function') {
+                    w.openVideoModal(url);
+                }
+            });
+        }
+    };
+
+    /* ----------------------------------------------------------------------
        Boot
        ---------------------------------------------------------------------- */
     $(function () {
         Account.init();
         SlvfNav.init();
         TabWindow.init();
+        DownloadPreview.init();
         LegalAccordion.init();
         ModeToggle.init();
         SelectedFiles.init();

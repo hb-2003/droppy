@@ -2,26 +2,75 @@
 # ─────────────────────────────────────────────
 # deploy.sh — push local Droppy to live server
 # Run: ./deploy.sh  (from inside the Files/ folder)
-# NOTE: Nginx config is managed directly on the server.
-#       This script NEVER touches /etc/nginx/
+# Config: .env (SERVER_IP, SERVER_SSH_PORT, SERVER_ROOT_PASS, etc.)
 # ─────────────────────────────────────────────
 
-SERVER="root@31.220.45.93"
-SSH_KEY="$HOME/.ssh/id_ed25519"
-REMOTE="/var/www/droppy"
+set -euo pipefail
+
 LOCAL="$(cd "$(dirname "$0")" && pwd)"
 
-SSH="ssh -o StrictHostKeyChecking=no -i $SSH_KEY"
-RSYNC_SSH="ssh -o StrictHostKeyChecking=no -i $SSH_KEY"
+if [[ -f "$LOCAL/.env" ]]; then
+  # shellcheck disable=SC1091
+  set -a && source "$LOCAL/.env" && set +a
+fi
+
+SERVER_IP="${SERVER_IP:-31.220.45.93}"
+SSH_PORT="${SERVER_SSH_PORT:-49831}"
+REMOTE="${DROPPY_PATH:-/var/www/droppy}"
+REMOTE="${REMOTE%/}"
+APP_URL="${APP_URL:-https://sharelargefilesfree.com}"
+APP_URL="${APP_URL%/}/"
+SSH_PASS="${SERVER_ROOT_PASS:-${PASS:-}}"
+DB_HOST="${DB_HOST:-127.0.0.1}"
+DB_USERNAME="${DB_USERNAME:-droppy}"
+DB_DATABASE="${DB_DATABASE:-droppy}"
+DB_PASSWORD="${DB_PASSWORD:-}"
+
+SERVER="root@${SERVER_IP}"
+SSH_KEY="${SSH_KEY:-$HOME/.ssh/id_ed25519}"
+
+SSH_OPTS=(ssh -o StrictHostKeyChecking=no -o ConnectTimeout=20 -p "$SSH_PORT")
+if [[ -f "$SSH_KEY" ]]; then
+  SSH_OPTS+=(-i "$SSH_KEY")
+fi
+
+# Use SSHPASS env (more reliable than -p for special chars / rapid reconnects).
+run_ssh() {
+  if [[ -n "$SSH_PASS" ]] && command -v sshpass >/dev/null 2>&1; then
+    SSHPASS="$SSH_PASS" sshpass -e "${SSH_OPTS[@]}" "$@"
+  else
+    "${SSH_OPTS[@]}" "$@"
+  fi
+}
+
+preflight() {
+  echo ""
+  echo "Checking SSH to ${SERVER}:${SSH_PORT} ..."
+  if ! run_ssh "$SERVER" "echo ok" >/dev/null 2>&1; then
+    echo "❌ Cannot reach the server over SSH."
+    [[ -z "$SSH_PASS" ]] && echo "  Set SERVER_ROOT_PASS in .env"
+    ! command -v sshpass >/dev/null 2>&1 && echo "  Install: brew install hudochenkov/sshpass/sshpass"
+    exit 1
+  fi
+  echo "✅ SSH OK"
+}
 
 echo ""
 echo "========================================"
-echo "  🚀 Deploying Droppy → sharelargefilesfree.com"
+echo "  🚀 Deploying Droppy → ${APP_URL}"
 echo "========================================"
 
-# ── STEP 1: Sync files ───────────────────────
+preflight
+
 echo ""
-echo "[1/3] Syncing files..."
+echo "[1/2] Syncing files..."
+
+if [[ -n "$SSH_PASS" ]] && command -v sshpass >/dev/null 2>&1; then
+  export SSHPASS="$SSH_PASS"
+  RSYNC_RSH="sshpass -e $(printf '%q ' "${SSH_OPTS[@]}")"
+else
+  RSYNC_RSH="$(printf '%q ' "${SSH_OPTS[@]}")"
+fi
 
 rsync -avz --progress \
   --exclude 'uploads/' \
@@ -34,54 +83,45 @@ rsync -avz --progress \
   --exclude 'Dockerfile' \
   --exclude '*.sql' \
   --exclude '.DS_Store' \
-  -e "$RSYNC_SSH" \
+  -e "$RSYNC_RSH" \
   "$LOCAL/" "$SERVER:$REMOTE/"
 
-if [ $? -ne 0 ]; then
-  echo "❌ rsync failed!"
-  exit 1
-fi
 echo "✅ Files synced."
 
-# ── STEP 2: Fix live config & permissions ────
+# Single SSH session for config + restart (avoids sshpass failing on back-to-back logins).
 echo ""
-echo "[2/3] Fixing config & permissions..."
+echo "[2/2] Config, permissions & restart..."
 
-$SSH "$SERVER" bash << 'REMOTE_SCRIPT'
-REMOTE="/var/www/droppy"
+run_ssh "$SERVER" bash -s << REMOTE_SCRIPT
+set -e
+REMOTE="$REMOTE"
+DB_HOST="$DB_HOST"
+DB_USERNAME="$DB_USERNAME"
+DB_DATABASE="$DB_DATABASE"
+DB_PASSWORD="$DB_PASSWORD"
+APP_URL="$APP_URL"
 
-# Fix database.php — live DB credentials
-sed -i "s/'hostname' => '.*'/'hostname' => '127.0.0.1'/" $REMOTE/application/config/database.php
-sed -i "s/'username' => '.*', \/\/ The username/'username' => 'droppy', \/\/ The username/" $REMOTE/application/config/database.php
-sed -i "s/'password' => '.*', \/\/ The password/'password' => 'vrlbWkXWH4yN7VeoXeh2vSOc', \/\/ The password/" $REMOTE/application/config/database.php
-sed -i "s/'database' => '.*', \/\/ The database name/'database' => 'droppy', \/\/ The database name/" $REMOTE/application/config/database.php
+sed -i "s/'hostname' => '.*'/'hostname' => '\${DB_HOST}'/" "\$REMOTE/application/config/database.php"
+sed -i "s/'username' => '.*', \\/\\/ The username/'username' => '\${DB_USERNAME}', \\/\\/ The username/" "\$REMOTE/application/config/database.php"
+sed -i "s/'password' => '.*', \\/\\/ The password/'password' => '\${DB_PASSWORD}', \\/\\/ The password/" "\$REMOTE/application/config/database.php"
+sed -i "s/'database' => '.*', \\/\\/ The database name/'database' => '\${DB_DATABASE}', \\/\\/ The database name/" "\$REMOTE/application/config/database.php"
+sed -i "s|'base_url' => '.*'|'base_url' => '\${APP_URL}'|" "\$REMOTE/application/config/config.php"
 
-# Fix config.php — set base_url (Nginx overrides this per-vhost via DROPPY_SITE_URL)
-sed -i "s|'base_url' => '.*'|'base_url' => 'https://sharelargefilesfree.com/'|" $REMOTE/application/config/config.php
+chown -R www-data:www-data "\$REMOTE"
+chmod -R 755 "\$REMOTE"
+chmod -R 775 "\$REMOTE/uploads" "\$REMOTE/application/cache" "\$REMOTE/application/logs"
+rm -f "\$REMOTE/application/cache/"*
 
-# Fix permissions
-chown -R www-data:www-data $REMOTE
-chmod -R 755 $REMOTE
-chmod -R 775 $REMOTE/uploads $REMOTE/application/cache $REMOTE/application/logs
-
-# Clear CodeIgniter cache
-rm -f $REMOTE/application/cache/*
-
-echo "Config fixed."
+systemctl restart php8.3-fpm
+systemctl reload nginx
+echo "Config fixed. Services restarted."
 REMOTE_SCRIPT
 
-echo "✅ Config done."
-
-# ── STEP 3: Restart services ─────────────────
-echo ""
-echo "[3/3] Restarting PHP-FPM + Nginx..."
-
-$SSH "$SERVER" "systemctl restart php8.3-fpm && systemctl reload nginx && echo 'Services restarted.'"
+echo "✅ Done."
 
 echo ""
 echo "========================================"
 echo "  ✅ Deploy complete!"
-echo "  🌐 https://sharelargefilesfree.com"
-echo "  🌐 http://31.220.45.93  (still works)"
+echo "  🌐 ${APP_URL}"
 echo "========================================"
 echo ""
